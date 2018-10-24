@@ -1,0 +1,1101 @@
+@font-face {
+  font-family: 'ZJKAPP';
+  src:  url('fonts/ZJKAPP.eot?y9qnj0');
+  src:  url('fonts/ZJKAPP.eot?y9qnj0#iefix') format('embedded-opentype'),
+    url('fonts/ZJKAPP.ttf?y9qnj0') format('truetype'),
+    url('fonts/ZJKAPP.woff?y9qnj0') format('woff'),
+    url('fonts/ZJKAPP.svg?y9qnj0#ZJKAPP') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ZJKAPP' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-音浪右:before {
+  content: "\ea01";
+  color: #00bf8b;
+}
+.icon-推迟2:before {
+  content: "\e9ff";
+  color: #fff;
+}
+.icon-完成2:before {
+  content: "\ea00";
+  color: #fff;
+}
+.icon-流程办理:before {
+  content: "\e9fe";
+  color: #00bf8b;
+}
+.icon-笔:before {
+  content: "\e900";
+  color: #cfcfcf;
+}
+.icon-标签:before {
+  content: "\e901";
+  color: #9b9b9b;
+}
+.icon-表情-点击:before {
+  content: "\e902";
+  color: #00bf8b;
+}
+.icon-表情-未点击:before {
+  content: "\e903";
+  color: #9b9b9b;
+}
+.icon-撤回:before {
+  content: "\e904";
+  color: #d2d2d2;
+}
+.icon-撤销:before {
+  content: "\e905";
+  color: #d2d2d2;
+}
+.icon-导出:before {
+  content: "\e906";
+  color: #9b9b9b;
+}
+.icon-发布消息灰:before {
+  content: "\e907";
+  color: #9b9b9b;
+}
+.icon-发布消息绿:before {
+  content: "\e908";
+  color: #00bf8b;
+}
+.icon-附件:before {
+  content: "\e909";
+  color: #4ea8ec;
+}
+.icon-感叹号灰色:before {
+  content: "\e90a";
+  color: #9dacb3;
+}
+.icon-工作分享灰色:before {
+  content: "\e90b";
+  color: #9b9b9b;
+}
+.icon-工作分享绿色:before {
+  content: "\e90c";
+  color: #00bf8b;
+}
+.icon-公文包白色:before {
+  content: "\e90d";
+  color: #fff;
+}
+.icon-挂号助手:before {
+  content: "\e90e";
+  color: #fff;
+}
+.icon-记录:before {
+  content: "\e90f";
+  color: #00bf8b;
+}
+.icon-加号灰色:before {
+  content: "\e910";
+  color: #e7e8e9;
+}
+.icon-交卷:before {
+  content: "\e911";
+  color: #00bf8b;
+}
+.icon-静音:before {
+  content: "\e912";
+  color: #9dacb3;
+}
+.icon-开关-关:before {
+  content: "\e913";
+  color: #00bf8b;
+}
+.icon-列表:before {
+  content: "\e914";
+  color: #979797;
+}
+.icon-模拟考试考试成绩页面成绩图标:before {
+  content: "\e915";
+  color: #00bf8b;
+}
+.icon-排序:before {
+  content: "\e916";
+  color: #9b9b9b;
+}
+.icon-签到:before {
+  content: "\e917";
+  color: #00bf8b;
+}
+.icon-请假:before {
+  content: "\e918";
+  color: #00bf8b;
+}
+.icon-全体成员-赞:before {
+  content: "\e919";
+  color: #fff;
+}
+.icon-确认拨打:before {
+  content: "\e91a";
+  color: #00bf8b;
+}
+.icon-人像绿:before {
+  content: "\e91b";
+  color: #00bf8b;
+}
+.icon-扫一扫-绿色:before {
+  content: "\e91c";
+  color: #00bf8b;
+}
+.icon-扫一扫:before {
+  content: "\e91d";
+  color: #9b9b9b;
+}
+.icon-删除:before {
+  content: "\e91e";
+  color: #9b9b9b;
+}
+.icon-上传橙色:before {
+  content: "\e91f";
+  color: #f7b55d;
+}
+.icon-设置蓝色:before {
+  content: "\e920";
+  color: #4ea8ec;
+}
+.icon-摄像头切换:before {
+  content: "\e921";
+  color: #00bf8b;
+}
+.icon-申请信息:before {
+  content: "\e922";
+  color: #00bf8b;
+}
+.icon-审核:before {
+  content: "\e923";
+  color: #00bf8b;
+}
+.icon-视频-未点击:before {
+  content: "\e924";
+  color: #9b9b9b;
+}
+.icon-刷脸识别:before {
+  content: "\e925";
+  color: #d0d0d0;
+}
+.icon-刷脸识别绿色:before {
+  content: "\e926";
+  color: #00bf8b;
+}
+.icon-统计:before {
+  content: "\e927";
+  color: #00bf8b;
+}
+.icon-图标-反馈:before {
+  content: "\e928";
+  color: #9b9b9b;
+}
+.icon-未选中:before {
+  content: "\e929";
+  color: #c0c4cc;
+}
+.icon-文档绿色:before {
+  content: "\e92a";
+  color: #00bf8b;
+}
+.icon-我的社区:before {
+  content: "\e92b";
+  color: #4ea8ec;
+}
+.icon-我的收藏:before {
+  content: "\e92c";
+  color: #f7b55d;
+}
+.icon-我上传的文件:before {
+  content: "\e92d";
+  color: #4ea8ec;
+}
+.icon-消息+点击:before {
+  content: "\e92e";
+  color: #5d707a;
+}
+.icon-新建会议:before {
+  content: "\e92f";
+  color: #00bf8b;
+}
+.icon-新增汇总:before {
+  content: "\e930";
+  color: #00bf8b;
+}
+.icon-信息发布:before {
+  content: "\e931";
+  color: #00bf8b;
+}
+.icon-选中状态:before {
+  content: "\e932";
+  color: #00bf8b;
+}
+.icon-眼睛:before {
+  content: "\e933";
+  color: #d0d0d0;
+}
+.icon-语音识别-文件:before {
+  content: "\e934";
+  color: #00bf8b;
+}
+.icon-在线测试-模拟考试图标:before {
+  content: "\e935";
+  color: #00bf8b;
+}
+.icon-在线测试-知识练习图标:before {
+  content: "\e936";
+  color: #00bf8b;
+}
+.icon-赞-点击:before {
+  content: "\e937";
+  color: #f28383;
+}
+.icon-照片:before {
+  content: "\e938";
+  color: #00bf8b;
+}
+.icon-重命名:before {
+  content: "\e939";
+  color: #9b9b9b;
+}
+.icon-ocr识别白色:before {
+  content: "\e93a";
+  color: #fff;
+}
+.icon-艾特-点击:before {
+  content: "\e93b";
+  color: #00bf8b;
+}
+.icon-备忘录:before {
+  content: "\e93c";
+  color: #00bf8b;
+}
+.icon-编辑白色:before {
+  content: "\e93d";
+  color: #fff;
+}
+.icon-编辑绿色:before {
+  content: "\e93e";
+  color: #00bf8b;
+}
+.icon-表单:before {
+  content: "\e93f";
+  color: #00bf8b;
+}
+.icon-测试检务通:before {
+  content: "\e940";
+  color: #00bf8b;
+}
+.icon-查看错题图标 .path1:before {
+  content: "\e941";
+  color: rgb(155, 155, 155);
+}
+.icon-查看错题图标 .path2:before {
+  content: "\e942";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+  opacity: 0.9;
+}
+.icon-查看错题图标 .path3:before {
+  content: "\e943";
+  margin-left: -1em;
+  color: rgb(238, 238, 238);
+}
+.icon-查看错题图标 .path4:before {
+  content: "\e944";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+}
+.icon-查看错题图标 .path5:before {
+  content: "\e945";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+}
+.icon-橙色电话:before {
+  content: "\e946";
+  color: #f7b55d;
+}
+.icon-传阅公文:before {
+  content: "\e947";
+  color: #fff;
+}
+.icon-创建任务:before {
+  content: "\e948";
+  color: #00bf8b;
+}
+.icon-创建任务灰色:before {
+  content: "\e949";
+  color: #979797;
+}
+.icon-待办任务:before {
+  content: "\e94a";
+  color: #fff;
+}
+.icon-导出-点击:before {
+  content: "\e94b";
+  color: #fff;
+}
+.icon-导入:before {
+  content: "\e94c";
+  color: #979797;
+}
+.icon-导入文件:before {
+  content: "\e94d";
+  color: #979797;
+}
+.icon-电脑:before {
+  content: "\e94e";
+  color: #4ea8ec;
+}
+.icon-对勾:before {
+  content: "\e94f";
+  color: #fff;
+}
+.icon-发起投票:before {
+  content: "\e950";
+  color: #979797;
+}
+.icon-发起投票绿:before {
+  content: "\e951";
+  color: #00bf8b;
+}
+.icon-反馈管理:before {
+  content: "\e952";
+  color: #00bf8b;
+}
+.icon-放大镜:before {
+  content: "\e953";
+  color: #9b9b9b;
+}
+.icon-分享:before {
+  content: "\e954";
+  color: #fff;
+}
+.icon-分享+点击:before {
+  content: "\e955";
+  color: #5d707a;
+}
+.icon-个人动态:before {
+  content: "\e956";
+  color: #f7b55d;
+}
+.icon-工作圈-收藏:before {
+  content: "\e957";
+  color: #e87a5a;
+}
+.icon-工作圈-我的工作圈:before {
+  content: "\e958";
+  color: #4ea8ec;
+}
+.icon-工作圈:before {
+  content: "\e959";
+  color: #00bf8b;
+}
+.icon-工作圈蓝色:before {
+  content: "\e95a";
+  color: #4ea8ec;
+}
+.icon-工作圈列表-全体成员:before {
+  content: "\e95b";
+  color: #4ea8ec;
+}
+.icon-工作圈列表-我的工作圈:before {
+  content: "\e95c";
+  color: #4ea8ec;
+}
+.icon-工作圈未选中 .path1:before {
+  content: "\e95d";
+  color: rgb(151, 151, 151);
+}
+.icon-工作圈未选中 .path2:before {
+  content: "\e95e";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+}
+.icon-工作圈未选中 .path3:before {
+  content: "\e95f";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+}
+.icon-公文审批:before {
+  content: "\e960";
+  color: #4ea8ec;
+}
+.icon-公文审批橙色:before {
+  content: "\e961";
+  color: #f7b55d;
+}
+.icon-挂断电话:before {
+  content: "\e962";
+  color: #00bf8b;
+}
+.icon-关闭:before {
+  content: "\e963";
+  color: #cfcfcf;
+}
+.icon-管理员:before {
+  content: "\e964";
+  color: #f7b55d;
+}
+.icon-话题-点击:before {
+  content: "\e965";
+  color: #9b9b9b;
+}
+.icon-话题:before {
+  content: "\e966";
+  color: #f7b55d;
+}
+.icon-回顾试卷图标 .path1:before {
+  content: "\e967";
+  color: rgb(155, 155, 155);
+}
+.icon-回顾试卷图标 .path2:before {
+  content: "\e968";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+  opacity: 0.9;
+}
+.icon-回顾试卷图标 .path3:before {
+  content: "\e969";
+  margin-left: -1em;
+  color: rgb(238, 238, 238);
+}
+.icon-回顾试卷图标 .path4:before {
+  content: "\e96a";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+}
+.icon-回顾试卷图标 .path5:before {
+  content: "\e96b";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+}
+.icon-加号:before {
+  content: "\e96c";
+  color: #00bf8b;
+}
+.icon-加人:before {
+  content: "\e96d";
+  color: #00bf8b;
+}
+.icon-检察导航:before {
+  content: "\e96e";
+  color: #f7b55d;
+}
+.icon-检察官网蓝色:before {
+  content: "\e96f";
+  color: #4ea8ec;
+}
+.icon-检察课堂-党建业务:before {
+  content: "\e970";
+  color: #4ea8ec;
+}
+.icon-检察课堂-党建制度:before {
+  content: "\e971";
+  color: #4ea8ec;
+}
+.icon-检察课堂-理论培训:before {
+  content: "\e972";
+  color: #f7b55d;
+}
+.icon-检察课堂-理论学习:before {
+  content: "\e973";
+  color: #eb5e5e;
+}
+.icon-检察课堂-业务培训:before {
+  content: "\e974";
+  color: #f7b55d;
+}
+.icon-检察课堂-在线测试:before {
+  content: "\e975";
+  color: #00bf8b;
+}
+.icon-检察课堂:before {
+  content: "\e976";
+  color: #4ea8ec;
+}
+.icon-检信-人像:before {
+  content: "\e977";
+  color: #00bf8b;
+}
+.icon-检信:before {
+  content: "\e978";
+  color: #979797;
+}
+.icon-检信绿 .path1:before {
+  content: "\e979";
+  color: rgb(0, 191, 139);
+}
+.icon-检信绿 .path2:before {
+  content: "\e97a";
+  margin-left: -1em;
+  color: rgb(0, 191, 139);
+}
+.icon-检信绿 .path3:before {
+  content: "\e97b";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-检信绿 .path4:before {
+  content: "\e97c";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-检信绿 .path5:before {
+  content: "\e97d";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-截止时间:before {
+  content: "\e97e";
+  color: #d1d9dc;
+}
+.icon-警告:before {
+  content: "\e97f";
+  color: #f5a623;
+}
+.icon-扩音:before {
+  content: "\e980";
+  color: #9dacb3;
+}
+.icon-流程记录:before {
+  content: "\e981";
+  color: #9dacb3;
+}
+.icon-留言:before {
+  content: "\e982";
+  color: #9dacb3;
+}
+.icon-模拟考试考试成绩页面用时图标:before {
+  content: "\e983";
+  color: #00bf8b;
+}
+.icon-内部公告蓝色:before {
+  content: "\e984";
+  color: #4ea8ec;
+}
+.icon-内部公告绿色:before {
+  content: "\e985";
+  color: #00bf8b;
+}
+.icon-拍照-点击:before {
+  content: "\e986";
+  color: #00bf8b;
+}
+.icon-评论:before {
+  content: "\e987";
+  color: #5d707a;
+}
+.icon-签收:before {
+  content: "\e988";
+  color: #00bf8b;
+}
+.icon-全体成员-留言:before {
+  content: "\e989";
+  color: #fff;
+}
+.icon-全体成员-时间:before {
+  content: "\e98a";
+  color: #d1d9dc;
+}
+.icon-重新考试图标 .path1:before {
+  content: "\e98b";
+  color: rgb(155, 155, 155);
+}
+.icon-重新考试图标 .path2:before {
+  content: "\e98c";
+  margin-left: -1em;
+  color: rgb(155, 155, 155);
+  opacity: 0.9;
+}
+.icon-重新考试图标 .path3:before {
+  content: "\e98d";
+  margin-left: -1em;
+  color: rgb(238, 238, 238);
+}
+.icon-重新考试图标 .path4:before {
+  content: "\e98e";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-重新考试图标 .path5:before {
+  content: "\e98f";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-1:before {
+  content: "\e990";
+  color: #00bf8b;
+}
+.icon-2:before {
+  content: "\e991";
+  color: #909399;
+}
+.icon-3:before {
+  content: "\e992";
+  color: #909399;
+}
+.icon-4:before {
+  content: "\e993";
+  color: #909399;
+}
+.icon-5:before {
+  content: "\e994";
+  color: #909399;
+}
+.icon-备忘录首页:before {
+  content: "\e995";
+  color: #4ea8ec;
+}
+.icon-播放:before {
+  content: "\e996";
+  color: #e2e2e3;
+}
+.icon-播放录音:before {
+  content: "\e997";
+  color: #00bf8b;
+}
+.icon-会议题目:before {
+  content: "\e998";
+  color: #c0c4cc;
+}
+.icon-垃圾桶:before {
+  content: "\e999";
+  color: #9dacb3;
+}
+.icon-录音:before {
+  content: "\e99a";
+  color: #f7b55d;
+}
+.icon-请输入密码:before {
+  content: "\e99b";
+  color: #d0d0d0;
+}
+.icon-全体成员-坐标:before {
+  content: "\e99c";
+  color: #d1d9dc;
+}
+.icon-全体成员:before {
+  content: "\e99d";
+  color: #f7b55d;
+}
+.icon-群聊:before {
+  content: "\e99e";
+  color: #00bf8b;
+}
+.icon-人脸识别-放慢动作 .path1:before {
+  content: "\e99f";
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-放慢动作 .path2:before {
+  content: "\e9a0";
+  margin-left: -1em;
+  color: rgb(0, 191, 139);
+}
+.icon-人脸识别-放慢动作 .path3:before {
+  content: "\e9a1";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-光线充足 .path1:before {
+  content: "\e9a2";
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-光线充足 .path2:before {
+  content: "\e9a3";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-光线充足 .path3:before {
+  content: "\e9a4";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-光线充足 .path4:before {
+  content: "\e9a5";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-光线充足 .path5:before {
+  content: "\e9a6";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-光线充足 .path6:before {
+  content: "\e9a7";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-光线充足 .path7:before {
+  content: "\e9a8";
+  margin-left: -1em;
+  color: rgb(0, 191, 139);
+}
+.icon-人脸识别-光线充足 .path8:before {
+  content: "\e9a9";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-正对手机 .path1:before {
+  content: "\e9aa";
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-正对手机 .path2:before {
+  content: "\e9ab";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-人脸识别-正对手机 .path3:before {
+  content: "\e9ac";
+  margin-left: -1em;
+  color: rgb(0, 191, 139);
+}
+.icon-人脸识别-正对手机 .path4:before {
+  content: "\e9ad";
+  margin-left: -1em;
+  color: rgb(151, 151, 151);
+}
+.icon-任务查看:before {
+  content: "\e9ae";
+  color: #f7b55d;
+}
+.icon-日期图标:before {
+  content: "\e9af";
+  color: #00bf8b;
+}
+.icon-设计师简介:before {
+  content: "\e9b0";
+  color: #00bf8b;
+}
+.icon-审批:before {
+  content: "\e9b1";
+  color: #00bf8b;
+}
+.icon-首页:before {
+  content: "\e9b2";
+  color: #00bf8f;
+}
+.icon-数据统计橙色:before {
+  content: "\e9b3";
+  color: #f7b55d;
+}
+.icon-搜索放大镜:before {
+  content: "\e9b4";
+  color: #00bf8b;
+}
+.icon-锁:before {
+  content: "\e9b5";
+  color: #9b9b9b;
+}
+.icon-添加蓝色:before {
+  content: "\e9b6";
+  color: #4ea8ec;
+}
+.icon-添加联系人:before {
+  content: "\e9b7";
+  color: #9b9b9b;
+}
+.icon-添加联系人绿色:before {
+  content: "\e9b8";
+  color: #00bf8b;
+}
+.icon-通讯录-特别关心:before {
+  content: "\e9b9";
+  color: #e87a5a;
+}
+.icon-通讯录-头像:before {
+  content: "\e9ba";
+  color: #4ea8ec;
+}
+.icon-通讯录-张检通讯录:before {
+  content: "\e9bb";
+  color: #4ea8ec;
+}
+.icon-通讯录:before {
+  content: "\e9bc";
+  color: #9b9b9b;
+}
+.icon-通讯录导出橙色:before {
+  content: "\e9bd";
+  color: #f7b55d;
+}
+.icon-通讯录蓝色:before {
+  content: "\e9be";
+  color: #00bf8b;
+}
+.icon-头条 .path1:before {
+  content: "\e9bf";
+  color: rgb(242, 131, 131);
+}
+.icon-头条 .path2:before {
+  content: "\e9c0";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path3:before {
+  content: "\e9c1";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path4:before {
+  content: "\e9c2";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path5:before {
+  content: "\e9c3";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path6:before {
+  content: "\e9c4";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path7:before {
+  content: "\e9c5";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path8:before {
+  content: "\e9c6";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path9:before {
+  content: "\e9c7";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-头条 .path10:before {
+  content: "\e9c8";
+  margin-left: -1em;
+  color: rgb(215, 215, 215);
+}
+.icon-头像:before {
+  content: "\e9c9";
+  color: #00bf8b;
+}
+.icon-推迟:before {
+  content: "\e9ca";
+  color: #fff;
+}
+.icon-完成-点击效果:before {
+  content: "\e9cb";
+  color: #9dacb3;
+}
+.icon-完成:before {
+  content: "\e9cc";
+  color: #fff;
+}
+.icon-完成灰色:before {
+  content: "\e9cd";
+  color: #e2e2e3;
+}
+.icon-网站图标:before {
+  content: "\e9ce";
+  color: #999;
+}
+.icon-微博:before {
+  content: "\e9cf";
+  color: #f28383;
+}
+.icon-微平台:before {
+  content: "\e9d0";
+  color: #4ea8ec;
+}
+.icon-文档:before {
+  content: "\e9d1";
+  color: #00bf8b;
+}
+.icon-文档扫描白色:before {
+  content: "\e9d2";
+  color: #fff;
+}
+.icon-文件:before {
+  content: "\e9d3";
+  color: #00bf8b;
+}
+.icon-文件夹:before {
+  content: "\e9d4";
+  color: #00bf8b;
+}
+.icon-文件图标:before {
+  content: "\e9d5";
+  color: #999;
+}
+.icon-文件助手:before {
+  content: "\e9d6";
+  color: #979797;
+}
+.icon-文件助手首页:before {
+  content: "\e9d7";
+  color: #f7b55d;
+}
+.icon-我的文档-标签:before {
+  content: "\e9d8";
+  color: #979797;
+}
+.icon-我的消息:before {
+  content: "\e9d9";
+  color: #00bf8b;
+}
+.icon-消息:before {
+  content: "\e9da";
+  color: #4ea8ec;
+}
+.icon-小手电:before {
+  content: "\e9db";
+  color: #fff;
+}
+.icon-小图片:before {
+  content: "\e9dc";
+  color: #9dacb3;
+}
+.icon-小文件:before {
+  content: "\e9dd";
+  color: #9dacb3;
+}
+.icon-小相机:before {
+  content: "\e9de";
+  color: #9dacb3;
+}
+.icon-选择:before {
+  content: "\e9df";
+  color: #979797;
+}
+.icon-眼睛闭:before {
+  content: "\e9e0";
+  color: #d0d0d0;
+}
+.icon-议题征集蓝色:before {
+  content: "\e9e1";
+  color: #4ea8ec;
+}
+.icon-议题征集绿色:before {
+  content: "\e9e2";
+  color: #00bf8b;
+}
+.icon-音浪:before {
+  content: "\e9e3";
+  color: #00bf8b;
+}
+.icon-应用下载:before {
+  content: "\e9e4";
+  color: #4ea8ec;
+}
+.icon-用户-人像:before {
+  content: "\e9e5";
+  color: #00bf8b;
+}
+.icon-用户-头像:before {
+  content: "\e9e6";
+  color: #f7b55d;
+}
+.icon-用户名:before {
+  content: "\e9e7";
+  color: #d0d0d0;
+}
+.icon-语音识别-键盘:before {
+  content: "\e9e8";
+  color: #d8d8d8;
+}
+.icon-语音识别-交互导出:before {
+  content: "\e9e9";
+  color: #979797;
+}
+.icon-语音识别:before {
+  content: "\e9ea";
+  color: #f7b55d;
+}
+.icon-语音识别白色:before {
+  content: "\e9eb";
+  color: #fff;
+}
+.icon-语音搜索:before {
+  content: "\e9ec";
+  color: #00bf8b;
+}
+.icon-在线测试错题图标:before {
+  content: "\e9ed";
+  color: #e64242;
+}
+.icon-在线测试分类:before {
+  content: "\e9ee";
+  color: #999;
+}
+.icon-在线测试判断题红色错:before {
+  content: "\e9ef";
+  color: #e64242;
+}
+.icon-在线测试判断题绿色对:before {
+  content: "\e9f0";
+  color: #00bf8b;
+}
+.icon-在线测试显示对题图标:before {
+  content: "\e9f1";
+  color: #00bf8b;
+}
+.icon-暂停 .path1:before {
+  content: "\e9f2";
+  color: rgb(242, 131, 131);
+}
+.icon-暂停 .path2:before {
+  content: "\e9f3";
+  margin-left: -1em;
+  color: rgb(226, 226, 227);
+}
+.icon-暂停安按钮:before {
+  content: "\e9f4";
+  color: #f9f9f9;
+}
+.icon-张家口市检察院-办公室:before {
+  content: "\e9f5";
+  color: #00bf8b;
+}
+.icon-知识练习-字体:before {
+  content: "\e9f6";
+  color: #00bf8b;
+}
+.icon-主屏幕白色:before {
+  content: "\e9f7";
+  color: #fff;
+}
+.icon-总值电话绿色:before {
+  content: "\e9f8";
+  color: #00bf8b;
+}
+.icon-组织活动:before {
+  content: "\e9f9";
+  color: #00bf8b;
+}
+.icon-组织活动灰色:before {
+  content: "\e9fa";
+  color: #979797;
+}
+.icon-左:before {
+  content: "\e9fb";
+  color: #00bf8b;
+}
+.icon-OA办公:before {
+  content: "\e9fc";
+  color: #f7b55d;
+}
+.icon-OCR识别:before {
+  content: "\e9fd";
+  color: #4ea8ec;
+}

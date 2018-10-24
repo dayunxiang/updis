@@ -1,0 +1,109 @@
+/*隐藏新建文件是的多余按钮*/
+#controls .creatable .newFileMenu ul li:nth-child(n+3){
+    display: none;
+}
+/*隐藏分享时多余tab*/
+#app-sidebar > .tabHeaders .tabHeader:nth-child(n+3){
+    display: none;
+}
+/*隐藏分享时的图标*/
+#shareTabView .dialogContainer .oneline .icon-info{
+    display: none;
+}
+/*隐藏HOME图标*/
+#controls .breadcrumb .crumbhome{
+    display: none;
+}
+#gallery-button{
+    display: none;
+}
+.popovermenu li:nth-child(1){
+    display: initial !important;
+}
+/*隐藏左侧菜单*/
+#app-navigation{
+    display: none;
+}
+/*隐藏顶部多余区域*/
+#header .header-left{
+    display: none;
+}
+#header .header-right > div{
+    display: none;
+}
+#header .header-right{
+    width: 100%;
+}
+/*隐藏顶部多余区域-END*/
+/*表头调整*/
+#filestable thead{
+    left: 0
+}
+.popovermenu:after{
+    right: inherit;
+    left: 0 !important;
+}
+/*共享下级tab样式*/
+#hmAddTabHeaders{
+    display: inline-block;
+    margin: 0 0 15px 0;
+}
+#hmAddTabHeaders .selected {
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+}
+#hmAddTabHeaders .tabHeader{
+    float: left;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 0;
+    color: #000
+}
+#shareWithList{
+    padding: 0 !important;
+}
+#MailboxBut,
+#OfficialDocumentBut,
+#JanXinBut,
+#WorkSkyDriveBut,
+#shareFolderBut{
+    margin: 10px 20px;
+}
+
+#shareWith{
+    display: none !important;
+}
+
+/*共享下级tab样式-END*/
+#gallery-button{
+    display: none !important;
+}
+#allowPublicEditingWrapper{
+    display: none !important;
+}
+.linkShareView > div:nth-child(n+7):nth-child(-n+8){
+    display: none !important;
+}
+
+/*修改header颜色*/
+#header .header-right{
+    background-color: #42b982 !important;
+}
+#searchbox[type='search']:valid,
+#searchbox[type='search']:active,
+#searchbox[type='search']:focus{
+    background-color: #42b982 !important;
+}
+/*隐藏收藏*/
+.fileActionsMenu ul li:nth-child(1),
+.file-details-container .tag-label,
+.file-details-container .permalink,
+.file-details-container .action-favorite{
+    display: none !important
+}
+
+/*隐藏首次登陆提醒*/
+#cboxOverlay,
+#colorbox{
+    display: none !important;
+}

@@ -1,0 +1,65 @@
+body
+{
+  background: none !important;
+}
+header
+{
+  display: none !important;
+}
+/*.sidebar
+{
+	display: none;
+}*/
+.body-wrap
+{
+  width: 1600px !important;
+  margin: 0px auto !important;
+}
+/*.ng-scope
+{
+	width: 1600px;
+}*/
+.list
+{
+  border: none !important;
+}
+.conversation-wrap .input-box .send-msg-btn
+{
+  background-color: #42b983 !important;
+  color: #fff !important;
+  height: 42px !important;
+  width: 100px !important;
+  /* margin-top: 42px; */
+  bottom: 20px !important;
+  right: 22px !important;
+  font-size: 14px !important;
+}
+.conversation-wrap .input-box .send-msg-btn.disabled
+{
+  background-color: #42b983 !important;
+  color: #fff !important;
+  height: 42px !important;
+  width: 100px !important;
+  /* margin-top: 42px; */
+  bottom: 20px !important;
+  right: 22px !important;
+  font-size: 14px !important;
+}
+.files-list-wrap .files-type-nav nav ul
+{
+  border: 1px solid #42b983 !important;
+}
+.files-list-wrap .files-type-nav nav li.act
+{
+  background-color: #42b983 !important;
+}
+.files-list-wrap .files-type-nav nav li
+{
+  border-right: 1px solid #42b983;
+  color: #42b983;
+}
+.files-list-wrap .files-type-nav nav li:hover
+{
+  background-color: #42b983;
+  color: #fff;
+}

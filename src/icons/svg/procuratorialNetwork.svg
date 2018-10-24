@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="32px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>检察官网 copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="小图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-50.000000, -260.000000)">
+        <g id="检察官网-copy" transform="translate(45.000000, 256.000000)">
+            <rect id="Rectangle-8" x="0" y="0" width="40" height="40"></rect>
+            <g id="Group-7" transform="translate(5.000000, 4.000000)" fill="#FFFFFF" fill-opacity="0.7">
+                <path d="M29.7432432,32 L1.25675676,32 C0.562608108,32 0,31.3285 0,30.5 C0,29.6715 0.562608108,29 1.25675676,29 L29.7432432,29 C30.4373919,29 31,29.6715 31,30.5 C31,31.3285 30.4373919,32 29.7432432,32" id="Fill-10"></path>
+                <path d="M28,18 L28,4.96551724 C28,2.23448276 25.80625,0 23.125,0 L6.875,0 C4.19375,0 2,2.23448276 2,4.96551724 L2,18 L28,18 Z" id="Fill-16"></path>
+                <path d="M2,21 C2.74836076,23.3392 4.54969144,25 6.64309591,25 L23.3569041,25 C25.4503086,25 27.2520571,23.3392 28,21 L2,21 Z" id="Fill-18"></path>
+            </g>
+        </g>
+    </g>
+</svg>

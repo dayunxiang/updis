@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>容量设置</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-114.000000, -205.000000)" opacity="0.7">
+        <g id="容量设置" transform="translate(115.000000, 206.000000)">
+            <circle id="边框" stroke="#FFFFFF" stroke-width="2" cx="21.5" cy="21.5" r="21.5"></circle>
+            <path d="M21.5,40.6846154 C32.0953705,40.6846154 40.6846154,32.0953705 40.6846154,21.5 C40.6846154,19.2591802 40.3004338,17.1080909 39.5943443,15.1090056 C36.9617983,7.65572441 37.7468209,18.8089468 29.3922701,18.8089468 C21.0462533,18.8089468 6.05272265,7.64482001 3.41373693,15.0861723 C2.70249799,17.0917078 2.31538462,19.2506463 2.31538462,21.5 C2.31538462,32.0953705 10.9046295,40.6846154 21.5,40.6846154 Z" id="边框" fill-opacity="0.579999983" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

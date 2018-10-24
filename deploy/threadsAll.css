@@ -1,0 +1,74 @@
+body
+{
+  background: none !important;
+}
+header
+{
+  display: none !important;
+}
+/*.sidebar
+{
+	display: none;
+}*/
+.body-wrap
+{
+  width: 1600px !important;
+  margin: 0px auto !important;
+}
+/*.ng-scope
+{
+	width: 1600px;
+}*/
+.list
+{
+  border: none !important;
+}
+.repeat-x
+{
+  background: none !important;
+}
+.feed-scope-filter .line-arrow-blue
+{
+  background: none;
+}
+.unstyled li:nth-child(1) a
+{
+  color: #434343;
+  font-weight: bold;
+}
+.unstyled li a
+{
+  color: #434343;
+}
+.feed-scope-filter>ul>li.active>a {
+  color: #42b983;
+  font-weight: bold;
+}
+.feed-filter .nav-pills .active>a
+{
+  background-color: #c5f5df;
+}
+.nav-tabs li a
+{
+  color: #42b983;
+}
+.group-name
+{
+  position: relative;
+  top: 12px;
+}
+.muted
+{
+  position: relative;
+  top: 45px;
+  left: -60px;
+}
+.btn:hover, .btn:focus, .btn:active, .btn.active, .btn.disabled, .btn[disabled]
+{
+  background: #42b983;
+  opacity: 1;
+  color: #fff;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+}

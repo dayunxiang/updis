@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#Adobe_OpacityMaskFilter);}
+	.st1{fill:#FFFFFF;}
+	.st2{mask:url(#mask-2_2_);}
+</style>
+<g id="app图标" transform="translate(-1667.000000, -644.000000)">
+	<g id="检查课堂" transform="translate(1651.000000, 644.000000)">
+		<g id="检察课堂" transform="translate(16.000000, 0.000000)">
+			<g id="检察课堂-copy">
+				<g>
+					<g id="Clip-55">
+					</g>
+					<defs>
+						<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="23.1" y="12.1" width="156.9" height="172.4">
+							<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+						</filter>
+					</defs>
+					<mask maskUnits="userSpaceOnUse" x="23.1" y="12.1" width="156.9" height="172.4" id="mask-2_2_">
+						<g class="st0">
+							<polygon id="path-1_2_" class="st1" points="23.1,12.1 180,12.1 180,184.5 23.1,184.5 							"/>
+						</g>
+					</mask>
+					<path id="Fill-54" class="st2" d="M47,33.8c-0.4-2.5,1.2-4.8,3.6-5.2c2.4-0.4,4.6,1.3,5,3.7c0.1,0.5,0.1,1,0,1.5v91.8
+						c-0.4,2.5-2.6,4.1-5,3.7c-1.8-0.3-3.3-1.8-3.6-3.7V33.8z M175.6,29.4c-2.4,0-4.3,2-4.3,4.5v138c0,2-1.5,3.6-3.4,3.6l-123.9-1
+						c-6.6,0-12-5.4-12.2-12.3V161c0.3-6.8,5.7-12.2,12.3-12.2h114.1c1.9,0,3.4-1.6,3.4-3.6V15.7c0-2-1.5-3.6-3.4-3.6H44
+						c-11.6,0-20.9,9.7-20.9,21.8v127.8c0,11.5,8.6,21,19.7,21.8h0.7l133.1,1.1c1.9,0,3.4-1.6,3.4-3.6v-147
+						C179.9,31.4,178,29.4,175.6,29.4L175.6,29.4z M45.2,158.1c-1.9,0-3.4,1.6-3.4,3.6v1.7c0,2,1.5,3.6,3.4,3.6l112.9,0.4
+						c1.9,0,3.4-1.7,3.4-3.6c0,0,0,0,0-0.1v-2.1c0-2-1.5-3.6-3.4-3.6L45.2,158.1z"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
