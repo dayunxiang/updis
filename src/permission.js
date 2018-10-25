@@ -74,7 +74,7 @@ router.beforeEach((to, from, next) => {
                 _.each(res.data, function(m) {
                   roles.push(m.includes.menu.name)
                 })
-                roles = _.concat(roles, ['设置', '部门管理', '角色管理']) // 将两个数组连成一个
+                roles = _.concat(roles, []) // 将两个数组连成一个
                 console.log('roles________________:', roles)
                 roles = _.uniq(roles) // 数组去重
                 console.log('roles________________:', roles)
