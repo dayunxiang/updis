@@ -44,10 +44,124 @@ export default new Router({
 
 export const asyncRouterMap = [
   /**
-   * 订单管理
+   * 首页
    */
   {
     path: '',
+    component: Layout,
+    redirect: 'departmentManage',
+    name: 'home',
+    meta: {
+      title: '首页',
+      icon: 'example'
+    },
+    children: [
+      {
+        path: 'departmentManage',
+        component: () => import('@/views/dashboard/index'),
+        name: 'departmentManage',
+        meta: {
+          title: '首页',
+          icon: 'documentation',
+          noCache: true
+        }
+      }
+    ]
+  },
+  /**
+   * 项目管理
+   */
+  {
+    path: '/project-manager',
+    component: Layout,
+    meta: {
+      title: '项目管理',
+      icon: 'tab'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/project-manager/index'),
+        name: 'projectManager',
+        meta: { title: '项目管理', icon: 'tab' }
+      }
+    ]
+  },
+  /**
+   * 地理信息管理
+   */
+  {
+    path: '/infoManager',
+    component: Layout,
+    redirect: '/infoManager/complex-table',
+    meta: {
+      title: '地理信息管理',
+      icon: 'table'
+    },
+    children: [
+      //点管理
+      {
+        path: 'point-manager',
+        component: () => import('@/views/table/pointManager/index'),
+        name: 'pointManager',
+        meta: {
+          title: '点管理',
+          icon: 'documentation',
+          noCache: true
+        }
+      },
+      //点管理
+      {
+        path: 'drag-table',
+        component: () => import('@/views/table/lineManager/index'),
+        name: 'pointManager',
+        meta: {
+          title: '线管理',
+          icon: 'documentation',
+          noCache: true
+        }
+      },
+      //块管理
+      {
+        path: 'drag-table',
+        component: () => import('@/views/table/blockManager/index'),
+        name: 'pointManager',
+        meta: {
+          title: '块管理',
+          icon: 'documentation',
+          noCache: true
+        }
+      },
+    ]
+  },
+  /**
+   * 统计分析
+   */
+  {
+    path: '/charts',
+    component: Layout,
+    redirect: 'noredirect',
+    meta: {
+      title: '统计分析',
+      icon: 'chart'
+    },
+    children: [
+      {
+        path: 'keyboard',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'KeyboardChart',
+        meta: {
+          title: '项目进度表',
+          noCache: true
+        }
+      },
+    ]
+  },
+  /**
+   * 系统管理
+   */
+  {
+    path: '/nested',
     component: Layout,
     redirect: 'departmentManage',
     name: 'systemManagement',

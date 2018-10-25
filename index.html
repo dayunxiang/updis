@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="renderer" content="webkit">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>后台管理系统</title>
-	</head>
-  <script src="/static/stomp.js"></script>
-  <script src="/static/sockjs.min.js"></script>
-  <!--<script src="https://a.laxalex.net:444/libs/external_api.min.js"></script>-->
-	<script src=<%= htmlWebpackPlugin.options.path %>/tinymce/tinymce.min.js></script>
-  <script src='static/socket.io.js'></script>
-
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>排水信息查询系统项目</title>
+  </head>
   <body>
-		<div id="app"></div>
-		<!-- built files will be auto injected -->
-	</body>
+    <script src=<%= htmlWebpackPlugin.options.path %>/tinymce4.7.5/tinymce.min.js></script>
+    <!-- <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=GE7gp8pVDopk5W1tdkZYiqoThsrVmIGC"></script> -->
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b6f5329e518fb9d4e22d4fe7900332b6"></script>
+    <script src="//webapi.amap.com/ui/1.0/main.js"></script>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
