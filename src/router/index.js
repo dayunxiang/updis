@@ -49,17 +49,16 @@ export const asyncRouterMap = [
   {
     path: '',
     component: Layout,
-    redirect: 'departmentManage',
-    name: 'home',
+    redirect: 'dashboard',
     meta: {
       title: '首页',
       icon: 'example'
     },
     children: [
       {
-        path: 'departmentManage',
+        path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
-        name: 'departmentManage',
+        name: 'dashboard',
         meta: {
           title: '首页',
           icon: 'documentation',
@@ -114,7 +113,7 @@ export const asyncRouterMap = [
       {
         path: 'drag-table',
         component: () => import('@/views/table/lineManager/index'),
-        name: 'pointManager',
+        name: 'DragTable',
         meta: {
           title: '线管理',
           icon: 'documentation',
@@ -125,7 +124,7 @@ export const asyncRouterMap = [
       {
         path: 'inline-edit-table',
         component: () => import('@/views/table/blockManager/index'),
-        name: 'pointManager',
+        name: 'InlineEditTable',
         meta: {
           title: '块管理',
           icon: 'documentation',

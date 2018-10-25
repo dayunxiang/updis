@@ -82,7 +82,6 @@
     },
     // 生命钩子函数
     created(){
-      this.sendMapDataToVuex();
     },
     mounted() {
       this.getSubcatchmentsInfo()
@@ -214,7 +213,7 @@
       },
       // 请求检查井数据
       getJunctionsinfo() {
-        axios('api/junctions').then(this.getJunctionsSuccess)
+        axios('json/junctions').then(this.getJunctionsSuccess)
       },
       getJunctionsSuccess(res) {
       },
@@ -227,10 +226,6 @@
       //   // console.log(cy.getElementById('JWG1').removed());
       //   // console.log(cy.collection());
       // }
-    //将所有数据存储到vuex里
-      sendMapDataToVuex(){
-        this.$store.state.map.mapData = this.mapData;
-      }
     }
   }
 </script>
