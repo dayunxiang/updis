@@ -1,0 +1,264 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "统计类名称",
+      "properties": { "name": "统计分析" },
+      "coordinates": [
+        { "name": "建筑和小区" ,
+          "id" : "0" ,
+          "mingcheng": [
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            },{
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "1"
+            },{
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "2"
+            }
+          ]
+        },
+        { "name": "公园绿地" ,
+          "id" : "1",
+          "mingcheng": [
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            }
+          ]
+        },
+        { "name": "道路广场" ,
+          "id" : "2" ,
+          "mingcheng": [
+            {
+              "name": "检查井信息",
+              "percentage": "50%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            }
+          ]
+        },
+        { "name": "河道治理" ,
+          "id" : "3" ,
+          "mingcheng": [
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            },
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            }
+          ]
+        },
+        { "name": "涉水基础设施" ,
+          "id" : "4" ,
+          "mingcheng": [
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            },
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            },{
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            }
+          ]
+        },
+        { "name": "PPP项目" ,
+          "id" : "5" ,
+          "mingcheng": [
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            },
+            {
+              "name": "检查井信息",
+              "percentage": "20%",
+              "state": "进行中",
+              "target": "完功",
+              "shape" : "菱形",
+              "area" : "359平方米",
+              "id" : "0"
+            }
+          ]
+        }
+      ],
+      "tongjitu": [
+        { "name": "项目数量完成度" ,
+          "id" : "0" ,
+          "option1": {
+            "id": "0",
+            "name": "list1",
+            "title": {
+              "text": "项目数量完成度" ,
+              "x": "center"
+            },
+            "tooltip": {},
+            "xAxis": {
+              "data": ["建筑和小区","公园绿地","道路广场","河道治理","涉水基础设施","PPP项目"]
+            },
+            "yAxis": {},
+            "series": [{
+              "name": "销量",
+              "type": "bar",
+              "data": [5, 20, 36, 10, 10, 20]
+            }]
+          }
+        },
+        { "name": "径流总量控制率" ,
+          "id" : "1" ,
+          "option2": {
+            "id": "1",
+            "name": "list1",
+            "title": {
+              "text": "",
+              "x": "center"
+            },
+            "tooltip": {
+              "trigger": "item",
+              "formatter": "{a} <br/>{b}: {c} ({d}%)"
+            },
+            "legend": {
+              "orient": "vertical",
+              "data": ["建筑和小区","公园绿地","道路广场","河道治理","涉水基础设施","PPP项目"]
+            },
+            "series": [
+              {
+                "name":"访问来源",
+                "type":"pie",
+                "radius": ["50%", "70%"],
+                "avoidLabelOverlap": false,
+                "label": {
+                  "normal": {
+                    "show": false,
+                    "position": "center"
+                  },
+                  "emphasis": {
+                    "show": true,
+                    "textStyle": {
+                      "fontSize": "30"
+                    }
+                  }
+                },
+                "labelLine": {
+                  "normal": {
+                    "show": false
+                  }
+                },
+                "data":[
+                  {"value":335, "name":"建筑和小区"},
+                  {"value":310, "name":"建筑和小区"},
+                  {"value":234, "name":"建筑和小区"},
+                  {"value":135, "name":"建筑和小区"},
+                  {"value":158, "name":"建筑和小区"},
+                  {"value":108, "name":"建筑和小区"}
+                ]
+              }
+            ]
+          }
+        },
+        { "name": "面积覆盖度" ,
+          "id" : "2" ,
+          "option3": {
+            "id": "2",
+            "name": "list1",
+            "title": {
+              "text": "面积覆盖度",
+              "x": "center"
+            },
+            "tooltip": {
+              "trigger": "item",
+              "formatter": "{a} <br/>{b} : {c} ({d}%)"
+            },
+            "legend": {
+              "orient": "vertical",
+              "left": "left",
+              "data": ["建筑和小区","公园绿地","道路广场","河道治理","涉水基础设施","PPP项目"]
+            },
+            "series" : [
+              {
+                "name": "访问来源",
+                "type": "pie",
+                "radius" : "55%",
+                "center": ["50%", "60%"],
+                "data":[
+                  {"value":335, "name":"建筑和小区"},
+                  {"value":310, "name":"公园绿地"},
+                  {"value":234, "name":"道路广场"},
+                  {"value":135, "name":"河道治理"},
+                  {"value":158, "name":"涉水基础设施"},
+                  {"value":108, "name":"PPP项目"}
+                ],
+                "itemStyle": {
+                  "emphasis": {
+                    "shadowBlur": 10,
+                    "shadowOffsetX": 0,
+                    "shadowColor": "rgba(0, 0, 0, 0.5)"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

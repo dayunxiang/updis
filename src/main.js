@@ -33,10 +33,10 @@ import * as filters from './filters' // global filters
 import AMap from 'vue-amap'
 // 郭世伟增加
 import './assets/icon/iconfont.css' //iconfont图标库
-import BaiduMap from 'vue-baidu-map'// 百度地图
-Vue.use(BaiduMap,{
-  ak:'b6f5329e518fb9d4e22d4fe7900332b6'
-})
+// import BaiduMap from 'vue-baidu-map'// 百度地图
+// Vue.use(BaiduMap,{
+//   ak:'b6f5329e518fb9d4e22d4fe7900332b6'
+// })
 Vue.use(AMap)
 AMap.initAMapApiLoader({
   key: '474587bc9f7e58ec25785dabbdcd9202',

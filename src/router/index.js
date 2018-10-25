@@ -58,7 +58,7 @@ export const asyncRouterMap = [
     children: [
       {
         path: 'departmentManage',
-        component: () => import('@/views/dashboard/index'),
+        component: _import('dashboard/index'),
         name: 'departmentManage',
         meta: {
           title: '首页',
@@ -81,7 +81,7 @@ export const asyncRouterMap = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/project-manager/index'),
+        component: _import('project-manager/index'),
         name: 'projectManager',
         meta: { title: '项目管理', icon: 'tab' }
       }
@@ -102,8 +102,8 @@ export const asyncRouterMap = [
       //点管理
       {
         path: 'point-manager',
-        component: () => import('@/views/table/pointManager/index'),
-        name: 'pointManager',
+        component: _import('table/pointManager/index'),
+        name: 'point-manager',
         meta: {
           title: '点管理',
           icon: 'documentation',
@@ -113,8 +113,8 @@ export const asyncRouterMap = [
       //点管理
       {
         path: 'drag-table',
-        component: () => import('@/views/table/lineManager/index'),
-        name: 'pointManager',
+        component: _import('table/lineManager/index'),
+        name: 'drag-table',
         meta: {
           title: '线管理',
           icon: 'documentation',
@@ -124,8 +124,8 @@ export const asyncRouterMap = [
       //块管理
       {
         path: 'inline-edit-table',
-        component: () => import('@/views/table/blockManager/index'),
-        name: 'pointManager',
+        component: _import('table/blockManager/index'),
+        name: 'inline-edit-table',
         meta: {
           title: '块管理',
           icon: 'documentation',
@@ -148,8 +148,8 @@ export const asyncRouterMap = [
     children: [
       {
         path: 'keyboard',
-        component: () => import('@/views/charts/keyboard'),
-        name: 'KeyboardChart',
+        component: _import('charts/keyboard'),
+        name: 'keyboard',
         meta: {
           title: '项目进度表',
           noCache: true
