@@ -33,12 +33,23 @@ export const constantRouterMap = [
   { path: '/login', component: _import('login/index'), hidden: true },
   { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
   { path: '/404', component: _import('errorPage/404'), hidden: true },
-  { path: '/401', component: _import('errorPage/401'), hidden: true }
+  { path: '/401', component: _import('errorPage/401'), hidden: true },
+  {
+    path: '',
+    component: Layout,
+    redirect: 'dashboard',
+    children: [{
+      path: 'dashboard',
+      component: _import('dashboard/index'),
+      name: 'dashboard',
+      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+    }]
+  }
 ]
 
 export default new Router({
-    // mode: 'history', // require service support
-    scrollBehavior: () => ({ y: 0 }),
+  // mode: 'history', // require service support
+  scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
 
@@ -46,28 +57,28 @@ export const asyncRouterMap = [
   /**
    * 首页
    */
-  {
-    path: '',
-    component: Layout,
-    redirect: 'departmentManage',
-    name: 'home',
-    meta: {
-      title: '首页',
-      icon: 'example'
-    },
-    children: [
-      {
-        path: 'departmentManage',
-        component: _import('dashboard/index'),
-        name: 'departmentManage',
-        meta: {
-          title: '首页',
-          icon: 'documentation',
-          noCache: true
-        }
-      }
-    ]
-  },
+  // {
+  //   path: '',
+  //   component: Layout,
+  //   redirect: 'departmentManage',
+  //   name: 'home',
+  //   meta: {
+  //     title: '首页',
+  //     icon: 'example'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'departmentManage',
+  //       component: _import('dashboard/index'),
+  //       name: 'departmentManage',
+  //       meta: {
+  //         title: '首页',
+  //         icon: 'documentation',
+  //         noCache: true
+  //       }
+  //     }
+  //   ]
+  // },
   /**
    * 项目管理
    */
@@ -84,6 +95,13 @@ export const asyncRouterMap = [
         component: _import('project-manager/index'),
         name: 'projectManager',
         meta: { title: '项目管理', icon: 'tab' }
+      },
+      {
+        path: 'index',
+        component: _import('project-manager/index'),
+        name: 'projectManager',
+        meta: { title: '项目管理', icon: 'tab' },
+        hidden: true
       }
     ]
   },
@@ -99,7 +117,7 @@ export const asyncRouterMap = [
       icon: 'table'
     },
     children: [
-      //点管理
+      // 点管理
       {
         path: 'point-manager',
         component: _import('table/pointManager/index'),
@@ -110,7 +128,7 @@ export const asyncRouterMap = [
           noCache: true
         }
       },
-      //点管理
+      // 点管理
       {
         path: 'drag-table',
         component: _import('table/lineManager/index'),
@@ -121,7 +139,7 @@ export const asyncRouterMap = [
           noCache: true
         }
       },
-      //块管理
+      // 块管理
       {
         path: 'inline-edit-table',
         component: _import('table/blockManager/index'),
@@ -131,7 +149,7 @@ export const asyncRouterMap = [
           icon: 'documentation',
           noCache: true
         }
-      },
+      }
     ]
   },
   /**
@@ -155,6 +173,16 @@ export const asyncRouterMap = [
           noCache: true
         }
       },
+      {
+        path: 'keyboard',
+        component: _import('charts/keyboard'),
+        name: 'keyboard',
+        meta: {
+          title: '项目进度表',
+          noCache: true
+        },
+        hidden: true
+      }
     ]
   },
   /**
