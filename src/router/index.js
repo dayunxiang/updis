@@ -56,7 +56,7 @@ export const constantRouterMap = [
         component: _import('project-manager/index'),
         name: 'projectManager',
         meta: { title: '项目管理', icon: 'tab' ,noCache: true}
-      },
+      }
     ]
   }
 ]
@@ -80,7 +80,7 @@ export const asyncRouterMap = [
       icon: 'table'
     },
     children: [
-      //点管理
+      // 点管理
       {
         path: 'point-manager',
         component: () => import('@/views/table/pointManager/index'),
@@ -91,7 +91,7 @@ export const asyncRouterMap = [
           noCache: true
         }
       },
-      //点管理
+      // 线管理
       {
         path: 'drag-table',
         component: () => import('@/views/table/lineManager/index'),
@@ -102,7 +102,7 @@ export const asyncRouterMap = [
           noCache: true
         }
       },
-      //块管理
+      // 块管理
       {
         path: 'inline-edit-table',
         component: () => import('@/views/table/blockManager/index'),
@@ -112,7 +112,7 @@ export const asyncRouterMap = [
           icon: 'documentation',
           noCache: true
         }
-      },
+      }
     ]
   },
   /**
