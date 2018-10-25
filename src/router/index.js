@@ -123,7 +123,7 @@ export const asyncRouterMap = [
       },
       //块管理
       {
-        path: 'drag-table',
+        path: 'inline-edit-table',
         component: () => import('@/views/table/blockManager/index'),
         name: 'pointManager',
         meta: {
