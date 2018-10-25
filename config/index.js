@@ -10,7 +10,6 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/json':'http://localhost:3000/',
       '/api': {
         target: 'http://updis.haomo-studio.com/api',
         changeOrigin: true,
@@ -18,6 +17,13 @@ module.exports = {
           '^/api': '/'
         }
       },
+      '/demo': {
+        target: 'http://updis.haomo-studio.com/demo',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/demo': '/'
+        }
+      }
 
     },
 

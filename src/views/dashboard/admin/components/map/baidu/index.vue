@@ -135,18 +135,16 @@
       handlepaikou(SubcatchmentInfo) {
         this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
       },
-       handleguanxian(SubcatchmentInfo) {
+      handleguanxian(SubcatchmentInfo) {
         this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
       },
-      /**
-       * 取得页面上所有的地块*/
       // 请求管线数据
       getConduitsInfo() {
-        axios('json/conduits').then(this.getConduitsSuccess)
+        axios('/demo/data.json').then(this.getConduitsSuccess)
       },
       getConduitsSuccess(res) {
         var self = this
-        var conduitsData = res.data.features
+        var conduitsData = res.data.conduits.features;
         _each(conduitsData, function(index, conduitData) {
           var lng_lat = conduitData.geometry.coordinates
           var info = conduitData.properties
@@ -165,11 +163,11 @@
       },
       // 请求地块数据
       getSubcatchmentsInfo() {
-        axios('json/subcatchments').then(this.getSubcatchmentsSuccess)
+        axios('/demo/data.json').then(this.getSubcatchmentsSuccess)
       },
       getSubcatchmentsSuccess(res) {
-        var self = this
-        var subcatchmentsData = res.data.features
+        var self = this;
+        var subcatchmentsData = res.data.subcatchments.features;
         _each(subcatchmentsData, function(index, subcatchmentData) {
           var lng_lat = subcatchmentData.geometry.coordinates
           var tempArr = []
@@ -193,11 +191,11 @@
       },
       // 请求排口数据
       getOutfalls() {
-        axios('json/outfalls').then(this.getOutfallsSuccess)
+        axios('/demo/data.json').then(this.getOutfallsSuccess)
       },
       getOutfallsSuccess(res) {
         var self = this
-        var outFallsData = res.data.features
+        var outFallsData = res.data.outfalls.features;
         _each(outFallsData, function(index, outFallData) {
           var lng_lat = outFallData.geometry.coordinates
           var info = outFallData.properties
@@ -213,7 +211,7 @@
       },
       // 请求检查井数据
       getJunctionsinfo() {
-        axios('json/junctions').then(this.getJunctionsSuccess)
+        axios('').then(this.getJunctionsSuccess)
       },
       getJunctionsSuccess(res) {
       },
