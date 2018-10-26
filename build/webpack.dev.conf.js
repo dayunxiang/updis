@@ -1,15 +1,4 @@
 'use strict'
-//start 模拟JSON请求
-const jsonServer = require('json-server')
-const apiServer = jsonServer.create();
-const apiRouter = jsonServer.router('datas/data.json')
-const middlewares = jsonServer.defaults();
-apiServer.use(middlewares)
-apiServer.use('/json',apiRouter)
-apiServer.listen(3000, () => {                 //监听端口
-  console.log('JSON Server is running')
-})
-//end
 const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')

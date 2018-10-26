@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="map-context">
     <div class="map-tab">
@@ -141,7 +143,7 @@
 </template>
 
 <script>
-  import BaiduMap from './components/map/baidu/'
+  import BaiduMap from './components/map/baidu/baidu'
 
   export default {
     name: 'Home',
@@ -199,8 +201,8 @@
         this.isCollapse = !this.isCollapse
       },
       /**
-      * 获得vuex里的mapData数据
-      */
+       * 获得vuex里的mapData数据
+       */
     },
     mounted(){
 

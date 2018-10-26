@@ -29,19 +29,12 @@ import './permission' // permission control
 import './mock' // simulation data
 
 import * as filters from './filters' // global filters
-
-import AMap from 'vue-amap'
 // 郭世伟增加
 import './assets/icon/iconfont.css' //iconfont图标库
 import BaiduMap from 'vue-baidu-map'// 百度地图
-Vue.use(BaiduMap,{
-  ak:'b6f5329e518fb9d4e22d4fe7900332b6'
-})
-Vue.use(AMap)
-AMap.initAMapApiLoader({
-  key: '474587bc9f7e58ec25785dabbdcd9202',
-  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor']
-})
+// Vue.use(BaiduMap,{
+//   ak:'b6f5329e518fb9d4e22d4fe7900332b6'
+// })
 // js-xlsx导入excel
 // import Blob from './excel/Blob.js'
 // import Export2Excel from './excel/Export2Excel.js'
@@ -59,6 +52,10 @@ Vue.use(VueAwesomeSwiper) // vue-awesome-swiper
 // Vue.use(Blob)
 // Vue.use(Export2Excel)
 
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: "b6f5329e518fb9d4e22d4fe7900332b6"
+})
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)
