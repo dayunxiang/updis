@@ -46,6 +46,12 @@ AMap.initAMapApiLoader({
 // import Blob from './excel/Blob.js'
 // import Export2Excel from './excel/Export2Excel.js'
 
+
+/* 添加 echarts */
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+/*******************************/
+
 // @TODO socket.io
 
 Vue.use(VueQuillEditor) // 富文本
