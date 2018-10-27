@@ -206,6 +206,17 @@ export const asyncRouterMap = [
           icon: 'documentation',
           noCache: true
         }
+      },
+      {
+        path: 'coordinate',
+        component: _import('Tools/coordinate'),
+        name: 'coordinate',
+        meta: {
+          title: 'Gis坐标转换',
+          icon: 'documentation',
+          noCache: true
+        },
+        hidden: true
       }
     ]
   },
