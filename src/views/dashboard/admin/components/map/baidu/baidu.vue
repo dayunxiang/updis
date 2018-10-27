@@ -55,6 +55,7 @@
     props: ['isHideAllSubcatchments', 'isHideAllConduits', 'isHideAllOutfalls'],
     data() {
       return {
+        projectId:'',
         keyword: '',
         map: {
           center: '深圳光明区'
@@ -81,8 +82,6 @@
       }
     },
     // 生命钩子函数
-    created(){
-    },
     mounted() {
       this.getSubcatchmentsInfo()
       this.getJunctionsinfo()
@@ -91,9 +90,21 @@
       this.showAllSubcatchments()
       this.showAllConduits()
       this.showAllOutfalls()
+      this.getProjectId();
     },
 
     methods: {
+      // 获取项目工程Id
+      getProjectId(){
+        this.projectId = this.$route.query.projectId;
+        console.log(this.projectId)
+      },
+      // 根据projectId拉取所有数据
+      getMapDataToprojectId(){
+        request('/shapes',{
+
+        })
+      },
       /**
        * 显示所有地块
        */
@@ -154,7 +165,7 @@
             lng_latArr.push(arr)
           }
           var conduit = {
-            type:'管线',
+            type: '管线',
             info: info,
             geos: lng_latArr
           }
@@ -166,8 +177,8 @@
         axios('/demo/data.json').then(this.getSubcatchmentsSuccess)
       },
       getSubcatchmentsSuccess(res) {
-        var self = this;
-        var subcatchmentsData = res.data.subcatchments.features;
+        var self = this
+        var subcatchmentsData = res.data.subcatchments.features
         _each(subcatchmentsData, function(index, subcatchmentData) {
           var lng_lat = subcatchmentData.geometry.coordinates
           var tempArr = []
@@ -181,7 +192,7 @@
             lng_latArr.push(arr)
           }
           var subcatchment = {
-            type:'地块',
+            type: '地块',
             info: info,
             geos: lng_latArr
 
@@ -200,7 +211,7 @@
           var lng_lat = outFallData.geometry.coordinates
           var info = outFallData.properties
           var outFall = {
-            type:'排口',
+            type: '排口',
             info: info,
             geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
             radius: 50,
@@ -214,7 +225,7 @@
         axios('').then(this.getJunctionsSuccess)
       },
       getJunctionsSuccess(res) {
-      },
+      }
       // //  请求管网数据
       // getNetWorkInfo() {
       //   // axios('api/network').then(this.getNetWorkSuccess)

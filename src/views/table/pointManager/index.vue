@@ -396,6 +396,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
 export default {
   name: 'DynamicTable',
   data(){
@@ -446,7 +447,17 @@ export default {
       dialogAddVisible:false,
     }
   },
+  mounted(){
+    this.getProjectInfo();
+  },
   methods: {
+    // //请求所有项目
+    // getProjectinfo(){
+    //   axios('/api/projects').then(this.getProjectSuccess)
+    // },
+    // getProjectSuccess(res){
+    //   alert(res);
+    // },
     //编辑项目按钮
     handleEdit(data){
       this.dialogTableVisible = true

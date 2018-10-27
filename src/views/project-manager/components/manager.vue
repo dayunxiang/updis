@@ -21,9 +21,9 @@
           style="width: 100%">
           <el-table-column
             fixed
-            prop="date"
+            prop="creatorId"
             label="项目编号"
-            width="180">
+            width="300">
           </el-table-column>
           <el-table-column
             prop="name"
@@ -31,40 +31,17 @@
             width="180">
           </el-table-column>
           <el-table-column
-            prop="address"
+            prop="createTime"
             label="项目创建时间"
-            width="130">
+            width="300">
           </el-table-column>
           <!--项目使用人-->
           <el-table-column
-            prop="user"
-            label="项目使用人"
+            prop="lastUpdateTime"
+            label="项目最后更新时间"
             width="300">
-            <template slot-scope="scope">
-              <el-popover trigger="hover" placement="top">
-                <p>姓名:张xx</p>
-                <p>账户名：zhangxx</p>
-                <p>密码：password</p>
-                <div slot="reference" class="name-wrapper">
-                  <el-tag size="medium">{{ scope.row.user}}</el-tag>
-                </div>
-              </el-popover>
-            </template>
           </el-table-column>
           <!--end-->
-          <el-table-column
-            prop="managerUser"
-            label="项目管理人"
-            width="100">
-          </el-table-column>
-          <el-table-column
-            prop="file"
-            label="项目文件">
-          </el-table-column>
-          <el-table-column
-            prop="desc"
-            label="项目备注">
-          </el-table-column>
           <el-table-column
             fixed="right"
             label="操作"
@@ -72,6 +49,7 @@
             <template slot-scope="scope">
               <el-button type="text" size="small" @click="dialogEditVisible = true">编辑</el-button>
               <el-button  @click.native.prevent="deleteRow(scope.$index, tableData)"type="text" size="small">删除</el-button>
+              <el-button @click="handleToDashboard(scope.row)">进入</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -195,27 +173,12 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
       name: "manager",
       data() {
         return {
-          tableData: [{
-            date: '20180915678',
-            name: '光明区排水系统查询项目',
-            address: '2018-09-15',
-            user:'张xx',
-            managerUser:'李某某',
-            file:'xxx.shp',
-            desc:'这是一个关于排水信息查询系统项目'
-          },{
-            date: '20180915678',
-            name: '光明区排水系统查询项目',
-            address: '2018-09-15',
-            user:'张xx',
-            managerUser:'李某某',
-            file:'xxx.shp',
-            desc:'这是一个关于排水信息查询系统项目'
-          }],
+          tableData: [],
           formInline: {
             user: '',
             region: ''
@@ -266,12 +229,29 @@
         }
       },
       methods: {
-        //删除项目按钮
+        // 请求项目数据
+        getProjectInfo() {
+          axios('api/projects').then(this.getSuccessProjectInfo);
+        },
+        getSuccessProjectInfo(res){
+          var ProjectData = res.data;
+          this.tableData = ProjectData;
+
+        },
+        // 点击进入项目事件
+        handleToDashboard(data) {
+          var projectId = data.creatorId;
+          this.$router.push({
+            path: '/dashboard',
+            query: { projectId: projectId }
+          })
+        },
+        // 删除项目按钮
         deleteRow(index, rows) {
           rows.splice(index, 1);
         },
-        //编辑项目按钮
-        handleEdit(data){
+        // 编辑项目按钮
+        handleEdit(data) {
           this.dialogTableVisible = true
         },
         onSubmit() {
@@ -280,9 +260,10 @@
         addTab(item, index) {
           const self = this;
           this.addForm.push(self.form);
-
-          console.log(index);
-        },
+        }
+      },
+      mounted(){
+        this.getProjectInfo();
       }
     }
 </script>

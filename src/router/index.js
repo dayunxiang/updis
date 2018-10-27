@@ -34,28 +34,29 @@ export const constantRouterMap = [
   { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
   { path: '/404', component: _import('errorPage/404'), hidden: true },
   { path: '/401', component: _import('errorPage/401'), hidden: true },
+  //项目管理
   {
     path: '',
     component: Layout,
-    redirect: 'dashboard',
+    redirect: 'project-manager',
     children: [{
-      path: 'dashboard',
-      component: _import('dashboard/index'),
-      name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+      path: 'project-manager',
+      component: _import('project-manager/index'),
+      name: 'project-manager',
+      meta: { title: '项目管理', icon: 'tab' , noCache: true }
     }]
   },
-  // 项目管理
+  // 首页
   {
-    path: '/project-manager',
+    path: '/dashboard',
     component: Layout,
-    redirect: '/project-manager/index',
+    redirect: '/dashboard/index',
     children: [
       {
         path: 'index',
-        component: _import('project-manager/index'),
-        name: 'projectManager',
-        meta: { title: '项目管理', icon: 'tab' ,noCache: true}
+        component: _import('dashboard/index'),
+        name: 'dashboard',
+        meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
       }
     ]
   }
@@ -177,6 +178,31 @@ export const asyncRouterMap = [
         name: 'roleManage',
         meta: {
           title: '角色管理',
+          icon: 'documentation',
+          noCache: true
+        }
+      }
+    ]
+  },
+  /**
+   * 工具箱
+   */
+  {
+    path: '/tools',
+    component: Layout,
+    redirect: 'coordinate',
+    name: 'tools',
+    meta: {
+      title: '工具箱',
+      icon: 'table'
+    },
+    children: [
+      {
+        path: 'coordinate',
+        component: _import('Tools/coordinate'),
+        name: 'coordinate',
+        meta: {
+          title: 'Gis坐标转换',
           icon: 'documentation',
           noCache: true
         }
