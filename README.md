@@ -1,4 +1,4 @@
-#奶业后台管理系统
+#深圳规划设计院后台管理系统
 
 #### 作者：毫末科技
 
@@ -32,7 +32,7 @@
 
 ```bash
 # 克隆项目
-git clone ssh://git@gitlab.haomo-studio.com:15822/yangnr/dairyIndustryAdmin.git
+git clone ssh://git@gitlab.haomo-studio.com:15822/UPDIS/updis.git
 
 # 安装依赖
 npm install

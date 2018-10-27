@@ -93,7 +93,6 @@
   import commonApi from '@/api/commonApi'
   import { Loading } from 'element-ui'
   import _ from 'lodash'
-  import { paramsSerializer } from '@/utils'
 
   import { toTree } from '@/utils/util'
 
@@ -287,8 +286,7 @@
                 includes: ['role_id']
               }
             }
-          },
-          paramsSerializer: paramsSerializer
+          }
         })
       },
 

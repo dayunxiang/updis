@@ -33,7 +33,32 @@ export const constantRouterMap = [
   { path: '/login', component: _import('login/index'), hidden: true },
   { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
   { path: '/404', component: _import('errorPage/404'), hidden: true },
-  { path: '/401', component: _import('errorPage/401'), hidden: true }
+  { path: '/401', component: _import('errorPage/401'), hidden: true },
+  {
+    path: '',
+    component: Layout,
+    redirect: 'dashboard',
+    children: [{
+      path: 'dashboard',
+      component: _import('dashboard/index'),
+      name: 'dashboard',
+      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+    }]
+  },
+  // 项目管理
+  {
+    path: '/project-manager',
+    component: Layout,
+    redirect: '/project-manager/index',
+    children: [
+      {
+        path: 'index',
+        component: _import('project-manager/index'),
+        name: 'projectManager',
+        meta: { title: '项目管理', icon: 'tab' ,noCache: true}
+      }
+    ]
+  }
 ]
 
 export default new Router({
@@ -44,10 +69,90 @@ export default new Router({
 
 export const asyncRouterMap = [
   /**
-   * 订单管理
+   * 地理信息管理
    */
   {
-    path: '',
+    path: '/infoManager',
+    component: Layout,
+    redirect: '/infoManager/complex-table',
+    meta: {
+      title: '地理信息管理',
+      icon: 'table'
+    },
+    children: [
+      // 点管理
+      {
+        path: 'point-manager',
+        component: () => import('@/views/table/pointManager/index'),
+        name: 'pointManager',
+        meta: {
+          title: '点管理',
+          icon: 'documentation',
+          noCache: true
+        }
+      },
+      // 线管理
+      {
+        path: 'drag-table',
+        component: () => import('@/views/table/lineManager/index'),
+        name: 'DragTable',
+        meta: {
+          title: '线管理',
+          icon: 'documentation',
+          noCache: true
+        }
+      },
+      // 块管理
+      {
+        path: 'inline-edit-table',
+        component: () => import('@/views/table/blockManager/index'),
+        name: 'InlineEditTable',
+        meta: {
+          title: '块管理',
+          icon: 'documentation',
+          noCache: true
+        }
+      }
+    ]
+  },
+  /**
+   * 统计分析
+   */
+  {
+    path: '/charts',
+    component: Layout,
+    redirect: 'noredirect',
+    meta: {
+      title: '统计分析',
+      icon: 'chart'
+    },
+    children: [
+      {
+        path: 'keyboard',
+        component: _import('charts/keyboard'),
+        name: 'keyboard',
+        meta: {
+          title: '项目进度表',
+          noCache: true
+        }
+      },
+      {
+        path: 'keyboard',
+        component: _import('charts/keyboard'),
+        name: 'keyboard',
+        meta: {
+          title: '项目进度表',
+          noCache: true
+        },
+        hidden: true
+      }
+    ]
+  },
+  /**
+   * 系统管理
+   */
+  {
+    path: '/nested',
     component: Layout,
     redirect: 'departmentManage',
     name: 'systemManagement',

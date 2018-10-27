@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <component :is="currentRole"></component>
+    <component :is="currentRole"/>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import adminDashboard from './admin'
 import editorDashboard from './editor'
 
 export default {
-  name: 'dashboard',
+  name: 'Dashboard',
   components: { adminDashboard, editorDashboard },
   data() {
     return {
@@ -29,3 +29,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.dashboard-container{
+  width: 100%;
+  height: 100%;
+}
+</style>
+
