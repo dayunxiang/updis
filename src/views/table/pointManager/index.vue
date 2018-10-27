@@ -1,17 +1,14 @@
 <template>
   <div class="point-manager">
     <el-form :inline="true"  class="demo-form-inline">
-      <el-form-item label="项目名称">
-        <el-select  placeholder="请选择项目名称">
-          <el-option label="项目一" value="shanghai"></el-option>
-          <el-option label="项目二" value="beijing"></el-option>
+      <el-form-item label="项目名称" prop="creatorId">
+        <el-select v-model="project.creatorId" placeholder="请选择">
+          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
         </el-select>
       </el-form-item>
-
-      <el-form-item label="点类型">
-        <el-select  placeholder="请选择点类型">
-          <el-option label="排口" ></el-option>
-          <el-option label="" ></el-option>
+      <el-form-item label="点类型" prop="type">
+        <el-select v-model="project.geometry_type"  placeholder="请选择点类型">
+          <el-option label="排口" value="Point"></el-option>
         </el-select>
       </el-form-item>
 
@@ -20,7 +17,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="handleSelect">查询</el-button>
       </el-form-item>
 
       <el-form-item>
@@ -28,7 +25,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="success" @click="onSubmit">导出</el-button>
+        <el-button type="success">导出</el-button>
       </el-form-item>
     </el-form>
     <!--end-->
@@ -39,7 +36,7 @@
         style="width: 100%">
         <el-table-column
           fixed
-          prop="date"
+          prop="id"
           label="排口编号"
           width="150">
         </el-table-column>
@@ -258,7 +255,7 @@
             </el-col>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">更新</el-button>
+            <el-button type="primary">更新</el-button>
             <el-button>取消</el-button>
           </el-form-item>
         </el-form>
@@ -271,16 +268,16 @@
           <el-form-item label="请选择项目名称">
             <el-col :span="19">
               <el-select  placeholder="请选择项目名称">
-                <el-option label="项目一" value="shanghai"></el-option>
-                <el-option label="项目二" value="beijing"></el-option>
+                <el-option label="项目一"></el-option>
+                <el-option label="项目二"></el-option>
               </el-select>
             </el-col>
           </el-form-item>
           <el-form-item label="点类型">
             <el-col :span="19">
               <el-select  placeholder="请选择点类型">
-                <el-option label="检查井" value="shanghai"></el-option>
-                <el-option label="排口" value="beijing"></el-option>
+                <el-option label="检查井" ></el-option>
+                <el-option label="排口" ></el-option>
               </el-select>
             </el-col>
           </el-form-item>
@@ -385,7 +382,7 @@
             </el-col>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">提交</el-button>
+            <el-button type="primary">提交</el-button>
             <el-button>取消</el-button>
           </el-form-item>
         </el-form>
@@ -397,67 +394,66 @@
 
 <script>
   import axios from 'axios'
+  import request from '@/utils/request'
 export default {
   name: 'DynamicTable',
   data(){
     return{
+      projects:[],
+      project: {
+        creatorId: '',
+        geometry_type:''
+      },
       formInline:{
         user:'',
         region:''
       },
-      tableData: [{
-        date: '2016-05-03',
-        name: 'xxxxxxx,xxxxxx',
-        province: '长江',
-        city: '01110222',
-        address: '20m',
-        zip: 200333
-      }],
-      gridData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }],
+      tableData: [],
       dialogTableVisible: false,
       dialogFormVisible: false,
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
+
       formLabelWidth: '120px',
       dialogFormVisible: false,
       dialogAddVisible:false,
     }
   },
   mounted(){
-    this.getProjectInfo();
+    this.getProjectsInfo();
   },
   methods: {
-    // //请求所有项目
-    // getProjectinfo(){
-    //   axios('/api/projects').then(this.getProjectSuccess)
-    // },
-    // getProjectSuccess(res){
-    //   alert(res);
-    // },
+    //请求所有项目
+    getProjectsInfo(){
+      axios('/api/projects').then(this.getProjectSuccess);
+    },
+    getProjectSuccess(res){
+      this.projects = res.data;
+    },
+    // 查询事件
+    handleSelect(){
+      var self = this;
+      var selectObject = {
+        project_id: self.project.creatorId,
+        geometry_type : self.project.geometry_type
+      }
+     // 向后端发起请求接口为 /shapes 拿到数据
+      request('shapes',{
+        params:{
+          filters: {
+            'shape': {
+              'project_id': {
+                equalTo: selectObject.project_id
+              },
+              'geometry_type':{
+                equalTo: selectObject.geometry_type
+              }
+            }
+          }
+        }
+      }).then(resp =>{
+        console.log(resp.data[0])
+      })
+
+    },
     //编辑项目按钮
     handleEdit(data){
       this.dialogTableVisible = true
