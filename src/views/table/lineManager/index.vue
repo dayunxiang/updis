@@ -1,19 +1,17 @@
 <template>
   <div class="point-manager">
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="项目名称">
-        <el-select v-model="formInline.region" placeholder="请选择项目名称">
-          <el-option label="项目一" value="shanghai"></el-option>
-          <el-option label="项目二" value="beijing"></el-option>
+    <el-form :inline="true"  class="demo-form-inline">
+      <el-form-item label="项目名称" prop="creatorId">
+        <el-select v-model="project.creatorId" placeholder="请选择">
+          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
         </el-select>
       </el-form-item>
-
       <el-form-item label="编号">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号"></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="handleSelect">查询</el-button>
       </el-form-item>
 
       <el-form-item>
@@ -21,7 +19,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="success" @click="onSubmit">导出</el-button>
+        <el-button type="success">导出</el-button>
       </el-form-item>
     </el-form>
     <!--end-->
@@ -381,24 +379,82 @@
 </template>
 
 <script>
+  import axios from 'axios'
+  import request from '@/utils/request'
   export default {
-    name: 'lineManager',
+    name: 'DynamicTable',
     data(){
       return{
+        projects:[],
+        project: {
+          creatorId: '',
+          geometry_type:''
+        },
         formInline:{
           user:'',
           region:''
         },
-        tableData: [{
-          date: '345678789',
-          name: 'xxxxxxx,xxxxxx',
-          province: '456789',
-          city: '01110222',
-          address: '梅林路30号',
-          zip: 200333
-        }],
+        tableData: [],
+        dialogTableVisible: false,
+        dialogFormVisible: false,
+
+        formLabelWidth: '120px',
         dialogFormVisible: false,
         dialogAddVisible:false,
+      }
+    },
+    mounted(){
+      this.getProjectsInfo();
+    },
+    methods: {
+      //请求所有项目
+      getProjectsInfo(){
+        axios('/api/projects').then(this.getProjectSuccess);
+      },
+      getProjectSuccess(res){
+        this.projects = res.data;
+      },
+      // 查询事件
+      handleSelect(){
+        var self = this;
+        var selectObject = {
+          project_id: self.project.creatorId,
+          geometry_type : self.project.geometry_type
+        }
+        // 向后端发起请求接口为 /shapes 拿到数据
+        request('shapes',{
+          params:{
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: selectObject.project_id
+                },
+                'geometry_type':{
+                  equalTo: 'LineString'
+                }
+              }
+            }
+          }
+        }).then(resp =>{
+          this.tableData = resp.data;
+        })
+
+      },
+      //编辑项目按钮
+      handleEdit(data){
+        this.dialogTableVisible = true
+      },
+      //删除项目按钮
+      handleClick(data){
+        this.$alert(data.name, '删除项目', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
       }
     }
   }
@@ -406,5 +462,9 @@
 <style>
   .point-manager{
     margin: 20px;
+  }
+  .el-form-item__label{
+    text-align: center;
+    padding: 0px;
   }
 </style>

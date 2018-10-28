@@ -1,19 +1,17 @@
 <template>
   <div class="point-manager">
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="项目名称">
-        <el-select v-model="formInline.region" placeholder="请选择项目名称">
-          <el-option label="项目一" value="shanghai"></el-option>
-          <el-option label="项目二" value="beijing"></el-option>
+    <el-form :inline="true"  class="demo-form-inline">
+      <el-form-item label="项目名称" prop="creatorId">
+        <el-select v-model="project.creatorId" placeholder="请选择">
+          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
         </el-select>
       </el-form-item>
-
       <el-form-item label="编号">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号"></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="handleSelect">查询</el-button>
       </el-form-item>
 
       <el-form-item>
@@ -21,7 +19,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="success" @click="onSubmit">导出</el-button>
+        <el-button type="success">导出</el-button>
       </el-form-item>
     </el-form>
     <!--end-->
@@ -33,32 +31,32 @@
         <el-table-column
           fixed
           prop="date"
-          label="地块编号"
+          label="管道编号"
           width="150">
         </el-table-column>
         <el-table-column
           prop="name"
-          label="地块坐标"
+          label="管道坐标"
           width="120">
         </el-table-column>
         <el-table-column
           prop="province"
-          label="建设状态"
+          label="上游检查井编号"
           width="120">
         </el-table-column>
         <el-table-column
           prop="city"
-          label="现状用地类型"
+          label="下游检查井编号"
           width="120">
         </el-table-column>
         <el-table-column
           prop="address"
-          label="规划用地类型"
+          label="上游道路名称"
           width="300">
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="最终排入河道"
+          label="下游道路名称"
           width="120">
         </el-table-column>
         <el-table-column
@@ -83,52 +81,17 @@
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="雨水主要排入检查井编号"
+          label="管道类型"
           width="120">
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="污水主要排入检查井编号"
+          label="管长"
           width="120">
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="是否进行海绵城市设计及类型"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="是否进行正本清源改造及类型"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="地块内排水单位名称"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="排水类型"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="是否为重点排污单位"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="历史排污量"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="主要污染物"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="排污许可证编号"
+          label="管径"
           width="120">
         </el-table-column>
         <el-table-column
@@ -177,32 +140,32 @@
         </el-table-column>
       </el-table>
     </div>
-    <!--弹出层-->
+    <!--编辑项目弹出层-->
     <div>
       <div>
         <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
           <el-form ref="form" :model="tableData" label-width="150px">
-            <el-form-item label="地块编号">
+            <el-form-item label="管道编号">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="地块坐标">
+            <el-form-item label="管道坐标">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="规划用地类型">
+            <el-form-item label="上游检查井编号">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="最终排入河道">
+            <el-form-item label="下游检查井编号">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="所属排水分区">
+            <el-form-item label="上游道路名称">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
@@ -290,10 +253,10 @@
         </el-dialog>
       </div>
     </div>
-    <!--增加-->
+    <!--新增弹出层-->
     <div>
       <div>
-        <el-dialog title="添加地块" :visible.sync="dialogAddVisible" width="25%">
+        <el-dialog title="添加管线" :visible.sync="dialogAddVisible" width="25%">
           <el-form ref="form" :model="tableData" label-width="150px">
             <el-form-item label="请选择项目名称">
               <el-col :span="19">
@@ -303,27 +266,27 @@
                 </el-select>
               </el-col>
             </el-form-item>
-            <el-form-item label="地块编号">
+            <el-form-item label="管道编号">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="地块坐标">
+            <el-form-item label="管道坐标">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="规划用地类型">
+            <el-form-item label="上游检查井编号">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="最终排入河道">
+            <el-form-item label="下游检查井编号">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="所属排水分区">
+            <el-form-item label="上游道路名称">
               <el-col :span="19">
                 <el-input v-model="tableData.date"></el-input>
               </el-col>
@@ -411,30 +374,87 @@
         </el-dialog>
       </div>
     </div>
-
   </div>
 
 </template>
 
 <script>
+  import axios from 'axios'
+  import request from '@/utils/request'
   export default {
-    name: 'blockManager',
+    name: 'DynamicTable',
     data(){
       return{
+        projects:[],
+        project: {
+          creatorId: '',
+          geometry_type:''
+        },
         formInline:{
           user:'',
           region:''
         },
-        tableData: [{
-          date: '345678789',
-          name: 'xxxxxxx,xxxxxx',
-          province: '456789',
-          city: '01110222',
-          address: '梅林路30号',
-          zip: 200333
-        }],
+        tableData: [],
+        dialogTableVisible: false,
+        dialogFormVisible: false,
+
+        formLabelWidth: '120px',
         dialogFormVisible: false,
         dialogAddVisible:false,
+      }
+    },
+    mounted(){
+      this.getProjectsInfo();
+    },
+    methods: {
+      //请求所有项目
+      getProjectsInfo(){
+        axios('/api/projects').then(this.getProjectSuccess);
+      },
+      getProjectSuccess(res){
+        this.projects = res.data;
+      },
+      // 查询事件
+      handleSelect(){
+        var self = this;
+        var selectObject = {
+          project_id: self.project.creatorId,
+          geometry_type : self.project.geometry_type
+        }
+        // 向后端发起请求接口为 /shapes 拿到数据
+        request('shapes',{
+          params:{
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: selectObject.project_id
+                },
+                'category':{
+                  equalTo: 'SUBCATCHMENTS'
+                }
+              }
+            }
+          }
+        }).then(resp =>{
+          this.tableData = resp.data;
+        })
+
+      },
+      //编辑项目按钮
+      handleEdit(data){
+        this.dialogTableVisible = true
+      },
+      //删除项目按钮
+      handleClick(data){
+        this.$alert(data.name, '删除项目', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
       }
     }
   }
@@ -442,5 +462,9 @@
 <style>
   .point-manager{
     margin: 20px;
+  }
+  .el-form-item__label{
+    text-align: center;
+    padding: 0px;
   }
 </style>

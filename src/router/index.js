@@ -105,7 +105,7 @@ export const asyncRouterMap = [
       },
       // 块管理
       {
-        path: 'inline-edit-table',
+        path: 'block-manager',
         component: () => import('@/views/table/blockManager/index'),
         name: 'InlineEditTable',
         meta: {

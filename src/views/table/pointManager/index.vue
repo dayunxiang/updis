@@ -30,10 +30,7 @@
     </el-form>
     <!--end-->
     <div>
-      <el-table
-        :data="tableData"
-        border
-        style="width: 100%">
+      <el-table :data="tableData" border style="width: 100%" height="500px">
         <el-table-column
           fixed
           prop="id"
@@ -42,7 +39,7 @@
         </el-table-column>
         <el-table-column
           prop="name"
-          label="排口坐标"
+          label="名称"
           width="120">
         </el-table-column>
         <el-table-column
@@ -150,7 +147,17 @@
           </template>
         </el-table-column>
       </el-table>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage4"
+        :page-sizes="[20, 40, 60, 80]"
+        :page-size="100"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totall">
+      </el-pagination>
     </div>
+    <!--编辑-->
     <div>
       <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
         <el-form ref="form" :model="tableData" label-width="150px">
@@ -404,11 +411,15 @@ export default {
         creatorId: '',
         geometry_type:''
       },
+      pageNo:1,
+      totall: 0,
+      tableData: [],
+
+
       formInline:{
         user:'',
         region:''
       },
-      tableData: [],
       dialogTableVisible: false,
       dialogFormVisible: false,
 
@@ -438,6 +449,7 @@ export default {
      // 向后端发起请求接口为 /shapes 拿到数据
       request('shapes',{
         params:{
+          pageNo: self.pageNo,
           filters: {
             'shape': {
               'project_id': {
@@ -450,9 +462,18 @@ export default {
           }
         }
       }).then(resp =>{
-        console.log(resp.data[0])
+        this.tableData = resp.data;
+        self.totall = Number(resp.headers.total);
       })
 
+    },
+    //分页
+    handleSizeChange(val) {
+      alert(val);
+    },
+    handleCurrentChange(val) {
+      this.pageNo = val;
+      this.handleSelect();
     },
     //编辑项目按钮
     handleEdit(data){
