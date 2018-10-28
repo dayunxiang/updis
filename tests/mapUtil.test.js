@@ -1,4 +1,10 @@
-import { geojson2cytoscape, getPolygonDescendants } from '../src/utils/mapUtil'
+import { 
+    geojson2cytoscape, 
+    getDescendantConduitsOfSubcatchment, 
+    getDescendantSubcatchmentsOfSubcatchment,
+    getDescendantOutfallsOfSubcatchment,
+    getAncestorConduitsOfOutfall,
+    getOutfallAncestorSubcatchments } from '../src/utils/mapUtil'
 
 test("测试GeoJSON转Cytoscape对象", () => {
     console.log('测试开始')
