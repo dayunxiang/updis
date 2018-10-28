@@ -5,8 +5,7 @@ import _ from 'lodash'
  * 将GeoJSON转换为cytoscape的拓扑
  * @param geojson
  */
-
-export default function geojson2cytoscape(geojson) {
+export function geojson2cytoscape(geojson) {
   const elements = []
   // 增加点
   _.each(geojson['features'], feature => {
@@ -49,3 +48,7 @@ export default function geojson2cytoscape(geojson) {
   return cy
 }
 
+
+export function getPolygonDescendants(feature) {
+  
+}
