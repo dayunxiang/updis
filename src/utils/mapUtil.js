@@ -90,7 +90,7 @@ export function isNodeInPolygon(node, feature) {
  * @param {*} cy 
  */
 export function getNearestNodeOfPoint(point, cy) {
-  
+
 }
 
 
@@ -141,7 +141,9 @@ export function getAncestorConduitsOfOutfall(feature, cy) {
 
 /**
  * 查询排口上游地块
- * 
+ * @param {*} feature 
+ * @param {*} cy 
+ * @param {*} nodeSubcatchmentMap 
  */
 export function getAncestorSubcatchmentsOfOutfall(feature, cy, nodeSubcatchmentMap) {
   if(feature['geometry']['type'] !== 'Point') {
