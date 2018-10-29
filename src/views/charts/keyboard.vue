@@ -1,19 +1,39 @@
 <template>
-  <div>
+  <div style="padding-top:20px;">
+    <!--表头部分-->
+    <el-form :inline="true"  class="demo-form-inline" style="padding-left:10px;">
+      <el-form-item label="项目名称" >
+        <el-select  placeholder="请选择">
+          <el-option label="name" value="" ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="编号">
+        <el-input placeholder="请输入要查询的编号"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">查询</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">添加</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="success">导出</el-button>
+      </el-form-item>
+    </el-form>
     <!--标签页-->
     <el-tabs class="tongName"
-    tab-position="top"
-    v-model="activeNo"
-    type="card">
-    <el-tab-pane align="center" label="项目数量完成度" name="first">
-    <div id="myChart1" class="figure"></div>
-    </el-tab-pane>
-    <el-tab-pane align="center" label="径流总量控制率" name="second">
-    <div id="myChart2" class="figure"></div>
-    </el-tab-pane>
-    <el-tab-pane align="center" label="面积覆盖度" name="three">
-    <div id="myChart3" class="figure"></div>
-    </el-tab-pane>
+             tab-position="top"
+             v-model="activeNo"
+             type="card">
+      <el-tab-pane align="center" label="项目数量完成度" name="first">
+        <div id="myChart1" class="figure"></div>
+      </el-tab-pane>
+      <el-tab-pane align="center" label="径流总量控制率" name="second">
+        <div id="myChart2" class="figure"></div>
+      </el-tab-pane>
+      <el-tab-pane align="center" label="面积覆盖度" name="three">
+        <div id="myChart3" class="figure"></div>
+      </el-tab-pane>
     </el-tabs>
     <!--标签页-->
     <div class="label">
@@ -134,6 +154,7 @@
         </span>
       </el-dialog>
     </div>
+
   </div>
 </template>
 <script>
@@ -150,6 +171,10 @@
         activeNo: 'first',
         activeNameTest: '0',
         hodelView: '',
+        project: {
+          creatorId: '',
+          geometry_type:''
+        },
         listTitle: '',
         listData: '',
         tongName: [],
@@ -261,5 +286,9 @@
   }
   div.elementMadel>input{
     color: #666 !important;
+  }
+  .app-main{
+    overflow: auto !important;
+    padding-bottom:10% !important;
   }
 </style>
