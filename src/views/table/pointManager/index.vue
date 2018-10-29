@@ -30,7 +30,7 @@
     </el-form>
     <!--end-->
     <div>
-      <el-table :data="tableData" border style="width: 100%" height="500px">
+      <el-table :data="tableData" border max-height="500" style="width: 100%;">
         <el-table-column
           fixed
           prop="id"
@@ -402,97 +402,101 @@
 <script>
   import axios from 'axios'
   import request from '@/utils/request'
-export default {
-  name: 'DynamicTable',
-  data(){
-    return{
-      projects:[],
-      project: {
-        creatorId: '',
-        geometry_type:''
-      },
-      pageNo:1,
-      totall: 0,
-      tableData: [],
+  export default {
+    name: 'DynamicTable',
+    data(){
+      return{
+        projects:[],
+        project: {
+          creatorId: '',
+          geometry_type:''
+        },
+        pageNo:1,
+        totall: 0,
+        pageSize:20,
+        tableData: [],
 
 
-      formInline:{
-        user:'',
-        region:''
-      },
-      dialogTableVisible: false,
-      dialogFormVisible: false,
+        formInline:{
+          user:'',
+          region:''
+        },
+        dialogTableVisible: false,
+        dialogFormVisible: false,
 
-      formLabelWidth: '120px',
-      dialogFormVisible: false,
-      dialogAddVisible:false,
-    }
-  },
-  mounted(){
-    this.getProjectsInfo();
-  },
-  methods: {
-    //请求所有项目
-    getProjectsInfo(){
-      axios('/api/projects').then(this.getProjectSuccess);
-    },
-    getProjectSuccess(res){
-      this.projects = res.data;
-    },
-    // 查询事件
-    handleSelect(){
-      var self = this;
-      var selectObject = {
-        project_id: self.project.creatorId,
-        geometry_type : self.project.geometry_type
+        formLabelWidth: '120px',
+        dialogFormVisible: false,
+        dialogAddVisible:false,
       }
-     // 向后端发起请求接口为 /shapes 拿到数据
-      request('shapes',{
-        params:{
-          pageNo: self.pageNo,
-          filters: {
-            'shape': {
-              'project_id': {
-                equalTo: selectObject.project_id
-              },
-              'geometry_type':{
-                equalTo: selectObject.geometry_type
+    },
+    mounted(){
+      this.getProjectsInfo();
+    },
+    methods: {
+      //请求所有项目
+      getProjectsInfo(){
+        axios('/api/projects').then(this.getProjectSuccess);
+      },
+      getProjectSuccess(res){
+        this.projects = res.data;
+      },
+      // 查询事件
+      handleSelect(){
+        var self = this;
+        var selectObject = {
+          project_id: self.project.creatorId,
+          geometry_type : self.project.geometry_type
+        }
+        // 向后端发起请求接口为 /shapes 拿到数据
+        request('shapes',{
+          params:{
+            pageNo: self.pageNo,
+            pageSize:self.pageSize,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: selectObject.project_id
+                },
+                'geometry_type':{
+                  equalTo: selectObject.geometry_type
+                }
               }
             }
           }
-        }
-      }).then(resp =>{
-        this.tableData = resp.data;
-        self.totall = Number(resp.headers.total);
-      })
+        }).then(resp =>{
+          this.tableData = resp.data;
+          self.totall = Number(resp.headers.total);
+        })
 
-    },
-    //分页
-    handleSizeChange(val) {
-      alert(val);
-    },
-    handleCurrentChange(val) {
-      this.pageNo = val;
-      this.handleSelect();
-    },
-    //编辑项目按钮
-    handleEdit(data){
-      this.dialogTableVisible = true
-    },
-    //删除项目按钮
-    handleClick(data){
-      this.$alert(data.name, '删除项目', {
-        confirmButtonText: '确定',
-        callback: action => {
-          this.$message({
-            type: 'info',
-            message: `action: ${ action }`
-          });
-        }
-      });
+      },
+      //分页条数切换
+      handleSizeChange(val) {
+        this.pageSize = val;
+        this.handleSelect();
+      },
+      // 页码切换
+      handleCurrentChange(val) {
+        this.pageNo = val;
+        this.handleSelect();
+      },
+      //编辑项目按钮
+      handleEdit(data){
+        this.dialogTableVisible = true
+      },
+      //删除项目按钮
+      handleClick(data){
+        this.$alert(data.name, '删除项目', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
+      }
     }
   }
-}
 </script>
 <style>
   .point-manager{
