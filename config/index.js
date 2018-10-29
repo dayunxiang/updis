@@ -23,6 +23,13 @@ module.exports = {
         pathRewrite: {
           '^/demo': '/'
         }
+      },
+      '/v1':{
+        target: 'http://updis.haomo-studio.com/v1',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/v1': '/'
+        }
       }
 
     },
