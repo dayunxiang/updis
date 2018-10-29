@@ -457,8 +457,8 @@
                 'project_id': {
                   equalTo: selectObject.project_id
                 },
-                'geometry_type':{
-                  equalTo: selectObject.geometry_type
+                'category':{
+                  equalTo: 'OUTFALLS'
                 }
               }
             }

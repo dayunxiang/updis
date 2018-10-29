@@ -24,40 +24,32 @@
     </el-form>
     <!--end-->
     <div>
-      <el-table
-        :data="tableData"
-        border
-        style="width: 100%">
+      <el-table :data="tableData" border max-height="500" style="width: 100%;">
         <el-table-column
           fixed
-          prop="date"
-          label="管道编号"
+          prop="id"
+          label="排口编号"
           width="150">
         </el-table-column>
         <el-table-column
           prop="name"
-          label="管道坐标"
+          label="名称"
           width="120">
         </el-table-column>
         <el-table-column
           prop="province"
-          label="上游检查井编号"
+          label="排入河道水质目标"
           width="120">
         </el-table-column>
         <el-table-column
           prop="city"
-          label="下游检查井编号"
+          label="上游管道编号"
           width="120">
         </el-table-column>
         <el-table-column
           prop="address"
-          label="上游道路名称"
+          label="上游管道管径"
           width="300">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="下游道路名称"
-          width="120">
         </el-table-column>
         <el-table-column
           prop="zip"
@@ -81,17 +73,27 @@
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="管道类型"
+          label="出流类型"
           width="120">
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="管长"
+          label="排口类型"
           width="120">
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="管径"
+          label="旱季污水量"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="zip"
+          label="是否进行初期雨水截流"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="zip"
+          label="是否有检测设备"
           width="120">
         </el-table-column>
         <el-table-column
@@ -139,240 +141,253 @@
           </template>
         </el-table-column>
       </el-table>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage4"
+        :page-sizes="[20, 40, 60, 80]"
+        :page-size="100"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totall">
+      </el-pagination>
     </div>
-    <!--编辑项目弹出层-->
+    <!--编辑-->
     <div>
-      <div>
-        <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
-          <el-form ref="form" :model="tableData" label-width="150px">
-            <el-form-item label="管道编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管道坐标">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="上游检查井编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="下游检查井编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="上游道路名称">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="下游道路名称">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属街道">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属社区">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属流域">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属排水分区">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管道类型">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管长">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管径">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="建设时间">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="竣工单位编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="建设单位">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="联系人">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="电话">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="业主单位/联系人/电话">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="运维单位/联系人/电话">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="onSubmit">更新</el-button>
-              <el-button>取消</el-button>
-            </el-form-item>
-          </el-form>
-        </el-dialog>
-      </div>
+      <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
+        <el-form ref="form" :model="tableData" label-width="150px">
+          <el-form-item label="排口编号">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="排口坐标">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="排入河道水质目标">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="最终排入河道">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属排水分区">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="下游道路名称">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属街道">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属社区">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属流域">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属排水分区">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="管道类型">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="管长">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="管径">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="建设时间">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="竣工单位编号">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="建设单位">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="联系人">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="电话">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="业主单位/联系人/电话">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="运维单位/联系人/电话">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary">更新</el-button>
+            <el-button>取消</el-button>
+          </el-form-item>
+        </el-form>
+      </el-dialog>
     </div>
-    <!--新增弹出层-->
+    <!--添加-->
     <div>
-      <div>
-        <el-dialog title="添加管线" :visible.sync="dialogAddVisible" width="25%">
-          <el-form ref="form" :model="tableData" label-width="150px">
-            <el-form-item label="请选择项目名称">
-              <el-col :span="19">
-                <el-select  placeholder="请选择项目名称">
-                  <el-option label="项目一" value="shanghai"></el-option>
-                  <el-option label="项目二" value="beijing"></el-option>
-                </el-select>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管道编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管道坐标">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="上游检查井编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="下游检查井编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="上游道路名称">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="下游道路名称">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属街道">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属社区">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属流域">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="所属排水分区">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管道类型">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管长">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="管径">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="建设时间">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="竣工单位编号">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="建设单位">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="联系人">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="电话">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="业主单位/联系人/电话">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="运维单位/联系人/电话">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="onSubmit">提交</el-button>
-              <el-button>取消</el-button>
-            </el-form-item>
-          </el-form>
-        </el-dialog>
-      </div>
+      <el-dialog title="添加管线" :visible.sync="dialogAddVisible" width="25%">
+        <el-form ref="form" :model="tableData" label-width="150px">
+          <el-form-item label="请选择项目名称">
+            <el-col :span="19">
+              <el-select  placeholder="请选择项目名称">
+                <el-option label="项目一"></el-option>
+                <el-option label="项目二"></el-option>
+              </el-select>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="点类型">
+            <el-col :span="19">
+              <el-select  placeholder="请选择点类型">
+                <el-option label="检查井" ></el-option>
+                <el-option label="排口" ></el-option>
+              </el-select>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="排口编号">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="排口坐标">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="排入河道水质目标">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="最终排入河道">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属排水分区">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="下游道路名称">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属街道">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属社区">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属流域">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="所属排水分区">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="管道类型">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="管长">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="管径">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="建设时间">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="竣工单位编号">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="建设单位">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="联系人">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="电话">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="业主单位/联系人/电话">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item label="运维单位/联系人/电话">
+            <el-col :span="19">
+              <el-input v-model="tableData.date"></el-input>
+            </el-col>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary">提交</el-button>
+            <el-button>取消</el-button>
+          </el-form-item>
+        </el-form>
+      </el-dialog>
     </div>
   </div>
 
@@ -390,11 +405,16 @@
           creatorId: '',
           geometry_type:''
         },
+        pageNo:1,
+        totall: 0,
+        pageSize:20,
+        tableData: [],
+
+
         formInline:{
           user:'',
           region:''
         },
-        tableData: [],
         dialogTableVisible: false,
         dialogFormVisible: false,
 
@@ -424,6 +444,8 @@
         // 向后端发起请求接口为 /shapes 拿到数据
         request('shapes',{
           params:{
+            pageNo: self.pageNo,
+            pageSize:self.pageSize,
             filters: {
               'shape': {
                 'project_id': {
@@ -437,8 +459,19 @@
           }
         }).then(resp =>{
           this.tableData = resp.data;
+          self.totall = Number(resp.headers.total);
         })
 
+      },
+      //分页条数切换
+      handleSizeChange(val) {
+        this.pageSize = val;
+        this.handleSelect();
+      },
+      // 页码切换
+      handleCurrentChange(val) {
+        this.pageNo = val;
+        this.handleSelect();
       },
       //编辑项目按钮
       handleEdit(data){
