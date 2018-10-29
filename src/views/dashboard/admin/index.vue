@@ -121,11 +121,59 @@
         <div v-show="infoManager" class="context">
           <div>
             <el-collapse v-model="activeName" accordion>
-              <el-collapse-item v-model="data" :title="data.type+'信息'" name="1">
+              <!--地块-->
+              <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='地块'">
                 <div>
-                  <ul v-for="(val,key,index) in data.info" :key="index">
+                  <ul>
                     <li>
-                      <span>{{key}}</span><span class="test3">{{val}}</span>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </el-collapse-item>
+              <!--排口-->
+              <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='排口'">
+                <div>
+                  <ul>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </el-collapse-item>
+              <!--管线-->
+              <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='管线'">
+                <div>
+                  <ul>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                    </li>
+                    <li>
+                      <span>名称</span><span class="test3">{{data.info.name}}</span>
                     </li>
                   </ul>
                 </div>

@@ -41,6 +41,16 @@
             label="项目最后更新时间"
             width="300">
           </el-table-column>
+
+          <el-table-column
+            label="项目使用人"
+            width="300">
+          </el-table-column>
+
+          <el-table-column
+            label="项目创建人"
+            width="300">
+          </el-table-column>
           <!--end-->
           <el-table-column
             fixed="right"
