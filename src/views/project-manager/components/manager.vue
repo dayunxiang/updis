@@ -6,7 +6,7 @@
           <el-input v-model="formInline.user" placeholder="项目名称"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">查询</el-button>
+          <el-button type="primary"  @click="handleSelectProject">查询</el-button>
         </el-form-item>
       </el-form>
       <!--新建项目-->
@@ -21,7 +21,7 @@
           style="width: 100%">
           <el-table-column
             fixed
-            prop="creatorId"
+            prop="id"
             label="项目编号"
             width="300">
           </el-table-column>
@@ -68,10 +68,10 @@
     <!--分页-->
     <div class="project-paging">
       <el-pagination
-        :page-sizes="[100, 200, 300, 400]"
-        :page-size="100"
+        :page-sizes="[10, 20]"
+        :page-size="10"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="400">
+        :total=tableData.length>
       </el-pagination>
     </div>
     <!--表格弹出层-->
@@ -184,6 +184,7 @@
 
 <script>
   import axios from 'axios'
+  import request from 'request'
     export default {
       name: "manager",
       data() {
@@ -248,13 +249,17 @@
           this.tableData = ProjectData;
 
         },
-        // 点击进入项目事件
+        // 进入项目事件
         handleToDashboard(data) {
-          var projectId = data.creatorId;
+          var id= data.id;
           this.$router.push({
             path: '/dashboard',
-            query: { projectId: projectId }
+            query: { projectId: id}
           })
+        },
+        // 查询项目点击事件
+        handleSelectProject(){
+          console.log('我被点击了');
         },
         // 删除项目按钮
         deleteRow(index, rows) {
