@@ -1,26 +1,43 @@
 <template>
-  <div>
+  <div style="padding-top:20px;">
+    <!--表头部分-->
+    <el-form :inline="true"  class="demo-form-inline" style="padding-left:10px;">
+      <el-form-item label="项目名称" >
+        <el-select  placeholder="请选择">
+          <el-option label="name" value="" ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="编号">
+        <el-input placeholder="请输入要查询的编号"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">查询</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">添加</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="success">导出</el-button>
+      </el-form-item>
+    </el-form>
     <!--标签页-->
     <el-tabs class="tongName"
-    tab-position="top"
-    v-model="activeNo"
-    type="card">
-    <el-tab-pane align="center" label="项目数量完成度" name="first">
-    <div id="myChart1" class="figure"></div>
-    </el-tab-pane>
-    <el-tab-pane align="center" label="径流总量控制率" name="second">
-    <div id="myChart2" class="figure"></div>
-    </el-tab-pane>
-    <el-tab-pane align="center" label="面积覆盖度" name="three">
-    <div id="myChart3" class="figure"></div>
-    </el-tab-pane>
+             tab-position="top"
+             v-model="activeNo"
+             type="card">
+      <el-tab-pane align="center" label="项目数量完成度" name="first">
+        <div id="myChart1" class="figure"></div>
+      </el-tab-pane>
+      <el-tab-pane align="center" label="径流总量控制率" name="second">
+        <div id="myChart2" class="figure"></div>
+      </el-tab-pane>
+      <el-tab-pane align="center" label="面积覆盖度" name="three">
+        <div id="myChart3" class="figure"></div>
+      </el-tab-pane>
     </el-tabs>
-
     <!--标签页-->
     <div class="label">
-      <el-button class="AddButton" type="primary" icon="el-icon-plus" circle
-                 @click="handleAddTab(activeNameTest)"></el-button>
-
+      <el-button class="AddButton" type="primary" icon="el-icon-plus" circle @click="handleAddTab(activeNameTest)"></el-button>
       <el-tabs class="tongName"
                tab-position="top"
                v-model="activeNameTest"
@@ -40,31 +57,104 @@
             <el-table-column prop="area" label="面积"></el-table-column>
             <el-table-column fixed="right" label="操作" width="200" align="center">
               <template slot-scope="scope">
-                <!--<el-button @click="handleCheck(scope.row)" type="text" size="small">查看</el-button>-->
-                <el-button @click="dialogVisible = true" type="text" size="small">查看</el-button>
-                <el-button @click="dialogVisible = true" type="text" size="small">编辑</el-button>
-                <el-button @click="dialogVisible = true" type="text" size="small">删除</el-button>
+                <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
+                <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
+                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>
               </template>
             </el-table-column>
           </el-table>
         </el-tab-pane>
       </el-tabs>
-
       <!--获取信息-->
-      <el-dialog
-        title="提示"
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="handleClose">
-        <h2>这里是获取的数据</h2>
-
-
+      <el-dialog :title="this.hodelView === ''?'查看信息':'编辑信息'" :visible.sync="dialogVisible" data="listData" @click="dialogVisible = false">
+        <el-form :label-position="labelPosition" label-width="100px" :model="listData">
+          <h2>{{listTitle}}</h2>
+          <el-form-item label="名称" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px;" v-model="listData.name"></el-input>
+          </el-form-item>
+          <el-form-item label="百分比" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="listData.percentage"></el-input>
+          </el-form-item>
+          <el-form-item label="状态" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="listData.state"></el-input>
+          </el-form-item>
+          <el-form-item label="目标" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="listData.target"></el-input>
+          </el-form-item>
+          <el-form-item label="形状" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="listData.shape"></el-input>
+          </el-form-item>
+          <el-form-item label="面积" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="listData.area"></el-input>
+          </el-form-item>
+        </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+          <el-button v-show="this.hodelView == 'view' ? false : true" type="primary" @click="dialogVisible = false">确 定</el-button>
+          <el-button v-show="this.hodelView == 'view' ? true : false" type="primary" @click="handleSubmit">确 定</el-button>
+        </span>
+      </el-dialog>
+      <!--添加信息-->
+      <el-dialog title="添加信息" :visible.sync="dialogAdd" data="testData"  @click="dialogAdd = false">
+        <el-form :label-position="labelPosition" label-width="100px" >
+          <el-form-item label="名称" align="center">
+            <el-input class="elementMadel"
+                      style="width:160px;" v-model="testData.name"></el-input>
+          </el-form-item>
+          <el-form-item label="百分比" align="center">
+            <el-input class="elementMadel"
+                      style="width:160px"
+                      v-model="testData.percentage"></el-input>
+          </el-form-item>
+          <el-form-item label="状态" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="testData.state"></el-input>
+          </el-form-item>
+          <el-form-item label="目标" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="testData.target"></el-input>
+          </el-form-item>
+          <el-form-item label="形状" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="testData.shape"></el-input>
+          </el-form-item>
+          <el-form-item label="面积" align="center">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      style="width:160px"
+                      v-model="testData.area"></el-input>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogAdd = false">取 消</el-button>
+          <el-button v-show="this.hodelView == 'view' ? true : false" type="primary" @click="handleSubmit">确 定</el-button>
         </span>
       </el-dialog>
     </div>
+
   </div>
 </template>
 <script>
@@ -73,9 +163,20 @@
     name: 'keyboard',
     data(){
       return {
+        ifDemo: '',
+        testData: [],
         dialogVisible: false,
+        dialogAdd: false,
+        labelPosition: 'right',
         activeNo: 'first',
         activeNameTest: '0',
+        hodelView: '',
+        project: {
+          creatorId: '',
+          geometry_type:''
+        },
+        listTitle: '',
+        listData: '',
         tongName: [],
         option1: {},
         option2: {},
@@ -83,32 +184,43 @@
         option4: {
           name: "测试数据",
           mingcheng: []
-        }
+        },
       }
     },
     created() {
       this.init()
     },
     methods: {
-//      handleCheck(row) {
-//        const $table = this.$refs.table
-//
-//        $table.toggleRowExpansion(row)
-//        $table.toggleRowSelection(row)
-//      },
-//      handleClose(done) {
-//        this.$confirm('确认关闭？').then().catch();
-//      },
+      handleCheck (row) {
+        const self = this;
+        self.hodelView = "";
+        this.listTitle = self.tongName[row.id].name;
+        self.dialogVisible = true;
+        self.listData = row;
+      },
+      handleEditor(row) {
+        const self = this;
+        self.hodelView = "view";
+        this.listTitle = self.tongName[row.id].name;
+        self.dialogVisible = true;
+        self.listData = row;
+      },
+      handleSubmit() {
+        console.log("提交失败：", this);
+      },
+      deleteRow(index, rows) {
+        rows.splice(index, 1);
+      },
 
       /**
        * 点击添加类型
        */
-      handleAddTab(targetName) {
+      handleAddTab() {
         const self = this;
-        console.log("数据1: ", targetName);
-        let newTabName = ++self.tabIndex + '';
-        this.tongName.push(self.option4);
-        this.activeNameTest = newTabName;
+        self.hodelView = "view";
+        self.dialogAdd = true;
+        console.log("数据1: ", this);
+
       },
       /**
        * 获取项目进度数据
@@ -144,7 +256,7 @@
 
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   div.tongName {
     padding: 8px 12px 0px 12px;
   }
@@ -171,5 +283,12 @@
 
   .el-table__expand-column .cell {
     display: none;
+  }
+  div.elementMadel>input{
+    color: #666 !important;
+  }
+  .app-main{
+    overflow: auto !important;
+    padding-bottom:10% !important;
   }
 </style>
