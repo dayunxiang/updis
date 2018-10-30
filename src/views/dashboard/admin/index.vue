@@ -121,6 +121,10 @@
         <div v-show="infoManager" class="context">
           <div>
             <el-collapse v-model="activeName" accordion>
+              <!--排口 类型
+                       排口编号
+
+              -->
               <!--地块-->
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='地块'">
                 <div>
@@ -129,13 +133,25 @@
                       <span>名称</span><span class="test3">{{data.info.name}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>雨量计</span><span class="test3">{{data.info.raingage}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>排口</span><span class="test3">{{data.info.outlet}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>面积</span><span class="test3">{{data.info.area}}</span>
+                    </li>
+                    <li>
+                      <span>英孚</span><span class="test3">{{data.info.imperv}}</span>
+                    </li>
+                    <li>
+                      <span>宽度</span><span class="test3">{{data.info.Width}}</span>
+                    </li>
+                    <li>
+                      <span>坡度</span><span class="test3">{{data.info.Slope}}</span>
+                    </li>
+                    <li>
+                      <span>CurbLen</span><span class="test3">{{data.info.CurbLen}}</span>
                     </li>
                   </ul>
                 </div>
@@ -148,13 +164,13 @@
                       <span>名称</span><span class="test3">{{data.info.name}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>高程</span><span class="test3">{{data.info.Elevation}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>类型</span><span class="test3">{{data.info.Type}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>阶段</span><span class="test3">{{data.info.Stage}}</span>
                     </li>
                   </ul>
                 </div>
@@ -167,13 +183,34 @@
                       <span>名称</span><span class="test3">{{data.info.name}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>开始节点</span><span class="test3">{{data.info.fromnode}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>终止节点</span><span class="test3">{{data.info.tonode}}</span>
                     </li>
                     <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
+                      <span>长度</span><span class="test3">{{data.info.length}}</span>
+                    </li>
+                    <li>
+                      <span>粗糙度</span><span class="test3">{{data.info.roughness}}</span>
+                    </li>
+                    <li>
+                      <span>入口</span><span class="test3">{{data.info.inoffset}}</span>
+                    </li>
+                    <li>
+                      <span>出口</span><span class="test3">{{data.info.outoffset}}</span>
+                    </li>
+                    <li>
+                      <span>信息流</span><span class="test3">{{data.info.initflow}}</span>
+                    </li>
+                    <li>
+                      <span>最大流量</span><span class="test3">{{data.info.maxflowt}}</span>
+                    </li>
+                    <li>
+                      <span>仰角</span><span class="test3">{{data.info.inelevation}}</span>
+                    </li>
+                    <li>
+                      <span>海拔高度</span><span class="test3">{{data.info.outelevatio}}</span>
                     </li>
                   </ul>
                 </div>
