@@ -34,10 +34,10 @@
     <!--检查井开始-->
     <bm-marker
       v-for="marker in markers"
-      :key = 'marker.id'
+      :key="marker.id"
       :position="marker.geos"
       :icon="{url: 'https://www.easyicon.net//api/resizeApi.php?id=1140684&size=16', size: {width: 16, height: 16}}"
-      />
+    />
     <!--检查井结束-->
     <!--管线开始-->
     <bm-polyline
@@ -60,7 +60,7 @@
     props: ['isHideAllSubcatchments', 'isHideAllConduits', 'isHideAllOutfalls'],
     data() {
       return {
-        projectId:'',
+        projectId: '',
         keyword: '',
         map: {
           center: '深圳光明区'
@@ -137,10 +137,10 @@
       /**
        * 显示/隐藏所有检查井
        */
-      showAllJunctions(){
+      showAllJunctions() {
         this.markers = this.mapData.Junctions
       },
-      hideAllJunctions(){
+      hideAllJunctions() {
 
       },
       // 每个地块点击事件
@@ -155,32 +155,31 @@
       },
       // 请求管线数据 CONDUITS
       getConduitsInfo() {
-        var self =this;
+        var self = this;
         request('shapes',{
-          params:{
-            pageNo:1,
-            pageSize:100000000,
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
             filters: {
               'shape': {
                 'project_id': {
-                  equalTo:self.projectId
+                  equalTo: self.projectId
                 },
-                'category':{
+                'category': {
                   equalTo: 'CONDUITS'
                 }
               }
             }
           }
-        }).then(resp =>{
+        }).then(resp => {
           this.getConduitsSuccess(resp)
         })
-
       },
       getConduitsSuccess(res) {
         var self = this
         var data = res.data;
         var dataArr = []
-        for(var i = 0;i<data.length;i++){
+        for (var i = 0; i < data.length;i++) {
           dataArr[i] = JSON.parse(data[i].properties)
         }
         var conduitsData = dataArr;
@@ -202,23 +201,23 @@
       },
       // 请求地块数据 Subcatchments
       getSubcatchmentsInfo() {
-        var self =this;
-        request('shapes',{
+        var self = this;
+        request('shapes', {
           params:{
-            pageNo:1,
-            pageSize:100000000,
+            pageNo: 1,
+            pageSize: 100000000,
             filters: {
               'shape': {
                 'project_id': {
-                  equalTo:self.projectId
+                  equalTo: self.projectId
                 },
-                'category':{
+                'category': {
                   equalTo: 'SUBCATCHMENTS'
                 }
               }
             }
           }
-        }).then(resp =>{
+        }).then(resp => {
           this.getSubcatchmentsSuccess(resp)
         })
       },
@@ -226,7 +225,7 @@
         var self = this
         var data = res.data;
         var dataArr = []
-        for(var i = 0;i<data.length;i++){
+        for (var i = 0 ; i < data.length; i++) {
           dataArr[i] = JSON.parse(data[i].properties)
         }
         var subcatchmentsData = dataArr;
@@ -253,17 +252,17 @@
       },
       // 请求排口数据
       getOutfalls() {
-        var self =this;
-        request('shapes',{
-          params:{
-            pageNo:1,
-            pageSize:100000000,
+        var self = this;
+        request('shapes', {
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
             filters: {
               'shape': {
                 'project_id': {
-                  equalTo:self.projectId
+                  equalTo: self.projectId
                 },
-                'category':{
+                'category': {
                   equalTo: 'OUTFALLS'
                 }
               }
@@ -277,7 +276,7 @@
         var self = this
         var data = res.data;
         var dataArr = []
-        for(var i = 0;i<data.length;i++){
+        for (var i = 0; i<data.length;i++){
           dataArr[i] = JSON.parse(data[i].properties)
         }
         var outFallsData = dataArr;
@@ -296,17 +295,17 @@
       },
       // 请求检查井数据 JUNCTIONS
       getJunctionsinfo() {
-        var self =this;
+        var self = this;
         request('shapes',{
-          params:{
-            pageNo:1,
-            pageSize:100000000,
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
             filters: {
               'shape': {
                 'project_id': {
-                  equalTo:self.projectId
+                  equalTo: self.projectId
                 },
-                'category':{
+                'category': {
                   equalTo: 'JUNCTIONS'
                 }
               }
@@ -317,10 +316,10 @@
         })
       },
       getJunctionsSuccess(res) {
-        var self = this
+        var self = this;
         var data = res.data;
         var dataArr = []
-        for(var i = 0;i<data.length;i++){
+        for (var i = 0; i < data.length; i++) {
           dataArr[i] = JSON.parse(data[i].properties)
         }
         var JunctionsData = dataArr;
@@ -331,12 +330,10 @@
             type: '检查井',
             info: info,
             geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
-            radius: 50,
-            id: index
+            radius: 50
           }
           self.mapData.Junctions.push(Junction)
         })
-        console.log(this.mapData.Junctions[0].geos);
       }
       // //  请求管网数据
       // getNetWorkInfo() {
@@ -353,4 +350,7 @@
 <style lang="scss" scoped>
   .map{height: 100%;width: 100%;}
 </style>
+
+
+
 
