@@ -139,14 +139,13 @@ export const asyncRouterMap = [
         }
       },
       {
-        path: 'keyboard',
-        component: _import('charts/keyboard'),
-        name: 'keyboard',
+        path: 'figure',
+        component: _import('charts/figure'),
+        name: 'figure',
         meta: {
           title: '项目进度表',
           noCache: true
-        },
-        hidden: true
+        }
       }
     ]
   },
