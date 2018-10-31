@@ -10,6 +10,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      '/geoJson':'http://localhost:5000/',
       '/api': {
         target: 'http://updis.haomo-studio.com/api',
         changeOrigin: true,
@@ -31,7 +32,6 @@ module.exports = {
           '^/v1': '/'
         }
       }
-
     },
 
     // Various Dev Server settings

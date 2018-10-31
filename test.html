@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=GE7gp8pVDopk5W1tdkZYiqoThsrVmIGC"></script>
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <title>改变覆盖物状态</title>
+</head>
+<body>
+<div style="postion:absoulte;left:0;top:0;"><a href="javascript:change();">ChangeColor</a></div>
+<div id="allmap">
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+  // 覆盖物全部放入自定义map，以id作为Key
+  var oVMap = new Map();
+
+  var map = new BMap.Map("allmap");
+  var point = new BMap.Point(116.404, 39.915);
+  map.centerAndZoom(point, 13);
+  var polyline = new BMap.Polyline([
+    new BMap.Point(116.399, 39.910),
+    new BMap.Point(116.405, 39.920),
+    new BMap.Point(116.425, 39.900)
+  ], {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});
+  map.addOverlay(polyline);
+  oVMap.put('polyline-1',polyline);
+
+  var polyline2 = new BMap.Polyline([
+    new BMap.Point(116.499, 39.910),
+    new BMap.Point(116.505, 39.920),
+    new BMap.Point(116.525, 39.900)
+  ], {strokeColor:"red", strokeWeight:6, strokeOpacity:0.5, id:'my_polyine'});
+  map.addOverlay(polyline2);
+  oVMap.put('polyline-2',polyline2);
+
+  var circle = new BMap.Circle(new BMap.Point(116.433, 39.915),500);
+  map.addOverlay(circle);
+  oVMap.put('circle-1',circle);
+
+
+  // 改变覆盖物状态
+  function change(){
+    var temp;
+    // 第一个折线颜色改为绿色
+    temp = oVMap.get('polyline-1');
+    if(temp){
+      temp.setStrokeColor('green');
+    }
+    // 第二个折线颜色改为黄色
+    temp = oVMap.get('polyline-2');
+    if(temp){
+      temp.setStrokeColor('yellow');
+    }
+    // 改变圆的半径
+    temp = oVMap.get('circle-1');
+    if(temp){
+      temp.setRadius(700);
+    }
+  }
+
+  // 自定义map
+  function Map(){
+    this.data = new Array();
+    // 添加
+    this.put = function(_key,_value){
+      if(this.containsKey(_key)){
+        this.remove(_key);
+      }
+      this.data.push({key:_key,value:_value});
+    };
+    // 取值
+    this.get = function(_key){
+      var rtn = null;
+      try
+      {
+        for(var i=0;i<this.data.length;i++){
+          if(this.data[i].key==_key){
+            rtn = this.data[i].value;
+            break;
+          }
+        }
+      }
+      catch (e)
+      {
+        rtn = null;
+      }
+      return rtn;
+    };
+    // 删除
+    this.remove = function(_key){
+      var btn = false;
+      try
+      {
+        for(var i=0;i<this.data.length;i++){
+          if(this.data[i].key == _key){
+            this.data.splice(i,1);
+            return true;
+          }
+        }
+      }
+      catch (e)
+      {
+        btn = false;
+      }
+      return btn;
+
+    };
+    // 判断是否存在key
+    this.containsKey = function(_key) {
+      var bln = false;
+      try {
+        for (i = 0; i < this.data.length; i++) {
+          if (this.data[i].key == _key) {
+            bln = true;
+            break;
+          }
+        }
+      } catch (e) {
+        bln = false;
+      }
+      return bln;
+    }
+    // 清空
+    this.clear = function(){
+      this.data = new Array();
+    }
+  }
+</script>

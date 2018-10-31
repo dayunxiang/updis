@@ -121,98 +121,270 @@
         <div v-show="infoManager" class="context">
           <div>
             <el-collapse v-model="activeName" accordion>
-              <!--排口 类型
-                       排口编号
-
-              -->
               <!--地块-->
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='地块'">
+                <template slot="title">
+                  <span>{{data.type}}</span>
+                  <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.name)" @click.stop>查询下游管道</el-button>
+                  <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.name)" @click.stop >查询下游排口</el-button>
+                </template>
                 <div>
-                  <ul>
-                    <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
-                    </li>
-                    <li>
-                      <span>雨量计</span><span class="test3">{{data.info.raingage}}</span>
-                    </li>
-                    <li>
-                      <span>排口</span><span class="test3">{{data.info.outlet}}</span>
-                    </li>
-                    <li>
-                      <span>面积</span><span class="test3">{{data.info.area}}</span>
-                    </li>
-                    <li>
-                      <span>英孚</span><span class="test3">{{data.info.imperv}}</span>
-                    </li>
-                    <li>
-                      <span>宽度</span><span class="test3">{{data.info.Width}}</span>
-                    </li>
-                    <li>
-                      <span>坡度</span><span class="test3">{{data.info.Slope}}</span>
-                    </li>
-                    <li>
-                      <span>CurbLen</span><span class="test3">{{data.info.CurbLen}}</span>
-                    </li>
-                  </ul>
+                  <el-collapse v-model="activeNames" >
+                    <el-collapse-item title="基本信息" name="1">
+                      <ul>
+                        <li>
+                        <span>地块编号</span><span class="test3">{{data.info.name}}</span>
+                        </li>
+                        <li>
+                        <span>地块坐标</span><span class="test3">{{data.info.raingage}}</span>
+                        </li>
+                        <li>
+                        <span>建设状态</span><span class="test3">{{data.info.outlet}}</span>
+                        </li>
+                        <li>
+                        <span>现状用地类型</span><span class="test3">{{data.info.area}}</span>
+                        </li>
+                        <li>
+                        <span>规划用地类型</span><span class="test3">{{data.info.imperv}}</span>
+                        </li>
+                        <li>
+                        <span>最终排入河道</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                        <li>
+                        <span>所属街道</span><span class="test3">{{data.info.Slope}}</span>
+                        </li>
+                        <li>
+                        <span>所属流域</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>所属排水区</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>雨水主要排入检查井编号</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>污水主要排入检查井编号</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>是否进行海绵城市设计及类型</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>是否进行正本清源改造及类型</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                      </ul>
+                    </el-collapse-item>
+                    <el-collapse-item title="地块内排水类型" name="2">
+                      <ul>
+                        <li>
+                          <span>地块内排水单位名称</span><span class="test3">{{data.info.name}}</span>
+                        </li>
+                        <li>
+                          <span>排水类型</span><span class="test3">{{data.info.raingage}}</span>
+                        </li>
+                        <li>
+                          <span>是否为重点排污单位</span><span class="test3">{{data.info.outlet}}</span>
+                        </li>
+                        <li>
+                          <span>历史排污量</span><span class="test3">{{data.info.area}}</span>
+                        </li>
+                        <li>
+                          <span>主要污染物</span><span class="test3">{{data.info.imperv}}</span>
+                        </li>
+                        <li>
+                          <span>排污许可证编号</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                      </ul>
+                    </el-collapse-item>
+                    <el-collapse-item title="建设信息" name="3">
+                      <ul>
+                        <li>
+                          <span>建设时间</span><span class="test3">{{data.info.name}}</span>
+                        </li>
+                        <li>
+                          <span>竣工单位编号</span><span class="test3">{{data.info.raingage}}</span>
+                        </li>
+                        <li>
+                          <span>建设单位</span><span class="test3">{{data.info.outlet}}</span>
+                        </li>
+                        <li>
+                          <span>联系人</span><span class="test3">{{data.info.area}}</span>
+                        </li>
+                        <li>
+                          <span>电话</span><span class="test3">{{data.info.imperv}}</span>
+                        </li>
+                        <li>
+                          <span>业主单位/联系人/电话</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                        <li>
+                          <span>运维单位/联系人/电话</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                      </ul>
+                    </el-collapse-item>
+                  </el-collapse>
                 </div>
               </el-collapse-item>
               <!--排口-->
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='排口'">
+                <template slot="title">
+                  <span>{{data.type}}</span>
+                  <el-button @click.stop type="primary" round @click="handleSelectConduits(data.info.name)">查询上游管道</el-button>
+                  <el-button type="primary" round  @click="handleSelectSubcatchments(data.info.name)" @click.stop>查询上游地块</el-button>
+                </template>
                 <div>
-                  <ul>
-                    <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
-                    </li>
-                    <li>
-                      <span>高程</span><span class="test3">{{data.info.Elevation}}</span>
-                    </li>
-                    <li>
-                      <span>类型</span><span class="test3">{{data.info.Type}}</span>
-                    </li>
-                    <li>
-                      <span>阶段</span><span class="test3">{{data.info.Stage}}</span>
-                    </li>
-                  </ul>
+                  <el-collapse v-model="activeNames" >
+                    <el-collapse-item title="基本信息" name="1">
+                      <ul>
+                        <li>
+                          <span>排口编号</span><span class="test3">{{data.info.name}}</span>
+                        </li>
+                        <li>
+                          <span>排口坐标</span><span class="test3">{{data.info.raingage}}</span>
+                        </li>
+                        <li>
+                          <span>排入河道水质目标</span><span class="test3">{{data.info.outlet}}</span>
+                        </li>
+                        <li>
+                          <span>上游管道编号</span><span class="test3">{{data.info.area}}</span>
+                        </li>
+                        <li>
+                          <span>上游管道管径</span><span class="test3">{{data.info.imperv}}</span>
+                        </li>
+                        <li>
+                          <span>所属街道</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                        <li>
+                          <span>所属社区</span><span class="test3">{{data.info.Slope}}</span>
+                        </li>
+                        <li>
+                          <span>所属流域</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>所属排水区</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>出流类型</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>排口类型</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>旱季污水量</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>是否进行初期雨水截流</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>是否有检测设备</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                      </ul>
+                    </el-collapse-item>
+                    <el-collapse-item title="建设信息" name="2">
+                      <ul>
+                        <li>
+                          <span>建设时间</span><span class="test3">{{data.info.name}}</span>
+                        </li>
+                        <li>
+                          <span>竣工单位编号</span><span class="test3">{{data.info.raingage}}</span>
+                        </li>
+                        <li>
+                          <span>建设单位</span><span class="test3">{{data.info.outlet}}</span>
+                        </li>
+                        <li>
+                          <span>联系人</span><span class="test3">{{data.info.area}}</span>
+                        </li>
+                        <li>
+                          <span>电话</span><span class="test3">{{data.info.imperv}}</span>
+                        </li>
+                        <li>
+                          <span>业主单位/联系人/电话</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                        <li>
+                          <span>运维单位/联系人/电话</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                      </ul>
+                    </el-collapse-item>
+                  </el-collapse>
                 </div>
               </el-collapse-item>
               <!--管线-->
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='管线'">
                 <div>
-                  <ul>
-                    <li>
-                      <span>名称</span><span class="test3">{{data.info.name}}</span>
-                    </li>
-                    <li>
-                      <span>开始节点</span><span class="test3">{{data.info.fromnode}}</span>
-                    </li>
-                    <li>
-                      <span>终止节点</span><span class="test3">{{data.info.tonode}}</span>
-                    </li>
-                    <li>
-                      <span>长度</span><span class="test3">{{data.info.length}}</span>
-                    </li>
-                    <li>
-                      <span>粗糙度</span><span class="test3">{{data.info.roughness}}</span>
-                    </li>
-                    <li>
-                      <span>入口</span><span class="test3">{{data.info.inoffset}}</span>
-                    </li>
-                    <li>
-                      <span>出口</span><span class="test3">{{data.info.outoffset}}</span>
-                    </li>
-                    <li>
-                      <span>信息流</span><span class="test3">{{data.info.initflow}}</span>
-                    </li>
-                    <li>
-                      <span>最大流量</span><span class="test3">{{data.info.maxflowt}}</span>
-                    </li>
-                    <li>
-                      <span>仰角</span><span class="test3">{{data.info.inelevation}}</span>
-                    </li>
-                    <li>
-                      <span>海拔高度</span><span class="test3">{{data.info.outelevatio}}</span>
-                    </li>
-                  </ul>
+                  <el-collapse v-model="activeNames" >
+                    <el-collapse-item title="基本信息" name="1">
+                      <ul>
+                        <li>
+                          <span>管道编号</span><span class="test3">{{data.info.name}}</span>
+                        </li>
+                        <li>
+                          <span>管道坐标</span><span class="test3">{{data.info.raingage}}</span>
+                        </li>
+                        <li>
+                          <span>所在道路名称</span><span class="test3">{{data.info.outlet}}</span>
+                        </li>
+                        <li>
+                          <span>上游检查井编号</span><span class="test3">{{data.info.area}}</span>
+                        </li>
+                        <li>
+                          <span>下游检查井编号</span><span class="test3">{{data.info.imperv}}</span>
+                        </li>
+                        <li>
+                          <span>上游道路名称</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                        <li>
+                          <span>下游道路名称</span><span class="test3">{{data.info.Slope}}</span>
+                        </li>
+                        <li>
+                          <span>所属街道</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>所属社区</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>所属流域</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>所属排水分区</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>管道类型</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>官长</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>管径</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                        <li>
+                          <span>管材</span><span class="test3">{{data.info.CurbLen}}</span>
+                        </li>
+                      </ul>
+                    </el-collapse-item>
+                    <el-collapse-item title="建设信息" name="2">
+                      <ul>
+                        <li>
+                          <span>建设时间</span><span class="test3">{{data.info.name}}</span>
+                        </li>
+                        <li>
+                          <span>竣工单位编号</span><span class="test3">{{data.info.raingage}}</span>
+                        </li>
+                        <li>
+                          <span>建设单位</span><span class="test3">{{data.info.outlet}}</span>
+                        </li>
+                        <li>
+                          <span>联系人</span><span class="test3">{{data.info.area}}</span>
+                        </li>
+                        <li>
+                          <span>电话</span><span class="test3">{{data.info.imperv}}</span>
+                        </li>
+                        <li>
+                          <span>业主单位/联系人/电话</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                        <li>
+                          <span>运维单位/联系人/电话</span><span class="test3">{{data.info.Width}}</span>
+                        </li>
+                      </ul>
+                    </el-collapse-item>
+                  </el-collapse>
                 </div>
               </el-collapse-item>
             </el-collapse>
@@ -249,6 +421,7 @@
           info:{}
         },
         mapData:{},
+        activeNames: ['1']
       }
     },
     methods: {
@@ -286,8 +459,29 @@
         this.isCollapse = !this.isCollapse
       },
       /**
-       * 获得vuex里的mapData数据
+       * 根据排口查询上游管线
        */
+      handleSelectConduits(outFallName){
+        this.$refs.map.handleSelectConduits(outFallName);
+      },
+      /**
+       *根据排口查上游地块
+       */
+      handleSelectSubcatchments(outFallName){
+        this.$refs.map.handleSelectSubcatchments(outFallName);
+      },
+      /**
+       *根据地块查询下游管道
+       */
+      handleSubcatchmentsSelectConduits(data){
+        this.$refs.map.handleSubcatchmentsSelectConduits(data);
+      },
+      /**
+       * 根据地块查询下游排口
+       */
+      handleSubcatchmentsSelectOutfalls(data) {
+        this.$refs.map.handleSubcatchmentsSelectOutfalls(data);
+      }
     },
     mounted(){
 
