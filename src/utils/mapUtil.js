@@ -55,23 +55,23 @@ export function geojson2cytoscape(geojson) {
  * 获取地块的中心. TODO: 测试
  * @param {*} feature geojson里面对应的feature
  */
-export function getCenterPointOfSubcatchment(feature) {
-  if(feature['geometry']['type'] !== 'Polygon') {
-    console.warn('输入的feature不合法：feature的类型应该为Polygon')
-    return []
-  }
-
-  let coord = feature['geometry']['coordinates'][0]
-  let center = coord.reduce(function (x,y) {
-<<<<<<< HEAD
-    return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
-  }, [0,0])
-=======
-		return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
-	}, [0,0])
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
-  return [center[1], center[0]]
-}
+// export function getCenterPointOfSubcatchment(feature) {
+//   if(feature['geometry']['type'] !== 'Polygon') {
+//     console.warn('输入的feature不合法：feature的类型应该为Polygon')
+//     return []
+//   }
+//
+//   let coord = feature['geometry']['coordinates'][0]
+//   let center = coord.reduce(function (x,y) {
+// <<<<<<< HEAD
+//     return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
+//   }, [0,0])
+// =======
+// 		return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
+// 	}, [0,0])
+// >>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
+//   return [center[1], center[0]]
+// }
 
 
 /**
