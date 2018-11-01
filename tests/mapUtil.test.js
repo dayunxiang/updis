@@ -12,11 +12,7 @@ import {
 
 
 function loadGeoJSON() {
-<<<<<<< HEAD
   let geojsonMap = JSON.parse(fs.readFileSync('/Users/apple/Desktop/文档/项目/深圳城市规划设计院/updis/tests/data.json'))
-=======
-  let geojsonMap = JSON.parse(fs.readFileSync('/Users/haomo/codes/1.working/updis/UpdisWeb/tests/data.json'))
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
 
   let geojson = {
     "type": "FeatureCollection",
@@ -36,17 +32,13 @@ function loadGeoJSON() {
 
 let geojson = loadGeoJSON()
 // console.log(geojson)
-<<<<<<< HEAD
 fs.writeFileSync('/Users/apple/Desktop/文档/项目/深圳城市规划设计院/updis/tests/geojson.json',
-=======
-fs.writeFileSync('/Users/haomo/codes/1.working/updis/UpdisWeb/tests/geojson.json',
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
   JSON.stringify(geojson, null, 2))
 let cy = geojson2cytoscape(geojson)
 
 test("测试GeoJSON转Cytoscape对象", () => {
   console.log('测试开始')
-  console.log('测试结束')
+console.log('测试结束')
 })
 
 
@@ -149,10 +141,6 @@ test("测试查询地块下游管道", () => {
     }
   }
   let conduits = getDescendantConduitsOfSubcatchment(feature, cy)
-<<<<<<< HEAD
-=======
-  // console.log(conduits)
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
 })
 
 test("测试查询地块下游排口", () => {
@@ -307,57 +295,12 @@ test("测试查询地块下游排口", () => {
   }
 
   let outfalls = getDescendantOutfallsOfSubcatchment(feature, cy)
-<<<<<<< HEAD
   console.log(outfalls);
-=======
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
 })
 
 test("测试查询排口上游管道", () => {
   let feature = {
-<<<<<<< HEAD
-      "type": "Feature",
-      "properties": {
-        "name": "WSCLC",
-        "Elevation": "9",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760309343371674,
-          113.91681078161338
-        ]
-      }
-    }
-  let conduits = getAncestorConduitsOfOutfall(feature, cy)
-  console.log(conduits)
-=======
     "type": "Feature",
-    "id": "0",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        100488.642,
-        42747.81
-      ]
-    },
-    "properties": {
-      "name": "HDOUT",
-      "Elevation": "8",
-      "Stage": "NO",
-      "Type": "FREE"
-    }
-  }
-  let conduits = getAncestorConduitsOfOutfall(feature, cy)
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
-})
-
-test("测试查询排口上游地块", () => {
-  let feature = {
-    "type": "Feature",
-<<<<<<< HEAD
     "properties": {
       "name": "WSCLC",
       "Elevation": "9",
@@ -370,28 +313,31 @@ test("测试查询排口上游地块", () => {
         22.760309343371674,
         113.91681078161338
       ]
-=======
-    "id": "0",
+    }
+  }
+  let conduits = getAncestorConduitsOfOutfall(feature, cy)
+  console.log(conduits)
+})
+
+test("测试查询排口上游地块", () => {
+  let feature = {
+    "type": "Feature",
+    "properties": {
+      "name": "WSCLC",
+      "Elevation": "9",
+      "Type": "FREE",
+      "Stage": "NO"
+    },
     "geometry": {
       "type": "Point",
       "coordinates": [
-        100488.642,
-        42747.81
+        22.760309343371674,
+        113.91681078161338
       ]
-    },
-    "properties": {
-      "name": "HDOUT",
-      "Elevation": "8",
-      "Stage": "NO",
-      "Type": "FREE"
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
     }
   }
 
   let subcatchmentNearestNodes = calcAllSubcatchmentNearestNode(geojson, cy)
   let subcatchments = getAncestorSubcatchmentsOfOutfall(feature, geojson, cy, subcatchmentNearestNodes)
-<<<<<<< HEAD
   console.log(geojson);
-=======
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
 })

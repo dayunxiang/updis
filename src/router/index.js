@@ -51,7 +51,7 @@ export const constantRouterMap = [
     path: '/dashboard',
     component: Layout,
     redirect: '/dashboard/index',
-    hidden:true,
+    // hidden:true,
     children: [
       {
         path: 'index',
@@ -143,7 +143,7 @@ export const asyncRouterMap = [
         component: _import('charts/figure'),
         name: 'figure',
         meta: {
-          title: '项目进度表',
+          title: '项目统计分析图',
           noCache: true
         }
       }

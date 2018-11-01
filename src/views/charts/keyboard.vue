@@ -116,7 +116,7 @@
 </template>
 <script>
   import TestData from '@/assets/json/ceshi.json'
-  import Vuex from 'vuex'
+//  import Vuex from 'vuex'
   export default {
     name: 'keyboard',
     data(){
@@ -250,15 +250,6 @@
     top: 8px;
     right: 40px;
     z-index: 1;
-  }
-
-  div.figure {
-    width: 1000px;
-    height: 300px;
-  }
-
-  div.figure > div {
-    padding: 12px;
   }
 
   .el-table__expand-column .cell {

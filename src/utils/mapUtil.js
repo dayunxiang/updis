@@ -12,38 +12,38 @@ export function geojson2cytoscape(geojson) {
   // 增加点
   _.each(geojson['features'], feature => {
     if (feature['geometry']['type'] === 'Point') {
-      elements.push({
-        data: {
-          id: feature['properties']['name'],
-          businessType: feature['businessType'] || 'JUNCTIONS',
-          position: {
-            x: feature['geometry']['coordinates'][1],
-            y: feature['geometry']['coordinates'][0]
-          },
-          properties:  feature
-        }
-      })
-    }
-  })
+    elements.push({
+      data: {
+        id: feature['properties']['name'],
+        businessType: feature['properties']['businessType'] || 'JUNCTIONS',
+        position: {
+          x: feature['geometry']['coordinates'][1],
+          y: feature['geometry']['coordinates'][0]
+        },
+        properties: feature
+      }
+    })
+  }
+})
   // @TODO: 增加线
   _.each(geojson['features'], feature => {
     if (feature['geometry']['type'] === 'LineString') {
-      elements.push({
-        data: {
-          id: feature['properties']['name'],
-          businessType: feature['properties']['businessType'] || 'CONDUITS',
-          source: feature['properties']['fromnode'],
-          target: feature['properties']['tonode'],
-          properties: feature
-        }
-      })
-    }
-    // @TODO: 未来要支持
-    // if (feature['geometry']['type'] === 'MultiLineString') {
-    // }
-    // if (feature['geometry']['type'] === 'MultiPoint') {
-    // }
-  })
+    elements.push({
+      data: {
+        id: feature['properties']['name'],
+        businessType: feature['properties']['businessType'] || 'CONDUITS',
+        source: feature['properties']['fromnode'],
+        target: feature['properties']['tonode'],
+        properties: feature
+      }
+    })
+  }
+  // @TODO: 未来要支持
+  // if (feature['geometry']['type'] === 'MultiLineString') {
+  // }
+  // if (feature['geometry']['type'] === 'MultiPoint') {
+  // }
+})
 
   const cy = cytoscape({
     container: undefined,
@@ -51,9 +51,12 @@ export function geojson2cytoscape(geojson) {
   })
   return cy
 }
+
+
 /**
  * 获取地块的中心. TODO: 测试
  * @param {*} feature geojson里面对应的feature
+ * @param {*} cy cytoscape对象
  */
 export function getCenterPointOfSubcatchment(feature) {
   if(feature['geometry']['type'] !== 'Polygon') {
@@ -61,16 +64,10 @@ export function getCenterPointOfSubcatchment(feature) {
     return []
   }
 
-  let coord = feature['geometry']['coordinates'][0]
-  let center = coord.reduce(function (x,y) {
-<<<<<<< HEAD
+  var center = feature['geometry']['coordinates'][0].reduce(function (x,y) {
     return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
   }, [0,0])
-=======
-		return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
-	}, [0,0])
->>>>>>> 1c6f27d8aafe8a7f1466a56994c4ed2a84f00af7
-  return [center[1], center[0]]
+  return center;
 }
 
 
@@ -99,10 +96,9 @@ export function getNearestNodeOfPoint(point, cy) {
   let nearestNode = null
   let nodeDistance = 0
   for(let i=0;i<cy.nodes().length;i++) {
-    nodeDistance = (point[0]-cy.nodes()[i].data().position.x)**2 + (point[1]-cy.nodes()[i].data().position.y)**2
+    nodeDistance = (point[0]-cy.nodes()[i].position('x'))**2 + (point[1]-cy.nodes()[i].position('y'))**2
     if(nodeDistance < minDistance) {
       nearestNode = cy.nodes()[i]
-      minDistance = nodeDistance
     }
   }
 
@@ -120,11 +116,11 @@ export function getDescendantConduitsOfSubcatchment(feature, cy) {
   }
 
   let subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
-  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy)
+  let nearestJunctionNode = getNearestNodeOfPoint(subcatchmentCenterPoint, cy)
 
-  return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().edges(), edge => {
-    return edge.data()
-  })
+  return _.map(nearestJunctionNode.successors().edges(), edge => {
+      return edge.data()
+    })
 }
 
 /**
@@ -147,11 +143,11 @@ export function getDescendantOutfallsOfSubcatchment(feature, cy) {
   }
 
   let subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
-  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy)
+  let nearestJunctionNode = getNearestNodeOfPoint(subcatchmentCenterPoint, cy)
 
-  return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().nodes('[businessType="OUTFALLS"]'), node => {
-    return node.data()
-  })
+  return _.map(nearestJunctionNode.successors().nodes('[businessType="OUTFALLS"]'), node => {
+      return node.data()
+    })
 }
 
 /**
@@ -166,45 +162,28 @@ export function getAncestorConduitsOfOutfall(feature, cy) {
   let outfallNode = cy.nodes(`[id="${feature.properties.name}"]`)
 
   return _.map(outfallNode.predecessors().edges(), edge => {
-    return edge.data()
-  })
+      return edge.data()
+    })
 }
 
 
 /**
- * 计算得到所有地块最近点的字典.
+ * 计算得到所有地块最近点的字典. TODO: 还需要测试
  * @param geojson
  * @param cy
  */
 export function calcAllSubcatchmentNearestNode(geojson, cy) {
   let allSubcatchments = _.reject(geojson['features'], feature => {
-    return feature['geometry']['type'] !== 'Polygon'
-  })
+      return feature['geometry']['type'] !== 'Polygon'
+    })
 
   let map = {}
   _.each(allSubcatchments, subcatchment => {
     let centerPoint = getCenterPointOfSubcatchment(subcatchment)
-    map[subcatchment['properties']['name']] = getNearestNodeOfPoint(centerPoint, cy)['id']
+    map[subcatchment['properties']['name']] = getNearestNodeOfPoint(centerPoint, cy)['properties']['name']
   })
 
   return map
-}
-
-
-/**
- * 根据名称查找geojson的feature
- * @param name
- * @param geojson
- */
-export function findFeatureByName(name, geojson) {
-  let ret = null
-  _.each(geojson['features'], feature => {
-    if(feature['properties']['name'] === name) {
-      ret = feature
-      return 0
-    }
-  })
-  return ret
 }
 
 
@@ -213,26 +192,18 @@ export function findFeatureByName(name, geojson) {
  * @param {*} outfallFeature
  * @param {*} geojson
  * @param {*} cy
- * @param {*} subcatchmentNearestNodes
+ * @param {*} nodeSubcatchmentMap
  */
-export function getAncestorSubcatchmentsOfOutfall(outfallFeature, geojson, cy, subcatchmentNearestNodes) {
-  if(outfallFeature['geometry']['type'] !== 'Point') {
+export function getAncestorSubcatchmentsOfOutfall(outfallFeature, geojson, cy, nodeSubcatchmentMap) {
+  if(feature['geometry']['type'] !== 'Point') {
     console.warn('输入的feature不合法：feature的类型应该为Point')
     return []
   }
 
-  let outfallNode = cy.nodes(`[id="${outfallFeature.properties.name}"]`)
+  let outfallNode = cy.nodes(`[id="${feature.properties.name}"]`)
 
   // 得到排水口所有上游的检查井
   let allPredecessorNodes = outfallNode.predecessors().nodes()
 
-  // 根据检查井得到对应的地块
-  let ancestorSubcatchmentFeatures = []
-  for(let subcatchmentName in subcatchmentNearestNodes) {
-    if(allPredecessorNodes.filter(`[id="${subcatchmentNearestNodes[subcatchmentName]}"]`).length) {
-      ancestorSubcatchmentFeatures.push(findFeatureByName(subcatchmentName, geojson))
-    }
-  }
-
-  return ancestorSubcatchmentFeatures
+  // TODO: 根据检查井得到对应的地块
 }
