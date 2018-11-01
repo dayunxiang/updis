@@ -102,12 +102,12 @@
           Junctions:[]
         },
         polylinePaths: [],
-        selectPolylinePaths:[],
-        selectCirclePaths:[],
         polygonPaths: [],
         circlePaths: [],
         markers: [],
         geoJson: {},
+        selectPolylinePaths:[],
+        selectCirclePaths:[],
 
         isActive:false
       }
@@ -603,7 +603,7 @@
         })
       },
       SubcatchmentsSelectOutfalls(feature){
-        console.log(this.selectCirclePaths)
+        console.log(this.circlePaths)
         var self = this;
         var cy = geojson2cytoscape(this.geoJson);
         var  subcatchmentToOutfall= getDescendantOutfallsOfSubcatchment(feature,cy);

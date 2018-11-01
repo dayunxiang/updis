@@ -6,7 +6,7 @@ const apiRouter = jsonServer.router('datas/geoJson.json')
 const middlewares = jsonServer.defaults();
 apiServer.use(middlewares)
 apiServer.use('/geoJson',apiRouter)
-apiServer.listen(4020, () => {                 //监听端口
+apiServer.listen(5050, () => {                 //监听端口
   console.log('JSON Server is running')
 })
 //end
