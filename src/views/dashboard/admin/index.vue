@@ -125,8 +125,8 @@
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='地块'">
                 <template slot="title">
                   <span>{{data.type}}</span>
-                  <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.name)" @click.stop>查询下游管道</el-button>
-                  <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.name)" @click.stop >查询下游排口</el-button>
+                  <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查询下游管道</el-button>
+                  <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查询下游排口</el-button>
                 </template>
                 <div>
                   <el-collapse v-model="activeNames" >
@@ -400,7 +400,7 @@
 </template>
 
 <script>
-  import BaiduMap from './components/map/baidu/baidu'
+  import BaiduMap from './components/map/baidu'
 
   export default {
     name: 'Home',

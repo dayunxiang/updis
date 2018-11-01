@@ -1,22159 +1,10 @@
-{
-  "type": "FeatureCollection",
+var JS = {
   "features": [
     {
       "type": "Feature",
       "properties": {
-        "name": "JWG1",
-        "fromnode": "RP24",
-        "tonode": "RP25",
-        "length": "201.17",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.52",
-        "outelevatio": "10.34"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759527296517213,
-            113.91928615145996
-          ],
-          [
-            22.75950643864815,
-            113.9173283069159
-          ]
-        ]
-      },
-      "id": "0",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG10",
-        "fromnode": "RP15",
-        "tonode": "RP16",
-        "length": "60.04",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.5",
-        "outelevatio": "11.27"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757627491512775,
-            113.92647255629674
-          ],
-          [
-            22.757738235036516,
-            113.9259012701829
-          ]
-        ]
-      },
-      "id": "1",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG11",
-        "fromnode": "LP13",
-        "tonode": "RP15",
-        "length": "142.29",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.0",
-        "outelevatio": "11.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757921774231185,
-            113.92781991076392
-          ],
-          [
-            22.757627491512775,
-            113.92647255629674
-          ]
-        ]
-      },
-      "id": "2",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG1-1",
-        "fromnode": "RP25",
-        "tonode": "WSCLC",
-        "length": "104.59",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.34",
-        "outelevatio": "9.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75950643864815,
-            113.9173283069159
-          ],
-          [
-            22.760309343371674,
-            113.91681078161338
-          ]
-        ]
-      },
-      "id": "3",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG12",
-        "fromnode": "LP7",
-        "tonode": "LP13",
-        "length": "674.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.06",
-        "outelevatio": "12.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7558784418698,
-            113.93293588443355
-          ],
-          [
-            22.756071056329002,
-            113.93258919389172
-          ],
-          [
-            22.756748055415297,
-            113.93250519248392
-          ],
-          [
-            22.758161999437306,
-            113.93129728551293
-          ],
-          [
-            22.757921774231185,
-            113.92781991076392
-          ]
-        ]
-      },
-      "id": "4",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG13",
-        "fromnode": "LP6",
-        "tonode": "RP9-1",
-        "length": "22.93",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.16",
-        "outelevatio": "14.1"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755757346255233,
-            113.93316299902551
-          ],
-          [
-            22.755859611368514,
-            113.93296983410602
-          ]
-        ]
-      },
-      "id": "5",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG14",
-        "fromnode": "RP8",
-        "tonode": "RP9",
-        "length": "29.95",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.23",
-        "outelevatio": "14.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755737592058157,
-            113.93348399989301
-          ],
-          [
-            22.75575365791554,
-            113.93319330466424
-          ]
-        ]
-      },
-      "id": "6",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG15",
-        "fromnode": "RP9-1",
-        "tonode": "LP7",
-        "length": "4.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.1",
-        "outelevatio": "14.06"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755859611368514,
-            113.93296983410602
-          ],
-          [
-            22.7558784418698,
-            113.93293588443355
-          ]
-        ]
-      },
-      "id": "7",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG16",
-        "fromnode": "RP9",
-        "tonode": "LP6",
-        "length": "3.14",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.2",
-        "outelevatio": "14.16"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75575365791554,
-            113.93319330466424
-          ],
-          [
-            22.755757346255233,
-            113.93316299902551
-          ]
-        ]
-      },
-      "id": "8",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG17",
-        "fromnode": "LP5-2",
-        "tonode": "RP8",
-        "length": "426.07",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.2",
-        "outelevatio": "14.23"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754154576498905,
-            113.9372138549395
-          ],
-          [
-            22.754133968542313,
-            113.93696632004672
-          ],
-          [
-            22.755737592058157,
-            113.93348399989301
-          ]
-        ]
-      },
-      "id": "9",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG18",
-        "fromnode": "RP7-1",
-        "tonode": "LP5-2",
-        "length": "22.02",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.35",
-        "outelevatio": "15.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754158006248716,
-            113.93742791683921
-          ],
-          [
-            22.754154576498905,
-            113.9372138549395
-          ]
-        ]
-      },
-      "id": "10",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG19",
-        "fromnode": "RP7-1",
-        "tonode": "LP5-1",
-        "length": "30.63",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.35",
-        "outelevatio": "16.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754158006248716,
-            113.93742791683921
-          ],
-          [
-            22.754160848314054,
-            113.93772572934292
-          ]
-        ]
-      },
-      "id": "11",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG2",
-        "fromnode": "RP22",
-        "tonode": "RP24",
-        "length": "134.31",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.6",
-        "outelevatio": "10.52"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759067641865062,
-            113.92049236719205
-          ],
-          [
-            22.759527296517213,
-            113.91928615145996
-          ]
-        ]
-      },
-      "id": "12",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG20",
-        "fromnode": "LP5",
-        "tonode": "LP5-1",
-        "length": "298.97",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.39",
-        "outelevatio": "16.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752274567207753,
-            113.9397914387884
-          ],
-          [
-            22.754160848314054,
-            113.93772572934292
-          ]
-        ]
-      },
-      "id": "13",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG21",
-        "fromnode": "LP5",
-        "tonode": "RP6",
-        "length": "9.04",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.39",
-        "outelevatio": "17.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752274567207753,
-            113.9397914387884
-          ],
-          [
-            22.752226420568718,
-            113.93986221310297
-          ]
-        ]
-      },
-      "id": "14",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG22",
-        "fromnode": "RP5",
-        "tonode": "RP6",
-        "length": "321.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.9",
-        "outelevatio": "17.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750445930608507,
-            113.94232123812779
-          ],
-          [
-            22.752226420568718,
-            113.93986221310297
-          ]
-        ]
-      },
-      "id": "15",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG22-1",
-        "fromnode": "RP4",
-        "tonode": "RP5",
-        "length": "18.09",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.1",
-        "outelevatio": "17.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75034113842239,
-            113.94245577327288
-          ],
-          [
-            22.750445930608507,
-            113.94232123812779
-          ]
-        ]
-      },
-      "id": "16",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG23",
-        "fromnode": "LP4",
-        "tonode": "RP4",
-        "length": "38.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.55",
-        "outelevatio": "18.1"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750144507116666,
-            113.94276868926886
-          ],
-          [
-            22.75034113842239,
-            113.94245577327288
-          ]
-        ]
-      },
-      "id": "17",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG24",
-        "fromnode": "LP3",
-        "tonode": "LP4",
-        "length": "168.72",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.41",
-        "outelevatio": "18.55"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749424718948628,
-            113.94421298360056
-          ],
-          [
-            22.750144507116666,
-            113.94276868926886
-          ]
-        ]
-      },
-      "id": "18",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG25",
-        "fromnode": "LP2",
-        "tonode": "LP3",
-        "length": "170.54",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.2",
-        "outelevatio": "20.41"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74879224591113,
-            113.9457238477684
-          ],
-          [
-            22.749424718948628,
-            113.94421298360056
-          ]
-        ]
-      },
-      "id": "19",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG26",
-        "fromnode": "LP1-1",
-        "tonode": "LP2",
-        "length": "6.86",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.27",
-        "outelevatio": "21.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748769600814935,
-            113.94581333749949
-          ],
-          [
-            22.74879224591113,
-            113.9457238477684
-          ]
-        ]
-      },
-      "id": "20",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG3",
-        "fromnode": "RP21",
-        "tonode": "RP22",
-        "length": "85.70",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.7",
-        "outelevatio": "10.6"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758587881037087,
-            113.92114117237378
-          ],
-          [
-            22.759067641865062,
-            113.92049236719205
-          ]
-        ]
-      },
-      "id": "21",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG4",
-        "fromnode": "RP20",
-        "tonode": "RP21",
-        "length": "60.44",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.8",
-        "outelevatio": "10.7"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75819108882942,
-            113.92153941500743
-          ],
-          [
-            22.758587881037087,
-            113.92114117237378
-          ]
-        ]
-      },
-      "id": "22",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG5",
-        "fromnode": "LP16",
-        "tonode": "RP20",
-        "length": "119.81",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.78",
-        "outelevatio": "10.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757980643892072,
-            113.92268203693685
-          ],
-          [
-            22.75819108882942,
-            113.92153941500743
-          ]
-        ]
-      },
-      "id": "23",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG6",
-        "fromnode": "LP15",
-        "tonode": "RP19-1",
-        "length": "45.00",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.92",
-        "outelevatio": "10.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757990611360857,
-            113.92329882996188
-          ],
-          [
-            22.757996810115607,
-            113.92290382836714
-          ]
-        ]
-      },
-      "id": "24",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG7",
-        "fromnode": "RP19-1",
-        "tonode": "LP16",
-        "length": "18.40",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.8",
-        "outelevatio": "10.78"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757996810115607,
-            113.92290382836714
-          ],
-          [
-            22.757980643892072,
-            113.92268203693685
-          ]
-        ]
-      },
-      "id": "25",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG8",
-        "fromnode": "RP17",
-        "tonode": "LP15",
-        "length": "252.71",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.1",
-        "outelevatio": "10.92"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7577793469506,
-            113.92574635861068
-          ],
-          [
-            22.757990611360857,
-            113.92329882996188
-          ]
-        ]
-      },
-      "id": "26",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG9",
-        "fromnode": "RP16",
-        "tonode": "RP17",
-        "length": "16.58",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.27",
-        "outelevatio": "11.1"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757738235036516,
-            113.9259012701829
-          ],
-          [
-            22.7577793469506,
-            113.92574635861068
-          ]
-        ]
-      },
-      "id": "27",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK1",
-        "fromnode": "Y-618",
-        "tonode": "RP8",
-        "length": "291.93",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.0",
-        "outelevatio": "14.23"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756478831212856,
-            113.9362080138442
-          ],
-          [
-            22.755737592058157,
-            113.93348399989301
-          ]
-        ]
-      },
-      "id": "28",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK10",
-        "fromnode": "Y-35",
-        "tonode": "RP6",
-        "length": "17.42",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "1.8",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.604",
-        "outelevatio": "19.3"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752373397359076,
-            113.93992076080318
-          ],
-          [
-            22.752226420568718,
-            113.93986221310297
-          ]
-        ]
-      },
-      "id": "29",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK11",
-        "fromnode": "Y-3",
-        "tonode": "LP16",
-        "length": "17.86",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.4",
-        "outelevatio": "10.78"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75790383105544,
-            113.92283427437927
-          ],
-          [
-            22.757980643892072,
-            113.92268203693685
-          ]
-        ]
-      },
-      "id": "30",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK12",
-        "fromnode": "Y-5",
-        "tonode": "LP15",
-        "length": "12.55",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.5",
-        "outelevatio": "10.92"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75789885228772,
-            113.92336899410773
-          ],
-          [
-            22.757990611360857,
-            113.92329882996188
-          ]
-        ]
-      },
-      "id": "31",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK14",
-        "fromnode": "Y-111",
-        "tonode": "HD65",
-        "length": "30.21",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.999",
-        "outelevatio": "30.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750745843714988,
-            113.95301198516486
-          ],
-          [
-            22.7505159716035,
-            113.95298081782984
-          ]
-        ]
-      },
-      "id": "32",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK15",
-        "fromnode": "Y-113",
-        "tonode": "LP4",
-        "length": "25.59",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "1",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.351",
-        "outelevatio": "19.55"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749981309763577,
-            113.94259286404115
-          ],
-          [
-            22.750144507116666,
-            113.94276868926886
-          ]
-        ]
-      },
-      "id": "33",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK16",
-        "fromnode": "Y-115",
-        "tonode": "RP5",
-        "length": "49.79",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0.8",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.773",
-        "outelevatio": "18.7"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750287563443734,
-            113.94277406031676
-          ],
-          [
-            22.750445930608507,
-            113.94232123812779
-          ]
-        ]
-      },
-      "id": "34",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK16-1",
-        "fromnode": "Y-115",
-        "tonode": "RP4",
-        "length": "33.27",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0.8",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.773",
-        "outelevatio": "18.900000000000002"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750287563443734,
-            113.94277406031676
-          ],
-          [
-            22.75034113842239,
-            113.94245577327288
-          ]
-        ]
-      },
-      "id": "35",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK17",
-        "fromnode": "Y-117",
-        "tonode": "RP2",
-        "length": "2.51",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.458",
-        "outelevatio": "22.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748821300798753,
-            113.94591895361874
-          ],
-          [
-            22.7487694733374,
-            113.94589761455308
-          ]
-        ]
-      },
-      "id": "36",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK19",
-        "fromnode": "Y-121",
-        "tonode": "LP1-1",
-        "length": "14.77",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.273",
-        "outelevatio": "21.27"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74865919619183,
-            113.94575897762499
-          ],
-          [
-            22.748769600814935,
-            113.94581333749949
-          ]
-        ]
-      },
-      "id": "37",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK2",
-        "fromnode": "Y-17",
-        "tonode": "RP9-1",
-        "length": "21.75",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.0",
-        "outelevatio": "14.1"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7562268302781,
-            113.93300789942668
-          ],
-          [
-            22.755859611368514,
-            113.93296983410602
-          ]
-        ]
-      },
-      "id": "38",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK20",
-        "fromnode": "Y-123",
-        "tonode": "HD57",
-        "length": "25.27",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.481",
-        "outelevatio": "22.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74788382649758,
-            113.94956336599121
-          ],
-          [
-            22.747983582496786,
-            113.94930575092143
-          ]
-        ]
-      },
-      "id": "39",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK21",
-        "fromnode": "Y-125",
-        "tonode": "HD58",
-        "length": "12.54",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.303",
-        "outelevatio": "23.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74805828977287,
-            113.94969755452256
-          ],
-          [
-            22.748078243481753,
-            113.94957753549201
-          ]
-        ]
-      },
-      "id": "40",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK22",
-        "fromnode": "Y-127",
-        "tonode": "HD58-1",
-        "length": "15.56",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.96",
-        "outelevatio": "25.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74830653066979,
-            113.95027206437015
-          ],
-          [
-            22.748359918917263,
-            113.95025658351636
-          ]
-        ]
-      },
-      "id": "41",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK23",
-        "fromnode": "Y-129",
-        "tonode": "HD58-2",
-        "length": "15.80",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.298",
-        "outelevatio": "24.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748448230854375,
-            113.95004561885675
-          ],
-          [
-            22.74831249921043,
-            113.94999880102881
-          ]
-        ]
-      },
-      "id": "42",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK24",
-        "fromnode": "Y-131",
-        "tonode": "HD59",
-        "length": "25.85",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.07",
-        "outelevatio": "26.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74870949284467,
-            113.95040578793267
-          ],
-          [
-            22.74855146814271,
-            113.95059043454748
-          ]
-        ]
-      },
-      "id": "43",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK25",
-        "fromnode": "Y-13",
-        "tonode": "LP13",
-        "length": "23.55",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.4",
-        "outelevatio": "12.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757713133856708,
-            113.92785076239812
-          ],
-          [
-            22.757921774231185,
-            113.92781991076392
-          ]
-        ]
-      },
-      "id": "44",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK26",
-        "fromnode": "Y-15",
-        "tonode": "HD16",
-        "length": "55.07",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.64",
-        "outelevatio": "10.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75787033482111,
-            113.92968440959108
-          ],
-          [
-            22.758188075117715,
-            113.92956290383971
-          ]
-        ]
-      },
-      "id": "45",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK3",
-        "fromnode": "Y-21",
-        "tonode": "RP9",
-        "length": "21.90",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.5",
-        "outelevatio": "14.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755939348581347,
-            113.93326226122339
-          ],
-          [
-            22.75575365791554,
-            113.93319330466424
-          ]
-        ]
-      },
-      "id": "46",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK4",
-        "fromnode": "Y-23",
-        "tonode": "LP7",
-        "length": "9.92",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "1.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.76",
-        "outelevatio": "15.26"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75580355277704,
-            113.9328838766854
-          ],
-          [
-            22.7558784418698,
-            113.93293588443355
-          ]
-        ]
-      },
-      "id": "47",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK5",
-        "fromnode": "Y-25",
-        "tonode": "LP6",
-        "length": "10.53",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "1.5",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.72",
-        "outelevatio": "15.66"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755684881947637,
-            113.93309731363676
-          ],
-          [
-            22.755757346255233,
-            113.93316299902551
-          ]
-        ]
-      },
-      "id": "48",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK6",
-        "fromnode": "Y-27",
-        "tonode": "LP5-2",
-        "length": "27.62",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0.8",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.605",
-        "outelevatio": "16.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75401858434649,
-            113.9371879474083
-          ],
-          [
-            22.754154576498905,
-            113.9372138549395
-          ]
-        ]
-      },
-      "id": "49",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK7",
-        "fromnode": "Y-29",
-        "tonode": "LP5-1",
-        "length": "54.80",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.441",
-        "outelevatio": "18.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75404293219294,
-            113.93746049924943
-          ],
-          [
-            22.754160848314054,
-            113.93772572934292
-          ]
-        ]
-      },
-      "id": "50",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK8",
-        "fromnode": "Y-31",
-        "tonode": "RP7-1",
-        "length": "48.38",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.793",
-        "outelevatio": "18.35"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754350191653,
-            113.93759142401251
-          ],
-          [
-            22.754158006248716,
-            113.93742791683921
-          ]
-        ]
-      },
-      "id": "51",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PK9",
-        "fromnode": "Y-33",
-        "tonode": "LP5",
-        "length": "23.83",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "1.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.4",
-        "outelevatio": "18.59"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752211322719035,
-            113.93973265304331
-          ],
-          [
-            22.752274567207753,
-            113.9397914387884
-          ]
-        ]
-      },
-      "id": "52",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-103-Y-104",
-        "fromnode": "Y-104",
-        "tonode": "Y-103",
-        "length": "20.79",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.274",
-        "outelevatio": "43.6"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74708542673005,
-            113.96062636475595
-          ],
-          [
-            22.74706043749803,
-            113.96082680062162
-          ]
-        ]
-      },
-      "id": "53",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-104-Y-212",
-        "fromnode": "Y-212",
-        "tonode": "Y-104",
-        "length": "31.26",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.83",
-        "outelevatio": "44.674"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747114479889955,
-            113.96032397152929
-          ],
-          [
-            22.74708542673005,
-            113.96062636475595
-          ]
-        ]
-      },
-      "id": "54",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-105-Y-106",
-        "fromnode": "Y-106",
-        "tonode": "Y-105",
-        "length": "34.51",
-        "roughness": "0.014",
-        "inoffset": "0.2",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.14",
-        "outelevatio": "41.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749035564982133,
-            113.9605260254716
-          ],
-          [
-            22.749013490758376,
-            113.96086082910536
-          ]
-        ]
-      },
-      "id": "55",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-106-Y-211",
-        "fromnode": "Y-211",
-        "tonode": "Y-106",
-        "length": "156.30",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.56",
-        "outelevatio": "43.94"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747630955459684,
-            113.96039925323348
-          ],
-          [
-            22.749035564982133,
-            113.9605260254716
-          ]
-        ]
-      },
-      "id": "56",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-107-Y-108",
-        "fromnode": "Y-108",
-        "tonode": "Y-107",
-        "length": "40.01",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "41.745",
-        "outelevatio": "39.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750989220074985,
-            113.9582248475827
-          ],
-          [
-            22.75125515882807,
-            113.9584872136011
-          ]
-        ]
-      },
-      "id": "57",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-108-Y-210",
-        "fromnode": "Y-210",
-        "tonode": "Y-108",
-        "length": "166.69",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "42.16",
-        "outelevatio": "41.745"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75001468887527,
-            113.95945642031941
-          ],
-          [
-            22.750989220074985,
-            113.9582248475827
-          ]
-        ]
-      },
-      "id": "58",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-109-Y-110",
-        "fromnode": "Y-110",
-        "tonode": "Y-109",
-        "length": "140.14",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "39.807",
-        "outelevatio": "37.767"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751195102835904,
-            113.95794945997302
-          ],
-          [
-            22.75200656890555,
-            113.95690773380295
-          ]
-        ]
-      },
-      "id": "59",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-110-Y-209",
-        "fromnode": "Y-209",
-        "tonode": "Y-110",
-        "length": "244.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.05",
-        "outelevatio": "39.807"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74899703807002,
-            113.9577565353349
-          ],
-          [
-            22.751195102835904,
-            113.95794945997302
-          ]
-        ]
-      },
-      "id": "60",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-111-Y-112",
-        "fromnode": "Y-112",
-        "tonode": "Y-111",
-        "length": "127.97",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.4",
-        "outelevatio": "36.999"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75189458936543,
-            113.95293906418873
-          ],
-          [
-            22.750745843714988,
-            113.95301198516486
-          ]
-        ]
-      },
-      "id": "61",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-112-Y-208",
-        "fromnode": "Y-208",
-        "tonode": "Y-112",
-        "length": "177.78",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.391",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.65",
-        "outelevatio": "37.791"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751832247784375,
-            113.95466649155357
-          ],
-          [
-            22.75189458936543,
-            113.95293906418873
-          ]
-        ]
-      },
-      "id": "62",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-112-Y-603",
-        "fromnode": "Y-603",
-        "tonode": "Y-112",
-        "length": "301.35",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.797",
-        "outelevatio": "37.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75459768040473,
-            113.95306014884589
-          ],
-          [
-            22.75189458936543,
-            113.95293906418873
-          ]
-        ]
-      },
-      "id": "63",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-113-Y-114",
-        "fromnode": "Y-114",
-        "tonode": "Y-113",
-        "length": "158.38",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.51",
-        "outelevatio": "21.351"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74898091226694,
-            113.94149421342874
-          ],
-          [
-            22.749981309763577,
-            113.94259286404115
-          ]
-        ]
-      },
-      "id": "64",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-115-Y-116",
-        "fromnode": "Y-116",
-        "tonode": "Y-115",
-        "length": "10.33",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.804",
-        "outelevatio": "18.773"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750361495670674,
-            113.94283507359373
-          ],
-          [
-            22.750287563443734,
-            113.94277406031676
-          ]
-        ]
-      },
-      "id": "65",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-116-Y-205",
-        "fromnode": "Y-205",
-        "tonode": "Y-116",
-        "length": "161.28",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.792",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.837",
-        "outelevatio": "20.596"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751229993236528,
-            113.94157949912426
-          ],
-          [
-            22.750361495670674,
-            113.94283507359373
-          ]
-        ]
-      },
-      "id": "66",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-116-Y-206",
-        "fromnode": "Y-206",
-        "tonode": "Y-116",
-        "length": "31.62",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.299",
-        "outelevatio": "19.203999999999997"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750590387927364,
-            113.94301800213161
-          ],
-          [
-            22.750361495670674,
-            113.94283507359373
-          ]
-        ]
-      },
-      "id": "67",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-116-Y-207",
-        "fromnode": "Y-207",
-        "tonode": "Y-116",
-        "length": "320.22",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.9",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.29",
-        "outelevatio": "20.703999999999997"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74908192225019,
-            113.9456246084596
-          ],
-          [
-            22.750361495670674,
-            113.94283507359373
-          ]
-        ]
-      },
-      "id": "68",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-117-Y-118",
-        "fromnode": "Y-118",
-        "tonode": "Y-117",
-        "length": "18.04",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.535",
-        "outelevatio": "22.458"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748971277299056,
-            113.94598681741392
-          ],
-          [
-            22.748821300798753,
-            113.94591895361874
-          ]
-        ]
-      },
-      "id": "69",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-118-Y-203",
-        "fromnode": "Y-203",
-        "tonode": "Y-118",
-        "length": "30.49",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.842",
-        "outelevatio": "22.535"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749223764176477,
-            113.94610378006428
-          ],
-          [
-            22.748971277299056,
-            113.94598681741392
-          ]
-        ]
-      },
-      "id": "70",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-118-Y-204",
-        "fromnode": "Y-204",
-        "tonode": "Y-118",
-        "length": "336.44",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.225",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "28.75",
-        "outelevatio": "22.76"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748207789051598,
-            113.94915245323607
-          ],
-          [
-            22.748971277299056,
-            113.94598681741392
-          ]
-        ]
-      },
-      "id": "71",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-120-Y-202",
-        "fromnode": "Y-202",
-        "tonode": "Y-120",
-        "length": "134.22",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.277",
-        "outelevatio": "22.641"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75058259544836,
-            113.94645324564303
-          ],
-          [
-            22.74940932553693,
-            113.9461394360848
-          ]
-        ]
-      },
-      "id": "72",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-120-Y-203",
-        "fromnode": "Y-120",
-        "tonode": "Y-203",
-        "length": "20.92",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.641",
-        "outelevatio": "22.842"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74940932553693,
-            113.9461394360848
-          ],
-          [
-            22.749223764176477,
-            113.94610378006428
-          ]
-        ]
-      },
-      "id": "73",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-121-Y-122",
-        "fromnode": "Y-122",
-        "tonode": "Y-121",
-        "length": "185.95",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.212",
-        "outelevatio": "22.273"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747232596129304,
-            113.94505793731204
-          ],
-          [
-            22.74865919619183,
-            113.94575897762499
-          ]
-        ]
-      },
-      "id": "74",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-122-Y-199",
-        "fromnode": "Y-199",
-        "tonode": "Y-122",
-        "length": "74.04",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.7",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.061",
-        "outelevatio": "24.912"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74662858724832,
-            113.94474927781421
-          ],
-          [
-            22.747232596129304,
-            113.94505793731204
-          ]
-        ]
-      },
-      "id": "75",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-122-Y-200",
-        "fromnode": "Y-200",
-        "tonode": "Y-122",
-        "length": "209.48",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.7",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "28.247",
-        "outelevatio": "24.912"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74675379024263,
-            113.94702829761951
-          ],
-          [
-            22.747232596129304,
-            113.94505793731204
-          ]
-        ]
-      },
-      "id": "76",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-122-Y-201",
-        "fromnode": "Y-201",
-        "tonode": "Y-122",
-        "length": "160.60",
-        "roughness": "0.014",
-        "inoffset": "0.001",
-        "outoffset": "0.406",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.34",
-        "outelevatio": "24.618"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74806824575483,
-            113.94378236863464
-          ],
-          [
-            22.747232596129304,
-            113.94505793731204
-          ]
-        ]
-      },
-      "id": "77",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-123-Y-124",
-        "fromnode": "Y-124",
-        "tonode": "Y-123",
-        "length": "158.76",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "28.546",
-        "outelevatio": "27.481"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.746452064481296,
-            113.94949406811048
-          ],
-          [
-            22.74788382649758,
-            113.94956336599121
-          ]
-        ]
-      },
-      "id": "78",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-124-Y-198",
-        "fromnode": "Y-198",
-        "tonode": "Y-124",
-        "length": "221.56",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.1",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "29.999",
-        "outelevatio": "28.646"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744449952699426,
-            113.94941784451132
-          ],
-          [
-            22.746452064481296,
-            113.94949406811048
-          ]
-        ]
-      },
-      "id": "79",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-125-Y-126",
-        "fromnode": "Y-126",
-        "tonode": "Y-125",
-        "length": "23.11",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.349",
-        "outelevatio": "25.303"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748024501706283,
-            113.94991925698712
-          ],
-          [
-            22.74805828977287,
-            113.94969755452256
-          ]
-        ]
-      },
-      "id": "80",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-126-Y-196",
-        "fromnode": "Y-196",
-        "tonode": "Y-126",
-        "length": "180.68",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.483",
-        "outelevatio": "25.349"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74639550200236,
-            113.94983122336322
-          ],
-          [
-            22.748024501706283,
-            113.94991925698712
-          ]
-        ]
-      },
-      "id": "81",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-126-Y-197",
-        "fromnode": "Y-197",
-        "tonode": "Y-126",
-        "length": "273.98",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.837",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.391",
-        "outelevatio": "26.186"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747630143479004,
-            113.9525490428618
-          ],
-          [
-            22.748024501706283,
-            113.94991925698712
-          ]
-        ]
-      },
-      "id": "82",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-127-Y-128",
-        "fromnode": "Y-128",
-        "tonode": "Y-127",
-        "length": "267.02",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.22",
-        "outelevatio": "26.96"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747894146191598,
-            113.95268654874083
-          ],
-          [
-            22.74830653066979,
-            113.95027206437015
-          ]
-        ]
-      },
-      "id": "83",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-128-Y-195",
-        "fromnode": "Y-195",
-        "tonode": "Y-128",
-        "length": "180.41",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.97",
-        "outelevatio": "32.22"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747379046859226,
-            113.95435055963556
-          ],
-          [
-            22.747894146191598,
-            113.95268654874083
-          ]
-        ]
-      },
-      "id": "84",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-129-Y-130",
-        "fromnode": "Y-130",
-        "tonode": "Y-129",
-        "length": "177.53",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.649",
-        "outelevatio": "27.298"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75002842940701,
-            113.94977869388308
-          ],
-          [
-            22.748448230854375,
-            113.95004561885675
-          ]
-        ]
-      },
-      "id": "85",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-130-Y-194",
-        "fromnode": "Y-194",
-        "tonode": "Y-130",
-        "length": "204.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.2",
-        "outelevatio": "32.849000000000004"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75186384794304,
-            113.94988583111017
-          ],
-          [
-            22.75002842940701,
-            113.94977869388308
-          ]
-        ]
-      },
-      "id": "86",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-131-Y-132",
-        "fromnode": "Y-132",
-        "tonode": "Y-131",
-        "length": "167.85",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.985",
-        "outelevatio": "27.07"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750177660146477,
-            113.9500161451198
-          ],
-          [
-            22.74870949284467,
-            113.95040578793267
-          ]
-        ]
-      },
-      "id": "87",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-132-Y-193",
-        "fromnode": "Y-193",
-        "tonode": "Y-132",
-        "length": "208.01",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.3",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.2",
-        "outelevatio": "32.285"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752044643875646,
-            113.9501492298868
-          ],
-          [
-            22.750177660146477,
-            113.9500161451198
-          ]
-        ]
-      },
-      "id": "88",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-133-Y-134",
-        "fromnode": "Y-134",
-        "tonode": "Y-133",
-        "length": "182.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.218",
-        "outelevatio": "22.985"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761734991512263,
-            113.95176729567709
-          ],
-          [
-            22.763342682196267,
-            113.95206383841199
-          ]
-        ]
-      },
-      "id": "89",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-134-Y-192",
-        "fromnode": "Y-192",
-        "tonode": "Y-134",
-        "length": "182.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.451",
-        "outelevatio": "25.218"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.760125532798025,
-            113.95147111310351
-          ],
-          [
-            22.761734991512263,
-            113.95176729567709
-          ]
-        ]
-      },
-      "id": "90",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-135-Y-136",
-        "fromnode": "Y-136",
-        "tonode": "Y-135",
-        "length": "80.34",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.623",
-        "outelevatio": "23.317"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.762861323152325,
-            113.95175026593687
-          ],
-          [
-            22.763570946299684,
-            113.95185325155619
-          ]
-        ]
-      },
-      "id": "91",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-136-Y-191",
-        "fromnode": "Y-191",
-        "tonode": "Y-136",
-        "length": "329.39",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.3",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.75",
-        "outelevatio": "24.923000000000002"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759964711786534,
-            113.95120934977608
-          ],
-          [
-            22.762861323152325,
-            113.95175026593687
-          ]
-        ]
-      },
-      "id": "92",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-13-Y-14",
-        "fromnode": "Y-14",
-        "tonode": "Y-13",
-        "length": "59.37",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.9",
-        "outelevatio": "12.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75721183050695,
-            113.9280402917919
-          ],
-          [
-            22.757713133856708,
-            113.92785076239812
-          ]
-        ]
-      },
-      "id": "93",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-142-Y-143",
-        "fromnode": "Y-143",
-        "tonode": "Y-142",
-        "length": "172.30",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.308",
-        "outelevatio": "19.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.766788288157944,
-            113.94043962955939
-          ],
-          [
-            22.768092043792503,
-            113.94132287442352
-          ]
-        ]
-      },
-      "id": "94",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-143-Y-187",
-        "fromnode": "Y-187",
-        "tonode": "Y-143",
-        "length": "181.34",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.61",
-        "outelevatio": "21.708"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7654152450542,
-            113.93951022646195
-          ],
-          [
-            22.766788288157944,
-            113.94043962955939
-          ]
-        ]
-      },
-      "id": "95",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-14-Y-260",
-        "fromnode": "Y-260",
-        "tonode": "Y-14",
-        "length": "161.12",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.2",
-        "outelevatio": "13.1"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756512607126115,
-            113.92666805659029
-          ],
-          [
-            22.75721183050695,
-            113.9280402917919
-          ]
-        ]
-      },
-      "id": "96",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-14-Y-261",
-        "fromnode": "Y-261",
-        "tonode": "Y-14",
-        "length": "135.01",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.2",
-        "outelevatio": "13.1"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756071139228105,
-            113.92847142211251
-          ],
-          [
-            22.75721183050695,
-            113.9280402917919
-          ]
-        ]
-      },
-      "id": "97",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-15-Y-16",
-        "fromnode": "Y-16",
-        "tonode": "Y-15",
-        "length": "204.74",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.615",
-        "outelevatio": "13.64"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75622095915003,
-            113.93054774354762
-          ],
-          [
-            22.75787033482111,
-            113.92968440959108
-          ]
-        ]
-      },
-      "id": "98",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-16-Y-259",
-        "fromnode": "Y-259",
-        "tonode": "Y-16",
-        "length": "204.71",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.59",
-        "outelevatio": "15.615"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754572065654965,
-            113.93141694200479
-          ],
-          [
-            22.75622095915003,
-            113.93054774354762
-          ]
-        ]
-      },
-      "id": "99",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-17-Y-18",
-        "fromnode": "Y-18",
-        "tonode": "Y-17",
-        "length": "210.52",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.5",
-        "outelevatio": "15.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757636121193766,
-            113.93413518013331
-          ],
-          [
-            22.7562268302781,
-            113.93300789942668
-          ]
-        ]
-      },
-      "id": "100",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-18-Y-257",
-        "fromnode": "Y-257",
-        "tonode": "Y-18",
-        "length": "148.01",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.557",
-        "outelevatio": "15.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758753660761283,
-            113.93490829598889
-          ],
-          [
-            22.757636121193766,
-            113.93413518013331
-          ]
-        ]
-      },
-      "id": "101",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-18-Y-258",
-        "fromnode": "Y-258",
-        "tonode": "Y-18",
-        "length": "28.67",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.06",
-        "outelevatio": "15.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757437217148937,
-            113.93431072676289
-          ],
-          [
-            22.757636121193766,
-            113.93413518013331
-          ]
-        ]
-      },
-      "id": "102",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-191-Y-341",
-        "fromnode": "Y-341",
-        "tonode": "Y-191",
-        "length": "94.41",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.5",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.037",
-        "outelevatio": "33.25"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76007067498716,
-            113.95029877394649
-          ],
-          [
-            22.759964711786534,
-            113.95120934977608
-          ]
-        ]
-      },
-      "id": "103",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-191-Y-342",
-        "fromnode": "Y-342",
-        "tonode": "Y-191",
-        "length": "25.52",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.5",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.51",
-        "outelevatio": "33.25"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7597399335499,
-            113.95116831766747
-          ],
-          [
-            22.759964711786534,
-            113.95120934977608
-          ]
-        ]
-      },
-      "id": "104",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-192-Y-340",
-        "fromnode": "Y-340",
-        "tonode": "Y-192",
-        "length": "182.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "29.684",
-        "outelevatio": "27.451"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75851418055148,
-            113.9511753188808
-          ],
-          [
-            22.760125532798025,
-            113.95147111310351
-          ]
-        ]
-      },
-      "id": "105",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-193-Y-339",
-        "fromnode": "Y-339",
-        "tonode": "Y-193",
-        "length": "224.63",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.8",
-        "outelevatio": "37.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7519388143522,
-            113.95233043793135
-          ],
-          [
-            22.752044643875646,
-            113.9501492298868
-          ]
-        ]
-      },
-      "id": "106",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-195-Y-338",
-        "fromnode": "Y-338",
-        "tonode": "Y-195",
-        "length": "82.72",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.042",
-        "outelevatio": "34.97"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747140598972553,
-            113.95511275900064
-          ],
-          [
-            22.747379046859226,
-            113.95435055963556
-          ]
-        ]
-      },
-      "id": "107",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-196-Y-337",
-        "fromnode": "Y-337",
-        "tonode": "Y-196",
-        "length": "200.85",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "29.856",
-        "outelevatio": "27.483"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744581569786256,
-            113.949737143069
-          ],
-          [
-            22.74639550200236,
-            113.94983122336322
-          ]
-        ]
-      },
-      "id": "108",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-197-Y-336",
-        "fromnode": "Y-336",
-        "tonode": "Y-197",
-        "length": "19.29",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.759",
-        "outelevatio": "31.391"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74758557440258,
-            113.95273030122848
-          ],
-          [
-            22.747630143479004,
-            113.9525490428618
-          ]
-        ]
-      },
-      "id": "109",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-198-Y-335",
-        "fromnode": "Y-335",
-        "tonode": "Y-198",
-        "length": "296.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.811",
-        "outelevatio": "29.999"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.741776556243643,
-            113.94917584112247
-          ],
-          [
-            22.744449952699426,
-            113.94941784451132
-          ]
-        ]
-      },
-      "id": "110",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-200-Y-334",
-        "fromnode": "Y-334",
-        "tonode": "Y-200",
-        "length": "218.56",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.7",
-        "outelevatio": "28.247"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.746512910216406,
-            113.94913748275322
-          ],
-          [
-            22.74675379024263,
-            113.94702829761951
-          ]
-        ]
-      },
-      "id": "111",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-201-Y-333",
-        "fromnode": "Y-333",
-        "tonode": "Y-201",
-        "length": "133.31",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.756",
-        "outelevatio": "25.339"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74869537332418,
-            113.94267680235431
-          ],
-          [
-            22.74806824575483,
-            113.94378236863464
-          ]
-        ]
-      },
-      "id": "112",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-202-Y-332",
-        "fromnode": "Y-332",
-        "tonode": "Y-202",
-        "length": "181.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.5",
-        "outelevatio": "24.277"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75220919320399,
-            113.94664466483945
-          ],
-          [
-            22.75058259544836,
-            113.94645324564303
-          ]
-        ]
-      },
-      "id": "113",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-203-Y-331",
-        "fromnode": "Y-331",
-        "tonode": "Y-203",
-        "length": "165.16",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.773",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.537",
-        "outelevatio": "23.615"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748854932281702,
-            113.94765937988883
-          ],
-          [
-            22.749223764176477,
-            113.94610378006428
-          ]
-        ]
-      },
-      "id": "114",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-205-Y-330",
-        "fromnode": "Y-330",
-        "tonode": "Y-205",
-        "length": "161.28",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.1",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.26",
-        "outelevatio": "20.937"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7520977844777,
-            113.9403240375672
-          ],
-          [
-            22.751229993236528,
-            113.94157949912426
-          ]
-        ]
-      },
-      "id": "115",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-206-Y-327",
-        "fromnode": "Y-327",
-        "tonode": "Y-206",
-        "length": "160.33",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.539",
-        "outelevatio": "20.299"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751450364842768,
-            113.94176733993356
-          ],
-          [
-            22.750590387927364,
-            113.94301800213161
-          ]
-        ]
-      },
-      "id": "116",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-206-Y-328",
-        "fromnode": "Y-328",
-        "tonode": "Y-206",
-        "length": "231.24",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "3.301",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.2",
-        "outelevatio": "22.6"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752379413817096,
-            113.94416548163964
-          ],
-          [
-            22.750590387927364,
-            113.94301800213161
-          ]
-        ]
-      },
-      "id": "117",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-206-Y-329",
-        "fromnode": "Y-329",
-        "tonode": "Y-206",
-        "length": "310.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.981",
-        "outelevatio": "20.499"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749355697303272,
-            113.94573059095998
-          ],
-          [
-            22.750590387927364,
-            113.94301800213161
-          ]
-        ]
-      },
-      "id": "118",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-209-Y-326",
-        "fromnode": "Y-326",
-        "tonode": "Y-209",
-        "length": "99.90",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.65",
-        "outelevatio": "43.25"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748978117683677,
-            113.95872783248382
-          ],
-          [
-            22.74899703807002,
-            113.9577565353349
-          ]
-        ]
-      },
-      "id": "119",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-210-Y-324",
-        "fromnode": "Y-324",
-        "tonode": "Y-210",
-        "length": "122.42",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.45",
-        "outelevatio": "42.16"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748974442921448,
-            113.95906062972502
-          ],
-          [
-            22.75001468887527,
-            113.95945642031941
-          ]
-        ]
-      },
-      "id": "120",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-210-Y-325",
-        "fromnode": "Y-325",
-        "tonode": "Y-210",
-        "length": "94.13",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "42.929",
-        "outelevatio": "42.16"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74946793267221,
-            113.96015562590979
-          ],
-          [
-            22.75001468887527,
-            113.95945642031941
-          ]
-        ]
-      },
-      "id": "121",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-212-Y-323",
-        "fromnode": "Y-323",
-        "tonode": "Y-212",
-        "length": "144.63",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "45.553",
-        "outelevatio": "44.83"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.745810120193333,
-            113.96024209373499
-          ],
-          [
-            22.747114479889955,
-            113.96032397152929
-          ]
-        ]
-      },
-      "id": "122",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-21-Y-22",
-        "fromnode": "Y-22",
-        "tonode": "Y-21",
-        "length": "145.62",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.791",
-        "outelevatio": "16.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757037311635365,
-            113.93402792079995
-          ],
-          [
-            22.755939348581347,
-            113.93326226122339
-          ]
-        ]
-      },
-      "id": "123",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-23-Y-24",
-        "fromnode": "Y-24",
-        "tonode": "Y-23",
-        "length": "217.84",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.664",
-        "outelevatio": "15.76"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754160151378937,
-            113.9317369776129
-          ],
-          [
-            22.75580355277704,
-            113.9328838766854
-          ]
-        ]
-      },
-      "id": "124",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-248-Y-291",
-        "fromnode": "Y-291",
-        "tonode": "Y-248",
-        "length": "102.09",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.3",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.147",
-        "outelevatio": "21.636"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753746020060635,
-            113.93874248629182
-          ],
-          [
-            22.753070398355533,
-            113.9394121467582
-          ]
-        ]
-      },
-      "id": "125",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-248-Y-36",
-        "fromnode": "Y-248",
-        "tonode": "Y-36",
-        "length": "91.95",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.336",
-        "outelevatio": "21.06"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753070398355533,
-            113.9394121467582
-          ],
-          [
-            22.752470766931502,
-            113.94002621444493
-          ]
-        ]
-      },
-      "id": "126",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-249-Y-289",
-        "fromnode": "Y-289",
-        "tonode": "Y-249",
-        "length": "131.40",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "30.615",
-        "outelevatio": "21.01"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753527622913783,
-            113.94103454456263
-          ],
-          [
-            22.75264186240095,
-            113.9401893706926
-          ]
-        ]
-      },
-      "id": "127",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-249-Y-290",
-        "fromnode": "Y-290",
-        "tonode": "Y-249",
-        "length": "89.26",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.478",
-        "outelevatio": "21.21"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753216673681628,
-            113.93958526629984
-          ],
-          [
-            22.75264186240095,
-            113.9401893706926
-          ]
-        ]
-      },
-      "id": "128",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-249-Y-36",
-        "fromnode": "Y-249",
-        "tonode": "Y-36",
-        "length": "25.37",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.01",
-        "outelevatio": "20.86"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75264186240095,
-            113.9401893706926
-          ],
-          [
-            22.752470766931502,
-            113.94002621444493
-          ]
-        ]
-      },
-      "id": "129",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-24-Y-256",
-        "fromnode": "Y-256",
-        "tonode": "Y-24",
-        "length": "71.17",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.959",
-        "outelevatio": "16.664"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753611583444012,
-            113.93138195589223
-          ],
-          [
-            22.754160151378937,
-            113.9317369776129
-          ]
-        ]
-      },
-      "id": "130",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-250-Y-287",
-        "fromnode": "Y-287",
-        "tonode": "Y-250",
-        "length": "177.29",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.395",
-        "outelevatio": "25.04"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748527139707576,
-            113.9386546279742
-          ],
-          [
-            22.749744169251585,
-            113.93753848003527
-          ]
-        ]
-      },
-      "id": "131",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-250-Y-288",
-        "fromnode": "Y-288",
-        "tonode": "Y-250",
-        "length": "144.43",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.32",
-        "outelevatio": "25.24"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748748527313897,
-            113.93663353175266
-          ],
-          [
-            22.749744169251585,
-            113.93753848003527
-          ]
-        ]
-      },
-      "id": "132",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-250-Y-34",
-        "fromnode": "Y-250",
-        "tonode": "Y-34",
-        "length": "217.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.84",
-        "outelevatio": "21.37"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749744169251585,
-            113.93753848003527
-          ],
-          [
-            22.751241650212343,
-            113.93889908169628
-          ]
-        ]
-      },
-      "id": "133",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-251-Y-285",
-        "fromnode": "Y-285",
-        "tonode": "Y-251",
-        "length": "65.73",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.7",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.941",
-        "outelevatio": "21.679"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754048681409316,
-            113.93830055287769
-          ],
-          [
-            22.754499321922427,
-            113.9378891896327
-          ]
-        ]
-      },
-      "id": "134",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-251-Y-286",
-        "fromnode": "Y-286",
-        "tonode": "Y-251",
-        "length": "38.48",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.094",
-        "outelevatio": "20.979"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75474394627453,
-            113.93815344047545
-          ],
-          [
-            22.754499321922427,
-            113.9378891896327
-          ]
-        ]
-      },
-      "id": "135",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-251-Y-32",
-        "fromnode": "Y-251",
-        "tonode": "Y-32",
-        "length": "12.67",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.979",
-        "outelevatio": "20.87"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754499321922427,
-            113.9378891896327
-          ],
-          [
-            22.754600294222534,
-            113.93783284567601
-          ]
-        ]
-      },
-      "id": "136",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-252-Y-283",
-        "fromnode": "Y-283",
-        "tonode": "Y-252",
-        "length": "147.52",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.57",
-        "outelevatio": "22.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751077749965155,
-            113.93450283476348
-          ],
-          [
-            22.75205793193564,
-            113.93547035879824
-          ]
-        ]
-      },
-      "id": "137",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-252-Y-284",
-        "fromnode": "Y-284",
-        "tonode": "Y-252",
-        "length": "311.33",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.666",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.4",
-        "outelevatio": "22.466"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74996185559903,
-            113.93747613261783
-          ],
-          [
-            22.75205793193564,
-            113.93547035879824
-          ]
-        ]
-      },
-      "id": "138",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-252-Y-30",
-        "fromnode": "Y-252",
-        "tonode": "Y-30",
-        "length": "165.70",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "2.059",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.8",
-        "outelevatio": "21.720000000000002"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75205793193564,
-            113.93547035879824
-          ],
-          [
-            22.753157822422615,
-            113.9365572899781
-          ]
-        ]
-      },
-      "id": "139",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-253-Y-30",
-        "fromnode": "Y-253",
-        "tonode": "Y-30",
-        "length": "303.11",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.971",
-        "outelevatio": "20.061"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751146499292442,
-            113.93854257926846
-          ],
-          [
-            22.753157822422615,
-            113.9365572899781
-          ]
-        ]
-      },
-      "id": "140",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-254-Y-28",
-        "fromnode": "Y-28",
-        "tonode": "Y-254",
-        "length": "172.00",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.888",
-        "outelevatio": "17.404"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753295655864385,
-            113.93650230115827
-          ],
-          [
-            22.752146845783223,
-            113.93538259174522
-          ]
-        ]
-      },
-      "id": "141",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-254-Y-281",
-        "fromnode": "Y-281",
-        "tonode": "Y-254",
-        "length": "143.33",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "4.856",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.63",
-        "outelevatio": "22.259999999999998"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75118861923617,
-            113.93444971427462
-          ],
-          [
-            22.752146845783223,
-            113.93538259174522
-          ]
-        ]
-      },
-      "id": "142",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-254-Y-282",
-        "fromnode": "Y-254",
-        "tonode": "Y-282",
-        "length": "193.62",
-        "roughness": "0.014",
-        "inoffset": "0.2",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.604",
-        "outelevatio": "19.54"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752146845783223,
-            113.93538259174522
-          ],
-          [
-            22.753364126843156,
-            113.9340394034606
-          ]
-        ]
-      },
-      "id": "143",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-255-Y-26",
-        "fromnode": "Y-255",
-        "tonode": "Y-26",
-        "length": "132.65",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.01",
-        "outelevatio": "15.92"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753913797403335,
-            113.93188228291699
-          ],
-          [
-            22.754919907397124,
-            113.93257221656954
-          ]
-        ]
-      },
-      "id": "144",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-255-Y-280",
-        "fromnode": "Y-280",
-        "tonode": "Y-255",
-        "length": "224.96",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.3",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.4",
-        "outelevatio": "16.310000000000002"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752197505395454,
-            113.93072639929959
-          ],
-          [
-            22.753913797403335,
-            113.93188228291699
-          ]
-        ]
-      },
-      "id": "145",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-256-Y-279",
-        "fromnode": "Y-279",
-        "tonode": "Y-256",
-        "length": "115.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.44",
-        "outelevatio": "16.959"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75277063715346,
-            113.93071627815823
-          ],
-          [
-            22.753611583444012,
-            113.93138195589223
-          ]
-        ]
-      },
-      "id": "146",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-257-Y-278",
-        "fromnode": "Y-278",
-        "tonode": "Y-257",
-        "length": "223.60",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.02",
-        "outelevatio": "16.557"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.760459451874528,
-            113.93604281441986
-          ],
-          [
-            22.758753660761283,
-            113.93490829598889
-          ]
-        ]
-      },
-      "id": "147",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-258-Y-277",
-        "fromnode": "Y-277",
-        "tonode": "Y-258",
-        "length": "95.70",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.327",
-        "outelevatio": "16.06"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758164683201894,
-            113.93480249430995
-          ],
-          [
-            22.757437217148937,
-            113.93431072676289
-          ]
-        ]
-      },
-      "id": "148",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-25-Y-26",
-        "fromnode": "Y-26",
-        "tonode": "Y-25",
-        "length": "100.93",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.92",
-        "outelevatio": "15.72"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754919907397124,
-            113.93257221656954
-          ],
-          [
-            22.755684881947637,
-            113.93309731363676
-          ]
-        ]
-      },
-      "id": "149",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-260-Y-276",
-        "fromnode": "Y-276",
-        "tonode": "Y-260",
-        "length": "161.12",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.5",
-        "outelevatio": "13.399999999999999"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755812956004217,
-            113.9252958214245
-          ],
-          [
-            22.756512607126115,
-            113.92666805659029
-          ]
-        ]
-      },
-      "id": "150",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-261-Y-275",
-        "fromnode": "Y-275",
-        "tonode": "Y-261",
-        "length": "198.09",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.5",
-        "outelevatio": "13.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754481583517542,
-            113.92932630210419
-          ],
-          [
-            22.756071139228105,
-            113.92847142211251
-          ]
-        ]
-      },
-      "id": "151",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-265-Y-270",
-        "fromnode": "Y-270",
-        "tonode": "Y-265",
-        "length": "227.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.669",
-        "outelevatio": "14.53"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75296355063208,
-            113.92428115963835
-          ],
-          [
-            22.754753136409064,
-            113.92321112935366
-          ]
-        ]
-      },
-      "id": "152",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-265-Y-271",
-        "fromnode": "Y-271",
-        "tonode": "Y-265",
-        "length": "224.56",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.7",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.904",
-        "outelevatio": "15.229999999999999"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755726057962683,
-            113.925125498835
-          ],
-          [
-            22.754753136409064,
-            113.92321112935366
-          ]
-        ]
-      },
-      "id": "153",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-265-Y-6",
-        "fromnode": "Y-265",
-        "tonode": "Y-6",
-        "length": "289.39",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.53",
-        "outelevatio": "13.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754753136409064,
-            113.92321112935366
-          ],
-          [
-            22.757017183546584,
-            113.92184482925413
-          ]
-        ]
-      },
-      "id": "154",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-266-Y-269",
-        "fromnode": "Y-269",
-        "tonode": "Y-266",
-        "length": "290.51",
-        "roughness": "0.014",
-        "inoffset": "0.001",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.66",
-        "outelevatio": "13.83"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754625007126343,
-            113.92296523593959
-          ],
-          [
-            22.75690701898355,
-            113.92161124662778
-          ]
-        ]
-      },
-      "id": "155",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-266-Y-6",
-        "fromnode": "Y-266",
-        "tonode": "Y-6",
-        "length": "26.96",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.83",
-        "outelevatio": "13.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75690701898355,
-            113.92161124662778
-          ],
-          [
-            22.757017183546584,
-            113.92184482925413
-          ]
-        ]
-      },
-      "id": "156",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-269-Y-399",
-        "fromnode": "Y-399",
-        "tonode": "Y-269",
-        "length": "227.21",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "15.795",
-        "outelevatio": "14.659"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752840719429393,
-            113.92403203338812
-          ],
-          [
-            22.754625007126343,
-            113.92296523593959
-          ]
-        ]
-      },
-      "id": "157",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-26-Y-282",
-        "fromnode": "Y-282",
-        "tonode": "Y-26",
-        "length": "230.03",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.54",
-        "outelevatio": "15.92"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753364126843156,
-            113.9340394034606
-          ],
-          [
-            22.754919907397124,
-            113.93257221656954
-          ]
-        ]
-      },
-      "id": "158",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-270-Y-398",
-        "fromnode": "Y-398",
-        "tonode": "Y-270",
-        "length": "227.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.691",
-        "outelevatio": "15.669"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751171055289884,
-            113.92535167184677
-          ],
-          [
-            22.75296355063208,
-            113.92428115963835
-          ]
-        ]
-      },
-      "id": "159",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-275-Y-397",
-        "fromnode": "Y-397",
-        "tonode": "Y-275",
-        "length": "198.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.8",
-        "outelevatio": "13.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752891402232628,
-            113.93018480463606
-          ],
-          [
-            22.754481583517542,
-            113.92932630210419
-          ]
-        ]
-      },
-      "id": "160",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-277-Y-396",
-        "fromnode": "Y-396",
-        "tonode": "Y-277",
-        "length": "33.42",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.482",
-        "outelevatio": "16.327"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75841730610469,
-            113.93497645514633
-          ],
-          [
-            22.758164683201894,
-            113.93480249430995
-          ]
-        ]
-      },
-      "id": "161",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-278-Y-395",
-        "fromnode": "Y-395",
-        "tonode": "Y-278",
-        "length": "342.48",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.206",
-        "outelevatio": "18.22"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.763065142159956,
-            113.93778648300797
-          ],
-          [
-            22.760459451874528,
-            113.93604281441986
-          ]
-        ]
-      },
-      "id": "162",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-279-Y-393",
-        "fromnode": "Y-393",
-        "tonode": "Y-279",
-        "length": "101.40",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.5",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.799",
-        "outelevatio": "17.94"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75197205077404,
-            113.93024074665375
-          ],
-          [
-            22.75277063715346,
-            113.93071627815823
-          ]
-        ]
-      },
-      "id": "163",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-27-Y-28",
-        "fromnode": "Y-27",
-        "tonode": "Y-28",
-        "length": "94.15",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.605",
-        "outelevatio": "16.888"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75401858434649,
-            113.9371879474083
-          ],
-          [
-            22.753295655864385,
-            113.93650230115827
-          ]
-        ]
-      },
-      "id": "164",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-280-Y-392",
-        "fromnode": "Y-392",
-        "tonode": "Y-280",
-        "length": "152.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.468",
-        "outelevatio": "17.799999999999997"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751060284989567,
-            113.92989979170615
-          ],
-          [
-            22.752197505395454,
-            113.93072639929959
-          ]
-        ]
-      },
-      "id": "165",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-286-Y-389",
-        "fromnode": "Y-389",
-        "tonode": "Y-286",
-        "length": "173.82",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "30.263",
-        "outelevatio": "21.294"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75594063240047,
-            113.93923731608302
-          ],
-          [
-            22.75474394627453,
-            113.93815344047545
-          ]
-        ]
-      },
-      "id": "166",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-286-Y-390",
-        "fromnode": "Y-390",
-        "tonode": "Y-286",
-        "length": "65.41",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.6",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.956",
-        "outelevatio": "21.694000000000003"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754288219802916,
-            113.93855321020332
-          ],
-          [
-            22.75474394627453,
-            113.93815344047545
-          ]
-        ]
-      },
-      "id": "167",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-286-Y-391",
-        "fromnode": "Y-391",
-        "tonode": "Y-286",
-        "length": "168.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.798",
-        "outelevatio": "21.294"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755744519114767,
-            113.93937690682948
-          ],
-          [
-            22.75474394627453,
-            113.93815344047545
-          ]
-        ]
-      },
-      "id": "168",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-289-Y-388",
-        "fromnode": "Y-388",
-        "tonode": "Y-289",
-        "length": "94.20",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.7",
-        "outelevatio": "30.814999999999998"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754206684050274,
-            113.94158088650482
-          ],
-          [
-            22.753527622913783,
-            113.94103454456263
-          ]
-        ]
-      },
-      "id": "169",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-290-Y-387",
-        "fromnode": "Y-387",
-        "tonode": "Y-290",
-        "length": "99.63",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.3",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.276",
-        "outelevatio": "21.778000000000002"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753868026623216,
-            113.93892239623223
-          ],
-          [
-            22.753216673681628,
-            113.93958526629984
-          ]
-        ]
-      },
-      "id": "170",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-29-Y-30",
-        "fromnode": "Y-30",
-        "tonode": "Y-29",
-        "length": "110.31",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.661",
-        "outelevatio": "19.441"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753157822422615,
-            113.9365572899781
-          ],
-          [
-            22.75404293219294,
-            113.93746049924943
-          ]
-        ]
-      },
-      "id": "171",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-31-Y-32",
-        "fromnode": "Y-32",
-        "tonode": "Y-31",
-        "length": "16.36",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.87",
-        "outelevatio": "20.793"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754600294222534,
-            113.93783284567601
-          ],
-          [
-            22.754350191653,
-            113.93759142401251
-          ]
-        ]
-      },
-      "id": "172",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-324-Y-365",
-        "fromnode": "Y-365",
-        "tonode": "Y-324",
-        "length": "181.50",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.22",
-        "outelevatio": "43.45"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74733906213152,
-            113.95898173753402
-          ],
-          [
-            22.748974442921448,
-            113.95906062972502
-          ]
-        ]
-      },
-      "id": "173",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-324-Y-367",
-        "fromnode": "Y-367",
-        "tonode": "Y-324",
-        "length": "115.78",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.318",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.0",
-        "outelevatio": "43.768"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74894964393019,
-            113.96018632278451
-          ],
-          [
-            22.748974442921448,
-            113.95906062972502
-          ]
-        ]
-      },
-      "id": "174",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-325-Y-364",
-        "fromnode": "Y-364",
-        "tonode": "Y-325",
-        "length": "42.69",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.18",
-        "outelevatio": "42.929"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749159713777953,
-            113.96040376377917
-          ],
-          [
-            22.74946793267221,
-            113.96015562590979
-          ]
-        ]
-      },
-      "id": "175",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-327-Y-363",
-        "fromnode": "Y-363",
-        "tonode": "Y-327",
-        "length": "160.36",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.26",
-        "outelevatio": "20.939"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752315142915464,
-            113.94052082547687
-          ],
-          [
-            22.751450364842768,
-            113.94176733993356
-          ]
-        ]
-      },
-      "id": "176",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-328-Y-360",
-        "fromnode": "Y-360",
-        "tonode": "Y-328",
-        "length": "89.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.645",
-        "outelevatio": "24.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752632419068767,
-            113.94334405913729
-          ],
-          [
-            22.752379413817096,
-            113.94416548163964
-          ]
-        ]
-      },
-      "id": "177",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-328-Y-361",
-        "fromnode": "Y-361",
-        "tonode": "Y-328",
-        "length": "215.70",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.5",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.779",
-        "outelevatio": "23.7"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75430685775978,
-            113.9443667245325
-          ],
-          [
-            22.752379413817096,
-            113.94416548163964
-          ]
-        ]
-      },
-      "id": "178",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-328-Y-362",
-        "fromnode": "Y-362",
-        "tonode": "Y-328",
-        "length": "199.00",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.95",
-        "outelevatio": "23.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75223506542202,
-            113.9460939598791
-          ],
-          [
-            22.752379413817096,
-            113.94416548163964
-          ]
-        ]
-      },
-      "id": "179",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-331-Y-359",
-        "fromnode": "Y-359",
-        "tonode": "Y-331",
-        "length": "165.16",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.66",
-        "outelevatio": "25.737"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748485969525525,
-            113.94921500836963
-          ],
-          [
-            22.748854932281702,
-            113.94765937988883
-          ]
-        ]
-      },
-      "id": "180",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-332-Y-357",
-        "fromnode": "Y-357",
-        "tonode": "Y-332",
-        "length": "179.58",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "29.007",
-        "outelevatio": "26.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753816628897265,
-            113.94678378798325
-          ],
-          [
-            22.75220919320399,
-            113.94664466483945
-          ]
-        ]
-      },
-      "id": "181",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-332-Y-358",
-        "fromnode": "Y-358",
-        "tonode": "Y-332",
-        "length": "209.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.393",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "28.943",
-        "outelevatio": "27.893"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75211341747624,
-            113.94868296560696
-          ],
-          [
-            22.75220919320399,
-            113.94664466483945
-          ]
-        ]
-      },
-      "id": "182",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-333-Y-356",
-        "fromnode": "Y-356",
-        "tonode": "Y-333",
-        "length": "97.36",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.26",
-        "outelevatio": "25.956"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749111751065506,
-            113.94184370223611
-          ],
-          [
-            22.74869537332418,
-            113.94267680235431
-          ]
-        ]
-      },
-      "id": "183",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-335-Y-355",
-        "fromnode": "Y-355",
-        "tonode": "Y-335",
-        "length": "162.80",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.6",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.41",
-        "outelevatio": "32.411"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74046874239125,
-            113.94843975204833
-          ],
-          [
-            22.741776556243643,
-            113.94917584112247
-          ]
-        ]
-      },
-      "id": "184",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-336-Y-354",
-        "fromnode": "Y-354",
-        "tonode": "Y-336",
-        "length": "237.67",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.235",
-        "outelevatio": "31.759"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74689248837069,
-            113.95491736818136
-          ],
-          [
-            22.74758557440258,
-            113.95273030122848
-          ]
-        ]
-      },
-      "id": "185",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-337-Y-352",
-        "fromnode": "Y-352",
-        "tonode": "Y-337",
-        "length": "137.87",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.395",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.886",
-        "outelevatio": "31.251"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74452342508131,
-            113.95107626336136
-          ],
-          [
-            22.744581569786256,
-            113.949737143069
-          ]
-        ]
-      },
-      "id": "186",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-337-Y-353",
-        "fromnode": "Y-353",
-        "tonode": "Y-337",
-        "length": "19.66",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.766",
-        "outelevatio": "29.856"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74440472697747,
-            113.94971616387582
-          ],
-          [
-            22.744581569786256,
-            113.949737143069
-          ]
-        ]
-      },
-      "id": "187",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-338-Y-350",
-        "fromnode": "Y-350",
-        "tonode": "Y-338",
-        "length": "198.95",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "39.083",
-        "outelevatio": "37.242000000000004"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748934621635456,
-            113.95516193774924
-          ],
-          [
-            22.747140598972553,
-            113.95511275900064
-          ]
-        ]
-      },
-      "id": "188",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-338-Y-351",
-        "fromnode": "Y-351",
-        "tonode": "Y-338",
-        "length": "293.06",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.8",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.654",
-        "outelevatio": "36.842"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.745861121046126,
-            113.95760750522594
-          ],
-          [
-            22.747140598972553,
-            113.95511275900064
-          ]
-        ]
-      },
-      "id": "189",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-33-Y-34",
-        "fromnode": "Y-34",
-        "tonode": "Y-33",
-        "length": "138.26",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.17",
-        "outelevatio": "19.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751241650212343,
-            113.93889908169628
-          ],
-          [
-            22.752211322719035,
-            113.93973265304331
-          ]
-        ]
-      },
-      "id": "190",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-340-Y-349",
-        "fromnode": "Y-349",
-        "tonode": "Y-340",
-        "length": "182.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.917",
-        "outelevatio": "29.684"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756900796348905,
-            113.9508799388615
-          ],
-          [
-            22.75851418055148,
-            113.9511753188808
-          ]
-        ]
-      },
-      "id": "191",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-341-Y-348",
-        "fromnode": "Y-348",
-        "tonode": "Y-341",
-        "length": "94.42",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.824",
-        "outelevatio": "34.037"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.760176635622607,
-            113.94938819857684
-          ],
-          [
-            22.76007067498716,
-            113.95029877394649
-          ]
-        ]
-      },
-      "id": "192",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-342-Y-346",
-        "fromnode": "Y-346",
-        "tonode": "Y-342",
-        "length": "93.45",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.7",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.238",
-        "outelevatio": "34.21"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759844838438624,
-            113.95026704603592
-          ],
-          [
-            22.7597399335499,
-            113.95116831766747
-          ]
-        ]
-      },
-      "id": "193",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-342-Y-347",
-        "fromnode": "Y-347",
-        "tonode": "Y-342",
-        "length": "169.77",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.338",
-        "outelevatio": "33.51"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758243578556137,
-            113.95089554698417
-          ],
-          [
-            22.7597399335499,
-            113.95116831766747
-          ]
-        ]
-      },
-      "id": "194",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-346-Y-435",
-        "fromnode": "Y-435",
-        "tonode": "Y-346",
-        "length": "94.41",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.706",
-        "outelevatio": "35.438"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759950807632354,
-            113.94935646908999
-          ],
-          [
-            22.759844838438624,
-            113.95026704603592
-          ]
-        ]
-      },
-      "id": "195",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-347-Y-434",
-        "fromnode": "Y-434",
-        "tonode": "Y-347",
-        "length": "169.77",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.166",
-        "outelevatio": "34.338"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75674544540116,
-            113.95062312714649
-          ],
-          [
-            22.758243578556137,
-            113.95089554698417
-          ]
-        ]
-      },
-      "id": "196",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-348-Y-433",
-        "fromnode": "Y-433",
-        "tonode": "Y-348",
-        "length": "73.88",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.44",
-        "outelevatio": "34.824"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76033391571977,
-            113.94869086556584
-          ],
-          [
-            22.760176635622607,
-            113.94938819857684
-          ]
-        ]
-      },
-      "id": "197",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-349-Y-432",
-        "fromnode": "Y-432",
-        "tonode": "Y-349",
-        "length": "182.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.15",
-        "outelevatio": "31.917"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755285265299825,
-            113.9505849860746
-          ],
-          [
-            22.756900796348905,
-            113.9508799388615
-          ]
-        ]
-      },
-      "id": "198",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-350-Y-431",
-        "fromnode": "Y-431",
-        "tonode": "Y-350",
-        "length": "198.97",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.185",
-        "outelevatio": "39.283"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75072572911689,
-            113.95521610208576
-          ],
-          [
-            22.748934621635456,
-            113.95516193774924
-          ]
-        ]
-      },
-      "id": "199",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-351-Y-429",
-        "fromnode": "Y-429",
-        "tonode": "Y-351",
-        "length": "141.82",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.274",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "42.768",
-        "outelevatio": "40.928000000000004"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.745208386564645,
-            113.95879464580939
-          ],
-          [
-            22.745861121046126,
-            113.95760750522594
-          ]
-        ]
-      },
-      "id": "200",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-351-Y-430",
-        "fromnode": "Y-430",
-        "tonode": "Y-351",
-        "length": "160.62",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.6",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "42.108",
-        "outelevatio": "41.254000000000005"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747310697865167,
-            113.95767273346833
-          ],
-          [
-            22.745861121046126,
-            113.95760750522594
-          ]
-        ]
-      },
-      "id": "201",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-352-Y-428",
-        "fromnode": "Y-428",
-        "tonode": "Y-352",
-        "length": "138.30",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.522",
-        "outelevatio": "32.886"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744490409701584,
-            113.95242060528679
-          ],
-          [
-            22.74452342508131,
-            113.95107626336136
-          ]
-        ]
-      },
-      "id": "202",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-353-Y-427",
-        "fromnode": "Y-427",
-        "tonode": "Y-353",
-        "length": "268.82",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.303",
-        "outelevatio": "31.766"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.741971611768236,
-            113.94959565755758
-          ],
-          [
-            22.74440472697747,
-            113.94971616387582
-          ]
-        ]
-      },
-      "id": "203",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-353-Y-605",
-        "fromnode": "Y-605",
-        "tonode": "Y-353",
-        "length": "233.28",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.929",
-        "outelevatio": "31.766"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744338693321453,
-            113.95198335970025
-          ],
-          [
-            22.74440472697747,
-            113.94971616387582
-          ]
-        ]
-      },
-      "id": "204",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-354-Y-425",
-        "fromnode": "Y-425",
-        "tonode": "Y-354",
-        "length": "149.19",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.226",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.952",
-        "outelevatio": "33.461"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74554479098331,
-            113.95488545818584
-          ],
-          [
-            22.74689248837069,
-            113.95491736818136
-          ]
-        ]
-      },
-      "id": "205",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-354-Y-426",
-        "fromnode": "Y-426",
-        "tonode": "Y-354",
-        "length": "23.05",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.6",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.146",
-        "outelevatio": "32.835"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.746821680212765,
-            113.95512811523
-          ],
-          [
-            22.74689248837069,
-            113.95491736818136
-          ]
-        ]
-      },
-      "id": "206",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-357-Y-600",
-        "fromnode": "Y-600",
-        "tonode": "Y-357",
-        "length": "121.35",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "30.701",
-        "outelevatio": "29.007"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754901613802822,
-            113.94687690227055
-          ],
-          [
-            22.753816628897265,
-            113.94678378798325
-          ]
-        ]
-      },
-      "id": "207",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-35-Y-36",
-        "fromnode": "Y-36",
-        "tonode": "Y-35",
-        "length": "15.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.66",
-        "outelevatio": "20.604"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752470766931502,
-            113.94002621444493
-          ],
-          [
-            22.752373397359076,
-            113.93992076080318
-          ]
-        ]
-      },
-      "id": "208",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-360-Y-423",
-        "fromnode": "Y-423",
-        "tonode": "Y-360",
-        "length": "89.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.291",
-        "outelevatio": "24.845"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752885361374314,
-            113.94252264021358
-          ],
-          [
-            22.752632419068767,
-            113.94334405913729
-          ]
-        ]
-      },
-      "id": "209",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-361-Y-420",
-        "fromnode": "Y-420",
-        "tonode": "Y-361",
-        "length": "155.51",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.7",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.713",
-        "outelevatio": "25.479"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75415190478403,
-            113.94286369073254
-          ],
-          [
-            22.75430685775978,
-            113.9443667245325
-          ]
-        ]
-      },
-      "id": "210",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-361-Y-421",
-        "fromnode": "Y-421",
-        "tonode": "Y-361",
-        "length": "122.51",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.9",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.924",
-        "outelevatio": "25.679"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75459728953308,
-            113.94551608467692
-          ],
-          [
-            22.75430685775978,
-            113.9443667245325
-          ]
-        ]
-      },
-      "id": "211",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-361-Y-422",
-        "fromnode": "Y-422",
-        "tonode": "Y-361",
-        "length": "24.26",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.3",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.201",
-        "outelevatio": "25.079"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754524383918323,
-            113.94437037904278
-          ],
-          [
-            22.75430685775978,
-            113.9443667245325
-          ]
-        ]
-      },
-      "id": "212",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-391-Y-407",
-        "fromnode": "Y-407",
-        "tonode": "Y-391",
-        "length": "35.80",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "10.274",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.18",
-        "outelevatio": "32.071999999999996"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755972310766854,
-            113.93962234875802
-          ],
-          [
-            22.755744519114767,
-            113.93937690682948
-          ]
-        ]
-      },
-      "id": "213",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-392-Y-406",
-        "fromnode": "Y-406",
-        "tonode": "Y-392",
-        "length": "71.54",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.45",
-        "outelevatio": "19.668"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750572206963515,
-            113.92944564798091
-          ],
-          [
-            22.751060284989567,
-            113.92989979170615
-          ]
-        ]
-      },
-      "id": "214",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-393-Y-405",
-        "fromnode": "Y-405",
-        "tonode": "Y-393",
-        "length": "101.37",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.658",
-        "outelevatio": "18.799"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75122310047082,
-            113.92967807230139
-          ],
-          [
-            22.75197205077404,
-            113.93024074665375
-          ]
-        ]
-      },
-      "id": "215",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-395-Y-404",
-        "fromnode": "Y-404",
-        "tonode": "Y-395",
-        "length": "250.63",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.86",
-        "outelevatio": "20.406"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.764931943031918,
-            113.93912735938501
-          ],
-          [
-            22.763065142159956,
-            113.93778648300797
-          ]
-        ]
-      },
-      "id": "216",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-396-Y-403",
-        "fromnode": "Y-403",
-        "tonode": "Y-396",
-        "length": "236.60",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.577",
-        "outelevatio": "16.482"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.760204617091997,
-            113.93620847268592
-          ],
-          [
-            22.75841730610469,
-            113.93497645514633
-          ]
-        ]
-      },
-      "id": "217",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-398-Y-402",
-        "fromnode": "Y-402",
-        "tonode": "Y-398",
-        "length": "227.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.83",
-        "outelevatio": "17.691"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749376065748198,
-            113.92642361770412
-          ],
-          [
-            22.751171055289884,
-            113.92535167184677
-          ]
-        ]
-      },
-      "id": "218",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-399-Y-401",
-        "fromnode": "Y-401",
-        "tonode": "Y-399",
-        "length": "227.21",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.571",
-        "outelevatio": "15.795"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751053542913883,
-            113.92509932019217
-          ],
-          [
-            22.752840719429393,
-            113.92403203338812
-          ]
-        ]
-      },
-      "id": "219",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-3-Y-4",
-        "fromnode": "Y-4",
-        "tonode": "Y-3",
-        "length": "156.70",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.4",
-        "outelevatio": "13.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757213087951254,
-            113.92150599509027
-          ],
-          [
-            22.75790383105544,
-            113.92283427437927
-          ]
-        ]
-      },
-      "id": "220",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-401-Y-466",
-        "fromnode": "Y-466",
-        "tonode": "Y-401",
-        "length": "227.21",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.707",
-        "outelevatio": "17.571"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749263877143022,
-            113.92616802839868
-          ],
-          [
-            22.751053542913883,
-            113.92509932019217
-          ]
-        ]
-      },
-      "id": "221",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-403-Y-464",
-        "fromnode": "Y-464",
-        "tonode": "Y-403",
-        "length": "279.30",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.229",
-        "outelevatio": "17.977"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76230697422714,
-            113.93767115454524
-          ],
-          [
-            22.760204617091997,
-            113.93620847268592
-          ]
-        ]
-      },
-      "id": "222",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-403-Y-465",
-        "fromnode": "Y-465",
-        "tonode": "Y-403",
-        "length": "128.03",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.085",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.882",
-        "outelevatio": "17.662000000000003"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759715487676697,
-            113.93733265149773
-          ],
-          [
-            22.760204617091997,
-            113.93620847268592
-          ]
-        ]
-      },
-      "id": "223",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-405-Y-463",
-        "fromnode": "Y-463",
-        "tonode": "Y-405",
-        "length": "115.95",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.64",
-        "outelevatio": "19.658"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750435724238866,
-            113.92893741385143
-          ],
-          [
-            22.75122310047082,
-            113.92967807230139
-          ]
-        ]
-      },
-      "id": "224",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-406-Y-462",
-        "fromnode": "Y-462",
-        "tonode": "Y-406",
-        "length": "47.47",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.55",
-        "outelevatio": "20.45"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750274521949795,
-            113.92911414739947
-          ],
-          [
-            22.750572206963515,
-            113.92944564798091
-          ]
-        ]
-      },
-      "id": "225",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-407-Y-460",
-        "fromnode": "Y-460",
-        "tonode": "Y-407",
-        "length": "22.75",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.012",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.26",
-        "outelevatio": "32.192"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756102684736387,
-            113.93979261925995
-          ],
-          [
-            22.755972310766854,
-            113.93962234875802
-          ]
-        ]
-      },
-      "id": "226",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-407-Y-461",
-        "fromnode": "Y-461",
-        "tonode": "Y-407",
-        "length": "195.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "39.7",
-        "outelevatio": "32.38"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75475464460547,
-            113.94098448110388
-          ],
-          [
-            22.755972310766854,
-            113.93962234875802
-          ]
-        ]
-      },
-      "id": "227",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-420-Y-453",
-        "fromnode": "Y-453",
-        "tonode": "Y-420",
-        "length": "153.72",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.223",
-        "outelevatio": "25.913"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754565331795945,
-            113.94143833999159
-          ],
-          [
-            22.75415190478403,
-            113.94286369073254
-          ]
-        ]
-      },
-      "id": "228",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-422-Y-451",
-        "fromnode": "Y-451",
-        "tonode": "Y-422",
-        "length": "150.15",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.627",
-        "outelevatio": "25.401"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754339169644307,
-            113.94292397417226
-          ],
-          [
-            22.754524383918323,
-            113.94437037904278
-          ]
-        ]
-      },
-      "id": "229",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-422-Y-452",
-        "fromnode": "Y-452",
-        "tonode": "Y-422",
-        "length": "118.31",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.837",
-        "outelevatio": "25.601"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754784251290154,
-            113.94548611077721
-          ],
-          [
-            22.754524383918323,
-            113.94437037904278
-          ]
-        ]
-      },
-      "id": "230",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-423-Y-450",
-        "fromnode": "Y-450",
-        "tonode": "Y-423",
-        "length": "92.61",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.955",
-        "outelevatio": "25.491"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753176647221718,
-            113.94167956598982
-          ],
-          [
-            22.752885361374314,
-            113.94252264021358
-          ]
-        ]
-      },
-      "id": "231",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-424-Y-448",
-        "fromnode": "Y-448",
-        "tonode": "Y-424",
-        "length": "77.21",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "3.834",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.059",
-        "outelevatio": "34.828"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75493563123944,
-            113.9461632679834
-          ],
-          [
-            22.755092657481114,
-            113.94689469801031
-          ]
-        ]
-      },
-      "id": "232",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-424-Y-449",
-        "fromnode": "Y-449",
-        "tonode": "Y-424",
-        "length": "138.24",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.956",
-        "outelevatio": "30.994"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755353062804364,
-            113.94820930816716
-          ],
-          [
-            22.755092657481114,
-            113.94689469801031
-          ]
-        ]
-      },
-      "id": "233",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-424-Y-600",
-        "fromnode": "Y-424",
-        "tonode": "Y-600",
-        "length": "21.39",
-        "roughness": "0.014",
-        "inoffset": "0.006",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.0",
-        "outelevatio": "30.701"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755092657481114,
-            113.94689469801031
-          ],
-          [
-            22.754901613802822,
-            113.94687690227055
-          ]
-        ]
-      },
-      "id": "234",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-425-Y-447",
-        "fromnode": "Y-447",
-        "tonode": "Y-425",
-        "length": "78.36",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.25",
-        "outelevatio": "35.952"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744836915188667,
-            113.9548495264126
-          ],
-          [
-            22.74554479098331,
-            113.95488545818584
-          ]
-        ]
-      },
-      "id": "235",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-426-Y-445",
-        "fromnode": "Y-445",
-        "tonode": "Y-426",
-        "length": "143.12",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.6",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.018",
-        "outelevatio": "33.746"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.745531253835246,
-            113.95503593234633
-          ],
-          [
-            22.746821680212765,
-            113.95512811523
-          ]
-        ]
-      },
-      "id": "236",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-426-Y-446",
-        "fromnode": "Y-446",
-        "tonode": "Y-426",
-        "length": "293.86",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.623",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.51",
-        "outelevatio": "33.769"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74548761968037,
-            113.95759886743603
-          ],
-          [
-            22.746821680212765,
-            113.95512811523
-          ]
-        ]
-      },
-      "id": "237",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-427-Y-444",
-        "fromnode": "Y-444",
-        "tonode": "Y-427",
-        "length": "60.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.124",
-        "outelevatio": "32.303"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.741440179425595,
-            113.94946612743075
-          ],
-          [
-            22.741971611768236,
-            113.94959565755758
-          ]
-        ]
-      },
-      "id": "238",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-428-Y-443",
-        "fromnode": "Y-443",
-        "tonode": "Y-428",
-        "length": "29.12",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.1",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.974",
-        "outelevatio": "34.622"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74446600081455,
-            113.95270252706763
-          ],
-          [
-            22.744490409701584,
-            113.95242060528679
-          ]
-        ]
-      },
-      "id": "239",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-429-Y-442",
-        "fromnode": "Y-442",
-        "tonode": "Y-429",
-        "length": "178.24",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "2.357",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "47.62",
-        "outelevatio": "45.125"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744402515529153,
-            113.96029628923418
-          ],
-          [
-            22.745208386564645,
-            113.95879464580939
-          ]
-        ]
-      },
-      "id": "240",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-430-Y-440",
-        "fromnode": "Y-440",
-        "tonode": "Y-430",
-        "length": "135.54",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.84",
-        "outelevatio": "42.108"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747093741188287,
-            113.9589699686459
-          ],
-          [
-            22.747310697865167,
-            113.95767273346833
-          ]
-        ]
-      },
-      "id": "241",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-430-Y-441",
-        "fromnode": "Y-441",
-        "tonode": "Y-430",
-        "length": "150.00",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.08",
-        "outelevatio": "42.108"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748663497541447,
-            113.95770398378033
-          ],
-          [
-            22.747310697865167,
-            113.95767273346833
-          ]
-        ]
-      },
-      "id": "242",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-432-Y-438",
-        "fromnode": "Y-438",
-        "tonode": "Y-432",
-        "length": "11.10",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.6",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.885",
-        "outelevatio": "35.75"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755186938045647,
-            113.95056862147524
-          ],
-          [
-            22.755285265299825,
-            113.9505849860746
-          ]
-        ]
-      },
-      "id": "243",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-432-Y-439",
-        "fromnode": "Y-439",
-        "tonode": "Y-432",
-        "length": "318.59",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "1.947",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.197",
-        "outelevatio": "36.097"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755234800330435,
-            113.95368248510519
-          ],
-          [
-            22.755285265299825,
-            113.9505849860746
-          ]
-        ]
-      },
-      "id": "244",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-434-Y-437",
-        "fromnode": "Y-437",
-        "tonode": "Y-434",
-        "length": "169.77",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.3",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.294",
-        "outelevatio": "35.465999999999994"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755245462068263,
-            113.95035109518884
-          ],
-          [
-            22.75674544540116,
-            113.95062312714649
-          ]
-        ]
-      },
-      "id": "245",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-435-Y-436",
-        "fromnode": "Y-436",
-        "tonode": "Y-435",
-        "length": "79.13",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.13",
-        "outelevatio": "35.906000000000006"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76010942071976,
-            113.94860700071264
-          ],
-          [
-            22.759950807632354,
-            113.94935646908999
-          ]
-        ]
-      },
-      "id": "246",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-437-Y-488",
-        "fromnode": "Y-488",
-        "tonode": "Y-437",
-        "length": "169.01",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.318",
-        "outelevatio": "36.494"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753750200860235,
-            113.95008065487302
-          ],
-          [
-            22.755245462068263,
-            113.95035109518884
-          ]
-        ]
-      },
-      "id": "247",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-438-Y-486",
-        "fromnode": "Y-486",
-        "tonode": "Y-438",
-        "length": "166.22",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.415",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.23",
-        "outelevatio": "36.3"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753716535525953,
-            113.95030125364951
-          ],
-          [
-            22.755186938045647,
-            113.95056862147524
-          ]
-        ]
-      },
-      "id": "248",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-438-Y-487",
-        "fromnode": "Y-487",
-        "tonode": "Y-438",
-        "length": "320.52",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.985",
-        "outelevatio": "35.885"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755118314459946,
-            113.95368446942194
-          ],
-          [
-            22.755186938045647,
-            113.95056862147524
-          ]
-        ]
-      },
-      "id": "249",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-439-Y-485",
-        "fromnode": "Y-485",
-        "tonode": "Y-439",
-        "length": "97.40",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.802",
-        "outelevatio": "38.397000000000006"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75482247217773,
-            113.95451664448132
-          ],
-          [
-            22.755234800330435,
-            113.95368248510519
-          ]
-        ]
-      },
-      "id": "250",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-440-Y-483",
-        "fromnode": "Y-483",
-        "tonode": "Y-440",
-        "length": "126.41",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.91",
-        "outelevatio": "44.040000000000006"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.746793420933688,
-            113.9601560382473
-          ],
-          [
-            22.747093741188287,
-            113.9589699686459
-          ]
-        ]
-      },
-      "id": "251",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-440-Y-484",
-        "fromnode": "Y-484",
-        "tonode": "Y-440",
-        "length": "197.80",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "44.62",
-        "outelevatio": "44.040000000000006"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74530824225425,
-            113.95888471028358
-          ],
-          [
-            22.747093741188287,
-            113.9589699686459
-          ]
-        ]
-      },
-      "id": "252",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-442-Y-482",
-        "fromnode": "Y-482",
-        "tonode": "Y-442",
-        "length": "174.81",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "53.28",
-        "outelevatio": "47.82"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.743611323483417,
-            113.96176907415573
-          ],
-          [
-            22.744402515529153,
-            113.96029628923418
-          ]
-        ]
-      },
-      "id": "253",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-443-Y-481",
-        "fromnode": "Y-481",
-        "tonode": "Y-443",
-        "length": "100.33",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.767",
-        "outelevatio": "34.974"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744466709675397,
-            113.95367806416654
-          ],
-          [
-            22.74446600081455,
-            113.95270252706763
-          ]
-        ]
-      },
-      "id": "254",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-444-Y-480",
-        "fromnode": "Y-480",
-        "tonode": "Y-444",
-        "length": "142.83",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.41",
-        "outelevatio": "33.124"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74031512919344,
-            113.948776370315
-          ],
-          [
-            22.741440179425595,
-            113.94946612743075
-          ]
-        ]
-      },
-      "id": "255",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-445-Y-479",
-        "fromnode": "Y-479",
-        "tonode": "Y-445",
-        "length": "79.14",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.25",
-        "outelevatio": "36.018"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74481581724272,
-            113.95501320451807
-          ],
-          [
-            22.745531253835246,
-            113.95503593234633
-          ]
-        ]
-      },
-      "id": "256",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-446-Y-477",
-        "fromnode": "Y-477",
-        "tonode": "Y-446",
-        "length": "201.44",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "42.28",
-        "outelevatio": "38.71"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.743665085874333,
-            113.95756035372344
-          ],
-          [
-            22.74548761968037,
-            113.95759886743603
-          ]
-        ]
-      },
-      "id": "257",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-446-Y-478",
-        "fromnode": "Y-478",
-        "tonode": "Y-446",
-        "length": "159.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.193",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.357",
-        "outelevatio": "38.702999999999996"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744764446948693,
-            113.9589461431996
-          ],
-          [
-            22.74548761968037,
-            113.95759886743603
-          ]
-        ]
-      },
-      "id": "258",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-449-Y-476",
-        "fromnode": "Y-476",
-        "tonode": "Y-449",
-        "length": "146.82",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.3",
-        "outelevatio": "34.156000000000006"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755350209403527,
-            113.94963695042178
-          ],
-          [
-            22.755353062804364,
-            113.94820930816716
-          ]
-        ]
-      },
-      "id": "259",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-451-Y-475",
-        "fromnode": "Y-475",
-        "tonode": "Y-451",
-        "length": "149.76",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.328",
-        "outelevatio": "26.026999999999997"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754732948314025,
-            113.94153237966415
-          ],
-          [
-            22.754339169644307,
-            113.94292397417226
-          ]
-        ]
-      },
-      "id": "260",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-460-Y-471",
-        "fromnode": "Y-471",
-        "tonode": "Y-460",
-        "length": "153.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.55",
-        "outelevatio": "32.46"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755118311841986,
-            113.94083926036235
-          ],
-          [
-            22.756102684736387,
-            113.93979261925995
-          ]
-        ]
-      },
-      "id": "261",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-462-Y-470",
-        "fromnode": "Y-470",
-        "tonode": "Y-462",
-        "length": "192.88",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.19",
-        "outelevatio": "22.55"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748793434997186,
-            113.93009375115523
-          ],
-          [
-            22.750274521949795,
-            113.92911414739947
-          ]
-        ]
-      },
-      "id": "262",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-464-Y-468",
-        "fromnode": "B-468",
-        "tonode": "Y-464",
-        "length": "152.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.87",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.007",
-        "outelevatio": "20.099"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76126424490421,
-            113.93862592543796
-          ],
-          [
-            22.76230697422714,
-            113.93767115454524
-          ]
-        ]
-      },
-      "id": "263",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-464-Y-469",
-        "fromnode": "Y-469",
-        "tonode": "Y-464",
-        "length": "31.07",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.099",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.467",
-        "outelevatio": "19.328"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.762534128220064,
-            113.93784464140359
-          ],
-          [
-            22.76230697422714,
-            113.93767115454524
-          ]
-        ]
-      },
-      "id": "264",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-465-Y-467",
-        "fromnode": "Y-467",
-        "tonode": "Y-465",
-        "length": "150.79",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.588",
-        "outelevatio": "20.882"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75913920163168,
-            113.93865659530935
-          ],
-          [
-            22.759715487676697,
-            113.93733265149773
-          ]
-        ]
-      },
-      "id": "265",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-465-Y-468",
-        "fromnode": "B-468",
-        "tonode": "Y-465",
-        "length": "218.40",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.007",
-        "outelevatio": "20.882"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76126424490421,
-            113.93862592543796
-          ],
-          [
-            22.759715487676697,
-            113.93733265149773
-          ]
-        ]
-      },
-      "id": "266",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-465-Y-556",
-        "fromnode": "Y-556",
-        "tonode": "Y-465",
-        "length": "249.13",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.47",
-        "outelevatio": "20.882"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757507252088136,
-            113.93701939115924
-          ],
-          [
-            22.759715487676697,
-            113.93733265149773
-          ]
-        ]
-      },
-      "id": "267",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-467-Y-504",
-        "fromnode": "Y-504",
-        "tonode": "Y-467",
-        "length": "49.70",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.82",
-        "outelevatio": "21.588"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75896510026482,
-            113.9391008435319
-          ],
-          [
-            22.75913920163168,
-            113.93865659530935
-          ]
-        ]
-      },
-      "id": "268",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-468-Y-503",
-        "fromnode": "Y-503",
-        "tonode": "B-468",
-        "length": "195.85",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.189",
-        "outelevatio": "21.007"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.760022084978544,
-            113.93996242964604
-          ],
-          [
-            22.76126424490421,
-            113.93862592543796
-          ]
-        ]
-      },
-      "id": "269",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-469-Y-501",
-        "fromnode": "Y-501",
-        "tonode": "Y-469",
-        "length": "100.55",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.003",
-        "outelevatio": "19.467"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.763294255769786,
-            113.93836420796251
-          ],
-          [
-            22.762534128220064,
-            113.93784464140359
-          ]
-        ]
-      },
-      "id": "270",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-469-Y-502",
-        "fromnode": "Y-502",
-        "tonode": "Y-469",
-        "length": "162.40",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.314",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.756",
-        "outelevatio": "19.781"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761470344258118,
-            113.93891290725688
-          ],
-          [
-            22.762534128220064,
-            113.93784464140359
-          ]
-        ]
-      },
-      "id": "271",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-478-Y-495",
-        "fromnode": "Y-495",
-        "tonode": "Y-478",
-        "length": "156.95",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "48.325",
-        "outelevatio": "43.757"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744050689351212,
-            113.96026608239835
-          ],
-          [
-            22.744764446948693,
-            113.9589461431996
-          ]
-        ]
-      },
-      "id": "272",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-481-Y-494",
-        "fromnode": "Y-494",
-        "tonode": "Y-481",
-        "length": "108.87",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.622",
-        "outelevatio": "35.767"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744441707882505,
-            113.95473638283595
-          ],
-          [
-            22.744466709675397,
-            113.95367806416654
-          ]
-        ]
-      },
-      "id": "273",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-482-Y-493",
-        "fromnode": "Y-493",
-        "tonode": "Y-482",
-        "length": "174.81",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "58.416",
-        "outelevatio": "53.28"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74281941332443,
-            113.96324194849203
-          ],
-          [
-            22.743611323483417,
-            113.96176907415573
-          ]
-        ]
-      },
-      "id": "274",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-485-Y-492",
-        "fromnode": "Y-492",
-        "tonode": "Y-485",
-        "length": "220.18",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "39.912",
-        "outelevatio": "39.002"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.753191440771673,
-            113.95572198370654
-          ],
-          [
-            22.75482247217773,
-            113.95451664448132
-          ]
-        ]
-      },
-      "id": "275",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-486-Y-491",
-        "fromnode": "Y-491",
-        "tonode": "Y-486",
-        "length": "137.48",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.2",
-        "outelevatio": "37.43"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752490908414096,
-            113.95014108591283
-          ],
-          [
-            22.753716535525953,
-            113.95030125364951
-          ]
-        ]
-      },
-      "id": "276",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-487-Y-490",
-        "fromnode": "Y-490",
-        "tonode": "Y-487",
-        "length": "86.00",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.81",
-        "outelevatio": "38.185"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754766849241026,
-            113.95442822132465
-          ],
-          [
-            22.755118314459946,
-            113.95368446942194
-          ]
-        ]
-      },
-      "id": "277",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-488-Y-489",
-        "fromnode": "Y-489",
-        "tonode": "Y-488",
-        "length": "139.73",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.2",
-        "outelevatio": "37.518"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752505227004974,
-            113.9499122921035
-          ],
-          [
-            22.753750200860235,
-            113.95008065487302
-          ]
-        ]
-      },
-      "id": "278",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-490-Y-520",
-        "fromnode": "Y-520",
-        "tonode": "Y-490",
-        "length": "138.61",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "39.999",
-        "outelevatio": "39.010000000000005"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75373396581912,
-            113.95517685540305
-          ],
-          [
-            22.754766849241026,
-            113.95442822132465
-          ]
-        ]
-      },
-      "id": "279",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-493-Y-518",
-        "fromnode": "Y-518",
-        "tonode": "Y-493",
-        "length": "174.81",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "60.04",
-        "outelevatio": "58.616"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.742025974603585,
-            113.96471439772532
-          ],
-          [
-            22.74281941332443,
-            113.96324194849203
-          ]
-        ]
-      },
-      "id": "280",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-494-Y-517",
-        "fromnode": "Y-517",
-        "tonode": "Y-494",
-        "length": "21.52",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.791",
-        "outelevatio": "36.622"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.744246975267888,
-            113.95473032493678
-          ],
-          [
-            22.744441707882505,
-            113.95473638283595
-          ]
-        ]
-      },
-      "id": "281",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-495-Y-516",
-        "fromnode": "Y-516",
-        "tonode": "Y-495",
-        "length": "82.14",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "50.715",
-        "outelevatio": "48.325"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74367962679257,
-            113.96095856313623
-          ],
-          [
-            22.744050689351212,
-            113.96026608239835
-          ]
-        ]
-      },
-      "id": "282",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-501-Y-511",
-        "fromnode": "Y-511",
-        "tonode": "Y-501",
-        "length": "97.99",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.5",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.022",
-        "outelevatio": "20.503"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.764022314334287,
-            113.93889173450354
-          ],
-          [
-            22.763294255769786,
-            113.93836420796251
-          ]
-        ]
-      },
-      "id": "283",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-502-Y-510",
-        "fromnode": "Y-510",
-        "tonode": "Y-502",
-        "length": "165.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.751",
-        "outelevatio": "20.756"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76038604147279,
-            113.94000808741339
-          ],
-          [
-            22.761470344258118,
-            113.93891290725688
-          ]
-        ]
-      },
-      "id": "284",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-503-Y-508",
-        "fromnode": "Y-508",
-        "tonode": "Y-503",
-        "length": "27.85",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.101",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.346",
-        "outelevatio": "22.29"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759826756105465,
-            113.93979430585347
-          ],
-          [
-            22.760022084978544,
-            113.93996242964604
-          ]
-        ]
-      },
-      "id": "285",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-503-Y-509",
-        "fromnode": "Y-509",
-        "tonode": "Y-503",
-        "length": "31.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.1",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.416",
-        "outelevatio": "22.289"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76023228183048,
-            113.94016015436227
-          ],
-          [
-            22.760022084978544,
-            113.93996242964604
-          ]
-        ]
-      },
-      "id": "286",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-504-Y-505",
-        "fromnode": "Y-505",
-        "tonode": "Y-504",
-        "length": "156.93",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.257",
-        "outelevatio": "22.02"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75758568551827,
-            113.93882045888192
-          ],
-          [
-            22.75896510026482,
-            113.9391008435319
-          ]
-        ]
-      },
-      "id": "287",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-504-Y-506",
-        "fromnode": "Y-506",
-        "tonode": "Y-504",
-        "length": "128.60",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.78",
-        "outelevatio": "22.02"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.760004994560752,
-            113.93963420216389
-          ],
-          [
-            22.75896510026482,
-            113.9391008435319
-          ]
-        ]
-      },
-      "id": "288",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-504-Y-507",
-        "fromnode": "Y-507",
-        "tonode": "Y-504",
-        "length": "21.90",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.118",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.04",
-        "outelevatio": "21.938"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75888839148233,
-            113.93929657919799
-          ],
-          [
-            22.75896510026482,
-            113.9391008435319
-          ]
-        ]
-      },
-      "id": "289",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-505-Y-535",
-        "fromnode": "Y-535",
-        "tonode": "Y-505",
-        "length": "163.31",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.86",
-        "outelevatio": "27.457"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756222577543884,
-            113.93939047152777
-          ],
-          [
-            22.75758568551827,
-            113.93882045888192
-          ]
-        ]
-      },
-      "id": "290",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-507-Y-533",
-        "fromnode": "Y-533",
-        "tonode": "Y-507",
-        "length": "142.45",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.304",
-        "outelevatio": "22.24"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75764352007326,
-            113.93900253352965
-          ],
-          [
-            22.75888839148233,
-            113.93929657919799
-          ]
-        ]
-      },
-      "id": "291",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-507-Y-534",
-        "fromnode": "Y-534",
-        "tonode": "Y-507",
-        "length": "72.01",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.07",
-        "outelevatio": "22.24"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75947718801571,
-            113.93957978891
-          ],
-          [
-            22.75888839148233,
-            113.93929657919799
-          ]
-        ]
-      },
-      "id": "292",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-509-Y-532",
-        "fromnode": "Y-532",
-        "tonode": "Y-509",
-        "length": "150.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.03",
-        "outelevatio": "22.416"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761283209296334,
-            113.9410803083494
-          ],
-          [
-            22.76023228183048,
-            113.94016015436227
-          ]
-        ]
-      },
-      "id": "293",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-510-Y-531",
-        "fromnode": "Y-531",
-        "tonode": "Y-510",
-        "length": "155.86",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.22",
-        "outelevatio": "21.751"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76147714487305,
-            113.94095036167381
-          ],
-          [
-            22.76038604147279,
-            113.94000808741339
-          ]
-        ]
-      },
-      "id": "294",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-511-Y-530",
-        "fromnode": "Y-530",
-        "tonode": "Y-511",
-        "length": "95.93",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "21.93",
-        "outelevatio": "21.421999999999997"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.764733324188676,
-            113.9394104662411
-          ],
-          [
-            22.764022314334287,
-            113.93889173450354
-          ]
-        ]
-      },
-      "id": "295",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-516-Y-526",
-        "fromnode": "Y-526",
-        "tonode": "Y-516",
-        "length": "78.47",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "52.999",
-        "outelevatio": "50.715"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.743324793681346,
-            113.96162005395537
-          ],
-          [
-            22.74367962679257,
-            113.96095856313623
-          ]
-        ]
-      },
-      "id": "296",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-517-Y-524",
-        "fromnode": "Y-524",
-        "tonode": "Y-517",
-        "length": "214.17",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.895",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.182",
-        "outelevatio": "37.686"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74375260822908,
-            113.95674429459258
-          ],
-          [
-            22.744246975267888,
-            113.95473032493678
-          ]
-        ]
-      },
-      "id": "297",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-517-Y-525",
-        "fromnode": "Y-525",
-        "tonode": "Y-517",
-        "length": "24.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.743",
-        "outelevatio": "36.791"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74402941987051,
-            113.95471497892815
-          ],
-          [
-            22.744246975267888,
-            113.95473032493678
-          ]
-        ]
-      },
-      "id": "298",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-520-Y-521",
-        "fromnode": "Y-521",
-        "tonode": "Y-520",
-        "length": "182.18",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.65",
-        "outelevatio": "40.199000000000005"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75209866793871,
-            113.95512748114946
-          ],
-          [
-            22.75373396581912,
-            113.95517685540305
-          ]
-        ]
-      },
-      "id": "299",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-520-Y-522",
-        "fromnode": "Y-522",
-        "tonode": "Y-520",
-        "length": "30.65",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.2",
-        "outelevatio": "39.999"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75350779451924,
-            113.95534610851628
-          ],
-          [
-            22.75373396581912,
-            113.95517685540305
-          ]
-        ]
-      },
-      "id": "300",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-522-Y-543",
-        "fromnode": "Y-543",
-        "tonode": "Y-522",
-        "length": "63.60",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.383",
-        "outelevatio": "40.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752939517338834,
-            113.9552856300916
-          ],
-          [
-            22.75350779451924,
-            113.95534610851628
-          ]
-        ]
-      },
-      "id": "301",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-522-Y-544",
-        "fromnode": "Y-544",
-        "tonode": "Y-522",
-        "length": "50.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.317",
-        "outelevatio": "40.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75313573790132,
-            113.95563358420915
-          ],
-          [
-            22.75350779451924,
-            113.95534610851628
-          ]
-        ]
-      },
-      "id": "302",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-524-Y-542",
-        "fromnode": "Y-542",
-        "tonode": "Y-524",
-        "length": "95.71",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "41.48",
-        "outelevatio": "40.382000000000005"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.743322220993264,
-            113.95755238058673
-          ],
-          [
-            22.74375260822908,
-            113.95674429459258
-          ]
-        ]
-      },
-      "id": "303",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-525-Y-541",
-        "fromnode": "Y-541",
-        "tonode": "Y-525",
-        "length": "146.83",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.537",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "38.845",
-        "outelevatio": "37.28"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74269952470302,
-            113.95468317396076
-          ],
-          [
-            22.74402941987051,
-            113.95471497892815
-          ]
-        ]
-      },
-      "id": "304",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-525-Y-608",
-        "fromnode": "Y-608",
-        "tonode": "Y-525",
-        "length": "273.90",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "2.091",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "39.397",
-        "outelevatio": "38.834"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74324674342493,
-            113.95724272430598
-          ],
-          [
-            22.74402941987051,
-            113.95471497892815
-          ]
-        ]
-      },
-      "id": "305",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-526-Y-540",
-        "fromnode": "Y-540",
-        "tonode": "Y-526",
-        "length": "74.61",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "55.169",
-        "outelevatio": "52.999"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.742987341364188,
-            113.96224898195898
-          ],
-          [
-            22.743324793681346,
-            113.96162005395537
-          ]
-        ]
-      },
-      "id": "306",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-531-Y-538",
-        "fromnode": "Y-538",
-        "tonode": "Y-531",
-        "length": "89.15",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.078",
-        "outelevatio": "22.419999999999998"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.762081815465773,
-            113.94151471064207
-          ],
-          [
-            22.76147714487305,
-            113.94095036167381
-          ]
-        ]
-      },
-      "id": "307",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-532-Y-537",
-        "fromnode": "Y-537",
-        "tonode": "Y-532",
-        "length": "135.48",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.0",
-        "outelevatio": "23.03"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.762192066088332,
-            113.94195059986642
-          ],
-          [
-            22.761283209296334,
-            113.9410803083494
-          ]
-        ]
-      },
-      "id": "308",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-532-Y-558",
-        "fromnode": "Y-558",
-        "tonode": "Y-532",
-        "length": "14.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.2",
-        "outelevatio": "23.03"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761214369197507,
-            113.94119737047076
-          ],
-          [
-            22.761283209296334,
-            113.9410803083494
-          ]
-        ]
-      },
-      "id": "309",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-533-Y-536",
-        "fromnode": "Y-536",
-        "tonode": "Y-533",
-        "length": "154.35",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.76",
-        "outelevatio": "27.304"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756373331891314,
-            113.93958944371629
-          ],
-          [
-            22.75764352007326,
-            113.93900253352965
-          ]
-        ]
-      },
-      "id": "310",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-537-Y-551",
-        "fromnode": "Y-551",
-        "tonode": "Y-537",
-        "length": "224.92",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.0",
-        "outelevatio": "24.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.763585635542224,
-            113.94352627399775
-          ],
-          [
-            22.762192066088332,
-            113.94195059986642
-          ]
-        ]
-      },
-      "id": "311",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-538-Y-550",
-        "fromnode": "Y-550",
-        "tonode": "Y-538",
-        "length": "263.33",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.22",
-        "outelevatio": "23.278"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.763731575480072,
-            113.94334011742276
-          ],
-          [
-            22.762081815465773,
-            113.94151471064207
-          ]
-        ]
-      },
-      "id": "312",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-540-Y-549",
-        "fromnode": "Y-549",
-        "tonode": "Y-540",
-        "length": "95.99",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "58.163",
-        "outelevatio": "55.369"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.742558156429986,
-            113.96306140084936
-          ],
-          [
-            22.742987341364188,
-            113.96224898195898
-          ]
-        ]
-      },
-      "id": "313",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-541-Y-548",
-        "fromnode": "Y-548",
-        "tonode": "Y-541",
-        "length": "146.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.2",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.61",
-        "outelevatio": "39.045"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.741367687645322,
-            113.95464392628888
-          ],
-          [
-            22.74269952470302,
-            113.95468317396076
-          ]
-        ]
-      },
-      "id": "314",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-542-Y-547",
-        "fromnode": "Y-547",
-        "tonode": "Y-542",
-        "length": "135.36",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.199",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.38",
-        "outelevatio": "41.678999999999995"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.742970124128366,
-            113.9588135484725
-          ],
-          [
-            22.743322220993264,
-            113.95755238058673
-          ]
-        ]
-      },
-      "id": "315",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-542-Y-609",
-        "fromnode": "Y-609",
-        "tonode": "Y-542",
-        "length": "207.94",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.766",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "42.661",
-        "outelevatio": "42.245999999999995"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.741436847470457,
-            113.95752415566844
-          ],
-          [
-            22.743322220993264,
-            113.95755238058673
-          ]
-        ]
-      },
-      "id": "316",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-543-Y-546",
-        "fromnode": "Y-546",
-        "tonode": "Y-543",
-        "length": "92.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "40.65",
-        "outelevatio": "40.383"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75210525330086,
-            113.95525866869531
-          ],
-          [
-            22.752939517338834,
-            113.9552856300916
-          ]
-        ]
-      },
-      "id": "317",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-547-Y-553",
-        "fromnode": "Y-553",
-        "tonode": "Y-547",
-        "length": "91.85",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.4",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.98",
-        "outelevatio": "43.78"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.742736887254605,
-            113.95967111776207
-          ],
-          [
-            22.742970124128366,
-            113.9588135484725
-          ]
-        ]
-      },
-      "id": "318",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-549-Y-552",
-        "fromnode": "Y-552",
-        "tonode": "Y-549",
-        "length": "107.32",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "61.285",
-        "outelevatio": "58.163"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.742078125419035,
-            113.96396977565833
-          ],
-          [
-            22.742558156429986,
-            113.96306140084936
-          ]
-        ]
-      },
-      "id": "319",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-552-Y-555",
-        "fromnode": "Y-555",
-        "tonode": "Y-552",
-        "length": "75.91",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "63.5",
-        "outelevatio": "61.285"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74172545339705,
-            113.96460417438377
-          ],
-          [
-            22.742078125419035,
-            113.96396977565833
-          ]
-        ]
-      },
-      "id": "320",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-558-Y-559",
-        "fromnode": "Y-559",
-        "tonode": "Y-558",
-        "length": "18.42",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.5",
-        "outelevatio": "23.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76111128192603,
-            113.94133653292694
-          ],
-          [
-            22.761214369197507,
-            113.94119737047076
-          ]
-        ]
-      },
-      "id": "321",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-559-Y-560",
-        "fromnode": "Y-560",
-        "tonode": "Y-559",
-        "length": "39.66",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.8",
-        "outelevatio": "23.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76099066884401,
-            113.94169882138091
-          ],
-          [
-            22.76111128192603,
-            113.94133653292694
-          ]
-        ]
-      },
-      "id": "322",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-560-Y-561",
-        "fromnode": "Y-561",
-        "tonode": "Y-560",
-        "length": "104.52",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.0",
-        "outelevatio": "23.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761029945390266,
-            113.94271441467099
-          ],
-          [
-            22.76099066884401,
-            113.94169882138091
-          ]
-        ]
-      },
-      "id": "323",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-561-Y-562",
-        "fromnode": "Y-562",
-        "tonode": "Y-561",
-        "length": "19.79",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.2",
-        "outelevatio": "24.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761099514058188,
-            113.94289143028884
-          ],
-          [
-            22.761029945390266,
-            113.94271441467099
-          ]
-        ]
-      },
-      "id": "324",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-562-Y-563",
-        "fromnode": "Y-563",
-        "tonode": "Y-562",
-        "length": "19.48",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.5",
-        "outelevatio": "24.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76126196749133,
-            113.94295899146499
-          ],
-          [
-            22.761099514058188,
-            113.94289143028884
-          ]
-        ]
-      },
-      "id": "325",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-563-Y-564",
-        "fromnode": "Y-564",
-        "tonode": "Y-563",
-        "length": "64.28",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.0",
-        "outelevatio": "24.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761835114481695,
-            113.94295224460036
-          ],
-          [
-            22.76126196749133,
-            113.94295899146499
-          ]
-        ]
-      },
-      "id": "326",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-564-Y-565",
-        "fromnode": "Y-565",
-        "tonode": "Y-564",
-        "length": "12.66",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.2",
-        "outelevatio": "25.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76193779798314,
-            113.94300368841091
-          ],
-          [
-            22.761835114481695,
-            113.94295224460036
-          ]
-        ]
-      },
-      "id": "327",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-565-Y-566",
-        "fromnode": "Y-566",
-        "tonode": "Y-565",
-        "length": "13.75",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.5",
-        "outelevatio": "25.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761992974317472,
-            113.94312318362861
-          ],
-          [
-            22.76193779798314,
-            113.94300368841091
-          ]
-        ]
-      },
-      "id": "328",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-566-Y-567",
-        "fromnode": "Y-567",
-        "tonode": "Y-566",
-        "length": "93.82",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.0",
-        "outelevatio": "25.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.762005360944084,
-            113.944035466545
-          ],
-          [
-            22.761992974317472,
-            113.94312318362861
-          ]
-        ]
-      },
-      "id": "329",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-567-Y-568",
-        "fromnode": "Y-568",
-        "tonode": "Y-567",
-        "length": "254.92",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.0",
-        "outelevatio": "26.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75973138251133,
-            113.94406793679335
-          ],
-          [
-            22.762005360944084,
-            113.944035466545
-          ]
-        ]
-      },
-      "id": "330",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-567-Y-577",
-        "fromnode": "Y-577",
-        "tonode": "Y-567",
-        "length": "107.62",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.5",
-        "outelevatio": "26.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.762700393667078,
-            113.94475864647227
-          ],
-          [
-            22.762005360944084,
-            113.944035466545
-          ]
-        ]
-      },
-      "id": "331",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-568-Y-569",
-        "fromnode": "Y-569",
-        "tonode": "Y-568",
-        "length": "24.87",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "27.3",
-        "outelevatio": "27.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75952198166556,
-            113.94414795964252
-          ],
-          [
-            22.75973138251133,
-            113.94406793679335
-          ]
-        ]
-      },
-      "id": "332",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-569-Y-570",
-        "fromnode": "Y-570",
-        "tonode": "Y-569",
-        "length": "55.64",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "28.0",
-        "outelevatio": "27.3"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759127276276427,
-            113.94447569168447
-          ],
-          [
-            22.75952198166556,
-            113.94414795964252
-          ]
-        ]
-      },
-      "id": "333",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-570-Y-571",
-        "fromnode": "Y-571",
-        "tonode": "Y-570",
-        "length": "69.41",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "29.0",
-        "outelevatio": "28.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758884893529526,
-            113.94509643078682
-          ],
-          [
-            22.759127276276427,
-            113.94447569168447
-          ]
-        ]
-      },
-      "id": "334",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-571-Y-572",
-        "fromnode": "Y-572",
-        "tonode": "Y-571",
-        "length": "21.31",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "30.0",
-        "outelevatio": "29.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75889732099623,
-            113.9453032517243
-          ],
-          [
-            22.758884893529526,
-            113.94509643078682
-          ]
-        ]
-      },
-      "id": "335",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-572-Y-573",
-        "fromnode": "Y-573",
-        "tonode": "Y-572",
-        "length": "37.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.0",
-        "outelevatio": "30.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759064108409756,
-            113.94562428634917
-          ],
-          [
-            22.75889732099623,
-            113.9453032517243
-          ]
-        ]
-      },
-      "id": "336",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-573-Y-574",
-        "fromnode": "Y-574",
-        "tonode": "Y-573",
-        "length": "33.48",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.5",
-        "outelevatio": "32.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759345078119924,
-            113.94573649484421
-          ],
-          [
-            22.759064108409756,
-            113.94562428634917
-          ]
-        ]
-      },
-      "id": "337",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-574-Y-575",
-        "fromnode": "Y-575",
-        "tonode": "Y-574",
-        "length": "14.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.0",
-        "outelevatio": "32.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759477956072764,
-            113.94573232331248
-          ],
-          [
-            22.759345078119924,
-            113.94573649484421
-          ]
-        ]
-      },
-      "id": "338",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-578-Y-579",
-        "fromnode": "Y-578",
-        "tonode": "Y-579",
-        "length": "140.81",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "33.0",
-        "outelevatio": "32.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759678741007818,
-            113.94573235833329
-          ],
-          [
-            22.76093535122002,
-            113.94571915678955
-          ]
-        ]
-      },
-      "id": "339",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-579-Y-580",
-        "fromnode": "Y-579",
-        "tonode": "Y-580",
-        "length": "51.62",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.0",
-        "outelevatio": "31.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76093535122002,
-            113.94571915678955
-          ],
-          [
-            22.761377669340778,
-            113.94585960386613
-          ]
-        ]
-      },
-      "id": "340",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-580-Y-581",
-        "fromnode": "Y-580",
-        "tonode": "Y-581",
-        "length": "40.92",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.8",
-        "outelevatio": "31.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761377669340778,
-            113.94585960386613
-          ],
-          [
-            22.761658920543233,
-            113.94611393062668
-          ]
-        ]
-      },
-      "id": "341",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-581-Y-587",
-        "fromnode": "Y-581",
-        "tonode": "Y-587",
-        "length": "20.14",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.5",
-        "outelevatio": "31.27"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761658920543233,
-            113.94611393062668
-          ],
-          [
-            22.761753412587506,
-            113.94628077500087
-          ]
-        ]
-      },
-      "id": "342",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-584-Y-585",
-        "fromnode": "Y-585",
-        "tonode": "Y-584",
-        "length": "198.34",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.0",
-        "outelevatio": "23.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76411380628774,
-            113.94341671377568
-          ],
-          [
-            22.765292725898494,
-            113.94198488534752
-          ]
-        ]
-      },
-      "id": "343",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-584-Y-597",
-        "fromnode": "Y-584",
-        "tonode": "Y-597",
-        "length": "200.10",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.34",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.0",
-        "outelevatio": "22.34"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.765292725898494,
-            113.94198488534752
-          ],
-          [
-            22.766500461963723,
-            113.9405595043035
-          ]
-        ]
-      },
-      "id": "344",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-585-Y-586",
-        "fromnode": "Y-586",
-        "tonode": "Y-585",
-        "length": "198.34",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "28.0",
-        "outelevatio": "25.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.762934059269906,
-            113.94484867636228
-          ],
-          [
-            22.76411380628774,
-            113.94341671377568
-          ]
-        ]
-      },
-      "id": "345",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-586-Y-587",
-        "fromnode": "Y-587",
-        "tonode": "Y-586",
-        "length": "198.33",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.27",
-        "outelevatio": "28.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.761753412587506,
-            113.94628077500087
-          ],
-          [
-            22.762934059269906,
-            113.94484867636228
-          ]
-        ]
-      },
-      "id": "346",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-587-Y-588",
-        "fromnode": "Y-588",
-        "tonode": "Y-587",
-        "length": "197.06",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.16",
-        "outelevatio": "31.27"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76057938945246,
-            113.94770384240444
-          ],
-          [
-            22.761753412587506,
-            113.94628077500087
-          ]
-        ]
-      },
-      "id": "347",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-589-Y-590",
-        "fromnode": "Y-590",
-        "tonode": "Y-589",
-        "length": "211.54",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.404",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.0",
-        "outelevatio": "20.404"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76547301270823,
-            113.94224685563536
-          ],
-          [
-            22.76673846562927,
-            113.94072875012391
-          ]
-        ]
-      },
-      "id": "348",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-589-Y-597",
-        "fromnode": "Y-597",
-        "tonode": "Y-589",
-        "length": "31.89",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.0",
-        "outelevatio": "20.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.766500461963723,
-            113.9405595043035
-          ],
-          [
-            22.76673846562927,
-            113.94072875012391
-          ]
-        ]
-      },
-      "id": "349",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-589-Y-598",
-        "fromnode": "Y-589",
-        "tonode": "Y-598",
-        "length": "43.16",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.0",
-        "outelevatio": "19.64"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76673846562927,
-            113.94072875012391
-          ],
-          [
-            22.76703276712173,
-            113.9409989858565
-          ]
-        ]
-      },
-      "id": "350",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-590-Y-591",
-        "fromnode": "Y-591",
-        "tonode": "Y-590",
-        "length": "211.54",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.0",
-        "outelevatio": "22.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76420668435447,
-            113.9437650897805
-          ],
-          [
-            22.76547301270823,
-            113.94224685563536
-          ]
-        ]
-      },
-      "id": "351",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-591-Y-592",
-        "fromnode": "Y-592",
-        "tonode": "Y-591",
-        "length": "188.28",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.0",
-        "outelevatio": "24.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.763081241117774,
-            113.94511887579243
-          ],
-          [
-            22.76420668435447,
-            113.9437650897805
-          ]
-        ]
-      },
-      "id": "352",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-592-Y-593",
-        "fromnode": "Y-593",
-        "tonode": "Y-592",
-        "length": "188.28",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.24",
-        "outelevatio": "26.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76195499557049,
-            113.94647278490592
-          ],
-          [
-            22.763081241117774,
-            113.94511887579243
-          ]
-        ]
-      },
-      "id": "353",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-593-Y-595",
-        "fromnode": "Y-595",
-        "tonode": "Y-593",
-        "length": "181.08",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.73",
-        "outelevatio": "32.24"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.760882610904275,
-            113.94778645933852
-          ],
-          [
-            22.76195499557049,
-            113.94647278490592
-          ]
-        ]
-      },
-      "id": "354",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-596-Y-597",
-        "fromnode": "Y-596",
-        "tonode": "Y-597",
-        "length": "169.73",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.009",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.0",
-        "outelevatio": "22.009"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.76521072040047,
-            113.93969765831889
-          ],
-          [
-            22.766500461963723,
-            113.9405595043035
-          ]
-        ]
-      },
-      "id": "355",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-599-Y-600",
-        "fromnode": "Y-599",
-        "tonode": "Y-600",
-        "length": "73.22",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.0",
-        "outelevatio": "30.701"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754760242802536,
-            113.9461814455209
-          ],
-          [
-            22.754901613802822,
-            113.94687690227055
-          ]
-        ]
-      },
-      "id": "356",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-5-Y-6",
-        "fromnode": "Y-6",
-        "tonode": "Y-5",
-        "length": "184.90",
-        "roughness": "0.014",
-        "inoffset": "0.003",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.803",
-        "outelevatio": "12.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757017183546584,
-            113.92184482925413
-          ],
-          [
-            22.75789885228772,
-            113.92336899410773
-          ]
-        ]
-      },
-      "id": "357",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-600-Y-601",
-        "fromnode": "Y-601",
-        "tonode": "Y-600",
-        "length": "94.64",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.5",
-        "outelevatio": "30.701"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75511486681834,
-            113.94776795573341
-          ],
-          [
-            22.754901613802822,
-            113.94687690227055
-          ]
-        ]
-      },
-      "id": "358",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-601-Y-602",
-        "fromnode": "Y-602",
-        "tonode": "Y-601",
-        "length": "191.83",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.5",
-        "outelevatio": "31.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755159173974153,
-            113.94963273868962
-          ],
-          [
-            22.75511486681834,
-            113.94776795573341
-          ]
-        ]
-      },
-      "id": "359",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-610-Y-611",
-        "fromnode": "Y-610",
-        "tonode": "Y-611",
-        "length": "163.27",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.0",
-        "outelevatio": "19.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75764654641461,
-            113.9352522105746
-          ],
-          [
-            22.756500335338885,
-            113.93623426106389
-          ]
-        ]
-      },
-      "id": "360",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-611-Y-613",
-        "fromnode": "Y-613",
-        "tonode": "Y-611",
-        "length": "30.78",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.5",
-        "outelevatio": "19.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75669316243462,
-            113.93644847016515
-          ],
-          [
-            22.756500335338885,
-            113.93623426106389
-          ]
-        ]
-      },
-      "id": "361",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-611-Y-615",
-        "fromnode": "Y-615",
-        "tonode": "Y-611",
-        "length": "213.93",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.327",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.0",
-        "outelevatio": "19.327"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754994884334405,
-            113.93751877634638
-          ],
-          [
-            22.756500335338885,
-            113.93623426106389
-          ]
-        ]
-      },
-      "id": "362",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-611-Y-618",
-        "fromnode": "Y-611",
-        "tonode": "Y-618",
-        "length": "3.61",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.0",
-        "outelevatio": "18.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756500335338885,
-            113.93623426106389
-          ],
-          [
-            22.756478831212856,
-            113.9362080138442
-          ]
-        ]
-      },
-      "id": "363",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-612-Y-613",
-        "fromnode": "Y-612",
-        "tonode": "Y-613",
-        "length": "159.97",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.0",
-        "outelevatio": "19.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75782098444689,
-            113.93549312707107
-          ],
-          [
-            22.75669316243462,
-            113.93644847016515
-          ]
-        ]
-      },
-      "id": "364",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-613-Y-617",
-        "fromnode": "Y-617",
-        "tonode": "Y-613",
-        "length": "215.11",
-        "roughness": "0.014",
-        "inoffset": "0",
-        "outoffset": "0.32",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.0",
-        "outelevatio": "19.82"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75518465461139,
-            113.93774682589661
-          ],
-          [
-            22.75669316243462,
-            113.93644847016515
-          ]
-        ]
-      },
-      "id": "365",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "JWG27",
-        "fromnode": "RP2",
-        "tonode": "LP1-1",
-        "length": "90",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.2",
-        "outelevatio": "21.27"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7487694733374,
-            113.94589761455308
-          ],
-          [
-            22.748769600814935,
-            113.94581333749949
-          ]
-        ]
-      },
-      "id": "366",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PKX1",
-        "fromnode": "Z1",
-        "tonode": "RP22",
-        "length": "10",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.0",
-        "outelevatio": "10.6"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75904891325425,
-            113.9202780913484
-          ],
-          [
-            22.759067641865062,
-            113.92049236719205
-          ]
-        ]
-      },
-      "id": "367",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PKX2",
-        "fromnode": "Z2",
-        "tonode": "RP21",
-        "length": "10",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.2",
-        "outelevatio": "10.7"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758578712251772,
-            113.92093469717776
-          ],
-          [
-            22.758587881037087,
-            113.92114117237378
-          ]
-        ]
-      },
-      "id": "368",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PKX3",
-        "fromnode": "Z3",
-        "tonode": "RP20",
-        "length": "10",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.5",
-        "outelevatio": "10.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758102330245983,
-            113.92142487691446
-          ],
-          [
-            22.75819108882942,
-            113.92153941500743
-          ]
-        ]
-      },
-      "id": "369",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PKX4",
-        "fromnode": "Z4",
-        "tonode": "RP19-1",
-        "length": "10",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.8",
-        "outelevatio": "10.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758081510813806,
-            113.9229052827816
-          ],
-          [
-            22.757996810115607,
-            113.92290382836714
-          ]
-        ]
-      },
-      "id": "370",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "PKX5",
-        "fromnode": "Z5",
-        "tonode": "RP25",
-        "length": "10",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.2",
-        "outelevatio": "10.34"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75934721032794,
-            113.91745446982797
-          ],
-          [
-            22.75950643864815,
-            113.9173283069159
-          ]
-        ]
-      },
-      "id": "371",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD7",
-        "fromnode": "HD65",
-        "tonode": "HD60",
-        "length": "242.93",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "30.2",
-        "outelevatio": "28.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7505159716035,
-            113.95298081782984
-          ],
-          [
-            22.750833115621866,
-            113.95064387157548
-          ]
-        ]
-      },
-      "id": "372",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD8",
-        "fromnode": "HD60",
-        "tonode": "HD59",
-        "length": "253.4",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "28.0",
-        "outelevatio": "26.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750833115621866,
-            113.95064387157548
-          ],
-          [
-            22.74855146814271,
-            113.95059043454748
-          ]
-        ]
-      },
-      "id": "373",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD9",
-        "fromnode": "HD59",
-        "tonode": "HD58-1",
-        "length": "40.37",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "26.0",
-        "outelevatio": "25.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74855146814271,
-            113.95059043454748
-          ],
-          [
-            22.748359918917263,
-            113.95025658351636
-          ]
-        ]
-      },
-      "id": "374",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD10",
-        "fromnode": "HD58-1",
-        "tonode": "HD58-2",
-        "length": "27.03",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "25.0",
-        "outelevatio": "24.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748359918917263,
-            113.95025658351636
-          ],
-          [
-            22.74831249921043,
-            113.94999880102881
-          ]
-        ]
-      },
-      "id": "375",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD11",
-        "fromnode": "HD58-2",
-        "tonode": "HD58",
-        "length": "50.51",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "24.0",
-        "outelevatio": "23.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74831249921043,
-            113.94999880102881
-          ],
-          [
-            22.748078243481753,
-            113.94957753549201
-          ]
-        ]
-      },
-      "id": "376",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD12",
-        "fromnode": "HD58",
-        "tonode": "HD57",
-        "length": "29.85",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "23.0",
-        "outelevatio": "22.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748078243481753,
-            113.94957753549201
-          ],
-          [
-            22.747983582496786,
-            113.94930575092143
-          ]
-        ]
-      },
-      "id": "377",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD13",
-        "fromnode": "HD57",
-        "tonode": "HD52-3",
-        "length": "357.06",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "22.0",
-        "outelevatio": "20.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.747983582496786,
-            113.94930575092143
-          ],
-          [
-            22.748794240913877,
-            113.94594614871903
-          ]
-        ]
-      },
-      "id": "378",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD14",
-        "fromnode": "HD52-3",
-        "tonode": "HD52-2",
-        "length": "7.32",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "20.0",
-        "outelevatio": "19.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748794240913877,
-            113.94594614871903
-          ],
-          [
-            22.748799467942533,
-            113.94587517984263
-          ]
-        ]
-      },
-      "id": "379",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD15",
-        "fromnode": "HD52-2",
-        "tonode": "HD52-1",
-        "length": "9.08",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.8",
-        "outelevatio": "19.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748799467942533,
-            113.94587517984263
-          ],
-          [
-            22.74882728237181,
-            113.9457921509374
-          ]
-        ]
-      },
-      "id": "380",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD16",
-        "fromnode": "HD52-1",
-        "tonode": "HD52",
-        "length": "5.55",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.5",
-        "outelevatio": "19.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74882728237181,
-            113.9457921509374
-          ],
-          [
-            22.748847014616697,
-            113.94574259546621
-          ]
-        ]
-      },
-      "id": "381",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD17",
-        "fromnode": "HD52",
-        "tonode": "HD48",
-        "length": "168.75",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "19.5",
-        "outelevatio": "18.3"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.748847014616697,
-            113.94574259546621
-          ],
-          [
-            22.74950096314037,
-            113.94426168115065
-          ]
-        ]
-      },
-      "id": "382",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD18",
-        "fromnode": "HD48",
-        "tonode": "HD45",
-        "length": "157.16",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "18.3",
-        "outelevatio": "17.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74950096314037,
-            113.94426168115065
-          ],
-          [
-            22.750134285911642,
-            113.94289550171416
-          ]
-        ]
-      },
-      "id": "383",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD19",
-        "fromnode": "HD45",
-        "tonode": "HD44",
-        "length": "21.12",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.2",
-        "outelevatio": "17.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.750134285911642,
-            113.94289550171416
-          ],
-          [
-            22.7502362990421,
-            113.94272223051118
-          ]
-        ]
-      },
-      "id": "384",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD20",
-        "fromnode": "HD44",
-        "tonode": "HD43",
-        "length": "44.72",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "17.0",
-        "outelevatio": "16.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7502362990421,
-            113.94272223051118
-          ],
-          [
-            22.7504803656123,
-            113.94237662874299
-          ]
-        ]
-      },
-      "id": "385",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD21",
-        "fromnode": "HD43",
-        "tonode": "HD40-1",
-        "length": "330.58",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.9",
-        "outelevatio": "16.3"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.7504803656123,
-            113.94237662874299
-          ],
-          [
-            22.752312707865027,
-            113.93984722410029
-          ]
-        ]
-      },
-      "id": "386",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD22",
-        "fromnode": "HD40-1",
-        "tonode": "HD40",
-        "length": "11.61",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.3",
-        "outelevatio": "16.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752312707865027,
-            113.93984722410029
-          ],
-          [
-            22.75238170078465,
-            113.93976269165802
-          ]
-        ]
-      },
-      "id": "387",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD23",
-        "fromnode": "HD40",
-        "tonode": "HD36",
-        "length": "298.31",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "16.2",
-        "outelevatio": "14.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75238170078465,
-            113.93976269165802
-          ],
-          [
-            22.75428021686875,
-            113.93771952043542
-          ]
-        ]
-      },
-      "id": "388",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD24",
-        "fromnode": "HD36",
-        "tonode": "HD35",
-        "length": "37.74",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.8",
-        "outelevatio": "14.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75428021686875,
-            113.93771952043542
-          ],
-          [
-            22.75426246098711,
-            113.93735302663401
-          ]
-        ]
-      },
-      "id": "389",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD25",
-        "fromnode": "HD35",
-        "tonode": "HD34-1",
-        "length": "23.74",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.5",
-        "outelevatio": "14.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75426246098711,
-            113.93735302663401
-          ],
-          [
-            22.754239353537013,
-            113.9371234606548
-          ]
-        ]
-      },
-      "id": "390",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD26",
-        "fromnode": "HD34-1",
-        "tonode": "HD27",
-        "length": "412.76",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "14.4",
-        "outelevatio": "13.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.754239353537013,
-            113.9371234606548
-          ],
-          [
-            22.755830522049795,
-            113.933502235915
-          ]
-        ]
-      },
-      "id": "391",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD27",
-        "fromnode": "HD27",
-        "tonode": "HD27-1",
-        "length": "20.18",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "13.0",
-        "outelevatio": "12.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755830522049795,
-            113.933502235915
-          ],
-          [
-            22.755811454236543,
-            113.93330704177585
-          ]
-        ]
-      },
-      "id": "392",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD28",
-        "fromnode": "HD27-1",
-        "tonode": "HD27-3",
-        "length": "16.04",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.9",
-        "outelevatio": "12.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755811454236543,
-            113.93330704177585
-          ],
-          [
-            22.755826066090183,
-            113.93315192189473
-          ]
-        ]
-      },
-      "id": "393",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD29",
-        "fromnode": "HD27-3",
-        "tonode": "HD27-2",
-        "length": "14.4",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.9",
-        "outelevatio": "12.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755826066090183,
-            113.93315192189473
-          ],
-          [
-            22.755899201443572,
-            113.93303667644129
-          ]
-        ]
-      },
-      "id": "394",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD30",
-        "fromnode": "HD27-2",
-        "tonode": "HD26",
-        "length": "23.24",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.9",
-        "outelevatio": "12.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.755899201443572,
-            113.93303667644129
-          ],
-          [
-            22.75601583798075,
-            113.9328496389896
-          ]
-        ]
-      },
-      "id": "395",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD31",
-        "fromnode": "HD26",
-        "tonode": "HD25",
-        "length": "60.01",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.8",
-        "outelevatio": "12.6"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75601583798075,
-            113.9328496389896
-          ],
-          [
-            22.756551532476806,
-            113.93280508416419
-          ]
-        ]
-      },
-      "id": "396",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD32",
-        "fromnode": "HD25",
-        "tonode": "HD17",
-        "length": "239.83",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "12.6",
-        "outelevatio": "11.6"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.756551532476806,
-            113.93280508416419
-          ],
-          [
-            22.75826721147187,
-            113.93140834225358
-          ]
-        ]
-      },
-      "id": "397",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD33",
-        "fromnode": "HD17",
-        "tonode": "HD16",
-        "length": "189.91",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "11.6",
-        "outelevatio": "10.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75826721147187,
-            113.93140834225358
-          ],
-          [
-            22.758188075117715,
-            113.92956290383971
-          ]
-        ]
-      },
-      "id": "398",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD34",
-        "fromnode": "HD16",
-        "tonode": "HD14",
-        "length": "218.04",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.9",
-        "outelevatio": "10.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758188075117715,
-            113.92956290383971
-          ],
-          [
-            22.758062467931556,
-            113.92744597843127
-          ]
-        ]
-      },
-      "id": "399",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD35",
-        "fromnode": "HD14",
-        "tonode": "HD13",
-        "length": "100.77",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.2",
-        "outelevatio": "10.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758062467931556,
-            113.92744597843127
-          ],
-          [
-            22.757843836733695,
-            113.92649444222204
-          ]
-        ]
-      },
-      "id": "400",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD36",
-        "fromnode": "HD13",
-        "tonode": "HD12",
-        "length": "51.12",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "10.0",
-        "outelevatio": "9.7"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.757843836733695,
-            113.92649444222204
-          ],
-          [
-            22.75793722768803,
-            113.92600784342935
-          ]
-        ]
-      },
-      "id": "401",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD37",
-        "fromnode": "HD12",
-        "tonode": "HD11",
-        "length": "27.07",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "9.7",
-        "outelevatio": "9.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75793722768803,
-            113.92600784342935
-          ],
-          [
-            22.75795458961449,
-            113.92574515901651
-          ]
-        ]
-      },
-      "id": "402",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD38",
-        "fromnode": "HD11",
-        "tonode": "HD9",
-        "length": "233.94",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "9.5",
-        "outelevatio": "9.2"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75795458961449,
-            113.92574515901651
-          ],
-          [
-            22.758268025539568,
-            113.92349548255974
-          ]
-        ]
-      },
-      "id": "403",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD39",
-        "fromnode": "HD9",
-        "tonode": "HD8-1",
-        "length": "37",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "9.2",
-        "outelevatio": "9.1"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758268025539568,
-            113.92349548255974
-          ],
-          [
-            22.75824981941525,
-            113.92313599708005
-          ]
-        ]
-      },
-      "id": "404",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD40",
-        "fromnode": "HD8-1",
-        "tonode": "HD8",
-        "length": "42.82",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "9.1",
-        "outelevatio": "9.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75824981941525,
-            113.92313599708005
-          ],
-          [
-            22.758123637017285,
-            113.92274234220584
-          ]
-        ]
-      },
-      "id": "405",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD41",
-        "fromnode": "HD8",
-        "tonode": "HD7",
-        "length": "128.54",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "9.0",
-        "outelevatio": "8.9"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.758123637017285,
-            113.92274234220584
-          ],
-          [
-            22.75791264069546,
-            113.92151235861307
-          ]
-        ]
-      },
-      "id": "406",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD42",
-        "fromnode": "HD7",
-        "tonode": "HD6",
-        "length": "97.11",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "8.9",
-        "outelevatio": "8.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75791264069546,
-            113.92151235861307
-          ],
-          [
-            22.75849314898431,
-            113.92081108419826
-          ]
-        ]
-      },
-      "id": "407",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD43",
-        "fromnode": "HD6",
-        "tonode": "HD5",
-        "length": "84.45",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "8.8",
-        "outelevatio": "8.7"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75849314898431,
-            113.92081108419826
-          ],
-          [
-            22.75895763721686,
-            113.9201645698457
-          ]
-        ]
-      },
-      "id": "408",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD44",
-        "fromnode": "HD5",
-        "tonode": "HD3",
-        "length": "115.23",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "8.7",
-        "outelevatio": "8.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75895763721686,
-            113.9201645698457
-          ],
-          [
-            22.759147481927165,
-            113.91906282730403
-          ]
-        ]
-      },
-      "id": "409",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD45",
-        "fromnode": "HD3",
-        "tonode": "HD2",
-        "length": "173",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "8.5",
-        "outelevatio": "8.4"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.759147481927165,
-            113.91906282730403
-          ],
-          [
-            22.75912954277252,
-            113.9173791001903
-          ]
-        ]
-      },
-      "id": "410",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD46",
-        "fromnode": "HD2",
-        "tonode": "HDOUT",
-        "length": "57.76",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "8.4",
-        "outelevatio": "8.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75912954277252,
-            113.9173791001903
-          ],
-          [
-            22.75912807836819,
-            113.91681687231421
-          ]
-        ]
-      },
-      "id": "411",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD02",
-        "fromnode": "HDOUT2",
-        "tonode": "3",
-        "length": "78.85",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "30.5",
-        "outelevatio": "31.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75046572060049,
-            113.95391353584404
-          ],
-          [
-            22.75072422991174,
-            113.95462786250405
-          ]
-        ]
-      },
-      "id": "412",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD03",
-        "fromnode": "3",
-        "tonode": "4",
-        "length": "126.05",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.0",
-        "outelevatio": "31.5"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75072422991174,
-            113.95462786250405
-          ],
-          [
-            22.751702936493295,
-            113.95524732933222
-          ]
-        ]
-      },
-      "id": "413",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD04",
-        "fromnode": "4",
-        "tonode": "5",
-        "length": "113.03",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.5",
-        "outelevatio": "31.8"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751702936493295,
-            113.95524732933222
-          ],
-          [
-            22.752221087731755,
-            113.95619341777012
-          ]
-        ]
-      },
-      "id": "414",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD05",
-        "fromnode": "5",
-        "tonode": "6",
-        "length": "78.21",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "31.8",
-        "outelevatio": "32.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752221087731755,
-            113.95619341777012
-          ],
-          [
-            22.752261660211538,
-            113.9569527574152
-          ]
-        ]
-      },
-      "id": "415",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD06",
-        "fromnode": "6",
-        "tonode": "7",
-        "length": "198.40",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "32.0",
-        "outelevatio": "34.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.752261660211538,
-            113.9569527574152
-          ],
-          [
-            22.751453717388898,
-            113.9586719716683
-          ]
-        ]
-      },
-      "id": "416",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD07",
-        "fromnode": "7",
-        "tonode": "8",
-        "length": "170.90",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "34.0",
-        "outelevatio": "35.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.751453717388898,
-            113.9586719716683
-          ],
-          [
-            22.75048627645013,
-            113.9599627871736
-          ]
-        ]
-      },
-      "id": "417",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD08",
-        "fromnode": "8",
-        "tonode": "9",
-        "length": "199.49",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "35.0",
-        "outelevatio": "36.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75048627645013,
-            113.9599627871736
-          ],
-          [
-            22.74903018380946,
-            113.96109820602834
-          ]
-        ]
-      },
-      "id": "418",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD09",
-        "fromnode": "9",
-        "tonode": "10",
-        "length": "218.90",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "36.0",
-        "outelevatio": "38.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74903018380946,
-            113.96109820602834
-          ],
-          [
-            22.747056975376697,
-            113.96102105540099
-          ]
-        ]
-      },
-      "id": "419",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "10",
-        "fromnode": "Y-109",
-        "tonode": "6",
-        "length": "28.76",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "37.767",
-        "outelevatio": "32.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75200656890555,
-            113.95690773380295
-          ],
-          [
-            22.752261660211538,
-            113.9569527574152
-          ]
-        ]
-      },
-      "id": "420",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "11",
-        "fromnode": "Y-107",
-        "tonode": "7",
-        "length": "29.11",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "39.5",
-        "outelevatio": "34.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.75125515882807,
-            113.9584872136011
-          ],
-          [
-            22.751453717388898,
-            113.9586719716683
-          ]
-        ]
-      },
-      "id": "421",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "12",
-        "fromnode": "Y-105",
-        "tonode": "9",
-        "length": "24.47",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "41.8",
-        "outelevatio": "36.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.749013490758376,
-            113.96086082910536
-          ],
-          [
-            22.74903018380946,
-            113.96109820602834
-          ]
-        ]
-      },
-      "id": "422",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "13",
-        "fromnode": "Y-103",
-        "tonode": "10",
-        "length": "19.98",
-        "roughness": "0.01",
-        "inoffset": "0",
-        "outoffset": "0",
-        "initflow": "0",
-        "maxflow": "0",
-        "inelevation": "43.6",
-        "outelevatio": "38.0"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            22.74706043749803,
-            113.96082680062162
-          ],
-          [
-            22.747056975376697,
-            113.96102105540099
-          ]
-        ]
-      },
-      "id": "423",
-      "businessType": "CONDUITS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "B-468",
-        "Elevation": "21.007",
-        "MaxDepth": "3.54",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.547"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76126424490421,
-          113.93862592543796
-        ]
-      },
-      "id": "0",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD11",
-        "Elevation": "9.5",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "9.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75795458961449,
-          113.92574515901651
-        ]
-      },
-      "id": "1",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD12",
-        "Elevation": "9.7",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "9.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75793722768803,
-          113.92600784342935
-        ]
-      },
-      "id": "2",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD13",
-        "Elevation": "10",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "10.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757843836733695,
-          113.92649444222204
-        ]
-      },
-      "id": "3",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD14",
-        "Elevation": "10.2",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "10.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758062467931556,
-          113.92744597843127
-        ]
-      },
-      "id": "4",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD16",
-        "Elevation": "10.9",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "10.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758188075117715,
-          113.92956290383971
-        ]
-      },
-      "id": "5",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD17",
-        "Elevation": "11.6",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "11.6"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75826721147187,
-          113.93140834225358
-        ]
-      },
-      "id": "6",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD2",
-        "Elevation": "8.4",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "8.4"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75912954277252,
-          113.9173791001903
-        ]
-      },
-      "id": "7",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD25",
-        "Elevation": "12.6",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "12.6"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756551532476806,
-          113.93280508416419
-        ]
-      },
-      "id": "8",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD26",
-        "Elevation": "12.8",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "12.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75601583798075,
-          113.9328496389896
-        ]
-      },
-      "id": "9",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD27",
-        "Elevation": "13",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "13.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755830522049795,
-          113.933502235915
-        ]
-      },
-      "id": "10",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD27-1",
-        "Elevation": "12.9",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "12.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755811454236543,
-          113.93330704177585
-        ]
-      },
-      "id": "11",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD27-2",
-        "Elevation": "12.9",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "12.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755899201443572,
-          113.93303667644129
-        ]
-      },
-      "id": "12",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD27-3",
-        "Elevation": "12.9",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "12.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755826066090183,
-          113.93315192189473
-        ]
-      },
-      "id": "13",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD3",
-        "Elevation": "8.5",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "8.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759147481927165,
-          113.91906282730403
-        ]
-      },
-      "id": "14",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD34-1",
-        "Elevation": "14.4",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "14.4"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754239353537013,
-          113.9371234606548
-        ]
-      },
-      "id": "15",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD35",
-        "Elevation": "14.5",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "14.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75426246098711,
-          113.93735302663401
-        ]
-      },
-      "id": "16",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD36",
-        "Elevation": "14.8",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "14.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75428021686875,
-          113.93771952043542
-        ]
-      },
-      "id": "17",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD40",
-        "Elevation": "16.2",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "16.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75238170078465,
-          113.93976269165802
-        ]
-      },
-      "id": "18",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD40-1",
-        "Elevation": "16.3",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "16.3"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752312707865027,
-          113.93984722410029
-        ]
-      },
-      "id": "19",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD43",
-        "Elevation": "16.9",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "16.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7504803656123,
-          113.94237662874299
-        ]
-      },
-      "id": "20",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD44",
-        "Elevation": "17",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "17.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7502362990421,
-          113.94272223051118
-        ]
-      },
-      "id": "21",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD45",
-        "Elevation": "17.2",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "17.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750134285911642,
-          113.94289550171416
-        ]
-      },
-      "id": "22",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD48",
-        "Elevation": "18.3",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "18.3"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74950096314037,
-          113.94426168115065
-        ]
-      },
-      "id": "23",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD5",
-        "Elevation": "8.7",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "8.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75895763721686,
-          113.9201645698457
-        ]
-      },
-      "id": "24",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD52",
-        "Elevation": "19.5",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "19.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748847014616697,
-          113.94574259546621
-        ]
-      },
-      "id": "25",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD52-1",
-        "Elevation": "19.5",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "19.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74882728237181,
-          113.9457921509374
-        ]
-      },
-      "id": "26",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD52-2",
-        "Elevation": "19.8",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "19.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748799467942533,
-          113.94587517984263
-        ]
-      },
-      "id": "27",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD52-3",
-        "Elevation": "20",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "20.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748794240913877,
-          113.94594614871903
-        ]
-      },
-      "id": "28",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD57",
-        "Elevation": "22",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "22.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747983582496786,
-          113.94930575092143
-        ]
-      },
-      "id": "29",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD58",
-        "Elevation": "23",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "23.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748078243481753,
-          113.94957753549201
-        ]
-      },
-      "id": "30",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD58-1",
-        "Elevation": "25",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "25.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748359918917263,
-          113.95025658351636
-        ]
-      },
-      "id": "31",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD58-2",
-        "Elevation": "24",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "24.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74831249921043,
-          113.94999880102881
-        ]
-      },
-      "id": "32",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD59",
-        "Elevation": "26",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "26.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74855146814271,
-          113.95059043454748
-        ]
-      },
-      "id": "33",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD6",
-        "Elevation": "8.8",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "8.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75849314898431,
-          113.92081108419826
-        ]
-      },
-      "id": "34",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD60",
-        "Elevation": "28",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "28.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750833115621866,
-          113.95064387157548
-        ]
-      },
-      "id": "35",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD65",
-        "Elevation": "30.2",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "30.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7505159716035,
-          113.95298081782984
-        ]
-      },
-      "id": "36",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD7",
-        "Elevation": "8.9",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "8.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75791264069546,
-          113.92151235861307
-        ]
-      },
-      "id": "37",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD8",
-        "Elevation": "9",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "9.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758123637017285,
-          113.92274234220584
-        ]
-      },
-      "id": "38",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD8-1",
-        "Elevation": "9.1",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "9.1"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75824981941525,
-          113.92313599708005
-        ]
-      },
-      "id": "39",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HD9",
-        "Elevation": "9.2",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "9.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758268025539568,
-          113.92349548255974
-        ]
-      },
-      "id": "40",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP1",
-        "Elevation": "21.27",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.27"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748763640937852,
-          113.9458076691633
-        ]
-      },
-      "id": "41",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP13",
-        "Elevation": "12",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "16.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757921774231185,
-          113.92781991076392
-        ]
-      },
-      "id": "42",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP15",
-        "Elevation": "10.92",
-        "MaxDepth": "3.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "14.42"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757990611360857,
-          113.92329882996188
-        ]
-      },
-      "id": "43",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP16",
-        "Elevation": "10.78",
-        "MaxDepth": "2.41",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "13.19"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757980643892072,
-          113.92268203693685
-        ]
-      },
-      "id": "44",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP2",
-        "Elevation": "21.2",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74879224591113,
-          113.9457238477684
-        ]
-      },
-      "id": "45",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP3",
-        "Elevation": "20.41",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.91"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749424718948628,
-          113.94421298360056
-        ]
-      },
-      "id": "46",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP4",
-        "Elevation": "18.55",
-        "MaxDepth": "2.78",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.330000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750144507116666,
-          113.94276868926886
-        ]
-      },
-      "id": "47",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP5",
-        "Elevation": "17.39",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.39"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752274567207753,
-          113.9397914387884
-        ]
-      },
-      "id": "48",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP5-1",
-        "Elevation": "16.4",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.4"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754160848314054,
-          113.93772572934292
-        ]
-      },
-      "id": "49",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP5-2",
-        "Elevation": "15.2",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754154576498905,
-          113.9372138549395
-        ]
-      },
-      "id": "50",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP6",
-        "Elevation": "14.16",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.16"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755757346255233,
-          113.93316299902551
-        ]
-      },
-      "id": "51",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP7",
-        "Elevation": "14.06",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.060000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7558784418698,
-          113.93293588443355
-        ]
-      },
-      "id": "52",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP15",
-        "Elevation": "11.5",
-        "MaxDepth": "2.86",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "14.36"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757627491512775,
-          113.92647255629674
-        ]
-      },
-      "id": "53",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP16",
-        "Elevation": "11.27",
-        "MaxDepth": "3.03",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "14.299999999999999"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757738235036516,
-          113.9259012701829
-        ]
-      },
-      "id": "54",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP17",
-        "Elevation": "11.1",
-        "MaxDepth": "2.76",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "13.86"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7577793469506,
-          113.92574635861068
-        ]
-      },
-      "id": "55",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP19-1",
-        "Elevation": "10.8",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "13.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757996810115607,
-          113.92290382836714
-        ]
-      },
-      "id": "56",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP2",
-        "Elevation": "22.2",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7487694733374,
-          113.94589761455308
-        ]
-      },
-      "id": "57",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP20",
-        "Elevation": "10.8",
-        "MaxDepth": "2.59",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "13.39"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75819108882942,
-          113.92153941500743
-        ]
-      },
-      "id": "58",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP21",
-        "Elevation": "10.7",
-        "MaxDepth": "2.71",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "13.41"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758587881037087,
-          113.92114117237378
-        ]
-      },
-      "id": "59",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP22",
-        "Elevation": "10.6",
-        "MaxDepth": "2.46",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "13.059999999999999"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759067641865062,
-          113.92049236719205
-        ]
-      },
-      "id": "60",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP24",
-        "Elevation": "10.52",
-        "MaxDepth": "2.49",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "13.01"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759527296517213,
-          113.91928615145996
-        ]
-      },
-      "id": "61",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP25",
-        "Elevation": "10.34",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "12.84"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75950643864815,
-          113.9173283069159
-        ]
-      },
-      "id": "62",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP4",
-        "Elevation": "18.1",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.6"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75034113842239,
-          113.94245577327288
-        ]
-      },
-      "id": "63",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP5",
-        "Elevation": "17.9",
-        "MaxDepth": "3.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.4"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750445930608507,
-          113.94232123812779
-        ]
-      },
-      "id": "64",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP6",
-        "Elevation": "17.5",
-        "MaxDepth": "3.2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752226420568718,
-          113.93986221310297
-        ]
-      },
-      "id": "65",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP7-1",
-        "Elevation": "16.35",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.35"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754158006248716,
-          113.93742791683921
-        ]
-      },
-      "id": "66",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP8",
-        "Elevation": "14.23",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "16.73"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755737592058157,
-          113.93348399989301
-        ]
-      },
-      "id": "67",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP9",
-        "Elevation": "14.2",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "17.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75575365791554,
-          113.93319330466424
-        ]
-      },
-      "id": "68",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "RP9-1",
-        "Elevation": "14.1",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.1"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755859611368514,
-          113.93296983410602
-        ]
-      },
-      "id": "69",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-104",
-        "Elevation": "44.274",
-        "MaxDepth": "2.752",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "47.026"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74708542673005,
-          113.96062636475595
-        ]
-      },
-      "id": "70",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-106",
-        "Elevation": "43.94",
-        "MaxDepth": "2.473",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.413"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749035564982133,
-          113.9605260254716
-        ]
-      },
-      "id": "71",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-108",
-        "Elevation": "41.745",
-        "MaxDepth": "3.783",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "45.528"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750989220074985,
-          113.9582248475827
-        ]
-      },
-      "id": "72",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-110",
-        "Elevation": "39.807",
-        "MaxDepth": "5.136",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "44.943000000000005"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751195102835904,
-          113.95794945997302
-        ]
-      },
-      "id": "73",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-111",
-        "Elevation": "36.999",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.499"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750745843714988,
-          113.95301198516486
-        ]
-      },
-      "id": "74",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-112",
-        "Elevation": "37.4",
-        "MaxDepth": "4.47",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.87"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75189458936543,
-          113.95293906418873
-        ]
-      },
-      "id": "75",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-113",
-        "Elevation": "21.351",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.851"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749981309763577,
-          113.94259286404115
-        ]
-      },
-      "id": "76",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-114",
-        "Elevation": "22.51",
-        "MaxDepth": "6.89",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.400000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74898091226694,
-          113.94149421342874
-        ]
-      },
-      "id": "77",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-115",
-        "Elevation": "18.773",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.773"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750287563443734,
-          113.94277406031676
-        ]
-      },
-      "id": "78",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-116",
-        "Elevation": "18.804",
-        "MaxDepth": "4.091",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.895"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750361495670674,
-          113.94283507359373
-        ]
-      },
-      "id": "79",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-117",
-        "Elevation": "22.458",
-        "MaxDepth": "3.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.958"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748821300798753,
-          113.94591895361874
-        ]
-      },
-      "id": "80",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-118",
-        "Elevation": "22.535",
-        "MaxDepth": "3.994",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.529"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748971277299056,
-          113.94598681741392
-        ]
-      },
-      "id": "81",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-120",
-        "Elevation": "22.641",
-        "MaxDepth": "3.752",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.392999999999997"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74940932553693,
-          113.9461394360848
-        ]
-      },
-      "id": "82",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-121",
-        "Elevation": "22.273",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.773"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74865919619183,
-          113.94575897762499
-        ]
-      },
-      "id": "83",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-122",
-        "Elevation": "24.212",
-        "MaxDepth": "4.33",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.542"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747232596129304,
-          113.94505793731204
-        ]
-      },
-      "id": "84",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-123",
-        "Elevation": "27.481",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.981"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74788382649758,
-          113.94956336599121
-        ]
-      },
-      "id": "85",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-124",
-        "Elevation": "28.546",
-        "MaxDepth": "3.483",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "32.028999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.746452064481296,
-          113.94949406811048
-        ]
-      },
-      "id": "86",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-125",
-        "Elevation": "25.303",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.803"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74805828977287,
-          113.94969755452256
-        ]
-      },
-      "id": "87",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-126",
-        "Elevation": "25.349",
-        "MaxDepth": "6.567",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "31.916"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748024501706283,
-          113.94991925698712
-        ]
-      },
-      "id": "88",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-127",
-        "Elevation": "26.96",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.46"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74830653066979,
-          113.95027206437015
-        ]
-      },
-      "id": "89",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-128",
-        "Elevation": "32.22",
-        "MaxDepth": "3.866",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.086"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747894146191598,
-          113.95268654874083
-        ]
-      },
-      "id": "90",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-129",
-        "Elevation": "27.298",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.798"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748448230854375,
-          113.95004561885675
-        ]
-      },
-      "id": "91",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-13",
-        "Elevation": "12.4",
-        "MaxDepth": "6",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.4"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757713133856708,
-          113.92785076239812
-        ]
-      },
-      "id": "92",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-130",
-        "Elevation": "32.649",
-        "MaxDepth": "2.878",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.527"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75002842940701,
-          113.94977869388308
-        ]
-      },
-      "id": "93",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-131",
-        "Elevation": "27.07",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.57"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74870949284467,
-          113.95040578793267
-        ]
-      },
-      "id": "94",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-132",
-        "Elevation": "31.985",
-        "MaxDepth": "5.64",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.625"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750177660146477,
-          113.9500161451198
-        ]
-      },
-      "id": "95",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-134",
-        "Elevation": "25.218",
-        "MaxDepth": "5.656",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.874"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761734991512263,
-          113.95176729567709
-        ]
-      },
-      "id": "96",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-136",
-        "Elevation": "24.623",
-        "MaxDepth": "3.184",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.807000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.762861323152325,
-          113.95175026593687
-        ]
-      },
-      "id": "97",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-14",
-        "Elevation": "12.9",
-        "MaxDepth": "6.417",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.317"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75721183050695,
-          113.9280402917919
-        ]
-      },
-      "id": "98",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-143",
-        "Elevation": "21.308",
-        "MaxDepth": "2.159",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.467"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.766788288157944,
-          113.94043962955939
-        ]
-      },
-      "id": "99",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-15",
-        "Elevation": "13.64",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "16.14"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75787033482111,
-          113.92968440959108
-        ]
-      },
-      "id": "100",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-16",
-        "Elevation": "15.615",
-        "MaxDepth": "3.784",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.399"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75622095915003,
-          113.93054774354762
-        ]
-      },
-      "id": "101",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-17",
-        "Elevation": "15",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "17.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7562268302781,
-          113.93300789942668
-        ]
-      },
-      "id": "102",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-18",
-        "Elevation": "15.5",
-        "MaxDepth": "6.865",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.365000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757636121193766,
-          113.93413518013331
-        ]
-      },
-      "id": "103",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-187",
-        "Elevation": "23.61",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.11"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7654152450542,
-          113.93951022646195
-        ]
-      },
-      "id": "104",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-191",
-        "Elevation": "32.75",
-        "MaxDepth": "2.884",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.634"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759964711786534,
-          113.95120934977608
-        ]
-      },
-      "id": "105",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-192",
-        "Elevation": "27.451",
-        "MaxDepth": "7.609",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.06"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760125532798025,
-          113.95147111310351
-        ]
-      },
-      "id": "106",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-193",
-        "Elevation": "37.2",
-        "MaxDepth": "2.562",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.762"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752044643875646,
-          113.9501492298868
-        ]
-      },
-      "id": "107",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-194",
-        "Elevation": "38.2",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "40.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75186384794304,
-          113.94988583111017
-        ]
-      },
-      "id": "108",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-195",
-        "Elevation": "34.97",
-        "MaxDepth": "3.223",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.193"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747379046859226,
-          113.95435055963556
-        ]
-      },
-      "id": "109",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-196",
-        "Elevation": "27.483",
-        "MaxDepth": "4.601",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "32.084"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74639550200236,
-          113.94983122336322
-        ]
-      },
-      "id": "110",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-197",
-        "Elevation": "31.391",
-        "MaxDepth": "3.747",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.138"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747630143479004,
-          113.9525490428618
-        ]
-      },
-      "id": "111",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-198",
-        "Elevation": "29.999",
-        "MaxDepth": "4.496",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.495"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744449952699426,
-          113.94941784451132
-        ]
-      },
-      "id": "112",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-199",
-        "Elevation": "25.061",
-        "MaxDepth": "4.532",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.593"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74662858724832,
-          113.94474927781421
-        ]
-      },
-      "id": "113",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-200",
-        "Elevation": "28.247",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.747"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74675379024263,
-          113.94702829761951
-        ]
-      },
-      "id": "114",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-201",
-        "Elevation": "25.339",
-        "MaxDepth": "2.88",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.218999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74806824575483,
-          113.94378236863464
-        ]
-      },
-      "id": "115",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-202",
-        "Elevation": "24.277",
-        "MaxDepth": "5.246",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.523000000000003"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75058259544836,
-          113.94645324564303
-        ]
-      },
-      "id": "116",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-203",
-        "Elevation": "22.842",
-        "MaxDepth": "3.444",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.285999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749223764176477,
-          113.94610378006428
-        ]
-      },
-      "id": "117",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-204",
-        "Elevation": "28.75",
-        "MaxDepth": "2.133",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.883"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748207789051598,
-          113.94915245323607
-        ]
-      },
-      "id": "118",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-205",
-        "Elevation": "20.837",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.337"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751229993236528,
-          113.94157949912426
-        ]
-      },
-      "id": "119",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-206",
-        "Elevation": "19.299",
-        "MaxDepth": "3.174",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.473"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750590387927364,
-          113.94301800213161
-        ]
-      },
-      "id": "120",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-207",
-        "Elevation": "24.29",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.79"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74908192225019,
-          113.9456246084596
-        ]
-      },
-      "id": "121",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-208",
-        "Elevation": "43.65",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.15"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751832247784375,
-          113.95466649155357
-        ]
-      },
-      "id": "122",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-209",
-        "Elevation": "43.05",
-        "MaxDepth": "5.632",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "48.681999999999995"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74899703807002,
-          113.9577565353349
-        ]
-      },
-      "id": "123",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-21",
-        "Elevation": "16.5",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755939348581347,
-          113.93326226122339
-        ]
-      },
-      "id": "124",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-210",
-        "Elevation": "42.16",
-        "MaxDepth": "3.605",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "45.76499999999999"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75001468887527,
-          113.95945642031941
-        ]
-      },
-      "id": "125",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-211",
-        "Elevation": "44.56",
-        "MaxDepth": "2.15",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.71"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747630955459684,
-          113.96039925323348
-        ]
-      },
-      "id": "126",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-212",
-        "Elevation": "44.83",
-        "MaxDepth": "2.12",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.949999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747114479889955,
-          113.96032397152929
-        ]
-      },
-      "id": "127",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-22",
-        "Elevation": "16.791",
-        "MaxDepth": "3.247",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.038"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757037311635365,
-          113.93402792079995
-        ]
-      },
-      "id": "128",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-23",
-        "Elevation": "15.76",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.759999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75580355277704,
-          113.9328838766854
-        ]
-      },
-      "id": "129",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-24",
-        "Elevation": "16.664",
-        "MaxDepth": "4.287",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.951"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754160151378937,
-          113.9317369776129
-        ]
-      },
-      "id": "130",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-248",
-        "Elevation": "21.336",
-        "MaxDepth": "3.269",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.604999999999997"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753070398355533,
-          113.9394121467582
-        ]
-      },
-      "id": "131",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-249",
-        "Elevation": "21.01",
-        "MaxDepth": "3.154",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.164"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75264186240095,
-          113.9401893706926
-        ]
-      },
-      "id": "132",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-25",
-        "Elevation": "15.72",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.72"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755684881947637,
-          113.93309731363676
-        ]
-      },
-      "id": "133",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-250",
-        "Elevation": "24.84",
-        "MaxDepth": "5.617",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.457"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749744169251585,
-          113.93753848003527
-        ]
-      },
-      "id": "134",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-251",
-        "Elevation": "20.979",
-        "MaxDepth": "4.879",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.857999999999997"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754499321922427,
-          113.9378891896327
-        ]
-      },
-      "id": "135",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-252",
-        "Elevation": "21.8",
-        "MaxDepth": "2.848",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.648"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75205793193564,
-          113.93547035879824
-        ]
-      },
-      "id": "136",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-253",
-        "Elevation": "20.971",
-        "MaxDepth": "6.119",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.09"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751146499292442,
-          113.93854257926846
-        ]
-      },
-      "id": "137",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-254",
-        "Elevation": "17.404",
-        "MaxDepth": "7.306",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.71"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752146845783223,
-          113.93538259174522
-        ]
-      },
-      "id": "138",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-255",
-        "Elevation": "16.01",
-        "MaxDepth": "5.337",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.347"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753913797403335,
-          113.93188228291699
-        ]
-      },
-      "id": "139",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-256",
-        "Elevation": "16.959",
-        "MaxDepth": "3.916",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.875"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753611583444012,
-          113.93138195589223
-        ]
-      },
-      "id": "140",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-257",
-        "Elevation": "16.557",
-        "MaxDepth": "4.435",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.991999999999997"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758753660761283,
-          113.93490829598889
-        ]
-      },
-      "id": "141",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-258",
-        "Elevation": "16.06",
-        "MaxDepth": "3.997",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.057"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757437217148937,
-          113.93431072676289
-        ]
-      },
-      "id": "142",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-259",
-        "Elevation": "17.59",
-        "MaxDepth": "3.834",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.424"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754572065654965,
-          113.93141694200479
-        ]
-      },
-      "id": "143",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-26",
-        "Elevation": "15.92",
-        "MaxDepth": "4.04",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.96"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754919907397124,
-          113.93257221656954
-        ]
-      },
-      "id": "144",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-260",
-        "Elevation": "13.2",
-        "MaxDepth": "7.098",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.298"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756512607126115,
-          113.92666805659029
-        ]
-      },
-      "id": "145",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-261",
-        "Elevation": "13.2",
-        "MaxDepth": "6.217",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.416999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756071139228105,
-          113.92847142211251
-        ]
-      },
-      "id": "146",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-265",
-        "Elevation": "14.53",
-        "MaxDepth": "2.734",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "17.264"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754753136409064,
-          113.92321112935366
-        ]
-      },
-      "id": "147",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-266",
-        "Elevation": "13.83",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "16.83"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75690701898355,
-          113.92161124662778
-        ]
-      },
-      "id": "148",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-269",
-        "Elevation": "14.659",
-        "MaxDepth": "2.715",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "17.374000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754625007126343,
-          113.92296523593959
-        ]
-      },
-      "id": "149",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-27",
-        "Elevation": "16.605",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.605"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75401858434649,
-          113.9371879474083
-        ]
-      },
-      "id": "150",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-270",
-        "Elevation": "15.669",
-        "MaxDepth": "2.673",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.342"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75296355063208,
-          113.92428115963835
-        ]
-      },
-      "id": "151",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-271",
-        "Elevation": "15.904",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.404"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755726057962683,
-          113.925125498835
-        ]
-      },
-      "id": "152",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-275",
-        "Elevation": "13.5",
-        "MaxDepth": "6.217",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "19.717"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754481583517542,
-          113.92932630210419
-        ]
-      },
-      "id": "153",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-276",
-        "Elevation": "13.5",
-        "MaxDepth": "5.28",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.78"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755812956004217,
-          113.9252958214245
-        ]
-      },
-      "id": "154",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-277",
-        "Elevation": "16.327",
-        "MaxDepth": "4.416",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.743000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758164683201894,
-          113.93480249430995
-        ]
-      },
-      "id": "155",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-278",
-        "Elevation": "18.02",
-        "MaxDepth": "3.824",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.844"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760459451874528,
-          113.93604281441986
-        ]
-      },
-      "id": "156",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-279",
-        "Elevation": "17.44",
-        "MaxDepth": "4.004",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.444000000000003"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75277063715346,
-          113.93071627815823
-        ]
-      },
-      "id": "157",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-28",
-        "Elevation": "16.888",
-        "MaxDepth": "4.041",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.929000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753295655864385,
-          113.93650230115827
-        ]
-      },
-      "id": "158",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-280",
-        "Elevation": "17.4",
-        "MaxDepth": "4.726",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.125999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752197505395454,
-          113.93072639929959
-        ]
-      },
-      "id": "159",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-281",
-        "Elevation": "22.63",
-        "MaxDepth": "3.793",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.423"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75118861923617,
-          113.93444971427462
-        ]
-      },
-      "id": "160",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-282",
-        "Elevation": "19.54",
-        "MaxDepth": "4.848",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.387999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753364126843156,
-          113.9340394034606
-        ]
-      },
-      "id": "161",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-283",
-        "Elevation": "22.57",
-        "MaxDepth": "3.879",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.449"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751077749965155,
-          113.93450283476348
-        ]
-      },
-      "id": "162",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-284",
-        "Elevation": "23.4",
-        "MaxDepth": "7.681",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "31.081"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74996185559903,
-          113.93747613261783
-        ]
-      },
-      "id": "163",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-285",
-        "Elevation": "21.941",
-        "MaxDepth": "3.818",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.759"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754048681409316,
-          113.93830055287769
-        ]
-      },
-      "id": "164",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-286",
-        "Elevation": "21.094",
-        "MaxDepth": "4.378",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.472"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75474394627453,
-          113.93815344047545
-        ]
-      },
-      "id": "165",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-287",
-        "Elevation": "25.395",
-        "MaxDepth": "4.159",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.554"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748527139707576,
-          113.9386546279742
-        ]
-      },
-      "id": "166",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-288",
-        "Elevation": "25.32",
-        "MaxDepth": "2.811",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.131"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748748527313897,
-          113.93663353175266
-        ]
-      },
-      "id": "167",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-289",
-        "Elevation": "30.615",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "32.614999999999995"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753527622913783,
-          113.94103454456263
-        ]
-      },
-      "id": "168",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-29",
-        "Elevation": "19.441",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.941"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75404293219294,
-          113.93746049924943
-        ]
-      },
-      "id": "169",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-290",
-        "Elevation": "21.478",
-        "MaxDepth": "3.425",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.903000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753216673681628,
-          113.93958526629984
-        ]
-      },
-      "id": "170",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-291",
-        "Elevation": "22.147",
-        "MaxDepth": "3.831",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.977999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753746020060635,
-          113.93874248629182
-        ]
-      },
-      "id": "171",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-3",
-        "Elevation": "13.4",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "15.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75790383105544,
-          113.92283427437927
-        ]
-      },
-      "id": "172",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-30",
-        "Elevation": "19.661",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.161"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753157822422615,
-          113.9365572899781
-        ]
-      },
-      "id": "173",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-31",
-        "Elevation": "20.793",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.793"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754350191653,
-          113.93759142401251
-        ]
-      },
-      "id": "174",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-32",
-        "Elevation": "20.87",
-        "MaxDepth": "4.216",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.086000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754600294222534,
-          113.93783284567601
-        ]
-      },
-      "id": "175",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-323",
-        "Elevation": "45.553",
-        "MaxDepth": "3.922",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "49.474999999999994"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.745810120193333,
-          113.96024209373499
-        ]
-      },
-      "id": "176",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-324",
-        "Elevation": "43.45",
-        "MaxDepth": "6.149",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "49.599000000000004"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748974442921448,
-          113.95906062972502
-        ]
-      },
-      "id": "177",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-325",
-        "Elevation": "42.929",
-        "MaxDepth": "3.051",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "45.980000000000004"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74946793267221,
-          113.96015562590979
-        ]
-      },
-      "id": "178",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-326",
-        "Elevation": "43.65",
-        "MaxDepth": "7.116",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "50.766"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748978117683677,
-          113.95872783248382
-        ]
-      },
-      "id": "179",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-327",
-        "Elevation": "20.539",
-        "MaxDepth": "2.011",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.55"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751450364842768,
-          113.94176733993356
-        ]
-      },
-      "id": "180",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-328",
-        "Elevation": "23.2",
-        "MaxDepth": "4.275",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.475"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752379413817096,
-          113.94416548163964
-        ]
-      },
-      "id": "181",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-329",
-        "Elevation": "23.981",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.481"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749355697303272,
-          113.94573059095998
-        ]
-      },
-      "id": "182",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-33",
-        "Elevation": "19.4",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752211322719035,
-          113.93973265304331
-        ]
-      },
-      "id": "183",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-330",
-        "Elevation": "21.26",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.76"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7520977844777,
-          113.9403240375672
-        ]
-      },
-      "id": "184",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-331",
-        "Elevation": "25.537",
-        "MaxDepth": "2.969",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.506"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748854932281702,
-          113.94765937988883
-        ]
-      },
-      "id": "185",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-332",
-        "Elevation": "26.5",
-        "MaxDepth": "3.093",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.593"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75220919320399,
-          113.94664466483945
-        ]
-      },
-      "id": "186",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-333",
-        "Elevation": "25.756",
-        "MaxDepth": "5.292",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "31.048000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74869537332418,
-          113.94267680235431
-        ]
-      },
-      "id": "187",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-334",
-        "Elevation": "31.7",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "33.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.746512910216406,
-          113.94913748275322
-        ]
-      },
-      "id": "188",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-335",
-        "Elevation": "31.811",
-        "MaxDepth": "5.543",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.354"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.741776556243643,
-          113.94917584112247
-        ]
-      },
-      "id": "189",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-336",
-        "Elevation": "31.759",
-        "MaxDepth": "3.772",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.531"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74758557440258,
-          113.95273030122848
-        ]
-      },
-      "id": "190",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-337",
-        "Elevation": "29.856",
-        "MaxDepth": "4.548",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.404"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744581569786256,
-          113.949737143069
-        ]
-      },
-      "id": "191",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-338",
-        "Elevation": "36.042",
-        "MaxDepth": "2.9",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.942"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747140598972553,
-          113.95511275900064
-        ]
-      },
-      "id": "192",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-339",
-        "Elevation": "37.8",
-        "MaxDepth": "4.276",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "42.07599999999999"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7519388143522,
-          113.95233043793135
-        ]
-      },
-      "id": "193",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-34",
-        "Elevation": "21.17",
-        "MaxDepth": "4.817",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.987000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751241650212343,
-          113.93889908169628
-        ]
-      },
-      "id": "194",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-340",
-        "Elevation": "29.684",
-        "MaxDepth": "6.887",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.571"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75851418055148,
-          113.9511753188808
-        ]
-      },
-      "id": "195",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-341",
-        "Elevation": "34.037",
-        "MaxDepth": "2.648",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.685"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76007067498716,
-          113.95029877394649
-        ]
-      },
-      "id": "196",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-342",
-        "Elevation": "33.51",
-        "MaxDepth": "2.081",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.591"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.7597399335499,
-          113.95116831766747
-        ]
-      },
-      "id": "197",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-346",
-        "Elevation": "35.238",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.738"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759844838438624,
-          113.95026704603592
-        ]
-      },
-      "id": "198",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-347",
-        "Elevation": "34.338",
-        "MaxDepth": "2.555",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.893"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758243578556137,
-          113.95089554698417
-        ]
-      },
-      "id": "199",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-348",
-        "Elevation": "34.824",
-        "MaxDepth": "3.513",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.336999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760176635622607,
-          113.94938819857684
-        ]
-      },
-      "id": "200",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-349",
-        "Elevation": "31.917",
-        "MaxDepth": "5.974",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.891000000000005"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756900796348905,
-          113.9508799388615
-        ]
-      },
-      "id": "201",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-35",
-        "Elevation": "20.604",
-        "MaxDepth": "2.7",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.304"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752373397359076,
-          113.93992076080318
-        ]
-      },
-      "id": "202",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-350",
-        "Elevation": "39.083",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.583"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748934621635456,
-          113.95516193774924
-        ]
-      },
-      "id": "203",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-351",
-        "Elevation": "40.654",
-        "MaxDepth": "2.174",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "42.828"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.745861121046126,
-          113.95760750522594
-        ]
-      },
-      "id": "204",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-352",
-        "Elevation": "32.886",
-        "MaxDepth": "2.807",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.693000000000005"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74452342508131,
-          113.95107626336136
-        ]
-      },
-      "id": "205",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-353",
-        "Elevation": "31.766",
-        "MaxDepth": "2.88",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.646"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74440472697747,
-          113.94971616387582
-        ]
-      },
-      "id": "206",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-354",
-        "Elevation": "32.235",
-        "MaxDepth": "6.045",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.28"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74689248837069,
-          113.95491736818136
-        ]
-      },
-      "id": "207",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-355",
-        "Elevation": "33.41",
-        "MaxDepth": "2.364",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.773999999999994"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74046874239125,
-          113.94843975204833
-        ]
-      },
-      "id": "208",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-356",
-        "Elevation": "26.26",
-        "MaxDepth": "2.936",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.196"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749111751065506,
-          113.94184370223611
-        ]
-      },
-      "id": "209",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-357",
-        "Elevation": "29.007",
-        "MaxDepth": "7.377",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.384"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753816628897265,
-          113.94678378798325
-        ]
-      },
-      "id": "210",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-358",
-        "Elevation": "28.943",
-        "MaxDepth": "7.129",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.072"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75211341747624,
-          113.94868296560696
-        ]
-      },
-      "id": "211",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-359",
-        "Elevation": "27.66",
-        "MaxDepth": "3.002",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.662"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748485969525525,
-          113.94921500836963
-        ]
-      },
-      "id": "212",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-36",
-        "Elevation": "20.66",
-        "MaxDepth": "2.707",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.367"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752470766931502,
-          113.94002621444493
-        ]
-      },
-      "id": "213",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-360",
-        "Elevation": "24.645",
-        "MaxDepth": "3.758",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.403"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752632419068767,
-          113.94334405913729
-        ]
-      },
-      "id": "214",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-361",
-        "Elevation": "24.779",
-        "MaxDepth": "9.796",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.575"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75430685775978,
-          113.9443667245325
-        ]
-      },
-      "id": "215",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-362",
-        "Elevation": "26.95",
-        "MaxDepth": "2.208",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.158"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75223506542202,
-          113.9460939598791
-        ]
-      },
-      "id": "216",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-363",
-        "Elevation": "21.26",
-        "MaxDepth": "2.706",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.966"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752315142915464,
-          113.94052082547687
-        ]
-      },
-      "id": "217",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-364",
-        "Elevation": "43.18",
-        "MaxDepth": "3.271",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.451"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749159713777953,
-          113.96040376377917
-        ]
-      },
-      "id": "218",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-365",
-        "Elevation": "44.22",
-        "MaxDepth": "2.35",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.57"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74733906213152,
-          113.95898173753402
-        ]
-      },
-      "id": "219",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-367",
-        "Elevation": "44",
-        "MaxDepth": "2.667",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.667"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74894964393019,
-          113.96018632278451
-        ]
-      },
-      "id": "220",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-387",
-        "Elevation": "22.276",
-        "MaxDepth": "3.451",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.727"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753868026623216,
-          113.93892239623223
-        ]
-      },
-      "id": "221",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-388",
-        "Elevation": "37.7",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754206684050274,
-          113.94158088650482
-        ]
-      },
-      "id": "222",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-389",
-        "Elevation": "30.263",
-        "MaxDepth": "4.178",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.441"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75594063240047,
-          113.93923731608302
-        ]
-      },
-      "id": "223",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-390",
-        "Elevation": "21.956",
-        "MaxDepth": "3.891",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.847"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754288219802916,
-          113.93855321020332
-        ]
-      },
-      "id": "224",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-391",
-        "Elevation": "21.798",
-        "MaxDepth": "12.696",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.494"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755744519114767,
-          113.93937690682948
-        ]
-      },
-      "id": "225",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-392",
-        "Elevation": "19.468",
-        "MaxDepth": "5.903",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.371"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751060284989567,
-          113.92989979170615
-        ]
-      },
-      "id": "226",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-393",
-        "Elevation": "18.799",
-        "MaxDepth": "3.525",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "22.323999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75197205077404,
-          113.93024074665375
-        ]
-      },
-      "id": "227",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-395",
-        "Elevation": "20.206",
-        "MaxDepth": "3.71",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.916"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.763065142159956,
-          113.93778648300797
-        ]
-      },
-      "id": "228",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-396",
-        "Elevation": "16.482",
-        "MaxDepth": "4.404",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.886"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75841730610469,
-          113.93497645514633
-        ]
-      },
-      "id": "229",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-397",
-        "Elevation": "13.8",
-        "MaxDepth": "3.555",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "17.355"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752891402232628,
-          113.93018480463606
-        ]
-      },
-      "id": "230",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-398",
-        "Elevation": "17.691",
-        "MaxDepth": "2.673",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.363999999999997"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751171055289884,
-          113.92535167184677
-        ]
-      },
-      "id": "231",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-399",
-        "Elevation": "15.795",
-        "MaxDepth": "2.585",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "18.38"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752840719429393,
-          113.92403203338812
-        ]
-      },
-      "id": "232",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-4",
-        "Elevation": "14.4",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "16.9"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757213087951254,
-          113.92150599509027
-        ]
-      },
-      "id": "233",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-401",
-        "Elevation": "17.571",
-        "MaxDepth": "2.585",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.156000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751053542913883,
-          113.92509932019217
-        ]
-      },
-      "id": "234",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-402",
-        "Elevation": "18.83",
-        "MaxDepth": "2.651",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.480999999999998"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749376065748198,
-          113.92642361770412
-        ]
-      },
-      "id": "235",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-403",
-        "Elevation": "17.577",
-        "MaxDepth": "4.35",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.927"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760204617091997,
-          113.93620847268592
-        ]
-      },
-      "id": "236",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-404",
-        "Elevation": "21.86",
-        "MaxDepth": "3.247",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.107"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.764931943031918,
-          113.93912735938501
-        ]
-      },
-      "id": "237",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-405",
-        "Elevation": "19.658",
-        "MaxDepth": "3.546",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.204"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75122310047082,
-          113.92967807230139
-        ]
-      },
-      "id": "238",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-406",
-        "Elevation": "20.45",
-        "MaxDepth": "6.443",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.893"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750572206963515,
-          113.92944564798091
-        ]
-      },
-      "id": "239",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-407",
-        "Elevation": "32.18",
-        "MaxDepth": "3.438",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.618"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755972310766854,
-          113.93962234875802
-        ]
-      },
-      "id": "240",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-420",
-        "Elevation": "25.713",
-        "MaxDepth": "11.211",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.924"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75415190478403,
-          113.94286369073254
-        ]
-      },
-      "id": "241",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-421",
-        "Elevation": "25.924",
-        "MaxDepth": "9.904",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.828"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75459728953308,
-          113.94551608467692
-        ]
-      },
-      "id": "242",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-422",
-        "Elevation": "25.201",
-        "MaxDepth": "10.167",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.368"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754524383918323,
-          113.94437037904278
-        ]
-      },
-      "id": "243",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-423",
-        "Elevation": "25.291",
-        "MaxDepth": "4.042",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.333"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752885361374314,
-          113.94252264021358
-        ]
-      },
-      "id": "244",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-424",
-        "Elevation": "30.994",
-        "MaxDepth": "5.656",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.65"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755092657481114,
-          113.94689469801031
-        ]
-      },
-      "id": "245",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-425",
-        "Elevation": "35.952",
-        "MaxDepth": "3.123",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.074999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74554479098331,
-          113.95488545818584
-        ]
-      },
-      "id": "246",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-426",
-        "Elevation": "33.146",
-        "MaxDepth": "5.285",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.431"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.746821680212765,
-          113.95512811523
-        ]
-      },
-      "id": "247",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-427",
-        "Elevation": "32.303",
-        "MaxDepth": "6.13",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.433"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.741971611768236,
-          113.94959565755758
-        ]
-      },
-      "id": "248",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-428",
-        "Elevation": "34.522",
-        "MaxDepth": "2.725",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.247"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744490409701584,
-          113.95242060528679
-        ]
-      },
-      "id": "249",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-429",
-        "Elevation": "42.768",
-        "MaxDepth": "4.257",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "47.025"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.745208386564645,
-          113.95879464580939
-        ]
-      },
-      "id": "250",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-430",
-        "Elevation": "42.108",
-        "MaxDepth": "3.564",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "45.672"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747310697865167,
-          113.95767273346833
-        ]
-      },
-      "id": "251",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-431",
-        "Elevation": "43.185",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "45.685"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75072572911689,
-          113.95521610208576
-        ]
-      },
-      "id": "252",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-432",
-        "Elevation": "34.15",
-        "MaxDepth": "5.395",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.545"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755285265299825,
-          113.9505849860746
-        ]
-      },
-      "id": "253",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-433",
-        "Elevation": "35.44",
-        "MaxDepth": "3.028",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.467999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76033391571977,
-          113.94869086556584
-        ]
-      },
-      "id": "254",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-434",
-        "Elevation": "35.166",
-        "MaxDepth": "3.182",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.348"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75674544540116,
-          113.95062312714649
-        ]
-      },
-      "id": "255",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-435",
-        "Elevation": "35.706",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.206"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759950807632354,
-          113.94935646908999
-        ]
-      },
-      "id": "256",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-436",
-        "Elevation": "36.13",
-        "MaxDepth": "2.678",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.808"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76010942071976,
-          113.94860700071264
-        ]
-      },
-      "id": "257",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-437",
-        "Elevation": "36.294",
-        "MaxDepth": "3.094",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.388"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755245462068263,
-          113.95035109518884
-        ]
-      },
-      "id": "258",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-438",
-        "Elevation": "35.885",
-        "MaxDepth": "3.674",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.559"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755186938045647,
-          113.95056862147524
-        ]
-      },
-      "id": "259",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-439",
-        "Elevation": "38.197",
-        "MaxDepth": "4.778",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "42.975"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755234800330435,
-          113.95368248510519
-        ]
-      },
-      "id": "260",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-440",
-        "Elevation": "43.84",
-        "MaxDepth": "2.979",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "46.819"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747093741188287,
-          113.9589699686459
-        ]
-      },
-      "id": "261",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-441",
-        "Elevation": "44.08",
-        "MaxDepth": "3.564",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "47.644"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748663497541447,
-          113.95770398378033
-        ]
-      },
-      "id": "262",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-442",
-        "Elevation": "47.62",
-        "MaxDepth": "4.586",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "52.205999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744402515529153,
-          113.96029628923418
-        ]
-      },
-      "id": "263",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-443",
-        "Elevation": "34.974",
-        "MaxDepth": "2.539",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.513"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74446600081455,
-          113.95270252706763
-        ]
-      },
-      "id": "264",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-444",
-        "Elevation": "33.124",
-        "MaxDepth": "4.6",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.724000000000004"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.741440179425595,
-          113.94946612743075
-        ]
-      },
-      "id": "265",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-445",
-        "Elevation": "36.018",
-        "MaxDepth": "3.315",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.333"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.745531253835246,
-          113.95503593234633
-        ]
-      },
-      "id": "266",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-446",
-        "Elevation": "38.51",
-        "MaxDepth": "3.611",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "42.120999999999995"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74548761968037,
-          113.95759886743603
-        ]
-      },
-      "id": "267",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-447",
-        "Elevation": "37.25",
-        "MaxDepth": "2.312",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.562"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744836915188667,
-          113.9548495264126
-        ]
-      },
-      "id": "268",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-448",
-        "Elevation": "35.059",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.559"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75493563123944,
-          113.9461632679834
-        ]
-      },
-      "id": "269",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-449",
-        "Elevation": "33.956",
-        "MaxDepth": "7.253",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.209"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755353062804364,
-          113.94820930816716
-        ]
-      },
-      "id": "270",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-450",
-        "Elevation": "25.955",
-        "MaxDepth": "4.345",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.299999999999997"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753176647221718,
-          113.94167956598982
-        ]
-      },
-      "id": "271",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-451",
-        "Elevation": "25.627",
-        "MaxDepth": "11.377",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.004"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754339169644307,
-          113.94292397417226
-        ]
-      },
-      "id": "272",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-452",
-        "Elevation": "25.837",
-        "MaxDepth": "10.621",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.458"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754784251290154,
-          113.94548611077721
-        ]
-      },
-      "id": "273",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-453",
-        "Elevation": "26.223",
-        "MaxDepth": "14.435",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "40.658"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754565331795945,
-          113.94143833999159
-        ]
-      },
-      "id": "274",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-460",
-        "Elevation": "32.26",
-        "MaxDepth": "3.364",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.623999999999995"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756102684736387,
-          113.93979261925995
-        ]
-      },
-      "id": "275",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-461",
-        "Elevation": "39.7",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.7"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75475464460547,
-          113.94098448110388
-        ]
-      },
-      "id": "276",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-462",
-        "Elevation": "22.55",
-        "MaxDepth": "2.459",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.009"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750274521949795,
-          113.92911414739947
-        ]
-      },
-      "id": "277",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-463",
-        "Elevation": "20.64",
-        "MaxDepth": "3.57",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.21"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.750435724238866,
-          113.92893741385143
-        ]
-      },
-      "id": "278",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-464",
-        "Elevation": "19.229",
-        "MaxDepth": "4.197",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.426"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76230697422714,
-          113.93767115454524
-        ]
-      },
-      "id": "279",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-465",
-        "Elevation": "20.882",
-        "MaxDepth": "3.344",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.226000000000003"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759715487676697,
-          113.93733265149773
-        ]
-      },
-      "id": "280",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-466",
-        "Elevation": "18.707",
-        "MaxDepth": "2.2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.907"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749263877143022,
-          113.92616802839868
-        ]
-      },
-      "id": "281",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-467",
-        "Elevation": "21.588",
-        "MaxDepth": "4.435",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.023"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75913920163168,
-          113.93865659530935
-        ]
-      },
-      "id": "282",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-469",
-        "Elevation": "19.467",
-        "MaxDepth": "4.204",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "23.671"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.762534128220064,
-          113.93784464140359
-        ]
-      },
-      "id": "283",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-470",
-        "Elevation": "25.19",
-        "MaxDepth": "5.335",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.525000000000002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748793434997186,
-          113.93009375115523
-        ]
-      },
-      "id": "284",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-471",
-        "Elevation": "40.55",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "43.05"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755118311841986,
-          113.94083926036235
-        ]
-      },
-      "id": "285",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-475",
-        "Elevation": "26.328",
-        "MaxDepth": "14.999",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.327"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754732948314025,
-          113.94153237966415
-        ]
-      },
-      "id": "286",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-476",
-        "Elevation": "37.3",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755350209403527,
-          113.94963695042178
-        ]
-      },
-      "id": "287",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-477",
-        "Elevation": "42.28",
-        "MaxDepth": "2.341",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "44.621"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.743665085874333,
-          113.95756035372344
-        ]
-      },
-      "id": "288",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-478",
-        "Elevation": "43.357",
-        "MaxDepth": "4.703",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "48.06"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744764446948693,
-          113.9589461431996
-        ]
-      },
-      "id": "289",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-479",
-        "Elevation": "37.25",
-        "MaxDepth": "2.275",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.525"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74481581724272,
-          113.95501320451807
-        ]
-      },
-      "id": "290",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-480",
-        "Elevation": "33.41",
-        "MaxDepth": "2.257",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.666999999999994"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74031512919344,
-          113.948776370315
-        ]
-      },
-      "id": "291",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-481",
-        "Elevation": "35.767",
-        "MaxDepth": "3.395",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.162000000000006"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744466709675397,
-          113.95367806416654
-        ]
-      },
-      "id": "292",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-482",
-        "Elevation": "53.28",
-        "MaxDepth": "6.543",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "59.823"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.743611323483417,
-          113.96176907415573
-        ]
-      },
-      "id": "293",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-483",
-        "Elevation": "44.91",
-        "MaxDepth": "2.877",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "47.787"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.746793420933688,
-          113.9601560382473
-        ]
-      },
-      "id": "294",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-484",
-        "Elevation": "44.62",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "47.12"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74530824225425,
-          113.95888471028358
-        ]
-      },
-      "id": "295",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-485",
-        "Elevation": "38.802",
-        "MaxDepth": "4.609",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "43.411"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75482247217773,
-          113.95451664448132
-        ]
-      },
-      "id": "296",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-486",
-        "Elevation": "37.23",
-        "MaxDepth": "4.112",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.342"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753716535525953,
-          113.95030125364951
-        ]
-      },
-      "id": "297",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-487",
-        "Elevation": "37.985",
-        "MaxDepth": "5.017",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "43.002"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755118314459946,
-          113.95368446942194
-        ]
-      },
-      "id": "298",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-488",
-        "Elevation": "37.318",
-        "MaxDepth": "3.595",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "40.913"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753750200860235,
-          113.95008065487302
-        ]
-      },
-      "id": "299",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-489",
-        "Elevation": "38.2",
-        "MaxDepth": "2.917",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.117000000000004"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752505227004974,
-          113.9499122921035
-        ]
-      },
-      "id": "300",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-490",
-        "Elevation": "38.81",
-        "MaxDepth": "4.533",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "43.343"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754766849241026,
-          113.95442822132465
-        ]
-      },
-      "id": "301",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-491",
-        "Elevation": "38.2",
-        "MaxDepth": "2.8",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752490908414096,
-          113.95014108591283
-        ]
-      },
-      "id": "302",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-492",
-        "Elevation": "39.912",
-        "MaxDepth": "10.734",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "50.646"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753191440771673,
-          113.95572198370654
-        ]
-      },
-      "id": "303",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-493",
-        "Elevation": "58.416",
-        "MaxDepth": "6.543",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "64.959"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74281941332443,
-          113.96324194849203
-        ]
-      },
-      "id": "304",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-494",
-        "Elevation": "36.622",
-        "MaxDepth": "3.168",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.79"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744441707882505,
-          113.95473638283595
-        ]
-      },
-      "id": "305",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-495",
-        "Elevation": "48.325",
-        "MaxDepth": "4.31",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "52.635000000000005"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744050689351212,
-          113.96026608239835
-        ]
-      },
-      "id": "306",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-5",
-        "Elevation": "12.5",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "15.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75789885228772,
-          113.92336899410773
-        ]
-      },
-      "id": "307",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-501",
-        "Elevation": "20.003",
-        "MaxDepth": "4.309",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.312"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.763294255769786,
-          113.93836420796251
-        ]
-      },
-      "id": "308",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-502",
-        "Elevation": "20.756",
-        "MaxDepth": "4.107",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.863"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761470344258118,
-          113.93891290725688
-        ]
-      },
-      "id": "309",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-503",
-        "Elevation": "22.189",
-        "MaxDepth": "3.816",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.005"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760022084978544,
-          113.93996242964604
-        ]
-      },
-      "id": "310",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-504",
-        "Elevation": "21.82",
-        "MaxDepth": "4.055",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.875"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75896510026482,
-          113.9391008435319
-        ]
-      },
-      "id": "311",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-505",
-        "Elevation": "27.257",
-        "MaxDepth": "3.217",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.474"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75758568551827,
-          113.93882045888192
-        ]
-      },
-      "id": "312",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-506",
-        "Elevation": "23.78",
-        "MaxDepth": "2.323",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.103"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760004994560752,
-          113.93963420216389
-        ]
-      },
-      "id": "313",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-507",
-        "Elevation": "22.04",
-        "MaxDepth": "3.917",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.957"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75888839148233,
-          113.93929657919799
-        ]
-      },
-      "id": "314",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-508",
-        "Elevation": "22.346",
-        "MaxDepth": "3.748",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.094"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759826756105465,
-          113.93979430585347
-        ]
-      },
-      "id": "315",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-509",
-        "Elevation": "22.416",
-        "MaxDepth": "3.654",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.07"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76023228183048,
-          113.94016015436227
-        ]
-      },
-      "id": "316",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-510",
-        "Elevation": "21.751",
-        "MaxDepth": "4.33",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.081000000000003"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76038604147279,
-          113.94000808741339
-        ]
-      },
-      "id": "317",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-511",
-        "Elevation": "21.022",
-        "MaxDepth": "3.911",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.933"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.764022314334287,
-          113.93889173450354
-        ]
-      },
-      "id": "318",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-516",
-        "Elevation": "50.715",
-        "MaxDepth": "4.712",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "55.42700000000001"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74367962679257,
-          113.96095856313623
-        ]
-      },
-      "id": "319",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-517",
-        "Elevation": "36.791",
-        "MaxDepth": "3.105",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "39.895999999999994"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744246975267888,
-          113.95473032493678
-        ]
-      },
-      "id": "320",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-518",
-        "Elevation": "60.04",
-        "MaxDepth": "6.343",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "66.383"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.742025974603585,
-          113.96471439772532
-        ]
-      },
-      "id": "321",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-520",
-        "Elevation": "39.999",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "43.999"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75373396581912,
-          113.95517685540305
-        ]
-      },
-      "id": "322",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-521",
-        "Elevation": "40.65",
-        "MaxDepth": "3.612",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "44.262"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75209866793871,
-          113.95512748114946
-        ]
-      },
-      "id": "323",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-522",
-        "Elevation": "40.2",
-        "MaxDepth": "4.132",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "44.332"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75350779451924,
-          113.95534610851628
-        ]
-      },
-      "id": "324",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-524",
-        "Elevation": "40.182",
-        "MaxDepth": "2.48",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "42.662"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74375260822908,
-          113.95674429459258
-        ]
-      },
-      "id": "325",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-525",
-        "Elevation": "36.743",
-        "MaxDepth": "3.341",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "40.084"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74402941987051,
-          113.95471497892815
-        ]
-      },
-      "id": "326",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-526",
-        "Elevation": "52.999",
-        "MaxDepth": "5.668",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "58.667"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.743324793681346,
-          113.96162005395537
-        ]
-      },
-      "id": "327",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-530",
-        "Elevation": "21.93",
-        "MaxDepth": "3.611",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.541"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.764733324188676,
-          113.9394104662411
-        ]
-      },
-      "id": "328",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-531",
-        "Elevation": "22.22",
-        "MaxDepth": "4.396",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.616"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76147714487305,
-          113.94095036167381
-        ]
-      },
-      "id": "329",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-532",
-        "Elevation": "23.03",
-        "MaxDepth": "3.639",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.669"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761283209296334,
-          113.9410803083494
-        ]
-      },
-      "id": "330",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-533",
-        "Elevation": "27.304",
-        "MaxDepth": "2.814",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.118"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75764352007326,
-          113.93900253352965
-        ]
-      },
-      "id": "331",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-534",
-        "Elevation": "23.07",
-        "MaxDepth": "3.379",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.449"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75947718801571,
-          113.93957978891
-        ]
-      },
-      "id": "332",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-535",
-        "Elevation": "32.86",
-        "MaxDepth": "2.046",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.906"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756222577543884,
-          113.93939047152777
-        ]
-      },
-      "id": "333",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-536",
-        "Elevation": "32.76",
-        "MaxDepth": "2.245",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.004999999999995"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756373331891314,
-          113.93958944371629
-        ]
-      },
-      "id": "334",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-537",
-        "Elevation": "24",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.762192066088332,
-          113.94195059986642
-        ]
-      },
-      "id": "335",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-538",
-        "Elevation": "23.078",
-        "MaxDepth": "3.873",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.951"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.762081815465773,
-          113.94151471064207
-        ]
-      },
-      "id": "336",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-540",
-        "Elevation": "55.169",
-        "MaxDepth": "5.924",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "61.092999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.742987341364188,
-          113.96224898195898
-        ]
-      },
-      "id": "337",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-541",
-        "Elevation": "38.845",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.345"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74269952470302,
-          113.95468317396076
-        ]
-      },
-      "id": "338",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-542",
-        "Elevation": "41.48",
-        "MaxDepth": "2.431",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "43.910999999999994"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.743322220993264,
-          113.95755238058673
-        ]
-      },
-      "id": "339",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-543",
-        "Elevation": "40.383",
-        "MaxDepth": "3.995",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "44.378"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752939517338834,
-          113.9552856300916
-        ]
-      },
-      "id": "340",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-544",
-        "Elevation": "40.317",
-        "MaxDepth": "9.053",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "49.370000000000005"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75313573790132,
-          113.95563358420915
-        ]
-      },
-      "id": "341",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-546",
-        "Elevation": "40.65",
-        "MaxDepth": "4.103",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "44.753"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75210525330086,
-          113.95525866869531
-        ]
-      },
-      "id": "342",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-547",
-        "Elevation": "43.38",
-        "MaxDepth": "2.034",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "45.414"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.742970124128366,
-          113.9588135484725
-        ]
-      },
-      "id": "343",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-548",
-        "Elevation": "40.61",
-        "MaxDepth": "8.744",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "49.354"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.741367687645322,
-          113.95464392628888
-        ]
-      },
-      "id": "344",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-549",
-        "Elevation": "58.163",
-        "MaxDepth": "5.724",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "63.887"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.742558156429986,
-          113.96306140084936
-        ]
-      },
-      "id": "345",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-550",
-        "Elevation": "25.22",
-        "MaxDepth": "2.43",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.65"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.763731575480072,
-          113.94334011742276
-        ]
-      },
-      "id": "346",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-551",
-        "Elevation": "26",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.763585635542224,
-          113.94352627399775
-        ]
-      },
-      "id": "347",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-552",
-        "Elevation": "61.285",
-        "MaxDepth": "3.882",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "65.167"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.742078125419035,
-          113.96396977565833
-        ]
-      },
-      "id": "348",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-553",
-        "Elevation": "43.98",
-        "MaxDepth": "4.046",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "48.025999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.742736887254605,
-          113.95967111776207
-        ]
-      },
-      "id": "349",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-555",
-        "Elevation": "63.5",
-        "MaxDepth": "2.806",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "66.306"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74172545339705,
-          113.96460417438377
-        ]
-      },
-      "id": "350",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-556",
-        "Elevation": "22.47",
-        "MaxDepth": "2.76",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.229999999999997"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757507252088136,
-          113.93701939115924
-        ]
-      },
-      "id": "351",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-558",
-        "Elevation": "23.2",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761214369197507,
-          113.94119737047076
-        ]
-      },
-      "id": "352",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-559",
-        "Elevation": "23.5",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76111128192603,
-          113.94133653292694
-        ]
-      },
-      "id": "353",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-560",
-        "Elevation": "23.8",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76099066884401,
-          113.94169882138091
-        ]
-      },
-      "id": "354",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-561",
-        "Elevation": "24",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761029945390266,
-          113.94271441467099
-        ]
-      },
-      "id": "355",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-562",
-        "Elevation": "24.2",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761099514058188,
-          113.94289143028884
-        ]
-      },
-      "id": "356",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-563",
-        "Elevation": "24.5",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76126196749133,
-          113.94295899146499
-        ]
-      },
-      "id": "357",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-564",
-        "Elevation": "25",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761835114481695,
-          113.94295224460036
-        ]
-      },
-      "id": "358",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-565",
-        "Elevation": "25.2",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76193779798314,
-          113.94300368841091
-        ]
-      },
-      "id": "359",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-566",
-        "Elevation": "25.5",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761992974317472,
-          113.94312318362861
-        ]
-      },
-      "id": "360",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-567",
-        "Elevation": "26",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.762005360944084,
-          113.944035466545
-        ]
-      },
-      "id": "361",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-568",
-        "Elevation": "27",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75973138251133,
-          113.94406793679335
-        ]
-      },
-      "id": "362",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-569",
-        "Elevation": "27.3",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "29.3"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75952198166556,
-          113.94414795964252
-        ]
-      },
-      "id": "363",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-570",
-        "Elevation": "28",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759127276276427,
-          113.94447569168447
-        ]
-      },
-      "id": "364",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-571",
-        "Elevation": "29",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "31.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758884893529526,
-          113.94509643078682
-        ]
-      },
-      "id": "365",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-572",
-        "Elevation": "30",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "32.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75889732099623,
-          113.9453032517243
-        ]
-      },
-      "id": "366",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-573",
-        "Elevation": "32",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759064108409756,
-          113.94562428634917
-        ]
-      },
-      "id": "367",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-574",
-        "Elevation": "32.5",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759345078119924,
-          113.94573649484421
-        ]
-      },
-      "id": "368",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-575",
-        "Elevation": "33",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759477956072764,
-          113.94573232331248
-        ]
-      },
-      "id": "369",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-577",
-        "Elevation": "26.5",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.762700393667078,
-          113.94475864647227
-        ]
-      },
-      "id": "370",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-578",
-        "Elevation": "33",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.759678741007818,
-          113.94573235833329
-        ]
-      },
-      "id": "371",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-579",
-        "Elevation": "32",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76093535122002,
-          113.94571915678955
-        ]
-      },
-      "id": "372",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-580",
-        "Elevation": "31.8",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "33.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761377669340778,
-          113.94585960386613
-        ]
-      },
-      "id": "373",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-581",
-        "Elevation": "31.5",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "33.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761658920543233,
-          113.94611393062668
-        ]
-      },
-      "id": "374",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-584",
-        "Elevation": "23",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.765292725898494,
-          113.94198488534752
-        ]
-      },
-      "id": "375",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-585",
-        "Elevation": "25",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "27.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76411380628774,
-          113.94341671377568
-        ]
-      },
-      "id": "376",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-586",
-        "Elevation": "28",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "30.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.762934059269906,
-          113.94484867636228
-        ]
-      },
-      "id": "377",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-587",
-        "Elevation": "31.27",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "33.269999999999996"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.761753412587506,
-          113.94628077500087
-        ]
-      },
-      "id": "378",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-588",
-        "Elevation": "36.16",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "38.16"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76057938945246,
-          113.94770384240444
-        ]
-      },
-      "id": "379",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-589",
-        "Elevation": "20",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76673846562927,
-          113.94072875012391
-        ]
-      },
-      "id": "380",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-590",
-        "Elevation": "22",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76547301270823,
-          113.94224685563536
-        ]
-      },
-      "id": "381",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-591",
-        "Elevation": "24",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "26.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76420668435447,
-          113.9437650897805
-        ]
-      },
-      "id": "382",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-592",
-        "Elevation": "26",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "28.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.763081241117774,
-          113.94511887579243
-        ]
-      },
-      "id": "383",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-593",
-        "Elevation": "32.24",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.24"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76195499557049,
-          113.94647278490592
-        ]
-      },
-      "id": "384",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-595",
-        "Elevation": "35.73",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.73"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760882610904275,
-          113.94778645933852
-        ]
-      },
-      "id": "385",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-596",
-        "Elevation": "23",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76521072040047,
-          113.93969765831889
-        ]
-      },
-      "id": "386",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-597",
-        "Elevation": "22",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.766500461963723,
-          113.9405595043035
-        ]
-      },
-      "id": "387",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-599",
-        "Elevation": "35",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "37.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754760242802536,
-          113.9461814455209
-        ]
-      },
-      "id": "388",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-6",
-        "Elevation": "13.8",
-        "MaxDepth": "3",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "16.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.757017183546584,
-          113.92184482925413
-        ]
-      },
-      "id": "389",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-600",
-        "Elevation": "30.701",
-        "MaxDepth": "5.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "36.201"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754901613802822,
-          113.94687690227055
-        ]
-      },
-      "id": "390",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-601",
-        "Elevation": "31.5",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "34.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75511486681834,
-          113.94776795573341
-        ]
-      },
-      "id": "391",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-602",
-        "Elevation": "32.5",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.755159173974153,
-          113.94963273868962
-        ]
-      },
-      "id": "392",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-603",
-        "Elevation": "38.797",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.297"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75459768040473,
-          113.95306014884589
-        ]
-      },
-      "id": "393",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-605",
-        "Elevation": "32.929",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "35.429"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.744338693321453,
-          113.95198335970025
-        ]
-      },
-      "id": "394",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-608",
-        "Elevation": "39.397",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "41.897"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74324674342493,
-          113.95724272430598
-        ]
-      },
-      "id": "395",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-609",
-        "Elevation": "42.661",
-        "MaxDepth": "2.5",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "45.161"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.741436847470457,
-          113.95752415566844
-        ]
-      },
-      "id": "396",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-610",
-        "Elevation": "22",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75764654641461,
-          113.9352522105746
-        ]
-      },
-      "id": "397",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-611",
-        "Elevation": "19",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756500335338885,
-          113.93623426106389
-        ]
-      },
-      "id": "398",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-612",
-        "Elevation": "22",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75782098444689,
-          113.93549312707107
-        ]
-      },
-      "id": "399",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-613",
-        "Elevation": "19.5",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "21.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75669316243462,
-          113.93644847016515
-        ]
-      },
-      "id": "400",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-615",
-        "Elevation": "22",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.754994884334405,
-          113.93751877634638
-        ]
-      },
-      "id": "401",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-617",
-        "Elevation": "22",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "24.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75518465461139,
-          113.93774682589661
-        ]
-      },
-      "id": "402",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-618",
-        "Elevation": "18",
-        "MaxDepth": "2",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "20.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.756478831212856,
-          113.9362080138442
-        ]
-      },
-      "id": "403",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Z1",
-        "Elevation": "11",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "15.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75904891325425,
-          113.9202780913484
-        ]
-      },
-      "id": "404",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Z2",
-        "Elevation": "11.2",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "15.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758578712251772,
-          113.92093469717776
-        ]
-      },
-      "id": "405",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Z3",
-        "Elevation": "11.5",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "15.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758102330245983,
-          113.92142487691446
-        ]
-      },
-      "id": "406",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Z4",
-        "Elevation": "11.8",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "15.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.758081510813806,
-          113.9229052827816
-        ]
-      },
-      "id": "407",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Z5",
-        "Elevation": "11.2",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "15.2"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75934721032794,
-          113.91745446982797
-        ]
-      },
-      "id": "408",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "LP1-1",
-        "Elevation": "21.27",
-        "MaxDepth": "4",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "100",
-        "groundele": "25.27"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.748769600814935,
-          113.94581333749949
-        ]
-      },
-      "id": "409",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "3",
-        "Elevation": "31",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "31.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75072422991174,
-          113.95462786250405
-        ]
-      },
-      "id": "410",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "4",
-        "Elevation": "31.5",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "31.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751702936493295,
-          113.95524732933222
-        ]
-      },
-      "id": "411",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "5",
-        "Elevation": "31.8",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "31.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752221087731755,
-          113.95619341777012
-        ]
-      },
-      "id": "412",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "6",
-        "Elevation": "32",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "32.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.752261660211538,
-          113.9569527574152
-        ]
-      },
-      "id": "413",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "7",
-        "Elevation": "34",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "34.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.751453717388898,
-          113.9586719716683
-        ]
-      },
-      "id": "414",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "8",
-        "Elevation": "35",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "35.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75048627645013,
-          113.9599627871736
-        ]
-      },
-      "id": "415",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "9",
-        "Elevation": "36",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "36.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74903018380946,
-          113.96109820602834
-        ]
-      },
-      "id": "416",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "10",
-        "Elevation": "38",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "38.0"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.747056975376697,
-          113.96102105540099
-        ]
-      },
-      "id": "417",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-109",
-        "Elevation": "37.767",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "37.767"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75200656890555,
-          113.95690773380295
-        ]
-      },
-      "id": "418",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-107",
-        "Elevation": "39.5",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "39.5"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75125515882807,
-          113.9584872136011
-        ]
-      },
-      "id": "419",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-105",
-        "Elevation": "41.8",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "41.8"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.749013490758376,
-          113.96086082910536
-        ]
-      },
-      "id": "420",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-103",
-        "Elevation": "43.6",
-        "MaxDepth": "0",
-        "InitDepth": "0",
-        "SurDepth": "0",
-        "Aponded": "0",
-        "groundele": "43.6"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.74706043749803,
-          113.96082680062162
-        ]
-      },
-      "id": "421",
-      "businessType": "JUNCTIONS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HDOUT",
-        "Elevation": "8",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75912807836819,
-          113.91681687231421
-        ]
-      },
-      "id": "0",
-      "businessType": "OUTFALLS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "WSCLC",
-        "Elevation": "9",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760309343371674,
-          113.91681078161338
-        ]
-      },
-      "id": "1",
-      "businessType": "OUTFALLS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-133",
-        "Elevation": "22.985",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.763342682196267,
-          113.95206383841199
-        ]
-      },
-      "id": "2",
-      "businessType": "OUTFALLS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-135",
-        "Elevation": "23.317",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.763570946299684,
-          113.95185325155619
-        ]
-      },
-      "id": "3",
-      "businessType": "OUTFALLS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-142",
-        "Elevation": "19.5",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.768092043792503,
-          113.94132287442352
-        ]
-      },
-      "id": "4",
-      "businessType": "OUTFALLS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Y-598",
-        "Elevation": "19.64",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.76703276712173,
-          113.9409989858565
-        ]
-      },
-      "id": "5",
-      "businessType": "OUTFALLS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "HDOUT2",
-        "Elevation": "30.5",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.75046572060049,
-          113.95391353584404
-        ]
-      },
-      "id": "6",
-      "businessType": "OUTFALLS"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "name": "01-01-1",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-340",
         "area": "8.87",
         "Imperv": "75",
@@ -22215,15 +66,13 @@
             ]
           ]
         ]
-      },
-      "id": "0",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-01-2",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-597",
         "area": "0.23",
         "Imperv": "20",
@@ -22269,15 +118,13 @@
             ]
           ]
         ]
-      },
-      "id": "1",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-01-3",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-196",
         "area": "0.46",
         "Imperv": "20",
@@ -22403,15 +250,13 @@
             ]
           ]
         ]
-      },
-      "id": "2",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-02-1",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-439",
         "area": "6.33",
         "Imperv": "20",
@@ -22553,15 +398,13 @@
             ]
           ]
         ]
-      },
-      "id": "3",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-02-2",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-596",
         "area": "1.55",
         "Imperv": "75",
@@ -22659,15 +502,13 @@
             ]
           ]
         ]
-      },
-      "id": "4",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-02-3",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-19",
         "area": "6                                   1.41",
         "Imperv": "75",
@@ -22757,16 +598,14 @@
             ]
           ]
         ]
-      },
-      "id": "5",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-0",
-        "raingage": "3-2                                 雨�",
-        "outlet": "��计1",
+        "raingage": "3-2                                 \u96e8\ufffd",
+        "outlet": "\ufffd\ufffd\u8ba11",
         "area": "Y-530",
         "Imperv": "0.92",
         "Width": "20",
@@ -22851,16 +690,14 @@
             ]
           ]
         ]
-      },
-      "id": "6",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "01-03-3",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-196",
         "Imperv": "0.42",
         "Width": "75",
@@ -22897,16 +734,14 @@
             ]
           ]
         ]
-      },
-      "id": "7",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "01-04-1",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-584",
         "Imperv": "0.43",
         "Width": "70",
@@ -22947,16 +782,14 @@
             ]
           ]
         ]
-      },
-      "id": "8",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "01-04-2",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-197",
         "Imperv": "0.09",
         "Width": "20",
@@ -23097,16 +930,14 @@
             ]
           ]
         ]
-      },
-      "id": "9",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "01-05-1",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-511",
         "Imperv": "1.59",
         "Width": "70",
@@ -23155,16 +986,14 @@
             ]
           ]
         ]
-      },
-      "id": "10",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "01-05-2",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-197",
         "Imperv": "1.77",
         "Width": "75",
@@ -23273,17 +1102,15 @@
             ]
           ]
         ]
-      },
-      "id": "11",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "01-06-1",
-        "outlet": "雨量�",
-        "area": "�1                                    Y-",
+        "outlet": "\u96e8\u91cf\ufffd",
+        "area": "\ufffd1                                    Y-",
         "Imperv": "339                                   0.",
         "Width": "52                                    20",
         "Slope": "72",
@@ -23359,17 +1186,15 @@
             ]
           ]
         ]
-      },
-      "id": "12",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "01",
-        "outlet": "-06-2                                 �",
-        "area": "�量计1",
+        "outlet": "-06-2                                 \ufffd",
+        "area": "\ufffd\u91cf\u8ba11",
         "Imperv": "Y-584",
         "Width": "0.46",
         "Slope": "70",
@@ -23409,9 +1234,7 @@
             ]
           ]
         ]
-      },
-      "id": "13",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23419,7 +1242,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "01-06-3",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-336",
         "Width": "0.08",
         "Slope": "20",
@@ -23479,9 +1302,7 @@
             ]
           ]
         ]
-      },
-      "id": "14",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23489,7 +1310,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "01-06-4",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-438",
         "Width": "1.12",
         "Slope": "20",
@@ -23525,9 +1346,7 @@
             ]
           ]
         ]
-      },
-      "id": "15",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23535,7 +1354,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "01-06-5",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-486",
         "Width": "0.92",
         "Slope": "20",
@@ -23599,9 +1418,7 @@
             ]
           ]
         ]
-      },
-      "id": "16",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23609,7 +1426,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "01-06-6",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-603",
         "Width": "0.57",
         "Slope": "20",
@@ -23649,9 +1466,7 @@
             ]
           ]
         ]
-      },
-      "id": "17",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23659,7 +1474,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "01-06-7",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-603",
         "Width": "1.37",
         "Slope": "20",
@@ -23707,9 +1522,7 @@
             ]
           ]
         ]
-      },
-      "id": "18",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23717,8 +1530,8 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "01-07-",
-        "area": "1                                 雨量",
-        "Imperv": "计1",
+        "area": "1                                 \u96e8\u91cf",
+        "Imperv": "\u8ba11",
         "Width": "Y-502",
         "Slope": "5.04",
         "CurbLen": "70"
@@ -23809,9 +1622,7 @@
             ]
           ]
         ]
-      },
-      "id": "19",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23820,7 +1631,7 @@
         "raingage": ".5                                     0",
         "outlet": null,
         "area": "01-07-2",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-195",
         "Slope": "1.27",
         "CurbLen": "75"
@@ -23879,9 +1690,7 @@
             ]
           ]
         ]
-      },
-      "id": "20",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23890,7 +1699,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "01-08-1",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-491",
         "Slope": "1.32",
         "CurbLen": "70"
@@ -23937,9 +1746,7 @@
             ]
           ]
         ]
-      },
-      "id": "21",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23948,7 +1755,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "01-08-2",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-502",
         "Slope": "0.40",
         "CurbLen": "20"
@@ -23983,9 +1790,7 @@
             ]
           ]
         ]
-      },
-      "id": "22",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -23994,7 +1799,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "01-08-3",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-354",
         "Slope": "0.08",
         "CurbLen": "20"
@@ -24049,9 +1854,7 @@
             ]
           ]
         ]
-      },
-      "id": "23",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24060,7 +1863,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "01-09-1",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-339",
         "Slope": "0.65",
         "CurbLen": "70"
@@ -24095,9 +1898,7 @@
             ]
           ]
         ]
-      },
-      "id": "24",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24106,7 +1907,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "01-09-2",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-58",
         "Slope": "4                                   0.27",
         "CurbLen": "20"
@@ -24153,9 +1954,7 @@
             ]
           ]
         ]
-      },
-      "id": "25",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24164,8 +1963,8 @@
         "raingage": "6                                  0.5",
         "outlet": "0",
         "area": "01-0",
-        "Imperv": "9-3                                 雨�",
-        "Width": "��计1",
+        "Imperv": "9-3                                 \u96e8\ufffd",
+        "Width": "\ufffd\ufffd\u8ba11",
         "Slope": "Y-354",
         "CurbLen": "1.33"
       },
@@ -24231,9 +2030,7 @@
             ]
           ]
         ]
-      },
-      "id": "26",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24243,7 +2040,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "01-10-1",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-339",
         "CurbLen": "0.90"
       },
@@ -24281,9 +2078,7 @@
             ]
           ]
         ]
-      },
-      "id": "27",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24293,7 +2088,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "01-10-2",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-337",
         "CurbLen": "0.30"
       },
@@ -24335,9 +2130,7 @@
             ]
           ]
         ]
-      },
-      "id": "28",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24347,7 +2140,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "01-10-3",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-584",
         "CurbLen": "1.16"
       },
@@ -24429,9 +2222,7 @@
             ]
           ]
         ]
-      },
-      "id": "29",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24441,7 +2232,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "01-11-1",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-352",
         "CurbLen": "1.67"
       },
@@ -24483,9 +2274,7 @@
             ]
           ]
         ]
-      },
-      "id": "30",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24495,7 +2284,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "01-11-2",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-490",
         "CurbLen": "3.04"
       },
@@ -24709,9 +2498,7 @@
             ]
           ]
         ]
-      },
-      "id": "31",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24721,8 +2508,8 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "01-11-3",
-        "Width": "雨量�",
-        "Slope": "�1                                    Y-",
+        "Width": "\u96e8\u91cf\ufffd",
+        "Slope": "\ufffd1                                    Y-",
         "CurbLen": "550                                   0."
       },
       "geometry": {
@@ -24775,9 +2562,7 @@
             ]
           ]
         ]
-      },
-      "id": "32",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24787,8 +2572,8 @@
         "outlet": "482                                  0.5",
         "area": "0",
         "Imperv": "01",
-        "Width": "-12-1                                 �",
-        "Slope": "�量计1",
+        "Width": "-12-1                                 \ufffd",
+        "Slope": "\ufffd\u91cf\u8ba11",
         "CurbLen": "Y-546"
       },
       "geometry": {
@@ -24837,9 +2622,7 @@
             ]
           ]
         ]
-      },
-      "id": "33",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24850,7 +2633,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "01-12-2",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-550"
       },
       "geometry": {
@@ -24895,9 +2678,7 @@
             ]
           ]
         ]
-      },
-      "id": "34",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24908,7 +2689,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "01-12-3",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-428"
       },
       "geometry": {
@@ -24957,9 +2738,7 @@
             ]
           ]
         ]
-      },
-      "id": "35",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -24970,7 +2749,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "01-13-1",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-481"
       },
       "geometry": {
@@ -25019,9 +2798,7 @@
             ]
           ]
         ]
-      },
-      "id": "36",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25032,7 +2809,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "01-13-2",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-194"
       },
       "geometry": {
@@ -25081,9 +2858,7 @@
             ]
           ]
         ]
-      },
-      "id": "37",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25094,7 +2869,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "01-13-3",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-537"
       },
       "geometry": {
@@ -25163,9 +2938,7 @@
             ]
           ]
         ]
-      },
-      "id": "38",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25176,8 +2949,8 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "01-14-",
-        "Slope": "1                                 雨量",
-        "CurbLen": "计1"
+        "Slope": "1                                 \u96e8\u91cf",
+        "CurbLen": "\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -25333,9 +3106,7 @@
             ]
           ]
         ]
-      },
-      "id": "39",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25347,7 +3118,7 @@
         "Imperv": ".5                                     0",
         "Width": null,
         "Slope": "01-14-2",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -25387,9 +3158,7 @@
             ]
           ]
         ]
-      },
-      "id": "40",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25401,7 +3170,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "01-14-3",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -25453,9 +3222,7 @@
             ]
           ]
         ]
-      },
-      "id": "41",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25467,7 +3234,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "01-15-1",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -25499,9 +3266,7 @@
             ]
           ]
         ]
-      },
-      "id": "42",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25513,7 +3278,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "01-15-2",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -25581,9 +3346,7 @@
             ]
           ]
         ]
-      },
-      "id": "43",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25595,7 +3358,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "01-15-3",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -25879,9 +3642,7 @@
             ]
           ]
         ]
-      },
-      "id": "44",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25893,7 +3654,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "01-16-1",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -25945,9 +3706,7 @@
             ]
           ]
         ]
-      },
-      "id": "45",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -25959,7 +3718,7 @@
         "Imperv": "68                                 0.5",
         "Width": "0",
         "Slope": "01-1",
-        "CurbLen": "6-2                                 雨�"
+        "CurbLen": "6-2                                 \u96e8\ufffd"
       },
       "geometry": {
         "type": "Polygon",
@@ -26039,14 +3798,12 @@
             ]
           ]
         ]
-      },
-      "id": "46",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "�计1",
+        "name": "\ufffd\u8ba11",
         "raingage": "Y-446",
         "outlet": "0.11",
         "area": "20",
@@ -26113,14 +3870,12 @@
             ]
           ]
         ]
-      },
-      "id": "47",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-208",
         "outlet": "1.97",
         "area": "70",
@@ -26259,14 +4014,12 @@
             ]
           ]
         ]
-      },
-      "id": "48",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-446",
         "outlet": "2.13",
         "area": "75",
@@ -26309,14 +4062,12 @@
             ]
           ]
         ]
-      },
-      "id": "49",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-429",
         "outlet": "0.13",
         "area": "20",
@@ -26395,14 +4146,12 @@
             ]
           ]
         ]
-      },
-      "id": "50",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-478",
         "outlet": "2.20",
         "area": "70",
@@ -26445,14 +4194,12 @@
             ]
           ]
         ]
-      },
-      "id": "51",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-478",
         "outlet": "0.10",
         "area": "20",
@@ -26503,14 +4250,12 @@
             ]
           ]
         ]
-      },
-      "id": "52",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计",
+        "name": "\u96e8\u91cf\u8ba1",
         "raingage": "1                                    Y-4",
         "outlet": "95                                   1.6",
         "area": "7                                    70",
@@ -26629,15 +4374,13 @@
             ]
           ]
         ]
-      },
-      "id": "53",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "22                                   雨",
-        "raingage": "量计1",
+        "name": "22                                   \u96e8",
+        "raingage": "\u91cf\u8ba11",
         "outlet": "Y-541",
         "area": "6.64",
         "Imperv": "75",
@@ -26743,15 +4486,13 @@
             ]
           ]
         ]
-      },
-      "id": "54",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-23",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-541",
         "area": "2.29",
         "Imperv": "85",
@@ -26929,15 +4670,13 @@
             ]
           ]
         ]
-      },
-      "id": "55",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-24",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-608",
         "area": "3.34",
         "Imperv": "75",
@@ -27023,15 +4762,13 @@
             ]
           ]
         ]
-      },
-      "id": "56",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-25",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-547",
         "area": "2.07",
         "Imperv": "70",
@@ -27101,15 +4838,13 @@
             ]
           ]
         ]
-      },
-      "id": "57",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "01-26",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-553",
         "area": "1.60",
         "Imperv": "70",
@@ -27151,15 +4886,13 @@
             ]
           ]
         ]
-      },
-      "id": "58",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "02-01-1",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-110",
         "area": "2.53",
         "Imperv": "70",
@@ -27217,16 +4950,14 @@
             ]
           ]
         ]
-      },
-      "id": "59",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "02-01-2",
-        "raingage": "雨量�",
-        "outlet": "��1                                    Y",
+        "raingage": "\u96e8\u91cf\ufffd",
+        "outlet": "\ufffd\ufffd1                                    Y",
         "area": "-551                                   2",
         "Imperv": ".75                                    7",
         "Width": "0                                      1",
@@ -27263,16 +4994,14 @@
             ]
           ]
         ]
-      },
-      "id": "60",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
-        "raingage": "2-02-1                                 �",
-        "outlet": "��量计1",
+        "raingage": "2-02-1                                 \ufffd",
+        "outlet": "\ufffd\ufffd\u91cf\u8ba11",
         "area": "Y-430",
         "Imperv": "3.49",
         "Width": "70",
@@ -27321,16 +5050,14 @@
             ]
           ]
         ]
-      },
-      "id": "61",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "02-02-2",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-537",
         "Imperv": "1.37",
         "Width": "70",
@@ -27395,16 +5122,14 @@
             ]
           ]
         ]
-      },
-      "id": "62",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "02-03-1",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-108",
         "Imperv": "1.90",
         "Width": "70",
@@ -27465,16 +5190,14 @@
             ]
           ]
         ]
-      },
-      "id": "63",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "02-03-2",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-567",
         "Imperv": "1.03",
         "Width": "75",
@@ -27527,16 +5250,14 @@
             ]
           ]
         ]
-      },
-      "id": "64",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "02-04-1",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-441",
         "Imperv": "2.17",
         "Width": "70",
@@ -27701,16 +5422,14 @@
             ]
           ]
         ]
-      },
-      "id": "65",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "02-04-2",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-579",
         "Imperv": "5.63",
         "Width": "75",
@@ -27755,17 +5474,15 @@
             ]
           ]
         ]
-      },
-      "id": "66",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "02-05",
-        "outlet": "-1                                 雨�",
-        "area": "�计1",
+        "outlet": "-1                                 \u96e8\ufffd",
+        "area": "\ufffd\u8ba11",
         "Imperv": "Y-440",
         "Width": "1.93",
         "Slope": "70",
@@ -28537,9 +6254,7 @@
             ]
           ]
         ]
-      },
-      "id": "67",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -28547,7 +6262,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "02-05-2",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-509",
         "Width": "7.45",
         "Slope": "75",
@@ -28675,9 +6390,7 @@
             ]
           ]
         ]
-      },
-      "id": "68",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -28685,7 +6398,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "02-06-1",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-211",
         "Width": "2.59",
         "Slope": "75",
@@ -28769,9 +6482,7 @@
             ]
           ]
         ]
-      },
-      "id": "69",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -28779,7 +6490,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "02-06-10",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-471",
         "Width": "11.53",
         "Slope": "70",
@@ -28855,9 +6566,7 @@
             ]
           ]
         ]
-      },
-      "id": "70",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -28865,7 +6574,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "02-06-3",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-575",
         "Width": "11.11",
         "Slope": "20",
@@ -29137,9 +6846,7 @@
             ]
           ]
         ]
-      },
-      "id": "71",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29147,7 +6854,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "02-06-4",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-569",
         "Width": "3.96",
         "Slope": "20",
@@ -29259,9 +6966,7 @@
             ]
           ]
         ]
-      },
-      "id": "72",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29269,7 +6974,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "02-06-5",
-        "area": "雨量计",
+        "area": "\u96e8\u91cf\u8ba1",
         "Imperv": "1                                    Y-5",
         "Width": "70                                   6.6",
         "Slope": "3                                    20",
@@ -29377,9 +7082,7 @@
             ]
           ]
         ]
-      },
-      "id": "73",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29387,8 +7090,8 @@
         "name": "464                                 0.5",
         "raingage": "0",
         "outlet": "02-",
-        "area": "06-6                                 雨",
-        "Imperv": "量计1",
+        "area": "06-6                                 \u96e8",
+        "Imperv": "\u91cf\u8ba11",
         "Width": "Y-451",
         "Slope": "6.46",
         "CurbLen": "20"
@@ -29475,9 +7178,7 @@
             ]
           ]
         ]
-      },
-      "id": "74",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29486,7 +7187,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "02-06-7",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-424",
         "Slope": "7.08",
         "CurbLen": "20"
@@ -29533,9 +7234,7 @@
             ]
           ]
         ]
-      },
-      "id": "75",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29544,7 +7243,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "02-06-8",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-602",
         "Slope": "6.06",
         "CurbLen": "20"
@@ -29575,9 +7274,7 @@
             ]
           ]
         ]
-      },
-      "id": "76",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29586,7 +7283,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "02-06-9",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-436",
         "Slope": "6.01",
         "CurbLen": "20"
@@ -29633,9 +7330,7 @@
             ]
           ]
         ]
-      },
-      "id": "77",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29644,7 +7339,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "02-07-1",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-323",
         "Slope": "2.41",
         "CurbLen": "70"
@@ -29683,9 +7378,7 @@
             ]
           ]
         ]
-      },
-      "id": "78",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29694,7 +7387,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "02-07-2",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-476",
         "Slope": "0.20",
         "CurbLen": "85"
@@ -29753,9 +7446,7 @@
             ]
           ]
         ]
-      },
-      "id": "79",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29764,8 +7455,8 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "02-08-1",
-        "Imperv": "雨量�",
-        "Width": "��1                                    Y",
+        "Imperv": "\u96e8\u91cf\ufffd",
+        "Width": "\ufffd\ufffd1                                    Y",
         "Slope": "-323                                   1",
         "CurbLen": ".80                                    7"
       },
@@ -29803,9 +7494,7 @@
             ]
           ]
         ]
-      },
-      "id": "80",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29814,8 +7503,8 @@
         "raingage": "4.019                                 0.",
         "outlet": "5                                     0",
         "area": "0",
-        "Imperv": "2-08-2                                 �",
-        "Width": "��量计1",
+        "Imperv": "2-08-2                                 \ufffd",
+        "Width": "\ufffd\ufffd\u91cf\u8ba11",
         "Slope": "Y-612",
         "CurbLen": "0.44"
       },
@@ -29849,9 +7538,7 @@
             ]
           ]
         ]
-      },
-      "id": "81",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29861,7 +7548,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "02-09-1",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-209",
         "CurbLen": "0.55"
       },
@@ -29903,9 +7590,7 @@
             ]
           ]
         ]
-      },
-      "id": "82",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29915,7 +7600,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "02-09-2",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-465",
         "CurbLen": "0.63"
       },
@@ -29961,9 +7646,7 @@
             ]
           ]
         ]
-      },
-      "id": "83",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -29973,7 +7656,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "02-10-1",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-326",
         "CurbLen": "0.47"
       },
@@ -30011,9 +7694,7 @@
             ]
           ]
         ]
-      },
-      "id": "84",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30023,7 +7704,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "02-10-2",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "B-468",
         "CurbLen": "1.84"
       },
@@ -30169,9 +7850,7 @@
             ]
           ]
         ]
-      },
-      "id": "85",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30181,7 +7860,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "02-11-1",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-325",
         "CurbLen": "0.67"
       },
@@ -30219,9 +7898,7 @@
             ]
           ]
         ]
-      },
-      "id": "86",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30231,8 +7908,8 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "02-11",
-        "Width": "-2                                 雨�",
-        "Slope": "�计1",
+        "Width": "-2                                 \u96e8\ufffd",
+        "Slope": "\ufffd\u8ba11",
         "CurbLen": "Y-465"
       },
       "geometry": {
@@ -30481,9 +8158,7 @@
             ]
           ]
         ]
-      },
-      "id": "87",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30494,7 +8169,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "02-12-1",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-109"
       },
       "geometry": {
@@ -30635,9 +8310,7 @@
             ]
           ]
         ]
-      },
-      "id": "88",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30648,7 +8321,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "02-12-2",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-506"
       },
       "geometry": {
@@ -30717,9 +8390,7 @@
             ]
           ]
         ]
-      },
-      "id": "89",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30730,7 +8401,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "02-13-1",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-351"
       },
       "geometry": {
@@ -30843,9 +8514,7 @@
             ]
           ]
         ]
-      },
-      "id": "90",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30856,7 +8525,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "02-13-2",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-612"
       },
       "geometry": {
@@ -30889,9 +8558,7 @@
             ]
           ]
         ]
-      },
-      "id": "91",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -30902,7 +8569,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "02-14-1",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-484"
       },
       "geometry": {
@@ -31123,9 +8790,7 @@
             ]
           ]
         ]
-      },
-      "id": "92",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -31136,7 +8801,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "02-14-2",
-        "Slope": "雨量计",
+        "Slope": "\u96e8\u91cf\u8ba1",
         "CurbLen": "1                                    Y-4"
       },
       "geometry": {
@@ -31169,9 +8834,7 @@
             ]
           ]
         ]
-      },
-      "id": "93",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -31182,8 +8845,8 @@
         "area": "616                                 0.5",
         "Imperv": "0",
         "Width": "02-",
-        "Slope": "15-1                                 雨",
-        "CurbLen": "量计1"
+        "Slope": "15-1                                 \u96e8",
+        "CurbLen": "\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -31347,9 +9010,7 @@
             ]
           ]
         ]
-      },
-      "id": "94",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -31361,7 +9022,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "02-15-2",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -31393,9 +9054,7 @@
             ]
           ]
         ]
-      },
-      "id": "95",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -31407,7 +9066,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "02-16-1",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -31463,9 +9122,7 @@
             ]
           ]
         ]
-      },
-      "id": "96",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -31477,7 +9134,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "02-16-2",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -31649,9 +9306,7 @@
             ]
           ]
         ]
-      },
-      "id": "97",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -31663,7 +9318,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "02-17",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -31723,9 +9378,7 @@
             ]
           ]
         ]
-      },
-      "id": "98",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -31737,7 +9390,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "03-01-1",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -32041,9 +9694,7 @@
             ]
           ]
         ]
-      },
-      "id": "99",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -32055,7 +9706,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "03-01-2",
-        "CurbLen": "雨量�"
+        "CurbLen": "\u96e8\u91cf\ufffd"
       },
       "geometry": {
         "type": "Polygon",
@@ -32123,21 +9774,19 @@
             ]
           ]
         ]
-      },
-      "id": "100",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "�1                                    Y-",
+        "name": "\ufffd1                                    Y-",
         "raingage": "387                                   0.",
         "outlet": "41                                    20",
         "area": "64",
         "Imperv": ".303                                  0.",
         "Width": "5                                     0",
         "Slope": "0",
-        "CurbLen": "3-02-1                                 �"
+        "CurbLen": "3-02-1                                 \ufffd"
       },
       "geometry": {
         "type": "Polygon",
@@ -32229,14 +9878,12 @@
             ]
           ]
         ]
-      },
-      "id": "101",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "�量计1",
+        "name": "\ufffd\u91cf\u8ba11",
         "raingage": "Y-605",
         "outlet": "5.99",
         "area": "70",
@@ -32315,14 +9962,12 @@
             ]
           ]
         ]
-      },
-      "id": "102",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-461",
         "outlet": "5.00",
         "area": "75",
@@ -32437,14 +10082,12 @@
             ]
           ]
         ]
-      },
-      "id": "103",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-423",
         "outlet": "3.71",
         "area": "70",
@@ -32547,14 +10190,12 @@
             ]
           ]
         ]
-      },
-      "id": "104",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-423",
         "outlet": "4.60",
         "area": "70",
@@ -32617,14 +10258,12 @@
             ]
           ]
         ]
-      },
-      "id": "105",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-327",
         "outlet": "0.71",
         "area": "20",
@@ -32699,14 +10338,12 @@
             ]
           ]
         ]
-      },
-      "id": "106",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-421",
         "outlet": "5.36",
         "area": "70",
@@ -32793,15 +10430,13 @@
             ]
           ]
         ]
-      },
-      "id": "107",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量",
-        "raingage": "计1",
+        "name": "\u96e8\u91cf",
+        "raingage": "\u8ba11",
         "outlet": "Y-202",
         "area": "6.71",
         "Imperv": "70",
@@ -32891,15 +10526,13 @@
             ]
           ]
         ]
-      },
-      "id": "108",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "03-08",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-329",
         "area": "0.65",
         "Imperv": "20",
@@ -32945,15 +10578,13 @@
             ]
           ]
         ]
-      },
-      "id": "109",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "03-09",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-601",
         "area": "2.90",
         "Imperv": "75",
@@ -33015,15 +10646,13 @@
             ]
           ]
         ]
-      },
-      "id": "110",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "03-10",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-357",
         "area": "1.78",
         "Imperv": "75",
@@ -33065,15 +10694,13 @@
             ]
           ]
         ]
-      },
-      "id": "111",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "03-11",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-488",
         "area": "4.74",
         "Imperv": "20",
@@ -33123,15 +10750,13 @@
             ]
           ]
         ]
-      },
-      "id": "112",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "03-12",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-332",
         "area": "1.07",
         "Imperv": "70",
@@ -33169,15 +10794,13 @@
             ]
           ]
         ]
-      },
-      "id": "113",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "03-13",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-20",
         "area": "2                                   0.22",
         "Imperv": "20",
@@ -33239,16 +10862,14 @@
             ]
           ]
         ]
-      },
-      "id": "114",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "03-1",
-        "raingage": "4                                   雨�",
-        "outlet": "��计1",
+        "raingage": "4                                   \u96e8\ufffd",
+        "outlet": "\ufffd\ufffd\u8ba11",
         "area": "Y-358",
         "Imperv": "3.58",
         "Width": "20",
@@ -33297,16 +10918,14 @@
             ]
           ]
         ]
-      },
-      "id": "115",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "03-15",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-202",
         "Imperv": "0.98",
         "Width": "70",
@@ -33615,16 +11234,14 @@
             ]
           ]
         ]
-      },
-      "id": "116",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "03-16",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-331",
         "Imperv": "3.84",
         "Width": "75",
@@ -33753,16 +11370,14 @@
             ]
           ]
         ]
-      },
-      "id": "117",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "03-17",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-202",
         "Imperv": "1.38",
         "Width": "20",
@@ -33807,16 +11422,14 @@
             ]
           ]
         ]
-      },
-      "id": "118",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "04-01",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-15",
         "Imperv": "0.12",
         "Width": "20",
@@ -33961,16 +11574,14 @@
             ]
           ]
         ]
-      },
-      "id": "119",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "04-02",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-15",
         "Imperv": "0.46",
         "Width": "70",
@@ -34283,17 +11894,15 @@
             ]
           ]
         ]
-      },
-      "id": "120",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "04-03",
-        "outlet": "雨量�",
-        "area": "�1                                    Y-",
+        "outlet": "\u96e8\u91cf\ufffd",
+        "area": "\ufffd1                                    Y-",
         "Imperv": "15                                    1.",
         "Width": "73                                    20",
         "Slope": "13",
@@ -34349,17 +11958,15 @@
             ]
           ]
         ]
-      },
-      "id": "121",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "04",
-        "outlet": "-05                                   �",
-        "area": "�量计1",
+        "outlet": "-05                                   \ufffd",
+        "area": "\ufffd\u91cf\u8ba11",
         "Imperv": "Y-15",
         "Width": "6.15",
         "Slope": "20",
@@ -34687,9 +12294,7 @@
             ]
           ]
         ]
-      },
-      "id": "122",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -34697,7 +12302,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "04-07",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-15",
         "Width": "0.17",
         "Slope": "20",
@@ -34761,9 +12366,7 @@
             ]
           ]
         ]
-      },
-      "id": "123",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -34771,7 +12374,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "04-08",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-18",
         "Width": "0.90",
         "Slope": "20",
@@ -34855,9 +12458,7 @@
             ]
           ]
         ]
-      },
-      "id": "124",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -34865,7 +12466,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "04-09",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-18",
         "Width": "5.53",
         "Slope": "75",
@@ -34949,9 +12550,7 @@
             ]
           ]
         ]
-      },
-      "id": "125",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -34959,7 +12558,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "04-10",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-15",
         "Width": "0.12",
         "Slope": "20",
@@ -35015,9 +12614,7 @@
             ]
           ]
         ]
-      },
-      "id": "126",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35025,7 +12622,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "04-12",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-15",
         "Width": "0.27",
         "Slope": "20",
@@ -35137,9 +12734,7 @@
             ]
           ]
         ]
-      },
-      "id": "127",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35147,8 +12742,8 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "04-13",
-        "area": "雨量",
-        "Imperv": "计1",
+        "area": "\u96e8\u91cf",
+        "Imperv": "\u8ba11",
         "Width": "Y-16",
         "Slope": "2.78",
         "CurbLen": "70"
@@ -35247,9 +12842,7 @@
             ]
           ]
         ]
-      },
-      "id": "128",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35258,7 +12851,7 @@
         "raingage": ".5                                     0",
         "outlet": null,
         "area": "04-14",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-23",
         "Slope": "0.35",
         "CurbLen": "20"
@@ -35325,9 +12918,7 @@
             ]
           ]
         ]
-      },
-      "id": "129",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35336,7 +12927,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "04-16",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-17",
         "Slope": "0.27",
         "CurbLen": "20"
@@ -35371,9 +12962,7 @@
             ]
           ]
         ]
-      },
-      "id": "130",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35382,7 +12971,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "04-17",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-24",
         "Slope": "2.41",
         "CurbLen": "70"
@@ -35425,9 +13014,7 @@
             ]
           ]
         ]
-      },
-      "id": "131",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35436,7 +13023,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "04-18",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-15",
         "Slope": "0.28",
         "CurbLen": "70"
@@ -35563,9 +13150,7 @@
             ]
           ]
         ]
-      },
-      "id": "132",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35574,7 +13159,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "05-01",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-618",
         "Slope": "0.86",
         "CurbLen": "20"
@@ -35837,9 +13422,7 @@
             ]
           ]
         ]
-      },
-      "id": "133",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -35848,7 +13431,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "05-02",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-61",
         "Slope": "8                                   5.51",
         "CurbLen": "75"
@@ -36003,9 +13586,7 @@
             ]
           ]
         ]
-      },
-      "id": "134",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36014,8 +13595,8 @@
         "raingage": "66                                 0.5",
         "outlet": "0",
         "area": "05-0",
-        "Imperv": "3                                   雨�",
-        "Width": "��计1",
+        "Imperv": "3                                   \u96e8\ufffd",
+        "Width": "\ufffd\ufffd\u8ba11",
         "Slope": "Y-618",
         "CurbLen": "1.74"
       },
@@ -36049,9 +13630,7 @@
             ]
           ]
         ]
-      },
-      "id": "135",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36061,7 +13640,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "05-05",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-282",
         "CurbLen": "1.89"
       },
@@ -36095,9 +13674,7 @@
             ]
           ]
         ]
-      },
-      "id": "136",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36107,7 +13684,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "05-06",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-26",
         "CurbLen": "0.19"
       },
@@ -36141,9 +13718,7 @@
             ]
           ]
         ]
-      },
-      "id": "137",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36153,7 +13728,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "05-07",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-282",
         "CurbLen": "4.42"
       },
@@ -36195,9 +13770,7 @@
             ]
           ]
         ]
-      },
-      "id": "138",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36207,7 +13780,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "05-08",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-30",
         "CurbLen": "0.31"
       },
@@ -36269,9 +13842,7 @@
             ]
           ]
         ]
-      },
-      "id": "139",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36281,7 +13852,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "05-09",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-255",
         "CurbLen": "0.15"
       },
@@ -36327,9 +13898,7 @@
             ]
           ]
         ]
-      },
-      "id": "140",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36339,8 +13908,8 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "05-10",
-        "Width": "雨量�",
-        "Slope": "�1                                    Y-",
+        "Width": "\u96e8\u91cf\ufffd",
+        "Slope": "\ufffd1                                    Y-",
         "CurbLen": "282                                   3."
       },
       "geometry": {
@@ -36373,9 +13942,7 @@
             ]
           ]
         ]
-      },
-      "id": "141",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36385,8 +13952,8 @@
         "outlet": ".772                                 0.5",
         "area": "0",
         "Imperv": "05",
-        "Width": "-11                                   �",
-        "Slope": "�量计1",
+        "Width": "-11                                   \ufffd",
+        "Slope": "\ufffd\u91cf\u8ba11",
         "CurbLen": "Y-254"
       },
       "geometry": {
@@ -36427,9 +13994,7 @@
             ]
           ]
         ]
-      },
-      "id": "142",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36440,7 +14005,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "05-12",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-30"
       },
       "geometry": {
@@ -36485,9 +14050,7 @@
             ]
           ]
         ]
-      },
-      "id": "143",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36498,7 +14061,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "05-13",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-253"
       },
       "geometry": {
@@ -36547,9 +14110,7 @@
             ]
           ]
         ]
-      },
-      "id": "144",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36560,7 +14121,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "05-14",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-252"
       },
       "geometry": {
@@ -36613,9 +14174,7 @@
             ]
           ]
         ]
-      },
-      "id": "145",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36626,7 +14185,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "05-15",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-284"
       },
       "geometry": {
@@ -36759,9 +14318,7 @@
             ]
           ]
         ]
-      },
-      "id": "146",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36772,7 +14329,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "05-16",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-248"
       },
       "geometry": {
@@ -36909,9 +14466,7 @@
             ]
           ]
         ]
-      },
-      "id": "147",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -36922,8 +14477,8 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "05-17",
-        "Slope": "雨量",
-        "CurbLen": "计1"
+        "Slope": "\u96e8\u91cf",
+        "CurbLen": "\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -37019,9 +14574,7 @@
             ]
           ]
         ]
-      },
-      "id": "148",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -37033,7 +14586,7 @@
         "Imperv": ".5                                     0",
         "Width": null,
         "Slope": "05-19",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -37097,9 +14650,7 @@
             ]
           ]
         ]
-      },
-      "id": "149",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -37111,7 +14662,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "05-21",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -37159,9 +14710,7 @@
             ]
           ]
         ]
-      },
-      "id": "150",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -37173,7 +14722,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "05-22",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -37209,9 +14758,7 @@
             ]
           ]
         ]
-      },
-      "id": "151",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -37223,7 +14770,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "05-23",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -37259,9 +14806,7 @@
             ]
           ]
         ]
-      },
-      "id": "152",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -37273,7 +14818,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "05-24",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -37425,9 +14970,7 @@
             ]
           ]
         ]
-      },
-      "id": "153",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -37439,7 +14982,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "06-01",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -37487,9 +15030,7 @@
             ]
           ]
         ]
-      },
-      "id": "154",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -37501,7 +15042,7 @@
         "Imperv": "9                                  0.5",
         "Width": "0",
         "Slope": "06-0",
-        "CurbLen": "3                                   雨�"
+        "CurbLen": "3                                   \u96e8\ufffd"
       },
       "geometry": {
         "type": "Polygon",
@@ -37561,14 +15102,12 @@
             ]
           ]
         ]
-      },
-      "id": "155",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "�计1",
+        "name": "\ufffd\u8ba11",
         "raingage": "Y-207",
         "outlet": "0.51",
         "area": "20",
@@ -37659,14 +15198,12 @@
             ]
           ]
         ]
-      },
-      "id": "156",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-333",
         "outlet": "0.93",
         "area": "75",
@@ -37709,14 +15246,12 @@
             ]
           ]
         ]
-      },
-      "id": "157",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-201",
         "outlet": "0.85",
         "area": "70",
@@ -37843,14 +15378,12 @@
             ]
           ]
         ]
-      },
-      "id": "158",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-201",
         "outlet": "2.52",
         "area": "70",
@@ -37981,14 +15514,12 @@
             ]
           ]
         ]
-      },
-      "id": "159",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-114",
         "outlet": "0.40",
         "area": "20",
@@ -38163,14 +15694,12 @@
             ]
           ]
         ]
-      },
-      "id": "160",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-201",
         "outlet": "7.80",
         "area": "70",
@@ -38437,14 +15966,12 @@
             ]
           ]
         ]
-      },
-      "id": "161",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计",
+        "name": "\u96e8\u91cf\u8ba1",
         "raingage": "1                                    Y-1",
         "outlet": "99                                   1.6",
         "area": "4                                    70",
@@ -38535,15 +16062,13 @@
             ]
           ]
         ]
-      },
-      "id": "162",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "14                                   雨",
-        "raingage": "量计1",
+        "name": "14                                   \u96e8",
+        "raingage": "\u91cf\u8ba11",
         "outlet": "Y-331",
         "area": "0.78",
         "Imperv": "20",
@@ -38641,15 +16166,13 @@
             ]
           ]
         ]
-      },
-      "id": "163",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "06-16",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-331",
         "area": "0.07",
         "Imperv": "20",
@@ -38695,15 +16218,13 @@
             ]
           ]
         ]
-      },
-      "id": "164",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "06-17",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-200",
         "area": "5.74",
         "Imperv": "70",
@@ -38749,15 +16270,13 @@
             ]
           ]
         ]
-      },
-      "id": "165",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "06-18",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-200",
         "area": "8.20",
         "Imperv": "70",
@@ -38803,15 +16322,13 @@
             ]
           ]
         ]
-      },
-      "id": "166",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "06-20",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-196",
         "area": "0.36",
         "Imperv": "20",
@@ -38861,15 +16378,13 @@
             ]
           ]
         ]
-      },
-      "id": "167",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "06-24",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-335",
         "area": "1.35",
         "Imperv": "70",
@@ -38935,16 +16450,14 @@
             ]
           ]
         ]
-      },
-      "id": "168",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "06-25",
-        "raingage": "雨量�",
-        "outlet": "��1                                    Y",
+        "raingage": "\u96e8\u91cf\ufffd",
+        "outlet": "\ufffd\ufffd1                                    Y",
         "area": "-335                                   0",
         "Imperv": ".42                                    7",
         "Width": "0                                      6",
@@ -39041,16 +16554,14 @@
             ]
           ]
         ]
-      },
-      "id": "169",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
-        "raingage": "6-26                                   �",
-        "outlet": "��量计1",
+        "raingage": "6-26                                   \ufffd",
+        "outlet": "\ufffd\ufffd\u91cf\u8ba11",
         "area": "Y-355",
         "Imperv": "0.57",
         "Width": "70",
@@ -39107,16 +16618,14 @@
             ]
           ]
         ]
-      },
-      "id": "170",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "06-31",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-355",
         "Imperv": "0.42",
         "Width": "20",
@@ -39185,16 +16694,14 @@
             ]
           ]
         ]
-      },
-      "id": "171",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "06-32",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-427",
         "Imperv": "0.59",
         "Width": "20",
@@ -39459,16 +16966,14 @@
             ]
           ]
         ]
-      },
-      "id": "172",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "06-33",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-333",
         "Imperv": "0.22",
         "Width": "20",
@@ -39517,16 +17022,14 @@
             ]
           ]
         ]
-      },
-      "id": "173",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "D1-1-6",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-466",
         "Imperv": "10.01",
         "Width": "70",
@@ -39575,16 +17078,14 @@
             ]
           ]
         ]
-      },
-      "id": "174",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "D1-2-1",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-402",
         "Imperv": "21.90",
         "Width": "70",
@@ -39629,17 +17130,15 @@
             ]
           ]
         ]
-      },
-      "id": "175",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "D1-2-",
-        "outlet": "10                                 雨�",
-        "area": "�计1",
+        "outlet": "10                                 \u96e8\ufffd",
+        "area": "\ufffd\u8ba11",
         "Imperv": "Y-13",
         "Width": "0.81",
         "Slope": "20",
@@ -39691,9 +17190,7 @@
             ]
           ]
         ]
-      },
-      "id": "176",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -39701,7 +17198,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "D1-2-2",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-276",
         "Width": "11.05",
         "Slope": "70",
@@ -39825,9 +17322,7 @@
             ]
           ]
         ]
-      },
-      "id": "177",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -39835,7 +17330,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "D1-2-3-1",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-260",
         "Width": "3.29",
         "Slope": "70",
@@ -40259,9 +17754,7 @@
             ]
           ]
         ]
-      },
-      "id": "178",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -40269,7 +17762,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "D1-2-3-2",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-271",
         "Width": "6.87",
         "Slope": "70",
@@ -40357,9 +17850,7 @@
             ]
           ]
         ]
-      },
-      "id": "179",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -40367,7 +17858,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "D1-2-4",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-275",
         "Width": "2.12",
         "Slope": "20",
@@ -40579,9 +18070,7 @@
             ]
           ]
         ]
-      },
-      "id": "180",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -40589,7 +18078,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "D1-2-5",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-463",
         "Width": "0.78",
         "Slope": "20",
@@ -40801,9 +18290,7 @@
             ]
           ]
         ]
-      },
-      "id": "181",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -40811,7 +18298,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "D1-2-6",
-        "area": "雨量计",
+        "area": "\u96e8\u91cf\u8ba1",
         "Imperv": "1                                    Y-1",
         "Width": "4                                    5.1",
         "Slope": "3                                    20",
@@ -41007,9 +18494,7 @@
             ]
           ]
         ]
-      },
-      "id": "182",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41017,8 +18502,8 @@
         "name": "483                                 0.5",
         "raingage": "0",
         "outlet": "D1-",
-        "area": "2-7                                  雨",
-        "Imperv": "量计1",
+        "area": "2-7                                  \u96e8",
+        "Imperv": "\u91cf\u8ba11",
         "Width": "Y-5",
         "Slope": "1.91",
         "CurbLen": "20"
@@ -41201,9 +18686,7 @@
             ]
           ]
         ]
-      },
-      "id": "183",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41212,7 +18695,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "D1-2-9",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "HD11",
         "Slope": "0.68",
         "CurbLen": "20"
@@ -41263,9 +18746,7 @@
             ]
           ]
         ]
-      },
-      "id": "184",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41274,7 +18755,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "D1-3-5",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-4",
         "Slope": "2.45",
         "CurbLen": "20"
@@ -41345,9 +18826,7 @@
             ]
           ]
         ]
-      },
-      "id": "185",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41356,7 +18835,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "D1-8-1",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-392",
         "Slope": "0.60",
         "CurbLen": "20"
@@ -41439,9 +18918,7 @@
             ]
           ]
         ]
-      },
-      "id": "186",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41450,7 +18927,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "D1-8-2",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-392",
         "Slope": "1.11",
         "CurbLen": "70"
@@ -41761,9 +19238,7 @@
             ]
           ]
         ]
-      },
-      "id": "187",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41772,7 +19247,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "D1-8-3",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-470",
         "Slope": "2.93",
         "CurbLen": "70"
@@ -41831,9 +19306,7 @@
             ]
           ]
         ]
-      },
-      "id": "188",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41842,8 +19315,8 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "D1-8-4",
-        "Imperv": "雨量�",
-        "Width": "��1                                    Y",
+        "Imperv": "\u96e8\u91cf\ufffd",
+        "Width": "\ufffd\ufffd1                                    Y",
         "Slope": "-406                                   1",
         "CurbLen": ".41                                    7"
       },
@@ -41881,9 +19354,7 @@
             ]
           ]
         ]
-      },
-      "id": "189",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41892,8 +19363,8 @@
         "raingage": "8.71                                  0.",
         "outlet": "5                                     0",
         "area": "D",
-        "Imperv": "1-8-6                                  �",
-        "Width": "��量计1",
+        "Imperv": "1-8-6                                  \ufffd",
+        "Width": "\ufffd\ufffd\u91cf\u8ba11",
         "Slope": "Y-283",
         "CurbLen": "4.58"
       },
@@ -41931,9 +19402,7 @@
             ]
           ]
         ]
-      },
-      "id": "190",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -41943,7 +19412,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "D2-5-9",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-281",
         "CurbLen": "2.66"
       },
@@ -41993,9 +19462,7 @@
             ]
           ]
         ]
-      },
-      "id": "191",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42005,7 +19472,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-1",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-550",
         "CurbLen": "0.11"
       },
@@ -42051,9 +19518,7 @@
             ]
           ]
         ]
-      },
-      "id": "192",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42063,7 +19528,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-10",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-282",
         "CurbLen": "0.69"
       },
@@ -42113,9 +19578,7 @@
             ]
           ]
         ]
-      },
-      "id": "193",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42125,7 +19588,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-100",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-609",
         "CurbLen": "0.35"
       },
@@ -42267,9 +19730,7 @@
             ]
           ]
         ]
-      },
-      "id": "194",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42279,7 +19740,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-101",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-478",
         "CurbLen": "0.33"
       },
@@ -42549,9 +20010,7 @@
             ]
           ]
         ]
-      },
-      "id": "195",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42561,8 +20020,8 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-10",
-        "Width": "2                                  雨�",
-        "Slope": "�计1",
+        "Width": "2                                  \u96e8\ufffd",
+        "Slope": "\ufffd\u8ba11",
         "CurbLen": "Y-553"
       },
       "geometry": {
@@ -42619,9 +20078,7 @@
             ]
           ]
         ]
-      },
-      "id": "196",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42632,7 +20089,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-103",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-103"
       },
       "geometry": {
@@ -42697,9 +20154,7 @@
             ]
           ]
         ]
-      },
-      "id": "197",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42710,7 +20165,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-104",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-109"
       },
       "geometry": {
@@ -42751,9 +20206,7 @@
             ]
           ]
         ]
-      },
-      "id": "198",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42764,7 +20217,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-105",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-603"
       },
       "geometry": {
@@ -42957,9 +20410,7 @@
             ]
           ]
         ]
-      },
-      "id": "199",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -42970,7 +20421,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-106",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-192"
       },
       "geometry": {
@@ -43079,9 +20530,7 @@
             ]
           ]
         ]
-      },
-      "id": "200",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43092,7 +20541,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-107",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-590"
       },
       "geometry": {
@@ -43137,9 +20586,7 @@
             ]
           ]
         ]
-      },
-      "id": "201",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43150,7 +20597,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-108",
-        "Slope": "雨量计",
+        "Slope": "\u96e8\u91cf\u8ba1",
         "CurbLen": "1                                    Y-3"
       },
       "geometry": {
@@ -43199,9 +20646,7 @@
             ]
           ]
         ]
-      },
-      "id": "202",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43212,8 +20657,8 @@
         "area": "995                                 0.5",
         "Imperv": "0",
         "Width": "DL-",
-        "Slope": "109                                  雨",
-        "CurbLen": "量计1"
+        "Slope": "109                                  \u96e8",
+        "CurbLen": "\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -43265,9 +20710,7 @@
             ]
           ]
         ]
-      },
-      "id": "203",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43279,7 +20722,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-11",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -43323,9 +20766,7 @@
             ]
           ]
         ]
-      },
-      "id": "204",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43337,7 +20778,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-110",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -43493,9 +20934,7 @@
             ]
           ]
         ]
-      },
-      "id": "205",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43507,7 +20946,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-111",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -43619,9 +21058,7 @@
             ]
           ]
         ]
-      },
-      "id": "206",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43633,7 +21070,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-12",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -43813,9 +21250,7 @@
             ]
           ]
         ]
-      },
-      "id": "207",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43827,7 +21262,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-13",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -43971,9 +21406,7 @@
             ]
           ]
         ]
-      },
-      "id": "208",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -43985,7 +21418,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-14",
-        "CurbLen": "雨量�"
+        "CurbLen": "\u96e8\u91cf\ufffd"
       },
       "geometry": {
         "type": "Polygon",
@@ -44333,21 +21766,19 @@
             ]
           ]
         ]
-      },
-      "id": "209",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "�1                                    Y-",
+        "name": "\ufffd1                                    Y-",
         "raingage": "200                                   1.",
         "outlet": "10                                    85",
         "area": "10",
         "Imperv": "4.821                                 0.",
         "Width": "5                                     0",
         "Slope": "D",
-        "CurbLen": "L-15                                   �"
+        "CurbLen": "L-15                                   \ufffd"
       },
       "geometry": {
         "type": "Polygon",
@@ -44407,14 +21838,12 @@
             ]
           ]
         ]
-      },
-      "id": "210",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "�量计1",
+        "name": "\ufffd\u91cf\u8ba11",
         "raingage": "Y-548",
         "outlet": "1.11",
         "area": "85",
@@ -44469,14 +21898,12 @@
             ]
           ]
         ]
-      },
-      "id": "211",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-480",
         "outlet": "0.46",
         "area": "85",
@@ -44523,14 +21950,12 @@
             ]
           ]
         ]
-      },
-      "id": "212",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-480",
         "outlet": "0.48",
         "area": "85",
@@ -44585,14 +22010,12 @@
             ]
           ]
         ]
-      },
-      "id": "213",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-605",
         "outlet": "1.08",
         "area": "85",
@@ -44647,14 +22070,12 @@
             ]
           ]
         ]
-      },
-      "id": "214",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-428",
         "outlet": "0.66",
         "area": "85",
@@ -44709,14 +22130,12 @@
             ]
           ]
         ]
-      },
-      "id": "215",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-505",
         "outlet": "0.27",
         "area": "85",
@@ -44771,15 +22190,13 @@
             ]
           ]
         ]
-      },
-      "id": "216",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量",
-        "raingage": "计1",
+        "name": "\u96e8\u91cf",
+        "raingage": "\u8ba11",
         "outlet": "Y-336",
         "area": "0.72",
         "Imperv": "85",
@@ -44833,15 +22250,13 @@
             ]
           ]
         ]
-      },
-      "id": "217",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-21",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-481",
         "area": "0.21",
         "Imperv": "85",
@@ -44915,15 +22330,13 @@
             ]
           ]
         ]
-      },
-      "id": "218",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-22",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-195",
         "area": "0.21",
         "Imperv": "85",
@@ -44969,15 +22382,13 @@
             ]
           ]
         ]
-      },
-      "id": "219",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-23",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-352",
         "area": "0.22",
         "Imperv": "85",
@@ -45027,15 +22438,13 @@
             ]
           ]
         ]
-      },
-      "id": "220",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-24",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-197",
         "area": "0.25",
         "Imperv": "85",
@@ -45081,15 +22490,13 @@
             ]
           ]
         ]
-      },
-      "id": "221",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-25",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-428",
         "area": "0.61",
         "Imperv": "85",
@@ -45143,15 +22550,13 @@
             ]
           ]
         ]
-      },
-      "id": "222",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-26",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-36",
         "area": "7                                   0.18",
         "Imperv": "85",
@@ -45225,16 +22630,14 @@
             ]
           ]
         ]
-      },
-      "id": "223",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-2",
-        "raingage": "7                                   雨�",
-        "outlet": "��计1",
+        "raingage": "7                                   \u96e8\ufffd",
+        "outlet": "\ufffd\ufffd\u8ba11",
         "area": "Y-483",
         "Imperv": "0.20",
         "Width": "85",
@@ -45495,16 +22898,14 @@
             ]
           ]
         ]
-      },
-      "id": "224",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-28",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-326",
         "Imperv": "0.18",
         "Width": "85",
@@ -45613,16 +23014,14 @@
             ]
           ]
         ]
-      },
-      "id": "225",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-29",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-365",
         "Imperv": "0.21",
         "Width": "85",
@@ -45731,16 +23130,14 @@
             ]
           ]
         ]
-      },
-      "id": "226",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-3",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-111",
         "Imperv": "1.23",
         "Width": "85",
@@ -46041,16 +23438,14 @@
             ]
           ]
         ]
-      },
-      "id": "227",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-30",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-439",
         "Imperv": "1.23",
         "Width": "85",
@@ -46367,16 +23762,14 @@
             ]
           ]
         ]
-      },
-      "id": "228",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-31",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-538",
         "Imperv": "0.44",
         "Width": "85",
@@ -46981,17 +24374,15 @@
             ]
           ]
         ]
-      },
-      "id": "229",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-32",
-        "outlet": "雨量�",
-        "area": "�1                                    Y-",
+        "outlet": "\u96e8\u91cf\ufffd",
+        "area": "\ufffd1                                    Y-",
         "Imperv": "281                                   3.",
         "Width": "15                                    85",
         "Slope": "17",
@@ -47131,17 +24522,15 @@
             ]
           ]
         ]
-      },
-      "id": "230",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL",
-        "outlet": "-33                                   �",
-        "area": "�量计1",
+        "outlet": "-33                                   \ufffd",
+        "area": "\ufffd\u91cf\u8ba11",
         "Imperv": "Y-565",
         "Width": "1.10",
         "Slope": "85",
@@ -47633,9 +25022,7 @@
             ]
           ]
         ]
-      },
-      "id": "231",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -47643,7 +25030,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-34",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-578",
         "Width": "1.54",
         "Slope": "85",
@@ -47739,9 +25126,7 @@
             ]
           ]
         ]
-      },
-      "id": "232",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -47749,7 +25134,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-35",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-509",
         "Width": "1.46",
         "Slope": "85",
@@ -47793,9 +25178,7 @@
             ]
           ]
         ]
-      },
-      "id": "233",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -47803,7 +25186,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-36",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-471",
         "Width": "1.29",
         "Slope": "85",
@@ -47855,9 +25238,7 @@
             ]
           ]
         ]
-      },
-      "id": "234",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -47865,7 +25246,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-37",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-533",
         "Width": "1.44",
         "Slope": "85",
@@ -48053,9 +25434,7 @@
             ]
           ]
         ]
-      },
-      "id": "235",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -48063,7 +25442,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-38",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-537",
         "Width": "1.58",
         "Slope": "85",
@@ -48111,9 +25490,7 @@
             ]
           ]
         ]
-      },
-      "id": "236",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -48121,8 +25498,8 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-39",
-        "area": "雨量",
-        "Imperv": "计1",
+        "area": "\u96e8\u91cf",
+        "Imperv": "\u8ba11",
         "Width": "B-468",
         "Slope": "0.38",
         "CurbLen": "85"
@@ -48157,9 +25534,7 @@
             ]
           ]
         ]
-      },
-      "id": "237",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -48168,7 +25543,7 @@
         "raingage": ".5                                     0",
         "outlet": null,
         "area": "DL-4",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-335",
         "Slope": "0.11",
         "CurbLen": "85"
@@ -48231,9 +25606,7 @@
             ]
           ]
         ]
-      },
-      "id": "238",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -48242,7 +25615,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-40",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-556",
         "Slope": "0.52",
         "CurbLen": "85"
@@ -48297,9 +25670,7 @@
             ]
           ]
         ]
-      },
-      "id": "239",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -48308,7 +25679,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-41",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-465",
         "Slope": "0.53",
         "CurbLen": "85"
@@ -48531,9 +25902,7 @@
             ]
           ]
         ]
-      },
-      "id": "240",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -48542,7 +25911,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-42",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-556",
         "Slope": "0.15",
         "CurbLen": "85"
@@ -48733,9 +26102,7 @@
             ]
           ]
         ]
-      },
-      "id": "241",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -48744,7 +26111,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-43",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-391",
         "Slope": "0.76",
         "CurbLen": "85"
@@ -49339,9 +26706,7 @@
             ]
           ]
         ]
-      },
-      "id": "242",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -49350,7 +26715,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-44",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-50",
         "Slope": "2                                   1.29",
         "CurbLen": "85"
@@ -49417,9 +26782,7 @@
             ]
           ]
         ]
-      },
-      "id": "243",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -49428,8 +26791,8 @@
         "raingage": "4                                  0.5",
         "outlet": "0",
         "area": "DL-4",
-        "Imperv": "5                                   雨�",
-        "Width": "��计1",
+        "Imperv": "5                                   \u96e8\ufffd",
+        "Width": "\ufffd\ufffd\u8ba11",
         "Slope": "Y-548",
         "CurbLen": "1.94"
       },
@@ -49803,9 +27166,7 @@
             ]
           ]
         ]
-      },
-      "id": "244",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -49815,7 +27176,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-46",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-593",
         "CurbLen": "2.66"
       },
@@ -50021,9 +27382,7 @@
             ]
           ]
         ]
-      },
-      "id": "245",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -50033,7 +27392,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-47",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-15",
         "CurbLen": "2.39"
       },
@@ -50563,9 +27922,7 @@
             ]
           ]
         ]
-      },
-      "id": "246",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -50575,7 +27932,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-48",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-613",
         "CurbLen": "3.08"
       },
@@ -50793,9 +28150,7 @@
             ]
           ]
         ]
-      },
-      "id": "247",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -50805,7 +28160,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-49",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-249",
         "CurbLen": "3.93"
       },
@@ -50859,9 +28214,7 @@
             ]
           ]
         ]
-      },
-      "id": "248",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -50871,7 +28224,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-5",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-530",
         "CurbLen": "1.07"
       },
@@ -51161,9 +28514,7 @@
             ]
           ]
         ]
-      },
-      "id": "249",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -51173,8 +28524,8 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-50",
-        "Width": "雨量�",
-        "Slope": "�1                                    Y-",
+        "Width": "\u96e8\u91cf\ufffd",
+        "Slope": "\ufffd1                                    Y-",
         "CurbLen": "120                                   3."
       },
       "geometry": {
@@ -51603,9 +28954,7 @@
             ]
           ]
         ]
-      },
-      "id": "250",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -51615,8 +28964,8 @@
         "outlet": ".691                                 0.5",
         "area": "0",
         "Imperv": "DL",
-        "Width": "-51                                   �",
-        "Slope": "�量计1",
+        "Width": "-51                                   \ufffd",
+        "Slope": "\ufffd\u91cf\u8ba11",
         "CurbLen": "Y-197"
       },
       "geometry": {
@@ -51681,9 +29030,7 @@
             ]
           ]
         ]
-      },
-      "id": "251",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -51694,7 +29041,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-52",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-482"
       },
       "geometry": {
@@ -51831,9 +29178,7 @@
             ]
           ]
         ]
-      },
-      "id": "252",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -51844,7 +29189,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-53",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-351"
       },
       "geometry": {
@@ -51937,9 +29282,7 @@
             ]
           ]
         ]
-      },
-      "id": "253",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -51950,7 +29293,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-54",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-520"
       },
       "geometry": {
@@ -52015,9 +29358,7 @@
             ]
           ]
         ]
-      },
-      "id": "254",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52028,7 +29369,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-55",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-350"
       },
       "geometry": {
@@ -52077,9 +29418,7 @@
             ]
           ]
         ]
-      },
-      "id": "255",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52090,7 +29429,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-56",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-210"
       },
       "geometry": {
@@ -52131,9 +29470,7 @@
             ]
           ]
         ]
-      },
-      "id": "256",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52144,8 +29481,8 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DL-57",
-        "Slope": "雨量",
-        "CurbLen": "计1"
+        "Slope": "\u96e8\u91cf",
+        "CurbLen": "\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -52189,9 +29526,7 @@
             ]
           ]
         ]
-      },
-      "id": "257",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52203,7 +29538,7 @@
         "Imperv": ".5                                     0",
         "Width": null,
         "Slope": "DL-58",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -52243,9 +29578,7 @@
             ]
           ]
         ]
-      },
-      "id": "258",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52257,7 +29590,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-59",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -52357,9 +29690,7 @@
             ]
           ]
         ]
-      },
-      "id": "259",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52371,7 +29702,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-6",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -52423,9 +29754,7 @@
             ]
           ]
         ]
-      },
-      "id": "260",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52437,7 +29766,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-60",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -52493,9 +29822,7 @@
             ]
           ]
         ]
-      },
-      "id": "261",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52507,7 +29834,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-61",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -52579,9 +29906,7 @@
             ]
           ]
         ]
-      },
-      "id": "262",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52593,7 +29918,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "DL-62",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -52697,9 +30022,7 @@
             ]
           ]
         ]
-      },
-      "id": "263",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -52711,7 +30034,7 @@
         "Imperv": "47                                 0.5",
         "Width": "0",
         "Slope": "DL-6",
-        "CurbLen": "3                                   雨�"
+        "CurbLen": "3                                   \u96e8\ufffd"
       },
       "geometry": {
         "type": "Polygon",
@@ -52759,14 +30082,12 @@
             ]
           ]
         ]
-      },
-      "id": "264",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "�计1",
+        "name": "\ufffd\u8ba11",
         "raingage": "Y-132",
         "outlet": "2.60",
         "area": "85",
@@ -52885,14 +30206,12 @@
             ]
           ]
         ]
-      },
-      "id": "265",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-196",
         "outlet": "2.85",
         "area": "85",
@@ -52939,14 +30258,12 @@
             ]
           ]
         ]
-      },
-      "id": "266",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-480",
         "outlet": "1.06",
         "area": "85",
@@ -53009,14 +30326,12 @@
             ]
           ]
         ]
-      },
-      "id": "267",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-427",
         "outlet": "2.32",
         "area": "85",
@@ -53151,14 +30466,12 @@
             ]
           ]
         ]
-      },
-      "id": "268",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-349",
         "outlet": "3.67",
         "area": "85",
@@ -53217,14 +30530,12 @@
             ]
           ]
         ]
-      },
-      "id": "269",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计1",
+        "name": "\u96e8\u91cf\u8ba11",
         "raingage": "Y-451",
         "outlet": "1.01",
         "area": "85",
@@ -53435,14 +30746,12 @@
             ]
           ]
         ]
-      },
-      "id": "270",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "雨量计",
+        "name": "\u96e8\u91cf\u8ba1",
         "raingage": "1                                    Y-4",
         "outlet": "52                                   1.0",
         "area": "7                                    85",
@@ -53749,15 +31058,13 @@
             ]
           ]
         ]
-      },
-      "id": "271",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "7                                    雨",
-        "raingage": "量计1",
+        "name": "7                                    \u96e8",
+        "raingage": "\u91cf\u8ba11",
         "outlet": "Y-18",
         "area": "0.74",
         "Imperv": "85",
@@ -53899,15 +31206,13 @@
             ]
           ]
         ]
-      },
-      "id": "272",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-70",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-449",
         "area": "1.46",
         "Imperv": "85",
@@ -53969,15 +31274,13 @@
             ]
           ]
         ]
-      },
-      "id": "273",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-71",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-603",
         "area": "0.77",
         "Imperv": "85",
@@ -54139,15 +31442,13 @@
             ]
           ]
         ]
-      },
-      "id": "274",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-72",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-280",
         "area": "7.37",
         "Imperv": "85",
@@ -54373,15 +31674,13 @@
             ]
           ]
         ]
-      },
-      "id": "275",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-73",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-261",
         "area": "9.56",
         "Imperv": "85",
@@ -54575,15 +31874,13 @@
             ]
           ]
         ]
-      },
-      "id": "276",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-74",
-        "raingage": "雨量计1",
+        "raingage": "\u96e8\u91cf\u8ba11",
         "outlet": "Y-5",
         "area": "3.50",
         "Imperv": "85",
@@ -54685,16 +31982,14 @@
             ]
           ]
         ]
-      },
-      "id": "277",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "DL-75",
-        "raingage": "雨量�",
-        "outlet": "��1                                    Y",
+        "raingage": "\u96e8\u91cf\ufffd",
+        "outlet": "\ufffd\ufffd1                                    Y",
         "area": "-270                                   4",
         "Imperv": ".08                                    8",
         "Width": "5                                      2",
@@ -54755,16 +32050,14 @@
             ]
           ]
         ]
-      },
-      "id": "278",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "D",
-        "raingage": "L-76                                   �",
-        "outlet": "��量计1",
+        "raingage": "L-76                                   \ufffd",
+        "outlet": "\ufffd\ufffd\u91cf\u8ba11",
         "area": "Y-261",
         "Imperv": "2.82",
         "Width": "85",
@@ -54813,16 +32106,14 @@
             ]
           ]
         ]
-      },
-      "id": "279",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-77",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-288",
         "Imperv": "2.67",
         "Width": "85",
@@ -55195,16 +32486,14 @@
             ]
           ]
         ]
-      },
-      "id": "280",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-78",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-15",
         "Imperv": "1.26",
         "Width": "85",
@@ -55277,16 +32566,14 @@
             ]
           ]
         ]
-      },
-      "id": "281",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-79",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-16",
         "Imperv": "1.57",
         "Width": "85",
@@ -55331,16 +32618,14 @@
             ]
           ]
         ]
-      },
-      "id": "282",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-8",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-15",
         "Imperv": "1.05",
         "Width": "85",
@@ -55461,16 +32746,14 @@
             ]
           ]
         ]
-      },
-      "id": "283",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-80",
-        "outlet": "雨量计1",
+        "outlet": "\u96e8\u91cf\u8ba11",
         "area": "Y-22",
         "Imperv": "3.73",
         "Width": "85",
@@ -55523,17 +32806,15 @@
             ]
           ]
         ]
-      },
-      "id": "284",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "name": "0",
         "raingage": "DL-81",
-        "outlet": "雨�",
-        "area": "�计1",
+        "outlet": "\u96e8\ufffd",
+        "area": "\ufffd\u8ba11",
         "Imperv": "Y-405",
         "Width": "2.01",
         "Slope": "85",
@@ -55605,9 +32886,7 @@
             ]
           ]
         ]
-      },
-      "id": "285",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -55615,7 +32894,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-82",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-530",
         "Width": "2.24",
         "Slope": "85",
@@ -55667,9 +32946,7 @@
             ]
           ]
         ]
-      },
-      "id": "286",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -55677,7 +32954,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-83",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-403",
         "Width": "2.55",
         "Slope": "85",
@@ -55733,9 +33010,7 @@
             ]
           ]
         ]
-      },
-      "id": "287",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -55743,7 +33018,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-84",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-30",
         "Width": "2.22",
         "Slope": "85",
@@ -55807,9 +33082,7 @@
             ]
           ]
         ]
-      },
-      "id": "288",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -55817,7 +33090,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-85",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-253",
         "Width": "1.30",
         "Slope": "85",
@@ -55861,9 +33134,7 @@
             ]
           ]
         ]
-      },
-      "id": "289",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -55871,7 +33142,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-86",
-        "area": "雨量计1",
+        "area": "\u96e8\u91cf\u8ba11",
         "Imperv": "Y-289",
         "Width": "0.46",
         "Slope": "85",
@@ -55987,9 +33258,7 @@
             ]
           ]
         ]
-      },
-      "id": "290",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -55997,7 +33266,7 @@
         "name": "0.5",
         "raingage": "0",
         "outlet": "DL-87",
-        "area": "雨量计",
+        "area": "\u96e8\u91cf\u8ba1",
         "Imperv": "1                                    Y-3",
         "Width": "61                                   0.3",
         "Slope": "9                                    85",
@@ -56049,9 +33318,7 @@
             ]
           ]
         ]
-      },
-      "id": "291",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -56059,8 +33326,8 @@
         "name": "14                                  0.5",
         "raingage": "0",
         "outlet": "DL-",
-        "area": "88                                   雨",
-        "Imperv": "量计1",
+        "area": "88                                   \u96e8",
+        "Imperv": "\u91cf\u8ba11",
         "Width": "Y-328",
         "Slope": "0.33",
         "CurbLen": "85"
@@ -56123,9 +33390,7 @@
             ]
           ]
         ]
-      },
-      "id": "292",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -56134,7 +33399,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-89",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-357",
         "Slope": "0.66",
         "CurbLen": "85"
@@ -56225,9 +33490,7 @@
             ]
           ]
         ]
-      },
-      "id": "293",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -56236,7 +33499,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-9",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-282",
         "Slope": "0.62",
         "CurbLen": "85"
@@ -56323,9 +33586,7 @@
             ]
           ]
         ]
-      },
-      "id": "294",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -56334,7 +33595,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-90",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-202",
         "Slope": "0.80",
         "CurbLen": "85"
@@ -56377,9 +33638,7 @@
             ]
           ]
         ]
-      },
-      "id": "295",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -56388,7 +33647,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-91",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-121",
         "Slope": "0.50",
         "CurbLen": "85"
@@ -56799,9 +34058,7 @@
             ]
           ]
         ]
-      },
-      "id": "296",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -56810,7 +34067,7 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-92",
-        "Imperv": "雨量计1",
+        "Imperv": "\u96e8\u91cf\u8ba11",
         "Width": "Y-356",
         "Slope": "1.11",
         "CurbLen": "85"
@@ -56873,9 +34130,7 @@
             ]
           ]
         ]
-      },
-      "id": "297",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -56884,8 +34139,8 @@
         "raingage": "0.5",
         "outlet": "0",
         "area": "DL-93",
-        "Imperv": "雨量�",
-        "Width": "��1                                    Y",
+        "Imperv": "\u96e8\u91cf\ufffd",
+        "Width": "\ufffd\ufffd1                                    Y",
         "Slope": "-199                                   0",
         "CurbLen": ".46                                    8"
       },
@@ -57155,9 +34410,7 @@
             ]
           ]
         ]
-      },
-      "id": "298",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -57166,8 +34419,8 @@
         "raingage": ".666                                  0.",
         "outlet": "5                                     0",
         "area": "D",
-        "Imperv": "L-94                                   �",
-        "Width": "��量计1",
+        "Imperv": "L-94                                   \ufffd",
+        "Width": "\ufffd\ufffd\u91cf\u8ba11",
         "Slope": "Y-427",
         "CurbLen": "1.10"
       },
@@ -57221,9 +34474,7 @@
             ]
           ]
         ]
-      },
-      "id": "299",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -57233,7 +34484,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-95",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-609",
         "CurbLen": "0.37"
       },
@@ -57619,9 +34870,7 @@
             ]
           ]
         ]
-      },
-      "id": "300",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -57631,7 +34880,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-96",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-542",
         "CurbLen": "1.71"
       },
@@ -57701,9 +34950,7 @@
             ]
           ]
         ]
-      },
-      "id": "301",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -57713,7 +34960,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-97",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-443",
         "CurbLen": "1.95"
       },
@@ -57787,9 +35034,7 @@
             ]
           ]
         ]
-      },
-      "id": "302",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -57799,7 +35044,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-98",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-425",
         "CurbLen": "1.20"
       },
@@ -57865,9 +35110,7 @@
             ]
           ]
         ]
-      },
-      "id": "303",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -57877,7 +35120,7 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DL-99",
-        "Width": "雨量计1",
+        "Width": "\u96e8\u91cf\u8ba11",
         "Slope": "Y-477",
         "CurbLen": "0.39"
       },
@@ -58007,9 +35250,7 @@
             ]
           ]
         ]
-      },
-      "id": "304",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -58019,8 +35260,8 @@
         "outlet": "0.5",
         "area": "0",
         "Imperv": "DY02-",
-        "Width": "01                                 雨�",
-        "Slope": "�计1",
+        "Width": "01                                 \u96e8\ufffd",
+        "Slope": "\ufffd\u8ba11",
         "CurbLen": "Y-548"
       },
       "geometry": {
@@ -58133,9 +35374,7 @@
             ]
           ]
         ]
-      },
-      "id": "305",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -58146,7 +35385,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DY02-02",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-548"
       },
       "geometry": {
@@ -58423,9 +35662,7 @@
             ]
           ]
         ]
-      },
-      "id": "306",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -58436,7 +35673,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "DY02-03",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-609"
       },
       "geometry": {
@@ -58589,9 +35826,7 @@
             ]
           ]
         ]
-      },
-      "id": "307",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -58602,7 +35837,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "G1-01",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-444"
       },
       "geometry": {
@@ -58655,9 +35890,7 @@
             ]
           ]
         ]
-      },
-      "id": "308",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -58668,7 +35901,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "G1-02",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-480"
       },
       "geometry": {
@@ -58761,9 +35994,7 @@
             ]
           ]
         ]
-      },
-      "id": "309",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -58774,7 +36005,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "G1-03",
-        "Slope": "雨量计1",
+        "Slope": "\u96e8\u91cf\u8ba11",
         "CurbLen": "Y-3"
       },
       "geometry": {
@@ -58979,9 +36210,7 @@
             ]
           ]
         ]
-      },
-      "id": "310",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -58992,7 +36221,7 @@
         "area": "0.5",
         "Imperv": "0",
         "Width": "G1-04",
-        "Slope": "雨量计",
+        "Slope": "\u96e8\u91cf\u8ba1",
         "CurbLen": "1                                    Y-1"
       },
       "geometry": {
@@ -59029,9 +36258,7 @@
             ]
           ]
         ]
-      },
-      "id": "311",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -59042,8 +36269,8 @@
         "area": "034                                 0.5",
         "Imperv": "0",
         "Width": "M0-",
-        "Slope": "01                                   雨",
-        "CurbLen": "量计1"
+        "Slope": "01                                   \u96e8",
+        "CurbLen": "\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -59071,9 +36298,7 @@
             ]
           ]
         ]
-      },
-      "id": "312",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -59085,7 +36310,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "M1-01",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -59109,9 +36334,7 @@
             ]
           ]
         ]
-      },
-      "id": "313",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -59123,7 +36346,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "M1-02",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -59151,9 +36374,7 @@
             ]
           ]
         ]
-      },
-      "id": "314",
-      "businessType": "SUBCATCHMENTS"
+      }
     },
     {
       "type": "Feature",
@@ -59165,7 +36386,7 @@
         "Imperv": "0.5",
         "Width": "0",
         "Slope": "R2-01",
-        "CurbLen": "雨量计1"
+        "CurbLen": "\u96e8\u91cf\u8ba11"
       },
       "geometry": {
         "type": "Polygon",
@@ -59189,9 +36410,13 @@
             ]
           ]
         ]
-      },
-      "id": "315",
-      "businessType": "SUBCATCHMENTS"
+      }
     }
   ]
 }
+
+console.log(JS);
+for(var i = 0; i<JS.features.length;i++){
+   JS.features[i].id = String(i);
+}
+console.log(JSON.stringify(JS))

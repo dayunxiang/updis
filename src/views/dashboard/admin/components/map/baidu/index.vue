@@ -9,15 +9,15 @@
     map-type="BMAP_HYBRID_MAP">
     <bm-map-type :map-types="['BMAP_HYBRID_MAP','BMAP_NORMAL_MAP']" anchor="BMAP_ANCHOR_TOP_right"/>
     <!--地块开始-->
-    <bm-polygon
-      v-for="polygonPath in polygonPaths"
-      :key="polygonPath .id"
-      :path="polygonPath.geos"
-      :stroke-opacity="1"
-      :stroke-weight="2"
-      :stroke-color="polygonPath.color"
-      @click="handleDiKuai(polygonPath)"
-    />
+      <bm-polygon
+        v-for="polygonPath in polygonPaths"
+        :key="polygonPath .id"
+        :path="polygonPath.geos"
+        :stroke-opacity="polygonPath.opacity"
+        :stroke-weight="5"
+        :stroke-color="polygonPath.color"
+        @click="handleDiKuai(polygonPath)"
+      />
     <!--地块结束-->
     <!--排口开始-->
     <bm-circle
@@ -61,7 +61,20 @@
       :stroke-weight="2"
       stroke-color="red"
       @click="handleguanxian(polylinePath)"/>
-    <!--管线结束-->
+    <!--查询管线结束-->
+    <!--查询排口开始-->
+    <!--<bm-circle-->
+      <!--v-for = "(val,index) in selectCirclePaths"-->
+      <!--:key = "index"-->
+      <!--:center="val.geos"-->
+      <!--:radius="val.radius"-->
+      <!--:stroke-opacity="1"-->
+      <!--:stroke-weight="5"-->
+      <!--:stroke-color="val.color"-->
+      <!--@click="handlepaikou(index,val)"-->
+    <!--&gt;-->
+    <!--</bm-circle>-->
+    <!--查询排口结束-->
   </baidu-map>
 </template>
 
@@ -70,9 +83,11 @@
   import _each from '@/utils/_each'
   import request from '@/utils/request'
   import {geojson2cytoscape,getAncestorConduitsOfOutfall,calcAllSubcatchmentNearestNode,getAncestorSubcatchmentsOfOutfall,getDescendantConduitsOfSubcatchment,getDescendantOutfallsOfSubcatchment} from '@/utils/mapUtil'
-  import data from '../../../../../svg-icons/generateIconsView'
   export default {
     props: ['isHideAllSubcatchments', 'isHideAllConduits', 'isHideAllOutfalls'],
+    components:{
+
+    },
     data() {
       return {
         projectId: '',
@@ -88,6 +103,7 @@
         },
         polylinePaths: [],
         selectPolylinePaths:[],
+        selectCirclePaths:[],
         polygonPaths: [],
         circlePaths: [],
         markers: [],
@@ -166,17 +182,25 @@
       },
       // 每个地块点击事件
       handleDiKuai(SubcatchmentInfo) {
-        this.polygonPaths.forEach((function(val){
-          val.color='white'
-        }))
-        SubcatchmentInfo.color = 'white'
-        SubcatchmentInfo.color = 'red';
+        this.circlePaths.forEach(function(val){
+          val.color='#26b8d0'
+        })
+        this.polygonPaths.forEach(function(val){
+          val.color = 'yellow';
+          val.opacity = '0.1';
+        })
         this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
+        SubcatchmentInfo.color = 'red'
+        SubcatchmentInfo.opacity = 1;
         this.selectPolylinePaths = []
       },
       // 每个排口点击事件
       handlepaikou(index,val) {
         //当点击排口的时候，当前排口的颜色发生变化
+        this.polygonPaths.forEach((function(val){
+          val.color='yellow';
+          val.opacity = '0.1';
+        }))
         this.circlePaths.forEach(function(val){
           val.color='#26b8d0'
         })
@@ -261,6 +285,7 @@
         var dataArr = []
         for (var i = 0 ; i < data.length; i++) {
           dataArr[i] = JSON.parse(data[i].properties)
+          dataArr[i].id = data[i].id;
         }
         var subcatchmentsData = dataArr;
         _each(subcatchmentsData, function(index, subcatchmentData) {
@@ -268,6 +293,7 @@
           var tempArr = []
           var lng_latArr = []
           var info = subcatchmentData.properties
+              info.id = subcatchmentData.id;
           for (var i = 0; i < lng_lat[0].length; i++) {
             tempArr.push(lng_lat[0][i])
           }
@@ -279,7 +305,8 @@
             type: '地块',
             info: info,
             geos: lng_latArr,
-            color: 'white'
+            color: 'yellow',
+            opacity: 0.1
 
           }
           self.mapData.subcatchments.push(subcatchment);
@@ -326,7 +353,7 @@
             id: index,
             color:'#26b8d0'
           }
-          self.mapData.outfalls.push(outFall)
+          self.selectCirclePaths.push(outFall)
         })
       },
       // 请求检查井数据 JUNCTIONS
@@ -550,8 +577,9 @@
             info: info,
             geos: lng_latArr
           }
-          self.selectPolylinePaths.push(conduit)
+          self.selectPolylinePaths.push(conduit);
         })
+        console.log(this.selectPolylinePaths);
       },
     // 根据地块查下游排口
       handleSubcatchmentsSelectOutfalls(data){
@@ -562,7 +590,7 @@
                 'project_id': {
                   equalTo: self.projectId
                 },
-                'name': {
+                'id': {
                   equalTo: data
                 }
               }
@@ -570,185 +598,36 @@
           }
         }).then(resp => {
           var data = JSON.parse(resp.data[0].properties);
-          this.SubcatchmentsSelectOutfalls(data);
+          data.businessType="SUBCATCHMENTS";
+          this.SubcatchmentsSelectOutfalls(data)
         })
       },
-      SubcatchmentsSelectOutfalls(data){
+      SubcatchmentsSelectOutfalls(feature){
+        console.log(this.selectCirclePaths)
         var self = this;
-        var feature = {
-          "type": "Feature",
-          "id": "3",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  104396.999,
-                  42470.347
-                ],
-                [
-                  104023.43,
-                  42511.529
-                ],
-                [
-                  103982.153,
-                  42286.144
-                ],
-                [
-                  103994.441,
-                  42270.864
-                ],
-                [
-                  104178.775,
-                  42264.412
-                ],
-                [
-                  104189.498,
-                  42270.73
-                ],
-                [
-                  104190.583,
-                  42287.503
-                ],
-                [
-                  104191.542,
-                  42296.329
-                ],
-                [
-                  104193.269,
-                  42305.036
-                ],
-                [
-                  104195.751,
-                  42313.56
-                ],
-                [
-                  104198.968,
-                  42321.834
-                ],
-                [
-                  104202.895,
-                  42329.795
-                ],
-                [
-                  104207.503,
-                  42337.383
-                ],
-                [
-                  104212.756,
-                  42344.539
-                ],
-                [
-                  104218.615,
-                  42351.209
-                ],
-                [
-                  104225.034,
-                  42357.341
-                ],
-                [
-                  104231.964,
-                  42362.889
-                ],
-                [
-                  104239.353,
-                  42367.811
-                ],
-                [
-                  104247.143,
-                  42372.067
-                ],
-                [
-                  104255.275,
-                  42375.627
-                ],
-                [
-                  104322.284,
-                  42401.529
-                ],
-                [
-                  104331.835,
-                  42405.64
-                ],
-                [
-                  104341.051,
-                  42410.455
-                ],
-                [
-                  104349.879,
-                  42415.948
-                ],
-                [
-                  104358.271,
-                  42422.089
-                ],
-                [
-                  104366.178,
-                  42428.841
-                ],
-                [
-                  104373.557,
-                  42436.168
-                ],
-                [
-                  104380.365,
-                  42444.027
-                ],
-                [
-                  104386.564,
-                  42452.375
-                ],
-                [
-                  104392.119,
-                  42461.165
-                ],
-                [
-                  104394.559,
-                  42465.756
-                ],
-                [
-                  104396.999,
-                  42470.347
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "name": "01-02-1",
-            "raingage": "1",
-            "Width": "251.692",
-            "area": "6.33",
-            "Slope": "0.5",
-            "outlet": "Y-439",
-            "CurbLen": "0",
-            "Imperv": "20"
-          }
-        }
         var cy = geojson2cytoscape(this.geoJson);
-        var out = getDescendantOutfallsOfSubcatchment(feature,cy);
-        console.log(out);
-        // 拿到管线后渲染
-        // this.circlePaths = [];
-        // var dataArr = []
-        // for(var i =0 ;i<conduits.length;i++){
-        //   dataArr[i]=conduits[i].properties;
-        // }
-        // var conduitsData = dataArr;
-        // _each(conduitsData, function(index, conduitData) {
-        //   var lng_lat = conduitData.geometry.coordinates
-        //   var info = conduitData.properties
-        //   var lng_latArr = []
-        //   for (var i = 0; i < lng_lat.length; i++) {
-        //     var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
-        //     lng_latArr.push(arr)
-        //   }
-        //   var conduit = {
-        //     type: '管线',
-        //     info: info,
-        //     geos: lng_latArr
-        //   }
-        //   self.polylinePaths.push(conduit)
-        // })
+        var  subcatchmentToOutfall= getDescendantOutfallsOfSubcatchment(feature,cy);
+        // 拿到排口后渲染
+        var data = subcatchmentToOutfall;
+        console.log(data);
+        var dataArr = []
+        for (var i = 0; i<data.length;i++){
+          dataArr[i] = data[i].properties
+        }
+        var outFallsData = dataArr;
+        _each(outFallsData, function(index, outFallData) {
+          var lng_lat = outFallData.geometry.coordinates
+          var info = outFallData.properties
+          var outFall = {
+            type: '排口',
+            info: info,
+            geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
+            radius: 50,
+            id: index,
+            color:'red'
+          }
+          self.selectCirclePaths.push(outFall)
+        })
       }
     }
   }
