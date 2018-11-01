@@ -257,7 +257,7 @@
           </el-form-item>
           <el-form-item>
             <el-button type="primary">更新</el-button>
-            <el-button>取消</el-button>
+            <el-button @click="dialogFormVisible=false">取消</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
