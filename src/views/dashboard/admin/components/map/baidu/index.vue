@@ -63,17 +63,17 @@
       @click="handleguanxian(polylinePath)"/>
     <!--查询管线结束-->
     <!--查询排口开始-->
-    <!--<bm-circle-->
-      <!--v-for = "(val,index) in selectCirclePaths"-->
-      <!--:key = "index"-->
-      <!--:center="val.geos"-->
-      <!--:radius="val.radius"-->
-      <!--:stroke-opacity="1"-->
-      <!--:stroke-weight="5"-->
-      <!--:stroke-color="val.color"-->
-      <!--@click="handlepaikou(index,val)"-->
-    <!--&gt;-->
-    <!--</bm-circle>-->
+    <bm-circle
+      v-for = "(val,index) in selectCirclePaths"
+      :key = "index"
+      :center="val.geos"
+      :radius="val.radius"
+      :stroke-opacity="1"
+      :stroke-weight="5"
+      :stroke-color="val.color"
+      @click="handlepaikou(index,val)"
+    >
+    </bm-circle>
     <!--查询排口结束-->
   </baidu-map>
 </template>
