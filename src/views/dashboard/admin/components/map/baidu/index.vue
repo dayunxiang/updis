@@ -182,7 +182,7 @@
       },
       // 每个地块点击事件
       handleDiKuai(SubcatchmentInfo) {
-        this.circlePaths.forEach(function(val){
+        this.selectCirclePaths.forEach(function(val){
           val.color='#26b8d0'
         })
         this.polygonPaths.forEach(function(val){
@@ -201,7 +201,7 @@
           val.color='yellow';
           val.opacity = '0.1';
         }))
-        this.circlePaths.forEach(function(val){
+        this.selectCirclePaths.forEach(function(val){
           val.color='#26b8d0'
         })
         val.color = 'red'
