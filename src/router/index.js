@@ -114,7 +114,18 @@ export const asyncRouterMap = [
           icon: 'documentation',
           noCache: true
         }
+      },
+      {
+        path: ' company-manager',
+        component: () => import('@/views/table/companyManager/index'),
+        name: 'InlineEditTable',
+        meta: {
+          title: '企业管理',
+          icon: 'documentation',
+          noCache: true
+        }
       }
+
     ]
   },
   /**

@@ -57,7 +57,7 @@
             label="操作"
             width="100">
             <template slot-scope="scope">
-              <el-button type="text" size="small" @click="dialogEditVisible = true">编辑</el-button>
+              <el-button type="text" size="small" @click="dialogEdit = true">编辑</el-button>
               <el-button  @click.native.prevent="deleteRow(scope.$index, tableData)"type="text" size="small">删除</el-button>
               <el-button @click="handleToDashboard(scope.row)">进入</el-button>
             </template>
@@ -139,7 +139,7 @@
     </div>
     <!--编辑项目弹出层-->
     <div>
-      <el-dialog title="编辑项目" :visible.sync="dialogEditVisible" width="40%">
+      <el-dialog title="编辑项目" :visible.sync="dialogEdit" width="40%">
         <el-form ref="form" :model="tableData" label-width="200px" width="100%">
           <el-form-item label="项目编号">
             <el-col :span="12">
@@ -164,17 +164,35 @@
           <el-form-item label="项目文件">
             <el-upload
               class="upload-demo"
-              action="https://jsonplaceholder.typicode.com/posts/">
-              <el-button size="small" type="primary">点击上传</el-button>
-              <div slot="tip" class="el-upload__tip">请上传此项目所用到的文件</div>
+              ref="upload"
+              action="https://jsonplaceholder.typicode.com/posts/"
+              :on-preview="handlePreview"
+              :on-remove="handleRemove"
+              :file-list="fileList"
+              :auto-upload="false">
+              <div class="upload-file-box">
+                <el-button slot="trigger" size="small" type="primary">排口文件</el-button>
+                <el-button slot="trigger" size="small" type="primary">地块文件</el-button>
+                <el-button slot="trigger" size="small" type="primary">管线文件</el-button>
+                <el-button slot="trigger" size="small" type="primary">检查井文件</el-button>
+                <el-button slot="trigger" size="small" type="primary" style="margin-left: 0px">工业企业文件</el-button>
+              </div>
+              <div slot="tip" class="el-upload__tip">只能上传.zip文件</div>
             </el-upload>
+            <el-button  size="small" type="success" @click="submitUpload">点击上传</el-button>
+            <!--<el-upload-->
+              <!--class="upload-demo"-->
+              <!--action="https://jsonplaceholder.typicode.com/posts/">-->
+              <!--<el-button size="small" type="primary">点击上传</el-button>-->
+              <!--<div slot="tip" class="el-upload__tip">请上传此项目所用到的文件</div>-->
+            <!--</el-upload>-->
           </el-form-item>
           <el-form-item label="项目备注" >
             <el-input type="textarea" v-model="form.desc" width="100px"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">立即更新</el-button>
-            <el-button>取消</el-button>
+            <el-button type="success">提交</el-button>
+            <el-button @click="dialogEdit = false">取消</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -189,6 +207,8 @@
       name: "manager",
       data() {
         return {
+          dialogEdit:false,
+          fileList: [],
           tableData: [],
           formInline: {
             user: '',
@@ -275,6 +295,15 @@
         addTab(item, index) {
           const self = this;
           this.addForm.push(self.form);
+        },
+        submitUpload() {
+          this.$refs.upload.submit();
+        },
+        handleRemove(file, fileList) {
+          console.log(file, fileList);
+        },
+        handlePreview(file) {
+          console.log(file);
         }
       },
       mounted(){
@@ -298,6 +327,10 @@
     position: relative;
     top: 9px;
   }
+  /*上传文件*/
+.upload-file-box{
+  text-align: left;
+}
   /**/
 .el-textarea{
   width:80%;

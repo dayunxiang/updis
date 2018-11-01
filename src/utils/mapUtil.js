@@ -64,10 +64,18 @@ export function getCenterPointOfSubcatchment(feature) {
     return []
   }
 
+<<<<<<< HEAD
   var center = feature['geometry']['coordinates'][0].reduce(function (x,y) {
     return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
   }, [0,0])
   return center;
+=======
+  let coord = feature['geometry']['coordinates'][0]
+  let center = coord.reduce(function (x,y) {
+    return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
+  }, [0,0])
+  return [center[1], center[0]]
+>>>>>>> abe5f13f819b464c5930bd84a0259e2c233514c6
 }
 
 
