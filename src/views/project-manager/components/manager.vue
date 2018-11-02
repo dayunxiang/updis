@@ -122,9 +122,23 @@
           <el-form-item label="项目文件">
             <el-upload
               class="upload-demo"
-              action="https://jsonplaceholder.typicode.com/posts/">
-              <el-button size="small" type="primary">点击上传</el-button>
-              <div slot="tip" class="el-upload__tip">请上传此项目所用到的文件</div>
+              ref="upload"
+              action="https://jsonplaceholder.typicode.com/posts/"
+              :on-preview="handlePreview"
+              :on-remove="handleRemove"
+              :file-list="fileList"
+              :auto-upload="false">
+              <div class="upload-file-box">
+                <!--
+                   需求  点击单个或多个 文件类型 只能上传.shp的zip文件
+                -->
+                <el-button class="test" slot="trigger" size="small" type="primary">排口</el-button>
+                <el-button class="test" slot="trigger" size="small" type="primary">地块</el-button>
+                <el-button class="test" slot="trigger" size="small" type="primary">管线</el-button>
+                <el-button class="test" slot="trigger" size="small" type="primary">检查井</el-button>
+                <el-button class="test test2" slot="trigger" size="small" type="primary" style="margin-left: 10px">工业企业</el-button>
+              </div>
+              <div slot="tip" class="el-upload__tip">点击单个或多个文件类型，只能上传ShapeFile的zip文件</div>
             </el-upload>
           </el-form-item>
           <el-form-item label="项目备注" >
@@ -132,7 +146,7 @@
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">立即创建</el-button>
-            <el-button>取消</el-button>
+            <el-button  @click="dialogFormVisible=false">取消</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -171,21 +185,47 @@
               :file-list="fileList"
               :auto-upload="false">
               <div class="upload-file-box">
-                <el-button slot="trigger" size="small" type="primary">排口文件</el-button>
-                <el-button slot="trigger" size="small" type="primary">地块文件</el-button>
-                <el-button slot="trigger" size="small" type="primary">管线文件</el-button>
-                <el-button slot="trigger" size="small" type="primary">检查井文件</el-button>
-                <el-button slot="trigger" size="small" type="primary" style="margin-left: 0px">工业企业文件</el-button>
+                <ul class="upload-ul">
+                  <li>
+                    <span>排口</span>
+                    <div class="upload-handle">
+                      <el-button type="info" class="add-button">新增</el-button>
+                      <el-button type="info" class="upload-button">更新</el-button>
+                    </div>
+                  </li>
+                  <li>
+                    <span>地块</span>
+                    <div class="upload-handle">
+                      <el-button type="info" class="add-button">新增</el-button>
+                      <el-button type="info" class="upload-button">更新</el-button>
+                    </div>
+                  </li>
+                  <li>
+                    <span>管线</span>
+                    <div class="upload-handle">
+                      <el-button type="info" class="add-button">新增</el-button>
+                      <el-button type="info" class="upload-button">更新</el-button>
+                    </div>
+                  </li>
+                  <li>
+                    <span>检查井</span>
+                    <div class="upload-handle">
+                      <el-button type="info" class="add-button">新增</el-button>
+                      <el-button type="info" class="upload-button">更新</el-button>
+                    </div>
+                  </li>
+                  <li>
+                    <span>工业企业</span>
+                    <div class="upload-handle">
+                      <el-button type="info" class="add-button">新增</el-button>
+                      <el-button type="info" class="upload-button">更新</el-button>
+                    </div>
+                  </li>
+                </ul>
               </div>
-              <div slot="tip" class="el-upload__tip">只能上传.zip文件</div>
+              <div slot="tip" class="el-upload__tip">点击单个或多个文件类型，只能上传ShapeFile的zip文件</div>
             </el-upload>
-            <el-button  size="small" type="success" @click="submitUpload">点击上传</el-button>
-            <!--<el-upload-->
-              <!--class="upload-demo"-->
-              <!--action="https://jsonplaceholder.typicode.com/posts/">-->
-              <!--<el-button size="small" type="primary">点击上传</el-button>-->
-              <!--<div slot="tip" class="el-upload__tip">请上传此项目所用到的文件</div>-->
-            <!--</el-upload>-->
+            <el-button  size="small" type="success" @click="submitUpload">开始上传</el-button>
           </el-form-item>
           <el-form-item label="项目备注" >
             <el-input type="textarea" v-model="form.desc" width="100px"></el-input>
@@ -311,7 +351,9 @@
       }
     }
 </script>
-
+<style>
+  ul li{list-style-type: none;}
+</style>
 <style>
 .cell{
   text-align: center;
@@ -330,6 +372,34 @@
   /*上传文件*/
 .upload-file-box{
   text-align: left;
+}
+/*.test{*/
+  /*padding: 5px 8px;*/
+/*}*/
+/*.test2{*/
+  /*margin-left: 10px;*/
+/*}*/
+.upload-ul{
+  margin: 0px;
+  padding: 0px;
+}
+.upload-ul li{
+}
+.upload-handle{
+  display: inline-block;
+  float: right;
+}
+.upload-ul li>span{
+  padding: 5px 8px;
+  color: white;
+  background:#67C23A ;
+}
+.add-button{
+  padding: 5px 8px;
+  margin-left: 20px;
+}
+.upload-button{
+  padding: 5px 8px;
 }
   /**/
 .el-textarea{

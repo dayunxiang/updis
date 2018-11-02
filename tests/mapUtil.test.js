@@ -13,10 +13,6 @@ import {
 
 function loadGeoJSON() {
   let geojsonMap = JSON.parse(fs.readFileSync('/Users/apple/Desktop/文档/项目/深圳城市规划设计院/updis/tests/data.json'))
-<<<<<<< HEAD
-
-=======
->>>>>>> abe5f13f819b464c5930bd84a0259e2c233514c6
   let geojson = {
     "type": "FeatureCollection",
     "features": []
@@ -33,10 +29,6 @@ function loadGeoJSON() {
 
 
 let geojson = loadGeoJSON()
-<<<<<<< HEAD
-// console.log(geojson)
-=======
->>>>>>> abe5f13f819b464c5930bd84a0259e2c233514c6
 fs.writeFileSync('/Users/apple/Desktop/文档/项目/深圳城市规划设计院/updis/tests/geojson.json',
   JSON.stringify(geojson, null, 2))
 let cy = geojson2cytoscape(geojson)
@@ -303,15 +295,10 @@ test("测试查询地块下游排口", () => {
 
   let outfalls = getDescendantOutfallsOfSubcatchment(feature, cy)
   console.log(outfalls);
-<<<<<<< HEAD
-=======
-
->>>>>>> abe5f13f819b464c5930bd84a0259e2c233514c6
 })
 
 test("测试查询排口上游管道", () => {
   let feature = {
-<<<<<<< HEAD
     "type": "Feature",
     "properties": {
       "name": "WSCLC",
@@ -328,31 +315,11 @@ test("测试查询排口上游管道", () => {
     }
   }
   let conduits = getAncestorConduitsOfOutfall(feature, cy)
-  console.log(conduits)
-=======
-      "type": "Feature",
-      "properties": {
-        "name": "WSCLC",
-        "Elevation": "9",
-        "Type": "FREE",
-        "Stage": "NO"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.760309343371674,
-          113.91681078161338
-        ]
-      }
-    }
-  let conduits = getAncestorConduitsOfOutfall(feature, cy)
->>>>>>> abe5f13f819b464c5930bd84a0259e2c233514c6
 })
 
 test("测试查询排口上游地块", () => {
   let feature = {
     "type": "Feature",
-<<<<<<< HEAD
     "properties": {
       "name": "WSCLC",
       "Elevation": "9",
@@ -365,49 +332,11 @@ test("测试查询排口上游地块", () => {
         22.760309343371674,
         113.91681078161338
       ]
-=======
-    "id": "0",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        100488.642,
-        42747.81
-      ]
     },
-    "properties": {
-      "name": "HDOUT",
-      "Elevation": "8",
-      "Stage": "NO",
-      "Type": "FREE"
->>>>>>> abe5f13f819b464c5930bd84a0259e2c233514c6
-    }
+    businessType:'OUTFALLS'
   }
   //查找出地块最近的点
   let subcatchmentNearestNodes = calcAllSubcatchmentNearestNode(geojson, cy)
   let subcatchments = getAncestorSubcatchmentsOfOutfall(feature, geojson, cy, subcatchmentNearestNodes)
-<<<<<<< HEAD
-  console.log(geojson);
-=======
   console.log(subcatchments);
->>>>>>> abe5f13f819b464c5930bd84a0259e2c233514c6
 })
-
-
-
-// request('shapes', {
-//   params:{
-//     filters: {
-//       'shape': {
-//         'project_id': {
-//           equalTo: self.projectId
-//         },
-//         'id': {
-//           equalTo: data
-//         }
-//       }
-//     }
-//   }
-// }).then(resp => {
-//   var data = JSON.parse(resp.data[0].properties);
-//   data.businessType = 'SUBCATCHMENTS';
-//   this.SubcatchmentsSelectOutfalls(JSON.stringify(data));

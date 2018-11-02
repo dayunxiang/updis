@@ -409,6 +409,7 @@
     },
     data() {
       return {
+        selectLoading: false,
         isHideAllSubcatchments: true,
         isHideAllConduits: true,
         isHideAllOutfalls: true,

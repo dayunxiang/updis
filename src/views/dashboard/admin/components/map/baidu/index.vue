@@ -75,6 +75,17 @@
     >
     </bm-circle>
     <!--查询排口结束-->
+    <!--查询地块开始-->
+    <bm-polygon
+      v-for="polygonPath in selectPolygonPaths"
+      :key="polygonPath .id"
+      :path="polygonPath.geos"
+      :stroke-opacity="polygonPath.opacity"
+      :stroke-weight="3"
+      :stroke-color="polygonPath.color"
+      @click="handleDiKuai(polygonPath)"
+    />
+    <!--查询地块结束-->
   </baidu-map>
 </template>
 
@@ -106,10 +117,10 @@
         circlePaths: [],
         markers: [],
         geoJson: {},
+        //查询类
         selectPolylinePaths:[],
-        selectCirclePaths:[],
-
-        isActive:false
+        selectPolygonPaths:[],
+        selectCirclePaths:[]
       }
     },
     watch: {
@@ -182,33 +193,46 @@
       },
       // 每个地块点击事件
       handleDiKuai(SubcatchmentInfo) {
-        this.selectCirclePaths.forEach(function(val){
+        //清除所有查询出来的渲染
+        this.selectPolygonPaths=[];
+        this.selectCirclePaths = [];
+        this.selectPolylinePaths = [];
+        this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
+        this.circlePaths.forEach(function(val){
           val.color='#26b8d0'
         })
         this.polygonPaths.forEach(function(val){
           val.color = 'yellow';
-          val.opacity = '0.1';
+          val.opacity = 0.1;
         })
-        this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
         SubcatchmentInfo.color = 'red'
         SubcatchmentInfo.opacity = 1;
         this.selectPolylinePaths = []
       },
       // 每个排口点击事件
       handlepaikou(index,val) {
+        //清除所有查询出来的渲染
+        this.selectPolygonPaths=[];
+        this.selectCirclePaths = [];
+        this.selectPolylinePaths = [];
         //当点击排口的时候，当前排口的颜色发生变化
         this.polygonPaths.forEach((function(val){
           val.color='yellow';
-          val.opacity = '0.1';
+          val.opacity = 0.1;
         }))
-        this.selectCirclePaths.forEach(function(val){
+        this.circlePaths.forEach(function(val){
           val.color='#26b8d0'
         })
         val.color = 'red'
         this.$emit('getSubcatchmentInfo', val);
         this.selectPolylinePaths = []
       },
+      // 每个管线点击事件
       handleguanxian(SubcatchmentInfo) {
+        //清除所有查询出来的渲染
+        this.selectPolygonPaths=[];
+        this.selectCirclePaths = [];
+        this.selectPolylinePaths = [];
         this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
       },
       // 请求管线数据 CONDUITS
@@ -334,7 +358,7 @@
           this.getOutfallsSuccess(resp)
         })
       },
-      getOutfallsSuccess(res) {
+      getOutfallsSuccess(res) {;
         var self = this
         var data = res.data;
         var dataArr = []
@@ -353,7 +377,7 @@
             id: index,
             color:'#26b8d0'
           }
-          self.selectCirclePaths.push(outFall)
+          self.mapData.outfalls.push(outFall)
         })
       },
       // 请求检查井数据 JUNCTIONS
@@ -406,11 +430,9 @@
         this.geoJson = res.data.network;
       },
 
-
       /**
        * pipeNetwork 是一个管网系统 为对象格式
-       *
-       * 查询排口 HDOUT
+       * 拓扑查询
        */
     // 根据排口查上游管线
       handleSelectConduits(outFallName) {
@@ -477,61 +499,46 @@
           }
         }).then(resp => {
           var data = JSON.parse(resp.data[0].properties);
+          data.businessType = 'OUTFALLS'
           this.SelectSubcatchments(data);
         })
       },
       SelectSubcatchments(data){
         var self = this;
         var geoJson = this.geoJson;
-        let feature = {
-          "type": "Feature",
-          "properties": {
-            "name": "WSCLC",
-            "Elevation": "9",
-            "Type": "FREE",
-            "Stage": "NO"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              22.760309343371674,
-              113.91681078161338
-            ]
-          }
-        }
-
-        var cy = geojson2cytoscape(geoJson);
+        var cy = geojson2cytoscape(this.geoJson);
         let subcatchmentNearestNodes = calcAllSubcatchmentNearestNode(geoJson, cy);
-        console.log('测试开始');
-        console.log(geoJson);
-        // let subcatchments = getAncestorSubcatchmentsOfOutfall(data, this.geoJson, cy, subcatchmentNearestNodes)
-        //  拿到管线后渲染
-        // this.polygonPaths= [];
-        // var dataArr = []
-        // for(var i =0 ;i<subcatchments.length;i++){
-        //   dataArr[i]=subcatchments[i].properties;
-        // }
-        // var subcatchmentsData = dataArr;
-        // _each(subcatchmentsData, function(index, subcatchmentData) {
-        //   var lng_lat = subcatchmentData.geometry.coordinates
-        //   var tempArr = []
-        //   var lng_latArr = []
-        //   var info = subcatchmentData.properties
-        //   for (var i = 0; i < lng_lat[0].length; i++) {
-        //     tempArr.push(lng_lat[0][i])
-        //   }
-        //   for (var i = 0; i < tempArr.length; i++) {
-        //     var arr = { lng: tempArr[i][1] + 0.005363, lat: tempArr[i][0] - 0.00402 }
-        //     lng_latArr.push(arr)
-        //   }
-        //   var subcatchment = {
-        //     type: '地块',
-        //     info: info,
-        //     geos: lng_latArr
-        //
-        //   }
-        //   self.polygonPaths.push(subcatchment);
-        // })
+        let subcatchments = getAncestorSubcatchmentsOfOutfall(data, geoJson, cy, subcatchmentNearestNodes)
+        //  拿到地块后渲染
+        var dataArr = []
+        for (var i = 0 ; i <subcatchments.length; i++) {
+          dataArr[i] = subcatchments[i];
+        }
+        var subcatchmentsData = dataArr;
+        _each(subcatchmentsData, function(index, subcatchmentData) {
+          var lng_lat = subcatchmentData.geometry.coordinates
+          var tempArr = []
+          var lng_latArr = []
+          var info = subcatchmentData.properties
+          info.id = subcatchmentData.id;
+          for (var i = 0; i < lng_lat[0].length; i++) {
+            tempArr.push(lng_lat[0][i])
+          }
+          for (var i = 0; i < tempArr.length; i++) {
+            var arr = { lng: tempArr[i][1] + 0.005363, lat: tempArr[i][0] - 0.00402 }
+            lng_latArr.push(arr)
+          }
+          var subcatchment = {
+            type: '地块',
+            info: info,
+            geos: lng_latArr,
+            color: 'red',
+            opacity: 1
+
+          }
+          self.selectPolygonPaths.push(subcatchment);
+        })
+
       },
     // 根据地块查询下游管道
       handleSubcatchmentsSelectConduits(data){
@@ -542,7 +549,7 @@
                 'project_id': {
                   equalTo: self.projectId
                 },
-                'name': {
+                'id': {
                   equalTo: data
                 }
               }
@@ -550,14 +557,16 @@
           }
         }).then(resp => {
           var data = JSON.parse(resp.data[0].properties);
+          data.businessType="SUBCATCHMENTS";
           this.SubcatchmentsSelectConduits(data);
         })
       },
       SubcatchmentsSelectConduits(feature){
+
         var self = this;
         var cy = geojson2cytoscape(this.geoJson);
         let conduits = getDescendantConduitsOfSubcatchment(feature, cy);
-         // 拿到管线后渲染
+        //  // 拿到管线后渲染
         this.selectPolylinePaths = [];
         var dataArr = []
         for(var i =0 ;i<conduits.length;i++){
@@ -579,7 +588,6 @@
           }
           self.selectPolylinePaths.push(conduit);
         })
-        console.log(this.selectPolylinePaths);
       },
     // 根据地块查下游排口
       handleSubcatchmentsSelectOutfalls(data){
@@ -603,13 +611,11 @@
         })
       },
       SubcatchmentsSelectOutfalls(feature){
-        console.log(this.circlePaths)
         var self = this;
         var cy = geojson2cytoscape(this.geoJson);
         var  subcatchmentToOutfall= getDescendantOutfallsOfSubcatchment(feature,cy);
         // 拿到排口后渲染
         var data = subcatchmentToOutfall;
-        console.log(data);
         var dataArr = []
         for (var i = 0; i<data.length;i++){
           dataArr[i] = data[i].properties
@@ -626,7 +632,8 @@
             id: index,
             color:'red'
           }
-          self.selectCirclePaths.push(outFall)
+          self.selectCirclePaths.push(outFall);
+          console.log(self.selectCirclePaths);
         })
       }
     }
