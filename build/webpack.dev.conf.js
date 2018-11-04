@@ -1,14 +1,14 @@
 'use strict'
 // 郭世伟增加
-const jsonServer = require('json-server')
-const apiServer = jsonServer.create();
-const apiRouter = jsonServer.router('datas/geoJson.json')
-const middlewares = jsonServer.defaults();
-apiServer.use(middlewares)
-apiServer.use('/geoJson',apiRouter)
-apiServer.listen(3034, () => {                 //监听端口
-  console.log('JSON Server is running')
-})
+// const jsonServer = require('json-server')
+// const apiServer = jsonServer.create();
+// const apiRouter = jsonServer.router('datas/geoJson.json')
+// const middlewares = jsonServer.defaults();
+// apiServer.use(middlewares)
+// apiServer.use('/geoJson',apiRouter)
+// apiServer.listen(3034, () => {                 //监听端口
+//   console.log('JSON Server is running')
+// })
 //end
 const path = require('path')
 const utils = require('./utils')
