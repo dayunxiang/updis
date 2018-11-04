@@ -1,11 +1,12 @@
 <template>
   <baidu-map
+    class="map"
     :scroll-wheel-zoom="true"
     :center="map.center"
     :high-resolution="true"
     :min-zoom="13"
     :zoom="10"
-    class="map"
+    :double-click-zoom="false"
     map-type="BMAP_HYBRID_MAP">
     <bm-map-type :map-types="['BMAP_HYBRID_MAP','BMAP_NORMAL_MAP']" anchor="BMAP_ANCHOR_TOP_right"/>
     <!--地块开始-->
@@ -51,6 +52,7 @@
       stroke-color="blue"
       @click="handleguanxian(polylinePath)"/>
     <!--管线结束-->
+    <!------------------------------------------查询类渲染-------------------------------------------------------------->
     <!--查询管线开始-->
     <bm-polyline
       v-for="polylinePath in selectPolylinePaths"
@@ -93,12 +95,15 @@
   import axios from 'axios'
   import _each from '@/utils/_each'
   import request from '@/utils/request'
-  import {geojson2cytoscape,getAncestorConduitsOfOutfall,calcAllSubcatchmentNearestNode,getAncestorSubcatchmentsOfOutfall,getDescendantConduitsOfSubcatchment,getDescendantOutfallsOfSubcatchment} from '@/utils/mapUtil'
+  import {geojson2cytoscape,
+          getAncestorConduitsOfOutfall,
+          calcAllSubcatchmentNearestNode,
+          getAncestorSubcatchmentsOfOutfall,
+          getDescendantConduitsOfSubcatchment,
+          getDescendantOutfallsOfSubcatchment
+         } from '@/utils/mapUtil'
   export default {
     props: ['isHideAllSubcatchments', 'isHideAllConduits', 'isHideAllOutfalls'],
-    components:{
-
-    },
     data() {
       return {
         projectId: '',
@@ -116,7 +121,11 @@
         polygonPaths: [],
         circlePaths: [],
         markers: [],
-        geoJson: {},
+        //geoJson
+        geoJson: {
+          "type": "FeatureCollection",
+          "features":[]
+        },
         //查询类
         selectPolylinePaths:[],
         selectPolygonPaths:[],
@@ -145,8 +154,8 @@
       this.showAllConduits()
       this.showAllOutfalls()
       this.showAllJunctions()
-      // 请求geoJson数据
-      this.getNetWorkInfo()
+
+      this.getGeoJson();
 
     },
 
@@ -198,6 +207,7 @@
         this.selectCirclePaths = [];
         this.selectPolylinePaths = [];
         this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
+
         this.circlePaths.forEach(function(val){
           val.color='#26b8d0'
         })
@@ -355,7 +365,7 @@
             }
           }
         }).then(resp =>{
-          this.getOutfallsSuccess(resp)
+          this.getOutfallsSuccess(resp);
         })
       },
       getOutfallsSuccess(res) {;
@@ -422,17 +432,37 @@
           self.mapData.Junctions.push(Junction)
         })
       },
-      // 请求geoJson数据
-      getNetWorkInfo() {
-        axios('/datas/geoJson.json').then(this.getNetWorkSuccess)
+      //请求geoJson数据
+      getGeoJson(){
+        var self = this;
+        request('shapes',{
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: self.projectId
+                }
+              }
+            }
+          }
+        }).then(resp =>{
+          var data = resp.data;
+          this.getGeoJsonSuccess(data);
+        })
       },
-      getNetWorkSuccess(res) {
-        this.geoJson = res.data.network;
-      },
+      getGeoJsonSuccess(data){
+        var self = this;
+        for(var i = 0; i < data.length; i++){
+          self.geoJson.features.push(JSON.parse(data[i].properties));
+        }
+        console.log(this.geoJson)
 
+      },
       /**
        * pipeNetwork 是一个管网系统 为对象格式
-       * 拓扑查询
+       * 拓扑查询代码块
        */
     // 根据排口查上游管线
       handleSelectConduits(outFallName) {

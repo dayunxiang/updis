@@ -24,7 +24,17 @@
              v-model="activeNo"
              type="card">
       <el-tab-pane align="center" label="项目数量完成度" name="first">
-        <div id="myChart3" :style="{width: '1200px', height: '700px'}"></div>
+
+        <div style="width:40%; height:450px; float:left;margin-top:20px; padding-top:50px;">
+          <div id="optionPie" :style="{width: '100%', height: '500px'}" ></div>
+        </div>
+
+        <div style="width:57%; margin-top:20px; padding:17px;  float:right;">
+          <div id="optionBar1" :style="{width: '100%', height: '300px'}"></div>
+          <div id="optionBar2" :style="{width: '100%', height: '300px'}"></div>
+          <div id="optionBar3" :style="{width: '100%', height: '300px'}"></div>
+        </div>
+
       </el-tab-pane>
 
       <el-tab-pane align="center" label="年径流总量控制率" name="second">
@@ -52,7 +62,10 @@
         option1: {},              // echarts图数据
         option2: {},
         option3: {},
-        option: {}
+        optionBar1: {},            //柱状图
+        optionBar2: {},            //柱状图
+        optionBar3: {},            //柱状图
+        optionPie: {}              //饼图
       }
     },
     created() {
@@ -64,8 +77,8 @@
        */
       init() {
         const self = this;
-        self.option1 = TestData.option1;
-        self.option2 = TestData.option2;
+//        self.option1 = TestData.option1;
+//        self.option2 = TestData.option2;
         self.option3 = TestData.option3;
         setTimeout(function () {
           self.drawLine();
@@ -78,361 +91,289 @@
        */
       drawLine(){
         const self = this;
-        var myChart1 = self.$echarts.init(document.getElementById("myChart1"));
-        var myChart2 = self.$echarts.init(document.getElementById("myChart2"));
-        var myChart3 = self.$echarts.init(document.getElementById("myChart3"));
-        myChart1.setOption(self.option1);
-        myChart2.setOption(self.option2);
-        console.log("绘制图表", myChart2);
-        self.option = {
-          backgroundColor: '#061B47',
+        console.log("绘制图表......");
+        /* 绘制柱状图 */
+        var optionBar1 = self.$echarts.init(document.getElementById("optionBar1"));  //获取标签ID
+        self.optionBar1 =  {
+          title: {
+            text: '排水分区一'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
           legend: {
-            top: 20,
-            textStyle: {
-              color: '#fff'
-            },
-            data: ['建筑小区', '公园绿地', '道路广场', '河道治理', '涉水基础设施', 'PPP项目']
+            data: ['已完成', '未完成']
+          },
+          toolbox: {
+            show : true,
+            feature : {
+              magicType : { show: true, type: ['line'] },
+              restore : { show: true },
+              saveAsImage : { show: true }
+            }
           },
           grid: {
             left: '3%',
-            right: '4%',
-            bottom: '10%',
+            right: '3%',
+            bottom: '3%',
             containLabel: true
           },
-          tooltip: {
-            show: "true",
-            trigger: 'item',
-            backgroundColor: 'rgba(0,0,0,0.7)', // 背景
-//            padding: [8, 10], //内边距
-            extraCssText: 'box-shadow: 0 0 3px rgba(255, 255, 255, 0.4);', //添加阴影
-            formatter(params) {
-//              if (params.seriesIndex == "9" || params.seriesIndex == "11" || params.seriesIndex == "15") {
-                return params.name + '<br>' + params.seriesName + ' : 完成 ' + params.value + ' 项任务';
-//              }
-            }
+          xAxis: {
+            type: 'category',
+            data: ['建筑和小区', '公园绿地', '道路广场', '河道治理', '涉水基础设施', 'PPP项目']
           },
           yAxis: {
-            type: 'value',
-            axisTick: {
-              show: false
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: '#363e83',
-              }
-            },
-            splitLine: {
-              show: true,
-              lineStyle: {
-                color: '#363e83 ',
-              }
-            },
-            axisLabel: {
-              textStyle: {
-                color: '#fff',
-                fontWeight: 'normal',
-                fontSize: '12'
-              }
-            }
+            type: 'value'
           },
-          xAxis: [
-            {
-              type: 'category',
-              axisTick: {
-                show: false
-              },
-              axisLine: {
-                show: true,
-                lineStyle: {
-                  color: '#363e83',
-                }
-              },
-              axisLabel: {
-                inside: false,
-                textStyle: {
-                  color: '#fff',
-                  fontWeight: 'normal',
-                  fontSize: '12',
-                }
-              },
-              data: ['区间一', '区间二', '区间三', '区间四', '区间五', '区间六']
-            },
-            {
-              type: 'category',
-              axisLine: {
-                show: false
-              },
-              axisTick: {
-                show: false
-              },
-              axisLabel: {
-                show: false
-              },
-              splitArea: {
-                show: false
-              },
-              splitLine: {
-                show: false
-              },
-              data: ['区间一', '区间二', '区间三', '区间四', '区间五', '区间六']
-            }
-          ],
           series: [
             {
+              name: '已完成',
               type: 'bar',
-              xAxisIndex: 1,
-              barGap: '100%',
-              zlevel: 1,
-              itemStyle: {
-                normal: {
-                  color: '#174172',
-                  borderWidth: 0,
-                  shadowBlur: {
-                    shadowColor: 'rgba(255,255,255,0.31)',
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowOffsetY: 2
-                  }
-                }
-              },
-              barWidth: '5%',
-              data: [100, 100, 100, 100, 100, 100]
+              barWidth : 10,
+              data: [4, 12, 12, 1, 9, 3]
             },
             {
+              name: '未完成',
               type: 'bar',
-              xAxisIndex: 1,
-              barGap: '100%',
-              data: [100, 100, 100, 100, 100, 100],
-              zlevel: 1,
-              barWidth: '5%',
-              itemStyle: {
-                normal: {
-                  color: '#174172',
-                  borderWidth: 0,
-                  shadowBlur: {
-                    shadowColor: 'rgba(255,255,255,0.31)',
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowOffsetY: 2,
-                  },
-                }
-              },
-            },
-            {
-              type: 'bar',
-              xAxisIndex: 1,
-              barGap: '100%',
-              data: [100, 100, 100, 100, 100, 100],
-              zlevel: 1,
-              barWidth: '5%',
-              itemStyle: {
-                normal: {
-                  color: '#174172',
-                  borderWidth: 0,
-                  shadowBlur: {
-                    shadowColor: 'rgba(255,255,255,0.31)',
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowOffsetY: 2,
-                  },
-                }
-              },
-            },
-            {
-              type: 'bar',
-              xAxisIndex: 1,
-              barGap: '100%',
-              data: [100, 100, 100, 100, 100, 100],
-              zlevel: 1,
-              barWidth: '5%',
-              itemStyle: {
-                normal: {
-                  color: '#174172',
-                  borderWidth: 0,
-                  shadowBlur: {
-                    shadowColor: 'rgba(255,255,255,0.31)',
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowOffsetY: 2,
-                  },
-                }
-              },
-            },
-            {
-              type: 'bar',
-              xAxisIndex: 1,
-              barGap: '100%',
-              data: [100, 100, 100, 100, 100, 100],
-              zlevel: 1,
-              barWidth: '5%',
-              itemStyle: {
-                normal: {
-                  color: '#174172',
-                  borderWidth: 0,
-                  shadowBlur: {
-                    shadowColor: 'rgba(255,255,255,0.31)',
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowOffsetY: 2,
-                  },
-                }
-              },
-            },
-            {
-              type: 'bar',
-              xAxisIndex: 1,
-              barGap: '100%',
-              data: [100, 100, 100, 100, 100, 100],
-              zlevel: 1,
-              barWidth: '5%',
-              itemStyle: {
-                normal: {
-                  color: '#174172',
-                  borderWidth: 0,
-                  shadowBlur: {
-                    shadowColor: 'rgba(255,255,255,0.31)',
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowOffsetY: 2,
-                  },
-                }
-              },
-            },
-
-
-            {
-              name: '建筑小区',
-              type: 'bar',
-              itemStyle: {
-                normal: {
-                  show: true,
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#FFEC8B'
-                  }, {
-                    offset: 1,
-                    color: '#FFD700'
-                  }]),
-                  barBorderRadius: 50,
-                  borderWidth: 0,
-                }
-              },
-              zlevel: 2,
-              barWidth: '5%',
-              data: [8, 15, 10, 43, 54, 23]
-            },
-            {
-              name: '公园绿地',
-              type: 'bar',
-              itemStyle: {
-                normal: {
-                  show: true,
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#C0FF3E'
-                  }, {
-                    offset: 1,
-                    color: '#7CFC00'
-                  }]),
-                  barBorderRadius: 50,
-                  borderWidth: 0,
-                }
-              },
-              zlevel: 2,
-              barWidth: '5%',
-              data: [9, 67, 19, 32, 12, 29]
-            },
-            {
-              name: '道路广场',
-              type: 'bar',
-              itemStyle: {
-                normal: {
-                  show: true,
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#8B8682'
-                  }, {
-                    offset: 1,
-                    color: '#8A8A8A'
-                  }]),
-                  barBorderRadius: 50,
-                  borderWidth: 0,
-                }
-              },
-              zlevel: 2,
-              barWidth: '5%',
-              data: [21, 9, 37, 87, 29, 67]
-            },
-            {
-              name: '河道治理',
-              type: 'bar',
-              itemStyle: {
-                normal: {
-                  show: true,
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#00BFFF'
-                  }, {
-                    offset: 1,
-                    color: '#4876FF'
-                  }]),
-                  barBorderRadius: 50,
-                  borderWidth: 0,
-                }
-              },
-              zlevel: 2,
-              barWidth: '5%',
-              data: [67, 39, 47, 63, 29, 10]
-            },
-            {
-              name: '涉水基础设施',
-              type: 'bar',
-              barWidth: '5%',
-              itemStyle: {
-                normal: {
-                  show: true,
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#ABDCFF'
-                  }, {
-                    offset: 1,
-                    color: '#0396FF'
-                  }]),
-                  barBorderRadius: 50,
-                  borderWidth: 0,
-                }
-              },
-              zlevel: 2,
-              barGap: '100%',
-              data: [18, 83, 39, 30, 66, 35]
-            },
-            {
-              name: 'PPP项目',
-              type: 'bar',
-              barWidth: '5%',
-              itemStyle: {
-                normal: {
-                  show: true,
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#AB82FF'
-                  }, {
-                    offset: 1,
-                    color: '#912CEE'
-                  }]),
-                  barBorderRadius: 50,
-                  borderWidth: 0,
-                }
-              },
-              zlevel: 2,
-              barGap: '100%',
-              data: [46, 48, 73, 29, 48, 63]
+              barWidth : 10,
+              data: [13, 4, 3, 12, 14, 10]
             }
           ]
         };
-        myChart3.setOption(self.option);
+        optionBar1.setOption(self.optionBar1);
 
+        var optionBar2 = self.$echarts.init(document.getElementById("optionBar2"));  //获取标签ID
+        self.optionBar2 =  {
+          title: {
+            text: '排水分区二'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
+          legend: {
+            data: ['已完成', '未完成']
+          },
+          toolbox: {
+            show : true,
+            feature : {
+              magicType : { show: true, type: ['line'] },
+              restore : { show: true },
+              saveAsImage : { show: true }
+            }
+          },
+          grid: {
+            left: '3%',
+            right: '3%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: {
+            type: 'category',
+            data: ['建筑和小区', '公园绿地', '道路广场', '河道治理', '涉水基础设施', 'PPP项目']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: '已完成',
+              type: 'bar',
+              barWidth : 10,
+              data: [12, 2, 9, 5, 17, 13]
+            },
+            {
+              name: '未完成',
+              type: 'bar',
+              barWidth : 10,
+              data: [3, 14, 12, 10, 7, 8]
+            }
+          ]
+        };
+        optionBar2.setOption(self.optionBar2);
+
+        var optionBar3 = self.$echarts.init(document.getElementById("optionBar3"));  //获取标签ID
+        self.optionBar3 =  {
+          title: {
+            text: '排水分区三'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
+          legend: {
+            data: ['已完成', '未完成']
+          },
+          toolbox: {
+            show : true,
+            feature : {
+              magicType : { show: true, type: ['line'] },
+              restore : { show: true },
+              saveAsImage : { show: true }
+            }
+          },
+          grid: {
+            left: '3%',
+            right: '3%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: {
+            type: 'category',
+            data: ['建筑和小区', '公园绿地', '道路广场', '河道治理', '涉水基础设施', 'PPP项目']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: '已完成',
+              type: 'bar',
+              barWidth : 10,
+              data: [12, 2, 9, 5, 17, 13]
+            },
+            {
+              name: '未完成',
+              type: 'bar',
+              barWidth : 10,
+              data: [3, 14, 12, 10, 7, 8]
+            }
+          ]
+        };
+        optionBar3.setOption(self.optionBar3);
+
+        /* 绘制饼图 */
+        var optionPie = self.$echarts.init(document.getElementById("optionPie"));  //获取标签ID
+        /*self.optionPie = {
+          title: {
+            text: '项目数量完成度',
+            x: 'center'
+          },
+          tooltip : {
+            show: true,
+            trigger: 'item',
+            /!*formatter: "{a} <br/>{b}: {c} ({d}%)"*!/
+            formatter: " {b} <br> 完成 {c} 项 <br> 完成度为： ({d}%)"
+          },
+          /!*tooltip : {
+            trigger: 'item',
+            position (p) {
+              var id = document.getElementById('main');
+              if ($(id).width() - p[0]- $(id).find("div .echarts-tooltip").width()-20 <0) {
+                p[0] = p[0] - $(id).find("div .echarts-tooltip").width() -40;
+              }
+              return ['50%', '50%'];
+            },
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+          },*!/
+          legend: {
+            orient : 'vertical',
+            x : 'left',
+            data: ['小于50%', '50% 到 80%', '80% 到 99%', '100%']
+          },
+          toolbox: {
+            show : true,
+            feature : {
+              mark : {show: true},
+              dataView : {show: true, readOnly: false},
+              restore : {show: true},
+              saveAsImage : {show: true}
+            }
+          },
+          series : [
+            {
+              name:'项目数量完成度',
+              type:'pie',
+              selectedMode: 'single',
+              center : ['50%', 200],
+              radius : 110,
+              label: {
+                normal: {
+                  position: 'inner',
+                  formatter: "{b}"
+                }
+              },
+              labelLine: {
+                normal: {
+                  show: true
+                }
+              },
+              color: ['#DAA520','#D6D6D6','#C6E2FF','#E066FF'],
+              data:[
+                {value:5, name:' 小于50% '},
+                {value:6, name:' 50% 到 80% '},
+                {value:7, name:' 80% 到 99% '},
+                {value:10, name:' 100% '}
+              ]
+            }
+          ]
+        };*/
+        self.optionPie = {
+          title : {             // 标题
+            text: '项目数量完成度',
+            x:'center'
+          },
+          toolbox: {           // 插件
+            show : true,
+            feature : {
+              mark : {show: true},
+              dataView : {show: true, readOnly: false},
+              restore : {show: true},
+              saveAsImage : {show: true}
+            }
+          },
+          tooltip : {
+            trigger: 'item',
+            formatter:  " 区间在 {b} <br> 完成 {c} 项 <br> 完成度为： ({d}%)"
+          },
+          legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['小于50%', '50% 到 80%', '80% 到 99%', '100%']
+          },
+          series : [
+            {
+              name: '访问来源',
+              type: 'pie',
+              selectedMode: 'single',
+              center : ['50%', 200],
+              radius : 110,
+              label: {
+                normal: {
+                  position: 'inner',
+                  formatter: "{b}"
+                }
+              },
+              labelLine: {
+                normal: {
+                  show: true
+                }
+              },
+              color: ['#DAA520','#D6D6D6','#C6E2FF','#E066FF'],
+              data:[
+                {value:335, name:'小于50%'},
+                {value:310, name:'50% 到 80%'},
+                {value:234, name:'80% 到 99%'},
+                {value:135, name:'100%'}
+              ],
+              /*itemStyle: {
+                emphasis: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }*/
+            }
+          ]
+        };
+        optionPie.setOption(self.optionPie);
       }
     }
   }
@@ -447,5 +388,9 @@
   .app-main {
     overflow: auto !important;
     padding-bottom: 10% !important;
+  }
+
+  div#myChart3 , div#myChart4 {
+    /*float: right;*/
   }
 </style>
