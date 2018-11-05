@@ -338,5 +338,5 @@ test("测试查询排口上游地块", () => {
   //查找出地块最近的点
   let subcatchmentNearestNodes = calcAllSubcatchmentNearestNode(geojson, cy)
   let subcatchments = getAncestorSubcatchmentsOfOutfall(feature, geojson, cy, subcatchmentNearestNodes)
-  console.log(subcatchments);
+  console.log(subcatchmentNearestNodes);
 })
