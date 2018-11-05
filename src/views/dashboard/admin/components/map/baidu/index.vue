@@ -457,8 +457,6 @@
         for(var i = 0; i < data.length; i++){
           self.geoJson.features.push(JSON.parse(data[i].properties));
         }
-        console.log(this.geoJson)
-
       },
       /**
        * pipeNetwork 是一个管网系统 为对象格式

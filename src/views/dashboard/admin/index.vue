@@ -139,25 +139,25 @@
                         <span>地块坐标</span><span class="test3">{{data.info.raingage}}</span>
                         </li>
                         <li>
-                        <span>建设状态</span><span class="test3">{{data.info.outlet}}</span>
+                        <span>建设状态</span><span class="test3">{{data.info.JSZT}}</span>
                         </li>
                         <li>
-                        <span>现状用地类型</span><span class="test3">{{data.info.area}}</span>
+                        <span>现状用地类型</span><span class="test3">{{data.info.YDLX}}</span>
                         </li>
                         <li>
                         <span>规划用地类型</span><span class="test3">{{data.info.imperv}}</span>
                         </li>
                         <li>
-                        <span>最终排入河道</span><span class="test3">{{data.info.Width}}</span>
+                        <span>最终排入河道</span><span class="test3">{{data.info.PRHD}}</span>
                         </li>
                         <li>
                         <span>所属街道</span><span class="test3">{{data.info.Slope}}</span>
                         </li>
                         <li>
-                        <span>所属流域</span><span class="test3">{{data.info.CurbLen}}</span>
+                        <span>所属流域</span><span class="test3">{{data.info.SSLY}}</span>
                         </li>
                         <li>
-                          <span>所属排水区</span><span class="test3">{{data.info.CurbLen}}</span>
+                          <span>所属排水区</span><span class="test3">{{data.info.SSPSFQ}}</span>
                         </li>
                         <li>
                           <span>雨水主要排入检查井编号</span><span class="test3">{{data.info.CurbLen}}</span>
@@ -166,11 +166,15 @@
                           <span>污水主要排入检查井编号</span><span class="test3">{{data.info.CurbLen}}</span>
                         </li>
                         <li>
-                          <span>是否进行海绵城市设计及类型</span><span class="test3">{{data.info.CurbLen}}</span>
+                          <span>是否进行海绵城市设计及类型</span><span class="test3">{{data.info.HMCS}}</span>
                         </li>
                         <li>
-                          <span>是否进行正本清源改造及类型</span><span class="test3">{{data.info.CurbLen}}</span>
+                          <span>海绵类型</span><span class="test3">{{data.info.HMLX}}</span>
                         </li>
+                        <li>
+                          <span>是否进行正本清源改造及类型</span><span class="test3">{{data.info.ZBQY}}</span>
+                        </li>
+
                       </ul>
                     </el-collapse-item>
                     <el-collapse-item title="地块内排水类型" name="2">
