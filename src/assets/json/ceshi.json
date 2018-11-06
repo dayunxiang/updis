@@ -5,30 +5,30 @@
       "id": "0",
       "mingcheng": [
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
-          "target": "完功",
-          "shape": "菱形",
-          "area": "359平方米",
+          "name": "建筑工程一",
+          "percentage": "18",
+          "state": "未完成",
+          "target": "完成",
+          "shape": "矩形",
+          "area": "35",
           "id": "0"
         },
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "小区工程一",
+          "percentage": "60",
+          "state": "未完成",
           "target": "完功",
           "shape": "菱形",
-          "area": "359平方米",
+          "area": "359",
           "id": "1"
         },
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "建筑工程二",
+          "percentage": "100",
+          "state": "已完成",
           "target": "完功",
-          "shape": "菱形",
-          "area": "359平方米",
+          "shape": "三角形",
+          "area": "38",
           "id": "2"
         }
       ]
@@ -38,13 +38,22 @@
       "id": "1",
       "mingcheng": [
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "公园项目一",
+          "percentage": "60",
+          "state": "未完成",
+          "target": "完功",
+          "shape": "三角形",
+          "area": "87",
+          "id": "0"
+        },
+        {
+          "name": "绿地项目一",
+          "percentage": "100",
+          "state": "已完成",
           "target": "完功",
           "shape": "菱形",
-          "area": "359平方米",
-          "id": "0"
+          "area": "38",
+          "id": "1"
         }
       ]
     },
@@ -53,12 +62,12 @@
       "id": "2",
       "mingcheng": [
         {
-          "name": "检查井信息",
-          "percentage": "50%",
-          "state": "进行中",
+          "name": "道路项目一",
+          "percentage": "90",
+          "state": "未完成",
           "target": "完功",
-          "shape": "菱形",
-          "area": "359平方米",
+          "shape": "三角形",
+          "area": "83",
           "id": "0"
         }
       ]
@@ -68,22 +77,22 @@
       "id": "3",
       "mingcheng": [
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
-          "target": "完功",
-          "shape": "菱形",
-          "area": "359平方米",
+          "name": "河道项目一",
+          "percentage": "92",
+          "state": "未完成",
+          "target": "完成",
+          "shape": "矩形",
+          "area": "67",
           "id": "0"
         },
         {
-          "name": "检查井信息",
-          "percentage": "90%",
-          "state": "进行中",
+          "name": "河道项目二",
+          "percentage": "100",
+          "state": "已完成",
           "target": "完功",
           "shape": "菱形",
-          "area": "359平方米",
-          "id": "0"
+          "area": "563",
+          "id": "1"
         }
       ]
     },
@@ -92,31 +101,31 @@
       "id": "4",
       "mingcheng": [
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "涉水项目一",
+          "percentage": "100",
+          "state": "已完成",
           "target": "完功",
-          "shape": "菱形",
-          "area": "359平方米",
+          "shape": "三角形",
+          "area": "92",
           "id": "0"
         },
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "涉水项目二",
+          "percentage": "50",
+          "state": "未完成",
           "target": "完功",
           "shape": "菱形",
-          "area": "359平方米",
-          "id": "0"
+          "area": "78",
+          "id": "1"
         },
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "涉水项目三",
+          "percentage": "87",
+          "state": "未完成",
           "target": "完功",
-          "shape": "菱形",
-          "area": "359平方米",
-          "id": "0"
+          "shape": "矩形",
+          "area": "93",
+          "id": "2"
         }
       ]
     },
@@ -125,422 +134,24 @@
       "id": "5",
       "mingcheng": [
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "PPP工程一",
+          "percentage": "37",
+          "state": "未完成",
           "target": "完功",
-          "shape": "菱形",
-          "area": "359平方米",
+          "shape": "矩形",
+          "area": "93",
           "id": "0"
         },
         {
-          "name": "检查井信息",
-          "percentage": "20%",
-          "state": "进行中",
+          "name": "PPP工程二",
+          "percentage": "100",
+          "state": "已完成",
           "target": "完功",
           "shape": "菱形",
-          "area": "359平方米",
-          "id": "0"
+          "area": "73",
+          "id": "1"
         }
       ]
     }
-  ],
-  "option1": {
-    "backgroundColor": "#eee",
-    "legend": {
-      "data": ["bar", "bar2", "bar3", "bar4"],
-      "align": "left",
-      "left": 10
-    },
-    "brush": {
-      "toolbox": ["rect", "polygon", "lineX", "lineY", "keep", "clear"],
-      "xAxisIndex": 0
-    },
-    "toolbox": {
-      "feature": {
-        "magicType": {
-          "type": ["stack", "tiled"]
-        },
-        "dataView": {}
-      }
-    },
-    "tooltip": {},
-    "xAxis": {
-      "data": "xAxisData",
-      "name": "X Axis",
-      "silent": false,
-      "axisLine": {"onZero": true},
-      "splitLine": {"show": false},
-      "splitArea": {"show": false}
-    },
-    "yAxis": {
-      "inverse": true,
-      "splitArea": {"show": false}
-    },
-    "grid": {
-      "left": 100
-    },
-    "visualMap": {
-      "type": "continuous",
-      "dimension": 1,
-      "text": ["High", "Low"],
-      "inverse": true,
-      "itemHeight": 200,
-      "calculable": true,
-      "min": -2,
-      "max": 6,
-      "top": 60,
-      "left": 10,
-      "inRange": {
-        "colorLightness": [0.4, 0.8]
-      },
-      "outOfRange": {
-        "color": "#bbb"
-      },
-      "controller": {
-        "inRange": {
-          "color": "#2f4554"
-        }
-      }
-    },
-    "series": [
-      {
-        "name": "bar",
-        "type": "bar",
-        "stack": "one",
-        "itemStyle": "itemStyle",
-        "data": "data1"
-      },
-      {
-        "name": "bar2",
-        "type": "bar",
-        "stack": "one",
-        "itemStyle": "itemStyle",
-        "data": "data2"
-      },
-      {
-        "name": "bar3",
-        "type": "bar",
-        "stack": "two",
-        "itemStyle": "itemStyle",
-        "data": "data3"
-      },
-      {
-        "name": "bar4",
-        "type": "bar",
-        "stack": "two",
-        "itemStyle": "itemStyle",
-        "data": "data4"
-      }
-    ]
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  "option3": {
-    "backgroundColor": "#142058",
-
-    "legend": {
-      "top" : 20,
-      "textStyle" :{
-        "color": "#fff"
-      },
-      "data": ["男","女","保密"]
-    },
-
-    "grid": {
-      "left": "3%",
-      "right": "4%",
-      "bottom": "3%",
-      "containLabel": true
-    },
-
-    "tooltip": {
-      "show": "true",
-      "trigger": "item",
-      "backgroundColor": "rgba(0,0,0,0.7)",
-      "padding": [8, 10],
-      "extraCssText": "box-shadow: 0 0 3px rgba(255, 255, 255, 0.4);",
-      "formatter": ""
-    },
-
-    "yAxis": {
-      "type":"value",
-      "axisTick":{
-        "show":false
-      },
-      "axisLine":{
-        "show":true,
-        "lineStyle": {
-          "color": "#363e83"
-        }
-      },
-      "splitLine":{
-        "show":true,
-        "lineStyle": {
-          "color": "#363e83"
-        }
-      },
-      "axisLabel": {
-        "textStyle": {
-          "color": "#363e83",
-          "fontWeight": "normal",
-          "fontSize": "12"
-        }
-      }
-    },
-
-    "xAxis": [
-      {
-        "type": "category",
-        "axisTick": {
-          "show":false
-        },
-        "axisLine": {
-          "show":true,
-          "lineStyle": {
-            "color":"#363e83"
-          }
-        },
-        "axisLabel":{
-          "inside": false,
-          "textStyle": {
-            "color":"#fff",
-            "fontWeight":"normal",
-            "fontSize":12
-          }
-        },
-        "data": ["会", "不会", "看情况"]
-      },
-      {
-        "type":"category",
-        "axisLine": {
-          "show": false
-        },
-        "axisTick": {
-          "show": false
-        },
-        "axisLabel": {
-          "show": false
-        },
-        "splitArea": {
-          "show": false
-        },
-        "splitLine": {
-          "show": false
-        },
-        "data": ["会", "不会", "看情况"]
-      }
-    ],
-
-
-    "series": [
-      {
-        "type": "bar",
-        "xAxisIndex": 1,
-        "zlevel": 1,
-        "itemStyle": {
-          "normal": {
-            "color": "#121847",
-            "borderWidth": 0,
-            "shadowBlur": {
-              "shadowColor": "rgba(255,255,255,0.31)",
-              "shadowBlur": 10,
-              "shadowOffsetX": 0,
-              "shadowOffsetY": 2
-            }
-          }
-        },
-        "barWidth": "10%",
-        "data": [30, 30, 30]
-      },
-
-      {
-        "type": "bar",
-        "xAxisIndex": 1,
-        "barGap": "100%",
-        "data": [30, 30, 30],
-        "zlevel": 1,
-        "barWidth": "10%",
-        "itemStyle": {
-          "normal": {
-            "color": "#121847",
-            "borderWidth": 0,
-            "shadowBlur": {
-              "shadowColor": "rgba(255,255,255,0.31)",
-              "shadowBlur": 10,
-              "shadowOffsetX": 0,
-              "shadowOffsetY": 2
-            }
-          }
-        }
-      },
-
-      {
-        "type": "bar",
-        "xAxisIndex": 1,
-        "barGap": "100%",
-        "data": [30, 30, 30],
-        "zlevel": 1,
-        "barWidth": "10%",
-        "itemStyle": {
-          "normal": {
-            "color": "#121847",
-            "borderWidth": 0,
-            "shadowBlur": {
-              "shadowColor": "rgba(255,255,255,0.31)",
-              "shadowBlur": 10,
-              "shadowOffsetX": 0,
-              "shadowOffsetY": 2
-            }
-          }
-        }
-      },
-
-      {
-        "name": "男",
-        "type": "bar",
-        "itemStyle": {
-          "normal": {
-            "show": true,
-            "color": "#f7734e",
-            "barBorderRadius": 50,
-            "borderWidth": 0
-          }
-        },
-        "zlevel":"zlevel",
-        "barWidth":"10%",
-        "data":[8, 15, 10]
-      },
-
-      {
-        "name": "女",
-        "type": "bar",
-        "itemStyle": {
-          "normal": {
-            "show": true,
-            "color": "#f7734e",
-            "barBorderRadius": 50,
-            "borderWidth": 0
-          }
-        },
-        "zlevel":"zlevel",
-        "barWidth":"10%",
-        "data":[8, 15, 10]
-      },
-
-      {
-        "name": "保密",
-        "type": "bar",
-        "itemStyle": {
-          "normal": {
-            "show": true,
-            "color": "#f7734e",
-            "barBorderRadius": 50,
-            "borderWidth": 0
-          }
-        },
-        "zlevel":"zlevel",
-        "barWidth":"10%",
-        "data":[8, 15, 10]
-      }
-
-
-    ]
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-  "option2": {
-    "title": {
-      "text": "项目数量完成度",
-      "x": "center",
-      "top": "1px"
-    },
-    "tooltip" : {
-      "trigger": "axis",
-      "axisPointer" : {
-        "type" : "shadow"
-      }
-    },
-    "legend": {
-      "data":["建筑小区","公园绿地","道路广场","河道治理","涉水基础设施","PPP项目"]
-    },
-    "grid": {
-      "left": "3%",
-      "right": "4%",
-      "bottom": "3%",
-      "containLabel": true
-    },
-    "xAxis" : [
-      {
-        "type" : "category",
-        "data" : ["分区一","分区二","分区三","分区四","分区五","分区六"]
-      }
-    ],
-    "yAxis" : [
-      {
-        "type" : "value"
-      }
-    ],
-    "series" : [
-      {
-        "name":"建筑小区",
-        "type":"bar",
-        "stack": "统一",
-        "data":[1000, 1000, 1000, 1000, 1000, 1000]
-      },
-      {
-        "type":"bar",
-        "stack": "统一",
-        "data":[-320, -332, -301, -334, -390, -330]
-      },
-      {
-        "name":"公园绿地",
-        "type":"bar",
-        "data":[120, 132, 101, 134, 90, 230]
-      },
-      {
-        "name":"道路广场",
-        "type":"bar",
-        "data":[220, 182, 191, 234, 290, 330]
-      },
-      {
-        "name":"河道治理",
-        "type":"bar",
-        "data":[150, 232, 201, 154, 190, 330, 410]
-      },
-      {
-        "name":"涉水基础设施",
-        "type":"bar",
-        "data":[862, 1018, 964, 1026, 1679, 1600, 1570]
-      },
-      {
-        "name":"PPP项目",
-        "type":"bar",
-        "data":[620, 732, 701, 734, 1090, 1130, 1120]
-      }
-    ]
-  }
+  ]
 }

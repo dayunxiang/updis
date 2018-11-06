@@ -23,9 +23,9 @@
              tab-position="top"
              v-model="activeNo"
              type="card">
-      <el-tab-pane align="center" label="项目数量完成度" name="first">
+      <el-tab-pane align="center" label="海绵面积覆盖度" name="first">
 
-        <div style="width:40%; height:450px; float:left;margin-top:20px; padding-top:50px;">
+        <div style="width:40%; height:450px; float:left;margin-top:2px; padding-top:5px;">
           <div id="optionPie" :style="{width: '100%', height: '500px'}" ></div>
         </div>
 
@@ -38,14 +38,13 @@
       </el-tab-pane>
 
       <el-tab-pane align="center" label="年径流总量控制率" name="second">
-        <div id="myChart2" :style="{width: '600px', height: '380px'}" style="float:left;"></div>
-        <div id="myChart1" :style="{width: '600px', height: '380px'}" style="float:right;"></div>
+
       </el-tab-pane>
 
-      <el-tab-pane align="center" label="海绵面积覆盖度" name="three">
-        <!--<div id="myChart2" :style="{width: '600px', height: '380px'}" style="float:left;"></div>-->
-        <!--<div id="myChart1" :style="{width: '600px', height: '380px'}" style="float:right;"></div>-->
+      <el-tab-pane align="center" label="项目数量完成度" name="three">
+
       </el-tab-pane>
+
     </el-tabs>
   </div>
 </template>
@@ -58,14 +57,11 @@
     name: 'figure',
     data(){
       return {
-        activeNo: 'first',        // echarts图标签页
-        option1: {},              // echarts图数据
-        option2: {},
-        option3: {},
-        optionBar1: {},            //柱状图
-        optionBar2: {},            //柱状图
-        optionBar3: {},            //柱状图
-        optionPie: {}              //饼图
+        activeNo: 'first',  //echarts图标签页
+        optionBar1: {},     // echarts:柱状图
+        optionBar2: {},     // echarts:柱状图
+        optionBar3: {},     // echarts:柱状图
+        optionPie: {}       // echarts:饼图
       }
     },
     created() {
@@ -77,22 +73,37 @@
        */
       init() {
         const self = this;
-//        self.option1 = TestData.option1;
-//        self.option2 = TestData.option2;
-        self.option3 = TestData.option3;
         setTimeout(function () {
           self.drawLine();
+          self.drawPie();
           console.log("数据获取成功");
         }, 10);
-
       },
       /**
-       * 使用echarts统计图
+       * 使用echarts统计图:绘制柱状图
        */
       drawLine(){
         const self = this;
-        console.log("绘制图表......");
-        /* 绘制柱状图 */
+        var nameData = TestData.tongName;
+        var DataTest = [];   // 获取列表
+        _.each(nameData , function (Test) {
+          DataTest.push(Test.name)
+        });
+        var wancheng = [];  //完成的个数
+        var meiyou = [];    //未完成的个数
+        _.each(nameData , function (TestData) {
+          var sum = 0;
+          var ed = 0;
+          _.each(TestData.mingcheng , function (Dongdong) {
+            if(Dongdong.state === "已完成") {
+              sum++
+            } else {
+              ed++
+            }
+          })
+          wancheng.push(sum)
+          meiyou.push(ed)
+        });
         var optionBar1 = self.$echarts.init(document.getElementById("optionBar1"));  //获取标签ID
         self.optionBar1 =  {
           title: {
@@ -123,7 +134,7 @@
           },
           xAxis: {
             type: 'category',
-            data: ['建筑和小区', '公园绿地', '道路广场', '河道治理', '涉水基础设施', 'PPP项目']
+            data: DataTest
           },
           yAxis: {
             type: 'value'
@@ -133,13 +144,13 @@
               name: '已完成',
               type: 'bar',
               barWidth : 10,
-              data: [4, 12, 12, 1, 9, 3]
+              data: wancheng
             },
             {
               name: '未完成',
               type: 'bar',
               barWidth : 10,
-              data: [13, 4, 3, 12, 14, 10]
+              data: meiyou
             }
           ]
         };
@@ -175,7 +186,7 @@
           },
           xAxis: {
             type: 'category',
-            data: ['建筑和小区', '公园绿地', '道路广场', '河道治理', '涉水基础设施', 'PPP项目']
+            data: DataTest
           },
           yAxis: {
             type: 'value'
@@ -227,7 +238,7 @@
           },
           xAxis: {
             type: 'category',
-            data: ['建筑和小区', '公园绿地', '道路广场', '河道治理', '涉水基础设施', 'PPP项目']
+            data: DataTest
           },
           yAxis: {
             type: 'value'
@@ -248,73 +259,34 @@
           ]
         };
         optionBar3.setOption(self.optionBar3);
-
-        /* 绘制饼图 */
+      },
+      /**
+       * 使用echarts统计图:绘制饼图
+       */
+      drawPie() {
+        const self = this;
+        var nameData = TestData.tongName;
+        var x = 0;   //区间一
+        var y = 0;   //区间二
+        var z = 0;   //区间三
+        var k = 0;   //区间四
+        _.each(nameData , function (TestData) {
+          _.each(TestData.mingcheng, function (Dongdong) {
+            if ( 50 > parseInt(Dongdong.percentage) && parseInt(Dongdong.percentage) >= 0 ) {
+              x++
+            }
+            if ( 50 < parseInt(Dongdong.percentage) && parseInt(Dongdong.percentage) < 80 ) {
+              y++
+            }
+            if (80 < parseInt(Dongdong.percentage) && parseInt(Dongdong.percentage) < 100) {
+              z++
+            }
+            if ( parseInt(Dongdong.percentage) == 100 ) {
+              k++
+            }
+          });
+        });
         var optionPie = self.$echarts.init(document.getElementById("optionPie"));  //获取标签ID
-        /*self.optionPie = {
-          title: {
-            text: '项目数量完成度',
-            x: 'center'
-          },
-          tooltip : {
-            show: true,
-            trigger: 'item',
-            /!*formatter: "{a} <br/>{b}: {c} ({d}%)"*!/
-            formatter: " {b} <br> 完成 {c} 项 <br> 完成度为： ({d}%)"
-          },
-          /!*tooltip : {
-            trigger: 'item',
-            position (p) {
-              var id = document.getElementById('main');
-              if ($(id).width() - p[0]- $(id).find("div .echarts-tooltip").width()-20 <0) {
-                p[0] = p[0] - $(id).find("div .echarts-tooltip").width() -40;
-              }
-              return ['50%', '50%'];
-            },
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-          },*!/
-          legend: {
-            orient : 'vertical',
-            x : 'left',
-            data: ['小于50%', '50% 到 80%', '80% 到 99%', '100%']
-          },
-          toolbox: {
-            show : true,
-            feature : {
-              mark : {show: true},
-              dataView : {show: true, readOnly: false},
-              restore : {show: true},
-              saveAsImage : {show: true}
-            }
-          },
-          series : [
-            {
-              name:'项目数量完成度',
-              type:'pie',
-              selectedMode: 'single',
-              center : ['50%', 200],
-              radius : 110,
-              label: {
-                normal: {
-                  position: 'inner',
-                  formatter: "{b}"
-                }
-              },
-              labelLine: {
-                normal: {
-                  show: true
-                }
-              },
-              color: ['#DAA520','#D6D6D6','#C6E2FF','#E066FF'],
-              data:[
-                {value:5, name:' 小于50% '},
-                {value:6, name:' 50% 到 80% '},
-                {value:7, name:' 80% 到 99% '},
-                {value:10, name:' 100% '}
-              ]
-            }
-          ]
-        };*/
         self.optionPie = {
           title : {             // 标题
             text: '项目数量完成度',
@@ -324,14 +296,12 @@
             show : true,
             feature : {
               mark : {show: true},
-              dataView : {show: true, readOnly: false},
-              restore : {show: true},
               saveAsImage : {show: true}
             }
           },
           tooltip : {
             trigger: 'item',
-            formatter:  " 区间在 {b} <br> 完成 {c} 项 <br> 完成度为： ({d}%)"
+            formatter:  " 区间在 {b} <br> 完成 {c} 项"
           },
           legend: {
             orient: 'vertical',
@@ -356,24 +326,81 @@
                   show: true
                 }
               },
-              color: ['#DAA520','#D6D6D6','#C6E2FF','#E066FF'],
+              color: ['#DAA520','#71C671','#BA55D3','#708090'],
               data:[
-                {value:335, name:'小于50%'},
-                {value:310, name:'50% 到 80%'},
-                {value:234, name:'80% 到 99%'},
-                {value:135, name:'100%'}
-              ],
-              /*itemStyle: {
-                emphasis: {
-                  shadowBlur: 10,
-                  shadowOffsetX: 0,
-                  shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-              }*/
+                {value:x, name:'小于50%'},
+                {value:y, name:'50% 到 80%'},
+                {value:z, name:'80% 到 99%'},
+                {value:k, name:'100%'}
+              ]
             }
           ]
         };
         optionPie.setOption(self.optionPie);
+        /*self.optionPie = {
+         title: {
+         text: '项目数量完成度',
+         x: 'center'
+         },
+         tooltip : {
+         show: true,
+         trigger: 'item',
+         /!*formatter: "{a} <br/>{b}: {c} ({d}%)"*!/
+         formatter: " {b} <br> 完成 {c} 项 <br> 完成度为： ({d}%)"
+         },
+         /!*tooltip : {
+         trigger: 'item',
+         position (p) {
+         var id = document.getElementById('main');
+         if ($(id).width() - p[0]- $(id).find("div .echarts-tooltip").width()-20 <0) {
+         p[0] = p[0] - $(id).find("div .echarts-tooltip").width() -40;
+         }
+         return ['50%', '50%'];
+         },
+         formatter: "{a} <br/>{b} : {c} ({d}%)"
+         },*!/
+         legend: {
+         orient : 'vertical',
+         x : 'left',
+         data: ['小于50%', '50% 到 80%', '80% 到 99%', '100%']
+         },
+         toolbox: {
+         show : true,
+         feature : {
+         mark : {show: true},
+         dataView : {show: true, readOnly: false},
+         restore : {show: true},
+         saveAsImage : {show: true}
+         }
+         },
+         series : [
+         {
+         name:'项目数量完成度',
+         type:'pie',
+         selectedMode: 'single',
+         center : ['50%', 200],
+         radius : 110,
+         label: {
+         normal: {
+         position: 'inner',
+         formatter: "{b}"
+         }
+         },
+         labelLine: {
+         normal: {
+         show: true
+         }
+         },
+         color: ['#DAA520','#D6D6D6','#C6E2FF','#E066FF'],
+         data:[
+         {value:5, name:' 小于50% '},
+         {value:6, name:' 50% 到 80% '},
+         {value:7, name:' 80% 到 99% '},
+         {value:10, name:' 100% '}
+         ]
+         }
+         ]
+         };*/
       }
     }
   }
@@ -390,7 +417,4 @@
     padding-bottom: 10% !important;
   }
 
-  div#myChart3 , div#myChart4 {
-    /*float: right;*/
-  }
 </style>
