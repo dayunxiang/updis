@@ -1,6 +1,5 @@
 <template>
   <baidu-map
-
     class="map"
     :scroll-wheel-zoom="true"
     :center="map.center"
@@ -10,7 +9,7 @@
     :double-click-zoom="false"
     map-type="BMAP_HYBRID_MAP">
     <bm-map-type :map-types="['BMAP_HYBRID_MAP','BMAP_NORMAL_MAP']" anchor="BMAP_ANCHOR_TOP_right"/>
-    <!-------------------------------------------地块开始------------------------------------------------>
+    <!-------------------------------------------地块渲染------------------------------------------------>
     <!--项目二地块开始-->
     <bm-polygon
         v-if = 'projectId == 2'
@@ -32,6 +31,7 @@
       fillColor = ""
       @click="handleDiKuai(polygonPath)"
     />
+    <!--end-->
     <!--其他项目-->
     <bm-polygon
       v-for="polygonPath in polygonPaths"
@@ -42,21 +42,14 @@
       :stroke-color="polygonPath.color"
       @click="handleDiKuai(polygonPath)"
     />
-    <!--地块结束-->
-    <!--排口开始-->
-    <bm-circle
-      v-for = "(val,index) in circlePaths"
-      :key = "index"
-      :center="val.geos"
-      :radius="val.radius"
-      :stroke-opacity="1"
-      :stroke-weight="5"
-      :stroke-color="val.color"
-      fill-color="RGB(240 230 140)"
-      :fillOpacity = 1
-      @click="handlepaikou(index,val)"
-    >
-    </bm-circle>
+    <!------------------------------------------排口渲染-------------------------------------------------------------------->
+    <!--<bm-marker-->
+      <!--v-for="(val,index) in outFalls.rainMarkers"-->
+      <!--:key="val.id"-->
+      <!--:position="val.geos"-->
+      <!--:icon="{url: 'src/assets/icon/20181105053820532_easyicon_net_16.ico', size: {width: 32, height: 16}}"-->
+      <!--@click="handlepaikou(index,val) "-->
+    <!--/>-->
     <!-----------------------------------------检查井渲染-------------------------------------------------------------------->
     <bm-marker
       v-for="marker in markers"
@@ -85,7 +78,8 @@
       :stroke-weight="3"
       stroke-color="#FF00FF"
       @click="handleguanxian(polylinePath)"/>
-    <!------------------------------------------查询类渲染-------------------------------------------------------------->
+    <!------------------------------------------查询类-------------------------------------------------------------->
+    <!-------------------------------------------管线(查询类)--------------------------------------------------------------->
     <!--查询管线开始-->
     <bm-polyline
       v-for="polylinePath in selectPolylinePaths"
@@ -136,41 +130,48 @@
           getDescendantOutfallsOfSubcatchment
          } from '@/utils/mapUtil'
   export default {
-    props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits' ,'isHideAllOutfalls'],
+    props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits','isHideSewageConduits','isHideAllOutfalls'],
     data() {
       return {
         projectId: '',
         keyword: '',
-        map: {
-          center: '深圳光明区'
-        },
-        mapData: {
-          subcatchments: [],
-          conduits: {
-            rainConduits:[],
-            sewageConduits:[],
-          },
-          outfalls: [],
-          Junctions:[]
-        },
-        polygonPaths: [],
-        circlePaths: [],
-        markers: [],
         //geoJson
         geoJson: {
           "type": "FeatureCollection",
           "features":[]
         },
-        //工业入园
-        onePath:[],
-        twoPath:[],
+        map: {
+          center: '深圳光明区'
+        },
+        // 地图数据
+        mapData: {
+          conduits: {
+            rainConduits:[],
+            sewageConduits:[],
+          },
+          outfalls:{
+            rainOutfall: [],
+            sewageOutfall: [],
+            mergeOutfall: []
+          },
+          Junctions: [],
+          subcatchments: [],
+        },
         //管线类
         Conduits:{
           rainConduits:[],
           sewageConduits:[],
         },
+        //排口类
+        outFalls:{
+          rainMarkers:[],
+        },
+        polygonPaths: [],
+        markers: [],
 
-
+        //工业入园
+        onePath:[],
+        twoPath:[],
         //查询类
         selectPolylinePaths:[],
         selectPolygonPaths:[],
@@ -187,6 +188,9 @@
       isHideRainConduits: function(){
          this.isHideRainConduits ? this.showRainConduits() : this.hideRainConduits()
       },
+      isHideSewageConduits: function(){
+        this.isHideSewageConduits ? this.showSewageConduits():this.hideSewageConduits()
+      },
       isHideAllOutfalls: function() {
         this.isHideAllOutfalls ? this.showAllOutfalls() : this.hideAllOutfalls()
       }
@@ -199,17 +203,23 @@
       this.getOutfalls()
       this.getConduitsInfo()
       this.showAllSubcatchments()
-      //管线
+      //显示全部管线
       this.showAllConduits()
-
+      //显示全部排口
       this.showAllOutfalls()
+
       this.showAllJunctions()
 
       this.getGeoJson();
+      //向vuex中存储mapData
+      this.sendMapDataToVuex();
 
     },
 
     methods: {
+      test(){
+        alert('hah')
+      },
       // 获取项目工程Id
       getProjectId(){
         this.projectId = this.$route.query.projectId;
@@ -234,21 +244,28 @@
         this.Conduits.rainConduits = [];
         this.Conduits.sewageConduits = [];
       },
-        // 隐藏雨水管
+        // 隐藏/显示雨水管
       showRainConduits(){
         this.Conduits.rainConduits = this.mapData.conduits.rainConduits;
       },
       hideRainConduits(){
         this.Conduits.rainConduits = [];
       },
+        //隐藏/显示污水管
+      showSewageConduits(){
+        this.Conduits.sewageConduits = this.mapData.conduits.sewageConduits;
+      },
+      hideSewageConduits(){
+        this.Conduits.sewageConduits = [];
+      },
       /**
        * 显示/隐藏所有排口
        */
       showAllOutfalls() {
-        this.circlePaths = this.mapData.outfalls
+        this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
       },
       hideAllOutfalls() {
-        this.circlePaths = []
+        this.outFalls.rainMarkers = []
       },
       /**
        * 显示/隐藏所有检查井
@@ -263,13 +280,13 @@
       handleDiKuai(SubcatchmentInfo) {
         //清除所有查询出来的渲染
         this.selectPolygonPaths=[];
-        this.selectCirclePaths = [];
+        // this.selectCirclePaths = [];
         this.selectPolylinePaths = [];
         this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
 
-        this.circlePaths.forEach(function(val){
-          val.color='#26b8d0'
-        })
+        // this.circlePaths.forEach(function(val){
+        //   val.color='#26b8d0'
+        // })
         this.polygonPaths.forEach(function(val){
           val.color = 'yellow';
           val.opacity = 0.1;
@@ -280,21 +297,7 @@
       },
       // 每个排口点击事件
       handlepaikou(index,val) {
-        //清除所有查询出来的渲染
-        this.selectPolygonPaths=[];
-        this.selectCirclePaths = [];
-        this.selectPolylinePaths = [];
-        //当点击排口的时候，当前排口的颜色发生变化
-        this.polygonPaths.forEach((function(val){
-          val.color='yellow';
-          val.opacity = 0.1;
-        }))
-        this.circlePaths.forEach(function(val){
-          val.color='#26b8d0'
-        })
-        val.color = 'red'
         this.$emit('getSubcatchmentInfo', val);
-        this.selectPolylinePaths = []
       },
       // 每个管线点击事件
       handleguanxian(SubcatchmentInfo) {
@@ -501,47 +504,25 @@
         var outFallsData = dataArr;
         _each(outFallsData, function(index, outFallData) {
           var outFallType = outFallData.properties.leixing;
+          var lng_lat = outFallData.geometry.coordinates
+          var info = outFallData.properties
+          var OutFall = {
+            id: index,
+            type : '排口',
+            info : info,
+            geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
+          }
           // 雨水排水口
           if(outFallType == '雨水排水口'){
-            var lng_lat = this.geometry.coordinates
-            var info = this.properties
-            var rainOutFall = {
-               type : '排口',
-               info : info,
-               geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
-               radius: 20,
-               id: index,
-               color:'#26b8d0'
-            }
-            self.mapData.outfalls.push(rainOutFall);
+            self.mapData.outfalls.rainOutfall.push(OutFall);
           }
           // 污水排水口
           if(outFallType == '污水排口'){
-            var lng_lat = this.geometry.coordinates
-            var info = this.properties
-            var rainOutFall = {
-              type : '排口',
-              info : info,
-              geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
-              radius: 20,
-              id: index,
-              color:'#26b8d0'
-            }
-            self.mapData.outfalls.push(rainOutFall);
+            self.mapData.outfalls.sewageOutfall.push(OutFall);
           }
           // 混流排口
           if(outFallType == '混流排口'){
-            var lng_lat = this.geometry.coordinates
-            var info = this.properties
-            var rainOutFall = {
-              type : '排口',
-              info : info,
-              geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
-              radius: 20,
-              id: index,
-              color:'#26b8d0'
-            }
-            self.mapData.outfalls.push(rainOutFall);
+            self.mapData.outfalls.mergeOutfall.push(OutFall);
           }
         })
       },
@@ -818,8 +799,16 @@
           self.selectCirclePaths.push(outFall);
           console.log(self.selectCirclePaths);
         })
+      },
+      /**
+       * 向vuex中存储数据
+       * */
+      sendMapDataToVuex(){
+          var mapData = this.mapData;
+          this.$store.dispatch('getMapData',mapData)
       }
     }
+
   }
 </script>
 <style lang="scss" scoped>

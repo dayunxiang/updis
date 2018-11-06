@@ -8,6 +8,7 @@
         :is-hide-all-subcatchments="isHideAllSubcatchments"
         :is-hide-all-conduits="isHideAllConduits"
         :is-hide-rain-conduits = "isHideRainConduits"
+        :is-hide-sewage-conduits = "isHideSewageConduits"
         :is-hide-all-outfalls="isHideAllOutfalls"
         @getSubcatchmentInfo = "getSubcatchmentInfo"
       />
@@ -37,28 +38,32 @@
                   @click="handleHideAllOutfalls()"
                   @click.stop/>
                 <span class="submenu-title">排口</span>
-                <span class="number"></span>
+                <span class="number">{{this.outfalls.meregeOutfalls.length+this.outfalls.rainOutfalls.length+this.outfalls.sewageOutfalls.length}}</span>
               </template>
               <!--分组设置-->
               <el-menu-item-group>
-                <template slot="title">合流排口</template>
+                <template slot="title">
+                  <span>合流排口</span>
+                  <span>{{this.outfalls.meregeOutfalls.length}}</span>
+                </template>
                 <el-menu-item index="1-1">选项1</el-menu-item>
                 <el-menu-item index="1-2">选项2</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group>
-                <template slot="title">雨水排口</template>
+                <template slot="title">
+                  <span>雨水排口</span>
+                  <span>{{this.outfalls.rainOutfalls.length}}</span>
+                </template>
                 <el-menu-item index="2-1">选项1</el-menu-item>
                 <el-menu-item index="2-2">选项2</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group>
-                <template slot="title">截流式</template>
+                <template slot="title">
+                  <span>污水排口</span>
+                  <span>{{this.outfalls.sewageOutfalls.length}}</span>
+                </template>
                 <el-menu-item index="3-1">选项1</el-menu-item>
                 <el-menu-item index="3-2">选项2</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group>
-                <template slot="title">截污管</template>
-                <el-menu-item index="4-1">选项1</el-menu-item>
-                <el-menu-item index="4-2">选项2</el-menu-item>
               </el-menu-item-group>
               <!--分组设置结束-->
             </el-submenu>
@@ -72,21 +77,32 @@
                   @click="handleHideAllConduits()"
                   @click.stop/>
                 <span class="submenu-title">管线</span>
-                <span class="number"></span>
+                <span class="number">{{this.conduits.rainConduits.length+this.conduits.sewageConduits.length}}</span>
               </template>
               <!--分组设置-->
+              <!--雨水管-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <i
+                  :class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                  class="iconfont"
+                  @click="handleHideRainConduits()"
+                  @click.stop/>
+                  <span>雨水管</span>
+                  <span>{{this.conduits.rainConduits.length}}</span>
+                </template>
+              </el-menu-item-group>
+              <!--污水管-->
               <el-menu-item-group>
                 <template slot="title">
                   <i
                     :class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                     class="iconfont"
-                    @click="handleHideRainConduits()"
+                    @click="handleHideSewageConduits()"
                     @click.stop/>
-                  <span>雨水管</span>
+                  <span>污水管</span>
+                  <span>{{this.conduits.sewageConduits.length}}</span>
                 </template>
-              </el-menu-item-group>
-              <el-menu-item-group>
-                <template slot="title">污水管</template>
               </el-menu-item-group>
               <!--分组设置结束-->
             </el-submenu>
@@ -100,7 +116,7 @@
                   @click="handleHideAllSubcatchments()"
                   @click.stop/>
                 <span class="submenu-title">地块</span>
-                <span class="number"></span>
+                <span class="number">{{subcatchments.length}}</span>
               </template>
             </el-submenu>
             <!--排水分区-->
@@ -243,6 +259,7 @@
 </template>
 
 <script>
+  import _each from '@/utils/_each'
   import BaiduMap from './components/map/baidu'
 
   export default {
@@ -253,13 +270,22 @@
     data() {
       return {
         projectId:'',
-
+        outfalls:{
+          rainOutfalls:[],
+          sewageOutfalls:[],
+          meregeOutfalls:[]
+        },
+        conduits:{
+          rainConduits:[],
+          sewageConduits:[]
+        },
+        subcatchments:[],
         selectLoading: false,
         isHideAllSubcatchments: true,
-
         //显示隐藏管线
         isHideAllConduits: true,
         isHideRainConduits: true,
+        isHideSewageConduits: true,
 
 
         isHideAllOutfalls: true,
@@ -275,10 +301,30 @@
         activeNames: ['1']
       }
     },
+    create(){
+
+    },
+    mounted(){
+      this.getProjectId();
+      this.getMapData();
+    },
     methods: {
+      // 取得项目编号
       getProjectId(){
         this.projectId = this.$route.query.projectId
-        console.log(this.projectId);
+      },
+      // 取得mapData
+      getMapData(){
+        var self = this;
+        var mapData = this.$store.state.mapData
+        _each(mapData,function(index,mapData){
+          self.outfalls.rainOutfalls = mapData.outfalls.rainOutfall;
+          self.outfalls.sewageOutfalls = mapData.outfalls.sewageOutfall;
+          self.outfalls.meregeOutfalls = mapData.outfalls.mergeOutfall;
+          self.conduits.rainConduits = mapData.conduits.rainConduits;
+          self.conduits.sewageConduits = mapData.conduits.sewageConduits;
+          self.subcatchments = mapData.subcatchments;
+        })
       },
       //获取每块地块信息
       getSubcatchmentInfo(data) {
@@ -302,6 +348,10 @@
       // 显示/隐藏雨水管线
       handleHideRainConduits(){
         this.isHideRainConduits = !this.isHideRainConduits;
+      },
+      // 显示/隐藏污水管线
+      handleHideSewageConduits(){
+        this.isHideSewageConduits = !this.isHideSewageConduits;
       },
 
 
@@ -343,9 +393,6 @@
       handleSubcatchmentsSelectOutfalls(data) {
         this.$refs.map.handleSubcatchmentsSelectOutfalls(data);
       }
-    },
-    mounted(){
-      this.getProjectId();
     },
     created() {
 
