@@ -142,7 +142,7 @@ export const asyncRouterMap = [
     },
     children: [
       {
-        path: 'keyboards',
+        path: 'keyboard',
         component: _import('charts/demo'),
         name: 'keyboard',
         meta: {
