@@ -38,7 +38,7 @@
             <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
             <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
@@ -73,7 +73,7 @@
             <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
             <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
@@ -104,7 +104,7 @@
             <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
             <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
@@ -135,7 +135,7 @@
             <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
             <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
@@ -166,7 +166,7 @@
             <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
             <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
@@ -197,7 +197,7 @@
             <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
             <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
@@ -228,7 +228,7 @@
             <el-table-column align="center" prop="XMMC"   label="项目名称" ></el-table-column>
             <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
             <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
@@ -404,7 +404,7 @@
         request ('shapes' , {
           params: {
             pageNo: 1,
-            pageSize: 50,
+            pageSize: 2000,
             filters: {
               'shape': {
                 'category': {
@@ -429,13 +429,13 @@
           if( TestData.properties.HMLX === "已建海绵道路" ) {
             self.roadSquare.push(TestData.properties);
           }
-          if( TestData.properties.HMLX === "海绵型建筑小区" ) {
+          if( TestData.properties.HMLX === "海绵型公园绿地" ) {
             self.parkSquare.push(TestData.properties);
           }
           if( TestData.properties.HMLX === "规划管控" ) {
             self.plannSquare.push(TestData.properties);
           }
-          if( TestData.properties.HMLX === "已建绿色建筑" ) {
+          if( TestData.properties.HMLX === "已建绿色建筑" ||  TestData.properties.HMLX === "海绵型建筑小区" ) {
             self.buildSquare.push(TestData.properties);
           }
 //          self.buildSquare.push(TestData.properties);
