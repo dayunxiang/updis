@@ -1,13 +1,106 @@
 <template>
   <div>
-    <Tables
-      :schema="schema['Role']"
-      :columns='showUserColumns'
-      :filters='userFilters'
-      :options='userOptions'
-      :userDefined="userDefined"
-      ref="hmComplexTable"
-    ></Tables>
+
+    <el-form :inline="true"  class="demo-form-inline" style="padding:10px 10px;">
+      <!--<el-form-item label="项目名称">-->
+        <!--<el-select placeholder="请选择">-->
+          <!--&lt;!&ndash;<el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>&ndash;&gt;-->
+        <!--</el-select>-->
+      <!--</el-form-item>-->
+      <!--<el-form-item label="点类型">-->
+        <!--<el-select  placeholder="请选择点类型">-->
+          <!--<el-option label="排口"></el-option>-->
+        <!--</el-select>-->
+      <!--</el-form-item>-->
+
+      <el-form-item label="编号">
+        <el-input placeholder="请输入要查询的编号"></el-input>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" >查询</el-button>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" >添加</el-button>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="success">导出</el-button>
+      </el-form-item>
+    </el-form>
+
+    <el-tabs class="tongName"
+             tab-position="top"
+             @tab-click="handleClick">
+
+      <el-tab-pane label="建筑和小区" name="0" algin="center">
+        <Tables
+          :schema="schema['Shape']"
+          :columns='showUserColumns'
+          :options='userOptions'
+          :userDefined="userDefined"
+          ref="hmComplexTable">
+          <!--:filters='userFilters'-->
+        </Tables>
+      </el-tab-pane>
+
+      <el-tab-pane label="公园绿地" name="1" algin="center">
+        <Tables
+          :schema="schema['Shape']"
+          :columns='showUserColumns'
+          :options='userOptions'
+          :userDefined="userDefined"
+          ref="hmComplexTable">
+          <!--:filters='userFilters'-->
+        </Tables>
+      </el-tab-pane>
+
+      <el-tab-pane label="道路广场" name="2" algin="center">
+        <Tables
+          :schema="schema['Shape']"
+          :columns='showUserColumns'
+          :options='userOptions'
+          :userDefined="userDefined"
+          ref="hmComplexTable">
+          <!--:filters='userFilters'-->
+        </Tables>
+      </el-tab-pane>
+
+      <el-tab-pane label="河道治理" name="4" algin="center">
+        <Tables
+          :schema="schema['Shape']"
+          :columns='showUserColumns'
+          :options='userOptions'
+          :userDefined="userDefined"
+          ref="hmComplexTable">
+          <!--:filters='userFilters'-->
+        </Tables>
+      </el-tab-pane>
+
+      <el-tab-pane label="涉水基础设施" name="5" algin="center">
+        <Tables
+          :schema="schema['Shape']"
+          :columns='showUserColumns'
+          :options='userOptions'
+          :userDefined="userDefined"
+          ref="hmComplexTable">
+          <!--:filters='userFilters'-->
+        </Tables>
+      </el-tab-pane>
+
+      <el-tab-pane label="PPP项目" name="6" algin="center">
+        <Tables
+          :schema="schema['Shape']"
+          :columns='showUserColumns'
+          :options='userOptions'
+          :userDefined="userDefined"
+          ref="hmComplexTable">
+          <!--:filters='userFilters'-->
+        </Tables>
+      </el-tab-pane>
+
+    </el-tabs>
 
     <el-dialog title="菜单分配" :visible.sync="roleShow" :show-close='true' v-if="roleShow">
       <el-tree :data='treeData'
@@ -41,6 +134,7 @@
   export default {
     data() {
       return {
+        dataInit: [],   //获取块儿数据
         removeTreeData: [],
         allTree: [],
         treeDateTmp: [],
@@ -61,13 +155,21 @@
         checkTree: [], // 树形菜单默认值(只有叶子节点)
         deleteMenuTree: [], // 树形菜单默认值(父级、叶子)
         showUserColumns: [
-          {name: '角色名', codeCamel: 'name', isSort: false},
-          {name: '描述', codeCamel: 'description', isSort: false},
-          {name: '简称', codeCamel: 'simpleName', isSort: false}
+          {name: '地块编号', codeCamel: 'name', isSort: false},
+          {name: '用地类型', codeCamel: 'YDLX', isSort: false},
+          {name: '建设状态', codeCamel: 'JSZT', isSort: false},
+          {name: '项目名称', codeCamel: 'XMMC', isSort: false},
+          {name: '海绵类型', codeCamel: 'HMLX', isSort: false},
+          {name: '排入河道', codeCamel: 'PRHD', isSort: false},
+          {name: '所属流域', codeCamel: 'SSLY', isSort: false},
+          {name: '所属排水分区', codeCamel: 'SSPSFQ', isSort: false},
+          {name: '是否为正本清源项目', codeCamel: 'ZBQY', isSort: false},
+          {name: '海绵建设情况', codeCamel: '', isSort: false},
+          {name: '年径流总量控制率', codeCamel: '', isSort: false}
         ],
-        userFilters: [
+        /*userFilters: [
           {placeholder: '请输入角色名', name: {like: ''}, isShow: true}
-        ],
+        ],*/
         checkNode: [], // 存放选择的角色数据
         roleName: [] // 角色的全部名称
       }
@@ -77,7 +179,7 @@
       'hm-complex-form': HmComplexForm
     },
     created() {
-      this.schema = schema
+      this.schema = schema,
       this.userOptions = {
         sortItem: 'create_time',
         sortOrder: 'desc',
@@ -85,20 +187,52 @@
           username: {1: 'Hm-isChecked', 0: 'Hm-noChecked'}
         },
         newData: {
-          isShow: true,
+          isShow: false,
           showUserColumns: [
             {
-              name: '角色名', codeCamel: 'name', widgetType: 1,
-              rule: [{required: true, message: '请输入姓名', trigger: 'blur'},
+              name: '地块编号', codeCamel: 'name', widgetType: 1,
+              rule: [{required: true, message: '请输入编号', trigger: 'blur'},
                 {validator: this.validateName, trigger: 'blur'}]
             },
             {
-              name: '描述', codeCamel: 'description', widgetType: 1,
-              rule: {required: true, message: '请输入描述', trigger: 'blur'}
+              name: '用地类型', codeCamel: 'YDLX', widgetType: 1,
+              rule: {required: true, message: '请输入用地类型', trigger: 'blur'}
             },
             {
-              name: '简称', codeCamel: 'simpleName', widgetType: 1,
+              name: '建设状态', codeCamel: 'JSZT', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '项目名称', codeCamel: 'XMMC', widgetType: 1,
+              rule: {required: true, message: '请输入项目名称', trigger: 'blur'}
+            },
+            {
+              name: '排入河道', codeCamel: 'PRHD', widgetType: 1,
+              rule: {required: true, message: '请输入排入河道', trigger: 'blur'}
+            },
+            {
+              name: '海绵类型', codeCamel: 'HMLX', widgetType: 1,
+              rule: {required: true, message: '请输入海绵类型', trigger: 'blur'}
+            },
+            {
+              name: '所属流域', codeCamel: 'SSLY', widgetType: 1,
+              rule: {required: true, message: '请输入所属流域', trigger: 'blur'}
+            },
+            {
+              name: '所属排水分区', codeCamel: 'SSPSFQ', widgetType: 1,
+              rule: {required: true, message: '请输入所属排水分区', trigger: 'blur'}
+            },
+            {
+              name: '是否为正本清源项目', codeCamel: 'ZBQY', widgetType: 1,
               rule: {required: true, message: '请输入简称', trigger: 'blur'}
+            },
+            {
+              name: '海绵建设情况', codeCamel: 'HMCS', widgetType: 1,
+              rule: {required: true, message: '请输入简称', trigger: 'blur'}
+            },
+            {
+              name: '年径流总量控制率', codeCamel: 'MJGQ', widgetType: 1,
+              rule: {required: true, message: '请输入面积', trigger: 'blur'}
             }
           ],
           showUserButtons: [
@@ -107,21 +241,53 @@
           ],
           formSchema: schema['Role'],
           layout: {left: 0, middle: 24, right: 0}
-        },
+        }, //新建按钮
         editData: {
           isShow: true,
           showUserColumns: [
             {
-              name: '角色名', codeCamel: 'name', widgetType: 1,
-              rule: {required: true, message: '请输入姓名', trigger: 'blur'}
+              name: '地块编号', codeCamel: 'name', widgetType: 1,
+              rule: {required: true, message: '请输入编号', trigger: 'blur'}
             },
             {
-              name: '描述', codeCamel: 'description', widgetType: 1,
-              rule: {required: true, message: '请输入描述', trigger: 'blur'}
+              name: '用地类型', codeCamel: 'YDLX', widgetType: 1,
+              rule: {required: true, message: '请输入用地类型', trigger: 'blur'}
             },
             {
-              name: '简称', codeCamel: 'simpleName', widgetType: 1,
-              rule: {required: true, message: '请输入简称', trigger: 'blur'}
+              name: '建设状态', codeCamel: 'JSZT', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '项目名称', codeCamel: 'XMMC', widgetType: 1,
+              rule: {required: true, message: '请输入项目名称', trigger: 'blur'}
+            },
+            {
+              name: '海绵类型', codeCamel: 'HMLX', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '排入河道', codeCamel: 'PRHD', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '所属流域', codeCamel: 'SSLY', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '所属排水分区', codeCamel: 'SSPSFQ', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '是否为正本清源项目', codeCamel: 'ZBQY', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '海绵建设情况', codeCamel: 'HMCS', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
+            },
+            {
+              name: '年径流总量控制率', codeCamel: 'MJGQ', widgetType: 1,
+              rule: {required: true, message: '请输入建设状态', trigger: 'blur'}
             }
           ],
           showUserButtons: [
@@ -134,24 +300,122 @@
         cellStyle: {},
         tableStyle: {width: '100%'},
         isShowPagination: true,
-        isShowSearch: true,
+        isShowSearch: false,
         showRefresh: false, // 刷新
         showExport: false, // 导出
         showDeleteButton: false,
         buttonGroup: false,
         showSelection: false,
-        showOverflowTooltip: true
+        showOverflowTooltip: true,
+        useTableTotal:true,
+        promiseProcessing(value, params, definedOperate) { // 处理返回后的数据,必须return Promise对象
+          const data = new Promise(function(resolve,req) {
+            request('shapes', {
+              params: {
+                pageNo: params.pageNo,
+                sortItem: params.sortItem,
+                pageSize: params.pageSize,
+                sortOrder: params.sortOrder,
+                filters: {
+                  'shape': {
+                    'category': {
+                      equalTo: "SUBCATCHMENTS"
+                    },
+                    'projectId': {
+                      equalTo: '4'
+                    }
+                  }
+                }
+              }
+            }).then(res => {
+              let showData = []
+              let i = 0
+              _.each(res.data, function (v) {
+                var testInit = JSON.parse(v.properties);
+                var prop = testInit.properties
+                var letter = (prop.YDLX).substr(0, 1);
+                console.log("首字母: ",letter);
+                //debugger
+                if( letter === "G" ) {
+                  showData[i] = v
+                  showData[i]['name'] = prop.name;
+                  showData[i]['YDLX'] = prop.YDLX;
+                  showData[i]['JSZT'] = prop.JSZT;
+                  showData[i]['XMMC'] = prop.XMMC;
+                  showData[i]['HMLX'] = prop.HMLX;
+                  showData[i]['PRHD'] = prop.PRHD;
+                  showData[i]['SSLY'] = prop.SSLY;
+                  showData[i]['SSPSFQ'] = prop.SSPSFQ;
+                  showData[i]['ZBQY'] = prop.ZBQY;
+                  i++
+                }
+                // console.log("数据",prop.properties)
+              })
+              console.log("返回的数据" ,res.data);
+            self.$refs.tables.total = res.headers.total * 1
+            resolve(showData)
+            })
+          })
+          return data
+          debugger
+        }
       }
       this.userDefined = {
         definedOperation: [
-          {label: '删除', func: this.deleteOne},
-          {label: '菜单分配', func: this.distributionMenu}
+          {label: '删除', func: this.deleteOne}
+          /*{label: '菜单分配', func: this.distributionMenu}*/
         ]
       }
       this.NameSure()
     },
-    mounted() {},
+    mounted() {
+
+    },
     methods: {
+      /* 点击标签页 */
+      handleClick(tab, event, res) {
+        /*console.log(tab, event);*/
+        const self = this;
+        if(tab.index === 1) {}
+        console.log("位置: ", tab.index);
+      },
+      /**
+       * 起始数据
+       */
+      NameSure() {
+        const self = this;
+        request('shapes', {
+          params: {
+            pageSize: 100,
+            filters: {
+              'shape': {
+                'category': {
+                  equalTo: "SUBCATCHMENTS"
+                },
+                'projectId': {
+                  equalTo: '4'
+                }
+              }
+            }
+          }
+        }).then(res => {
+          self.roleName = [];
+        _.each(res.data, function (v) {
+          var testInit = JSON.parse(v.properties);
+          self.roleName.push(testInit.properties.name)
+          // self.dataInit.push(testInit)
+        });
+        // console.log("起始数据2: ", self.roleName);
+        })
+      },
+
+
+
+
+
+
+
+
       /**
        * 新建的确认按钮
        */
@@ -173,23 +437,6 @@
         } else {
           callback()
         }
-      },
-      /**
-       * 新建弹窗，点击确定按钮前的操作
-       */
-      NameSure() { // 新建的确定按钮
-        const self = this
-        request('roles', {
-          params: {
-            filters: {},
-            pageSize: 10000
-          }
-        }).then(res => {
-          self.roleName = []
-        _.each(res.data, function (v) {
-          self.roleName.push(v.name)
-        })
-      })
       },
       /**
        * 删除单条角色数据
@@ -358,9 +605,13 @@
     display: inline-block;
   }
 </style>
-<style lang='scss' scoped>
-  .uploadStyle {
-    display: inline-block;
+
+<style lang="scss">
+  div.tongName {
+    padding: 8px 12px 0px 12px;
+  }
+  .app-main {
+    overflow: auto !important;
+    padding-bottom: 10% !important;
   }
 </style>
-

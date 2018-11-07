@@ -143,10 +143,10 @@ export const asyncRouterMap = [
     children: [
       {
         path: 'keyboard',
-        component: _import('charts/keyboard'),
+        component: _import('charts/demo'),
         name: 'keyboard',
         meta: {
-          title: '项目进度表',
+          title: '海绵项目进度表',
           noCache: true
         }
       },
@@ -155,7 +155,7 @@ export const asyncRouterMap = [
         component: _import('charts/figure'),
         name: 'figure',
         meta: {
-          title: '项目统计分析图',
+          title: '海绵项目统计分析图',
           noCache: true
         }
       }
