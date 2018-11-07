@@ -33,15 +33,16 @@
           <!--表格-->
           <el-table :data="buildSquare" style="width: 100%" border>
             <el-table-column align="center" prop="name"   label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX"   label="用地类型" width="100" ></el-table-column>
-            <el-table-column align="center" prop="JSZT"   label="建设状态" width="90"></el-table-column>
+            <el-table-column align="center" prop="YDLX"   label="用地类型" width="77" ></el-table-column>
+            <el-table-column align="center" prop="JSZT"   label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD"   label="排入河道" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSLY"   label="所属流域" width="100"></el-table-column>
+            <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
             <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
             <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="100"></el-table-column>
+            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
+            <el-table-column align="center" prop=""  property="123"  label="面积(公顷)" width="86"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -67,15 +68,16 @@
           <!--表格-->
           <el-table :data="parkSquare" style="width: 100%" border>
             <el-table-column align="center" prop="name"   label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="100" ></el-table-column>
-            <el-table-column align="center" prop="JSZT"  label="建设状态" width="90"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD"  label="排入河道" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSLY"   label="所属流域" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ"  label="所属排水分区" width="110"></el-table-column>
-            <el-table-column align="center" prop="ZBQY"  label="是否为正本清源项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMCS"  label="是否为海绵城市项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMLX"  label="海绵类型" width="100"></el-table-column>
+            <el-table-column align="center" prop="YDLX"   label="用地类型" width="77" ></el-table-column>
+            <el-table-column align="center" prop="JSZT"   label="建设状态" width="77"></el-table-column>
+            <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
+            <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
+            <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
+            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
+            <el-table-column align="center" prop=""   label="面积(公顷)" width="86"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -97,15 +99,16 @@
           <!--表格-->
           <el-table :data="roadSquare" style="width: 100%" border>
             <el-table-column align="center" prop="name"   label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="100" ></el-table-column>
-            <el-table-column align="center" prop="JSZT"  label="建设状态" width="90"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD"  label="排入河道" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSLY"   label="所属流域" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ"  label="所属排水分区" width="110"></el-table-column>
-            <el-table-column align="center" prop="ZBQY"  label="是否为正本清源项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMCS"  label="是否为海绵城市项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMLX"  label="海绵类型" width="100"></el-table-column>
+            <el-table-column align="center" prop="YDLX"   label="用地类型" width="77" ></el-table-column>
+            <el-table-column align="center" prop="JSZT"   label="建设状态" width="77"></el-table-column>
+            <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
+            <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
+            <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
+            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
+            <el-table-column align="center" prop="this.listDemo"   label="面积(公顷)" width="86"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -127,15 +130,16 @@
           <!--表格-->
           <el-table :data="plannSquare" style="width: 100%" border>
             <el-table-column align="center" prop="name"   label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="100" ></el-table-column>
-            <el-table-column align="center" prop="JSZT"  label="建设状态" width="90"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD"  label="排入河道" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSLY"   label="所属流域" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ"  label="所属排水分区" width="110"></el-table-column>
-            <el-table-column align="center" prop="ZBQY"  label="是否为正本清源项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMCS"  label="是否为海绵城市项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMLX"  label="海绵类型" width="100"></el-table-column>
+            <el-table-column align="center" prop="YDLX"   label="用地类型" width="77" ></el-table-column>
+            <el-table-column align="center" prop="JSZT"   label="建设状态" width="77"></el-table-column>
+            <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
+            <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
+            <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
+            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
+            <el-table-column align="center" prop=""   label="面积(公顷)" width="86"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -157,15 +161,16 @@
           <!--表格-->
           <el-table  style="width: 100%" border>
             <el-table-column align="center" prop="name"   label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="100" ></el-table-column>
-            <el-table-column align="center" prop="JSZT"  label="建设状态" width="90"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD"  label="排入河道" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSLY"   label="所属流域" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ"  label="所属排水分区" width="110"></el-table-column>
-            <el-table-column align="center" prop="ZBQY"  label="是否为正本清源项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMCS"  label="是否为海绵城市项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMLX"  label="海绵类型" width="100"></el-table-column>
+            <el-table-column align="center" prop="YDLX"   label="用地类型" width="77" ></el-table-column>
+            <el-table-column align="center" prop="JSZT"   label="建设状态" width="77"></el-table-column>
+            <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
+            <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
+            <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
+            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
+            <el-table-column align="center" prop=""   label="面积(公顷)" width="86"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -187,15 +192,16 @@
           <!--表格-->
           <el-table  style="width: 100%" border>
             <el-table-column align="center" prop="name"   label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="100" ></el-table-column>
-            <el-table-column align="center" prop="JSZT"  label="建设状态" width="90"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD"  label="排入河道" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSLY"   label="所属流域" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ"  label="所属排水分区" width="110"></el-table-column>
-            <el-table-column align="center" prop="ZBQY"  label="是否为正本清源项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMCS"  label="是否为海绵城市项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMLX"  label="海绵类型" width="100"></el-table-column>
+            <el-table-column align="center" prop="YDLX"   label="用地类型" width="77" ></el-table-column>
+            <el-table-column align="center" prop="JSZT"   label="建设状态" width="77"></el-table-column>
+            <el-table-column align="center" prop="XMMC"   label="项目名称" width="100"></el-table-column>
+            <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
+            <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
+            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
+            <el-table-column align="center" prop=""   label="面积(公顷)" width="86"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -217,15 +223,16 @@
           <!--表格-->
           <el-table  style="width: 100%" border>
             <el-table-column align="center" prop="name"   label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="100" ></el-table-column>
-            <el-table-column align="center" prop="JSZT"  label="建设状态" width="90"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD"  label="排入河道" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSLY"   label="所属流域" width="100"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ"  label="所属排水分区" width="110"></el-table-column>
-            <el-table-column align="center" prop="ZBQY"  label="是否为正本清源项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMCS"  label="是否为海绵城市项目" width=""></el-table-column>
-            <el-table-column align="center" prop="HMLX"  label="海绵类型" width="100"></el-table-column>
+            <el-table-column align="center" prop="YDLX"   label="用地类型" width="77" ></el-table-column>
+            <el-table-column align="center" prop="JSZT"   label="建设状态" width="77"></el-table-column>
+            <el-table-column align="center" prop="XMMC"   label="项目名称" ></el-table-column>
+            <el-table-column align="center" prop="PRHD"   label="排入河道" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSLY"   label="所属流域" width="77"></el-table-column>
+            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY"   label="是否为正本清源项目"></el-table-column>
+            <el-table-column align="center" prop="HMCS"   label="是否为海绵城市项目"></el-table-column>
+            <el-table-column align="center" prop="HMLX"   label="海绵类型" width="110"></el-table-column>
+            <el-table-column align="center" prop="__ob__.dep.subs[0].depIds.size"   label="面积(公顷)" width="86"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -248,7 +255,7 @@
       <!--获取信息-->
       <el-dialog :title="this.hodelView === ''?'查看信息':'编辑信息'" :visible.sync="dialogVisible" data="buildSquare" @click="dialogVisible = false">
         <el-form :label-position="labelPosition" label-width="200px" :model="buildSquare">
-          <h2 style="padding:0px 0px 10px 35px;"><span>类型名称：</span>  123  </h2>
+          <!--<h2 style="padding:0px 0px 10px 35px;"><span>类型名称：</span>  123</h2>-->
           <el-form-item label="编号：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
@@ -258,57 +265,59 @@
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="buildSquare.percentage"></el-input>
+                      v-model="buildSquare.YDLX"></el-input>
           </el-form-item>
           <el-form-item label="建设状态：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.state"></el-input>
+                      v-model="buildSquare.JSZT"></el-input>
           </el-form-item>
           <el-form-item label="项目名称：" >
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.target"></el-input>
+                      v-model="buildSquare.XMMC"></el-input>
           </el-form-item>
           <el-form-item label="排入河道：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.shape"></el-input>
+                      v-model="buildSquare.PRHD"></el-input>
           </el-form-item>
           <el-form-item label="所属流域：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.area"></el-input>
+                      v-model="buildSquare.SSLY"></el-input>
           </el-form-item>
           <el-form-item label="所属排水分区：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.area"></el-input>
+                      v-model="buildSquare.SSPSFQ"></el-input>
           </el-form-item>
           <el-form-item label="是否为正本清源项目：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.area"></el-input>
+                      v-model="buildSquare.ZBQY"></el-input>
           </el-form-item>
           <el-form-item label="是否为海绵城市项目：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.area"></el-input>
+                      v-model="buildSquare.HMCS"></el-input>
           </el-form-item>
           <el-form-item label="海绵类型：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="listData.area"></el-input>
+                      v-model="buildSquare.HMLX"></el-input>
           </el-form-item>
         </el-form>
+
+
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
           <el-button v-show="this.hodelView == 'view' ? false : true" type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -341,6 +350,7 @@
     name: 'keyboard',
     data(){
       return {
+        listDemo:[12,32,21,32,12,32],
         projectId: '',
         roadSquare: [],             // 形状分类
         parkSquare: [],             // 形状分类
@@ -474,12 +484,9 @@
       */
       handleCheck (row) {
         const self = this;
-        self.hodelView = "";
-        var i = self.activeNameTest;
-        this.listTitle = self.tongName[i].name;
-        self.dialogVisible = true;
-
-        self.buildSquare = row;
+//        self.hodelView = "";
+//        self.dialogVisible = true;
+//        self.buildSquare = row;
         console.log("进入查看信息页面");
       },
       /**
@@ -487,11 +494,9 @@
        * */
       handleEditor(row) {
         const self = this;
-        self.hodelView = "view";
-        var i = self.activeNameTest;
-        this.listTitle = self.tongName[i].name;
-        self.dialogVisible = true;
-        self.buildSquare = row;
+//        self.hodelView = "view";
+//        self.dialogVisible = true;
+//        self.buildSquare = row;
         console.log("进入编辑信息页面");
       },
       /**
