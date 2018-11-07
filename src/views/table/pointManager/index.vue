@@ -33,6 +33,7 @@
     <div v-if="paikou">
         <!--end-->
         <div >
+
           <el-table :data="tableData" border max-height="500" style="width: 100%;">
             <el-table-column
               fixed
