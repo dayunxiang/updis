@@ -107,13 +107,26 @@
               </template>
             </el-table-column>
           </el-table>
+
           <!--分页-->
-          <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
-                         background
-                         layout="prev, pager, next"
-                         :total="totalSecond"
-                         @current-change="currentChange">
-          </el-pagination>
+          <div style="width:100%;text-align: center; margin:10px 0px;">
+            <!--<el-pagination style="width:100%;text-align: center; margin:10px 0px;"-->
+            <!--background-->
+            <!--layout="prev, pager, next"-->
+            <!--:total="totalSecond"-->
+            <!--@current-change="currentChange">-->
+            <!--</el-pagination>-->
+
+            <el-pagination
+              @current-change="currentChange"
+              :page-sizes="[ 10, 20, 50 ]"
+              :page-size="10"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="totalSecond">
+            </el-pagination>
+          </div>
+
+
         </el-tab-pane>
 
         <el-tab-pane label="道路广场" name="2" algin="center">
@@ -139,13 +152,25 @@
               </template>
             </el-table-column>
           </el-table>
+
           <!--分页-->
-          <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
-                         background
-                         layout="prev, pager, next"
-                         :total="totalThree"
-                         @current-change="currentChange">
-          </el-pagination>
+          <div style="width:100%;text-align: center; margin:10px 0px;">
+            <!--<el-pagination style="width:100%;text-align: center; margin:10px 0px;"-->
+            <!--background-->
+            <!--layout="prev, pager, next"-->
+            <!--:total="totalThree"-->
+            <!--@current-change="currentChange">-->
+            <!--</el-pagination>-->
+
+            <el-pagination
+              @current-change="currentChange"
+              :page-sizes="[ 10, 20, 50 ]"
+              :page-size="10"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="totalThree">
+            </el-pagination>
+          </div>
+
         </el-tab-pane>
 
         <el-tab-pane label="河道治理" name="4" algin="center">
