@@ -45,60 +45,60 @@
         </Tables>
       </el-tab-pane>
 
-      <el-tab-pane label="公园绿地" name="1" algin="center">
-        <Tables
-          :schema="schema['Shape']"
-          :columns='showUserColumns'
-          :options='userOptions'
-          :userDefined="userDefined"
-          ref="hmComplexTable">
-          <!--:filters='userFilters'-->
-        </Tables>
-      </el-tab-pane>
+      <!--<el-tab-pane label="公园绿地" name="1" algin="center">-->
+        <!--<Tables-->
+          <!--:schema="schema['Shape']"-->
+          <!--:columns='showUserColumns'-->
+          <!--:options='userOptions'-->
+          <!--:userDefined="userDefined"-->
+          <!--ref="hmComplexTable">-->
+          <!--&lt;!&ndash;:filters='userFilters'&ndash;&gt;-->
+        <!--</Tables>-->
+      <!--</el-tab-pane>-->
 
-      <el-tab-pane label="道路广场" name="2" algin="center">
-        <Tables
-          :schema="schema['Shape']"
-          :columns='showUserColumns'
-          :options='userOptions'
-          :userDefined="userDefined"
-          ref="hmComplexTable">
-          <!--:filters='userFilters'-->
-        </Tables>
-      </el-tab-pane>
+      <!--<el-tab-pane label="道路广场" name="2" algin="center">-->
+        <!--<Tables-->
+          <!--:schema="schema['Shape']"-->
+          <!--:columns='showUserColumns'-->
+          <!--:options='userOptions'-->
+          <!--:userDefined="userDefined"-->
+          <!--ref="hmComplexTable">-->
+          <!--&lt;!&ndash;:filters='userFilters'&ndash;&gt;-->
+        <!--</Tables>-->
+      <!--</el-tab-pane>-->
 
-      <el-tab-pane label="河道治理" name="3" algin="center">
-        <Tables
-          :schema="schema['Shape']"
-          :columns='showUserColumns'
-          :options='userOptions'
-          :userDefined="userDefined"
-          ref="hmComplexTable">
-          <!--:filters='userFilters'-->
-        </Tables>
-      </el-tab-pane>
+      <!--<el-tab-pane label="河道治理" name="3" algin="center">-->
+        <!--<Tables-->
+          <!--:schema="schema['Shape']"-->
+          <!--:columns='showUserColumns'-->
+          <!--:options='userOptions'-->
+          <!--:userDefined="userDefined"-->
+          <!--ref="hmComplexTable">-->
+          <!--&lt;!&ndash;:filters='userFilters'&ndash;&gt;-->
+        <!--</Tables>-->
+      <!--</el-tab-pane>-->
 
-      <el-tab-pane label="涉水基础设施" name="4" algin="center">
-        <Tables
-          :schema="schema['Shape']"
-          :columns='showUserColumns'
-          :options='userOptions'
-          :userDefined="userDefined"
-          ref="hmComplexTable">
-          <!--:filters='userFilters'-->
-        </Tables>
-      </el-tab-pane>
+      <!--<el-tab-pane label="涉水基础设施" name="4" algin="center">-->
+        <!--<Tables-->
+          <!--:schema="schema['Shape']"-->
+          <!--:columns='showUserColumns'-->
+          <!--:options='userOptions'-->
+          <!--:userDefined="userDefined"-->
+          <!--ref="hmComplexTable">-->
+          <!--&lt;!&ndash;:filters='userFilters'&ndash;&gt;-->
+        <!--</Tables>-->
+      <!--</el-tab-pane>-->
 
-      <el-tab-pane label="PPP项目" name="5" algin="center">
-        <Tables
-          :schema="schema['Shape']"
-          :columns='showUserColumns'
-          :options='userOptions'
-          :userDefined="userDefined"
-          ref="hmComplexTable">
-          <!--:filters='userFilters'-->
-        </Tables>
-      </el-tab-pane>
+      <!--<el-tab-pane label="PPP项目" name="5" algin="center">-->
+        <!--<Tables-->
+          <!--:schema="schema['Shape']"-->
+          <!--:columns='showUserColumns'-->
+          <!--:options='userOptions'-->
+          <!--:userDefined="userDefined"-->
+          <!--ref="hmComplexTable">-->
+          <!--&lt;!&ndash;:filters='userFilters'&ndash;&gt;-->
+        <!--</Tables>-->
+      <!--</el-tab-pane>-->
 
     </el-tabs>
 
@@ -159,7 +159,6 @@
           {name: '用地类型', codeCamel: 'YDLX', isSort: false},
           {name: '建设状态', codeCamel: 'JSZT', isSort: false},
           {name: '项目名称', codeCamel: 'XMMC', isSort: false},
-          {name: '海绵类型', codeCamel: 'HMLX', isSort: false},
           {name: '排入河道', codeCamel: 'PRHD', isSort: false},
           {name: '所属流域', codeCamel: 'SSLY', isSort: false},
           {name: '所属排水分区', codeCamel: 'SSPSFQ', isSort: false},
@@ -325,7 +324,7 @@
                 },
                 pageNo: params.pageNo,
                 sortItem: params.sortItem,
-                pageSize: params.pageSize, //
+                pageSize: 100000000, //
                 sortOrder: params.sortOrder,
               }
             }).then(res => {
