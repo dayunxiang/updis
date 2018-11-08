@@ -1,9 +1,4 @@
-/**
- * @desc 数据库定义文件
- * @author hm20160509
- * @date 2018/2/5
- */
-const ModelSchema = {
+{
   "HmUser": {
     "model": "HmUser",
     "modelPlural": "HmUsers",
@@ -1828,5 +1823,3 @@ const ModelSchema = {
     ]
   }
 }
-
-exports = module.exports = ModelSchema
