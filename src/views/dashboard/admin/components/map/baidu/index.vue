@@ -3,11 +3,11 @@
     class="map"
     :scroll-wheel-zoom="true"
     :center="map.center"
-    :high-resolution="true"
-    :min-zoom="13"
-    :zoom="10"
+    :min-zoom="15"
     :double-click-zoom="false"
-    map-type="BMAP_HYBRID_MAP">
+    map-type="BMAP_HYBRID_MAP"
+    @zoomend="test"
+  >
     <bm-map-type :map-types="['BMAP_HYBRID_MAP','BMAP_NORMAL_MAP']" anchor="BMAP_ANCHOR_TOP_right"/>
     <!-------------------------------------------地块渲染------------------------------------------------>
     <!--项目二地块开始-->
@@ -31,7 +31,6 @@
       fillColor = ""
       @click="handleDiKuai(polygonPath)"
     />
-    <!--end-->
     <!--其他项目-->
     <bm-polygon
       v-for="polygonPath in polygonPaths"
@@ -40,22 +39,55 @@
       :stroke-opacity="polygonPath.opacity"
       :stroke-weight="5"
       :stroke-color="polygonPath.color"
-      @click="handleDiKuai(polygonPath)"
+      @click="handleSubcatchment(polygonPath)"
     />
     <!------------------------------------------排口渲染-------------------------------------------------------------------->
-    <!--<bm-marker-->
-      <!--v-for="(val,index) in outFalls.rainMarkers"-->
-      <!--:key="val.id"-->
-      <!--:position="val.geos"-->
-      <!--:icon="{url: 'src/assets/icon/20181105053820532_easyicon_net_16.ico', size: {width: 32, height: 16}}"-->
-      <!--@click="handlepaikou(index,val) "-->
-    <!--/>-->
-    <!-----------------------------------------检查井渲染-------------------------------------------------------------------->
+    <!--雨水排口-->
     <bm-marker
-      v-for="marker in markers"
-      :key="marker.id"
-      :position="marker.geos"
-      :icon="{url: 'https://www.easyicon.net//api/resizeApi.php?id=1140684&size=16', size: {width: 16, height: 16}}"
+      v-for="(val,index) in outFalls.rainMarkers"
+      :key="val.id"
+      :position="val.geos"
+      :icon="{url: '/static/icon/Icon_16px_510886_easyicon.net.ico', size: {width: 32, height: 32}}"
+      @click="handlepaikou(index,val) "
+    />
+    <!--污水排口-->
+    <bm-marker
+      v-for="(val,index) in outFalls.sewageMarkers"
+      :key="val.id"
+      :position="val.geos"
+      :icon="{url: '/static/icon/sewageOutfall.ico', size: {width: 32, height: 32}}"
+      @click="handlepaikou(index,val) "
+    />
+    <!--混流排口-->
+    <bm-marker
+      v-for="(val,index) in outFalls.mergeMarkers"
+      :key="val.id"
+      :position="val.geos"
+      :icon="{url: '/static/icon/mergeOutfall.ico', size: {width: 32, height: 32}}"
+      @click="handlepaikou(index,val) "
+    />
+    <!-----------------------------------------检查井渲染-------------------------------------------------------------------->
+    <!--雨水检查井-->
+    <bm-circle
+      v-for="val in Junctions.rainJunctions"
+      :key="val.id"
+      :center="val.geos"
+      :radius="10"
+      :stroke-opacity="1"
+      :stroke-weight="7"
+      fillColor="blue"
+      stroke-color="blue"
+    />
+    <!--污水检查井-->
+    <bm-circle
+      v-for="val in Junctions.sewageJunctions"
+      :key="val.id"
+      :center="val.geos"
+      :radius="10"
+      :stroke-opacity="1"
+      :stroke-weight="7"
+      fillColor="rgb(242,73,248)"
+      stroke-color="rgb(242,73,248)"
     />
     <!------------------------------------------管线渲染---------------------------------------------------------------------->
     <!--雨水管线开始-->
@@ -78,6 +110,14 @@
       :stroke-weight="3"
       stroke-color="#FF00FF"
       @click="handleguanxian(polylinePath)"/>
+    <!-------------------------------------------工业企业---------------------------------------------------------------------->
+    <bm-marker
+      v-for="company in companys"
+      :key="company.id"
+      :position="company.geos"
+      :icon="company.icon"
+      @click="handleCompany(company)"
+    />
     <!------------------------------------------查询类-------------------------------------------------------------->
     <!-------------------------------------------管线(查询类)--------------------------------------------------------------->
     <!--查询管线开始-->
@@ -129,6 +169,8 @@
           getDescendantConduitsOfSubcatchment,
           getDescendantOutfallsOfSubcatchment
          } from '@/utils/mapUtil'
+  import {getArea} from '@/utils/map'
+
   export default {
     props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits','isHideSewageConduits','isHideAllOutfalls'],
     data() {
@@ -154,8 +196,12 @@
             sewageOutfall: [],
             mergeOutfall: []
           },
-          Junctions: [],
+          Junctions: {
+            rainJunctions:[],
+            sewageJunctions:[]
+          },
           subcatchments: [],
+          companys:[]
         },
         //管线类
         Conduits:{
@@ -165,6 +211,15 @@
         //排口类
         outFalls:{
           rainMarkers:[],
+          sewageMarkers:[],
+          mergeMarkers:[]
+        },
+        //企业类
+        companys:[],
+        //检查井
+        Junctions: {
+          rainJunctions:[],
+          sewageJunctions:[]
         },
         polygonPaths: [],
         markers: [],
@@ -202,14 +257,16 @@
       this.getJunctionsinfo()
       this.getOutfalls()
       this.getConduitsInfo()
+      this.getCompanysInfo()
       this.showAllSubcatchments()
       //显示全部管线
       this.showAllConduits()
       //显示全部排口
       this.showAllOutfalls()
-
+      //显示全部检查井
       this.showAllJunctions()
-
+      //显示全部企业
+      this.showAllCompanys();
       this.getGeoJson();
       //向vuex中存储mapData
       this.sendMapDataToVuex();
@@ -217,9 +274,21 @@
     },
 
     methods: {
-      test(){
-        alert('hah')
-      },
+      test(e) {
+        var self = this;
+        if (e.target.getZoom() == 15) {
+          self.companys.forEach(function(val) {
+            val.icon.url = '/static/icon/companys_16.ico'
+            val.icon.size = { width: 16, height: 16 }
+          })
+        }
+        if (e.target.getZoom()>15) {
+          self.companys.forEach(function(val) {
+          val.icon.url = '/static/icon/companys_32.ico'
+          val.icon.size = { width: 32, height: 32 }
+            })
+          }
+        },
       // 获取项目工程Id
       getProjectId(){
         this.projectId = this.$route.query.projectId;
@@ -263,6 +332,8 @@
        */
       showAllOutfalls() {
         this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
+        // this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
+        // this.outFalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
       },
       hideAllOutfalls() {
         this.outFalls.rainMarkers = []
@@ -271,18 +342,24 @@
        * 显示/隐藏所有检查井
        */
       showAllJunctions() {
-        this.markers = this.mapData.Junctions
+       this.Junctions.rainJunctions = this.mapData.Junctions.rainJunctions;
+       this.Junctions.sewageJunctions = this.mapData.Junctions.sewageJunctions;
       },
       hideAllJunctions() {
-
+      },
+      /**
+       * 显示所有企业
+       * */
+      showAllCompanys(){
+        this.companys = this.mapData.companys;
       },
       // 每个地块点击事件
-      handleDiKuai(SubcatchmentInfo) {
-        //清除所有查询出来的渲染
+      handleSubcatchment(SubcatchmentInfo) {
+        // 清除所有查询出来的渲染
         this.selectPolygonPaths=[];
         // this.selectCirclePaths = [];
         this.selectPolylinePaths = [];
-        this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
+        this.$emit('getInfo', SubcatchmentInfo);
 
         // this.circlePaths.forEach(function(val){
         //   val.color='#26b8d0'
@@ -297,15 +374,19 @@
       },
       // 每个排口点击事件
       handlepaikou(index,val) {
-        this.$emit('getSubcatchmentInfo', val);
+        this.$emit('getInfo', val);
       },
       // 每个管线点击事件
-      handleguanxian(SubcatchmentInfo) {
+      handleguanxian(data) {
         //清除所有查询出来的渲染
         this.selectPolygonPaths=[];
         this.selectCirclePaths = [];
         this.selectPolylinePaths = [];
-        this.$emit('getSubcatchmentInfo', SubcatchmentInfo);
+        this.$emit('getInfo',data);
+      },
+      // 每个企业点击事件
+      handleCompany(companyInfo){
+        this.$emit('getInfo',companyInfo);
       },
       // 请求管线数据
       getConduitsInfo() {
@@ -450,7 +531,6 @@
             var tempArr = []
             var lng_latArr = []
             var info = subcatchmentData.properties
-            info.id = subcatchmentData.id;
             for (var i = 0; i < lng_lat[0].length; i++) {
               tempArr.push(lng_lat[0][i])
             }
@@ -559,13 +639,63 @@
         _each(JunctionsData, function(index, JunctionData) {
           var lng_lat = JunctionData.geometry.coordinates;
           var info = JunctionData.properties;
+          var id = JunctionData.id;
           var Junction = {
+            id:id,
             type: '检查井',
             info: info,
             geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
-            radius: 50
           }
-          self.mapData.Junctions.push(Junction)
+          if(info.leixing == '雨水检查井'){
+            self.mapData.Junctions.rainJunctions.push(Junction);
+          }else if(info.leixing == '污水检查井'){
+            self.mapData.Junctions.sewageJunctions.push(Junction);
+          }
+        })
+      },
+      // 请求企业数据
+      getCompanysInfo(){
+        var self = this;
+        request('shapes',{
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: self.projectId
+                },
+                'category': {
+                  equalTo: 'COMPANY'
+                }
+              }
+            }
+          }
+        }).then(resp =>{
+          this.getCompanysSuccess(resp)
+        })
+      },
+      getCompanysSuccess(resp){
+        var self = this;
+        var data = resp.data;
+        var dataArr = []
+        for (var i = 0; i < data.length; i++) {
+          dataArr[i] = JSON.parse(data[i].properties)
+        }
+        var companysData = dataArr;
+        _each(companysData, function(index, companysData) {
+          var lng_lat = companysData.geometry.coordinates;
+          var info = companysData.properties;
+          var company = {
+            type: '企业',
+            info: info,
+            geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
+            icon:{
+              url :'/static/icon/companys_16.ico',
+              size:{ width: 16, height: 16 }
+            }
+          }
+          self.mapData.companys.push(company)
         })
       },
       //请求geoJson数据
@@ -807,7 +937,7 @@
           var mapData = this.mapData;
           this.$store.dispatch('getMapData',mapData)
       }
-    }
+  }
 
   }
 </script>
