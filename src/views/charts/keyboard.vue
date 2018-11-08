@@ -28,12 +28,11 @@
       <el-tabs class="tongName"
                tab-position="top"
                v-model="activeNameTest"
-               type="card"
                @tab-click="handleClick">
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
-          <el-table :data="buildSquare.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="编号" width="75"></el-table-column>
+          <el-table :data="buildSquare.slice((currentPage-1)*pageSize , currentPage*pageSize)" style="width: 100%" border>
+            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
@@ -41,16 +40,14 @@
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="HMCS" label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX" label="海绵类型" width="110"></el-table-column>
-            <el-table-column align="center" prop="" property="123" label="面积(公顷)" width="86"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
-                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除
-                </el-button>
+                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -68,10 +65,10 @@
 
             <el-pagination
               @current-change="currentChange"
-              :page-sizes="[10, 20, 50, 100]"
+              :page-sizes="[ 10, 20, 50 ]"
               :page-size="10"
               layout="total, sizes, prev, pager, next, jumper"
-              :total="400">
+              :total="totalFrist">
             </el-pagination>
           </div>
 
@@ -79,8 +76,8 @@
 
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
-          <el-table :data="parkSquare.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="编号" width="75"></el-table-column>
+          <el-table :data="parkSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
+            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
@@ -88,9 +85,8 @@
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="HMCS" label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX" label="海绵类型" width="110"></el-table-column>
-            <el-table-column align="center" prop="" label="面积(公顷)" width="86"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -105,15 +101,15 @@
           <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
                          background
                          layout="prev, pager, next"
-                         :total="100"
+                         :total="totalSecond"
                          @current-change="currentChange">
           </el-pagination>
         </el-tab-pane>
 
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
-          <el-table :data="roadSquare.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="编号" width="75"></el-table-column>
+          <el-table :data="roadSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
+            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
@@ -121,9 +117,8 @@
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="HMCS" label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX" label="海绵类型" width="110"></el-table-column>
-            <el-table-column align="center" prop="this.listDemo" label="面积(公顷)" width="86"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -138,40 +133,7 @@
           <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
                          background
                          layout="prev, pager, next"
-                         :total="100"
-                         @current-change="currentChange">
-          </el-pagination>
-        </el-tab-pane>
-
-        <el-tab-pane label="规划管控" name="3" algin="center">
-          <!--表格-->
-          <el-table :data="plannSquare.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="编号" width="75"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
-            <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="HMCS" label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX" label="海绵类型" width="110"></el-table-column>
-            <el-table-column align="center" prop="" label="面积(公顷)" width="86"></el-table-column>
-
-            <el-table-column align="center" fixed="right" label="操作" width="200">
-              <template slot-scope="scope">
-                <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
-                <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
-                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除
-                </el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-          <!--分页-->
-          <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
-                         background
-                         layout="prev, pager, next"
-                         :total="100"
+                         :total="totalThree"
                          @current-change="currentChange">
           </el-pagination>
         </el-tab-pane>
@@ -179,7 +141,7 @@
         <el-tab-pane label="河道治理" name="4" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
@@ -187,9 +149,8 @@
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="HMCS" label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX" label="海绵类型" width="110"></el-table-column>
-            <el-table-column align="center" prop="" label="面积(公顷)" width="86"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -211,7 +172,7 @@
         <el-tab-pane label="涉水基础设施" name="5" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
@@ -219,9 +180,8 @@
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="HMCS" label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX" label="海绵类型" width="110"></el-table-column>
-            <el-table-column align="center" prop="" label="面积(公顷)" width="86"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -243,18 +203,16 @@
         <el-tab-pane label="PPP项目" name="6" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称"></el-table-column>
+            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
             <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="HMCS" label="是否为海绵城市项目"></el-table-column>
-            <el-table-column align="center" prop="HMLX" label="海绵类型" width="110"></el-table-column>
-            <el-table-column align="center" prop="__ob__.dep.subs[0].depIds.size" label="面积(公顷)"
-                             width="86"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -378,12 +336,14 @@
     data(){
       return {
         projectId: '',
-        roadSquare: [],             // 形状分类
-        parkSquare: [],             // 形状分类
-        buildSquare: [],             // 形状分类
-        plannSquare: [],
+        buildSquare: [], // 公园
+        roadSquare: [],  // 道路
+        parkSquare: [],  // 建筑小区
         total: 0,//默认数据总数
-        pagesize: 10,//每页的数据条数
+        totalFrist : 0,
+        totalSecond: 0,
+        totalThree: 0,
+        pageSize: 10,//每页的数据条数
         currentPage: 1,//默认开始页面
 
 
@@ -457,31 +417,161 @@
         var demo = [];
         _.each(data, function (L) {
           var TestData = JSON.parse(L.properties);
-          if (TestData.properties.HMLX === "已建海绵道路") {
-            self.roadSquare.push(TestData.properties);
-          }
-          if (TestData.properties.HMLX === "海绵型公园绿地") {
-            self.parkSquare.push(TestData.properties);
-          }
-          if (TestData.properties.HMLX === "规划管控") {
-            self.plannSquare.push(TestData.properties);
-          }
-          if (TestData.properties.HMLX === "已建绿色建筑" || TestData.properties.HMLX === "海绵型建筑小区") {
-            self.buildSquare.push(TestData.properties);
-          }
-          //          self.buildSquare.push(TestData.properties);
-          var mm = JSON.parse(L.properties);
-          demo.push(mm)
-        });
-        console.log("demo: ", demo);
-        console.log("res.data: ", res);
+          var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
+          var demo = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
 
-        self.handleClick(tab);
-        console.log("位置: ", tab.index);
+          /**
+           * 道路广场
+           */
+          if ( TestData.properties.YDLX === "道路" || letter === "S" ) {
+            var RoadTest = {};
+            RoadTest.name = TestData.properties.name;
+            RoadTest.YDLX = TestData.properties.YDLX;
+            RoadTest.JSZT = TestData.properties.JSZT;
+            RoadTest.XMMC = TestData.properties.XMMC;
+            RoadTest.HMLX = TestData.properties.HMLX;
+            RoadTest.PRHD = TestData.properties.PRHD;
+            RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
+            RoadTest.ZBQY = TestData.properties.ZBQY;
+            /**
+             * 判断海绵建设情况
+             */
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
+              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
+              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
+              RoadTest.JSQK = TestData.properties.JSZT + '';
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
+              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
+              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
+              RoadTest.JSQK = TestData.properties.JSZT + '';
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
+              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
+              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+              RoadTest.JSQK = TestData.properties.JSZT + '';
+            }
+            self.roadSquare.push(RoadTest);
+          } else
+
+          /**
+           * 建筑小区
+           */
+          if ( letter === "R" || letter === "M" || letter === "C" || demo === "GIC" ) {
+            var builTest = {};
+            builTest.name = TestData.properties.name
+            builTest.YDLX = TestData.properties.YDLX
+            builTest.JSZT = TestData.properties.JSZT
+            builTest.XMMC = TestData.properties.XMMC
+            builTest.HMLX = TestData.properties.HMLX
+            builTest.PRHD = TestData.properties.PRHD
+            builTest.SSPSFQ = TestData.properties.SSPSFQ
+            builTest.ZBQY = TestData.properties.ZBQY
+            /**
+             * 判断海绵建设情况
+             */
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
+              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
+              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
+              builTest.JSQK = TestData.properties.JSZT + '';
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
+              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
+              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
+              builTest.JSQK = TestData.properties.JSZT + '';
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
+              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
+              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+              builTest.JSQK = TestData.properties.JSZT + '';
+            }
+            self.buildSquare.push(builTest);
+          } else
+
+          /**
+           * 公园绿地
+           */
+          if ( letter === "G"  ) {
+            var parkTest = {};
+            parkTest.name = TestData.properties.name
+            parkTest.YDLX = TestData.properties.YDLX
+            parkTest.JSZT = TestData.properties.JSZT
+            parkTest.XMMC = TestData.properties.XMMC
+            parkTest.HMLX = TestData.properties.HMLX
+            parkTest.PRHD = TestData.properties.PRHD
+            parkTest.SSPSFQ = TestData.properties.SSPSFQ
+            parkTest.ZBQY = TestData.properties.ZBQY
+            /**
+             * 判断海绵建设情况
+             */
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
+              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
+              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
+              parkTest.JSQK = TestData.properties.JSZT + '';
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
+              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
+              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
+              parkTest.JSQK = TestData.properties.JSZT + '';
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
+              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
+              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+              parkTest.JSQK = TestData.properties.JSZT + '';
+            }
+            self.parkSquare.push(parkTest);
+          }
+
+        });
+        this.totalFrist = self.buildSquare.length;
+        this.totalSecond = self.parkSquare.length;
+        this.totalThree = self.roadSquare.length;
+
+
+
+//        console.log("数量: ", self.roadSquare.length);
+//        console.log("res.data: ", res);
+//        console.log("Demo: ");
+
         console.log("道路: ", self.roadSquare);
+        console.log("建筑小区: ", self.buildSquare);
         console.log("公园: ", self.parkSquare);
-        console.log("管控: ", self.plannSquare);
-        console.log("建筑: ", self.buildSquare);
       },
       currentChange(currentPage){
         this.currentPage = currentPage;

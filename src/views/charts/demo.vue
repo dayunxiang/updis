@@ -67,7 +67,7 @@
         </Tables>
       </el-tab-pane>
 
-      <el-tab-pane label="河道治理" name="4" algin="center">
+      <el-tab-pane label="河道治理" name="3" algin="center">
         <Tables
           :schema="schema['Shape']"
           :columns='showUserColumns'
@@ -78,7 +78,7 @@
         </Tables>
       </el-tab-pane>
 
-      <el-tab-pane label="涉水基础设施" name="5" algin="center">
+      <el-tab-pane label="涉水基础设施" name="4" algin="center">
         <Tables
           :schema="schema['Shape']"
           :columns='showUserColumns'
@@ -89,7 +89,7 @@
         </Tables>
       </el-tab-pane>
 
-      <el-tab-pane label="PPP项目" name="6" algin="center">
+      <el-tab-pane label="PPP项目" name="5" algin="center">
         <Tables
           :schema="schema['Shape']"
           :columns='showUserColumns'
@@ -164,8 +164,8 @@
           {name: '所属流域', codeCamel: 'SSLY', isSort: false},
           {name: '所属排水分区', codeCamel: 'SSPSFQ', isSort: false},
           {name: '是否为正本清源项目', codeCamel: 'ZBQY', isSort: false},
-          {name: '海绵建设情况', codeCamel: '', isSort: false},
-          {name: '年径流总量控制率', codeCamel: '', isSort: false}
+          {name: '海绵建设情况', codeCamel: 'JSQK', isSort: false},
+          {name: '年径流总量控制率', codeCamel: 'ZLKZL', isSort: false}
         ],
         /*userFilters: [
           {placeholder: '请输入角色名', name: {like: ''}, isShow: true}
@@ -179,6 +179,7 @@
       'hm-complex-form': HmComplexForm
     },
     created() {
+      const self = this
       this.schema = schema,
       this.userOptions = {
         sortItem: 'create_time',
@@ -312,10 +313,6 @@
           const data = new Promise(function(resolve,req) {
             request('shapes', {
               params: {
-                pageNo: params.pageNo,
-                sortItem: params.sortItem,
-                pageSize: params.pageSize,
-                sortOrder: params.sortOrder,
                 filters: {
                   'shape': {
                     'category': {
@@ -324,40 +321,74 @@
                     'projectId': {
                       equalTo: '4'
                     }
-                  }
-                }
+                  },
+                },
+                pageNo: params.pageNo,
+                sortItem: params.sortItem,
+                pageSize: params.pageSize, //
+                sortOrder: params.sortOrder,
               }
             }).then(res => {
-              let showData = []
-              let i = 0
+              console.log("res.data: " ,res.data);
+              let showData = [];
+              let i = 0;
               _.each(res.data, function (v) {
-                var testInit = JSON.parse(v.properties);
-                var prop = testInit.properties
-                var letter = (prop.YDLX).substr(0, 1);
-                console.log("首字母: ",letter);
-                //debugger
-                if( letter === "G" ) {
-                  showData[i] = v
-                  showData[i]['name'] = prop.name;
-                  showData[i]['YDLX'] = prop.YDLX;
-                  showData[i]['JSZT'] = prop.JSZT;
-                  showData[i]['XMMC'] = prop.XMMC;
-                  showData[i]['HMLX'] = prop.HMLX;
-                  showData[i]['PRHD'] = prop.PRHD;
-                  showData[i]['SSLY'] = prop.SSLY;
-                  showData[i]['SSPSFQ'] = prop.SSPSFQ;
-                  showData[i]['ZBQY'] = prop.ZBQY;
-                  i++
+                var n = v ;
+                console.log(n);
+                var testInit = (JSON.parse(v.properties)).properties
+                var letter = (testInit.YDLX).substr(0, 1);    // 截取字符首字母
+                //console.log("v: ", testInit)
+                debugger
+                if( testInit.YDLX === "道路" || letter === "S" ) {
+                  showData[i] = v;
+                  showData[i]['name'] = testInit.name;
+                  showData[i]['YDLX'] = testInit.YDLX;
+                  showData[i]['JSZT'] = testInit.JSZT;
+                  showData[i]['XMMC'] = testInit.XMMC;
+                  showData[i]['HMLX'] = testInit.HMLX;
+                  showData[i]['PRHD'] = testInit.PRHD;
+                  showData[i]['SSLY'] = testInit.SSLY;
+                  showData[i]['SSPSFQ'] = testInit.SSPSFQ;
+                  showData[i]['ZBQY'] = testInit.ZBQY;
+                  /**
+                   * 判断海绵建设情况
+                   */
+                  if( testInit.JSZT === "现状" && testInit.HMCS === "已落实海绵" ) {
+                    showData[i]['JSQK'] = testInit.JSZT + testInit.HMCS;
+                  }
+                  if( testInit.JSZT === "现状" && testInit.HMCS === "未落实海绵" ) {
+                    showData[i]['JSQK'] = testInit.JSZT + testInit.HMCS;
+                  }
+                  if( testInit.JSZT === "现状" && testInit.HMCS === null ) {
+                    showData[i]['JSQK'] = testInit.JSZT + '';
+                  }
+                  if( testInit.JSZT === "在建" && testInit.HMCS === "已落实海绵" ) {
+                    showData[i]['JSQK'] = testInit.JSZT + testInit.HMCS;
+                  }
+                  if( testInit.JSZT === "在建" && testInit.HMCS === "未落实海绵" ) {
+                    showData[i]['JSQK'] = testInit.JSZT + testInit.HMCS;
+                  }
+                  if( testInit.JSZT === "在建" && testInit.HMCS === null ) {
+                    showData[i]['JSQK'] = testInit.JSZT + '';
+                  }
+                  if( testInit.JSZT === "规划" && testInit.HMCS === "已落实海绵" ) {
+                    showData[i]['JSQK'] = testInit.JSZT + testInit.HMCS;
+                  }
+                  if( testInit.JSZT === "规划" && testInit.HMCS === "未落实海绵" ) {
+                    showData[i]['JSQK'] = testInit.JSZT + testInit.HMCS;
+                  }
+                  if( testInit.JSZT === "规划" && testInit.HMCS === null ) {
+                    showData[i]['JSQK'] = testInit.JSZT + '';
+                  }
+                  i++ ;
                 }
-                // console.log("数据",prop.properties)
+
               })
-              console.log("返回的数据" ,res.data);
-            self.$refs.tables.total = res.headers.total * 1
-            resolve(showData)
+              self.$refs.hmComplexTable.total = i ;
+              resolve(showData)
             })
           })
           return data
-          debugger
         }
       }
       this.userDefined = {
