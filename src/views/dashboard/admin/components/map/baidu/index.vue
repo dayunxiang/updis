@@ -45,9 +45,9 @@
     <!--雨水排口-->
     <bm-marker
       v-for="(val,index) in outFalls.rainMarkers"
-      :key="val.id"
+      :key="val.id"O
       :position="val.geos"
-      :icon="{url: '/static/icon/Icon_16px_510886_easyicon.net.ico', size: {width: 32, height: 32}}"
+      :icon="{url: '/static/icon/rainOutfall_48.ico', size: {width:48 , height: 48}}"
       @click="handlepaikou(index,val) "
     />
     <!--污水排口-->
@@ -55,7 +55,7 @@
       v-for="(val,index) in outFalls.sewageMarkers"
       :key="val.id"
       :position="val.geos"
-      :icon="{url: '/static/icon/sewageOutfall.ico', size: {width: 32, height: 32}}"
+      :icon="{url: '/static/icon/sewageOutfall_48.ico', size: {width: 32, height: 32}}"
       @click="handlepaikou(index,val) "
     />
     <!--混流排口-->
@@ -63,7 +63,7 @@
       v-for="(val,index) in outFalls.mergeMarkers"
       :key="val.id"
       :position="val.geos"
-      :icon="{url: '/static/icon/mergeOutfall.ico', size: {width: 32, height: 32}}"
+      :icon="{url: '/static/icon/mergeOutfall_48.ico', size: {width: 32, height: 32}}"
       @click="handlepaikou(index,val) "
     />
     <!-----------------------------------------检查井渲染-------------------------------------------------------------------->
@@ -276,17 +276,23 @@
     methods: {
       test(e) {
         var self = this;
-        if (e.target.getZoom() == 15) {
+        if (e.target.getZoom() <= 15) {
           self.companys.forEach(function(val) {
             val.icon.url = '/static/icon/companys_16.ico'
             val.icon.size = { width: 16, height: 16 }
           })
+          this.outFalls.rainMarkers = [];
+          this.outFalls.sewageMarkers = [];
+          this.outFalls.mergeMarkers = [];
         }
         if (e.target.getZoom()>15) {
           self.companys.forEach(function(val) {
-          val.icon.url = '/static/icon/companys_32.ico'
-          val.icon.size = { width: 32, height: 32 }
+             val.icon.url = '/static/icon/companys_32.ico'
+              val.icon.size = { width: 32, height: 32 }
             })
+          this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
+          this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
+          this.outFalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
           }
         },
       // 获取项目工程Id
@@ -332,11 +338,14 @@
        */
       showAllOutfalls() {
         this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
-        // this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
-        // this.outFalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
+        this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
+        this.outfalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
       },
       hideAllOutfalls() {
-        this.outFalls.rainMarkers = []
+        this.outFalls.rainMarkers = [];
+        this.outFalls.sewageMarkers = [];
+        this.outfalls.mergeMarkers = [];
+
       },
       /**
        * 显示/隐藏所有检查井
@@ -927,7 +936,6 @@
             color:'red'
           }
           self.selectCirclePaths.push(outFall);
-          console.log(self.selectCirclePaths);
         })
       },
       /**
