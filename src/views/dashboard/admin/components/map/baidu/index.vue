@@ -44,27 +44,27 @@
     <!------------------------------------------排口渲染-------------------------------------------------------------------->
     <!--雨水排口-->
     <bm-marker
-      v-for="(val,index) in outFalls.rainMarkers"
-      :key="val.id"O
-      :position="val.geos"
+      v-for=" rainOutfall in outFalls.rainMarkers"
+      :key="rainOutfall.id"
+      :position="rainOutfall.geos"
       :icon="{url: '/static/icon/rainOutfall_48.ico', size: {width:48 , height: 48}}"
-      @click="handlepaikou(index,val) "
+      @click="handlepaikou(rainOutfall) "
     />
     <!--污水排口-->
     <bm-marker
-      v-for="(val,index) in outFalls.sewageMarkers"
-      :key="val.id"
-      :position="val.geos"
+      v-for="sewageOutfall in outFalls.sewageMarkers"
+      :key="sewageOutfall.id"
+      :position="sewageOutfall.geos"
       :icon="{url: '/static/icon/sewageOutfall_48.ico', size: {width: 32, height: 32}}"
-      @click="handlepaikou(index,val) "
+      @click="handlepaikou(sewageOutfall) "
     />
     <!--混流排口-->
     <bm-marker
-      v-for="(val,index) in outFalls.mergeMarkers"
-      :key="val.id"
-      :position="val.geos"
+      v-for="mergeOutfall in outFalls.mergeMarkers"
+      :key="mergeOutfall.id"
+      :position="mergeOutfall.geos"
       :icon="{url: '/static/icon/mergeOutfall_48.ico', size: {width: 32, height: 32}}"
-      @click="handlepaikou(index,val) "
+      @click="handlepaikou(mergeOutfall) "
     />
     <!-----------------------------------------检查井渲染-------------------------------------------------------------------->
     <!--雨水检查井-->
@@ -172,7 +172,9 @@
   import {getArea} from '@/utils/map'
 
   export default {
-    props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits','isHideSewageConduits','isHideAllOutfalls'],
+    props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits','isHideSewageConduits',
+            'isHideAllOutfalls','isHideMergeOutfalls','isHideRainOutfalls','isHideSewageOutfalls',
+            'isHideCompanys'],
     data() {
       return {
         projectId: '',
@@ -248,6 +250,18 @@
       },
       isHideAllOutfalls: function() {
         this.isHideAllOutfalls ? this.showAllOutfalls() : this.hideAllOutfalls()
+      },
+      isHideMergeOutfalls:function(){
+        this.isHideMergeOutfalls ? this.showMergeOutfalls():this.hideMergeOutfalls()
+      },
+      isHideRainOutfalls:function(){
+        this.isHideRainOutfalls ? this.showRainOutfalls():this.hideRainOutfalls()
+      },
+      isHideSewageOutfalls:function(){
+        this.isHideSewageOutfalls ? this.showSewageOutfalls():this.hideSewageOutfalls()
+      },
+      isHideCompanys:function(){
+        this.isHideCompanys ? this.showAllCompanys():this.hideAllCompanys()
       }
     },
     // 生命钩子函数
@@ -339,13 +353,33 @@
       showAllOutfalls() {
         this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
         this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
-        this.outfalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
+        this.outFalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
       },
       hideAllOutfalls() {
         this.outFalls.rainMarkers = [];
         this.outFalls.sewageMarkers = [];
-        this.outfalls.mergeMarkers = [];
-
+        this.outFalls.mergeMarkers = [];
+      },
+        //  显示/隐藏合流排口
+      showMergeOutfalls(){
+        this.outFalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
+      },
+      hideMergeOutfalls(){
+        this.outFalls.mergeMarkers = [];
+      },
+        // 显示/隐藏雨水排口
+      showRainOutfalls(){
+        this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
+      },
+      hideRainOutfalls(){
+        this.outFalls.rainMarkers = [];
+      },
+        //显示/隐藏污水排口
+      showSewageOutfalls(){
+        this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
+      },
+      hideSewageOutfalls(){
+        this.outFalls.sewageMarkers = [];
       },
       /**
        * 显示/隐藏所有检查井
@@ -361,6 +395,9 @@
        * */
       showAllCompanys(){
         this.companys = this.mapData.companys;
+      },
+      hideAllCompanys(){
+        this.companys =[]
       },
       // 每个地块点击事件
       handleSubcatchment(SubcatchmentInfo) {
@@ -382,8 +419,8 @@
         this.selectPolylinePaths = []
       },
       // 每个排口点击事件
-      handlepaikou(index,val) {
-        this.$emit('getInfo', val);
+      handlepaikou(data) {
+        this.$emit('getInfo', data);
       },
       // 每个管线点击事件
       handleguanxian(data) {
@@ -429,34 +466,22 @@
         var conduitsData = dataArr;
         _each(conduitsData, function(index, conduitData) {
           var conduitType = conduitData.properties.leixing;
+          var lng_lat = this.geometry.coordinates
+          var info = this.properties
+          var lng_latArr = []
+          for (var i = 0; i < lng_lat.length; i++) {
+            var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
+            lng_latArr.push(arr)
+          }
+          var conduit = {
+            type: '管线',
+            info: info,
+            geos: lng_latArr
+          }
           if(conduitType == '雨水管'){
-            var lng_lat = this.geometry.coordinates
-            var info = this.properties
-            var lng_latArr = []
-            for (var i = 0; i < lng_lat.length; i++) {
-              var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
-              lng_latArr.push(arr)
-            }
-            var conduit = {
-              type: '管线',
-              info: info,
-              geos: lng_latArr
-            }
             self.mapData.conduits.rainConduits.push(conduit)
           }
           if(conduitType == '污水管'){
-            var lng_lat = this.geometry.coordinates
-            var info = this.properties
-            var lng_latArr = []
-            for (var i = 0; i < lng_lat.length; i++) {
-              var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
-              lng_latArr.push(arr)
-            }
-            var conduit = {
-              type: '管线',
-              info: info,
-              geos: lng_latArr
-            }
             self.mapData.conduits.sewageConduits.push(conduit)
           }
 
@@ -596,7 +621,6 @@
           var lng_lat = outFallData.geometry.coordinates
           var info = outFallData.properties
           var OutFall = {
-            id: index,
             type : '排口',
             info : info,
             geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },

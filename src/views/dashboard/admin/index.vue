@@ -10,6 +10,10 @@
         :is-hide-rain-conduits = "isHideRainConduits"
         :is-hide-sewage-conduits = "isHideSewageConduits"
         :is-hide-all-outfalls="isHideAllOutfalls"
+        :is-hide-merge-outfalls = 'isHideMergeOutfalls'
+        :is-hide-rain-outfalls = 'isHideRainOutfalls'
+        :is-hide-sewage-outfalls="isHideSewageOutfalls"
+        :is-hide-companys = 'isHideCompanys'
         @getInfo = "getInfo"
       />
       <!--左-->
@@ -41,46 +45,44 @@
                 <span class="number">{{this.outfalls.meregeOutfalls.length+this.outfalls.rainOutfalls.length+this.outfalls.sewageOutfalls.length}}</span>
               </template>
               <!--分组设置-->
+                <!--合流排口-->
               <el-menu-item-group>
                 <template slot="title">
                   <i
-                    :class="isHideAllConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    :class="isHideMergeOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                     class="iconfont"
-                    @click="handleHideAllConduits()"
+                    @click="handleMergeOutfalls()"
                     @click.stop/>
                   <span>合流排口</span>
                   <span>{{this.outfalls.meregeOutfalls.length}}</span>
                 </template>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
+                <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
+                <!--<el-menu-item index="1-2">选项2</el-menu-item>-->
               </el-menu-item-group>
+                <!--雨水排口-->
               <el-menu-item-group>
                 <template slot="title">
                   <i
-                    :class="isHideAllConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    :class="isHideRainOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                     class="iconfont"
-                    @click="handleHideAllConduits()"
+                    @click="handleRainOutfalls()"
                     @click.stop/>
                   <span>雨水排口</span>
                   <span>{{this.outfalls.rainOutfalls.length}}</span>
                 </template>
-                <el-menu-item index="2-1">选项1</el-menu-item>
-                <el-menu-item index="2-2">选项2</el-menu-item>
               </el-menu-item-group>
+                <!--污水排口-->
               <el-menu-item-group>
                 <template slot="title">
                   <i
-                    :class="isHideAllConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    :class="isHideSewageOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                     class="iconfont"
-                    @click="handleHideAllConduits()"
+                    @click="handleSewageOutfalls()"
                     @click.stop/>
                   <span>污水排口</span>
                   <span>{{this.outfalls.sewageOutfalls.length}}</span>
                 </template>
-                <el-menu-item index="3-1">选项1</el-menu-item>
-                <el-menu-item index="3-2">选项2</el-menu-item>
               </el-menu-item-group>
-              <!--分组设置结束-->
             </el-submenu>
             <!--管线-->
             <el-submenu index="2">
@@ -138,7 +140,10 @@
             <el-submenu index="4">
               <template slot="title">
                 <i class="iconfont el-icon-dikuai"/>
-                <i class="display-submenu  iconfont el-icon-yanjing_yincang"/>
+                <i class="display-submenu  iconfont el-icon-yanjing_yincang"
+                   :class="isHideCompanys?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                   @click="handleHideAllCompanys()"
+                   @click.stop/>
                 <span class="submenu-title">工业企业</span>
                 <span class="number">{{companys.length}}</span>
               </template>
@@ -340,7 +345,7 @@
                       <li>
                         <div class="info-title">企业名称</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.QYMC" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.QYMC)" placement="top-start">
                             <el-button class="info-button">{{data.info.QYMC}}</el-button>
                           </el-tooltip>
                         </div>
@@ -349,7 +354,7 @@
                       <li>
                         <div class="info-title">X_坐标</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.X_cor" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.X_cor)" placement="top-start">
                             <el-button class="info-button">{{data.info.X_cor}}</el-button>
                           </el-tooltip>
                         </div>
@@ -358,7 +363,7 @@
                       <li>
                         <div class="info-title">Y_坐标</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.Y_cor" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.Y_cor)" placement="top-start">
                             <el-button class="info-button">{{data.info.Y_cor}}</el-button>
                           </el-tooltip>
                         </div>
@@ -367,7 +372,7 @@
                       <li>
                         <div class="info-title">街道</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.JDMC" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.JDMC)" placement="top-start">
                             <el-button class="info-button">{{data.info.JDMC}}</el-button>
                           </el-tooltip>
                         </div>
@@ -375,15 +380,15 @@
                       <li>
                         <div class="info-title">社区</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.SQMC" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.SQMC)" placement="top-start">
                             <el-button class="info-button">{{data.info.SQMC}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">地址</div>
-                        <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.SCJYDZ" placement="top-start">
+                          <div class="info-span">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.SCJYDZ)" placement="top-start">
                             <el-button class="info-button">{{data.info.SCJYDZ}}</el-button>
                           </el-tooltip>
                         </div>
@@ -391,7 +396,7 @@
                       <li>
                         <div class="info-title">法人代表</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.FDDBR" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.FDDBR)" placement="top-start">
                             <el-button class="info-button">{{data.info.FDDBR}}</el-button>
                           </el-tooltip>
                         </div>
@@ -399,7 +404,7 @@
                       <li>
                         <div class="info-title">联系方式</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.LXFS" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.LXFS)" placement="top-start">
                             <el-button class="info-button">{{data.info.LXFS}}</el-button>
                           </el-tooltip>
                         </div>
@@ -407,7 +412,7 @@
                       <li>
                         <div class="info-title">企业人数</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.QYRS" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.QYRS)" placement="top-start">
                             <el-button class="info-button">{{data.info.QYRS}}</el-button>
                           </el-tooltip>
                         </div>
@@ -415,7 +420,7 @@
                       <li>
                         <div class="info-title">行业类别</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.HYLB" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.HYLB)" placement="top-start">
                             <el-button class="info-button">{{data.info.HYLB}}</el-button>
                           </el-tooltip>
                         </div>
@@ -423,7 +428,7 @@
                       <li>
                         <div class="info-title">生产用水量</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.SCYSL" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.SCYSL)" placement="top-start">
                             <el-button class="info-button">{{data.info.SCYSL}}</el-button>
                           </el-tooltip>
                         </div>
@@ -431,7 +436,7 @@
                       <li>
                         <div class="info-title">排水量</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.PSL" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.PSL)" placement="top-start">
                             <el-button class="info-button">{{data.info.PSL}}</el-button>
                           </el-tooltip>
                         </div>
@@ -439,7 +444,7 @@
                       <li>
                         <div class="info-title">主要生产工艺</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.ZYSCGY" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.ZYSCGY)" placement="top-start">
                             <el-button class="info-button">{{data.info.ZYSCGY}}</el-button>
                           </el-tooltip>
                         </div>
@@ -447,7 +452,7 @@
                       <li>
                         <div class="info-title">产品</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.GPZL" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.GPZL)" placement="top-start">
                             <el-button class="info-button">{{data.info.GPZL}}</el-button>
                           </el-tooltip>
                         </div>
@@ -455,7 +460,7 @@
                       <li>
                         <div class="info-title">环评</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.HPPFWJ" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.HPPFWJ)" placement="top-start">
                             <el-button class="info-button">{{data.info.HPPFWJ}}</el-button>
                           </el-tooltip>
                         </div>
@@ -463,7 +468,7 @@
                       <li>
                         <div class="info-title">环评有效性</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.HPPFWJYXX" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.HPPFWJYXX)" placement="top-start">
                             <el-button class="info-button">{{data.info.HPPFWJYXX}}</el-button>
                           </el-tooltip>
                         </div>
@@ -471,7 +476,7 @@
                       <li>
                         <div class="info-title">排污许可证</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.PWXKZ" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.PWXKZ)" placement="top-start">
                             <el-button class="info-button">{{data.info.PWXKZ}}</el-button>
                           </el-tooltip>
                         </div>
@@ -479,7 +484,7 @@
                       <li>
                         <div class="info-title">废水处理方式</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="data.info.FSCLFS" placement="top-start">
+                          <el-tooltip class="item" effect="dark" :content="String(data.info.FSCLFS)" placement="top-start">
                             <el-button class="info-button">{{data.info.FSCLFS}}</el-button>
                           </el-tooltip>
                         </div>
@@ -530,9 +535,14 @@
         isHideAllConduits: true,
         isHideRainConduits: true,
         isHideSewageConduits: true,
-
-
+        //显示隐藏排口
         isHideAllOutfalls: true,
+        isHideMergeOutfalls:true,
+        isHideRainOutfalls:true,
+        isHideSewageOutfalls:true,
+        //显示隐藏企业
+        isHideCompanys:true,
+        //消息提示
         infoManager: false,
         isCollapse: true,
         tabPosition: 'right',
@@ -599,12 +609,23 @@
         this.isHideSewageConduits = !this.isHideSewageConduits;
       },
 
-
       /**
        * 显示/隐藏所有排口
        */
       handleHideAllOutfalls() {
         this.isHideAllOutfalls = !this.isHideAllOutfalls
+      },
+        // 显示/隐藏合流排口
+      handleMergeOutfalls(){
+        this.isHideMergeOutfalls = !this.isHideMergeOutfalls
+      },
+        // 显示/隐藏雨水排口
+      handleRainOutfalls(){
+        this.isHideRainOutfalls = !this.isHideRainOutfalls
+      },
+        // 显示/隐藏污水排口
+      handleSewageOutfalls(){
+        this.isHideSewageOutfalls = !this.isHideSewageOutfalls
       },
       // 是否显示
       handleShow() {
@@ -613,6 +634,13 @@
       // 折叠展开
       hanleFold() {
         this.isCollapse = !this.isCollapse
+      },
+      /**
+       * 显示/隐藏全部企业
+       *
+       */
+      handleHideAllCompanys(){
+       this.isHideCompanys = !this.isHideCompanys;
       },
       /**
        * 根据排口查询上游管线
@@ -691,5 +719,7 @@
   .anchorBL {display: none;}
   .open{width: 320px;}
   .off{width: 0px;}
+  .el-icon-yanjing_yincang{cursor: pointer}
+  .el-icon-yanjing_xianshi{cursor: pointer}
 </style>
 
