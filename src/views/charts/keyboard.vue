@@ -2,21 +2,31 @@
   <div style="padding-top:20px;">
     <!--表头部分-->
     <el-form :inline="true" class="demo-form-inline" style="padding-left:10px;">
-      <el-form-item label="项目名称">
-        <el-input placeholder="请输入要查询的编号"></el-input>
-        <!--<el-select  placeholder="请选择">-->
-        <!--<el-option label="name"></el-option>-->
-        <!--</el-select>-->
+      <el-form-item label="项目名称" prop="creatorId">
+        <el-select v-model="project.creatorId" placeholder="请选择" style="padding-left:10px;">
+          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
+        </el-select>
       </el-form-item>
+
+      <el-form-item label="点类型" prop="type">
+        <el-select v-model="project.geometry_type"  placeholder="请选择点类型" style="padding-left:10px;">
+          <el-option label="排口" value="Point1"></el-option>
+          <el-option label="工业企业" value="Point2" ></el-option>
+        </el-select>
+      </el-form-item>
+
       <el-form-item label="编号">
-        <el-input placeholder="请输入要查询的编号"></el-input>
+        <el-input v-model="formInline.user" placeholder="请输入要查询的编号" style="padding-left:10px;"></el-input>
       </el-form-item>
+
       <el-form-item>
-        <el-button type="primary">查询</el-button>
+        <el-button type="primary" @click="handleSelect">查询</el-button>
       </el-form-item>
+
       <el-form-item>
-        <el-button type="primary">添加</el-button>
+        <el-button type="primary" >添加</el-button>
       </el-form-item>
+
       <el-form-item>
         <el-button type="success">导出</el-button>
       </el-form-item>
@@ -39,9 +49,9 @@
             <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -77,16 +87,16 @@
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
           <el-table :data="parkSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
+            <el-table-column align="center" prop="XMMC" label="项目名称" effect="dark" content="" placement="top" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -97,28 +107,41 @@
               </template>
             </el-table-column>
           </el-table>
+
           <!--分页-->
-          <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
-                         background
-                         layout="prev, pager, next"
-                         :total="totalSecond"
-                         @current-change="currentChange">
-          </el-pagination>
+          <div style="width:100%;text-align: center; margin:10px 0px;">
+            <!--<el-pagination style="width:100%;text-align: center; margin:10px 0px;"-->
+            <!--background-->
+            <!--layout="prev, pager, next"-->
+            <!--:total="totalSecond"-->
+            <!--@current-change="currentChange">-->
+            <!--</el-pagination>-->
+
+            <el-pagination
+              @current-change="currentChange"
+              :page-sizes="[ 10, 20, 50 ]"
+              :page-size="10"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="totalSecond">
+            </el-pagination>
+          </div>
+
+
         </el-tab-pane>
 
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
           <el-table :data="roadSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -129,28 +152,40 @@
               </template>
             </el-table-column>
           </el-table>
+
           <!--分页-->
-          <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
-                         background
-                         layout="prev, pager, next"
-                         :total="totalThree"
-                         @current-change="currentChange">
-          </el-pagination>
+          <div style="width:100%;text-align: center; margin:10px 0px;">
+            <!--<el-pagination style="width:100%;text-align: center; margin:10px 0px;"-->
+            <!--background-->
+            <!--layout="prev, pager, next"-->
+            <!--:total="totalThree"-->
+            <!--@current-change="currentChange">-->
+            <!--</el-pagination>-->
+
+            <el-pagination
+              @current-change="currentChange"
+              :page-sizes="[ 10, 20, 50 ]"
+              :page-size="10"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="totalThree">
+            </el-pagination>
+          </div>
+
         </el-tab-pane>
 
         <el-tab-pane label="河道治理" name="4" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -172,16 +207,16 @@
         <el-tab-pane label="涉水基础设施" name="5" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
+            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
+            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -203,15 +238,15 @@
         <el-tab-pane label="PPP项目" name="6" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="75"></el-table-column>
+            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
             <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
             <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
             <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
             <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
             <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
             <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况"></el-table-column>
+            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
             <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="200">
@@ -285,17 +320,17 @@
                       style="width:300px"
                       v-model="optionData.ZBQY"></el-input>
           </el-form-item>
-          <el-form-item label="是否为海绵城市项目：">
+          <el-form-item label="海绵建设情况：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="optionData.HMCS"></el-input>
+                      v-model="optionData.JSQK"></el-input>
           </el-form-item>
-          <el-form-item label="海绵类型：">
+          <el-form-item label="年径流总量控制率：">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
-                      v-model="optionData.HMLX"></el-input>
+                      v-model="optionData.ZLKZL"></el-input>
           </el-form-item>
         </el-form>
 
@@ -335,6 +370,18 @@
     name: 'keyboard',
     data(){
       return {
+        projects:[],
+        project: {
+          creatorId: '',
+          geometry_type:''
+        },
+        formInline:{
+          user:'',
+          region:''
+        },
+        pageNo : 1,
+
+
         projectId: '',
         buildSquare: [], // 公园
         roadSquare: [],  // 道路
@@ -378,8 +425,44 @@
     mounted() {
       this.ProductInit();
       this.Test();
+      this.getProjectsInfo();
     },
     methods: {
+      //请求所有项目
+      getProjectsInfo(){
+        axios('/api/projects').then(this.getProjectSuccess);
+      },
+      getProjectSuccess(res){
+        this.projects = res.data;
+      },
+      // 查询事件
+      handleSelect(){
+        var self = this;
+        var selectObject = {
+          project_id: self.project.creatorId,
+          geometry_type : self.project.geometry_type
+        };
+        // 向后端发起请求接口为 /shapes 拿到数据
+        request('shapes',{
+          params:{
+            pageNo: self.pageNo,
+            pageSize:self.pageSize,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: selectObject.project_id
+                },
+                'category':{
+                  equalTo: 'SUBCATCHMENTS'
+                }
+              }
+            }
+          }
+        }).then(resp =>{
+          this.tableData = resp.data;
+        self.totall = Number(resp.headers.total);
+      })
+      },
       /**
        * 加载项目数据
        */
@@ -414,12 +497,11 @@
       roadData(res){
         const self = this;
         var data = res.data;
-        var demo = [];
         _.each(data, function (L) {
           var TestData = JSON.parse(L.properties);
+          console.log("TestData: ", TestData.properties);
           var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
-          var demo = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
-
+          var threeTest = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
           /**
            * 道路广场
            */
@@ -431,6 +513,7 @@
             RoadTest.XMMC = TestData.properties.XMMC;
             RoadTest.HMLX = TestData.properties.HMLX;
             RoadTest.PRHD = TestData.properties.PRHD;
+            RoadTest.SSLY = TestData.properties.SSLY;
             RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
             RoadTest.ZBQY = TestData.properties.ZBQY;
             /**
@@ -438,126 +521,152 @@
              */
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              RoadTest.ZLKZL = "60%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
+              RoadTest.ZLKZL = "40%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
               RoadTest.JSQK = TestData.properties.JSZT + '';
+              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              RoadTest.ZLKZL = "65%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
+              RoadTest.ZLKZL = "40%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
               RoadTest.JSQK = TestData.properties.JSZT + '';
+              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
+              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              RoadTest.JSQK = TestData.properties.JSZT + '';
+              RoadTest.JSQK = "规划管控" + '';
+              RoadTest.ZLKZL = "65%";
             }
             self.roadSquare.push(RoadTest);
           } else
-
           /**
            * 建筑小区
            */
-          if ( letter === "R" || letter === "M" || letter === "C" || demo === "GIC" ) {
+          if ( letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC" ) {
             var builTest = {};
-            builTest.name = TestData.properties.name
-            builTest.YDLX = TestData.properties.YDLX
-            builTest.JSZT = TestData.properties.JSZT
-            builTest.XMMC = TestData.properties.XMMC
-            builTest.HMLX = TestData.properties.HMLX
-            builTest.PRHD = TestData.properties.PRHD
-            builTest.SSPSFQ = TestData.properties.SSPSFQ
-            builTest.ZBQY = TestData.properties.ZBQY
+            builTest.name = TestData.properties.name;
+            builTest.YDLX = TestData.properties.YDLX;
+            builTest.JSZT = TestData.properties.JSZT;
+            builTest.XMMC = TestData.properties.XMMC;
+            builTest.HMLX = TestData.properties.HMLX;
+            builTest.PRHD = TestData.properties.PRHD;
+            builTest.SSLY = TestData.properties.SSLY;
+            builTest.SSPSFQ = TestData.properties.SSPSFQ;
+            builTest.ZBQY = TestData.properties.ZBQY;
             /**
              * 判断海绵建设情况
              */
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              builTest.ZLKZL = "65%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              builTest.JSQK = TestData.properties.JSZT + "无海绵";
+              builTest.ZLKZL = "50%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
               builTest.JSQK = TestData.properties.JSZT + '';
+              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              builTest.ZLKZL = "70%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              builTest.JSQK = TestData.properties.JSZT + "无海绵";
+              builTest.ZLKZL = "50%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
               builTest.JSQK = TestData.properties.JSZT + '';
+              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              builTest.JSQK = TestData.properties.JSZT + "无海绵";
+              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              builTest.JSQK = TestData.properties.JSZT + '';
+              builTest.JSQK = "规划管控" + '';
+              builTest.ZLKZL = "65%";
             }
             self.buildSquare.push(builTest);
           } else
-
           /**
            * 公园绿地
            */
           if ( letter === "G"  ) {
             var parkTest = {};
-            parkTest.name = TestData.properties.name
-            parkTest.YDLX = TestData.properties.YDLX
-            parkTest.JSZT = TestData.properties.JSZT
-            parkTest.XMMC = TestData.properties.XMMC
-            parkTest.HMLX = TestData.properties.HMLX
-            parkTest.PRHD = TestData.properties.PRHD
-            parkTest.SSPSFQ = TestData.properties.SSPSFQ
-            parkTest.ZBQY = TestData.properties.ZBQY
+            parkTest.name = TestData.properties.name;
+            parkTest.YDLX = TestData.properties.YDLX;
+            parkTest.JSZT = TestData.properties.JSZT;
+            parkTest.XMMC = TestData.properties.XMMC;
+            parkTest.HMLX = TestData.properties.HMLX;
+            parkTest.PRHD = TestData.properties.PRHD;
+            parkTest.SSLY = TestData.properties.SSLY;
+            parkTest.SSPSFQ = TestData.properties.SSPSFQ;
+            parkTest.ZBQY = TestData.properties.ZBQY;
             /**
              * 判断海绵建设情况
              */
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              parkTest.ZLKZL = "70%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
+              parkTest.ZLKZL = "60%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
               parkTest.JSQK = TestData.properties.JSZT + '';
+              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              parkTest.ZLKZL = "80%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
+              parkTest.ZLKZL = "60%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
               parkTest.JSQK = TestData.properties.JSZT + '';
+              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
+              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              parkTest.JSQK = TestData.properties.JSZT + '';
+              parkTest.JSQK = "" + '';
+              parkTest.ZLKZL = "80%";
             }
             self.parkSquare.push(parkTest);
           }
-
         });
         this.totalFrist = self.buildSquare.length;
         this.totalSecond = self.parkSquare.length;
@@ -581,6 +690,33 @@
         const self = this;
         console.log("位置: ", tab.index);
       },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       /**
@@ -696,4 +832,13 @@
   div.fontSize > label {
     font-size: 19px;
   }
+  /*tr.el-table__row > td.is-center >  div.cell{*/
+    /*overflow: hidden;*/
+    /*white-space:nowrap;*/
+    /*text-overflow:ellipsis;*/
+  /*}*/
+  /*tr.el-table__row > td.is-center{*/
+    /*height:53px;*/
+    /*line-height:53px;*/
+  /*}*/
 </style>
