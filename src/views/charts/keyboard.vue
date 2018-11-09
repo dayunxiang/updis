@@ -500,7 +500,7 @@
         request('shapes', {
           params: {
             pageNo: 1,
-            pageSize: 200000,
+            pageSize: 20000000,
             filters: {
               'shape': {
                 'category': {
@@ -562,6 +562,7 @@
               RoadTest.ZLKZL = "40%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
+              debugger
               RoadTest.JSQK = TestData.properties.JSZT + '';
               RoadTest.ZLKZL = "";
             }
@@ -693,9 +694,9 @@
         this.totalFrist = self.buildSquare.length;
         this.totalSecond = self.parkSquare.length;
         this.totalThree = self.roadSquare.length;
-        /*console.log("道路广场: ", self.roadSquare);
-        console.log("建筑小区: ", self.buildSquare);
-        console.log("公园绿地: ", self.parkSquare);*/
+//        console.log("道路广场: ", self.roadSquare);
+        /* console.log("建筑小区: ", self.buildSquare);
+        console.log("公园绿地: ", self.parkSquare); */
       },
       /**
        * 分页部分

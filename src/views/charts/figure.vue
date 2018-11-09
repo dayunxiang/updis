@@ -24,7 +24,7 @@
              v-model="activeNo"
              type="card">
 
-      <el-tab-pane align="center" label="项目数量完成度" name="0">
+      <el-tab-pane align="center" label="海绵面积覆盖度" name="0">
         <div style="margin-top:2px; padding-top:5px;">
           <div id="completeDegree" :style="{width: '1200px', height: '500px'}" ></div>
         </div>
@@ -34,7 +34,7 @@
 
       </el-tab-pane>
 
-      <el-tab-pane align="center" label="海绵面积覆盖度" name="2">
+      <el-tab-pane align="center" label="项目数量完成度" name="2">
         <!--饼图-->
         <div style="width:500px; height:450px; float:left; margin-top:2px; padding-top:5px;">
           <div id="optionPie" :style="{width: '500px', height: '500px'}" ></div>
@@ -399,10 +399,10 @@
         };*/
         self.completeDegree =  {
           title : {
-            text: '项目完成度',
-            x: 'center'
+            text: '海绵面积覆盖度',
+            x: 'left'
           },
-          // grid: {y: 70, y2:30, x2:20},   // 大标题的位置
+          //grid: {y: 70, y2:30, x2:20},   // 大标题的位置
           toolbox: {
             show : true,   // 是否启用工具
             feature : {
@@ -416,12 +416,15 @@
           tooltip : {
 //            formatter: '{b} <br> {c} <br/> {a}',
             trigger: 'axis',
-            /*axisPointer : {    // 坐标轴指示器，坐标轴触发有效
-              type : 'shadow',   // 默认为直线，可选为：'line' | 'shadow'
-            }*/
+            axisPointer : {     // 坐标轴指示器，坐标轴触发有效
+              type : 'shadow'   // 默认为直线，可选为：'line' | 'shadow'
+            }
           },
+         /* polar:{
+            center:['20%','80%']
+          },*/
           legend: {
-            data:[
+            /*data:[
               'ECharts1 - 2k数据',
               'ECharts1 - 2w数据',
               'ECharts1 - 20w数据',
@@ -429,26 +432,28 @@
               'ECharts2 - 2k数据',
               'ECharts2 - 2w数据',
               'ECharts2 - 20w数据'
-            ]
-            //data: ['现在无海绵', '在建无海绵','规划管控','在建已落实海绵', '现状已落实海绵']
+            ]*/
+            orient: 'horizontal',
+            left: 'center',
+            data: ['现在无海绵', '在建无海绵','规划管控','在建已落实海绵', '现状已落实海绵']
           },
           calculable : true,
           xAxis : [
             {
               type : 'category',
-              data : ['#1','#2','#3']
+              data : ['1#','2#','3#']
             },
             {
               type : 'category',
-              data : ['#1','#2','#3']
+              data : ['1#','2#','3#']
             },
             {
               type : 'category',
-              data : ['#1','#2','#3']
+              data : ['1#','2#','3#']
             },
             {
               type : 'category',
-              data : ['#1','#2','#3']
+              data : ['1#','2#','3#']
             },
             {
               type : 'category',
@@ -457,7 +462,7 @@
               axisLabel: {show:false},   // 刻度标签
               splitArea: {show:false},   // 分隔区域
               splitLine: {show:false},   // 分隔线
-              data : ['#1','#2','#3']
+              data : ['1#','2#','3#']
             }
           ],
           yAxis : [
@@ -480,7 +485,7 @@
                   color:'#C2C2C2',
                   label:{
                     show:true,
-                    position: ['40%' , 5 ],
+                    position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
                     }
@@ -488,42 +493,6 @@
                 }
               },
               data:[95,96,97]
-            },
-            {
-              name:'现在无海绵',
-              type:'bar',
-              xAxisIndex:4,
-              itemStyle: {
-                normal: {
-                  color:'#C2C2C2',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },
-              data:[85,86,87]
-            },
-            {
-              name:'现在无海绵',
-              type:'bar',
-              xAxisIndex:4,
-              itemStyle: {
-                normal: {
-                  color:'#C2C2C2',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },
-              data:[75,76,77]
             },
 
             {
@@ -535,7 +504,7 @@
                   color:'#7A7A7A',
                   label:{
                     show:true,
-                    position: ['40%' , 5 ],
+                    position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
                     }
@@ -543,42 +512,6 @@
                 }
               },
               data:[45,46,47]
-            },
-            {
-              name:'在建无海绵',
-              type:'bar',
-              xAxisIndex:3,
-              itemStyle: {
-                normal: {
-                  color:'#7A7A7A',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },
-              data:[35,36,37]
-            },
-            {
-              name:'在建无海绵',
-              type:'bar',
-              xAxisIndex:3,
-              itemStyle: {
-                normal: {
-                  color:'#7A7A7A',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },
-              data:[25,26,27]
             },
 
             {
@@ -590,7 +523,7 @@
                   color:'#87CEFA',
                   label:{
                     show:true,
-                    position: ['40%' , 5 ],
+                    position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
                     },
@@ -603,50 +536,6 @@
               },
               data:[25,26,27]
             },
-            {
-              name:'规划管控',
-              type:'bar',
-              xAxisIndex:2,
-              itemStyle: {
-                normal: {
-                  color:'#87CEFA',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    },
-                    /*formatter(p){
-                     console.log("这个P是什么: ", p);
-                     return p.value > 0 ? (p.value +'') : '';
-                     }*/
-                  }
-                }
-              },
-              data:[15,16,17]
-            },
-            {
-              name:'规划管控',
-              type:'bar',
-              xAxisIndex:2,
-              itemStyle: {
-                normal: {
-                  color:'#87CEFA',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    },
-                    /*formatter(p){
-                     console.log("这个P是什么: ", p);
-                     return p.value > 0 ? (p.value +'') : '';
-                     }*/
-                  }
-                }
-              },
-              data:[31,32,33]
-            },
 
             {
               name:'在建已落实海绵',
@@ -656,41 +545,7 @@
                   color:'#1E90FF',
                   label:{
                     show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },
-              data:[15,16,17]
-            },
-            {
-              name:'在建已落实海绵',
-              type:'bar',
-              itemStyle: {
-                normal: {
-                  color:'#1E90FF',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },
-              data:[9,10,11]
-            },
-            {
-              name:'在建已落实海绵',
-              type:'bar',
-              itemStyle: {
-                normal: {
-                  color:'#1E90FF',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
+                    position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
                     }
@@ -709,45 +564,7 @@
                   color:'#1874CD',
                   label:{
                     show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545",
-                      fontWeight: 'bolder'
-                    }
-                  }
-                }
-              },
-              data:[5,6,7]
-            },
-            {
-              name:'现状已落实海绵',
-              type:'bar',
-              xAxisIndex:1,
-              itemStyle: {
-                normal: {
-                  color:'#1874CD',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
-                    textStyle: {
-                      color: "#454545",
-                      fontWeight: 'bolder'
-                    }
-                  }
-                }
-              },
-              data:[5,6,7]
-            },
-            {
-              name:'现状已落实海绵',
-              type:'bar',
-              xAxisIndex:1,
-              itemStyle: {
-                normal: {
-                  color:'#1874CD',
-                  label:{
-                    show:true,
-                    position: ['40%' , 5 ],
+                    position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545",
                       fontWeight: 'bolder'
@@ -996,7 +813,7 @@
               name: '访问来源',
               type: 'pie',
               selectedMode: 'single',
-              center : ['40%', 200],
+              center : ['48%', 200],
               radius : 110,
               label: {
                 normal: {
@@ -1084,7 +901,7 @@
          }
          ]
          };*/
-      },
+      }
     }
   }
 </script>
