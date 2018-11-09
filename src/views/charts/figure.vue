@@ -414,55 +414,44 @@
             }
           },
           tooltip : {
-//            formatter: '{b} <br> {c} <br/> {a}',
             trigger: 'axis',
+            show:false,
+            /*formatter: '{b} <br> {c} <br/> {a}',
             axisPointer : {     // 坐标轴指示器，坐标轴触发有效
               type : 'shadow'   // 默认为直线，可选为：'line' | 'shadow'
-            }
+            }*/
           },
-         /* polar:{
-            center:['20%','80%']
-          },*/
           legend: {
-            /*data:[
-              'ECharts1 - 2k数据',
-              'ECharts1 - 2w数据',
-              'ECharts1 - 20w数据',
-              '',
-              'ECharts2 - 2k数据',
-              'ECharts2 - 2w数据',
-              'ECharts2 - 20w数据'
-            ]*/
             orient: 'horizontal',
             left: 'center',
             data: ['现在无海绵', '在建无海绵','规划管控','在建已落实海绵', '现状已落实海绵']
           },
-          calculable : true,
+          //calculable : true,
           xAxis : [
             {
               type : 'category',
-              data : ['1#','2#','3#']
+              data : ['1#','2#','3#','4#','5#','6#','7#']
             },
             {
               type : 'category',
-              data : ['1#','2#','3#']
+              data : ['1#','2#','3#','4#','5#','6#','7#']
             },
             {
               type : 'category',
-              data : ['1#','2#','3#']
+              data : ['1#','2#','3#','4#','5#','6#','7#']
             },
             {
               type : 'category',
-              data : ['1#','2#','3#']
+              data : ['1#','2#','3#','4#','5#','6#','7#']
             },
             {
               type : 'category',
-              axisLine : {show:false},   // 坐标轴线
-              axisTick : {show:false},   // 坐标轴刻度
-              axisLabel: {show:false},   // 刻度标签
-              splitArea: {show:false},   // 分隔区域
-              splitLine: {show:false},   // 分隔线
-              data : ['1#','2#','3#']
+              axisLine : {show:true},   // 坐标轴线
+              axisTick : {show:true},   // 坐标轴刻度
+              axisLabel: {show:true},   // 刻度标签
+              splitArea: {show:false},  // 分隔区域
+              splitLine: {show:true},   // 分隔线
+              data : ['1#','2#','3#','4#','5#','6#','7#']
             }
           ],
           yAxis : [
@@ -477,14 +466,17 @@
           series : [
 
             {
-              name:'现在无海绵',
+              name:'现状无海绵',
               type:'bar',
+              barMaxWidth:50,//最大宽度
+              barGap: '90%',
               xAxisIndex:4,
               itemStyle: {
                 normal: {
                   color:'#C2C2C2',
                   label:{
-                    show:true,
+                    show:false,   // 柱状中的文字
+                    labelLine :{show:true},
                     position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
@@ -498,12 +490,14 @@
             {
               name:'在建无海绵',
               type:'bar',
+              barMaxWidth:50,//最大宽度
+              barGap: '90%',
               xAxisIndex:3,
               itemStyle: {
                 normal: {
                   color:'#7A7A7A',
                   label:{
-                    show:true,
+                    show:false,   // 柱状中的文字
                     position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
@@ -517,16 +511,17 @@
             {
               name:'规划管控',
               type:'bar',
+              barMaxWidth:50,//最大宽度
               xAxisIndex:2,
               itemStyle: {
                 normal: {
                   color:'#87CEFA',
                   label:{
-                    show:true,
+                    show:false,   // 柱状中的文字
                     position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
-                    },
+                    }
                     /*formatter(p){
                       console.log("这个P是什么: ", p);
                       return p.value > 0 ? (p.value +'') : '';
@@ -540,11 +535,12 @@
             {
               name:'在建已落实海绵',
               type:'bar',
+              barMaxWidth:50,//最大宽度
               itemStyle: {
                 normal: {
                   color:'#1E90FF',
                   label:{
-                    show:true,
+                    show:false,   // 柱状中的文字
                     position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545"
@@ -558,12 +554,13 @@
             {
               name:'现状已落实海绵',
               type:'bar',
+              barMaxWidth:50,//最大宽度
               xAxisIndex:1,
               itemStyle: {
                 normal: {
                   color:'#1874CD',
                   label:{
-                    show:true,
+                    show:false,   // 柱状中的文字
                     position: ['48%' , 5 ],
                     textStyle: {
                       color: "#454545",
