@@ -42,18 +42,23 @@
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
           <el-table :data="buildSquare.slice((currentPage-1)*pageSize , currentPage*pageSize)" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
-            <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
+            <el-table-column align="center" label="序号" width="50">
+              <template slot-scope="scope">
+                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="name" label="地块编号"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="YDLX" label="用地类型"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSZT" label="建设状态"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="XMMC" label="项目名称"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="PRHD" label="排入河道" ></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSLY" label="所属流域"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSPSFQ" label="所属排水分区" width="130"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
 
-            <el-table-column align="center" fixed="right" label="操作" width="200">
+            <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
@@ -64,19 +69,11 @@
 
           <!--分页-->
           <div style="width:100%;text-align: center; margin:10px 0px;">
-            <!--<el-pagination-->
-            <!--background-->
-            <!--@size-change="handleSizeChange"-->
-            <!--:current-page="currentPage4"-->
-            <!--layout="prev, pager, next"-->
-            <!--:total="100"-->
-            <!--@current-change="currentChange">-->
-            <!--</el-pagination>-->
-
             <el-pagination
+              background
               @current-change="currentChange"
-              :page-sizes="[ 10, 20, 50 ]"
-              :page-size="10"
+              @size-change="sizeChange"
+              :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
               :total="totalFrist">
             </el-pagination>
@@ -87,18 +84,23 @@
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
           <el-table :data="parkSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
-            <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" effect="dark" content="" placement="top" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
+            <el-table-column align="center" label="序号" width="50">
+              <template slot-scope="scope">
+                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="name" label="地块编号"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="YDLX" label="用地类型"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSZT" label="建设状态"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="XMMC" label="项目名称"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="PRHD" label="排入河道" ></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSLY" label="所属流域"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSPSFQ" label="所属排水分区" width="130"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
 
-            <el-table-column align="center" fixed="right" label="操作" width="200">
+            <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
@@ -110,17 +112,11 @@
 
           <!--分页-->
           <div style="width:100%;text-align: center; margin:10px 0px;">
-            <!--<el-pagination style="width:100%;text-align: center; margin:10px 0px;"-->
-            <!--background-->
-            <!--layout="prev, pager, next"-->
-            <!--:total="totalSecond"-->
-            <!--@current-change="currentChange">-->
-            <!--</el-pagination>-->
-
             <el-pagination
+              background
               @current-change="currentChange"
-              :page-sizes="[ 10, 20, 50 ]"
-              :page-size="10"
+              @size-change="sizeChange"
+              :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
               :total="totalSecond">
             </el-pagination>
@@ -132,18 +128,23 @@
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
           <el-table :data="roadSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
-            <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
+            <el-table-column align="center" label="序号" width="50">
+              <template slot-scope="scope">
+                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="name" label="地块编号"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="YDLX" label="用地类型"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSZT" label="建设状态"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="XMMC" label="项目名称"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="PRHD" label="排入河道" ></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSLY" label="所属流域"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSPSFQ" label="所属排水分区" width="130"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
 
-            <el-table-column align="center" fixed="right" label="操作" width="200">
+            <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
@@ -155,17 +156,11 @@
 
           <!--分页-->
           <div style="width:100%;text-align: center; margin:10px 0px;">
-            <!--<el-pagination style="width:100%;text-align: center; margin:10px 0px;"-->
-            <!--background-->
-            <!--layout="prev, pager, next"-->
-            <!--:total="totalThree"-->
-            <!--@current-change="currentChange">-->
-            <!--</el-pagination>-->
-
             <el-pagination
+              background
               @current-change="currentChange"
-              :page-sizes="[ 10, 20, 50 ]"
-              :page-size="10"
+              @size-change="sizeChange"
+              :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
               :total="totalThree">
             </el-pagination>
@@ -176,18 +171,23 @@
         <el-tab-pane label="河道治理" name="4" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
-            <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
+            <el-table-column align="center" label="序号" width="50">
+              <template slot-scope="scope">
+                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="name" label="地块编号"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="YDLX" label="用地类型"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSZT" label="建设状态"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="XMMC" label="项目名称"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="PRHD" label="排入河道" ></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSLY" label="所属流域"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSPSFQ" label="所属排水分区" width="130"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
 
-            <el-table-column align="center" fixed="right" label="操作" width="200">
+            <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
@@ -196,29 +196,41 @@
               </template>
             </el-table-column>
           </el-table>
+
           <!--分页-->
-          <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
-                         background
-                         layout="prev, pager, next"
-                         :total="100">
-          </el-pagination>
+          <div style="width:100%;text-align: center; margin:10px 0px;">
+            <el-pagination
+              background
+              @current-change="currentChange"
+              @size-change="sizeChange"
+              :page-sizes="pageSizeData"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="totalSecond">
+            </el-pagination>
+          </div>
+
         </el-tab-pane>
 
         <el-tab-pane label="涉水基础设施" name="5" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
-            <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="135"></el-table-column>
+            <el-table-column align="center" label="序号" width="50">
+              <template slot-scope="scope">
+                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="name" label="地块编号"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="YDLX" label="用地类型"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSZT" label="建设状态"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="XMMC" label="项目名称"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="PRHD" label="排入河道" ></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSLY" label="所属流域"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSPSFQ" label="所属排水分区" width="130"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
 
-            <el-table-column align="center" fixed="right" label="操作" width="200">
+            <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
@@ -238,18 +250,23 @@
         <el-tab-pane label="PPP项目" name="6" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" prop="name" label="地块编号" width="85"></el-table-column>
-            <el-table-column align="center" prop="YDLX" label="用地类型" width="77"></el-table-column>
-            <el-table-column align="center" prop="JSZT" label="建设状态" width="77"></el-table-column>
-            <el-table-column align="center" prop="XMMC" label="项目名称" width="100"></el-table-column>
-            <el-table-column align="center" prop="PRHD" label="排入河道" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSLY" label="所属流域" width="77"></el-table-column>
-            <el-table-column align="center" prop="SSPSFQ" label="所属排水分区" width="106"></el-table-column>
-            <el-table-column align="center" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
-            <el-table-column align="center" prop="JSQK" label="海绵建设情况" width="127"></el-table-column>
-            <el-table-column align="center" prop="ZLKZL" label="年径流总量控制率" width="110"></el-table-column>
+            <el-table-column align="center" label="序号" width="50">
+              <template slot-scope="scope">
+                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="name" label="地块编号"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="YDLX" label="用地类型"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSZT" label="建设状态"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="XMMC" label="项目名称"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="PRHD" label="排入河道" ></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSLY" label="所属流域"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="SSPSFQ" label="所属排水分区" width="130"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
 
-            <el-table-column align="center" fixed="right" label="操作" width="200">
+            <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
@@ -266,7 +283,6 @@
           </el-pagination>
         </el-tab-pane>
       </el-tabs>
-
 
       <!--获取信息-->
       <el-dialog :title="this.hodelView === ''?'查看信息':'编辑信息'" :visible.sync="dialogVisible" data="optionData"
@@ -370,6 +386,7 @@
     name: 'keyboard',
     data(){
       return {
+        /*表头输入框数据*/
         projects:[],
         project: {
           creatorId: '',
@@ -380,11 +397,10 @@
           region:''
         },
         pageNo : 1,
-
-
         projectId: '',
-        buildSquare: [], // 公园
-        roadSquare: [],  // 道路
+
+        buildSquare: [], // 公园绿地
+        roadSquare: [],  // 道路广场
         parkSquare: [],  // 建筑小区
         total: 0,//默认数据总数
         totalFrist : 0,
@@ -392,7 +408,7 @@
         totalThree: 0,
         pageSize: 10,//每页的数据条数
         currentPage: 1,//默认开始页面
-
+        pageSizeData: [10,20,50],
 
         ListTest: [],
         dialogVisible: false,     // 查看获取的用户的信息
@@ -460,8 +476,8 @@
           }
         }).then(resp =>{
           this.tableData = resp.data;
-        self.totall = Number(resp.headers.total);
-      })
+          self.totall = Number(resp.headers.total);
+        })
       },
       /**
        * 加载项目数据
@@ -473,6 +489,9 @@
       Test() {
         this.projectId = this.$route.query.projectId;
       },
+      /**
+       * 获取项目进度表数据
+       */
       ProductInit (){
         const self = this;
         request('shapes', {
@@ -671,18 +690,19 @@
         this.totalFrist = self.buildSquare.length;
         this.totalSecond = self.parkSquare.length;
         this.totalThree = self.roadSquare.length;
-
-
-
-//        console.log("数量: ", self.roadSquare.length);
-//        console.log("res.data: ", res);
-//        console.log("Demo: ");
-
-        console.log("道路: ", self.roadSquare);
+        /*console.log("道路广场: ", self.roadSquare);
         console.log("建筑小区: ", self.buildSquare);
-        console.log("公园: ", self.parkSquare);
+        console.log("公园绿地: ", self.parkSquare);*/
+      },
+      /**
+       * 分页部分
+       */
+      sizeChange(pageSize){
+        this.pageSize = pageSize;
+        console.log("页数", pageSize);
       },
       currentChange(currentPage){
+
         this.currentPage = currentPage;
       },
       handleClick(tab, event, res) {
