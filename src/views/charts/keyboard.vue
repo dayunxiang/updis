@@ -39,10 +39,11 @@
                tab-position="top"
                v-model="activeNameTest"
                @tab-click="handleClick">
+
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
           <el-table :data="buildSquare.slice((currentPage-1)*pageSize , currentPage*pageSize)" style="width: 100%" border>
-            <el-table-column align="center" label="序号" width="50">
+            <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
               </template>
@@ -57,6 +58,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -84,7 +86,7 @@
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
           <el-table :data="parkSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
-            <el-table-column align="center" label="序号" width="50">
+            <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
               </template>
@@ -99,6 +101,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -109,7 +112,6 @@
               </template>
             </el-table-column>
           </el-table>
-
           <!--分页-->
           <div style="width:100%;text-align: center; margin:10px 0px;">
             <el-pagination
@@ -121,14 +123,12 @@
               :total="totalSecond">
             </el-pagination>
           </div>
-
-
         </el-tab-pane>
 
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
           <el-table :data="roadSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
-            <el-table-column align="center" label="序号" width="50">
+            <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
               </template>
@@ -143,6 +143,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -171,7 +172,7 @@
         <el-tab-pane label="河道治理" name="4" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" label="序号" width="50">
+            <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
               </template>
@@ -186,6 +187,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -196,7 +198,6 @@
               </template>
             </el-table-column>
           </el-table>
-
           <!--分页-->
           <div style="width:100%;text-align: center; margin:10px 0px;">
             <el-pagination
@@ -208,13 +209,12 @@
               :total="totalSecond">
             </el-pagination>
           </div>
-
         </el-tab-pane>
 
         <el-tab-pane label="涉水基础设施" name="5" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" label="序号" width="50">
+            <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
               </template>
@@ -229,6 +229,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -250,7 +251,7 @@
         <el-tab-pane label="PPP项目" name="6" algin="center">
           <!--表格-->
           <el-table style="width: 100%" border>
-            <el-table-column align="center" label="序号" width="50">
+            <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
               </template>
@@ -265,6 +266,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -282,6 +284,7 @@
                          :total="100">
           </el-pagination>
         </el-tab-pane>
+
       </el-tabs>
 
       <!--获取信息-->
