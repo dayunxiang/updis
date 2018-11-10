@@ -32,13 +32,76 @@
       @click="handleDiKuai(polygonPath)"
     />
     <!--其他项目-->
+      <!--道路-->
     <bm-polygon
-      v-for="polygonPath in polygonPaths"
-      :key="polygonPath .id"
+      v-for="polygonPath in subcatchments.road"
+      :key="polygonPath.id"
       :path="polygonPath.geos"
-      :stroke-opacity="polygonPath.opacity"
-      :stroke-weight="5"
-      :stroke-color="polygonPath.color"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+      <!--市政-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.shiZheng"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+      <!--绿地-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.lvDi"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--居住用地-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.juZhuYongDi"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--政府-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.zhengFu"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--工业-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.gongYe"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
       @click="handleSubcatchment(polygonPath)"
     />
     <!------------------------------------------排口渲染-------------------------------------------------------------------->
@@ -70,9 +133,8 @@
     <!--雨水检查井-->
     <bm-circle
       v-for="val in Junctions.rainJunctions"
-      :key="val.id"
       :center="val.geos"
-      :radius="10"
+      :radius="2"
       :stroke-opacity="1"
       :stroke-weight="7"
       fillColor="blue"
@@ -81,9 +143,8 @@
     <!--污水检查井-->
     <bm-circle
       v-for="val in Junctions.sewageJunctions"
-      :key="val.id"
       :center="val.geos"
-      :radius="10"
+      :radius="2"
       :stroke-opacity="1"
       :stroke-weight="7"
       fillColor="rgb(242,73,248)"
@@ -170,6 +231,7 @@
           getDescendantOutfallsOfSubcatchment
          } from '@/utils/mapUtil'
   import {getArea} from '@/utils/map'
+  import mapData from '../../../../../../store/modules/mapData'
 
   export default {
     props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits','isHideSewageConduits',
@@ -202,7 +264,15 @@
             rainJunctions:[],
             sewageJunctions:[]
           },
-          subcatchments: [],
+          subcatchments:{
+            road : [],
+            shiZheng:[],
+            lvDi:[],
+            juZhuYongDi:[],
+            zhengFu:[],
+            gongYe:[]
+          },
+
           companys:[]
         },
         //管线类
@@ -215,6 +285,16 @@
           rainMarkers:[],
           sewageMarkers:[],
           mergeMarkers:[]
+        },
+        //地块类
+        subcatchments:{
+          road : [],
+          shiZheng:[],
+          lvDi:[],
+          juZhuYongDi:[],
+          zhengFu:[],
+          gongYe:[]
+
         },
         //企业类
         companys:[],
@@ -317,10 +397,20 @@
        * 显示/隐藏所有地块
        */
       showAllSubcatchments() {
-        this.polygonPaths = this.mapData.subcatchments
+        this.subcatchments.road = this.mapData.subcatchments.road;
+        this.subcatchments.shiZheng = this.mapData.subcatchments.shiZheng
+        this.subcatchments.lvDi = this.mapData.subcatchments.lvDi;
+        this.subcatchments.juZhuYongDi = this.mapData.subcatchments.juZhuYongDi;
+        this.subcatchments.zhengFu = this.mapData.subcatchments.zhengFu
+        this.subcatchments.gongYe = this.mapData.subcatchments.gongYe
       },
       hideAllSubcatchments() {
-        this.polygonPaths = []
+        this.subcatchments.road = []
+        this.subcatchments.shiZheng = [];
+        this.subcatchments.lvDi = [];
+        this.subcatchments.juZhuYongDi = [];
+        this.subcatchments.zhengFu = [];
+        this.subcatchments.gongYe = [];
       },
       /**
        * 显示/隐藏所有管线
@@ -513,6 +603,19 @@
         var self = this
         var data = res.data;
         var dataArr = []
+        //正则 匹配道路 的正则
+        var daoluReg = /^[S][^A-Za-z]$/gi;
+        // 市政公用设施用地
+        var shiZhengReg = /^[U][^A-Za-z]$/gi;
+        // 绿地
+        var lvDiReg = /^[G,E][^A-Za-z]/gi
+        // 居住用地
+        var juZhuYongDiReg = /^[R][^A-Za-z]/gi
+        // 政府
+        var zhengFuReg = /^[G][I][C][^A-Za-z]/gi
+        // 工业
+        var gongYeReg = /^[M][^A-Za-z]/gi
+
         for (var i = 0 ; i < data.length; i++) {
           dataArr[i] = JSON.parse(data[i].properties)
           dataArr[i].id = data[i].id;
@@ -565,6 +668,7 @@
             var tempArr = []
             var lng_latArr = []
             var info = subcatchmentData.properties
+            var YDLX = info.YDLX;
             for (var i = 0; i < lng_lat[0].length; i++) {
               tempArr.push(lng_lat[0][i])
             }
@@ -572,19 +676,94 @@
               var arr = { lng: tempArr[i][1] + 0.005363, lat: tempArr[i][0] - 0.00402 }
               lng_latArr.push(arr)
             }
-            var subcatchment = {
-              type: '地块',
-              info: info,
-              geos: lng_latArr,
-              color: 'yellow',
-              opacity: 0.1
+            //道路
+            if(YDLX == '道路' || daoluReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(242,242,242)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
 
+              }
+              self.mapData.subcatchments.road.push(subcatchment);
             }
-            self.mapData.subcatchments.push(subcatchment);
+            //市政公用设施用地
+            if(shiZhengReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(0,0,254)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.shiZheng.push(subcatchment);
+            }
+            //绿地
+            if(lvDiReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(0,255,1)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.lvDi.push(subcatchment);
+            }
+            //居住用地
+            if(juZhuYongDiReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(255,255,1)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.juZhuYongDi.push(subcatchment);
+            }
+            //政府用地
+            if(zhengFuReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(255,0,255)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.zhengFu.push(subcatchment);
+            }
+            //工业用地
+            if(gongYeReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(127,63,1)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.gongYe.push(subcatchment);
+            }
           })
+          console.log(this.mapData.subcatchments.lvDi);
         }
-
-
       },
       // 请求排口数据
       getOutfalls() {

@@ -7,7 +7,8 @@ import {
   getDescendantOutfallsOfSubcatchment,
   getAncestorConduitsOfOutfall,
   getAncestorSubcatchmentsOfOutfall,
-  calcAllSubcatchmentNearestNode
+  calcAllSubcatchmentNearestNode,
+  getNearestNodeOfPoint,
 } from '../src/utils/mapUtil'
 
 
@@ -340,4 +341,3 @@ test("测试查询排口上游地块", () => {
   let subcatchments = getAncestorSubcatchmentsOfOutfall(feature, geojson, cy, subcatchmentNearestNodes)
   console.log(subcatchmentNearestNodes);
 })
-

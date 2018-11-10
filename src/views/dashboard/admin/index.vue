@@ -48,13 +48,14 @@
                 <!--合流排口-->
               <el-menu-item-group>
                 <template slot="title">
-                  <i
-                    :class="isHideMergeOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                    class="iconfont"
-                    @click="handleMergeOutfalls()"
-                    @click.stop/>
-                  <span>合流排口</span>
-                  <span>{{this.outfalls.meregeOutfalls.length}}</span>
+                  <span class="logo"><img src="/static/img/mergeOutfall-img.png" alt=""></span>
+                    <i
+                      :class="isHideMergeOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                      class="iconfont"
+                      @click="handleMergeOutfalls()"
+                      @click.stop/>
+                    <span style="color:black;font-size: 16px;">合流排口</span>
+                    <span style="color:black;font-size: 16px;">{{this.outfalls.meregeOutfalls.length}}</span>
                 </template>
                 <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
                 <!--<el-menu-item index="1-2">选项2</el-menu-item>-->
@@ -62,25 +63,27 @@
                 <!--雨水排口-->
               <el-menu-item-group>
                 <template slot="title">
+                  <span class="logo"><img src="/static/img/rainOutfall-img.png" alt=""></span>
                   <i
                     :class="isHideRainOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                     class="iconfont"
                     @click="handleRainOutfalls()"
                     @click.stop/>
-                  <span>雨水排口</span>
-                  <span>{{this.outfalls.rainOutfalls.length}}</span>
+                  <span style="color: black;font-size: 16px;">雨水排口</span>
+                  <span style="color: black;font-size: 16px;">{{this.outfalls.rainOutfalls.length}}</span>
                 </template>
               </el-menu-item-group>
                 <!--污水排口-->
               <el-menu-item-group>
                 <template slot="title">
+                  <span class="logo"><img src="/static/img/sewageOutfall-img.png" alt=""></span>
                   <i
                     :class="isHideSewageOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                     class="iconfont"
                     @click="handleSewageOutfalls()"
                     @click.stop/>
-                  <span>污水排口</span>
-                  <span>{{this.outfalls.sewageOutfalls.length}}</span>
+                  <span style="color:black ;font-size: 16px;">污水排口</span>
+                  <span style="color:black;font-size: 16px;">{{this.outfalls.sewageOutfalls.length}}</span>
                 </template>
               </el-menu-item-group>
             </el-submenu>
@@ -100,25 +103,27 @@
               <!--雨水管-->
               <el-menu-item-group>
                 <template slot="title">
+                  <span class="logo"><img src="/static/img/rainConduit-img.png" alt=""></span>
                   <i
                   :class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                   class="iconfont"
                   @click="handleHideRainConduits()"
                   @click.stop/>
-                  <span>雨水管</span>
-                  <span>{{this.conduits.rainConduits.length}}</span>
+                  <span style="color: black;font-size: 16px;">雨水管</span>
+                  <span style="color: black;font-size: 16px;">{{this.conduits.rainConduits.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--污水管-->
               <el-menu-item-group>
                 <template slot="title">
+                  <span class="logo"><img src="/static/img/sewageConduits-img.png" alt=""></span>
                   <i
                     :class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
                     class="iconfont"
                     @click="handleHideSewageConduits()"
                     @click.stop/>
-                  <span>污水管</span>
-                  <span>{{this.conduits.sewageConduits.length}}</span>
+                  <span style="color: black;font-size: 16px;">污水管</span>
+                  <span style="color: black;font-size: 16px;">{{this.conduits.sewageConduits.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--分组设置结束-->
@@ -166,9 +171,10 @@
               <!--地块-->
               <el-collapse-item  v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='地块'">
                 <template slot="title">
-                  <span>{{data.type}}</span>
-                  <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查询下游管道</el-button>
-                  <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查询下游排口</el-button>
+                    <span>{{data.type}}</span>
+                    <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查下游雨水管</el-button>
+                    <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查下游污水管</el-button>
+                    <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查下游排口</el-button>
                 </template>
                 <div>
                   <el-collapse v-model="activeNames">
@@ -184,6 +190,11 @@
                         </li>
                         <li>
                           <div class="info-title">面积</div>
+                          <div class="info-span">
+                            <el-tooltip class="item" effect="dark" :content="data.info.area" placement="top-start">
+                              <el-button class="info-button">{{data.info.area}}</el-button>
+                            </el-tooltip>
+                          </div>
                         </li>
                         <li>
                           <div class="info-title">用地类型</div>
@@ -339,6 +350,11 @@
               </el-collapse-item>
               <!--企业-->
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='企业'">
+                <template slot="title">
+                  <span>{{data.type}}</span>
+                  <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查下游污水管</el-button>
+                  <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查下游排口</el-button>
+                </template>
                 <el-collapse v-model="activeNames" >
                   <el-collapse-item title="基本信息" name="1">
                     <ul class="info-content">
@@ -721,5 +737,9 @@
   .off{width: 0px;}
   .el-icon-yanjing_yincang{cursor: pointer}
   .el-icon-yanjing_xianshi{cursor: pointer}
+  .el-menu-item-group__title{background: none;}
+  .logo{display:inline-block;width: 20px;height: 10px;
+    img{width: 100%;height: 100%;}
+  }
 </style>
 
