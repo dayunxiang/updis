@@ -265,14 +265,13 @@ export function getAncestorSubcatchmentsOfOutfall(outfallFeature, geojson, cy, s
 export function calcLineRotateAngle(line){
   let delta_x = line[1][0] - line[0][0]
   let delta_y = line[1][1] - line[0][1]
-  if(!delta_x) {
+  if(!delta_x && delta_y > 0) {
+    return 270
+  }
+
+  if(!delta_x && delta_y < 0) {
     return 90
   }
 
-  if(delta_x < 0) {
-    delta_x = 0 - delta_x
-    delta_y = 0 - delta_y
-  }
-
-  return Math.atan(delta_y / delta_x) / Math.PI * 180
+  return 360 - Math.atan(delta_y / delta_x) / Math.PI * 180
 }
