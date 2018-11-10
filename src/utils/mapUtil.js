@@ -256,3 +256,23 @@ export function getAncestorSubcatchmentsOfOutfall(outfallFeature, geojson, cy, s
 
   return ancestorSubcatchmentFeatures
 }
+
+
+/**
+ * 计算无向线的角度。这个角度以css transform rotate里的值为标准。 范围为 +/- 90°
+ * @param line [[x1, y1], [x2, y2]]
+ */
+export function calcLineRotateAngle(line){
+  let delta_x = line[1][0] - line[0][0]
+  let delta_y = line[1][1] - line[0][1]
+  if(!delta_x) {
+    return 90
+  }
+
+  if(delta_x < 0) {
+    delta_x = 0 - delta_x
+    delta_y = 0 - delta_y
+  }
+
+  return Math.atan(delta_y / delta_x) / Math.PI * 180
+}
