@@ -1,0 +1,29 @@
+{
+  "id": "B-468",
+  "businessType": "JUNCTIONS",
+  "position": {
+    "x": 113.93862592543796,
+    "y": 22.76126424490421
+  },
+  "properties": {
+    "type": "Feature",
+    "properties": {
+      "name": "B-468",
+      "Elevation": "21.007",
+      "MaxDepth": "3.54",
+      "InitDepth": "0",
+      "SurDepth": "0",
+      "Aponded": "100",
+      "groundele": "24.547"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        22.76126424490421,
+        113.93862592543796
+      ]
+    },
+    "id": "0",
+    "businessType": "JUNCTIONS"
+  }
+}
