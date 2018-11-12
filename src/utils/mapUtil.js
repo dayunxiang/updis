@@ -87,19 +87,34 @@ export function isNodeInPolygon(node, feature) {
 
 
 /**
- * 获取跟点最接近的检查井. TODO: 需要测试
+ * 获取跟点最接近的检查井. @TODO: 需要支持conduitType
  * @param {*} point [x, y] 格式的点
  * @param {*} cy
+ * @param {*} conduitType 管道类型
  */
-export function getNearestNodeOfPoint(point, cy) {
+export function getNearestNodeOfPoint(point, cy, conduitType) {
   let minDistance = Infinity
   let nearestNode = null
   let nodeDistance = 0
   for(let i=0;i<cy.nodes().length;i++) {
     nodeDistance = (point[0]-cy.nodes()[i].data().position.x)**2 + (point[1]-cy.nodes()[i].data().position.y)**2
-    if(nodeDistance < minDistance) {
-      nearestNode = cy.nodes()[i]
-      minDistance = nodeDistance
+    // 判断点对应的导管类型。
+    if(!!conduitType) {
+      let edges = cy.nodes()[i].connectedEdges()
+      if(!edges.length){
+        continue
+      }
+      if(edges[0].data()['properties']['properties']['leixing'] === conduitType) {
+        if(nodeDistance < minDistance) {
+          nearestNode = cy.nodes()[i]
+          minDistance = nodeDistance
+        }
+      }
+    } else {
+      if(nodeDistance < minDistance) {
+        nearestNode = cy.nodes()[i]
+        minDistance = nodeDistance
+      }
     }
   }
 
@@ -108,16 +123,20 @@ export function getNearestNodeOfPoint(point, cy) {
 
 
 /**
- * 查询地块下游管道
+ * 查询地块下游管道.
+ * @param feature
+ * @param cy
+ * @param conduitType 管道类型包括 污水检查井和雨水检查井两种
+ * @returns {Array}
  */
-export function getDescendantConduitsOfSubcatchment(feature, cy) {
+export function getDescendantConduitsOfSubcatchment(feature, cy, conduitType) {
   if(feature['geometry']['type'] !== 'Polygon') {
     console.warn('输入的feature不合法：feature的类型应该为Polygon')
     return []
   }
 
   let subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
-  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy)
+  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
 
   return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().edges(), edge => {
     return edge.data()
@@ -136,15 +155,19 @@ export function getDescendantSubcatchmentsOfSubcatchment(feature, cy) {
 
 /**
  * 查询地块下游排口
+ * @param feature
+ * @param cy
+ * @param conduitType
+ * @returns {Array}
  */
-export function getDescendantOutfallsOfSubcatchment(feature, cy) {
+export function getDescendantOutfallsOfSubcatchment(feature, cy, conduitType) {
   if(feature['geometry']['type'] !== 'Polygon') {
     console.warn('输入的feature不合法：feature的类型应该为Polygon')
     return []
   }
 
   let subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
-  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy)
+  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
 
   return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().nodes('[businessType="OUTFALLS"]'), node => {
     return node.data()
@@ -232,4 +255,23 @@ export function getAncestorSubcatchmentsOfOutfall(outfallFeature, geojson, cy, s
   }
 
   return ancestorSubcatchmentFeatures
+}
+
+
+/**
+ * 计算无向线的角度。这个角度以css transform rotate里的值为标准。 范围为 +/- 90°
+ * @param line [[x1, y1], [x2, y2]]
+ */
+export function calcLineRotateAngle(line){
+  let delta_x = line[1][0] - line[0][0]
+  let delta_y = line[1][1] - line[0][1]
+  if(!delta_x && delta_y > 0) {
+    return 270
+  }
+
+  if(!delta_x && delta_y < 0) {
+    return 90
+  }
+
+  return 360 - Math.atan(delta_y / delta_x) / Math.PI * 180
 }

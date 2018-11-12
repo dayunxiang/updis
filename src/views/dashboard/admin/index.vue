@@ -172,9 +172,11 @@
               <el-collapse-item  v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='地块'">
                 <template slot="title">
                     <span>{{data.type}}</span>
-                    <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查下游雨水管</el-button>
-                    <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查下游污水管</el-button>
-                    <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查下游排口</el-button>
+                    <div style="display: inline-block" v-if="data.info.YDLX!='道路'">
+                      <el-button type="primary" round @click="handleSubcatchmentsSelectRainConduits(data.info.id)" @click.stop>查下游雨水管</el-button>
+                      <el-button type="primary" round @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>
+                      <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查下游排口</el-button>
+                    </div>
                 </template>
                 <div>
                   <el-collapse v-model="activeNames">
@@ -191,7 +193,7 @@
                         <li>
                           <div class="info-title">面积</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.area" placement="top-start">
+                            <el-tooltip class="item" effect="dark" :content="String(data.info.area)" placement="top-start">
                               <el-button class="info-button">{{data.info.area}}</el-button>
                             </el-tooltip>
                           </div>
@@ -352,8 +354,8 @@
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='企业'">
                 <template slot="title">
                   <span>{{data.type}}</span>
-                  <el-button type="primary" round @click="handleSubcatchmentsSelectConduits(data.info.id)" @click.stop>查下游污水管</el-button>
-                  <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查下游排口</el-button>
+                  <el-button type="primary" round @click="handleCompanySelectRainConduits(data.info.lng_lat)" @click.stop>查下游雨水管</el-button>
+                  <!--<el-button type="primary" round @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>-->
                 </template>
                 <el-collapse v-model="activeNames" >
                   <el-collapse-item title="基本信息" name="1">
@@ -671,10 +673,20 @@
         this.$refs.map.handleSelectSubcatchments(outFallName);
       },
       /**
-       *根据地块查询下游管道
+       *根据地块查询下游雨水管道
        */
-      handleSubcatchmentsSelectConduits(data){
-        this.$refs.map.handleSubcatchmentsSelectConduits(data);
+      handleSubcatchmentsSelectRainConduits(data){
+        this.$refs.map.handleSubcatchmentsSelectRainConduits(data);
+      },
+        // 根据地块查询污水管道
+      handleSubcatchmentsSelectSewageConduits(data){
+        this.$refs.map.handleSubcatchmentsSelectSewageConduits(data);
+      },
+      /**
+       * 根据企业查下游管道
+       * */
+      handleCompanySelectRainConduits(data){
+        this.$refs.map.handleCompanySelectRainConduits(data);
       },
       /**
        * 根据地块查询下游排口

@@ -1,0 +1,37 @@
+{
+  "id": "JWG1",
+  "businessType": "CONDUITS",
+  "source": "RP24",
+  "target": "RP25",
+  "properties": {
+    "type": "Feature",
+    "properties": {
+      "name": "JWG1",
+      "fromnode": "RP24",
+      "tonode": "RP25",
+      "length": "201.17",
+      "roughness": "0.014",
+      "inoffset": "0",
+      "outoffset": "0",
+      "initflow": "0",
+      "maxflow": "0",
+      "inelevation": "10.52",
+      "outelevatio": "10.34"
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          22.759527296517213,
+          113.91928615145996
+        ],
+        [
+          22.75950643864815,
+          113.9173283069159
+        ]
+      ]
+    },
+    "id": "0",
+    "businessType": "CONDUITS"
+  }
+}

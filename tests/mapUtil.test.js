@@ -9,6 +9,7 @@ import {
   getAncestorSubcatchmentsOfOutfall,
   calcAllSubcatchmentNearestNode,
   getNearestNodeOfPoint,
+  calcLineRotateAngle
 } from '../src/utils/mapUtil'
 
 
@@ -30,10 +31,9 @@ function loadGeoJSON() {
 
 
 let geojson = loadGeoJSON()
-fs.writeFileSync('/Users/apple/Desktop/文档/项目/深圳城市规划设计院/updis/tests/geojson.json',
-  JSON.stringify(geojson, null, 2))
+// fs.writeFileSync('/Users/apple/Desktop/文档/项目/深圳城市规划设计院/updis/tests/geojson.json',
+//   JSON.stringify(geojson, null, 2))
 let cy = geojson2cytoscape(geojson)
-
 
 
 test("测试GeoJSON转Cytoscape对象", () => {
@@ -341,3 +341,11 @@ test("测试查询排口上游地块", () => {
   let subcatchments = getAncestorSubcatchmentsOfOutfall(feature, geojson, cy, subcatchmentNearestNodes)
   console.log(subcatchmentNearestNodes);
 })
+
+test("测试calcLineRotateAngle", () => {
+  console.log(calcLineRotateAngle([[0, 0], [1, 1]]))
+  console.log(calcLineRotateAngle([[0, 0], [1, -1]]))
+  console.log(calcLineRotateAngle([[0, 0], [0, 1]]))
+  console.log(calcLineRotateAngle([[0, 0], [0, -1]]))
+})
+

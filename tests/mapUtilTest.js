@@ -16,7 +16,7 @@ const mapUtil = require('../src/utils/mapUtil')
 //   getOutfallAncestorSubcatchments } from '../src/utils/mapUtil'
 
 function loadGeoJSON() {
-  let geojsonMap = JSON.parse(fs.readFileSync('/Users/haomo/codes/1.working/updis/UpdisWeb/tests/data.json'));
+  let geojsonMap = JSON.parse(fs.readFileSync('/Users/hm20160509/codes/1.working/updis/UpdisWeb/tests/data.json'));
 
   let geojson = {
     "type": "FeatureCollection",
