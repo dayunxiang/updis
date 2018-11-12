@@ -138,8 +138,99 @@
                   @click="handleHideAllSubcatchments()"
                   @click.stop/>
                 <span class="submenu-title">地块</span>
-                <span class="number">{{subcatchments.length}}</span>
+                <span class="number">{{this.subcatchments.juZhuYongDi.length+this.subcatchments.road.length+this.subcatchments.shiZheng.length+this.subcatchments.lvDi.length+this.subcatchments.zhengFu.length+this.subcatchments.gongYe.length}}</span>
               </template>
+              <!--道路&道路广场用地-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/daolu.png" alt=""></span>
+                  <!--<i-->
+                    <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
+                    <!--class="iconfont"-->
+                    <!--@click="handleHideRainConduits()"-->
+                    <!--@click.stop/>-->
+                  <span style="color: black;font-size: 16px;">道路&道路广场用地</span>
+                  <span style="color: black;font-size: 16px;">{{this.subcatchments.road.length}}</span>
+                </template>
+              </el-menu-item-group>
+              <!--市政公用设施用地-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/shizheng.png" alt=""></span>
+                  <!--<i-->
+                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
+                  <!--class="iconfont"-->
+                  <!--@click="handleHideRainConduits()"-->
+                  <!--@click.stop/>-->
+                  <span style="color: black;font-size: 16px;">市政公用设施用地</span>
+                  <span style="color: black;font-size: 16px;">{{this.subcatchments.shiZheng.length}}</span>
+                </template>
+              </el-menu-item-group>
+              <!--绿地-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/lvdi.png" alt=""></span>
+                  <!--<i-->
+                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
+                  <!--class="iconfont"-->
+                  <!--@click="handleHideRainConduits()"-->
+                  <!--@click.stop/>-->
+                  <span style="color: black;font-size: 16px;">绿地</span>
+                  <span style="color: black;font-size: 16px;">{{this.subcatchments.lvDi.length}}</span>
+                </template>
+              </el-menu-item-group>
+              <!--居住用地-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/juzhu.png" alt=""></span>
+                  <!--<i-->
+                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
+                  <!--class="iconfont"-->
+                  <!--@click="handleHideRainConduits()"-->
+                  <!--@click.stop/>-->
+                  <span style="color: black;font-size: 16px;">居住用地</span>
+                  <span style="color: black;font-size: 16px;">{{this.subcatchments.juZhuYongDi.length}}</span>
+                </template>
+              </el-menu-item-group>
+              <!--政府社团用地-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/zhengfu.png" alt=""></span>
+                  <!--<i-->
+                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
+                  <!--class="iconfont"-->
+                  <!--@click="handleHideRainConduits()"-->
+                  <!--@click.stop/>-->
+                  <span style="color: black;font-size: 16px;">政府社团用地</span>
+                  <span style="color: black;font-size: 16px;">{{this.subcatchments.zhengFu.length}}</span>
+                </template>
+              </el-menu-item-group>
+              <!--工业用地-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/gongye.png" alt=""></span>
+                  <!--<i-->
+                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
+                  <!--class="iconfont"-->
+                  <!--@click="handleHideRainConduits()"-->
+                  <!--@click.stop/>-->
+                  <span style="color: black;font-size: 16px;">工业用地</span>
+                  <span style="color: black;font-size: 16px;">{{this.subcatchments.gongYe.length}}</span>
+                </template>
+              </el-menu-item-group>
+              <!--商业-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/shangye.png" alt=""></span>
+                  <!--<i-->
+                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
+                  <!--class="iconfont"-->
+                  <!--@click="handleHideRainConduits()"-->
+                  <!--@click.stop/>-->
+                  <span style="color: black;font-size: 16px;">商业服务业设施用地</span>
+                  <span style="color: black;font-size: 16px;">{{this.subcatchments.shangYe.length}}</span>
+                </template>
+              </el-menu-item-group>
             </el-submenu>
             <!--工业企业-->
             <el-submenu index="4">
@@ -169,14 +260,14 @@
           <div>
             <el-collapse v-model="activeName" accordion>
               <!--地块-->
-              <el-collapse-item  v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='地块'">
+              <el-collapse-item  v-model="data" name="1" v-if="data.type=='地块'">
                 <template slot="title">
-                    <span>{{data.type}}</span>
-                    <div style="display: inline-block" v-if="data.info.YDLX!='道路'">
-                      <el-button type="primary" round @click="handleSubcatchmentsSelectRainConduits(data.info.id)" @click.stop>查下游雨水管</el-button>
-                      <el-button type="primary" round @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>
-                      <el-button type="primary" round @click="handleSubcatchmentsSelectOutfalls(data.info.id)" @click.stop >查下游排口</el-button>
-                    </div>
+                  <span>{{data.type}}</span>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: blue;" @click="handleSubcatchmentsSelectRainConduits(data.info.id)" @click.stop>查下游雨水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: blue;" @click="handleSubcatchmentsSelectRainOutfalls(data.info.id)" @click.stop >查下游雨水排口</el-button>
+                  <el-button type="primary" style="padding: 3px; font-size: 13px;background: #FF00FF;"  @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: #FF00FF;" @click="handleSubcatchmentsSelectSewageOutfalls(data.info.id)" @click.stop >查下游污水去向</el-button>
+
                 </template>
                 <div>
                   <el-collapse v-model="activeNames">
@@ -354,8 +445,8 @@
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='企业'">
                 <template slot="title">
                   <span>{{data.type}}</span>
-                  <el-button type="primary" round @click="handleCompanySelectRainConduits(data.info.lng_lat)" @click.stop>查下游雨水管</el-button>
-                  <!--<el-button type="primary" round @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>-->
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: blue;"  @click="handleCompanySelectRainConduits(data.geos)" @click.stop>查下游雨水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: #FF00FF;"  @click="handleCompanySelectSewageConduits(data.geos)" @click.stop>查下游污水管</el-button>
                 </template>
                 <el-collapse v-model="activeNames" >
                   <el-collapse-item title="基本信息" name="1">
@@ -545,7 +636,15 @@
           rainConduits:[],
           sewageConduits:[]
         },
-        subcatchments:[],
+        subcatchments:{
+          road : [],
+          shiZheng:[],
+          lvDi:[],
+          juZhuYongDi:[],
+          zhengFu:[],
+          gongYe:[],
+          shangYe:[]
+        },
         companys:[],
         selectLoading: false,
         isHideAllSubcatchments: true,
@@ -566,6 +665,7 @@
         tabPosition: 'right',
         activeName: '1',
         data:{
+          geos:{},
           type:'',
           info:{}
         },
@@ -595,7 +695,15 @@
           self.outfalls.meregeOutfalls = mapData.outfalls.mergeOutfall;
           self.conduits.rainConduits = mapData.conduits.rainConduits;
           self.conduits.sewageConduits = mapData.conduits.sewageConduits;
-          self.subcatchments = mapData.subcatchments;
+          //地块
+          self.subcatchments.road = mapData.subcatchments.road;
+          self.subcatchments.shiZheng = mapData.subcatchments.shiZheng;
+          self.subcatchments.gongYe =mapData.subcatchments.gongYe;
+          self.subcatchments.juZhuYongDi = mapData.subcatchments.juZhuYongDi;
+          self.subcatchments.lvDi = mapData.subcatchments.lvDi;
+          self.subcatchments.zhengFu =mapData.subcatchments.zhengFu;
+          self.subcatchments.shangYe = mapData.subcatchments.shangYe;
+          //企业
           self.companys = mapData.companys;
         })
       },
@@ -605,6 +713,7 @@
         self.infoManager = true;
         self.data.type = data.type;
         self.data.info = data.info
+        self.data.geos = data.geos;
       },
       /**
        * 显示/隐藏全部地块
@@ -683,16 +792,23 @@
         this.$refs.map.handleSubcatchmentsSelectSewageConduits(data);
       },
       /**
-       * 根据企业查下游管道
+       * 根据企业查询下游 雨水管道
        * */
       handleCompanySelectRainConduits(data){
         this.$refs.map.handleCompanySelectRainConduits(data);
       },
+      //根据企业查询污水管道
+      handleCompanySelectSewageConduits(data){
+        this.$refs.map.handleCompanySelectSewageConduits(data)
+      },
       /**
-       * 根据地块查询下游排口
+       * 根据地块查询下游雨水排口
        */
-      handleSubcatchmentsSelectOutfalls(data) {
-        this.$refs.map.handleSubcatchmentsSelectOutfalls(data);
+      handleSubcatchmentsSelectRainOutfalls(data) {
+        this.$refs.map.handleSubcatchmentsSelectRainOutfalls(data);
+      },
+      handleSubcatchmentsSelectSewageOutfalls(data){
+        this.$refs.map.handleSubcatchmentsSelectSewageOutfalls(data)
       }
     },
     created() {
@@ -753,5 +869,6 @@
   .logo{display:inline-block;width: 20px;height: 10px;
     img{width: 100%;height: 100%;}
   }
+  .el-button + .el-button{margin: 0px;}
 </style>
 
