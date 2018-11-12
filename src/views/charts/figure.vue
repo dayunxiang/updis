@@ -32,13 +32,25 @@
 
       <el-tab-pane align="center" label="年径流总量控制率" name="1">
 
+        <!--横向状柱形图-->
+        <div style="width:460px; height:350px; margin-top:2px; padding-top:5px; float:left;">
+          <div id="totalControlLeft" :style="{width: '460px', height: '350px'}" ></div>
+        </div>
+
+        <!--纵向柱形图-->
+        <div style="width:760px; margin-top:20px; padding:17px;  float:right;">
+          <div id="totalControlRight" :style="{width: '760px', height: '350px'}"></div>
+        </div>
+
       </el-tab-pane>
 
       <el-tab-pane align="center" label="项目数量完成度" name="2">
+
         <!--饼图-->
         <div style="width:500px; height:450px; float:left; margin-top:2px; padding-top:5px;">
           <div id="optionPie" :style="{width: '500px', height: '500px'}" ></div>
         </div>
+
         <!--柱形图-->
         <div style="width:57%; margin-top:20px; padding:17px;  float:right;">
           <div id="optionBar1" :style="{width: '500px', height: '300px'}"></div>
@@ -69,18 +81,22 @@
         parkSquare: [],
         buildSquare: [],
         activeNo: 0,        // echarts图标签页
-        optionBar1: {},     // echarts:面积覆盖度柱状图
-        optionBar2: {},     // echarts:面积覆盖度柱状图
-        optionBar3: {},     // echarts:面积覆盖度柱状图
-        optionPie: {},      // echarts:面积覆盖度饼图
-        completeDegree: {}  // echarts:项目完成度柱状图
+        optionBar1: {},     // echarts:项目数量完成度柱状图
+        optionBar2: {},     // echarts:项目数量完成度柱状图
+        optionBar3: {},     // echarts:项目数量完成度柱状图
+        optionPie: {},      // echarts:项目数量完成度饼图
+        completeDegree: {},    // echarts:项目完成度柱状图
+        totalControlLeft: {},  // echarts:年径流总量控制率
+        totalControlRight: {}, // echarts:年径流总量控制率
+
+        paishuifenqu: [],    // 排水分区
       }
     },
     created() {
       this.init();
     },
     mounted() {
-      //this.TestData();
+      this.TestData();
     },
     methods: {
       TestData() {
@@ -88,7 +104,7 @@
         request('shapes', {
           params: {
             pageNo: 1,
-            pageSize: 200000,
+            pageSize: 1000000,
             filters: {
               'shape': {
                 'category': {
@@ -107,13 +123,19 @@
       TestList(res){
         const self = this;
         var demo = [];
+        console.log("Product=4: ", res.data);
         _.each(res.data, function (vn) {
-          var TestData = ( JSON.parse(vn.properties));
-          var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
+          var TestData = JSON.parse(vn.properties);   // 将字符串解析为对象
+          var mnl = TestData.properties.SSPSFQ;
+          var lll = mnl.replace(/[\u4e00-\u9fa5]/g, '');
+          var ssly = lll.replace(/#/g, '')
+          demo.push(ssly);
+          //debugger
+          /*var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
           var threeTest = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
-          /**
+          /!**
            * 道路广场
-           */
+           *!/
           if ( TestData.properties.YDLX === "道路" || letter === "S" ) {
             var RoadTest = {};
             RoadTest.name = TestData.properties.name;
@@ -125,9 +147,9 @@
             RoadTest.SSLY = TestData.properties.SSLY;
             RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
             RoadTest.ZBQY = TestData.properties.ZBQY;
-            /**
+            /!**
              * 判断海绵建设情况
-             */
+             *!/
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
               RoadTest.ZLKZL = "60%";
@@ -166,9 +188,9 @@
             }
             self.roadSquare.push(RoadTest);
           } else
-          /**
+          /!**
            * 建筑小区
-           */
+           *!/
           if ( letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC" ) {
             var builTest = {};
             builTest.name = TestData.properties.name;
@@ -180,9 +202,9 @@
             builTest.SSLY = TestData.properties.SSLY;
             builTest.SSPSFQ = TestData.properties.SSPSFQ;
             builTest.ZBQY = TestData.properties.ZBQY;
-            /**
+            /!**
              * 判断海绵建设情况
-             */
+             *!/
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
               builTest.ZLKZL = "65%";
@@ -221,9 +243,9 @@
             }
             self.buildSquare.push(builTest);
           } else
-          /**
+          /!**
            * 公园绿地
-           */
+           *!/
           if ( letter === "G"  ) {
             var parkTest = {};
             parkTest.name = TestData.properties.name;
@@ -235,9 +257,9 @@
             parkTest.SSLY = TestData.properties.SSLY;
             parkTest.SSPSFQ = TestData.properties.SSPSFQ;
             parkTest.ZBQY = TestData.properties.ZBQY;
-            /**
+            /!**
              * 判断海绵建设情况
-             */
+             *!/
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
               parkTest.ZLKZL = "70%";
@@ -276,23 +298,38 @@
             }
             self.parkSquare.push(parkTest);
           }
-          demo.push(TestData.properties);
+          //demo.push(TestData.properties);*/
         });
+        var demoList = _.uniq(demo);
+        function sortNumber(a,b) {
+          return a - b
+        }
+        self.paishuifenqu = (demoList.sort(sortNumber));
+        console.log("分区: ", self.paishuifenqu);
+        /**
+         * 项目数量完成度
+         */
+        self.drawComplete();
         /*console.log("道路广场: ", self.roadSquare);
         console.log("建筑小区: ", self.buildSquare);
-        console.log("公园绿地: ", self.parkSquare);*/
-        console.log("获取数据", demo);
+        console.log("公园绿地: ", self.parkSquare);
+        console.log("获取数据", demo);*/
+
       },
       /**
-       * 获取项目进度数据
+       * 使用echarts统计图:项目进度表
        */
       init() {
         const self = this;
         setTimeout(function () {
           /**
+           * 年径流总量控制率
+           */
+          self.drawControl();
+          /**
            * 项目数量完成度
            */
-          self.drawComplete();
+          //self.drawComplete();
           /**
            * 项目海绵面积覆盖度
            */
@@ -301,108 +338,28 @@
           console.log("数据获取成功");
         }, 10);
       },
+
+
       /**
-       * 使用echarts统计图:绘制项目数量完成度柱状图
+       * 使用echarts统计图:项目海绵面积覆盖度
        */
       drawComplete(){
         const self = this;
         var completeDegree = self.$echarts.init(document.getElementById("completeDegree"));  //获取标签ID
-        /*self.completeDegree = {
-          title : {
-            text: 'ECharts2 vs ECharts1',
-            subtext: 'Chrome下测试数据'
-          },
-          tooltip : {
-            trigger: 'axis'
-          },
-          legend: {
-            data:[
-              'ECharts1 - 2k数据','ECharts1 - 2w数据','ECharts1 - 20w数据','',
-              'ECharts2 - 2k数据','ECharts2 - 2w数据','ECharts2 - 20w数据'
-            ]
-          },
-          toolbox: {
-            show : true,
-            feature : {
-              mark : {show: true},
-              dataView : {show: true, readOnly: false},
-              magicType : {show: true, type: ['line', 'bar']},
-              restore : {show: true},
-              saveAsImage : {show: true}
-            }
-          },
-          calculable : true,
-          grid: {y: 70, y2:30, x2:20},
-          xAxis : [
-            {
-              type : 'category',
-              data : ['Line','Bar','Scatter','K','Map']
-            },
-            {
-              type : 'category',
-              axisLine: {show:false},
-              axisTick: {show:false},
-              axisLabel: {show:false},
-              splitArea: {show:false},
-              splitLine: {show:false},
-              data : ['Line','Bar','Scatter','K','Map']
-            }
-          ],
-          yAxis : [
-            {
-              type : 'value',
-              axisLabel:{formatter:'{value} ms'}
-            }
-          ],
-          series : [
-            {
-              name:'ECharts2 - 2k数据',
-              type:'bar',
-              itemStyle: {normal: {color:'rgba(193,35,43,1)', label:{show:true}}},
-              data:[40,155,95,75, 0]
-            },
-            {
-              name:'ECharts2 - 2w数据',
-              type:'bar',
-              itemStyle: {normal: {color:'rgba(181,195,52,1)', label:{show:true,textStyle:{color:'#27727B'}}}},
-              data:[100,200,105,100,156]
-            },
-            {
-              name:'ECharts2 - 20w数据',
-              type:'bar',
-              itemStyle: {normal: {color:'rgba(252,206,16,1)', label:{show:true,textStyle:{color:'#E87C25'}}}},
-              data:[906,911,908,778,0]
-            },
+        var baga = [];
+        _.each(self.paishuifenqu, function (lll) {
+          var num = lll+"#" ;
+          baga.push(num);
+        });
+        console.log("数据: ", baga);
 
-            {
-              name:'ECharts1 - 2k数据',
-              type:'bar',
-              xAxisIndex:1,
-              itemStyle: {normal: {color:'rgba(193,35,43,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'\n'):'';}}}},
-              data:[96,224,164,124,0]
-            },
-            {
-              name:'ECharts1 - 2w数据',
-              type:'bar',
-              xAxisIndex:1,
-              itemStyle: {normal: {color:'rgba(181,195,52,0.5)', label:{show:true}}},
-              data:[491,2035,389,955,347]
-            },
-            {
-              name:'ECharts1 - 20w数据',
-              type:'bar',
-              xAxisIndex:1,
-              itemStyle: {normal: {color:'rgba(252,206,16,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'+'):'';}}}},
-              data:[3000,3000,2817,3000,0]
-            }
-          ]
-        };*/
+
         self.completeDegree =  {
           title : {
             text: '海绵面积覆盖度',
             x: 'left'
           },
-          //grid: {y: 70, y2:30, x2:20},   // 大标题的位置
+          grid: {y: 70, y2:30, x2:20},   // 大标题的位置
           toolbox: {
             show : true,   // 是否启用工具
             feature : {
@@ -417,32 +374,32 @@
             trigger: 'axis',
             show:false,
             /*formatter: '{b} <br> {c} <br/> {a}',
-            axisPointer : {     // 坐标轴指示器，坐标轴触发有效
-              type : 'shadow'   // 默认为直线，可选为：'line' | 'shadow'
-            }*/
+             axisPointer : {     // 坐标轴指示器，坐标轴触发有效
+             type : 'shadow'   // 默认为直线，可选为：'line' | 'shadow'
+             }*/
           },
           legend: {
-            orient: 'horizontal',
-            left: 'center',
-            data: ['现在无海绵', '在建无海绵','规划管控','在建已落实海绵', '现状已落实海绵']
+            /*orient: 'horizontal',
+             right: 'center',*/
+            data: ['现状无海绵', '在建无海绵','规划管控','在建已落实海绵', '现状已落实海绵']
           },
           //calculable : true,
           xAxis : [
             {
               type : 'category',
-              data : ['1#','2#','3#','4#','5#','6#','7#']
+              data : baga
             },
             {
               type : 'category',
-              data : ['1#','2#','3#','4#','5#','6#','7#']
+              data : baga
             },
             {
               type : 'category',
-              data : ['1#','2#','3#','4#','5#','6#','7#']
+              data : baga
             },
             {
               type : 'category',
-              data : ['1#','2#','3#','4#','5#','6#','7#']
+              data : baga
             },
             {
               type : 'category',
@@ -451,7 +408,7 @@
               axisLabel: {show:true},   // 刻度标签
               splitArea: {show:false},  // 分隔区域
               splitLine: {show:true},   // 分隔线
-              data : ['1#','2#','3#','4#','5#','6#','7#']
+              data : baga
             }
           ],
           yAxis : [
@@ -473,6 +430,7 @@
               xAxisIndex:4,
               itemStyle: {
                 normal: {
+                  barBorderRadius:[5, 5, 5, 5],
                   color:'#C2C2C2',
                   label:{
                     show:false,   // 柱状中的文字
@@ -484,7 +442,7 @@
                   }
                 }
               },
-              data:[95,96,97]
+              data:[100,100,100]
             },
 
             {
@@ -495,6 +453,7 @@
               xAxisIndex:3,
               itemStyle: {
                 normal: {
+                  barBorderRadius:[5, 5, 5, 5],
                   color:'#7A7A7A',
                   label:{
                     show:false,   // 柱状中的文字
@@ -515,6 +474,7 @@
               xAxisIndex:2,
               itemStyle: {
                 normal: {
+                  barBorderRadius:[5, 5, 5, 5],
                   color:'#87CEFA',
                   label:{
                     show:false,   // 柱状中的文字
@@ -523,9 +483,9 @@
                       color: "#454545"
                     }
                     /*formatter(p){
-                      console.log("这个P是什么: ", p);
-                      return p.value > 0 ? (p.value +'') : '';
-                    }*/
+                     console.log("这个P是什么: ", p);
+                     return p.value > 0 ? (p.value +'') : '';
+                     }*/
                   }
                 }
               },
@@ -538,6 +498,7 @@
               barMaxWidth:50,//最大宽度
               itemStyle: {
                 normal: {
+                  barBorderRadius:[5, 5, 5, 5],
                   color:'#1E90FF',
                   label:{
                     show:false,   // 柱状中的文字
@@ -558,6 +519,7 @@
               xAxisIndex:1,
               itemStyle: {
                 normal: {
+                  barBorderRadius:[5, 5, 5, 5],
                   color:'#1874CD',
                   label:{
                     show:false,   // 柱状中的文字
@@ -575,9 +537,308 @@
           ]
         };
         completeDegree.setOption(self.completeDegree);
+        /*self.completeDegree = {
+         title : {
+         text: 'ECharts2 vs ECharts1',
+         subtext: 'Chrome下测试数据'
+         },
+         tooltip : {
+         trigger: 'axis'
+         },
+         legend: {
+         data:[
+         'ECharts1 - 2k数据','ECharts1 - 2w数据','ECharts1 - 20w数据','',
+         'ECharts2 - 2k数据','ECharts2 - 2w数据','ECharts2 - 20w数据'
+         ]
+         },
+         toolbox: {
+         show : true,
+         feature : {
+         mark : {show: true},
+         dataView : {show: true, readOnly: false},
+         magicType : {show: true, type: ['line', 'bar']},
+         restore : {show: true},
+         saveAsImage : {show: true}
+         }
+         },
+         calculable : true,
+         grid: {y: 70, y2:30, x2:20},
+         xAxis : [
+         {
+         type : 'category',
+         data : ['Line','Bar','Scatter','K','Map']
+         },
+         {
+         type : 'category',
+         axisLine: {show:false},
+         axisTick: {show:false},
+         axisLabel: {show:false},
+         splitArea: {show:false},
+         splitLine: {show:false},
+         data : ['Line','Bar','Scatter','K','Map']
+         }
+         ],
+         yAxis : [
+         {
+         type : 'value',
+         axisLabel:{formatter:'{value} ms'}
+         }
+         ],
+         series : [
+         {
+         name:'ECharts2 - 2k数据',
+         type:'bar',
+         itemStyle: {normal: {color:'rgba(193,35,43,1)', label:{show:true}}},
+         data:[40,155,95,75, 0]
+         },
+         {
+         name:'ECharts2 - 2w数据',
+         type:'bar',
+         itemStyle: {normal: {color:'rgba(181,195,52,1)', label:{show:true,textStyle:{color:'#27727B'}}}},
+         data:[100,200,105,100,156]
+         },
+         {
+         name:'ECharts2 - 20w数据',
+         type:'bar',
+         itemStyle: {normal: {color:'rgba(252,206,16,1)', label:{show:true,textStyle:{color:'#E87C25'}}}},
+         data:[906,911,908,778,0]
+         },
+
+         {
+         name:'ECharts1 - 2k数据',
+         type:'bar',
+         xAxisIndex:1,
+         itemStyle: {normal: {color:'rgba(193,35,43,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'\n'):'';}}}},
+         data:[96,224,164,124,0]
+         },
+         {
+         name:'ECharts1 - 2w数据',
+         type:'bar',
+         xAxisIndex:1,
+         itemStyle: {normal: {color:'rgba(181,195,52,0.5)', label:{show:true}}},
+         data:[491,2035,389,955,347]
+         },
+         {
+         name:'ECharts1 - 20w数据',
+         type:'bar',
+         xAxisIndex:1,
+         itemStyle: {normal: {color:'rgba(252,206,16,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'+'):'';}}}},
+         data:[3000,3000,2817,3000,0]
+         }
+         ]
+         };*/
       },
+
       /**
-       * 使用echarts统计图:绘制面积覆盖度柱状图
+       * 使用echarts统计图:年径流总量控制率
+       */
+      drawControl(){
+        const self = this;
+        /**
+         * 纵向柱形图
+         */
+        var colorList = ['#4876FF','#0000CD',];
+        var totalControlLeft = self.$echarts.init(document.getElementById("totalControlLeft"));  //获取标签ID
+        self.totalControlLeft = {
+          title: {
+            text: '年径流总量控制率',
+            x: 'center'
+          },
+          tooltip: {
+            trigger: 'axis',
+            /*formatter: '{b} <br> {c} <br/> {a}',*/
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
+          toolbox: {
+            show : true,
+            right:20,
+            iconStyle:{
+              normal:{
+                textPosition:'left'
+              },
+              emphasis:{
+                textPosition:'bottom'
+              }
+            },
+            feature : {
+              /*mark : {show: true},
+               dataView : {show: true, readOnly: false},
+              restore : {show: true},
+              magicType : {show: true, type: ['line']},*/
+              saveAsImage : {show: true}
+            }
+          },
+          legend: {
+            data: ['目标', '实际']
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: {
+            type : 'value',
+            max : 100 ,
+            axisLabel:{
+              formatter:'{value} %'
+            }
+          },
+          yAxis: {
+            type: 'category',
+            max: 2,
+            data: ['目标','实际']
+          },
+          series: [
+            {
+              type: 'bar',
+              barWidth: '50',
+              barCategoryGap: 2,
+              itemStyle: {
+                normal: {
+                  barBorderRadius:[5, 5, 5, 5],
+                  color(params) {
+                    if (params.dataIndex < 0) {
+                      // for legend
+                      return
+                      colorList[colorList.length - 1]
+                    }
+                    else {
+                      // for bar
+                      return  colorList[params.dataIndex]
+                    }
+
+                  }
+                }
+              },
+              data: [18, 83]
+            }
+          ]
+        };
+        totalControlLeft.setOption(self.totalControlLeft);
+
+        /**
+         * 横向柱形图
+         */
+        var totalControlRight = self.$echarts.init(document.getElementById("totalControlRight"));  //获取标签ID
+        self.totalControlRight = {
+          color:['#0000CD','#EE7600'],
+          title : {
+            text: '排水分区年径流总量控制率',
+            x: 'center'
+          },
+          tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
+          legend: {
+            left:'left',
+            data:['实际','目标']
+          },
+          toolbox: {
+            show : true,
+            right:20,
+            iconStyle:{
+              normal:{
+                textPosition:'left'
+              },
+              emphasis:{
+                textPosition:'bottom'
+              }
+            },
+            feature : {
+              /*mark : {show: true},
+              dataView : {show: true, readOnly: false},*/
+              restore : {show: true},
+              magicType : {show: true, type: ['line']},
+              saveAsImage : {show: true}
+            }
+          },
+          calculable : true,
+          xAxis : [
+            {
+              type : 'category',
+              data : ['1#','2#','3#','4#','5#','6#','7#']
+            }
+          ],
+          yAxis : [
+            {
+              type : 'value',
+              max : 100 ,
+              axisLabel:{
+                formatter:'{value} %'
+              }
+            }
+          ],
+          series : [
+            {
+              name:'实际',
+              type:'bar',
+              itemStyle: {
+                normal: {
+                  barBorderRadius:[5, 5, 5, 5]
+                }
+              },
+              data:[20, 49, 70, 23.2, 25.6, 76.7, 35.6]
+              /*markPoint : {
+                data : [
+                  {type : 'max', name: '最大值'},
+                  {type : 'min', name: '最小值'}
+                ]
+              },
+              markLine : {
+                data : [
+                  {type : 'average', name: '平均值'}
+                ]
+              }*/
+            },
+            {
+              name:'目标',
+              type:'bar',
+              itemStyle: {
+                normal: {
+                  barBorderRadius:[5, 5, 5, 5]
+                }
+              },
+              data:[26, 59, 90, 26.4, 28.7, 70.7, 18.8]
+              /*markPoint : {
+                data : [
+                  {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
+                  {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+                ]
+              },
+              markLine : {
+                data : [
+                  {type : 'average', name : '平均值'}
+                ]
+              }*/
+            }
+          ]
+        };
+        totalControlRight.setOption(self.totalControlRight);
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /**
+       * 使用echarts统计图:项目数量完成度柱状图
        */
       drawLine(){
         const self = this;
@@ -758,7 +1019,7 @@
         optionBar3.setOption(self.optionBar3);
       },
       /**
-       * 使用echarts统计图:绘制面积覆盖度饼图
+       * 使用echarts统计图:项目数量完成度饼图
        */
       drawPie() {
         const self = this;
