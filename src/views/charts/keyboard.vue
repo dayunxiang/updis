@@ -539,7 +539,7 @@
             RoadTest.SSLY = TestData.properties.SSLY;
             RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
             RoadTest.ZBQY = TestData.properties.ZBQY;
-            RoadTest.area = Math.abs(TestData.properties.area);
+            RoadTest.area = TestData.properties.area;
             /**
              * 判断海绵建设情况
              */
@@ -596,7 +596,7 @@
             builTest.SSLY = TestData.properties.SSLY;
             builTest.SSPSFQ = TestData.properties.SSPSFQ;
             builTest.ZBQY = TestData.properties.ZBQY;
-            builTest.area = Math.abs(TestData.properties.area);
+            builTest.area = TestData.properties.area;
             /**
              * 判断海绵建设情况
              */
@@ -652,7 +652,7 @@
             parkTest.SSLY = TestData.properties.SSLY;
             parkTest.SSPSFQ = TestData.properties.SSPSFQ;
             parkTest.ZBQY = TestData.properties.ZBQY;
-            parkTest.area = Math.abs(TestData.properties.area);
+            parkTest.area = TestData.properties.area;
             /**
              * 判断海绵建设情况
              */

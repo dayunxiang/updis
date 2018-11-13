@@ -33,13 +33,13 @@
       <el-tab-pane align="center" label="年径流总量控制率" name="1">
 
         <!--横向状柱形图-->
-        <div style="width:460px; height:350px; margin-top:2px; padding-top:5px; float:left;">
-          <div id="totalControlLeft" :style="{width: '460px', height: '350px'}" ></div>
+        <div style="margin-top:2px; padding-top:5px;">
+          <div id="totalControlLeft" :style="{width: '1200px', height: '350px'}" ></div>
         </div>
 
         <!--纵向柱形图-->
-        <div style="width:760px; margin-top:20px; padding:17px;  float:right;">
-          <div id="totalControlRight" :style="{width: '760px', height: '350px'}"></div>
+        <div style="margin-top:20px; padding:17px;">
+          <div id="totalControlRight" :style="{width: '1200px', height: '350px'}"></div>
         </div>
 
       </el-tab-pane>
@@ -88,8 +88,16 @@
         completeDegree: {},    // echarts:项目完成度柱状图
         totalControlLeft: {},  // echarts:年径流总量控制率
         totalControlRight: {}, // echarts:年径流总量控制率
-        drainagePartition: [],    // 排水分区下面#的数据
-        areaData: [],
+        /**
+         * 海绵面积覆盖度
+         */
+        partList: '',
+        xwList: [],
+        xyList: [],
+        zyList: [],
+        zwList: [],
+        ghList: [],
+
       }
     },
     created() {
@@ -115,326 +123,103 @@
               }
             }
           }
-        }).then(resp => {
-          this.TestList(resp);
+        }).then(res => {
+          var demofen = [];
+          _.each(res.data, function (mn, index) {
+            var TestData = JSON.parse(mn.properties);   // 将字符串解析为对象
+            var SSPSFQ = TestData.properties.SSPSFQ;
+            var removeChines = SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
+            var number = removeChines.replace(/#/g, '')
+            demofen.push(number);   // 获取分区数据;
+          })
+          var demoList = _.uniq(demofen);   // 分区去重
+          function sortNumber(a,b) {
+            return a - b
+          }
+          self.partList = (demoList.sort(sortNumber)); // 排序
+          this.TestList(res);
         })
       },
       TestList(res){
         const self = this;
-        var numList = [];
-        var ZMJ = [];           // 总面积
-        var XZYLSList = [];     // 现状已落实面积
-        var XZWHMList = [];     // 现状无海绵面积
-        var ZJYLSList = [];     // 在建已落实面积
-        var ZJWUMList = [];     // 在建无海绵面积
-        var GHGKList  = [];     // 规划管控面积
-
-        var demo = {};
-        var aaa = _.uniq(demo);
-        var bbb = [];
-
-        //console.log("Product=3: ", res.data);
-        _.each(res.data, function (vn,index) {
-          var TestData = JSON.parse(vn.properties);   // 将字符串解析为对象
-          var SSPSFQ = TestData.properties.SSPSFQ;    // 获取分区数据
-          demo.SSPSFQ = SSPSFQ;
-          var removeChines = SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
-          var number = removeChines.replace(/#/g, '')
-          numList.push(number);
-
-          /*console.log("数据列表: ",TestData.properties);
-          console.log("位置: ",index);
-          console.log("demo: ",demo);*/
-
-          console.log(aaa)
-          if( SSPSFQ === aaa.SSPSFQ ) {
-            console.log("相同")
-          }
-          var areaAll = Math.abs(TestData.properties.area);     // 获取所有面积
-          ZMJ.push(areaAll);
-          if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-            var XZYLSarea = Math.abs(TestData.properties.area);     // 获取现状已落实面积
-            XZYLSList.push(XZYLSarea)
-          }
-          if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-            var XZWHMarea = Math.abs(TestData.properties.area);     // 获取现状无海绵面积
-            XZWHMList.push(XZWHMarea)
-          }
-          if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-            var ZJYLSarea = Math.abs(TestData.properties.area);     // 获取在建已落实面积
-            ZJYLSList.push(ZJYLSarea);
-          }
-          if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-            var ZJWUMarea = Math.abs(TestData.properties.area);     // 获取在建无海绵面积
-            ZJWUMList.push(ZJWUMarea);
-          }
-          if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-            var GHGKarea  = Math.abs(TestData.properties.area);     // 获取规划管控面积
-            GHGKList.push(GHGKarea)
-          }
-
-          /*switch ( TestData.properties ) {
-            case demo.SSPSFQ:
-
-            break
-          }*/
-
-          /*if(number == 1 ) {
-            var areaAll = Math.abs(TestData.properties.area);     // 获取所有面积
-            ZMJ.push(areaAll);
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-              var XZYLSarea = Math.abs(TestData.properties.area);     // 获取现状已落实面积
-              XZYLSList.push(XZYLSarea)
-            }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              var XZWHMarea = Math.abs(TestData.properties.area);     // 获取现状无海绵面积
-              XZWHMList.push(XZWHMarea)
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-              var ZJYLSarea = Math.abs(TestData.properties.area);     // 获取在建已落实面积
-              ZJYLSList.push(ZJYLSarea);
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              var ZJWUMarea = Math.abs(TestData.properties.area);     // 获取在建无海绵面积
-              ZJWUMList.push(ZJWUMarea);
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              var GHGKarea  = Math.abs(TestData.properties.area);     // 获取规划管控面积
-              GHGKList.push(GHGKarea)
-            }
-          }*/
-
-          /*if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
-            console.log(TestData.properties)
-          }
-          if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
-            console.log(TestData.properties)
-          }*/
-          /*if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
-            RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-            RoadTest.ZLKZL = "";
-          }
-          if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-            RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
-            RoadTest.ZLKZL = "";
-          }*/
-          /*var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
-          var threeTest = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
-          /!**
-           * 道路广场
-           *!/
-          if ( TestData.properties.YDLX === "道路" || letter === "S" ) {
-            var RoadTest = {};
-            RoadTest.name = TestData.properties.name;
-            RoadTest.YDLX = TestData.properties.YDLX;
-            RoadTest.JSZT = TestData.properties.JSZT;
-            RoadTest.XMMC = TestData.properties.XMMC;
-            RoadTest.HMLX = TestData.properties.HMLX;
-            RoadTest.PRHD = TestData.properties.PRHD;
-            RoadTest.SSLY = TestData.properties.SSLY;
-            RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
-            RoadTest.ZBQY = TestData.properties.ZBQY;
-            /!**
-             * 判断海绵建设情况
-             *!/
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              RoadTest.ZLKZL = "60%";
-            }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
-              RoadTest.ZLKZL = "40%";
-            }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
-              RoadTest.JSQK = TestData.properties.JSZT + '';
-              RoadTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              RoadTest.ZLKZL = "65%";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
-              RoadTest.ZLKZL = "40%";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
-              RoadTest.JSQK = TestData.properties.JSZT + '';
-              RoadTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              RoadTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
-              RoadTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              RoadTest.JSQK = "规划管控" + '';
-              RoadTest.ZLKZL = "65%";
-            }
-            self.roadSquare.push(RoadTest);
-          } else
-          /!**
-           * 建筑小区
-           *!/
-          if ( letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC" ) {
-            var builTest = {};
-            builTest.name = TestData.properties.name;
-            builTest.YDLX = TestData.properties.YDLX;
-            builTest.JSZT = TestData.properties.JSZT;
-            builTest.XMMC = TestData.properties.XMMC;
-            builTest.HMLX = TestData.properties.HMLX;
-            builTest.PRHD = TestData.properties.PRHD;
-            builTest.SSLY = TestData.properties.SSLY;
-            builTest.SSPSFQ = TestData.properties.SSPSFQ;
-            builTest.ZBQY = TestData.properties.ZBQY;
-            /!**
-             * 判断海绵建设情况
-             *!/
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              builTest.ZLKZL = "65%";
-            }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + "无海绵";
-              builTest.ZLKZL = "50%";
-            }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
-              builTest.JSQK = TestData.properties.JSZT + '';
-              builTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              builTest.ZLKZL = "70%";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + "无海绵";
-              builTest.ZLKZL = "50%";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
-              builTest.JSQK = TestData.properties.JSZT + '';
-              builTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              builTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + "无海绵";
-              builTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              builTest.JSQK = "规划管控" + '';
-              builTest.ZLKZL = "65%";
-            }
-            self.buildSquare.push(builTest);
-          } else
-          /!**
-           * 公园绿地
-           *!/
-          if ( letter === "G"  ) {
-            var parkTest = {};
-            parkTest.name = TestData.properties.name;
-            parkTest.YDLX = TestData.properties.YDLX;
-            parkTest.JSZT = TestData.properties.JSZT;
-            parkTest.XMMC = TestData.properties.XMMC;
-            parkTest.HMLX = TestData.properties.HMLX;
-            parkTest.PRHD = TestData.properties.PRHD;
-            parkTest.SSLY = TestData.properties.SSLY;
-            parkTest.SSPSFQ = TestData.properties.SSPSFQ;
-            parkTest.ZBQY = TestData.properties.ZBQY;
-            /!**
-             * 判断海绵建设情况
-             *!/
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              parkTest.ZLKZL = "70%";
-            }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
-              parkTest.ZLKZL = "60%";
-            }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
-              parkTest.JSQK = TestData.properties.JSZT + '';
-              parkTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              parkTest.ZLKZL = "80%";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
-              parkTest.ZLKZL = "60%";
-            }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
-              parkTest.JSQK = TestData.properties.JSZT + '';
-              parkTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              parkTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
-              parkTest.ZLKZL = "";
-            }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              parkTest.JSQK = "" + '';
-              parkTest.ZLKZL = "80%";
-            }
-            self.parkSquare.push(parkTest);
-          }
-          //demo.push(TestData.properties);*/
+        var baga = [];     // 排水分区列表
+        _.each(self.partList, function (vm) {
+          var num = vm+"#排水分区" ;
+          baga.push(num);
         });
-        
-        _.each(res.data, function (mn) {
-          
-        })
-        
-        
-        
-        
-        
-        
-        var sortList = _.uniq(numList);
-        function sortNumber(a,b) {
-          return a - b
+
+        for(var i=0; i<baga.length; i++ ) {
+
+          var XZYLSList = [];     // 现状已落实面积
+          var XZWHMList = [];     // 现状无海绵面积
+          var ZJYLSList = [];     // 在建已落实面积
+          var ZJWUMList = [];     // 在建无海绵面积
+          var GHGKList  = [];     // 规划管控面积
+
+          _.each(res.data, function (vn) {
+            var TestData = JSON.parse(vn.properties);   // 将字符串解析为对象
+            if ( baga[i] == TestData.properties.SSPSFQ) {
+              //ZMJ.push(TestData.properties.area);     // 获取所有面积
+              if (TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵") {
+                var XZYLSarea = TestData.properties.area;     // 获取现状已落实面积
+                XZYLSList.push(XZYLSarea)
+              } else
+              if (TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵") {
+                var XZWHMarea = TestData.properties.area;     // 获取现状无海绵面积
+                XZWHMList.push(XZWHMarea)
+              } else
+              if (TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵") {
+                var ZJYLSarea = TestData.properties.area;     // 获取在建已落实面积
+                ZJYLSList.push(ZJYLSarea);
+              } else
+              if (TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵") {
+                var ZJWUMarea = TestData.properties.area;     // 获取在建无海绵面积
+                //ZJWUMarea == null ? ZJWUMarea == 0 : ZJWUMarea ;
+                ZJWUMList.push(ZJWUMarea);
+              } else
+              if (TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null) {
+                var GHGKarea = TestData.properties.area;     // 获取规划管控面积
+                GHGKList.push(GHGKarea)
+              }
+            }
+          });
+
+          var totaXZYLS = eval(XZYLSList.join("+"));   // 现状已落实面积
+          var totaXZWHM = eval(XZWHMList.join("+"));   // 现状无海绵面积
+          var totaXJYLS = eval(ZJYLSList.join("+"));   // 在建已落实面积
+          var totaZJWHM = eval(ZJWUMList.join("+"));   // 在建无海绵面积
+          var totaGHGK  = eval(GHGKList.join("+"));    // 规划管控面积
+
+          var numtota1 = '';   // 现状已落实面积
+          var numtota2 = '';   // 现状无海绵面积
+          var numtota3 = '';   // 在建已落实面积
+          var numtota4 = '';   // 在建无海绵面积
+          var numtota5 = '';   // 规划管控面积
+          /**
+           * 判断是否有数据
+           */
+          totaXZYLS == undefined ? numtota1 = 0 : numtota1 = totaXZYLS;
+          totaXZWHM == undefined ? numtota2 = 0 : numtota2 = totaXZWHM;
+          totaXJYLS == undefined ? numtota3 = 0 : numtota3 = totaXJYLS;
+          totaZJWHM == undefined ? numtota4 = 0 : numtota4 = totaZJWHM;
+          totaGHGK  == undefined ? numtota5 = 0 : numtota5 = totaGHGK;
+          var sum = numtota1 + numtota2 + numtota3 + numtota4 + numtota5;    // 总和
+          /**
+           * 求出各项百分比
+           */
+          self.xwList.push(numtota2/sum * 100);
+          self.xyList.push(numtota1/sum * 100);
+          self.zyList.push(numtota3/sum * 100);
+          self.zwList.push(numtota4/sum * 100);
+          self.ghList.push(numtota5/sum * 100);
         }
-        self.drainagePartition = (sortList.sort(sortNumber));
-        //console.log("分区: ", self.drainagePartition);
+        //console.log("现状无海绵面积百分比: ", self.xwList);
         /**
          * 项目海绵面积覆盖度
          */
         self.drawComplete();
-        /*console.log("道路广场: ", self.roadSquare);
-        console.log("建筑小区: ", self.buildSquare);
-        console.log("公园绿地: ", self.parkSquare);
-        console.log("获取数据", demo);*/
-
-        var demo = {};
-        demo.abc = sortList;
-        console.log(demo);
-        for(var i=0; i<sortList.length; i++ ){
-
-        }
-
-        var totalArea = eval(ZMJ.join("+"));   //总面积
-        var totaXZYLS = eval(XZYLSList.join("+")); //现状已落实面积
-        var totaXZWHM = eval(XZWHMList.join("+")); //现状无海绵面积
-        var totaXJYLS = eval(ZJYLSList.join("+")); //在建已落实面积
-        var totaZJWHM = eval(ZJWUMList.join("+")); //在建无海绵面积
-        var totaGHGK  = eval(GHGKList.join("+"));  //规划管控面积
-        console.log("总面积: ", totalArea)
-        console.log("现状已落实面积: ", totaXZYLS);
-        console.log("现状无海绵面积: ", totaXZWHM);
-        console.log("在建已落实面积: ", totaXJYLS);
-        console.log("在建无海绵面积: ", totaZJWHM);
-        console.log("规划管控面积:   ", totaGHGK);
-
-        console.log("在建已落实面积百分比", totaXJYLS/totalArea * 100)
-
       },
+
       /**
        * 使用echarts统计图:项目进度表
        */
@@ -454,11 +239,9 @@
            */
           self.drawLine();
           self.drawPie();
-          console.log("数据获取成功");
+          console.log("======数据获取成功======");
         }, 10);
       },
-
-
       /**
        * 使用echarts统计图:项目海绵面积覆盖度
        */
@@ -466,9 +249,8 @@
         const self = this;
         var completeDegree = self.$echarts.init(document.getElementById("completeDegree"));  //获取标签ID
         var baga = [];
-        //console.log("数据: ", baga);
-        _.each(self.drainagePartition, function (vm) {
-          var num = vm+"#" ;
+        _.each(self.partList, function (vm) {
+          var num = vm+"#排水分区" ;
           baga.push(num);
         });
         self.completeDegree =  {
@@ -488,19 +270,11 @@
             }
           },
           tooltip : {
-            show:false,
+            show:true,
             trigger: 'axis',
             axisPointer: {     // 坐标轴指示器，坐标轴触发有效
-              type: 'line'   // 默认为直线，可选为：'line' | 'shadow'
+              type: 'shadow'   // 默认为直线，可选为：'line' | 'shadow'
             },
-            /*formatter: '{a}<br> {c} <br/> {b} ',*/
-            /*formatter(params){
-              console.log("11111111",params);
-              return params[0].name + '<br/>'
-                + params[0].seriesName + ' : ' + params[0].value + '<br/>'
-                + params[1].seriesName + ' : ' + (params[1].value + params[0].value);
-            },*/
-
           },
           legend: {
             /*orient: 'horizontal',
@@ -527,201 +301,87 @@
           series : [
 
             {
-              name:'现状无海绵',
+              name:'现状已落实海绵',
               type:'bar',
-              stack: 'sum',
-              itemStyle: {
-                normal: {
-                  color: '#C2C2C2',
-                  barBorderColor: '#C2C2C2',
-                  barBorderWidth: 7,
-                  barBorderRadius:3,
-                  label : {
-                    show:false,
-                    position: 'top',
-                    formatter: '{a}',
-                    textStyle: {
-                      color: '#000'
-                    },
-                  }
-                }
-              },
-              /*barGap: '90%',
-              barMaxWidth:50,//最大宽度
-              xAxisIndex:4,
-              itemStyle: {
-                normal: {
-                  barBorderRadius:[5, 5, 5, 5],
-                  color:'#C2C2C2',
-                  label:{
-                    show:false,   // 柱状中的文字
-                    labelLine :{show:true},
-                    position: ['48%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },*/
-              data:[10,10,10]
-            },
-
-            {
-              name:'在建无海绵',
-              type:'bar',
-              stack: 'sum',
-              itemStyle: {
-                normal: {
-                  color: '#7A7A7A',
-                  barBorderColor: '#7A7A7A',
-                  barBorderWidth: 6,
-                  barBorderRadius:3,
-                  label : {
-                    show:false,
-                    position: 'top',
-                    formatter: '{a}',
-                    textStyle: {
-                      color: '#000'
-                    }
-                  }
-                }
-              },
-              /*barMaxWidth:50,//最大宽度
               barGap: '90%',
-              xAxisIndex:3,
-              itemStyle: {
-                normal: {
-                  barBorderRadius:[5, 5, 5, 5],
-                  color:'#7A7A7A',
-                  label:{
-                    show:false,   // 柱状中的文字
-                    position: ['48%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },*/
-              data:[20,30,20]
-            },
-
-            {
-              name:'规划管控',
-              type:'bar',
+              barMaxWidth:50,//最大宽度
               stack: 'sum',
               itemStyle: {
                 normal: {
-                  color: '#87CEFA',
-                  barBorderColor: '#87CEFA',
-                  barBorderWidth: 6,
-                  barBorderRadius:3,
-                  label : {
-                    show:false,
-                    position: 'top',
-                    formatter: '{a} ',
-                    textStyle: {
-                      color: '#000'
-                    }
-                  }
+                  color: '#1874CD',
+                  barBorderRadius:2,
+                  /*label : {
+                    show:true,
+                     position: 'top',
+                     formatter: '{a}',
+                     textStyle: {
+                     color: '#000'
+                     }
+                  }*/
                 }
               },
-              /*barMaxWidth:50,//最大宽度
-              xAxisIndex:2,
-              itemStyle: {
-                normal: {
-                  barBorderRadius:[5, 5, 5, 5],
-                  color:'#87CEFA',
-                  label:{
-                    show:false,   // 柱状中的文字
-                    position: ['48%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                    /!*formatter(p){
-                     console.log("这个P是什么: ", p);
-                     return p.value > 0 ? (p.value +'') : '';
-                     }*!/
-                  }
-                }
-              },*/
-              data:[30,20,20]
+              data: self.xyList
             },
 
             {
               name:'在建已落实海绵',
               type:'bar',
+              barGap: '90%',
+              barMaxWidth:50,//最大宽度
               stack: 'sum',
               itemStyle: {
                 normal: {
                   color: '#1E90FF',
-                  barBorderColor: '#1E90FF',
-                  barBorderWidth: 6,
-                  barBorderRadius:3,
-                  label : {
-                    show:false,
-                    position: 'top',
-                    formatter: '{a}',
-                    textStyle: {
-                      color: '#000'
-                    }
-                  }
+                  barBorderRadius:2,
                 }
               },
-              /*barMaxWidth:50,//最大宽度
-              itemStyle: {
-                normal: {
-                  barBorderRadius:[5, 5, 5, 5],
-                  color:'#1E90FF',
-                  label:{
-                    show:false,   // 柱状中的文字
-                    position: ['48%' , 5 ],
-                    textStyle: {
-                      color: "#454545"
-                    }
-                  }
-                }
-              },*/
-              data:[25,15,20]
+              data: self.zyList
             },
 
             {
-              name:'现状已落实海绵',
+              name:'规划管控',
               type:'bar',
+              barGap: '90%',
+              barMaxWidth:50,//最大宽度
               stack: 'sum',
               itemStyle: {
                 normal: {
-                  color: '#1874CD',
-                  barBorderColor: '#1874CD',
-                  barBorderWidth: 6,
-                  barBorderRadius:3,
-                  label : {
-                    show:false,
-                    position: 'top',
-                    formatter: '{a}',
-                    textStyle: {
-                      color: '#000'
-                    }
-                  }
+                  color: '#87CEFA',
+                  barBorderRadius:2,
                 }
               },
-              /*barMaxWidth:50,//最大宽度
-              xAxisIndex:1,
+              data: self.ghList
+            },
+
+            {
+              name:'在建无海绵',
+              type:'bar',
+              barGap: '90%',
+              barMaxWidth:50,//最大宽度
+              stack: 'sum',
               itemStyle: {
                 normal: {
-                  barBorderRadius:[5, 5, 5, 5],
-                  color:'#1874CD',
-                  label:{
-                    show:false,   // 柱状中的文字
-                    position: ['48%' , 5 ],
-                    textStyle: {
-                      color: "#454545",
-                      fontWeight: 'bolder'
-                    }
-                  }
+                  color: '#7A7A7A',
+                  barBorderRadius:2,
                 }
-              },*/
-              data:[15,25,30]
-            }
+              },
+              data:self.zwList
+            },
+
+            {
+              name:'现状无海绵',
+              type:'bar',
+              barGap: '90%',
+              barMaxWidth:50,//最大宽度
+              stack: 'sum',
+              itemStyle: {
+                normal: {
+                  color: '#C2C2C2',
+                  barBorderRadius:2,
+                }
+              },
+              data: self.xwList
+            },
 
           ]
         };
