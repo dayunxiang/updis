@@ -88,8 +88,8 @@
         completeDegree: {},    // echarts:项目完成度柱状图
         totalControlLeft: {},  // echarts:年径流总量控制率
         totalControlRight: {}, // echarts:年径流总量控制率
-
-        paishuifenqu: [],    // 排水分区
+        drainagePartition: [],    // 排水分区下面#的数据
+        areaData: [],
       }
     },
     created() {
@@ -103,7 +103,6 @@
         const self = this;
         request('shapes', {
           params: {
-            pageNo: 1,
             pageSize: 1000000,
             filters: {
               'shape': {
@@ -111,7 +110,7 @@
                   equalTo: "SUBCATCHMENTS"
                 },
                 'projectId': {
-                  equalTo: '4'
+                  equalTo: '3'
                 }
               }
             }
@@ -122,15 +121,103 @@
       },
       TestList(res){
         const self = this;
-        var demo = [];
-        console.log("Product=4: ", res.data);
-        _.each(res.data, function (vn) {
+        var numList = [];
+        var ZMJ = [];           // 总面积
+        var XZYLSList = [];     // 现状已落实面积
+        var XZWHMList = [];     // 现状无海绵面积
+        var ZJYLSList = [];     // 在建已落实面积
+        var ZJWUMList = [];     // 在建无海绵面积
+        var GHGKList  = [];     // 规划管控面积
+
+        var demo = {};
+        var aaa = _.uniq(demo);
+        var bbb = [];
+
+        //console.log("Product=3: ", res.data);
+        _.each(res.data, function (vn,index) {
           var TestData = JSON.parse(vn.properties);   // 将字符串解析为对象
-          var mnl = TestData.properties.SSPSFQ;
-          var lll = mnl.replace(/[\u4e00-\u9fa5]/g, '');
-          var ssly = lll.replace(/#/g, '')
-          demo.push(ssly);
-          //debugger
+          var SSPSFQ = TestData.properties.SSPSFQ;    // 获取分区数据
+          demo.SSPSFQ = SSPSFQ;
+          var removeChines = SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
+          var number = removeChines.replace(/#/g, '')
+          numList.push(number);
+
+          /*console.log("数据列表: ",TestData.properties);
+          console.log("位置: ",index);
+          console.log("demo: ",demo);*/
+
+          console.log(aaa)
+          if( SSPSFQ === aaa.SSPSFQ ) {
+            console.log("相同")
+          }
+          var areaAll = Math.abs(TestData.properties.area);     // 获取所有面积
+          ZMJ.push(areaAll);
+          if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
+            var XZYLSarea = Math.abs(TestData.properties.area);     // 获取现状已落实面积
+            XZYLSList.push(XZYLSarea)
+          }
+          if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
+            var XZWHMarea = Math.abs(TestData.properties.area);     // 获取现状无海绵面积
+            XZWHMList.push(XZWHMarea)
+          }
+          if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
+            var ZJYLSarea = Math.abs(TestData.properties.area);     // 获取在建已落实面积
+            ZJYLSList.push(ZJYLSarea);
+          }
+          if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
+            var ZJWUMarea = Math.abs(TestData.properties.area);     // 获取在建无海绵面积
+            ZJWUMList.push(ZJWUMarea);
+          }
+          if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+            var GHGKarea  = Math.abs(TestData.properties.area);     // 获取规划管控面积
+            GHGKList.push(GHGKarea)
+          }
+
+          /*switch ( TestData.properties ) {
+            case demo.SSPSFQ:
+
+            break
+          }*/
+
+          /*if(number == 1 ) {
+            var areaAll = Math.abs(TestData.properties.area);     // 获取所有面积
+            ZMJ.push(areaAll);
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
+              var XZYLSarea = Math.abs(TestData.properties.area);     // 获取现状已落实面积
+              XZYLSList.push(XZYLSarea)
+            }
+            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
+              var XZWHMarea = Math.abs(TestData.properties.area);     // 获取现状无海绵面积
+              XZWHMList.push(XZWHMarea)
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
+              var ZJYLSarea = Math.abs(TestData.properties.area);     // 获取在建已落实面积
+              ZJYLSList.push(ZJYLSarea);
+            }
+            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
+              var ZJWUMarea = Math.abs(TestData.properties.area);     // 获取在建无海绵面积
+              ZJWUMList.push(ZJWUMarea);
+            }
+            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+              var GHGKarea  = Math.abs(TestData.properties.area);     // 获取规划管控面积
+              GHGKList.push(GHGKarea)
+            }
+          }*/
+
+          /*if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
+            console.log(TestData.properties)
+          }
+          if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
+            console.log(TestData.properties)
+          }*/
+          /*if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
+            RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            RoadTest.ZLKZL = "";
+          }
+          if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
+            RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
+            RoadTest.ZLKZL = "";
+          }*/
           /*var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
           var threeTest = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
           /!**
@@ -300,20 +387,52 @@
           }
           //demo.push(TestData.properties);*/
         });
-        var demoList = _.uniq(demo);
+        
+        _.each(res.data, function (mn) {
+          
+        })
+        
+        
+        
+        
+        
+        
+        var sortList = _.uniq(numList);
         function sortNumber(a,b) {
           return a - b
         }
-        self.paishuifenqu = (demoList.sort(sortNumber));
-        console.log("分区: ", self.paishuifenqu);
+        self.drainagePartition = (sortList.sort(sortNumber));
+        //console.log("分区: ", self.drainagePartition);
         /**
-         * 项目数量完成度
+         * 项目海绵面积覆盖度
          */
         self.drawComplete();
         /*console.log("道路广场: ", self.roadSquare);
         console.log("建筑小区: ", self.buildSquare);
         console.log("公园绿地: ", self.parkSquare);
         console.log("获取数据", demo);*/
+
+        var demo = {};
+        demo.abc = sortList;
+        console.log(demo);
+        for(var i=0; i<sortList.length; i++ ){
+
+        }
+
+        var totalArea = eval(ZMJ.join("+"));   //总面积
+        var totaXZYLS = eval(XZYLSList.join("+")); //现状已落实面积
+        var totaXZWHM = eval(XZWHMList.join("+")); //现状无海绵面积
+        var totaXJYLS = eval(ZJYLSList.join("+")); //在建已落实面积
+        var totaZJWHM = eval(ZJWUMList.join("+")); //在建无海绵面积
+        var totaGHGK  = eval(GHGKList.join("+"));  //规划管控面积
+        console.log("总面积: ", totalArea)
+        console.log("现状已落实面积: ", totaXZYLS);
+        console.log("现状无海绵面积: ", totaXZWHM);
+        console.log("在建已落实面积: ", totaXJYLS);
+        console.log("在建无海绵面积: ", totaZJWHM);
+        console.log("规划管控面积:   ", totaGHGK);
+
+        console.log("在建已落实面积百分比", totaXJYLS/totalArea * 100)
 
       },
       /**
@@ -347,13 +466,11 @@
         const self = this;
         var completeDegree = self.$echarts.init(document.getElementById("completeDegree"));  //获取标签ID
         var baga = [];
-        _.each(self.paishuifenqu, function (lll) {
-          var num = lll+"#" ;
+        //console.log("数据: ", baga);
+        _.each(self.drainagePartition, function (vm) {
+          var num = vm+"#" ;
           baga.push(num);
         });
-        console.log("数据: ", baga);
-
-
         self.completeDegree =  {
           title : {
             text: '海绵面积覆盖度',
@@ -371,45 +488,32 @@
             }
           },
           tooltip : {
-            trigger: 'axis',
             show:false,
-            /*formatter: '{b} <br> {c} <br/> {a}',
-             axisPointer : {     // 坐标轴指示器，坐标轴触发有效
-             type : 'shadow'   // 默认为直线，可选为：'line' | 'shadow'
-             }*/
+            trigger: 'axis',
+            axisPointer: {     // 坐标轴指示器，坐标轴触发有效
+              type: 'line'   // 默认为直线，可选为：'line' | 'shadow'
+            },
+            /*formatter: '{a}<br> {c} <br/> {b} ',*/
+            /*formatter(params){
+              console.log("11111111",params);
+              return params[0].name + '<br/>'
+                + params[0].seriesName + ' : ' + params[0].value + '<br/>'
+                + params[1].seriesName + ' : ' + (params[1].value + params[0].value);
+            },*/
+
           },
           legend: {
             /*orient: 'horizontal',
              right: 'center',*/
+            selectedMode:false,
             data: ['现状无海绵', '在建无海绵','规划管控','在建已落实海绵', '现状已落实海绵']
           },
-          //calculable : true,
+          calculable : true,
           xAxis : [
             {
               type : 'category',
               data : baga
             },
-            {
-              type : 'category',
-              data : baga
-            },
-            {
-              type : 'category',
-              data : baga
-            },
-            {
-              type : 'category',
-              data : baga
-            },
-            {
-              type : 'category',
-              axisLine : {show:true},   // 坐标轴线
-              axisTick : {show:true},   // 坐标轴刻度
-              axisLabel: {show:true},   // 刻度标签
-              splitArea: {show:false},  // 分隔区域
-              splitLine: {show:true},   // 分隔线
-              data : baga
-            }
           ],
           yAxis : [
             {
@@ -425,8 +529,25 @@
             {
               name:'现状无海绵',
               type:'bar',
+              stack: 'sum',
+              itemStyle: {
+                normal: {
+                  color: '#C2C2C2',
+                  barBorderColor: '#C2C2C2',
+                  barBorderWidth: 7,
+                  barBorderRadius:3,
+                  label : {
+                    show:false,
+                    position: 'top',
+                    formatter: '{a}',
+                    textStyle: {
+                      color: '#000'
+                    },
+                  }
+                }
+              },
+              /*barGap: '90%',
               barMaxWidth:50,//最大宽度
-              barGap: '90%',
               xAxisIndex:4,
               itemStyle: {
                 normal: {
@@ -441,14 +562,31 @@
                     }
                   }
                 }
-              },
-              data:[100,100,100]
+              },*/
+              data:[10,10,10]
             },
 
             {
               name:'在建无海绵',
               type:'bar',
-              barMaxWidth:50,//最大宽度
+              stack: 'sum',
+              itemStyle: {
+                normal: {
+                  color: '#7A7A7A',
+                  barBorderColor: '#7A7A7A',
+                  barBorderWidth: 6,
+                  barBorderRadius:3,
+                  label : {
+                    show:false,
+                    position: 'top',
+                    formatter: '{a}',
+                    textStyle: {
+                      color: '#000'
+                    }
+                  }
+                }
+              },
+              /*barMaxWidth:50,//最大宽度
               barGap: '90%',
               xAxisIndex:3,
               itemStyle: {
@@ -463,14 +601,31 @@
                     }
                   }
                 }
-              },
-              data:[45,46,47]
+              },*/
+              data:[20,30,20]
             },
 
             {
               name:'规划管控',
               type:'bar',
-              barMaxWidth:50,//最大宽度
+              stack: 'sum',
+              itemStyle: {
+                normal: {
+                  color: '#87CEFA',
+                  barBorderColor: '#87CEFA',
+                  barBorderWidth: 6,
+                  barBorderRadius:3,
+                  label : {
+                    show:false,
+                    position: 'top',
+                    formatter: '{a} ',
+                    textStyle: {
+                      color: '#000'
+                    }
+                  }
+                }
+              },
+              /*barMaxWidth:50,//最大宽度
               xAxisIndex:2,
               itemStyle: {
                 normal: {
@@ -482,20 +637,37 @@
                     textStyle: {
                       color: "#454545"
                     }
-                    /*formatter(p){
+                    /!*formatter(p){
                      console.log("这个P是什么: ", p);
                      return p.value > 0 ? (p.value +'') : '';
-                     }*/
+                     }*!/
                   }
                 }
-              },
-              data:[25,26,27]
+              },*/
+              data:[30,20,20]
             },
 
             {
               name:'在建已落实海绵',
               type:'bar',
-              barMaxWidth:50,//最大宽度
+              stack: 'sum',
+              itemStyle: {
+                normal: {
+                  color: '#1E90FF',
+                  barBorderColor: '#1E90FF',
+                  barBorderWidth: 6,
+                  barBorderRadius:3,
+                  label : {
+                    show:false,
+                    position: 'top',
+                    formatter: '{a}',
+                    textStyle: {
+                      color: '#000'
+                    }
+                  }
+                }
+              },
+              /*barMaxWidth:50,//最大宽度
               itemStyle: {
                 normal: {
                   barBorderRadius:[5, 5, 5, 5],
@@ -508,14 +680,31 @@
                     }
                   }
                 }
-              },
-              data:[15,16,17]
+              },*/
+              data:[25,15,20]
             },
 
             {
               name:'现状已落实海绵',
               type:'bar',
-              barMaxWidth:50,//最大宽度
+              stack: 'sum',
+              itemStyle: {
+                normal: {
+                  color: '#1874CD',
+                  barBorderColor: '#1874CD',
+                  barBorderWidth: 6,
+                  barBorderRadius:3,
+                  label : {
+                    show:false,
+                    position: 'top',
+                    formatter: '{a}',
+                    textStyle: {
+                      color: '#000'
+                    }
+                  }
+                }
+              },
+              /*barMaxWidth:50,//最大宽度
               xAxisIndex:1,
               itemStyle: {
                 normal: {
@@ -530,8 +719,8 @@
                     }
                   }
                 }
-              },
-              data:[5,6,7]
+              },*/
+              data:[15,25,30]
             }
 
           ]
@@ -646,7 +835,8 @@
           },
           tooltip: {
             trigger: 'axis',
-            /*formatter: '{b} <br> {c} <br/> {a}',*/
+            /*formatter: '{b} <br> {c} % <br/> {a}',*/
+            formatter: '{b} <br> {c} % <br/>',
             axisPointer: {
               type: 'shadow'
             }
@@ -713,7 +903,7 @@
                   }
                 }
               },
-              data: [18, 83]
+              data: [70, 56]
             }
           ]
         };
@@ -730,6 +920,7 @@
             x: 'center'
           },
           tooltip : {
+            /*formatter: '{b} <br> {c} % ',*/
             trigger: 'axis',
             axisPointer: {
               type: 'shadow'
@@ -783,7 +974,7 @@
                   barBorderRadius:[5, 5, 5, 5]
                 }
               },
-              data:[20, 49, 70, 23.2, 25.6, 76.7, 35.6]
+              data:[20, 49, 50, 23.2, 25.6, 54.7, 35.6]
               /*markPoint : {
                 data : [
                   {type : 'max', name: '最大值'},
@@ -804,7 +995,7 @@
                   barBorderRadius:[5, 5, 5, 5]
                 }
               },
-              data:[26, 59, 90, 26.4, 28.7, 70.7, 18.8]
+              data:[70, 70, 70, 70, 70, 70, 70]
               /*markPoint : {
                 data : [
                   {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},

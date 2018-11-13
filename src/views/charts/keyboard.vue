@@ -58,7 +58,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
-            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="area" label="面积(公顷)" width="90"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -101,7 +101,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
-            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="area" label="面积" width="90"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -143,7 +143,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
-            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="area" label="面积" width="90"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -187,7 +187,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
-            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="area" label="面积" width="90"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -229,7 +229,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
-            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="area" label="面积" width="90"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -266,7 +266,7 @@
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZBQY" label="是否为正本清源项目" width="150"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="JSQK" label="海绵建设情况" width="110"></el-table-column>
             <el-table-column align="center" :show-overflow-tooltip="true" prop="ZLKZL" label="年径流总量控制率" width="140"></el-table-column>
-            <el-table-column align="center" :show-overflow-tooltip="true" prop="MJ" label="面积"></el-table-column>
+            <el-table-column align="center" :show-overflow-tooltip="true" prop="area" label="面积" width="90"></el-table-column>
 
             <el-table-column align="center" fixed="right" label="操作" width="160">
               <template slot-scope="scope">
@@ -507,7 +507,7 @@
                   equalTo: "SUBCATCHMENTS"
                 },
                 'projectId': {
-                  equalTo: '4'
+                  equalTo: '3'
                 }
               }
             }
@@ -524,6 +524,7 @@
           console.log("TestData: ", TestData.properties);
           var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
           var threeTest = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
+          //debugger
           /**
            * 道路广场
            */
@@ -538,6 +539,7 @@
             RoadTest.SSLY = TestData.properties.SSLY;
             RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
             RoadTest.ZBQY = TestData.properties.ZBQY;
+            RoadTest.area = Math.abs(TestData.properties.area);
             /**
              * 判断海绵建设情况
              */
@@ -594,6 +596,7 @@
             builTest.SSLY = TestData.properties.SSLY;
             builTest.SSPSFQ = TestData.properties.SSPSFQ;
             builTest.ZBQY = TestData.properties.ZBQY;
+            builTest.area = Math.abs(TestData.properties.area);
             /**
              * 判断海绵建设情况
              */
@@ -649,6 +652,7 @@
             parkTest.SSLY = TestData.properties.SSLY;
             parkTest.SSPSFQ = TestData.properties.SSPSFQ;
             parkTest.ZBQY = TestData.properties.ZBQY;
+            parkTest.area = Math.abs(TestData.properties.area);
             /**
              * 判断海绵建设情况
              */
