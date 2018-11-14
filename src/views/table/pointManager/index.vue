@@ -7,13 +7,18 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="点类型" prop="type" v-show="isType">
-        <el-select v-model="Types.name"  placeholder="请选择点类型" @change="changePointType(Types)">
-          <el-option v-for="type in Types" :label="type.type == 'OUTFALLS'?'排口':'工业企业'" :value="type.id" :key="type.id" @click="test()"></el-option>
+      <el-form-item label="点类型" prop="pointTypes"  v-show="isPointType">
+        <el-select v-model="pointType" placeholder="请选择类型" @change="changePointType(pointType)">
+          <el-option
+            v-for="item in pointTypes"
+            :key="item.id"
+            :label="item.pointTypeName == 'OUTFALLS'?'排口':'工业企业'"
+            :value="item.pointTypeName">
+          </el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="编号" v-show="isPointType">
+      <el-form-item label="编号" v-show="isBianHao">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号"></el-input>
       </el-form-item>
 
@@ -30,7 +35,7 @@
       </el-form-item>
     </el-form>
     <!--============排口===============-->
-    <div v-if='type==1'>
+    <div v-if="pointType=='OUTFALLS'">
         <div >
           <el-table :data="outfallData" border max-height="500" style="width: 100%;" key="outfallTable">
             <el-table-column
@@ -88,11 +93,10 @@
                 <el-button  type="text" @click="dialogFormVisible = true">编辑</el-button>
               </template>
             </el-table-column>
-          </el-table :visible.sync="d">
+          </el-table>
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page.sync="currentPage2"
             :page-sizes="[20, 40, 60, 80]"
             :page-size="100"
             layout="total, sizes, prev, pager, next, jumper"
@@ -339,7 +343,7 @@
           </el-dialog>
         </div>
     <!--===========工业企业===============-->
-    <div v-if='type==0'>
+    <div v-if="pointType == 'COMPANY'">
       <div >
         <el-table :data="companysData" border max-height="500" style="width: 100%;" key="companyTable">
           <el-table-column
@@ -355,7 +359,7 @@
           </el-table-column>
           <el-table-column
             prop="category"
-            label="企业"
+            label="类型"
             width="120">
           </el-table-column>
           <el-table-column
@@ -451,7 +455,6 @@
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page.sync="currentPage2"
           :page-sizes="[20, 40, 60, 80]"
           :page-size="100"
           layout="total, sizes, prev, pager, next, jumper"
@@ -600,28 +603,40 @@
         dialogAddVisible:false,
 
       // 显示顺序
-        isType:false,
         isPointType:false,
-        Types:[],
+        isBianHao:false,
+        //点类型
+        pointTypes:[],
+        pointType: '',
       //当前选择类型
-        type: null,
       //排口数据
         outfallData: [],
       // 企业数据
         companysData:[],
+
       }
     },
     mounted(){
       this.getProjectsInfo();
     },
     methods: {
+      //清除所有数据
+      clearTableData(){
+        this.outfallData = [];
+        this.companysData = [];
+        this.pointTypes = [];
+        this.pointType = '';
+      },
       //项目下拉框发生变化的时候
       changeProjectValue(data){
+        var self = this;
+        self.clearTableData();
+        self.isPointType = true;
         var project = data;
-        this.isType = true;
         // 获取这个项目下所有的点类型
         this.getPointTypeToProjectID(project);
       },
+      //根据项目获取所有的点类型
       getPointTypeToProjectID(project){
         var self = this;
         self.Types = [];
@@ -647,34 +662,32 @@
           }
         }).then(resp => {
           var data = resp.data;
-          var pointTypesArr = [];
-          var pointTypes=[];
-          //数组去重
+          var pointTypeArr = [];
+          var pointTypes = [];
           for(let i = 0;i<data.length;i++){
-             var pointType = data[i].category;
-             pointTypesArr.push(pointType)
+            var pointType = data[i].category;
+            pointTypeArr.push(pointType)
           }
-          for(var i = 0;i<pointTypesArr.length;i++){
-            if(pointTypesArr.indexOf(pointTypesArr[i])==i){
-              pointTypes.push(pointTypesArr[i]);
+        // 数组去重
+          for(var i = 0;i<pointTypeArr.length;i++){
+            if(pointTypeArr.indexOf(pointTypeArr[i])==i){
+              pointTypes.push(pointTypeArr[i]);
             }
           }
-
-          for(var i=0;i<pointTypes.length;i++){
+        //  点类型填充
+          for(var i = 0;i<pointTypes.length;i++){
             var pointType = {
               id : i,
-              type:pointTypes[i]
+              pointTypeName:pointTypes[i]
             }
-            self.Types.push(pointType)
+            self.pointTypes.push(pointType)
           }
         })
       },
       //点类型下拉选项发生变化的时候
-      //工业企业是0 排口是1
       changePointType(data){
-        this.type = ''
-        this.isPointType = true;
-        this.type = data.name;
+        var self = this;
+        this.isBianHao = true;
       },
       //请求所有项目
       getProjectsInfo(){
@@ -690,9 +703,9 @@
         self.companysData = [];
         var selectObject = {
           project_id: self.project.id,
-          category : self.type ,
+          category : self.pointType,
         }
-        if(selectObject.category == 0){
+        if(selectObject.category == 'COMPANY'){
           request('shapes',{
             params:{
               pageNo: self.pageNo,
@@ -743,7 +756,7 @@
           })
         }
         // 拿到数据排口数据
-        else{
+        if(selectObject.category == 'OUTFALLS'){
           request('shapes',{
             params:{
               pageNo: self.pageNo,
