@@ -2,18 +2,31 @@
   <div style="padding-top:20px;">
     <!--表头部分-->
     <el-form :inline="true" class="demo-form-inline" style="padding-left:10px;">
-      <el-form-item label="项目名称">
-        <el-input placeholder="请输入要查询的编号"></el-input>
+      <el-form-item label="项目名称" prop="creatorId">
+        <el-select v-model="project.creatorId" placeholder="请选择" style="padding-left:10px;">
+          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
+        </el-select>
       </el-form-item>
+
+      <el-form-item label="点类型" prop="type">
+        <el-select v-model="project.geometry_type"  placeholder="请选择点类型" style="padding-left:10px;">
+          <el-option label="排口" value="Point1"></el-option>
+          <el-option label="工业企业" value="Point2" ></el-option>
+        </el-select>
+      </el-form-item>
+
       <el-form-item label="编号">
-        <el-input placeholder="请输入要查询的编号"></el-input>
+        <el-input v-model="formInline.user" placeholder="请输入要查询的编号" style="padding-left:10px;"></el-input>
       </el-form-item>
+
       <el-form-item>
-        <el-button type="primary">查询</el-button>
+        <el-button type="primary" @click="handleSelect">查询</el-button>
       </el-form-item>
+
       <el-form-item>
-        <el-button type="primary">添加</el-button>
+        <el-button type="primary" >添加</el-button>
       </el-form-item>
+
       <el-form-item>
         <el-button type="success">导出</el-button>
       </el-form-item>
@@ -23,13 +36,11 @@
              tab-position="top"
              v-model="activeNo"
              type="card">
-
       <el-tab-pane align="center" label="海绵面积覆盖度" name="0">
         <div style="margin-top:2px; padding-top:5px;">
           <div id="completeDegree" :style="{width: '1200px', height: '500px'}" ></div>
         </div>
       </el-tab-pane>
-
       <el-tab-pane align="center" label="年径流总量控制率" name="1">
 
         <!--横向状柱形图-->
@@ -43,20 +54,26 @@
         </div>
 
       </el-tab-pane>
-
       <el-tab-pane align="center" label="项目数量完成度" name="2">
 
+
+        <!--<div style="width:500px; height:450px;  margin-top:2px; padding-top:5px;  float:left;">
+          <div ref="chartBar" :style="{width: '500px', height: '500px'}" ></div>
+        </div>-->
+
+
         <!--饼图-->
-        <div style="width:500px; height:450px; float:left; margin-top:2px; padding-top:5px;">
+        <div style="width:500px; height:450px;  margin-top:2px; padding-top:5px;  float:left;">
           <div id="optionPie" :style="{width: '500px', height: '500px'}" ></div>
         </div>
 
         <!--柱形图-->
         <div style="width:57%; margin-top:20px; padding:17px;  float:right;">
-          <div id="optionBar1" :style="{width: '500px', height: '300px'}"></div>
-          <div id="optionBar2" :style="{width: '500px', height: '300px'}"></div>
-          <div id="optionBar3" :style="{width: '500px', height: '300px'}"></div>
+          <div id="optionBar1" :style="{width: '700px', height: '300px'}"></div>
+          <div id="optionBar2" :style="{width: '700px', height: '300px'}"></div>
+          <div id="optionBar3" :style="{width: '700px', height: '300px'}"></div>
         </div>
+
 
       </el-tab-pane>
 
@@ -64,19 +81,33 @@
   </div>
 </template>
 <script>
-
-  //var echarts = require('echarts');
-  var echarts = require('echarts-gl');
   import axios from 'axios'
   import request from '@/utils/request'
   import commonApi from '@/api/commonApi'
   import _ from 'lodash'
   import TestData from '@/assets/json/ceshi.json'
-  //  import Vuex from 'vuex'
   export default {
     name: 'figure',
     data(){
       return {
+        /**
+         * 表头数据
+         */
+        projects:[],
+        project: {
+          creatorId: '',
+          geometry_type:''
+        },
+        formInline:{
+          user:'',
+          region:''
+        },
+        projectId: '',
+        pageNo : 1,
+        pageSize: 10,//每页的数据条数
+        /**
+         * 统计图数据
+         */
         roadSquare: [],
         parkSquare: [],
         buildSquare: [],
@@ -84,19 +115,26 @@
         optionBar1: {},     // echarts:项目数量完成度柱状图
         optionBar2: {},     // echarts:项目数量完成度柱状图
         optionBar3: {},     // echarts:项目数量完成度柱状图
-        optionPie: {},      // echarts:项目数量完成度饼图
+        optionPieDraw: {},      // echarts:项目数量完成度饼图
         completeDegree: {},    // echarts:项目完成度柱状图
         totalControlLeft: {},  // echarts:年径流总量控制率
         totalControlRight: {}, // echarts:年径流总量控制率
         /**
          * 海绵面积覆盖度
          */
+        partition: [],
         partList: '',
         xwList: [],
         xyList: [],
         zyList: [],
         zwList: [],
         ghList: [],
+        /**
+         * 项目数量完成度
+         */
+        completeId: [],
+        list: 'list',
+        completeList: [],
 
       }
     },
@@ -105,8 +143,69 @@
     },
     mounted() {
       this.TestData();
+      this.getProjectsInfo();
     },
     methods: {
+      /**
+       *  表头数据
+       */
+      getProjectsInfo(){
+        axios('/api/projects').then(this.getProjectSuccess);
+      },
+      getProjectSuccess(res){
+        const self = this;
+        self.projects = res.data;
+        //console.log("表头列表: ", res.data)
+      },
+      // 查询事件
+      handleSelect(){
+        var self = this;
+        var selectObject = {
+          project_id: self.project.creatorId,
+          geometry_type : self.project.geometry_type
+        };
+        // 向后端发起请求接口为 /shapes 拿到数据
+        request('shapes',{
+          params:{
+            pageNo: self.pageNo,
+            pageSize:self.pageSize,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: selectObject.project_id
+                },
+                'category':{
+                  equalTo: 'SUBCATCHMENTS'
+                }
+              }
+            }
+          }
+        }).then(resp =>{
+          self.tableData = resp.data;
+        self.totall = Number(resp.headers.total);
+      })
+      },
+      /**
+       * 使用echarts统计图:项目进度表
+       */
+      init() {
+        const self = this;
+        setTimeout(function () {
+          /**
+           * 年径流总量控制率
+           */
+          self.drawControl();
+          /**
+           * 项目数量完成度
+           */
+          self.drawLine();
+          self.drawPie();
+          console.log("======数据获取成功======");
+        }, 10);
+      },
+      /**
+      * 统计图数据
+      */
       TestData() {
         const self = this;
         request('shapes', {
@@ -142,54 +241,55 @@
       },
       TestList(res){
         const self = this;
+        for(var k=0;k<self.partition.length; k++) {
+          var demo = {};
+          demo.str = 'list'+k;
+          self.completeId.push(demo);
+        }
         var baga = [];     // 排水分区列表
         _.each(self.partList, function (vm) {
           var num = vm+"#排水分区" ;
           baga.push(num);
+          self.partition.push(num);
         });
-
         for(var i=0; i<baga.length; i++ ) {
-
           var XZYLSList = [];     // 现状已落实面积
           var XZWHMList = [];     // 现状无海绵面积
           var ZJYLSList = [];     // 在建已落实面积
           var ZJWUMList = [];     // 在建无海绵面积
           var GHGKList  = [];     // 规划管控面积
-
           _.each(res.data, function (vn) {
             var TestData = JSON.parse(vn.properties);   // 将字符串解析为对象
             if ( baga[i] == TestData.properties.SSPSFQ) {
               //ZMJ.push(TestData.properties.area);     // 获取所有面积
               if (TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵") {
                 var XZYLSarea = TestData.properties.area;     // 获取现状已落实面积
-                XZYLSList.push(XZYLSarea)
+                XZYLSList.push(Number(XZYLSarea))
               } else
               if (TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵") {
                 var XZWHMarea = TestData.properties.area;     // 获取现状无海绵面积
-                XZWHMList.push(XZWHMarea)
+                XZWHMList.push(Number(XZWHMarea))
               } else
               if (TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵") {
                 var ZJYLSarea = TestData.properties.area;     // 获取在建已落实面积
-                ZJYLSList.push(ZJYLSarea);
+                ZJYLSList.push(Number(ZJYLSarea));
               } else
               if (TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵") {
                 var ZJWUMarea = TestData.properties.area;     // 获取在建无海绵面积
                 //ZJWUMarea == null ? ZJWUMarea == 0 : ZJWUMarea ;
-                ZJWUMList.push(ZJWUMarea);
+                ZJWUMList.push(Number(ZJWUMarea));
               } else
               if (TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null) {
                 var GHGKarea = TestData.properties.area;     // 获取规划管控面积
-                GHGKList.push(GHGKarea)
+                GHGKList.push(Number(GHGKarea))
               }
             }
           });
-
           var totaXZYLS = eval(XZYLSList.join("+"));   // 现状已落实面积
           var totaXZWHM = eval(XZWHMList.join("+"));   // 现状无海绵面积
           var totaXJYLS = eval(ZJYLSList.join("+"));   // 在建已落实面积
           var totaZJWHM = eval(ZJWUMList.join("+"));   // 在建无海绵面积
           var totaGHGK  = eval(GHGKList.join("+"));    // 规划管控面积
-
           var numtota1 = '';   // 现状已落实面积
           var numtota2 = '';   // 现状无海绵面积
           var numtota3 = '';   // 在建已落实面积
@@ -207,11 +307,12 @@
           /**
            * 求出各项百分比
            */
-          self.xwList.push(numtota2/sum * 100);
-          self.xyList.push(numtota1/sum * 100);
-          self.zyList.push(numtota3/sum * 100);
-          self.zwList.push(numtota4/sum * 100);
-          self.ghList.push(numtota5/sum * 100);
+          self.xwList.push((numtota2/sum * 100).toFixed(2));
+          self.xyList.push((numtota1/sum * 100).toFixed(2));
+          self.zyList.push((numtota3/sum * 100).toFixed(2));
+          self.zwList.push((numtota4/sum * 100).toFixed(2));
+          self.ghList.push((numtota5/sum * 100).toFixed(2));
+          //console.log("sum: " ,((numtota5/sum * 100).toFixed(2)));
         }
         //console.log("现状无海绵面积百分比: ", self.xwList);
         /**
@@ -220,28 +321,20 @@
         self.drawComplete();
       },
 
-      /**
-       * 使用echarts统计图:项目进度表
-       */
-      init() {
-        const self = this;
-        setTimeout(function () {
-          /**
-           * 年径流总量控制率
-           */
-          self.drawControl();
-          /**
-           * 项目数量完成度
-           */
-          //self.drawComplete();
-          /**
-           * 项目海绵面积覆盖度
-           */
-          self.drawLine();
-          self.drawPie();
-          console.log("======数据获取成功======");
-        }, 10);
-      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       /**
        * 使用echarts统计图:项目海绵面积覆盖度
        */
@@ -386,105 +479,14 @@
           ]
         };
         completeDegree.setOption(self.completeDegree);
-        /*self.completeDegree = {
-         title : {
-         text: 'ECharts2 vs ECharts1',
-         subtext: 'Chrome下测试数据'
-         },
-         tooltip : {
-         trigger: 'axis'
-         },
-         legend: {
-         data:[
-         'ECharts1 - 2k数据','ECharts1 - 2w数据','ECharts1 - 20w数据','',
-         'ECharts2 - 2k数据','ECharts2 - 2w数据','ECharts2 - 20w数据'
-         ]
-         },
-         toolbox: {
-         show : true,
-         feature : {
-         mark : {show: true},
-         dataView : {show: true, readOnly: false},
-         magicType : {show: true, type: ['line', 'bar']},
-         restore : {show: true},
-         saveAsImage : {show: true}
-         }
-         },
-         calculable : true,
-         grid: {y: 70, y2:30, x2:20},
-         xAxis : [
-         {
-         type : 'category',
-         data : ['Line','Bar','Scatter','K','Map']
-         },
-         {
-         type : 'category',
-         axisLine: {show:false},
-         axisTick: {show:false},
-         axisLabel: {show:false},
-         splitArea: {show:false},
-         splitLine: {show:false},
-         data : ['Line','Bar','Scatter','K','Map']
-         }
-         ],
-         yAxis : [
-         {
-         type : 'value',
-         axisLabel:{formatter:'{value} ms'}
-         }
-         ],
-         series : [
-         {
-         name:'ECharts2 - 2k数据',
-         type:'bar',
-         itemStyle: {normal: {color:'rgba(193,35,43,1)', label:{show:true}}},
-         data:[40,155,95,75, 0]
-         },
-         {
-         name:'ECharts2 - 2w数据',
-         type:'bar',
-         itemStyle: {normal: {color:'rgba(181,195,52,1)', label:{show:true,textStyle:{color:'#27727B'}}}},
-         data:[100,200,105,100,156]
-         },
-         {
-         name:'ECharts2 - 20w数据',
-         type:'bar',
-         itemStyle: {normal: {color:'rgba(252,206,16,1)', label:{show:true,textStyle:{color:'#E87C25'}}}},
-         data:[906,911,908,778,0]
-         },
-
-         {
-         name:'ECharts1 - 2k数据',
-         type:'bar',
-         xAxisIndex:1,
-         itemStyle: {normal: {color:'rgba(193,35,43,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'\n'):'';}}}},
-         data:[96,224,164,124,0]
-         },
-         {
-         name:'ECharts1 - 2w数据',
-         type:'bar',
-         xAxisIndex:1,
-         itemStyle: {normal: {color:'rgba(181,195,52,0.5)', label:{show:true}}},
-         data:[491,2035,389,955,347]
-         },
-         {
-         name:'ECharts1 - 20w数据',
-         type:'bar',
-         xAxisIndex:1,
-         itemStyle: {normal: {color:'rgba(252,206,16,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'+'):'';}}}},
-         data:[3000,3000,2817,3000,0]
-         }
-         ]
-         };*/
       },
-
       /**
        * 使用echarts统计图:年径流总量控制率
        */
       drawControl(){
         const self = this;
         /**
-         * 纵向柱形图
+         * 横向柱形图
          */
         var colorList = ['#4876FF','#0000CD',];
         var totalControlLeft = self.$echarts.init(document.getElementById("totalControlLeft"));  //获取标签ID
@@ -570,7 +572,7 @@
         totalControlLeft.setOption(self.totalControlLeft);
 
         /**
-         * 横向柱形图
+         * 纵向柱形图
          */
         var totalControlRight = self.$echarts.init(document.getElementById("totalControlRight"));  //获取标签ID
         self.totalControlRight = {
@@ -672,22 +674,6 @@
         };
         totalControlRight.setOption(self.totalControlRight);
       },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       /**
        * 使用echarts统计图:项目数量完成度柱状图
        */
@@ -725,6 +711,7 @@
             }
           },
           legend: {
+            selectedMode:false,
             data: ['已完成', '未完成']
           },
           toolbox: {
@@ -752,13 +739,13 @@
             {
               name: '已完成',
               type: 'bar',
-              barWidth : 10,
+              barWidth : 20,
               data: wancheng
             },
             {
               name: '未完成',
               type: 'bar',
-              barWidth : 10,
+              barWidth : 20,
               data: meiyou
             }
           ]
@@ -777,6 +764,7 @@
             }
           },
           legend: {
+            selectedMode:false,
             data: ['已完成', '未完成']
           },
           toolbox: {
@@ -829,6 +817,7 @@
             }
           },
           legend: {
+            selectedMode:false,
             data: ['已完成', '未完成']
           },
           toolbox: {
@@ -895,8 +884,9 @@
             }
           });
         });
-        var optionPie = self.$echarts.init(document.getElementById("optionPie"));  //获取标签ID
-        self.optionPie = {
+//        var optionPie = self.$echarts.init(document.getElementById("optionPie"));  //获取标签ID
+        var optionPie = echarts.init(chartBar);  //获取标签ID
+        self.optionPieDraw = {
           title : {             // 标题
             text: '项目数量完成度',
             x:'center'
@@ -910,16 +900,17 @@
           },
           tooltip : {
             trigger: 'item',
-            formatter:  " 区间在 {b} <br> 完成 {c} 项"
+            /*formatter:  " 区间在 {b} <br> 完成 {c} 项"*/
           },
           legend: {
+            selectedMode:false,
             orient: 'vertical',
             left: 'left',
             data: ['小于50%', '50% 到 80%', '80% 到 99%', '100%']
           },
           series : [
             {
-              name: '访问来源',
+              name: '项目数量完成度',
               type: 'pie',
               selectedMode: 'single',
               center : ['48%', 200],
@@ -945,7 +936,7 @@
             }
           ]
         };
-        optionPie.setOption(self.optionPie);
+        optionPie.setOption(self.optionPieDraw);
         /*self.optionPie = {
          title: {
          text: '项目数量完成度',
@@ -1018,7 +1009,7 @@
 
 <style lang="scss">
   div.listChart {
-    padding: 0px 20px 0px 10px;
+    padding: 0px 20px 0px 10px ;
   }
 
   .app-main {

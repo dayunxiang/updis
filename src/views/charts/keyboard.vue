@@ -383,7 +383,6 @@
   import request from '@/utils/request'
   import commonApi from '@/api/commonApi'
   import _ from 'lodash'
-  import TestData from '@/assets/json/ceshi.json'
 
   export default {
     name: 'keyboard',
@@ -438,8 +437,6 @@
       }
     },
     created() {
-      /*this.Test();
-       this.init();*/
     },
     mounted() {
       this.ProductInit();
@@ -452,7 +449,8 @@
         axios('/api/projects').then(this.getProjectSuccess);
       },
       getProjectSuccess(res){
-        this.projects = res.data;
+        const self = this;
+        self.projects = res.data;
       },
       // 查询事件
       handleSelect(){
@@ -464,8 +462,8 @@
         // 向后端发起请求接口为 /shapes 拿到数据
         request('shapes',{
           params:{
-            pageNo: self.pageNo,
-            pageSize:self.pageSize,
+            pageNo: 1,
+            pageSize:100,
             filters: {
               'shape': {
                 'project_id': {
@@ -481,16 +479,6 @@
           this.tableData = resp.data;
           self.totall = Number(resp.headers.total);
         })
-      },
-      /**
-       * 加载项目数据
-       */
-      init() {
-        const self = this;
-        self.tongName = TestData.tongName;
-      },
-      Test() {
-        this.projectId = this.$route.query.projectId;
       },
       /**
        * 获取项目进度表数据
@@ -520,11 +508,9 @@
         const self = this;
         var data = res.data;
         _.each(data, function (L) {
-          var TestData = JSON.parse(L.properties);
-          console.log("TestData: ", TestData.properties);
-          var letter = ( TestData.properties.YDLX ).substr(0, 1);    // 截取字符首字母
-          var threeTest = ( TestData.properties.YDLX ).substr(0, 3);    // 截取字符首字母
-          //debugger
+          var TestData = JSON.parse(L.properties);    // 解析
+          var letter = ( TestData.properties.YDLX ).substr(0, 1);     // 截取字符
+          var threeTest = ( TestData.properties.YDLX ).substr(0, 3);  // 截取字符
           /**
            * 道路广场
            */
@@ -698,54 +684,25 @@
         this.totalFrist = self.buildSquare.length;
         this.totalSecond = self.parkSquare.length;
         this.totalThree = self.roadSquare.length;
-//        console.log("道路广场: ", self.roadSquare);
-        /* console.log("建筑小区: ", self.buildSquare);
+        /*console.log("道路广场: ", self.roadSquare);
+        console.log("建筑小区: ", self.buildSquare);
         console.log("公园绿地: ", self.parkSquare); */
+      },
+      /**
+       * 标签页
+       */
+      handleClick(tab, event, res) {
+        const self = this;
       },
       /**
        * 分页部分
        */
       sizeChange(pageSize){
         this.pageSize = pageSize;
-        console.log("页数", pageSize);
       },
       currentChange(currentPage){
-
         this.currentPage = currentPage;
       },
-      handleClick(tab, event, res) {
-        /*console.log(tab, event);*/
-        const self = this;
-        console.log("位置: ", tab.index);
-      },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       /**
        * 查看信息
@@ -817,7 +774,13 @@
         self.dialogAdd = true;
         self.option4.name = '';
         console.log("数据: ", this);
-      }
+      },
+      /**
+       * 路由跳转
+       */
+      Test() {
+        this.projectId = this.$route.query.projectId;
+      },
     }
   }
 </script>
