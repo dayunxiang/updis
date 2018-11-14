@@ -12,14 +12,14 @@
     <!-------------------------------------------地块渲染------------------------------------------------>
     <!--项目二地块开始-->
     <bm-polygon
-        v-if = 'projectId == 2'
-        v-for="polygonPath in onePath"
-        :key="polygonPath .id"
-        :path="polygonPath.geos"
-        strokeColor = 'red'
-        strokeWeight=5
-        fillColor = ""
-        @click="handleDiKuai(polygonPath)"
+      v-if = 'projectId == 2'
+      v-for="polygonPath in onePath"
+      :key="polygonPath .id"
+      :path="polygonPath.geos"
+      strokeColor = 'red'
+      strokeWeight=5
+      fillColor = ""
+      @click="handleDiKuai(polygonPath)"
     />
     <bm-polygon
       v-if = 'projectId == 2'
@@ -32,14 +32,95 @@
       @click="handleDiKuai(polygonPath)"
     />
     <!--其他项目-->
+    <!--道路-->
     <bm-polygon
-      v-for="polygonPath in polygonPaths"
-      :key="polygonPath .id"
+      v-for="polygonPath in subcatchments.road"
+      :key="polygonPath.id"
       :path="polygonPath.geos"
-      :stroke-opacity="polygonPath.opacity"
-      :stroke-weight="5"
-      :stroke-color="polygonPath.color"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity=polygonPath.fillOpacity
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity=polygonPath.strokeOpacity
+      :stroke-weight=polygonPath.strokeWeight
       @click="handleSubcatchment(polygonPath)"
+    />
+    <!--市政-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.shiZheng"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--绿地-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.lvDi"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--居住用地-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.juZhuYongDi"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight="polygonPath.strokeWeight"
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--政府-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.zhengFu"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight=polygonPath.strokeWeight
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--工业-->
+    <bm-polygon
+      v-for="polygonPath in subcatchments.gongYe"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight=polygonPath.strokeWeight
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <bm-polygon
+      v-for="polygonPath in subcatchments.shangYe"
+      :key="polygonPath.id"
+      :path="polygonPath.geos"
+      :fill-color="polygonPath.fillColor"
+      :fill-opacity="polygonPath.fillOpacity"
+      :stroke-color="polygonPath.strokeColor"
+      :stroke-opacity="polygonPath.strokeOpacity"
+      :stroke-weight=polygonPath.strokeWeight
+      @click="handleSubcatchment(polygonPath)"
+    />
+    <!--地块中心点-->
+    <bm-marker
+      v-for=" subcatchmentsCenter  in subcatchmentsCenterMarks"
+      :position="subcatchmentsCenter.geos"
+      :dragging="true"
+      animation="BMAP_ANIMATION_BOUNCE"
     />
     <!------------------------------------------排口渲染-------------------------------------------------------------------->
     <!--雨水排口-->
@@ -52,10 +133,11 @@
     />
     <!--污水排口-->
     <bm-marker
+      style="transform:rotate(90deg)"
       v-for="sewageOutfall in outFalls.sewageMarkers"
       :key="sewageOutfall.id"
       :position="sewageOutfall.geos"
-      :icon="{url: '/static/icon/sewageOutfall_48.ico', size: {width: 32, height: 32}}"
+      :icon="{url: '/static/icon/sewageOutfall_48.ico', size: {width: 32, height: 32,}}"
       @click="handlepaikou(sewageOutfall) "
     />
     <!--混流排口-->
@@ -70,9 +152,8 @@
     <!--雨水检查井-->
     <bm-circle
       v-for="val in Junctions.rainJunctions"
-      :key="val.id"
       :center="val.geos"
-      :radius="10"
+      :radius="2"
       :stroke-opacity="1"
       :stroke-weight="7"
       fillColor="blue"
@@ -81,9 +162,8 @@
     <!--污水检查井-->
     <bm-circle
       v-for="val in Junctions.sewageJunctions"
-      :key="val.id"
       :center="val.geos"
-      :radius="10"
+      :radius="2"
       :stroke-opacity="1"
       :stroke-weight="7"
       fillColor="rgb(242,73,248)"
@@ -121,30 +201,43 @@
     <!------------------------------------------查询类-------------------------------------------------------------->
     <!-------------------------------------------管线(查询类)--------------------------------------------------------------->
     <!--查询管线开始-->
+    <!--查询雨水管线-->
     <bm-polyline
-      v-for="polylinePath in selectPolylinePaths"
+      v-for="polylinePath in selectConduits.rainConduits"
       :key="polylinePath.id"
       :path="polylinePath.geos"
       :clicking = "true"
       :stroke-opacity="1"
-      :stroke-weight="2"
-      stroke-color="red"
+      :stroke-weight=10
+      stroke-color="blue"
       @click="handleguanxian(polylinePath)"/>
-    <!--查询管线结束-->
-    <!--查询排口开始-->
-    <bm-circle
-      v-for = "(val,index) in selectCirclePaths"
-      :key = "index"
-      :center="val.geos"
-      :radius="val.radius"
+    <!--查询污水管线-->
+    <bm-polyline
+      v-for="polylinePath in selectConduits.sewageConduits"
+      :key="polylinePath.id"
+      :path="polylinePath.geos"
+      :clicking = "true"
+      :stroke-opacity="1"
+      :stroke-weight=10
+      stroke-color="#FF00FF"
+      @click="handleguanxian(polylinePath)"/>
+    <!--雨水引导线：-->
+    <bm-polyline
+      :path="guideLine.rainLine"
+      stroke-color="blue"
       :stroke-opacity="1"
       :stroke-weight="5"
-      :stroke-color="val.color"
-      @click="handlepaikou(index,val)"
-    >
-    </bm-circle>
-    <!--查询排口结束-->
-    <!--查询地块开始-->
+      strokeStyle = 'dashed'
+    />
+    <!--污水引导线：-->
+    <bm-polyline
+      :path="guideLine.sewageLine"
+      stroke-color="#FF00FF"
+      :stroke-opacity="1"
+      :stroke-weight="5"
+      strokeStyle = 'dashed'
+    />
+    <!--排口查询地块开始-->
     <bm-polygon
       v-for="polygonPath in selectPolygonPaths"
       :key="polygonPath .id"
@@ -154,27 +247,70 @@
       :stroke-color="polygonPath.color"
       @click="handleDiKuai(polygonPath)"
     />
-    <!--查询地块结束-->
+    <!--排口查上游管道-->
+    <bm-polyline
+      v-for="polylinePath in selectPolylinePaths"
+      :path="polylinePath.geos"
+      :clicking = "true"
+      :stroke-opacity="1"
+      :stroke-weight="3"
+      stroke-color="red"
+      @click="handleguanxian(polylinePath)"/>
+    <!--查询雨水去向-->
+    <bm-circle
+      v-for = "(val,index) in selectCirclePaths"
+      :key = "index"
+      :center="val.geos"
+      :radius="val.radius"
+      :stroke-opacity="1"
+      :stroke-weight="5"
+      :stroke-color="val.color"
+      @click="handlepaikou(index,val)"
+    />
+    <bm-circle
+      v-for = "(val,index) in selectCirclePaths.rainOutfall"
+      :key = "index"
+      :center="val.geos"
+      :radius="val.radius"
+      :stroke-opacity="1"
+      :stroke-weight="5"
+      :stroke-color="val.color"
+      @click="handlepaikou(index,val)"
+    />
+    <bm-circle
+      v-for = "(val,index) in selectCirclePaths.sewageOutfall"
+      :key = "index"
+      :center="val.geos"
+      :radius="val.radius"
+      :stroke-opacity="1"
+      :stroke-weight="5"
+      :stroke-color="val.color"
+      @click="handlepaikou(index,val)"
+    />
   </baidu-map>
 </template>
 
 <script>
   import axios from 'axios'
+  import BMap from 'BMap'
   import _each from '@/utils/_each'
   import request from '@/utils/request'
   import {geojson2cytoscape,
-          getAncestorConduitsOfOutfall,
-          calcAllSubcatchmentNearestNode,
-          getAncestorSubcatchmentsOfOutfall,
-          getDescendantConduitsOfSubcatchment,
-          getDescendantOutfallsOfSubcatchment
-         } from '@/utils/mapUtil'
+    getAncestorConduitsOfOutfall,
+    calcAllSubcatchmentNearestNode,
+    getAncestorSubcatchmentsOfOutfall,
+    getDescendantConduitsOfSubcatchment,
+    getDescendantOutfallsOfSubcatchment,
+    getNearestNodeOfPoint
+  } from '@/utils/mapUtil'
   import {getArea} from '@/utils/map'
+  import '@/utils/GeoUtils.js'
+  // import mapData from '../../../../../../store/modules/mapData'
 
   export default {
     props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits','isHideSewageConduits',
-            'isHideAllOutfalls','isHideMergeOutfalls','isHideRainOutfalls','isHideSewageOutfalls',
-            'isHideCompanys'],
+      'isHideAllOutfalls','isHideMergeOutfalls','isHideRainOutfalls','isHideSewageOutfalls',
+      'isHideCompanys',],
     data() {
       return {
         projectId: '',
@@ -202,7 +338,16 @@
             rainJunctions:[],
             sewageJunctions:[]
           },
-          subcatchments: [],
+          subcatchments:{
+            road : [],
+            shiZheng:[],
+            lvDi:[],
+            juZhuYongDi:[],
+            zhengFu:[],
+            gongYe:[],
+            shangYe:[]
+          },
+
           companys:[]
         },
         //管线类
@@ -216,6 +361,16 @@
           sewageMarkers:[],
           mergeMarkers:[]
         },
+        //地块类
+        subcatchments:{
+          road : [],
+          shiZheng:[],
+          lvDi:[],
+          juZhuYongDi:[],
+          zhengFu:[],
+          gongYe:[],
+          shangYe:[]
+        },
         //企业类
         companys:[],
         //检查井
@@ -223,16 +378,29 @@
           rainJunctions:[],
           sewageJunctions:[]
         },
-        polygonPaths: [],
-        markers: [],
-
+        // //地块中心点
+        subcatchmentsCenterMarks:[],
         //工业入园
         onePath:[],
         twoPath:[],
         //查询类
+        //管线
+        selectConduits:{
+          rainConduits :[],
+          sewageConduits:[]
+        },
+        //引导线
+        guideLine:{
+          rainLine:[],
+          sewageLine:[]
+        },
+        //排口查上游管道
         selectPolylinePaths:[],
         selectPolygonPaths:[],
-        selectCirclePaths:[]
+        selectCirclePaths:{
+          rainOutfall:[],
+          sewageOutfall:[],
+        }
       }
     },
     watch: {
@@ -243,7 +411,7 @@
         this.isHideAllConduits ? this.showAllConduits() : this.hideAllConduits()
       },
       isHideRainConduits: function(){
-         this.isHideRainConduits ? this.showRainConduits() : this.hideRainConduits()
+        this.isHideRainConduits ? this.showRainConduits() : this.hideRainConduits()
       },
       isHideSewageConduits: function(){
         this.isHideSewageConduits ? this.showSewageConduits():this.hideSewageConduits()
@@ -291,24 +459,16 @@
       test(e) {
         var self = this;
         if (e.target.getZoom() <= 15) {
-          self.companys.forEach(function(val) {
-            val.icon.url = '/static/icon/companys_16.ico'
-            val.icon.size = { width: 16, height: 16 }
-          })
           this.outFalls.rainMarkers = [];
           this.outFalls.sewageMarkers = [];
           this.outFalls.mergeMarkers = [];
         }
         if (e.target.getZoom()>15) {
-          self.companys.forEach(function(val) {
-             val.icon.url = '/static/icon/companys_32.ico'
-              val.icon.size = { width: 32, height: 32 }
-            })
           this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
           this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
           this.outFalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
-          }
-        },
+        }
+      },
       // 获取项目工程Id
       getProjectId(){
         this.projectId = this.$route.query.projectId;
@@ -317,10 +477,22 @@
        * 显示/隐藏所有地块
        */
       showAllSubcatchments() {
-        this.polygonPaths = this.mapData.subcatchments
+        this.subcatchments.road = this.mapData.subcatchments.road;
+        this.subcatchments.shiZheng = this.mapData.subcatchments.shiZheng
+        this.subcatchments.lvDi = this.mapData.subcatchments.lvDi;
+        this.subcatchments.juZhuYongDi = this.mapData.subcatchments.juZhuYongDi;
+        this.subcatchments.zhengFu = this.mapData.subcatchments.zhengFu
+        this.subcatchments.gongYe = this.mapData.subcatchments.gongYe
+        this.subcatchments.shangYe = this.mapData.subcatchments.shangYe
       },
       hideAllSubcatchments() {
-        this.polygonPaths = []
+        this.subcatchments.road = []
+        this.subcatchments.shiZheng = [];
+        this.subcatchments.lvDi = [];
+        this.subcatchments.juZhuYongDi = [];
+        this.subcatchments.zhengFu = [];
+        this.subcatchments.gongYe = [];
+        this.subcatchments.shangYe = [];
       },
       /**
        * 显示/隐藏所有管线
@@ -333,14 +505,14 @@
         this.Conduits.rainConduits = [];
         this.Conduits.sewageConduits = [];
       },
-        // 隐藏/显示雨水管
+      // 隐藏/显示雨水管
       showRainConduits(){
         this.Conduits.rainConduits = this.mapData.conduits.rainConduits;
       },
       hideRainConduits(){
         this.Conduits.rainConduits = [];
       },
-        //隐藏/显示污水管
+      //隐藏/显示污水管
       showSewageConduits(){
         this.Conduits.sewageConduits = this.mapData.conduits.sewageConduits;
       },
@@ -360,21 +532,21 @@
         this.outFalls.sewageMarkers = [];
         this.outFalls.mergeMarkers = [];
       },
-        //  显示/隐藏合流排口
+      //  显示/隐藏合流排口
       showMergeOutfalls(){
         this.outFalls.mergeMarkers = this.mapData.outfalls.mergeOutfall;
       },
       hideMergeOutfalls(){
         this.outFalls.mergeMarkers = [];
       },
-        // 显示/隐藏雨水排口
+      // 显示/隐藏雨水排口
       showRainOutfalls(){
         this.outFalls.rainMarkers = this.mapData.outfalls.rainOutfall;
       },
       hideRainOutfalls(){
         this.outFalls.rainMarkers = [];
       },
-        //显示/隐藏污水排口
+      //显示/隐藏污水排口
       showSewageOutfalls(){
         this.outFalls.sewageMarkers = this.mapData.outfalls.sewageOutfall;
       },
@@ -385,8 +557,8 @@
        * 显示/隐藏所有检查井
        */
       showAllJunctions() {
-       this.Junctions.rainJunctions = this.mapData.Junctions.rainJunctions;
-       this.Junctions.sewageJunctions = this.mapData.Junctions.sewageJunctions;
+        this.Junctions.rainJunctions = this.mapData.Junctions.rainJunctions;
+        this.Junctions.sewageJunctions = this.mapData.Junctions.sewageJunctions;
       },
       hideAllJunctions() {
       },
@@ -399,28 +571,38 @@
       hideAllCompanys(){
         this.companys =[]
       },
+      //清除地图上所有的查询信息
+      clearSelect(){
+        this.subcatchmentsCenterMarks = [];
+        this.selectConduits.rainConduits = [];
+        this.selectConduits.sewageConduits = [];
+        this.guideLine.rainLine = [];
+        this.guideLine.sewageLine = [];
+        this.selectPolylinePaths = [];
+        this.selectCirclePaths.rainOutfall = [];
+        this.selectCirclePaths.sewageOutfall =[];
+        this.companys.forEach(function(val){
+          val.icon.url = '/static/icon/companys_32.ico';
+          val.icon.size ={ width: 32, height: 32 }
+        })
+      },
       // 每个地块点击事件
       handleSubcatchment(SubcatchmentInfo) {
-        // 清除所有查询出来的渲染
-        this.selectPolygonPaths=[];
-        // this.selectCirclePaths = [];
-        this.selectPolylinePaths = [];
+        this.clearSelect();
         this.$emit('getInfo', SubcatchmentInfo);
-
-        // this.circlePaths.forEach(function(val){
-        //   val.color='#26b8d0'
-        // })
-        this.polygonPaths.forEach(function(val){
-          val.color = 'yellow';
-          val.opacity = 0.1;
-        })
-        SubcatchmentInfo.color = 'red'
-        SubcatchmentInfo.opacity = 1;
-        this.selectPolylinePaths = []
+        var info = SubcatchmentInfo.info;
+        var lng_lat = info.center;
+        var center = {
+          geos : { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402}
+        }
+        this.$data.subcatchmentsCenterMarks.push(center)
+        //
       },
       // 每个排口点击事件
       handlepaikou(data) {
+        this.clearSelect();
         this.$emit('getInfo', data);
+
       },
       // 每个管线点击事件
       handleguanxian(data) {
@@ -433,6 +615,9 @@
       // 每个企业点击事件
       handleCompany(companyInfo){
         this.$emit('getInfo',companyInfo);
+        this.clearSelect();
+        companyInfo.icon.url  = '/static/icon/companys_32_red.ico',
+          companyInfo.icon.size = { width: 32, height: 32 }
       },
       // 请求管线数据
       getConduitsInfo() {
@@ -513,6 +698,21 @@
         var self = this
         var data = res.data;
         var dataArr = []
+        //正则 匹配道路 的正则
+        var daoluReg = /^[S][^A-Za-z]$/gi;
+        // 市政公用设施用地
+        var shiZhengReg = /^[U][^A-Za-z]$/gi;
+        // 绿地
+        var lvDiReg = /^[G,E][^A-Za-z]/gi
+        // 居住用地
+        var juZhuYongDiReg = /^[R][^A-Za-z]/gi
+        // 政府
+        var zhengFuReg = /^[G][I][C][^A-Za-z]/gi
+        // 工业
+        var gongYeReg = /^[M][^A-Za-z]/gi
+        // 商业服务业设施用地
+        var shangyeReg = /^[C][^A-Za-z]/gi;
+
         for (var i = 0 ; i < data.length; i++) {
           dataArr[i] = JSON.parse(data[i].properties)
           dataArr[i].id = data[i].id;
@@ -561,10 +761,14 @@
           })
         }else{
           _each(subcatchmentsData, function(index, subcatchmentData) {
+            var id = subcatchmentData.id;
             var lng_lat = subcatchmentData.geometry.coordinates
             var tempArr = []
             var lng_latArr = []
             var info = subcatchmentData.properties
+            info.id = id;
+            var YDLX = info.YDLX;
+            var properties = subcatchmentData.properties;
             for (var i = 0; i < lng_lat[0].length; i++) {
               tempArr.push(lng_lat[0][i])
             }
@@ -572,19 +776,114 @@
               var arr = { lng: tempArr[i][1] + 0.005363, lat: tempArr[i][0] - 0.00402 }
               lng_latArr.push(arr)
             }
-            var subcatchment = {
-              type: '地块',
-              info: info,
-              geos: lng_latArr,
-              color: 'yellow',
-              opacity: 0.1
+            //道路
+            if(YDLX == '道路' || daoluReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                properties:properties,
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(242,242,242)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
 
+              }
+              self.mapData.subcatchments.road.push(subcatchment);
             }
-            self.mapData.subcatchments.push(subcatchment);
+            //市政公用设施用地
+            if(shiZhengReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                properties:properties,
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(0,0,254)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.shiZheng.push(subcatchment);
+            }
+            //绿地
+            if(lvDiReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                properties:properties,
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(0,255,1)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.lvDi.push(subcatchment);
+            }
+            //居住用地
+            if(juZhuYongDiReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                properties:properties,
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(255,255,1)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.juZhuYongDi.push(subcatchment);
+            }
+            //政府用地
+            if(zhengFuReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                properties:properties,
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(255,0,255)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.zhengFu.push(subcatchment);
+            }
+            //工业用地
+            if(gongYeReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                properties:properties,
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(127,63,1)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.gongYe.push(subcatchment);
+            }
+            //商业用地
+            if(shangyeReg.test(YDLX)){
+              var subcatchment = {
+                type: '地块',
+                properties:properties,
+                info: info,
+                geos: lng_latArr,
+                fillColor:'rgb(245,0,0)',
+                fillOpacity:0.3,
+                strokeColor:'#808080',
+                strokeOpacity:1,
+                strokeWeight:1
+              }
+              self.mapData.subcatchments.shangYe.push(subcatchment);
+            }
           })
         }
-
-
       },
       // 请求排口数据
       getOutfalls() {
@@ -714,11 +1013,15 @@
         var dataArr = []
         for (var i = 0; i < data.length; i++) {
           dataArr[i] = JSON.parse(data[i].properties)
+          dataArr[i].id = data[i].id;
         }
         var companysData = dataArr;
         _each(companysData, function(index, companysData) {
           var lng_lat = companysData.geometry.coordinates;
           var info = companysData.properties;
+          var id = companysData.id;
+          info.id = id;
+          info.lng_lat = lng_lat;
           var company = {
             type: '企业',
             info: info,
@@ -761,7 +1064,7 @@
        * pipeNetwork 是一个管网系统 为对象格式
        * 拓扑查询代码块
        */
-    // 根据排口查上游管线
+      // 根据排口查上游管线
       handleSelectConduits(outFallName) {
         request('shapes', {
           params:{
@@ -777,8 +1080,8 @@
             }
           }
         }).then(resp => {
-        var data = JSON.parse(resp.data[0].properties);
-        this.SelectConduits(data);
+          var data = JSON.parse(resp.data[0].properties);
+          this.SelectConduits(data);
         })
       },
       SelectConduits(data){
@@ -809,7 +1112,7 @@
         })
 
       },
-    //  根据排口查上游地块
+      //  根据排口查上游地块
       handleSelectSubcatchments(outFallName){
         request('shapes', {
           params:{
@@ -842,6 +1145,7 @@
           dataArr[i] = subcatchments[i];
         }
         var subcatchmentsData = dataArr;
+        console.log(subcatchmentsData)
         _each(subcatchmentsData, function(index, subcatchmentData) {
           var lng_lat = subcatchmentData.geometry.coordinates
           var tempArr = []
@@ -867,8 +1171,8 @@
         })
 
       },
-    // 根据地块查询下游管道
-      handleSubcatchmentsSelectConduits(data){
+      // 根据地块查询下游雨水管道
+      handleSubcatchmentsSelectRainConduits(data){
         request('shapes', {
           params:{
             filters: {
@@ -885,21 +1189,26 @@
         }).then(resp => {
           var data = JSON.parse(resp.data[0].properties);
           data.businessType="SUBCATCHMENTS";
-          this.SubcatchmentsSelectConduits(data);
+          this.SubcatchmentsSelectRainConduits(data);
         })
       },
-      SubcatchmentsSelectConduits(feature){
-
+      SubcatchmentsSelectRainConduits(feature){
         var self = this;
+        var centerPoint = feature.properties.center
         var cy = geojson2cytoscape(this.geoJson);
-        let conduits = getDescendantConduitsOfSubcatchment(feature, cy);
-        //  // 拿到管线后渲染
-        this.selectPolylinePaths = [];
+        var ConduitsType = '雨水管'
+        let conduits = getDescendantConduitsOfSubcatchment(feature, cy,ConduitsType);
+        //拿到管线后渲染
         var dataArr = []
         for(var i =0 ;i<conduits.length;i++){
           dataArr[i]=conduits[i].properties;
         }
         var conduitsData = dataArr;
+        //获取引导线
+        var rainJunction_Lng_lat = dataArr[0].geometry.coordinates[0];
+        var rainGuideLine = [{lng:centerPoint[1]+ 0.005363,lat:centerPoint[0] - 0.00402},{lng:rainJunction_Lng_lat[1]+ 0.005363,lat:rainJunction_Lng_lat[0]- 0.00402}];
+        this.guideLine.rainLine = rainGuideLine;
+        //渲染管线
         _each(conduitsData, function(index, conduitData) {
           var lng_lat = conduitData.geometry.coordinates
           var info = conduitData.properties
@@ -913,11 +1222,11 @@
             info: info,
             geos: lng_latArr
           }
-          self.selectPolylinePaths.push(conduit);
+          self.selectConduits.rainConduits.push(conduit);
         })
       },
-    // 根据地块查下游排口
-      handleSubcatchmentsSelectOutfalls(data){
+      //根据地块查污水管道
+      handleSubcatchmentsSelectSewageConduits(data){
         request('shapes', {
           params:{
             filters: {
@@ -934,16 +1243,120 @@
         }).then(resp => {
           var data = JSON.parse(resp.data[0].properties);
           data.businessType="SUBCATCHMENTS";
-          this.SubcatchmentsSelectOutfalls(data)
+          this.SubcatchmentsSelectSewageConduits(data);
         })
       },
-      SubcatchmentsSelectOutfalls(feature){
+      SubcatchmentsSelectSewageConduits(feature){
+        var self = this;
+        var centerPoint = feature.properties.center
+        var cy = geojson2cytoscape(this.geoJson);
+        var ConduitsType = '污水管'
+        let conduits = getDescendantConduitsOfSubcatchment(feature, cy,ConduitsType);
+        // 拿到管线后渲染
+        var dataArr = []
+        for(var i =0 ;i<conduits.length;i++){
+          dataArr[i]=conduits[i].properties;
+        }
+        var conduitsData = dataArr;
+        //引导线
+        var rainJunction_Lng_lat = dataArr[0].geometry.coordinates[0];
+        var rainGuideLine = [{lng:centerPoint[1]+ 0.005363,lat:centerPoint[0] - 0.00402},{lng:rainJunction_Lng_lat[1]+ 0.005363,lat:rainJunction_Lng_lat[0]- 0.00402}];
+        this.guideLine.sewageLine = rainGuideLine;
+        //渲染管线
+        _each(conduitsData, function(index, conduitData) {
+          var lng_lat = conduitData.geometry.coordinates
+          var info = conduitData.properties
+          var lng_latArr = []
+          for (var i = 0; i < lng_lat.length; i++) {
+            var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
+            lng_latArr.push(arr)
+          }
+          var conduit = {
+            type: '管线',
+            info: info,
+            geos: lng_latArr
+          }
+          self. selectConduits.sewageConduits.push(conduit);
+        })
+      },
+      // 根据地块查下游雨水排口
+      handleSubcatchmentsSelectRainOutfalls(data){
+        request('shapes', {
+          params:{
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: self.projectId
+                },
+                'id': {
+                  equalTo: data
+                }
+              }
+            }
+          }
+        }).then(resp => {
+          var data = JSON.parse(resp.data[0].properties);
+          data.businessType="SUBCATCHMENTS";
+          this.SubcatchmentsSelectRainOutfalls(data)
+        })
+      },
+      SubcatchmentsSelectRainOutfalls(feature){
         var self = this;
         var cy = geojson2cytoscape(this.geoJson);
-        var  subcatchmentToOutfall= getDescendantOutfallsOfSubcatchment(feature,cy);
+        var ConduitsType = '雨水管'
+        var  subcatchmentToOutfall= getDescendantOutfallsOfSubcatchment(feature,cy,ConduitsType);
         // 拿到排口后渲染
         var data = subcatchmentToOutfall;
         var dataArr = []
+        console.log(subcatchmentToOutfall)
+        for (var i = 0; i<data.length;i++){
+          dataArr[i] = data[i].properties
+        }
+        var outFallsData = dataArr;
+        _each(outFallsData, function(index, outFallData) {
+          var lng_lat = outFallData.geometry.coordinates
+          var info = outFallData.properties
+          var outFall = {
+            type: '排口',
+            info: info,
+            geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
+            radius: 50,
+            id: index,
+            color:'blue'
+          }
+          self.selectCirclePaths.rainOutfall.push(outFall);
+        })
+      },
+      // 根据地块查下游污水去向
+      handleSubcatchmentsSelectSewageOutfalls(data){
+        request('shapes', {
+          params:{
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: self.projectId
+                },
+                'id': {
+                  equalTo: data
+                }
+              }
+            }
+          }
+        }).then(resp => {
+          var data = JSON.parse(resp.data[0].properties);
+          data.businessType="SUBCATCHMENTS";
+          this.SubcatchmentsSelectSewageOutfalls(data)
+        })
+      },
+      SubcatchmentsSelectSewageOutfalls(feature){
+        var self = this;
+        var cy = geojson2cytoscape(this.geoJson);
+        var ConduitsType = '污水管'
+        var  subcatchmentToOutfall= getDescendantOutfallsOfSubcatchment(feature,cy,ConduitsType);
+        // 拿到排口后渲染
+        var data = subcatchmentToOutfall;
+        var dataArr = []
+        console.log(subcatchmentToOutfall)
         for (var i = 0; i<data.length;i++){
           dataArr[i] = data[i].properties
         }
@@ -959,24 +1372,171 @@
             id: index,
             color:'red'
           }
-          self.selectCirclePaths.push(outFall);
+          self.selectCirclePaths.rainOutfall.push(outFall);
         })
+      },
+      // 根据企业查下游雨水管
+      handleCompanySelectRainConduits(data){
+        var self =this;
+        var map = new BMap.Map("map");
+        var lng_lat = data;
+        var subcatchments = this.mapData.subcatchments;
+        var arr = []
+        var overlays = []
+        for(let item in subcatchments){
+          for(var i = 0;i<subcatchments[item].length;i++){
+            arr.push(subcatchments[item][i])
+          }
+        }
+        for(var i = 0; i<=arr.length;i++) {
+          var point = new BMap.Point(lng_lat.lng,lng_lat.lat);
+          overlays = [];
+          for (var j = 0; j < arr[i].geos.length; j++) {
+            var points = new BMap.Point(arr[i].geos[j].lng,arr[i].geos[j].lat);
+            overlays.push(points)
+          }
+          var ply = new BMap.Polygon(overlays);
+          var result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
+          if(result==true){
+            var subcatchmenId = arr[i].info.id;
+            request('shapes', {
+              params:{
+                filters: {
+                  'shape': {
+                    'project_id': {
+                      equalTo: self.projectId
+                    },
+                    'id': {
+                      equalTo: subcatchmenId
+                    }
+                  }
+                }
+              }
+            }).then(resp => {
+              var feature = JSON.parse(resp.data[0].properties);
+              feature.businessType="SUBCATCHMENTS";
+              //开始拓扑查询
+              var cy = geojson2cytoscape(self.geoJson);
+              var ConduitsType = '雨水管'
+              let conduits = getDescendantConduitsOfSubcatchment(feature, cy,ConduitsType);
+              var dataArr = []
+              for(var i =0 ;i<conduits.length;i++){
+                dataArr[i]=conduits[i].properties;
+              }
+              var conduitsData = dataArr;
+              //获取引导线
+              var rainJunction_Lng_lat = dataArr[0].geometry.coordinates[0];
+              var rainGuideLine = [{lng:lng_lat.lng,lat:lng_lat.lat},{lng:rainJunction_Lng_lat[1]+ 0.005363,lat:rainJunction_Lng_lat[0]- 0.00402}];
+              self.guideLine.rainLine = rainGuideLine;
+              //开始渲染
+              _each(conduitsData, function(index, conduitData) {
+                var lng_lat = conduitData.geometry.coordinates
+                var info = conduitData.properties
+                var lng_latArr = []
+                for (var i = 0; i < lng_lat.length; i++) {
+                  var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
+                  lng_latArr.push(arr)
+                }
+                var conduit = {
+                  type: '管线',
+                  info: info,
+                  geos: lng_latArr
+                }
+                self.selectConduits.rainConduits.push(conduit);
+              })
+            })
+            return true;
+          }
+        }
+      },
+      // 根据企业查下游污水管
+      handleCompanySelectSewageConduits(data){
+        var self =this;
+        var map = new BMap.Map("map");
+        var lng_lat = data;
+        var subcatchments = this.mapData.subcatchments;
+        var arr = []
+        var overlays = []
+        for(let item in subcatchments){
+          for(var i = 0;i<subcatchments[item].length;i++){
+            arr.push(subcatchments[item][i])
+          }
+        }
+        for(var i = 0; i<=arr.length;i++) {
+          var point = new BMap.Point(lng_lat.lng,lng_lat.lat);
+          overlays = [];
+          for (var j = 0; j < arr[i].geos.length; j++) {
+            var points = new BMap.Point(arr[i].geos[j].lng,arr[i].geos[j].lat);
+            overlays.push(points)
+          }
+          var ply = new BMap.Polygon(overlays);
+          var result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
+          if(result==true){
+            var subcatchmenId = arr[i].info.id;
+            request('shapes', {
+              params:{
+                filters: {
+                  'shape': {
+                    'project_id': {
+                      equalTo: self.projectId
+                    },
+                    'id': {
+                      equalTo: subcatchmenId
+                    }
+                  }
+                }
+              }
+            }).then(resp => {
+              var feature = JSON.parse(resp.data[0].properties);
+              feature.businessType="SUBCATCHMENTS";
+              //开始拓扑查询
+              var cy = geojson2cytoscape(self.geoJson);
+              var ConduitsType = '污水管'
+              let conduits = getDescendantConduitsOfSubcatchment(feature, cy,ConduitsType);
+              var dataArr = []
+              for(var i =0 ;i<conduits.length;i++){
+                dataArr[i]=conduits[i].properties;
+              }
+              var conduitsData = dataArr;
+              //获取引导线
+              var rainJunction_Lng_lat = dataArr[0].geometry.coordinates[0];
+              var rainGuideLine = [{lng:lng_lat.lng,lat:lng_lat.lat},{lng:rainJunction_Lng_lat[1]+ 0.005363,lat:rainJunction_Lng_lat[0]- 0.00402}];
+              self.guideLine.sewageLine = rainGuideLine;
+              //开始渲染
+              _each(conduitsData, function(index, conduitData) {
+                var lng_lat = conduitData.geometry.coordinates
+                var info = conduitData.properties
+                var lng_latArr = []
+                for (var i = 0; i < lng_lat.length; i++) {
+                  var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
+                  lng_latArr.push(arr)
+                }
+                var conduit = {
+                  type: '管线',
+                  info: info,
+                  geos: lng_latArr
+                }
+                self. selectConduits.sewageConduits.push(conduit);
+              })
+            })
+            return true;
+          }
+        }
       },
       /**
        * 向vuex中存储数据
        * */
       sendMapDataToVuex(){
-          var mapData = this.mapData;
-          this.$store.dispatch('getMapData',mapData)
+        var mapData = this.mapData;
+        this.$store.dispatch('getMapData',mapData)
       }
-  }
+    }
 
   }
 </script>
 <style lang="scss" scoped>
   .map{height: 100%;width: 100%;}
 </style>
-
 
 
 

@@ -2,18 +2,18 @@
   <div class="point-manager">
     <el-form :inline="true"  class="demo-form-inline">
       <el-form-item label="项目名称" prop="creatorId">
-        <el-select v-model="project.creatorId" placeholder="请选择">
-          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="点类型" prop="type">
-        <el-select v-model="project.geometry_type"  placeholder="请选择点类型">
-          <el-option label="排口" value="Point1" @click="paiko()"></el-option>
-          <el-option label="工业企业" value="Point2" @click="gongye"></el-option>
+        <el-select v-model="project.id" placeholder="请选择项目名称" @change="changeProjectValue(project)">
+          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id" ></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="编号">
+      <el-form-item label="点类型" prop="type" v-show="isType">
+        <el-select v-model="Types.name"  placeholder="请选择点类型" @change="changePointType(Types)">
+          <el-option v-for="type in Types" :label="type.type == 'OUTFALLS'?'排口':'工业企业'" :value="type.id" :key="type.id" @click="test()"></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item label="编号" v-show="isPointType">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号"></el-input>
       </el-form-item>
 
@@ -30,116 +30,54 @@
       </el-form-item>
     </el-form>
     <!--============排口===============-->
-    <div v-if="paikou">
-        <!--end-->
+    <div v-if='type==1'>
         <div >
-
-          <el-table :data="tableData" border max-height="500" style="width: 100%;">
+          <el-table :data="outfallData" border max-height="500" style="width: 100%;" key="outfallTable">
             <el-table-column
               fixed
               prop="id"
-              label="排口编号"
-              width="150">
+              label="序号"
+              width="100">
+            </el-table-column>
+            <el-table-column
+              prop="projectName"
+              label="项目编号"
+              width="120">
+            </el-table-column>
+            <el-table-column
+              prop="category"
+              label="类型"
+              width="120">
             </el-table-column>
             <el-table-column
               prop="name"
-              label="名称"
+              label="排口编号"
               width="120">
             </el-table-column>
             <el-table-column
-              prop="province"
-              label="排入河道水质目标"
+              prop="lng_lat"
+              label="地理位置坐标"
+              width="400">
+            </el-table-column>
+            <el-table-column
+              prop="leixing"
+              label="类型"
               width="120">
             </el-table-column>
             <el-table-column
-              prop="city"
-              label="上游管道编号"
+              prop="paixiang"
+              label="排向"
               width="120">
             </el-table-column>
             <el-table-column
-              prop="address"
-              label="上游管道管径"
-              width="300">
+              prop="lastUpdataTime"
+              label="最后更新时间"
+              width="180">
             </el-table-column>
             <el-table-column
-              prop="zip"
-              label="所属街道"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="所属社区"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="所属流域"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="所属排水分区"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="出流类型"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="排口类型"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="旱季污水量"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="是否进行初期雨水截流"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="是否有检测设备"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="建设时间"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="竣工单位编号"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="建设单位"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="联系人"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="电话"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="业主单位/联系人/电话"
-              width="120">
-            </el-table-column>
-            <el-table-column
-              prop="zip"
-              label="运维单位/联系人/电话"
-              width="120">
+              prop=""
+              label="最后更新人"
+              width="180">
             </el-table-column>
             <el-table-column
               fixed="right"
@@ -164,105 +102,105 @@
         <!--编辑-->
         <div>
           <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
-            <el-form ref="form" :model="tableData" label-width="150px">
+            <el-form ref="form" :model="outfallData" label-width="150px">
               <el-form-item label="排口编号">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="排口坐标">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="排入河道水质目标">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="最终排入河道">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属排水分区">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="下游道路名称">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属街道">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属社区">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属流域">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属排水分区">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="管道类型">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="管长">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="管径">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="建设时间">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="竣工单位编号">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="建设单位">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="联系人">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="电话">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="业主单位/联系人/电话">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="运维单位/联系人/电话">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item>
@@ -276,7 +214,7 @@
         <!--添加-->
         <div>
           <el-dialog title="添加管线" :visible.sync="dialogAddVisible" width="25%">
-            <el-form ref="form" :model="tableData" label-width="150px">
+            <el-form ref="form" :model="outfallData" label-width="150px">
               <el-form-item label="请选择项目名称">
                 <el-col :span="19">
                   <el-select  placeholder="请选择项目名称">
@@ -295,102 +233,102 @@
               </el-form-item>
               <el-form-item label="排口编号">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="排口坐标">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="排入河道水质目标">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="最终排入河道">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属排水分区">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="下游道路名称">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属街道">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属社区">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属流域">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="所属排水分区">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="管道类型">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="管长">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="管径">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="建设时间">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="竣工单位编号">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="建设单位">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="联系人">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="电话">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="业主单位/联系人/电话">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item label="运维单位/联系人/电话">
                 <el-col :span="19">
-                  <el-input v-model="tableData.date"></el-input>
+                  <el-input v-model="outfallData.date"></el-input>
                 </el-col>
               </el-form-item>
               <el-form-item>
@@ -401,40 +339,44 @@
           </el-dialog>
         </div>
     <!--===========工业企业===============-->
-    <div v-if="gongye">
-      <!--end-->
-      <div>
-        <el-table :data="tableData" border  style="width: 100%;" fit="true">
+    <div v-if='type==0'>
+      <div >
+        <el-table :data="companysData" border max-height="500" style="width: 100%;" key="companyTable">
           <el-table-column
             fixed
-            prop="X_cor"
-            label="x坐标"
-            width="">
+            prop="id"
+            label="序号"
+            width="50">
           </el-table-column>
           <el-table-column
-            prop="Y_cor"
-            label="Y坐标"
+            prop="projectName"
+            label="项目编号"
             width="120">
           </el-table-column>
           <el-table-column
-            prop="QYMC"
-            label="企业名称"
+            prop="category"
+            label="企业"
             width="120">
+          </el-table-column>
+          <el-table-column
+            prop="lng_lat"
+            label="坐标"
+            width="400">
           </el-table-column>
           <el-table-column
             prop="JDMC"
-            label="街道"
-            width="120">
+            label="街道名称"
+            width="300">
           </el-table-column>
           <el-table-column
             prop="SQMC"
-            label="社区"
-            width="300">
+            label="社区名称"
+            width="120">
           </el-table-column>
           <el-table-column
             prop="SCJYDZ"
             label="地址"
-            width="120">
+            width="400">
           </el-table-column>
           <el-table-column
             prop="FDDBR"
@@ -443,21 +385,6 @@
           </el-table-column>
           <el-table-column
             prop="LXFS"
-            label="联系方式"
-            width="120">
-          </el-table-column>
-          <el-table-column
-            prop="JZMJ"
-            label="建筑面积"
-            width="120">
-          </el-table-column>
-          <el-table-column
-            prop="QYLXR"
-            label="联系人"
-            width="120">
-          </el-table-column>
-          <el-table-column
-            prop="LXDH"
             label="联系方式"
             width="120">
           </el-table-column>
@@ -472,11 +399,6 @@
             width="120">
           </el-table-column>
           <el-table-column
-            prop="zip"
-            label="规模"
-            width="120">
-          </el-table-column>
-          <el-table-column
             prop="SCYSL"
             label="生产用水量"
             width="120">
@@ -488,11 +410,11 @@
           </el-table-column>
           <el-table-column
             prop="ZYSCGY"
-            label="主要生产工艺 "
+            label="主要生产工艺"
             width="120">
           </el-table-column>
           <el-table-column
-            prop="CPZL"
+            prop="GPZL"
             label="产品"
             width="120">
           </el-table-column>
@@ -517,11 +439,6 @@
             width="120">
           </el-table-column>
           <el-table-column
-            prop="FSLL"
-            label="废水类型"
-            width="120">
-          </el-table-column>
-          <el-table-column
             fixed="right"
             label="操作"
             width="100">
@@ -534,130 +451,115 @@
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page.sync="currentPage1"
+          :current-page.sync="currentPage2"
           :page-sizes="[20, 40, 60, 80]"
           :page-size="100"
           layout="total, sizes, prev, pager, next, jumper"
           :total="totall">
         </el-pagination>
       </div>
-      <!--修改-->
+      <!--编辑-->
       <div>
         <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
-          <el-form ref="form" :model="tableData" label-width="150px">
-            <el-form-item label="X坐标">
+          <el-form ref="form" :model="outfallData" label-width="150px">
+            <el-form-item label="排口编号">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="Y坐标">
+            <el-form-item label="排口坐标">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="企业名称">
+            <el-form-item label="排入河道水质目标">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="街道">
+            <el-form-item label="最终排入河道">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="社区">
+            <el-form-item label="所属排水分区">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="地址">
+            <el-form-item label="下游道路名称">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="法人代表">
+            <el-form-item label="所属街道">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="联系方式">
+            <el-form-item label="所属社区">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="建筑面积">
+            <el-form-item label="所属流域">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="所属排水分区">
+              <el-col :span="19">
+                <el-input v-model="outfallData.date"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="管道类型">
+              <el-col :span="19">
+                <el-input v-model="outfallData.date"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="管长">
+              <el-col :span="19">
+                <el-input v-model="outfallData.date"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="管径">
+              <el-col :span="19">
+                <el-input v-model="outfallData.date"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="建设时间">
+              <el-col :span="19">
+                <el-input v-model="outfallData.date"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="竣工单位编号">
+              <el-col :span="19">
+                <el-input v-model="outfallData.date"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="建设单位">
+              <el-col :span="19">
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
             <el-form-item label="联系人">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="联系方式">
+            <el-form-item label="电话">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="企业人数">
+            <el-form-item label="业主单位/联系人/电话">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="行业类别">
+            <el-form-item label="运维单位/联系人/电话">
               <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="规模">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="生产用水量">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="排水量">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="主要生产工艺">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="产品">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="环评">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="环评有效性">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="排污许可证">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="废水处理方式">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="废水类型">
-              <el-col :span="19">
-                <el-input v-model="tableData.date"></el-input>
+                <el-input v-model="outfallData.date"></el-input>
               </el-col>
             </el-form-item>
             <el-form-item>
@@ -683,77 +585,201 @@
         paikou:true,
         gongye:false,
         projects:[],
-        project: {
-          creatorId: '',
-          geometry_type:''
-        },
+        project: {},
         pageNo:1,
         totall: 0,
         pageSize:20,
-        tableData: [],
-
-
         formInline:{
           user:'',
           region:''
         },
         dialogTableVisible: false,
         dialogFormVisible: false,
-
         formLabelWidth: '120px',
         dialogFormVisible: false,
         dialogAddVisible:false,
+
+      // 显示顺序
+        isType:false,
+        isPointType:false,
+        Types:[],
+      //当前选择类型
+        type: null,
+      //排口数据
+        outfallData: [],
+      // 企业数据
+        companysData:[],
       }
     },
     mounted(){
       this.getProjectsInfo();
     },
     methods: {
+      //项目下拉框发生变化的时候
+      changeProjectValue(data){
+        var project = data;
+        this.isType = true;
+        // 获取这个项目下所有的点类型
+        this.getPointTypeToProjectID(project);
+      },
+      getPointTypeToProjectID(project){
+        var self = this;
+        self.Types = [];
+        var projectId = project.id;
+        this.project.id = projectId
+        request('shapes',{
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: projectId
+                },
+                'geometry_type':{
+                  equalTo: 'Point'
+                },
+                'category':{
+                  notEqualTo:'JUNCTIONS'
+                },
+              }
+            }
+          }
+        }).then(resp => {
+          var data = resp.data;
+          var pointTypesArr = [];
+          var pointTypes=[];
+          //数组去重
+          for(let i = 0;i<data.length;i++){
+             var pointType = data[i].category;
+             pointTypesArr.push(pointType)
+          }
+          for(var i = 0;i<pointTypesArr.length;i++){
+            if(pointTypesArr.indexOf(pointTypesArr[i])==i){
+              pointTypes.push(pointTypesArr[i]);
+            }
+          }
+
+          for(var i=0;i<pointTypes.length;i++){
+            var pointType = {
+              id : i,
+              type:pointTypes[i]
+            }
+            self.Types.push(pointType)
+          }
+        })
+      },
+      //点类型下拉选项发生变化的时候
+      //工业企业是0 排口是1
+      changePointType(data){
+        this.type = ''
+        this.isPointType = true;
+        this.type = data.name;
+      },
       //请求所有项目
       getProjectsInfo(){
         axios('/api/projects').then(this.getProjectSuccess);
       },
       getProjectSuccess(res){
         this.projects = res.data;
-        console.log(res);
       },
       // 查询事件
       handleSelect(){
         var self = this;
+        self.outfallData = [];
+        self.companysData = [];
         var selectObject = {
-          project_id: self.project.creatorId,
-          geometry_type : self.project.geometry_type
+          project_id: self.project.id,
+          category : self.type ,
         }
-        console.log("事件：", selectObject.geometry_type);
-        if(selectObject.geometry_type === "Point1") {
-            this.gongye = false;
-            this.paikou = true;
-        }
-        if(selectObject.geometry_type === "Point2") {
-          this.gongye = true;
-          this.paikou = false;
-        }
-        // 向后端发起请求接口为 /shapes 拿到数据
-        request('shapes',{
-          params:{
-            pageNo: self.pageNo,
-            pageSize:self.pageSize,
-            filters: {
-              'shape': {
-                'project_id': {
-                  equalTo: selectObject.project_id
-                },
-                'category':{
-                  equalTo: 'OUTFALLS'
+        if(selectObject.category == 0){
+          request('shapes',{
+            params:{
+              pageNo: self.pageNo,
+              pageSize:self.pageSize,
+              filters: {
+                'shape': {
+                  'project_id': {
+                    equalTo: selectObject.project_id
+                  },
+                  'category':{
+                    equalTo: 'COMPANY'
+                  }
                 }
               }
             }
-          }
-        }).then(resp =>{
-          this.tableData = resp.data;
-          self.totall = Number(resp.headers.total);
-        })
-
+          }).then(resp =>{
+            var data =  resp.data;
+            for(var i = 0;i<data.length;i++){
+              var properties = JSON.parse(data[i].properties);
+              var lng_lat = (properties.geometry.coordinates).reverse().join();
+              var companyProperties = properties.properties;
+              var companyData = {
+                id:Number(properties.id)+1,
+                projectName: data[i].projectId,
+                category:'企业',
+                lng_lat:lng_lat,
+                name:data[i].name,
+                JDMC:companyProperties.JDMC,
+                SQMC:companyProperties.SQMC,
+                SCJYDZ:companyProperties.SCJYDZ,
+                FDDBR:companyProperties.FDDBR,
+                LXFS:companyProperties.LXFS,
+                QYRS:companyProperties.QYRS,
+                HYLB:companyProperties.HYLB,
+                SCYSL:companyProperties.SCYSL,
+                PSL:companyProperties.PSL,
+                ZYSCGY:companyProperties.ZYSCGY,
+                GPZL:companyProperties.GPZL,
+                HPPFWJ:companyProperties.HPPFWJ,
+                HPPFWJYXX:companyProperties.HPPFWJYXX,
+                PWXKZ:companyProperties.PWXKZ,
+                FSCLFS:companyProperties.FSCLFS,
+                lastUpdataTime:data[i].lastUpdateTime,
+              }
+              self.companysData.push(companyData);
+            }
+            self.totall = Number(resp.headers.total);
+          })
+        }
+        // 拿到数据排口数据
+        else{
+          request('shapes',{
+            params:{
+              pageNo: self.pageNo,
+              pageSize:self.pageSize,
+              filters: {
+                'shape': {
+                  'project_id': {
+                    equalTo: selectObject.project_id
+                  },
+                  'category':{
+                    equalTo: 'OUTFALLS'
+                  }
+                }
+              }
+            }
+          }).then(resp =>{
+            var data =  resp.data;
+            for(var i = 0;i<data.length;i++){
+              var properties = JSON.parse(data[i].properties);
+              var lng_lat = (properties.geometry.coordinates).reverse().join();
+              var Outfallproperties = properties.properties;
+              var outfallData = {
+                id:Number(properties.id)+1,
+                projectName: data[i].projectId,
+                category:'排口',
+                lng_lat:lng_lat,
+                name:data[i].name,
+                leixing:Outfallproperties.leixing,
+                paixiang:Outfallproperties.paixiang,
+                lastUpdataTime:data[i].lastUpdateTime,
+              }
+              self.outfallData.push(outfallData);
+            }
+            self.totall = Number(resp.headers.total);
+          })
+        }
       },
       //分页条数切换
       handleSizeChange(val) {
@@ -791,5 +817,8 @@
   .el-form-item__label{
     text-align: center;
     padding: 0px;
+  }
+  .cell{
+    text-align: center;
   }
 </style>

@@ -263,10 +263,10 @@
               <el-collapse-item  v-model="data" name="1" v-if="data.type=='地块'">
                 <template slot="title">
                   <span>{{data.type}}</span>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: blue;" @click="handleSubcatchmentsSelectRainConduits(data.info.id)" @click.stop>查下游雨水管</el-button>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: blue;" @click="handleSubcatchmentsSelectRainOutfalls(data.info.id)" @click.stop >查下游雨水排口</el-button>
-                  <el-button type="primary" style="padding: 3px; font-size: 13px;background: #FF00FF;"  @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: #FF00FF;" @click="handleSubcatchmentsSelectSewageOutfalls(data.info.id)" @click.stop >查下游污水去向</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);" @click="handleSubcatchmentsSelectRainConduits(data.info.id)" @click.stop>查下游雨水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);" @click="handleSubcatchmentsSelectRainOutfalls(data.info.id)" @click.stop >查下游雨水排口</el-button>
+                  <el-button type="primary" style="padding: 3px; font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);" @click="handleSubcatchmentsSelectSewageOutfalls(data.info.id)" @click.stop >查下游污水去向</el-button>
 
                 </template>
                 <div>
@@ -445,8 +445,8 @@
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='企业'">
                 <template slot="title">
                   <span>{{data.type}}</span>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: blue;"  @click="handleCompanySelectRainConduits(data.geos)" @click.stop>查下游雨水管</el-button>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background: #FF00FF;"  @click="handleCompanySelectSewageConduits(data.geos)" @click.stop>查下游污水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);"  @click="handleCompanySelectRainConduits(data.geos)" @click.stop>查下游雨水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageConduits(data.geos)" @click.stop>查下游污水管</el-button>
                 </template>
                 <el-collapse v-model="activeNames" >
                   <el-collapse-item title="基本信息" name="1">

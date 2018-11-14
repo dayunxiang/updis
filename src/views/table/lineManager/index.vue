@@ -2,11 +2,18 @@
   <div class="point-manager">
     <el-form :inline="true"  class="demo-form-inline">
       <el-form-item label="项目名称" prop="creatorId">
-        <el-select v-model="project.creatorId" placeholder="请选择">
-          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
+        <el-select v-model="project.id" placeholder="请选择项目名称" @change="changeProjectValue(project)">
+          <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id" ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="编号">
+
+      <el-form-item label="线类型" prop="type" v-show="isType">
+        <el-select v-model="Types.name"  placeholder="请选择线类型" @change="changePointType(Types)">
+          <el-option v-for="type in Types" :label="type.type == 'CONDUITS'?'管线':''" :value="type.id" :key="type.id" @click="test()"></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item label="编号" v-show="isPointType">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号"></el-input>
       </el-form-item>
 
@@ -22,14 +29,13 @@
         <el-button type="success">导出</el-button>
       </el-form-item>
     </el-form>
-    <!--end-->
     <div>
-      <el-table :data="tableData" border max-height="500" style="width: 100%;">
+      <el-table :data="tableData" border max-height="500" style="width: 100%;" key="conduitData">
         <el-table-column
           fixed
           prop="id"
-          label="排口编号"
-          width="150">
+          label="序号"
+          width="50">
         </el-table-column>
         <el-table-column
           prop="name"
@@ -37,99 +43,24 @@
           width="120">
         </el-table-column>
         <el-table-column
-          prop="province"
-          label="排入河道水质目标"
+          prop="leixing"
+          label="类型"
           width="120">
         </el-table-column>
         <el-table-column
-          prop="city"
-          label="上游管道编号"
-          width="120">
+          prop="guanjing"
+          label="管径"
+          width="100">
         </el-table-column>
         <el-table-column
-          prop="address"
-          label="上游管道管径"
-          width="300">
+          prop="lastUpdataTime"
+          label="最后更新时间"
+          width="200">
         </el-table-column>
         <el-table-column
-          prop="zip"
-          label="所属街道"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="所属社区"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="所属流域"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="所属排水分区"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="出流类型"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="排口类型"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="旱季污水量"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="是否进行初期雨水截流"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="是否有检测设备"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="建设时间"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="竣工单位编号"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="建设单位"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="联系人"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="电话"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="业主单位/联系人/电话"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="zip"
-          label="运维单位/联系人/电话"
-          width="120">
+          prop=""
+          label="待更新列"
+          width="1000">
         </el-table-column>
         <el-table-column
           fixed="right"
@@ -408,9 +339,6 @@
         pageNo:1,
         totall: 0,
         pageSize:20,
-        tableData: [],
-
-
         formInline:{
           user:'',
           region:''
@@ -421,12 +349,81 @@
         formLabelWidth: '120px',
         dialogFormVisible: false,
         dialogAddVisible:false,
+
+
+
+
+        // 显示顺序
+        isType:false,
+        isPointType:false,
+        Types:[],
+        //当前选择类型
+        type:'',
+        //数据
+        conduitsData:[],
+        tableData:[]
       }
     },
     mounted(){
       this.getProjectsInfo();
     },
     methods: {
+      //项目下拉框发生变化的时候
+      changeProjectValue(data){
+        var project = data;
+        this.isType = true;
+        // 获取这个项目下所有的点类型
+        this.getPointTypeToProjectID(project);
+      },
+      getPointTypeToProjectID(project){
+        var self = this;
+        self.Types = [];
+        var projectId = project.id;
+        request('shapes',{
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: projectId
+                },
+                'geometry_type':{
+                  equalTo: 'LineString'
+                },
+              }
+            }
+          }
+        }).then(resp => {
+          var data = resp.data;
+          var pointTypesArr = [];
+          var pointTypes=[];
+          //数组去重
+          for(let i = 0;i<data.length;i++){
+            var pointType = data[i].category;
+            pointTypesArr.push(pointType)
+          }
+          for(var i = 0;i<pointTypesArr.length;i++){
+            if(pointTypesArr.indexOf(pointTypesArr[i])==i){
+              pointTypes.push(pointTypesArr[i]);
+            }
+          }
+
+          for(var i=0;i<pointTypes.length;i++){
+            var pointType = {
+              id : i,
+              type:pointTypes[i]
+            }
+            self.Types.push(pointType)
+          }
+        })
+      },
+      //点类型下拉选项发生变化的时候
+      //管线是0
+      changePointType(data){
+        this.isPointType = true;
+        this.type = data.name;
+      },
       //请求所有项目
       getProjectsInfo(){
         axios('/api/projects').then(this.getProjectSuccess);
@@ -437,31 +434,49 @@
       // 查询事件
       handleSelect(){
         var self = this;
+        self.tableData = [];
         var selectObject = {
-          project_id: self.project.creatorId,
-          geometry_type : self.project.geometry_type
+          project_id: self.project.id,
+          category : self.type ,
         }
-        // 向后端发起请求接口为 /shapes 拿到数据
-        request('shapes',{
-          params:{
-            pageNo: self.pageNo,
-            pageSize:self.pageSize,
-            filters: {
-              'shape': {
-                'project_id': {
-                  equalTo: selectObject.project_id
-                },
-                'geometry_type':{
-                  equalTo: 'LineString'
+        if(selectObject.category == 0){
+          // 拿到管线数据
+          request('shapes',{
+            params:{
+              pageNo: self.pageNo,
+              pageSize:self.pageSize,
+              filters: {
+                'shape': {
+                  'project_id': {
+                    equalTo: selectObject.project_id
+                  },
+                  'category':{
+                    equalTo: 'CONDUITS'
+                  }
                 }
               }
             }
-          }
-        }).then(resp =>{
-          this.tableData = resp.data;
-          self.totall = Number(resp.headers.total);
-        })
-
+          }).then(resp =>{
+            var data = resp.data;
+            for(var i = 0;i<data.length;i++){
+              var properties = JSON.parse(data[i].properties);
+              var lng_lat = (properties.geometry.coordinates).reverse().join();
+              var conduitProperties = properties.properties;
+              var conduitData = {
+                id:Number(properties.id)+1,
+                projectName: data[i].projectId,
+                category:'管线',
+                lng_lat:lng_lat,
+                name:data[i].name,
+                leixing:conduitProperties.leixing,
+                guanjing:conduitProperties.guanjing,
+                lastUpdataTime:data[i].lastUpdateTime,
+              }
+              self.tableData.push(conduitData);
+            }
+            self.totall = Number(resp.headers.total);
+          })
+        }
       },
       //分页条数切换
       handleSizeChange(val) {
@@ -499,5 +514,8 @@
   .el-form-item__label{
     text-align: center;
     padding: 0px;
+  }
+  .cell{
+    text-align: center;
   }
 </style>
