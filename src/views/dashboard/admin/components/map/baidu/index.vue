@@ -1356,7 +1356,6 @@
         // 拿到排口后渲染
         var data = subcatchmentToOutfall;
         var dataArr = []
-        console.log(subcatchmentToOutfall)
         for (var i = 0; i<data.length;i++){
           dataArr[i] = data[i].properties
         }
@@ -1375,8 +1374,8 @@
           self.selectCirclePaths.rainOutfall.push(outFall);
         })
       },
-      // 根据企业查下游雨水管
-      handleCompanySelectRainConduits(data){
+      // 根据企业查下游污水去向
+      handleCompanySelectSewageOutfall(data){
         var self =this;
         var map = new BMap.Map("map");
         var lng_lat = data;
@@ -1417,32 +1416,26 @@
               feature.businessType="SUBCATCHMENTS";
               //开始拓扑查询
               var cy = geojson2cytoscape(self.geoJson);
-              var ConduitsType = '雨水管'
-              let conduits = getDescendantConduitsOfSubcatchment(feature, cy,ConduitsType);
+              var ConduitsType = '污水管'
+              var  sewageOutfall= getDescendantOutfallsOfSubcatchment(feature,cy,ConduitsType);
+              var data = sewageOutfall;
               var dataArr = []
-              for(var i =0 ;i<conduits.length;i++){
-                dataArr[i]=conduits[i].properties;
+              for (var i = 0; i<data.length;i++){
+                dataArr[i] = data[i].properties
               }
-              var conduitsData = dataArr;
-              //获取引导线
-              var rainJunction_Lng_lat = dataArr[0].geometry.coordinates[0];
-              var rainGuideLine = [{lng:lng_lat.lng,lat:lng_lat.lat},{lng:rainJunction_Lng_lat[1]+ 0.005363,lat:rainJunction_Lng_lat[0]- 0.00402}];
-              self.guideLine.rainLine = rainGuideLine;
-              //开始渲染
-              _each(conduitsData, function(index, conduitData) {
-                var lng_lat = conduitData.geometry.coordinates
-                var info = conduitData.properties
-                var lng_latArr = []
-                for (var i = 0; i < lng_lat.length; i++) {
-                  var arr = { lng: lng_lat[i][1] + 0.005363, lat: lng_lat[i][0] - 0.00402 }
-                  lng_latArr.push(arr)
-                }
-                var conduit = {
-                  type: '管线',
+              var outFallsData = dataArr;
+              _each(outFallsData, function(index, outFallData) {
+                var lng_lat = outFallData.geometry.coordinates
+                var info = outFallData.properties
+                var outFall = {
+                  type: '排口',
                   info: info,
-                  geos: lng_latArr
+                  geos: { lng: lng_lat[1] + 0.005363, lat: lng_lat[0] - 0.00402 },
+                  radius: 50,
+                  id: index,
+                  color:'red'
                 }
-                self.selectConduits.rainConduits.push(conduit);
+                self.selectCirclePaths.rainOutfall.push(outFall);
               })
             })
             return true;

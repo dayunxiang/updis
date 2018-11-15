@@ -285,7 +285,7 @@
                           <div class="info-title">面积</div>
                           <div class="info-span">
                             <el-tooltip class="item" effect="dark" :content="String(data.info.area)" placement="top-start">
-                              <el-button class="info-button">{{data.info.area}}</el-button>
+                              <el-button class="info-button" style="height: 20px">{{data.info.area}}m<sup>2</sup></el-button>
                             </el-tooltip>
                           </div>
                         </li>
@@ -445,8 +445,8 @@
               <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='企业'">
                 <template slot="title">
                   <span>{{data.type}}</span>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);"  @click="handleCompanySelectRainConduits(data.geos)" @click.stop>查下游雨水管</el-button>
                   <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageConduits(data.geos)" @click.stop>查下游污水管</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageOutfall(data.geos)" @click.stop>查下游污水去向</el-button>
                 </template>
                 <el-collapse v-model="activeNames" >
                   <el-collapse-item title="基本信息" name="1">
@@ -792,10 +792,10 @@
         this.$refs.map.handleSubcatchmentsSelectSewageConduits(data);
       },
       /**
-       * 根据企业查询下游 雨水管道
+       * 根据企业查询下游污水排口
        * */
-      handleCompanySelectRainConduits(data){
-        this.$refs.map.handleCompanySelectRainConduits(data);
+      handleCompanySelectSewageOutfall(data){
+        this.$refs.map.handleCompanySelectSewageOutfall(data);
       },
       //根据企业查询污水管道
       handleCompanySelectSewageConduits(data){
