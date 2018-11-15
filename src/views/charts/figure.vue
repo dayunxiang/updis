@@ -8,7 +8,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="点类型" prop="type">
+      <!--<el-form-item label="点类型" prop="type">
         <el-select v-model="project.geometry_type"  placeholder="请选择点类型" style="padding-left:10px;">
           <el-option label="排口" value="Point1"></el-option>
           <el-option label="工业企业" value="Point2" ></el-option>
@@ -17,7 +17,7 @@
 
       <el-form-item label="编号">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号" style="padding-left:10px;"></el-input>
-      </el-form-item>
+      </el-form-item>-->
 
       <el-form-item>
         <el-button type="primary" @click="handleSelect">查询</el-button>
@@ -34,8 +34,7 @@
     <!--标签页-->
     <el-tabs class="listChart"
              tab-position="top"
-             v-model="activeNo"
-             type="card">
+             v-model="activeNo">
       <el-tab-pane align="center" label="海绵面积覆盖度" name="0">
         <div style="margin-top:2px; padding-top:5px;">
           <div id="completeDegree" :style="{width: '1200px', height: '500px'}" ></div>
@@ -55,26 +54,16 @@
 
       </el-tab-pane>
       <el-tab-pane align="center" label="项目数量完成度" name="2">
-
-
-        <!--<div style="width:500px; height:450px;  margin-top:2px; padding-top:5px;  float:left;">
-          <div ref="chartBar" :style="{width: '500px', height: '500px'}" ></div>
-        </div>-->
-
-
         <!--饼图-->
         <div style="width:500px; height:450px;  margin-top:2px; padding-top:5px;  float:left;">
           <div id="optionPie" :style="{width: '500px', height: '500px'}" ></div>
         </div>
-
         <!--柱形图-->
         <div style="width:57%; margin-top:20px; padding:17px;  float:right;">
           <div id="optionBar1" :style="{width: '700px', height: '300px'}"></div>
           <div id="optionBar2" :style="{width: '700px', height: '300px'}"></div>
           <div id="optionBar3" :style="{width: '700px', height: '300px'}"></div>
         </div>
-
-
       </el-tab-pane>
 
     </el-tabs>
@@ -325,16 +314,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
       /**
        * 使用echarts统计图:项目海绵面积覆盖度
        */
@@ -367,6 +346,15 @@
             trigger: 'axis',
             axisPointer: {     // 坐标轴指示器，坐标轴触发有效
               type: 'shadow'   // 默认为直线，可选为：'line' | 'shadow'
+            },
+            formatter(params){
+              return params[0].name + '<br/>'
+                + '<span style="display:inline-block;width:180px;text-align:left;">'+ '<i style="display:inline-block;padding:5px;border-radius:50%;background:'+ params[4].color + '"></i> ' + params[4].seriesName + ': ' + params[4].value + '%' + '</span>' + '<br/>'
+                + '<span style="display:inline-block;width:180px;text-align:left;">'+ '<i style="display:inline-block;padding:5px;border-radius:50%;background:'+ params[3].color + '"></i> ' + params[3].seriesName + ': ' + params[3].value + '%' + '</span>' + '<br/>'
+                + '<span style="display:inline-block;width:180px;text-align:left;">'+ '<i style="display:inline-block;padding:5px;border-radius:50%;background:'+ params[2].color + '"></i> ' + params[2].seriesName + ': ' + params[2].value + '%' + '</span>' + '<br/>'
+                + '<span style="display:inline-block;width:180px;text-align:left;">'+ '<i style="display:inline-block;padding:5px;border-radius:50%;background:'+ params[1].color + '"></i> ' + params[1].seriesName + ': ' + params[1].value + '%' + '</span>' + '<br/>'
+                + '<span style="display:inline-block;width:180px;text-align:left;">'+ '<i style="display:inline-block;padding:5px;border-radius:50%;background:'+ params[0].color + '"></i> ' + params[0].seriesName + ': ' + params[0].value + '%' + '</span>' + '<br/>'
+                ;
             },
           },
           legend: {
@@ -411,7 +399,7 @@
                      color: '#000'
                      }
                   }*/
-                }
+                },
               },
               data: self.xyList
             },
