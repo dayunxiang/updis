@@ -308,7 +308,8 @@
   // import mapData from '../../../../../../store/modules/mapData'
 
   export default {
-    props: ['isHideAllSubcatchments', 'isHideAllConduits','isHideRainConduits','isHideSewageConduits',
+    props: ['isHideAllSubcatchments','isHideDaolu','isHideShizheng','isHideLvdi','isHideJuzhu','isHideZhengfu','isHideGongye','isHideShangye',
+      'isHideAllConduits','isHideRainConduits','isHideSewageConduits',
       'isHideAllOutfalls','isHideMergeOutfalls','isHideRainOutfalls','isHideSewageOutfalls',
       'isHideCompanys',],
     data() {
@@ -407,6 +408,28 @@
       isHideAllSubcatchments: function() {
         this.isHideAllSubcatchments ? this.showAllSubcatchments() : this.hideAllSubcatchments()
       },
+      isHideDaolu:function(){
+        this.isHideDaolu ? this.showDaolu():this.hideDaolu();
+      },
+      isHideShizheng:function(){
+        this.isHideShizheng ? this.showShizheng():this.hideShizheng()
+      },
+      isHideLvdi:function(){
+        this.isHideLvdi ? this.showLvdi():this.hideLvdi()
+      },
+      isHideJuzhu:function(){
+        this.isHideJuzhu? this.showJuzhu():this.hideJuzhu();
+      },
+      isHideZhengfu:function(){
+        this.isHideZhengfu?this.showZhengfu():this.hideZhengfu();
+      },
+      isHideGongye:function(){
+        this.isHideGongye ? this.showGongye():this.hideGongye();
+      },
+      isHideShangye:function(){
+        this.isHideShangye ? this.showShangye():this.hideShangye();
+      },
+      //
       isHideAllConduits: function() {
         this.isHideAllConduits ? this.showAllConduits() : this.hideAllConduits()
       },
@@ -440,6 +463,7 @@
       this.getOutfalls()
       this.getConduitsInfo()
       this.getCompanysInfo()
+      //显示全部地块
       this.showAllSubcatchments()
       //显示全部管线
       this.showAllConduits()
@@ -492,6 +516,55 @@
         this.subcatchments.juZhuYongDi = [];
         this.subcatchments.zhengFu = [];
         this.subcatchments.gongYe = [];
+        this.subcatchments.shangYe = [];
+      },
+      //显示隐藏/道路
+      showDaolu(){;
+        this.subcatchments.road = this.mapData.subcatchments.road;
+      },
+      hideDaolu(){
+        this.subcatchments.road = []
+      },
+      //显示隐藏/市政
+      showShizheng(){
+        this.subcatchments.shiZheng = this.mapData.subcatchments.shiZheng
+      },
+      hideShizheng(){
+        this.subcatchments.shiZheng = [];
+      },
+      // 显示隐藏/绿地
+      showLvdi(){
+        this.subcatchments.lvDi = this.mapData.subcatchments.lvDi;
+      },
+      hideLvdi(){
+        this.subcatchments.lvDi = [];
+      },
+      //显示隐藏/居住用地
+      showJuzhu(){
+        this.subcatchments.juZhuYongDi = this.mapData.subcatchments.juZhuYongDi;
+      },
+      hideJuzhu(){
+        this.subcatchments.juZhuYongDi = [];
+      },
+      //显示隐藏/政府
+      showZhengfu(){
+        this.subcatchments.zhengFu = this.mapData.subcatchments.zhengFu
+      },
+      hideZhengfu(){
+        this.subcatchments.zhengFu = [];
+      },
+      //显示/隐藏工业
+      showGongye(){
+        this.subcatchments.gongYe = this.mapData.subcatchments.gongYe
+      },
+      hideGongye(){
+        this.subcatchments.gongYe = [];
+      },
+      //显示/隐藏商业
+      showShangye(){
+        this.subcatchments.shangYe = this.mapData.subcatchments.shangYe
+      },
+      hideShangye(){
         this.subcatchments.shangYe = [];
       },
       /**
@@ -883,6 +956,7 @@
               self.mapData.subcatchments.shangYe.push(subcatchment);
             }
           })
+          // console.log(self.mapData.subcatchments.lvDi);
         }
       },
       // 请求排口数据

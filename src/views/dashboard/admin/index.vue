@@ -1,11 +1,16 @@
-
-
 <template>
   <div class="map-context">
     <div class="map-tab">
       <BaiduMap
         ref="map"
         :is-hide-all-subcatchments="isHideAllSubcatchments"
+        :is-hide-daolu = "isHideDaolu"
+        :is-hide-shizheng = "isHideShizheng"
+        :is-hide-lvdi = "isHideLvdi"
+        :is-hide-juzhu = "isHideJuzhu"
+        :is-hide-zhengfu = 'isHideZhengfu'
+        :is-hide-gongye = "isHideGongye"
+        :is-hide-shangye = "isHideShangye"
         :is-hide-all-conduits="isHideAllConduits"
         :is-hide-rain-conduits = "isHideRainConduits"
         :is-hide-sewage-conduits = "isHideSewageConduits"
@@ -54,7 +59,7 @@
                       class="iconfont"
                       @click="handleMergeOutfalls()"
                       @click.stop/>
-                    <span style="color:black;font-size: 16px;">合流排口</span>
+                    <span style="color:black;font-size: 16px;">混流排口</span>
                     <span style="color:black;font-size: 16px;">{{this.outfalls.meregeOutfalls.length}}</span>
                 </template>
                 <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
@@ -144,11 +149,11 @@
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/daolu.png" alt=""></span>
-                  <!--<i-->
-                    <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
-                    <!--class="iconfont"-->
-                    <!--@click="handleHideRainConduits()"-->
-                    <!--@click.stop/>-->
+                  <i
+                    :class="isHideDaolu?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideDaolu()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">道路&道路广场用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.road.length}}</span>
                 </template>
@@ -157,11 +162,11 @@
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/shizheng.png" alt=""></span>
-                  <!--<i-->
-                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
-                  <!--class="iconfont"-->
-                  <!--@click="handleHideRainConduits()"-->
-                  <!--@click.stop/>-->
+                  <i
+                    :class="isHideShizheng?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideShiZheng()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">市政公用设施用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.shiZheng.length}}</span>
                 </template>
@@ -170,11 +175,11 @@
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/lvdi.png" alt=""></span>
-                  <!--<i-->
-                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
-                  <!--class="iconfont"-->
-                  <!--@click="handleHideRainConduits()"-->
-                  <!--@click.stop/>-->
+                  <i
+                  :class="isHideLvdi?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                  class="iconfont"
+                  @click="handleHideLvdi()"
+                  @click.stop/>
                   <span style="color: black;font-size: 16px;">绿地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.lvDi.length}}</span>
                 </template>
@@ -183,11 +188,11 @@
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/juzhu.png" alt=""></span>
-                  <!--<i-->
-                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
-                  <!--class="iconfont"-->
-                  <!--@click="handleHideRainConduits()"-->
-                  <!--@click.stop/>-->
+                  <i
+                  :class="isHideJuzhu?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                  class="iconfont"
+                  @click="handleHideJuzhu()"
+                  @click.stop/>
                   <span style="color: black;font-size: 16px;">居住用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.juZhuYongDi.length}}</span>
                 </template>
@@ -196,11 +201,11 @@
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/zhengfu.png" alt=""></span>
-                  <!--<i-->
-                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
-                  <!--class="iconfont"-->
-                  <!--@click="handleHideRainConduits()"-->
-                  <!--@click.stop/>-->
+                  <i
+                  :class="isHideZhengfu?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                  class="iconfont"
+                  @click="handleHideZhengfu()"
+                  @click.stop/>
                   <span style="color: black;font-size: 16px;">政府社团用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.zhengFu.length}}</span>
                 </template>
@@ -209,11 +214,11 @@
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/gongye.png" alt=""></span>
-                  <!--<i-->
-                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
-                  <!--class="iconfont"-->
-                  <!--@click="handleHideRainConduits()"-->
-                  <!--@click.stop/>-->
+                  <i
+                  :class="isHideGongye?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                  class="iconfont"
+                  @click="handleHideGongye()"
+                  @click.stop/>
                   <span style="color: black;font-size: 16px;">工业用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.gongYe.length}}</span>
                 </template>
@@ -222,11 +227,11 @@
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/shangye.png" alt=""></span>
-                  <!--<i-->
-                  <!--:class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"-->
-                  <!--class="iconfont"-->
-                  <!--@click="handleHideRainConduits()"-->
-                  <!--@click.stop/>-->
+                  <i
+                  :class="isHideShangye?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                  class="iconfont"
+                  @click="handleHideShangye()"
+                  @click.stop/>
                   <span style="color: black;font-size: 16px;">商业服务业设施用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.shangYe.length}}</span>
                 </template>
@@ -647,7 +652,15 @@
         },
         companys:[],
         selectLoading: false,
+        //显示隐藏地块
         isHideAllSubcatchments: true,
+        isHideDaolu:true,
+        isHideShizheng:true,
+        isHideLvdi:true,
+        isHideJuzhu:true,
+        isHideZhengfu:true,
+        isHideGongye:true,
+        isHideShangye:true,
         //显示隐藏管线
         isHideAllConduits: true,
         isHideRainConduits: true,
@@ -719,7 +732,35 @@
        * 显示/隐藏全部地块
        */
       handleHideAllSubcatchments() {
-        this.isHideAllSubcatchments = !this.isHideAllSubcatchments
+        this.isHideAllSubcatchments = !this.isHideAllSubcatchments;
+      },
+        //隐藏道路
+      handleHideDaolu(){
+        this.isHideDaolu = !this.isHideDaolu;
+      },
+       // 隐藏市政
+      handleHideShiZheng(){
+        this.isHideShizheng = !this.isHideShizheng;
+      },
+      // 隐藏绿地
+      handleHideLvdi(){
+        this.isHideLvdi = !this.isHideLvdi;
+      },
+      // 隐藏居住用地
+      handleHideJuzhu(){
+        this.isHideJuzhu = !this.isHideJuzhu;
+      },
+      // 隐藏政府
+      handleHideZhengfu(){
+        this.isHideZhengfu = !this.isHideZhengfu;
+      },
+      // 隐藏工业用地
+      handleHideGongye(){
+        this.isHideGongye = !this.isHideGongye;
+      },
+      // 隐藏商业
+      handleHideShangye(){
+        this.isHideShangye = !this.isHideShangye;
       },
       /**
        * 显示/隐藏所有管线
