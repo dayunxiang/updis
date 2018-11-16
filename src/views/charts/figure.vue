@@ -23,9 +23,9 @@
         <el-button type="primary" @click="handleSelect">查询</el-button>
       </el-form-item>
 
-      <el-form-item>
+      <!--<el-form-item>
         <el-button type="primary" >添加</el-button>
-      </el-form-item>
+      </el-form-item>-->
 
       <el-form-item>
         <el-button type="success">导出</el-button>
@@ -53,7 +53,7 @@
         </div>
 
       </el-tab-pane>
-      <el-tab-pane align="center" label="项目数量完成度" name="2">
+      <el-tab-pane align="center" label="海绵项目库数量完成度" name="2">
         <!--饼图-->
         <div style="width:500px; height:450px;  margin-top:2px; padding-top:5px;  float:left;">
           <div id="optionPie" :style="{width: '500px', height: '500px'}" ></div>
@@ -333,11 +333,12 @@
           grid: {y: 70, y2:30, x2:20},   // 大标题的位置
           toolbox: {
             show : true,   // 是否启用工具
+            right:20,
             feature : {
-              //mark : {show: true},
-              //dataView : {show: true, readOnly: false},
+              mark : {show: true},
+              /*dataView : {show: true, readOnly: false},
               magicType : {show: true, type: ['line']},  // 视图类型
-              restore : {show: true},       // 还原
+              restore : {show: true},       // 还原*/
               saveAsImage : {show: true}    // 下载图片
             }
           },
@@ -592,10 +593,10 @@
               }
             },
             feature : {
-              /*mark : {show: true},
-              dataView : {show: true, readOnly: false},*/
+              mark : {show: true},
+              /*dataView : {show: true, readOnly: false},
               restore : {show: true},
-              magicType : {show: true, type: ['line']},
+              magicType : {show: true, type: ['line']},*/
               saveAsImage : {show: true}
             }
           },
@@ -704,9 +705,10 @@
           },
           toolbox: {
             show : true,
+            right: 20,
             feature : {
-              magicType : { show: true, type: ['line'] },
-              restore : { show: true },
+              /*magicType : { show: true, type: ['line'] },
+              restore : { show: true },*/
               saveAsImage : { show: true }
             }
           },
@@ -757,9 +759,10 @@
           },
           toolbox: {
             show : true,
+            right: 20,
             feature : {
-              magicType : { show: true, type: ['line'] },
-              restore : { show: true },
+              /*magicType : { show: true, type: ['line'] },
+              restore : { show: true },*/
               saveAsImage : { show: true }
             }
           },
@@ -810,9 +813,10 @@
           },
           toolbox: {
             show : true,
+            right: 20,
             feature : {
-              magicType : { show: true, type: ['line'] },
-              restore : { show: true },
+              /*magicType : { show: true, type: ['line'] },
+              restore : { show: true },*/
               saveAsImage : { show: true }
             }
           },

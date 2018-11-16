@@ -7,7 +7,6 @@
           <el-option v-for="project in projects" :label="project.name" :value="project.id" :key="project.id"></el-option>
         </el-select>
       </el-form-item>
-
       <!--<el-form-item label="点类型" prop="type">
         <el-select v-model="project.geometry_type"  placeholder="请选择点类型" style="padding-left:10px;">
           <el-option label="排口" value="Point1"></el-option>
@@ -18,15 +17,12 @@
       <el-form-item label="编号">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号" style="padding-left:10px;"></el-input>
       </el-form-item>-->
-
       <el-form-item>
         <el-button type="primary" @click="handleSelect">查询</el-button>
       </el-form-item>
-
-      <el-form-item>
+      <!--<el-form-item>
         <el-button type="primary" >添加</el-button>
-      </el-form-item>
-
+      </el-form-item>-->
       <el-form-item>
         <el-button type="success">导出</el-button>
       </el-form-item>
@@ -39,26 +35,25 @@
                tab-position="top"
                v-model="activeNameTest"
                @tab-click="handleClick">
-
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
-          <el-table :data="buildSquare.slice((currentPage-1)*pageSize , currentPage*pageSize)" style="width: 100%" border>
+          <el-table :data="buildSquare.slice((currentPage-1) * pageSizeNum1 , currentPage * pageSizeNum1)" style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
-                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+                {{ scope.$index + 1 + pageSizeNum1 * (currentPage - 1) }}
               </template>
             </el-table-column>
-            <el-table-column prop="name"   align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="地块编号"></el-table-column>
-            <el-table-column prop="YDLX"   align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="用地类型"></el-table-column>
-            <el-table-column prop="JSZT"   align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="建设状态"></el-table-column>
-            <el-table-column prop="XMMC"   align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="项目名称"></el-table-column>
-            <el-table-column prop="PRHD"   align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
-            <el-table-column prop="SSLY"   align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ" align="center" width="130" :sortable="true" :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
-            <el-table-column prop="ZBQY"   align="center" width="175" :sortable="true" :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
-            <el-table-column prop="JSQK"   align="center" width="130" :sortable="true" :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-            <el-table-column prop="ZLKZL"  align="center" width="160" :sortable="true" :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
-            <el-table-column prop="area"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
+            <el-table-column prop="name"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="地块编号"></el-table-column>
+            <el-table-column prop="YDLX"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="用地类型"></el-table-column>
+            <el-table-column prop="JSZT"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="建设状态"></el-table-column>
+            <el-table-column prop="XMMC"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="项目名称"></el-table-column>
+            <el-table-column prop="PRHD"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
+            <el-table-column prop="SSLY"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="所属流域"></el-table-column>
+            <el-table-column prop="SSPSFQ"  align="center" width="130" :sortable="true" :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
+            <el-table-column prop="ZBQY"    align="center" width="175" :sortable="true" :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
+            <el-table-column prop="JSQK"    align="center" width="130" :sortable="true" :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
+            <el-table-column prop="ZLKZL"   align="center" width="160" :sortable="true" :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
+            <el-table-column prop="area"    align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
@@ -72,7 +67,7 @@
             <el-pagination
               background
               @current-change="currentChange"
-              @size-change="sizeChange"
+              @size-change="sizeChange1"
               :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
               :total="totalFrist">
@@ -82,10 +77,10 @@
 
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
-          <el-table :data="parkSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
+          <el-table :data="parkSquare.slice( (currentPage-1)*pageSizeNum2 , currentPage*pageSizeNum2 )" style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
-                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+                {{ scope.$index + 1 + pageSizeNum2 * (currentPage - 1) }}
               </template>
             </el-table-column>
             <el-table-column prop="name"   align="center" width="105" sortable :show-overflow-tooltip="true" label="地块编号"></el-table-column>
@@ -103,7 +98,7 @@
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
-                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>
+                <!--<el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>-->
               </template>
             </el-table-column>
           </el-table>
@@ -112,7 +107,7 @@
             <el-pagination
               background
               @current-change="currentChange"
-              @size-change="sizeChange"
+              @size-change="sizeChange2"
               :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
               :total="totalSecond">
@@ -122,10 +117,10 @@
 
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
-          <el-table :data="roadSquare.slice( (currentPage-1)*pageSize , currentPage*pageSize )" style="width: 100%" border>
+          <el-table :data="roadSquare.slice( (currentPage-1)*pageSizeNum3 , currentPage*pageSizeNum3 )" style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
-                {{ scope.$index + 1 + pageSize * (currentPage - 1) }}
+                {{ scope.$index + 1 + pageSizeNum3 * (currentPage - 1) }}
               </template>
             </el-table-column>
             <el-table-column prop="name"   align="center" width="105" sortable :show-overflow-tooltip="true" label="地块编号"></el-table-column>
@@ -143,7 +138,7 @@
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
-                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>
+                <!--<el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>-->
               </template>
             </el-table-column>
           </el-table>
@@ -152,7 +147,7 @@
             <el-pagination
               background
               @current-change="currentChange"
-              @size-change="sizeChange"
+              @size-change="sizeChange3"
               :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
               :total="totalThree">
@@ -183,21 +178,16 @@
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
-                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>
+                <!--<el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>-->
               </template>
             </el-table-column>
           </el-table>
           <!--分页-->
-          <div style="width:100%;text-align: center; margin:10px 0px;">
-            <el-pagination
-              background
-              @current-change="currentChange"
-              @size-change="sizeChange"
-              :page-sizes="pageSizeData"
-              layout="total, sizes, prev, pager, next, jumper"
-              :total="totalSecond">
-            </el-pagination>
-          </div>
+          <el-pagination style="width:100%;text-align: center; margin:10px 0px;"
+                         background
+                         layout="prev, pager, next"
+                         :total="100">
+          </el-pagination>
         </el-tab-pane>
         <el-tab-pane label="涉水基础设施" name="5" algin="center">
           <!--表格-->
@@ -222,7 +212,7 @@
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
-                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>
+                <!--<el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>-->
               </template>
             </el-table-column>
           </el-table>
@@ -256,7 +246,7 @@
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
-                <el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>
+                <!--<el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>-->
               </template>
             </el-table-column>
           </el-table>
@@ -391,6 +381,9 @@
         totalSecond: 0,
         totalThree: 0,
         pageSize: 10,//每页的数据条数
+        pageSizeNum1: 10,//每页的数据条数
+        pageSizeNum2: 10,//每页的数据条数
+        pageSizeNum3: 10,//每页的数据条数
         currentPage: 1,//默认开始页面
         pageSizeData: [10,20,50],
 
@@ -690,8 +683,14 @@
       /**
        * 分页部分
        */
-      sizeChange(pageSize){
-        this.pageSize = pageSize;
+      sizeChange1(pageSizeNum1){
+        this.pageSizeNum1 = pageSizeNum1;
+      },
+      sizeChange2(pageSizeNum2){
+        this.pageSizeNum2 = pageSizeNum2;
+      },
+      sizeChange3(pageSizeNum3){
+        this.pageSizeNum3 = pageSizeNum3;
       },
       currentChange(currentPage){
         this.currentPage = currentPage;
