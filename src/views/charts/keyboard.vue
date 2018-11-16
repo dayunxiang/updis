@@ -37,10 +37,10 @@
                @tab-click="handleClick">
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
-          <el-table :data="buildSquare.slice((currentPage-1) * pageSizeNum1 , currentPage * pageSizeNum1)" style="width: 100%" border>
+          <el-table :data="buildSquare.slice(( currentPageNum1 - 1 ) * pageSizeNum1 , currentPageNum1 * pageSizeNum1)" style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
-                {{ scope.$index + 1 + pageSizeNum1 * (currentPage - 1) }}
+                {{ scope.$index + 1 + pageSizeNum1 * ( currentPageNum1 - 1 ) }}
               </template>
             </el-table-column>
             <el-table-column prop="name"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="地块编号"></el-table-column>
@@ -77,10 +77,10 @@
 
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
-          <el-table :data="parkSquare.slice( (currentPage-1)*pageSizeNum2 , currentPage*pageSizeNum2 )" style="width: 100%" border>
+          <el-table :data="parkSquare.slice( (currentPageNum2 - 1 ) * pageSizeNum2 , currentPageNum2*pageSizeNum2 )" style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
-                {{ scope.$index + 1 + pageSizeNum2 * (currentPage - 1) }}
+                {{ scope.$index + 1 + pageSizeNum2 * (currentPageNum2 - 1) }}
               </template>
             </el-table-column>
             <el-table-column prop="name"   align="center" width="105" sortable :show-overflow-tooltip="true" label="地块编号"></el-table-column>
@@ -117,10 +117,10 @@
 
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
-          <el-table :data="roadSquare.slice( (currentPage-1)*pageSizeNum3 , currentPage*pageSizeNum3 )" style="width: 100%" border>
+          <el-table :data="roadSquare.slice( (currentPageNum3-1)*pageSizeNum3 , currentPageNum3*pageSizeNum3 )" style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
-                {{ scope.$index + 1 + pageSizeNum3 * (currentPage - 1) }}
+                {{ scope.$index + 1 + pageSizeNum3 * (currentPageNum3 - 1) }}
               </template>
             </el-table-column>
             <el-table-column prop="name"   align="center" width="105" sortable :show-overflow-tooltip="true" label="地块编号"></el-table-column>
@@ -385,6 +385,9 @@
         pageSizeNum2: 10,//每页的数据条数
         pageSizeNum3: 10,//每页的数据条数
         currentPage: 1,//默认开始页面
+        currentPageNum1: 1,//默认开始页面
+        currentPageNum2: 1,//默认开始页面
+        currentPageNum3: 1,//默认开始页面
         pageSizeData: [10,20,50],
 
         ListTest: [],
@@ -692,8 +695,14 @@
       sizeChange3(pageSizeNum3){
         this.pageSizeNum3 = pageSizeNum3;
       },
-      currentChange(currentPage){
-        this.currentPage = currentPage;
+      currentChange(currentPageNum1){
+        this.currentPageNum1 = currentPageNum1;
+      },
+      currentChange(currentPageNum2){
+        this.currentPageNum2 = currentPageNum2;
+      },
+      currentChange(currentPageNum3){
+        this.currentPageNum3 = currentPageNum3;
       },
 
       /**

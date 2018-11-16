@@ -99,8 +99,7 @@
           { isShow: false, placeholder: '请输入角色名', name: {like: ''}}
         ],
         checkNode: [], // 存放选择的角色数据
-        roleName: [] // 角色的全部名称
-
+        roleName : []   // 角色的全部名称
       }
     },
     components: {
@@ -374,21 +373,12 @@
       //this.NameSure()
     },
     mounted() {
-
     },
     methods: {
       /*** 标签页 */
       handleClick(tab, event) {
         /*console.log(tab, event);*/
       },
-
-
-
-
-
-
-
-
       /**
        * 起始数据
        */

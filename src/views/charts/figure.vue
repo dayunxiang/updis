@@ -310,10 +310,6 @@
         self.drawComplete();
       },
 
-
-
-
-
       /**
        * 使用echarts统计图:项目海绵面积覆盖度
        */
