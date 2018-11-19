@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top:20px;">
+  <div style="padding:20px 0px 0px 20px;">
     <!--表头部分-->
     <el-form :inline="true" class="demo-form-inline" style="padding-left:10px;">
       <el-form-item label="项目名称" prop="creatorId">
