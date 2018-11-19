@@ -59,10 +59,14 @@
           <div id="optionPie" :style="{width: '500px', height: '500px'}" ></div>
         </div>
         <!--柱形图-->
-        <div style="width:57%; margin-top:20px; padding:17px;  float:right;">
+        <!--<div style="width:57%; margin-top:20px; padding:17px;  float:right;">
           <div id="optionBar1" :style="{width: '700px', height: '300px'}"></div>
           <div id="optionBar2" :style="{width: '700px', height: '300px'}"></div>
           <div id="optionBar3" :style="{width: '700px', height: '300px'}"></div>
+        </div>-->
+        <div v-for="(item, index) in partList" :key="index" style="width:700px; margin-top:20px; padding:17px;  float:right;">
+          <!--<div id="optionBar1" :style="{width: '700px', height: '300px'}"></div>-->
+          <div :id='datalis + index' :style="{width: '700px', height: '300px'}"></div>
         </div>
       </el-tab-pane>
 
@@ -79,6 +83,8 @@
     name: 'figure',
     data(){
       return {
+        dataTotol: ['建筑小区','道路广场','公园绿地','河道治理','涉水基础设施','PPP项目'],
+        datalis: 'list',
         /**
          * 表头数据
          */
@@ -187,7 +193,7 @@
           /**
            * 项目数量完成度
            */
-          self.drawLine();
+          /*self.drawLine();*/
           self.drawPie();
           console.log("======数据获取成功======");
         }, 10);
@@ -308,6 +314,9 @@
          * 项目海绵面积覆盖度
          */
         self.drawComplete();
+        setTimeout(function () {
+          self.drawLine(res);
+        },10)
       },
 
       /**
@@ -662,30 +671,88 @@
       /**
        * 使用echarts统计图:项目数量完成度柱状图
        */
-      drawLine(){
+      drawLine(res){
         const self = this;
-        var nameData = TestData.tongName;
-        var DataTest = [];   // 获取列表
-        _.each(nameData , function (Test) {
-          DataTest.push(Test.name)
-        });
-        var wancheng = [];  //完成的个数
-        var meiyou = [];    //未完成的个数
-        _.each(nameData , function (TestData) {
-          var sum = 0;
-          var ed = 0;
-          _.each(TestData.mingcheng , function (Dongdong) {
-            if(Dongdong.state === "已完成") {
-              sum++
-            } else {
-              ed++
-            }
-          })
-          wancheng.push(sum)
-          meiyou.push(ed)
-        });
-        var optionBar1 = self.$echarts.init(document.getElementById("optionBar1"));  //获取标签ID
-        self.optionBar1 =  {
+        var totalData = self.partition;   // 分区总数据
+        _.each( totalData, function (vWater, index) {
+          var nameData = TestData.tongName;
+          var DataTest = [];   // 获取列表
+          _.each(nameData , function (Test) {
+            DataTest.push(Test.name)
+          });
+          var wancheng = [];  //完成的个数
+          var meiyou = [];    //未完成的个数
+          _.each(nameData , function (TestData) {
+            var sum = 0;
+            var ed = 0;
+            _.each(TestData.mingcheng , function (Dongdong) {
+              if(Dongdong.state === "已完成") {
+                sum++
+              } else {
+                ed++
+              }
+            })
+            wancheng.push(sum)
+            meiyou.push(ed)
+          });
+
+          console.log("v: ", vWater)
+
+          var title = self.datalis + index;
+          (self.$echarts.init(document.getElementById(self.datalis + index))).setOption({
+            title: {
+              text: vWater
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              selectedMode:false,
+              data: ['已完成', '未完成']
+            },
+            toolbox: {
+              show : true,
+              right: 20,
+              feature : {
+                /*magicType : { show: true, type: ['line'] },
+                 restore : { show: true },*/
+                saveAsImage : { show: true }
+              }
+            },
+            grid: {
+              left: '3%',
+              right: '3%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: {
+              type: 'category',
+              data: DataTest
+            },
+            yAxis: {
+              type: 'value'
+            },
+            series: [
+              {
+                name: '已完成',
+                type: 'bar',
+                barWidth : 20,
+                data: wancheng
+              },
+              {
+                name: '未完成',
+                type: 'bar',
+                barWidth : 20,
+                data: meiyou
+              }
+            ]
+          });
+        })
+        //var optionBar1 = self.$echarts.init(document.getElementById("optionBar1"));  //获取标签ID
+       /* optionBar1.setOption({
           title: {
             text: '排水分区一'
           },
@@ -703,8 +770,8 @@
             show : true,
             right: 20,
             feature : {
-              /*magicType : { show: true, type: ['line'] },
-              restore : { show: true },*/
+              /!*magicType : { show: true, type: ['line'] },
+               restore : { show: true },*!/
               saveAsImage : { show: true }
             }
           },
@@ -735,10 +802,8 @@
               data: meiyou
             }
           ]
-        };
-        optionBar1.setOption(self.optionBar1);
-
-        var optionBar2 = self.$echarts.init(document.getElementById("optionBar2"));  //获取标签ID
+        });*/
+        /*var optionBar2 = self.$echarts.init(document.getElementById("optionBar2"));  //获取标签ID
         self.optionBar2 =  {
           title: {
             text: '排水分区二'
@@ -757,8 +822,8 @@
             show : true,
             right: 20,
             feature : {
-              /*magicType : { show: true, type: ['line'] },
-              restore : { show: true },*/
+              /!*magicType : { show: true, type: ['line'] },
+              restore : { show: true },*!/
               saveAsImage : { show: true }
             }
           },
@@ -811,8 +876,8 @@
             show : true,
             right: 20,
             feature : {
-              /*magicType : { show: true, type: ['line'] },
-              restore : { show: true },*/
+              /!*magicType : { show: true, type: ['line'] },
+              restore : { show: true },*!/
               saveAsImage : { show: true }
             }
           },
@@ -844,7 +909,7 @@
             }
           ]
         };
-        optionBar3.setOption(self.optionBar3);
+        optionBar3.setOption(self.optionBar3);*/
       },
       /**
        * 使用echarts统计图:项目数量完成度饼图
