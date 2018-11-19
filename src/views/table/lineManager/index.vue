@@ -7,12 +7,6 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="线类型" prop="type" v-show="isType">
-        <el-select v-model="Types.name"  placeholder="请选择线类型" @change="changePointType(Types)">
-          <el-option v-for="type in Types" :label="type.type == 'CONDUITS'?'管线':''" :value="type.id" :key="type.id" @click="test()"></el-option>
-        </el-select>
-      </el-form-item>
-
       <el-form-item label="编号" v-show="isPointType">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号"></el-input>
       </el-form-item>
@@ -354,7 +348,6 @@
 
 
         // 显示顺序
-        isType:false,
         isPointType:false,
         Types:[],
         //当前选择类型
@@ -371,7 +364,7 @@
       //项目下拉框发生变化的时候
       changeProjectValue(data){
         var project = data;
-        this.isType = true;
+        this.isPointType = true;
         // 获取这个项目下所有的点类型
         this.getPointTypeToProjectID(project);
       },

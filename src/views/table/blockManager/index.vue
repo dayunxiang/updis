@@ -7,12 +7,6 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="块类型" prop="type" v-show="isType">
-        <el-select v-model="Types.name"  placeholder="请选择线类型" @change="changePointType(Types)">
-          <el-option v-for="type in Types" :label="type.type == 'CONDUITS'?'地块':''" :value="type.id" :key="type.id" @click="test()"></el-option>
-        </el-select>
-      </el-form-item>
-
       <el-form-item label="编号" v-show="isPointType">
         <el-input v-model="formInline.user" placeholder="请输入要查询的编号"></el-input>
       </el-form-item>
@@ -40,61 +34,73 @@
         <el-table-column
           prop="name"
           label="编号"
+          sortable
           width="120">
         </el-table-column>
         <el-table-column
           prop="area"
           label="面积(平方米)"
-          width="200">
+          sortable
+          width="250">
         </el-table-column>
         <el-table-column
           prop="YDLX"
           label="用地类型"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="JSZT"
           label="建设状态"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="XMMC"
           label="项目名称"
+          sortable
           width="250">
         </el-table-column>
         <el-table-column
           prop="PRHD"
           label="排入河道"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="SSLY"
           label="所属流域"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="SSPSFQ"
           label="所属排水分区"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="ZBQY"
           label="是否为正本清源项目"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="HMCS"
           label="是否为海绵项目"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="HMLX"
           label="海绵类型"
-          width="100">
+          sortable
+          width="200">
         </el-table-column>
         <el-table-column
           prop="lastUpdataTime"
           label="最后更新时间"
+          sortable
           width="200">
         </el-table-column>
         <el-table-column
@@ -389,7 +395,6 @@
 
 
         // 显示顺序
-        isType:false,
         isPointType:false,
         Types:[],
         //当前选择类型
@@ -406,7 +411,7 @@
       //项目下拉框发生变化的时候
       changeProjectValue(data){
         var project = data;
-        this.isType = true;
+        this.isPointType = true;
         // 获取这个项目下所有的点类型
         this.getPointTypeToProjectID(project);
       },
@@ -559,5 +564,13 @@
   }
   .cell{
     text-align: center;
+  }
+  .el-table .sort-caret.ascending {
+    border-bottom-color: #a4a4a4;
+    top: 5px;
+  }
+  .el-table .sort-caret.descending {
+    border-top-color: #a4a4a4;
+    bottom: 7px;
   }
 </style>

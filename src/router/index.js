@@ -91,7 +91,6 @@ export const asyncRouterMap = [
         meta: {
           title: '点管理',
           icon: 'documentation',
-          noCache: true
         }
       },
       // 线管理
@@ -100,7 +99,7 @@ export const asyncRouterMap = [
         component: () => import('@/views/table/lineManager/index'),
         name: 'DragTable',
         meta: {
-          title: '线管理',
+          title: '管线管理',
           icon: 'documentation',
           noCache: true
         }
@@ -111,22 +110,11 @@ export const asyncRouterMap = [
         component: () => import('@/views/table/blockManager/index'),
         name: 'InlineEditTable',
         meta: {
-          title: '块管理',
+          title: '地块管理',
           icon: 'documentation',
           noCache: true
         }
       },
-      // {
-      //   path: ' company-manager',
-      //   component: () => import('@/views/table/companyManager/index'),
-      //   name: 'InlineEditTable',
-      //   meta: {
-      //     title: '企业管理',
-      //     icon: 'documentation',
-      //     noCache: true
-      //   }
-      // }
-
     ]
   },
   /**

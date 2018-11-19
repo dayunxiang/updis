@@ -66,7 +66,19 @@ export default {
   }
 }
 </script>
-
+<style>
+  #app .sidebar-container {
+    -webkit-transition: width 0.28s;
+    transition: width 0.28s;
+    width: 190px !important;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+  }
+</style>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .navbar {
   height: 50px;

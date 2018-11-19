@@ -242,7 +242,7 @@
 
 <script>
   import axios from 'axios'
-  import request from 'request'
+  import request from '@/utils/request'
     export default {
       name: "manager",
       data() {
@@ -311,10 +311,10 @@
         },
         // 进入项目事件
         handleToDashboard(data) {
-          var id= data.id;
+          var projectID = data.id;
           this.$router.push({
             path: '/dashboard',
-            query: { projectId: id}
+            query: { projectId: projectID }
           })
         },
         // 查询项目点击事件
