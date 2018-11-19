@@ -940,7 +940,7 @@
         var optionPie = self.$echarts.init(document.getElementById("optionPie"));  //获取标签ID
         self.optionPieDraw = {
           title : {             // 标题
-            text: '项目数量完成度',
+            text: '海绵项目库数量完成度',
             x:'center'
           },
           toolbox: {           // 插件
