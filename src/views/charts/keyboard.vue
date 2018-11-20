@@ -66,7 +66,7 @@
           <div style="width:100%;text-align: center; margin:10px 0px;">
             <el-pagination
               background
-              @current-change="currentChange"
+              @current-change="currentChange1"
               @size-change="sizeChange1"
               :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
@@ -106,7 +106,7 @@
           <div style="width:100%;text-align: center; margin:10px 0px;">
             <el-pagination
               background
-              @current-change="currentChange"
+              @current-change="currentChange2"
               @size-change="sizeChange2"
               :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
@@ -146,7 +146,7 @@
           <div style="width:100%;text-align: center; margin:10px 0px;">
             <el-pagination
               background
-              @current-change="currentChange"
+              @current-change="currentChange3"
               @size-change="sizeChange3"
               :page-sizes="pageSizeData"
               layout="total, sizes, prev, pager, next, jumper"
@@ -245,7 +245,7 @@
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
-                <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
+                <el-button @click="handleEditor(scope.row, 'optionData')" type="text" size="small" v-model="hodelView">编辑</el-button>
                 <!--<el-button type="text" size="small" @click.native.prevent="deleteRow(scope.$index, item.mingcheng)">删除</el-button>-->
               </template>
             </el-table-column>
@@ -262,72 +262,73 @@
       <!--获取信息-->
       <el-dialog :title="this.hodelView === ''?'查看信息':'编辑信息'" :visible.sync="dialogVisible" data="optionData"
                  @click="dialogVisible = false">
-        <el-form :label-position="labelPosition" label-width="200px" :model="optionData">
+        <el-form
+          :label-position="labelPosition"
+          label-width="200px"
+          :model="optionData"
+          :rules="rulersTest"
+          ref="optionData">
           <!--<h2 style="padding:0px 0px 10px 35px;"><span>类型名称：</span>  123</h2>-->
-          <el-form-item label="编号：">
+          <el-form-item label="地块编号：" prop="name">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px;" v-model="optionData.name"></el-input>
           </el-form-item>
-          <el-form-item label="用地类型：">
+          <el-form-item label="用地类型：" prop="YDLX">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
                       style="width:300px"
                       v-model="optionData.YDLX"></el-input>
           </el-form-item>
-          <el-form-item label="建设状态：">
+          <el-form-item label="建设状态：" prop="JSZT">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.JSZT"></el-input>
           </el-form-item>
-          <el-form-item label="项目名称：">
+          <el-form-item label="项目名称：" prop="XMMC">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.XMMC"></el-input>
           </el-form-item>
-          <el-form-item label="排入河道：">
+          <el-form-item label="排入河道：" prop="PRHD">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.PRHD"></el-input>
           </el-form-item>
-          <el-form-item label="所属流域：">
+          <el-form-item label="所属流域：" prop="SSLY">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.SSLY"></el-input>
           </el-form-item>
-          <el-form-item label="所属排水分区：">
+          <el-form-item label="所属排水分区：" prop="SSPSFQ">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.SSPSFQ"></el-input>
           </el-form-item>
-          <el-form-item label="是否为正本清源项目：">
+          <el-form-item label="是否为正本清源项目：" prop="ZBQY">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.ZBQY"></el-input>
           </el-form-item>
-          <el-form-item label="海绵建设情况：">
+          <el-form-item label="海绵建设情况：" prop="JSQK">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.JSQK"></el-input>
           </el-form-item>
-          <el-form-item label="年径流总量控制率：">
+          <el-form-item label="年径流总量控制率：" prop="ZLKZL">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      style="width:300px"
                       v-model="optionData.ZLKZL"></el-input>
+          </el-form-item>
+          <el-form-item label="面积：" prop="area">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      v-model="optionData.area"></el-input>
           </el-form-item>
         </el-form>
 
-
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button @click="quxiao('optionData')">取 消</el-button>
           <el-button v-show="this.hodelView == 'view' ? false : true" type="primary"
                      @click="dialogVisible = false">确 定</el-button>
           <el-button v-show="this.hodelView == 'view' ? true : false" type="primary"
@@ -335,7 +336,7 @@
         </span>
       </el-dialog>
       <!--添加信息-->
-      <el-dialog title="添加信息" :visible.sync="dialogAdd" data="option4" @click="dialogAdd = false">
+      <!--<el-dialog title="添加信息" :visible.sync="dialogAdd" data="option4" @click="dialogAdd = false">
         <el-form :model="option4" :rules="rules" ref="option4" :label-position="labelPosition" label-width="200px">
           <el-form-item label="类型名称：" prop="name" class="fontSize">
             <el-input class="elementMadel" v-model="option4.name"></el-input>
@@ -346,7 +347,7 @@
           <el-button v-show="this.hodelView == 'view' ? true : false" type="primary"
                      @click="handleSubmit">确 定</el-button>
         </span>
-      </el-dialog>
+      </el-dialog>-->
     </div>
   </div>
 </template>
@@ -397,21 +398,86 @@
         activeNameTest: '0',      // 表格标签页
         hodelView: '',            // 查看input禁用编辑input显示
         listTitle: '',            // 类型名称
-        optionData: '',             // 查看编辑获取表格中的数据
+        optionData: '',           // 查看编辑获取表格中的数据
         tongName: [],             // 表格中的全部数据
         option4: {                // 添加类型中的表数据
           name: "",
           mingcheng: []
         },
-        rules: {                  // 表单验证
+        targetName: '',
+
+        /* 表单验证 */
+        rules: {
           name: [
-            {required: true, message: '请输入类型名称', trigger: 'blur'}
+            { required: true, message: '地块编号', trigger: 'blur' }
           ],
-          region: [
-            {required: true, message: '请选择活动区域', trigger: 'change'}
+          YDLX: [
+            { required: true, message: '用地类型', trigger: 'blur' }
+          ],
+          JSZT: [
+            { required: true, message: '建设状态', trigger: 'blur' }
+          ],
+          XMMC: [
+            { required: true, message: '项目名称', trigger: 'blur' }
+          ],
+          PRHD: [
+            { required: true, message: '排入河道', trigger: 'blur' }
+          ],
+          SSLY: [
+            { required: true, message: '所属流域', trigger: 'blur' }
+          ],
+          SSPSFQ: [
+            { required: true, message: '所属排水分区', trigger: 'blur' }
+          ],
+          ZBQY: [
+            { required: true, message: '是否为正本清源项目', trigger: 'blur' }
+          ],
+          JSQK: [
+            { required: true, message: '海绵建设情况', trigger: 'blur' }
+          ],
+          ZLKZL: [
+            { required: true, message: '年径流总量控制率', trigger: 'blur' }
+          ],
+          area: [
+            { required: true, message: '面积', trigger: 'blur' }
           ]
         },
-        targetName: ''
+        rulers: {
+          name: [
+            { required: false, message: '地块编号', trigger: 'blur' }
+          ],
+          YDLX: [
+            { required: false, message: '用地类型', trigger: 'blur' }
+          ],
+          JSZT: [
+            { required: false, message: '建设状态', trigger: 'blur' }
+          ],
+          XMMC: [
+            { required: false, message: '项目名称', trigger: 'blur' }
+          ],
+          PRHD: [
+            { required: false, message: '排入河道', trigger: 'blur' }
+          ],
+          SSLY: [
+            { required: false, message: '所属流域', trigger: 'blur' }
+          ],
+          SSPSFQ: [
+            { required: false, message: '所属排水分区', trigger: 'blur' }
+          ],
+          ZBQY: [
+            { required: false, message: '是否为正本清源项目', trigger: 'blur' }
+          ],
+          JSQK: [
+            { required: false, message: '海绵建设情况', trigger: 'blur' }
+          ],
+          ZLKZL: [
+            { required: false, message: '年径流总量控制率', trigger: 'blur' }
+          ],
+          area: [
+            { required: false, message: '面积', trigger: 'blur' }
+          ]
+        },
+        rulersTest: {},
       }
     },
     created() {
@@ -695,16 +761,15 @@
       sizeChange3(pageSizeNum3){
         this.pageSizeNum3 = pageSizeNum3;
       },
-      currentChange(currentPageNum1){
+      currentChange1(currentPageNum1){
         this.currentPageNum1 = currentPageNum1;
       },
-      currentChange(currentPageNum2){
+      currentChange2(currentPageNum2){
         this.currentPageNum2 = currentPageNum2;
       },
-      currentChange(currentPageNum3){
+      currentChange3(currentPageNum3){
         this.currentPageNum3 = currentPageNum3;
       },
-
       /**
        * 查看信息
        */
@@ -713,17 +778,25 @@
         self.hodelView = "";
         self.dialogVisible = true;
         self.optionData = row;
-        console.log("进入查看信息页面", self);
+        self.rulersTest = self.rulers;
+        console.log("进入查看信息页面", self.rulersTest);
       },
       /**
        * 编辑信息
        * */
-      handleEditor(row) {
+      handleEditor(row, formRule) {
         const self = this;
         self.hodelView = "view";
         self.dialogVisible = true;
         self.optionData = row;
-        console.log("进入编辑信息页面");
+        self.rulersTest = self.rules;
+        self.$refs[formRule].resetFields();
+        console.log("进入编辑信息页面", self.rulers);
+      },
+      quxiao(formRule){
+        const self = this;
+        self.dialogVisible = false;
+        self.$refs[formRule].resetFields();
       },
       /**
        * 提交信息
@@ -811,7 +884,9 @@
     color: #666 !important;
     width: 300px !important;
   }
-
+  div.elementMadel {
+    width:300px
+  }
   .app-main {
     overflow: auto !important;
     padding-bottom: 10% !important;
