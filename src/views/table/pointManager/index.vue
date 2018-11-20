@@ -1,12 +1,12 @@
 <!--<template>-->
-  <!--<div>-->
-    <!--<router-view />-->
-  <!--</div>-->
+<!--<div>-->
+<!--<router-view />-->
+<!--</div>-->
 <!--</template>-->
 <!--<script>-->
-  <!--export default {-->
-    <!--name: 'index',-->
-  <!--}-->
+<!--export default {-->
+<!--name: 'index',-->
+<!--}-->
 <!--</script>-->
 <!--<style>-->
 

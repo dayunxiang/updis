@@ -439,7 +439,7 @@
                           <div class="info-title">管径</div>
                           <div class="info-span">
                             <el-tooltip class="item" effect="dark" :content="data.info.guanjing" placement="top-start">
-                              <el-button class="info-button">{{data.info.guanjing}}</el-button>
+                              <el-button class="info-button">{{data.info.guanjing*1000}} <span style="color:#42b983">mm</span></el-button>
                             </el-tooltip>
                           </div>
                         </li>

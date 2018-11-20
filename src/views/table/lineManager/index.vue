@@ -43,7 +43,7 @@
         </el-table-column>
         <el-table-column
           prop="guanjing"
-          label="管径"
+          label="管径(毫米)"
           width="100">
         </el-table-column>
         <el-table-column
@@ -462,7 +462,7 @@
                 lng_lat:lng_lat,
                 name:data[i].name,
                 leixing:conduitProperties.leixing,
-                guanjing:conduitProperties.guanjing,
+                guanjing:conduitProperties.guanjing*1000,
                 lastUpdataTime:data[i].lastUpdateTime,
               }
               self.tableData.push(conduitData);
