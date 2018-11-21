@@ -24,7 +24,7 @@
       </el-form-item>
     </el-form>
     <div>
-      <el-table :data="tableData" border max-height="500" style="width: 100%;" key="conduitData">
+      <el-table :data="tableData" border max-height="500" style="width: 100%;" key="companyTable">
         <el-table-column
           fixed
           prop="id"
@@ -32,37 +32,94 @@
           width="50">
         </el-table-column>
         <el-table-column
-          prop="name"
-          label="名称"
+          prop="projectName"
+          label="项目编号"
           width="120">
         </el-table-column>
         <el-table-column
-          prop="leixing"
+          prop="category"
           label="类型"
-          width="120"
-          :filters="[{ text: '雨水管', value: '雨水管' }, { text: '污水管', value: '污水管' }]"
-          :filter-method="filterTag"
-          filter-placement="bottom-end">
-          <template slot-scope="scope">
-            <el-tag
-              :type="scope.row.leixing === '雨水管' ? 'primary' : 'success'"
-              disable-transitions>{{scope.row.leixing}}</el-tag>
-          </template>
+          width="120">
         </el-table-column>
         <el-table-column
-          prop="guanjing"
-          label="管径(毫米)"
-          width="100">
+          prop="lng_lat"
+          label="坐标"
+          width="400">
         </el-table-column>
         <el-table-column
-          prop="lastUpdataTime"
-          label="最后更新时间"
-          width="200">
+          prop="JDMC"
+          label="街道名称"
+          width="300">
         </el-table-column>
         <el-table-column
-          prop=""
-          label="待更新列"
-          width="1000">
+          prop="SQMC"
+          label="社区名称"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="SCJYDZ"
+          label="地址"
+          width="400">
+        </el-table-column>
+        <el-table-column
+          prop="FDDBR"
+          label="法人代表"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="LXFS"
+          label="联系方式"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="QYRS"
+          label="企业人数"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="HYLB"
+          label="行业类别"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="SCYSL"
+          label="生产用水量"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="PSL"
+          label="排水量"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="ZYSCGY"
+          label="主要生产工艺"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="GPZL"
+          label="产品"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="HPPFWJ"
+          label="环评"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="HPPFWJYXX"
+          label="环评有效性"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="PWXKZ"
+          label="排污许可证"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="FSCLFS"
+          label="废水处理方式"
+          width="120">
         </el-table-column>
         <el-table-column
           fixed="right"
@@ -330,7 +387,7 @@
   import axios from 'axios'
   import request from '@/utils/request'
   export default {
-    name: 'DynamicTable',
+    name: 'index',
     data(){
       return{
         projects:[],
@@ -361,7 +418,6 @@
         //当前选择类型
         type:'',
         //数据
-        conduitsData:[],
         tableData:[]
       }
     },
@@ -434,13 +490,12 @@
       },
       // 查询事件
       handleSelect(){
+        console.log('Test');
         var self = this;
-        self.tableData = [];
+        self.tableData = []
         var selectObject = {
           project_id: self.project.id,
-          category : self.type ,
         }
-        if(selectObject.category == 0){
           // 拿到管线数据
           request('shapes',{
             params:{
@@ -452,7 +507,7 @@
                     equalTo: selectObject.project_id
                   },
                   'category':{
-                    equalTo: 'CONDUITS'
+                    equalTo: 'COMPANY'
                   }
                 }
               }
@@ -462,22 +517,34 @@
             for(var i = 0;i<data.length;i++){
               var properties = JSON.parse(data[i].properties);
               var lng_lat = (properties.geometry.coordinates).reverse().join();
-              var conduitProperties = properties.properties;
-              var conduitData = {
+              var companyProperties = properties.properties;
+              var companyData = {
                 id:Number(properties.id)+1,
                 projectName: data[i].projectId,
-                category:'管线',
+                category:'企业',
                 lng_lat:lng_lat,
                 name:data[i].name,
-                leixing:conduitProperties.leixing,
-                guanjing:conduitProperties.guanjing*1000,
+                JDMC:companyProperties.JDMC,
+                SQMC:companyProperties.SQMC,
+                SCJYDZ:companyProperties.SCJYDZ,
+                FDDBR:companyProperties.FDDBR,
+                LXFS:companyProperties.LXFS,
+                QYRS:companyProperties.QYRS,
+                HYLB:companyProperties.HYLB,
+                SCYSL:companyProperties.SCYSL,
+                PSL:companyProperties.PSL,
+                ZYSCGY:companyProperties.ZYSCGY,
+                GPZL:companyProperties.GPZL,
+                HPPFWJ:companyProperties.HPPFWJ,
+                HPPFWJYXX:companyProperties.HPPFWJYXX,
+                PWXKZ:companyProperties.PWXKZ,
+                FSCLFS:companyProperties.FSCLFS,
                 lastUpdataTime:data[i].lastUpdateTime,
               }
-              self.tableData.push(conduitData);
+              self.tableData.push(companyData);
             }
             self.totall = Number(resp.headers.total);
           })
-        }
       },
       //分页条数切换
       handleSizeChange(val) {
@@ -504,26 +571,7 @@
             });
           }
         });
-      },
-      //筛选
-      // resetDateFilter() {
-      //   this.$refs.filterTable.clearFilter('date');
-      // },
-      clearFilter() {
-        this.$refs.filterTable.clearFilter();
-      },
-      formatter(row, column) {
-        return row.address;
-      },
-      filterTag(value, row) {
-        console.log('test');
-        return row.leixing === value;
-      },
-      // filterHandler(value, row, column) {
-      //   const property = column['property'];
-      //   return row[property] === value;
-      // },
-    //  筛选结束
+      }
     }
   }
 </script>
@@ -537,5 +585,13 @@
   }
   .cell{
     text-align: center;
+  }
+  .el-table .sort-caret.ascending {
+    border-bottom-color: #a4a4a4;
+    top: 5px;
+  }
+  .el-table .sort-caret.descending {
+    border-top-color: #a4a4a4;
+    bottom: 7px;
   }
 </style>

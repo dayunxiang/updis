@@ -47,12 +47,18 @@
           prop="YDLX"
           label="用地类型"
           sortable
+          :filters="[{ text: '道路', value: '道路' }, { text: '市政公用设施用地', value: '市政公用设施用地' },{ text: '绿地', value: '绿地' },{ text: '居住用地', value: '居住用地' },{ text: '政府社团用地', value: '政府社团用地' },{ text: '工业用地', value: '工业用地' },{text:'商业服务业设施用地',value:'商业服务业设施用地'}]"
+          filter-placement="bottom-end"
+          :filter-method="filterYDLX"
           width="200">
         </el-table-column>
         <el-table-column
           prop="JSZT"
           label="建设状态"
           sortable
+          :filters="[{ text: '规划', value: '规划' }, { text: '在建', value: '在建'},{ text: '现状', value: '现状'}]"
+          filter-placement="bottom-end"
+          :filter-method="filterJSZT"
           width="200">
         </el-table-column>
         <el-table-column
@@ -77,6 +83,9 @@
           prop="SSPSFQ"
           label="所属排水分区"
           sortable
+          :filters="[{ text: '1#排水分区', value: '1#排水分区' },{ text: '2#排水分区', value: '2#排水分区' },{ text: '3#排水分区', value: '3#排水分区' },{ text: '4#排水分区', value: '4#排水分区' },{ text: '5#排水分区', value: '5#排水分区' },{ text: '6#排水分区', value: '6#排水分区' },{ text: '7#排水分区', value: '7#排水分区' },{ text: '8#排水分区', value: '8#排水分区' },{ text: '9#排水分区', value: '9#排水分区' },{ text: '10#排水分区', value: '10#排水分区' },{ text: '11#排水分区', value: '11#排水分区' },{ text: '12#排水分区', value: '12#排水分区' },{ text: '13#排水分区', value: '13#排水分区' },{ text: '14#排水分区', value: '14#排水分区' },{ text: '15#排水分区', value: '15#排水分区' },{ text: '16#排水分区', value: '16#排水分区' },{ text: '17#排水分区', value: '17#排水分区' },{ text: '18#排水分区', value: '18#排水分区' },{ text: '19#排水分区', value: '19#排水分区' }]"
+          filter-placement="bottom-end"
+          :filter-method="filterSSPSFQ"
           width="200">
         </el-table-column>
         <el-table-column
@@ -499,6 +508,19 @@
           }).then(resp =>{
             var data = resp.data;
             for(var i = 0;i<data.length;i++){
+              var daoluReg = /^[S][^A-Za-z]$/;
+              // 市政公用设施用地
+              var shiZhengReg = /^[U][^A-Za-z]$/;
+              // 绿地
+              var lvDiReg = /^[G,E][^A-Za-z]/;
+              // 居住用地
+              var juZhuYongDiReg = /^[R][^A-Za-z]/;
+              // 政府
+              var zhengFuReg = /^[G][I][C]/;
+              // 工业
+              var gongYeReg = /^[M]/;
+              // 商业服务业设施用地
+              var shangyeReg = /^[C][^A-Za-z]/;
               var properties = JSON.parse(data[i].properties);
               var lng_lat = (properties.geometry.coordinates).reverse().join();
               var subcatchmentProperties = properties.properties;
@@ -518,6 +540,28 @@
                 HMCS:subcatchmentProperties.HMCS,
                 HMLX:subcatchmentProperties.HMLX,
                 lastUpdataTime:data[i].lastUpdateTime,
+              }
+              var YDLX = subcatchmentData.YDLX
+              if(YDLX == '道路' || daoluReg.test(YDLX)){
+                subcatchmentData.YDLX = '道路'
+              }
+              if(shiZhengReg.test(YDLX)){
+                subcatchmentData.YDLX = '市政公用设施用地'
+              }
+              if(lvDiReg.test(YDLX)) {
+                subcatchmentData.YDLX = '绿地'
+              }
+              if(juZhuYongDiReg.test(YDLX)){
+                subcatchmentData.YDLX = '居住用地'
+              }
+              if(zhengFuReg.test(YDLX)){
+                subcatchmentData.YDLX = '政府社团用地'
+              }
+              if(gongYeReg.test(YDLX)){
+                subcatchmentData.YDLX = '工业用地'
+              }
+              if(shangyeReg.test(YDLX)){
+                subcatchmentData.YDLX = '商业服务业设施用地'
               }
               self.tableData.push(subcatchmentData);
             }
@@ -550,7 +594,32 @@
             });
           }
         });
+      },
+    //  筛选查询,
+      // resetDateFilter() {
+      //   this.$refs.filterTable.clearFilter('date');
+      // },
+      clearFilter() {
+        this.$refs.filterTable.clearFilter();
+      },
+      formatter(row, column) {
+        return row.address;
+      },
+      filterYDLX(value, row) {
+
+        return row.YDLX === value;
+      },
+      filterJSZT(value,row) {
+        return row.JSZT === value;
+      },
+      filterSSPSFQ(value,row){
+        return row.SSPSFQ === value;
       }
+      // filterHandler(value, row, column) {
+      //   const property = column['property'];
+      //   return row[property] === value;
+      // },
+      //  筛选结束
     }
   }
 </script>

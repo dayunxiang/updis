@@ -77,7 +77,7 @@ export const asyncRouterMap = [
   {
     path: '/infoManager',
     component: Layout,
-    redirect: '/infoManager/complex-table',
+    redirect: '/infoManager/pointManager',
     meta: {
       title: '地理信息管理',
       icon: 'table'
@@ -85,13 +85,29 @@ export const asyncRouterMap = [
     children: [
       // 点管理
       {
-        path: 'point-manager',
-        component: () => import('@/views/table/pointManager/index'),
+        path: '/point-manager',
+        component: () => import('@/views/table/pointManager/index'),   // Parent router-view
         name: 'pointManager',
         meta: {
           title: '点管理',
           icon: 'documentation',
-        }
+        },
+        redirect: '/infoManager/point-manager/outfall',
+        //三级子菜单
+        children: [
+          {
+            path: 'outfall',
+            component: () => import('@/views/table/pointManager/outfall'),
+            name: 'outfall',
+            meta: { title: '排口管理' },
+          },
+          {
+            path: 'company',
+            component: () => import('@/views/table/pointManager/company'),
+            name: 'company',
+            meta: { title: '工业企业管理' },
+          }
+        ]
       },
       // 线管理
       {

@@ -52,8 +52,8 @@ export default {
 </script>
 <style lang="scss">
 body { height: 100%;
-       padding: 0; 
-       margin: 0; 
+       padding: 0;
+       margin: 0;
       }
       .main-container { height: 100%; position: relative; }
         .A { height: 100px;}
@@ -86,4 +86,5 @@ body { height: 100%;
     width: 100%;
     height: 100%;
   }
+
 </style>

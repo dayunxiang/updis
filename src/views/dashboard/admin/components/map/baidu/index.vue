@@ -165,9 +165,9 @@
     <bm-circle
       v-for="val in Junctions.rainJunctions"
       :center="val.geos"
-      :radius="2"
+      :radius="1"
       :stroke-opacity="1"
-      :stroke-weight="7"
+      :stroke-weight=5
       fillColor="blue"
       stroke-color="blue"
     />
@@ -175,15 +175,14 @@
     <bm-circle
       v-for="val in Junctions.sewageJunctions"
       :center="val.geos"
-      :radius="2"
+      :radius="1"
       :stroke-opacity="1"
-      :stroke-weight="7"
+      :stroke-weight=5
       fillColor="rgb(242,73,248)"
       stroke-color="rgb(242,73,248)"
     />
     <!------------------------------------------管线渲染---------------------------------------------------------------------->
     <!--雨水管线开始-->
-
     <bm-polyline
       v-for="polylinePath in Conduits.rainConduits"
       :key="polylinePath.id"
@@ -195,6 +194,7 @@
       @mouseover = 'handleHoverConduit(polylinePath)'
       @click="handleguanxian(polylinePath)"/>
     <!--污水管线开始-->
+
     <bm-polyline
       v-for="polylinePath in Conduits.sewageConduits"
       :key="polylinePath.id"
@@ -506,14 +506,17 @@
     methods: {
       //鼠标移入管线 管线变粗
       handleHoverConduit(data){
+        var self = this;
         this.Conduits.rainConduits.forEach(function(item){
           item.stroke.color = 'blue'
+          item.stroke.weight = 3;
         })
         this.Conduits.sewageConduits.forEach(function(item){
           item.stroke.color = '#e868f2'
+          item.stroke.weight = 3;
         });
-        data.stroke.color = 'red';
-
+        data.stroke.weight = 10;
+           // data.stroke.color = 'red';
       },
       // 获取项目工程Id
       getProjectId(){
@@ -767,6 +770,7 @@
             }
             conduit.stroke = stroke
             self.mapData.conduits.rainConduits.push(conduit)
+
           }
           if(conduitType == '污水管'){
             var stroke  = {
@@ -779,6 +783,11 @@
           }
 
         })
+        // 百度地图事件
+        // var map = new BMap.Map("allmap");
+        // _each(conduitsData, function(index, conduitData){
+        //   console.l
+        // })
       },
       // 请求地块数据
       getSubcatchmentsInfo() {

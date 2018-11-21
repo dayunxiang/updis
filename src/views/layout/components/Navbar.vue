@@ -70,7 +70,7 @@ export default {
   #app .sidebar-container {
     -webkit-transition: width 0.28s;
     transition: width 0.28s;
-    width: 190px !important;
+    width: 180px !important;
     height: 100%;
     position: fixed;
     top: 0;
