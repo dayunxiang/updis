@@ -103,32 +103,27 @@
         /**
          * 统计图数据
          */
-        roadSquare: [],
-        parkSquare: [],
-        buildSquare: [],
         activeNo: 0,        // echarts图标签页
         optionBar1: {},     // echarts:项目数量完成度柱状图
         optionBar2: {},     // echarts:项目数量完成度柱状图
         optionBar3: {},     // echarts:项目数量完成度柱状图
         optionPieDraw: {},      // echarts:项目数量完成度饼图
-        completeDegree: {},    // echarts:项目完成度柱状图
-        totalControlLeft: {},  // echarts:年径流总量控制率
-        totalControlRight: {}, // echarts:年径流总量控制率
+        completeDegree: {},     // echarts:项目完成度柱状图
+        DataShow:[],       // 初始数据展示
         /**
          * 海绵面积覆盖度
          */
-        partition: [],
-        partList: '',
-        xwList: [],
-        xyList: [],
-        zyList: [],
-        zwList: [],
-        ghList: [],
+        partition: [], // 整个分区排序
+        partList: '',  // 分区排序数字排序
+        xwList: [],    // 现状无海绵面积百分比
+        xyList: [],    // 现状有海绵面积百分比
+        zyList: [],    // 在建无海绵面积百分比
+        zwList: [],    // 在建有海绵面积百分比
+        ghList: [],    // 规划管控面积百分比
         /**
          * 项目数量完成度
          */
-        completeId: [],
-        list: 'list',
+        list: 'list',  // 完成度中分区ID
         completeList: [],
 
       }
@@ -187,10 +182,6 @@
         const self = this;
         setTimeout(function () {
           /**
-           * 年径流总量控制率
-           */
-          self.drawControl();
-          /**
            * 项目数量完成度
            */
           /*self.drawLine();*/
@@ -225,6 +216,7 @@
             var removeChines = SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
             var number = removeChines.replace(/#/g, '')
             demofen.push(number);   // 获取分区数据;
+            self.DataShow.push(TestData);
           })
           var demoList = _.uniq(demofen);   // 分区去重
           function sortNumber(a,b) {
@@ -236,11 +228,6 @@
       },
       TestList(res){
         const self = this;
-        for(var k=0;k<self.partition.length; k++) {
-          var demo = {};
-          demo.str = 'list'+k;
-          self.completeId.push(demo);
-        }
         var baga = [];     // 排水分区列表
         _.each(self.partList, function (vm) {
           var num = vm+"#排水分区" ;
@@ -259,24 +246,24 @@
               //ZMJ.push(TestData.properties.area);     // 获取所有面积
               if (TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵") {
                 var XZYLSarea = TestData.properties.area;     // 获取现状已落实面积
-                XZYLSList.push(Number(XZYLSarea))
+                XZYLSList.push(Number(Math.abs(XZYLSarea)))
               } else
               if (TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵") {
                 var XZWHMarea = TestData.properties.area;     // 获取现状无海绵面积
-                XZWHMList.push(Number(XZWHMarea))
+                XZWHMList.push(Number(Math.abs(XZWHMarea)))
               } else
               if (TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵") {
                 var ZJYLSarea = TestData.properties.area;     // 获取在建已落实面积
-                ZJYLSList.push(Number(ZJYLSarea));
+                ZJYLSList.push(Number(Math.abs(ZJYLSarea)));
               } else
               if (TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵") {
                 var ZJWUMarea = TestData.properties.area;     // 获取在建无海绵面积
                 //ZJWUMarea == null ? ZJWUMarea == 0 : ZJWUMarea ;
-                ZJWUMList.push(Number(ZJWUMarea));
+                ZJWUMList.push(Number(Math.abs(ZJWUMarea)));
               } else
               if (TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null) {
                 var GHGKarea = TestData.properties.area;     // 获取规划管控面积
-                GHGKList.push(Number(GHGKarea))
+                GHGKList.push(Number(Math.abs(GHGKarea)));
               }
             }
           });
@@ -307,13 +294,15 @@
           self.zyList.push((numtota3/sum * 100).toFixed(2));
           self.zwList.push((numtota4/sum * 100).toFixed(2));
           self.ghList.push((numtota5/sum * 100).toFixed(2));
-          //console.log("sum: " ,((numtota5/sum * 100).toFixed(2)));
         }
-        //console.log("现状无海绵面积百分比: ", self.xwList);
         /**
          * 项目海绵面积覆盖度
          */
         self.drawComplete();
+        /**
+         * 年径流总量控制率
+         */
+        self.drawControl();
         setTimeout(function () {
           self.drawLine(res);
         },10)
@@ -484,7 +473,7 @@
          */
         var colorList = ['#4876FF','#0000CD',];
         var totalControlLeft = self.$echarts.init(document.getElementById("totalControlLeft"));  //获取标签ID
-        self.totalControlLeft = {
+        totalControlLeft.setOption({
           title: {
             text: '年径流总量控制率',
             x: 'center'
@@ -511,8 +500,8 @@
             feature : {
               /*mark : {show: true},
                dataView : {show: true, readOnly: false},
-              restore : {show: true},
-              magicType : {show: true, type: ['line']},*/
+               restore : {show: true},
+               magicType : {show: true, type: ['line']},*/
               saveAsImage : {show: true}
             }
           },
@@ -562,14 +551,20 @@
               data: [70, 56]
             }
           ]
-        };
-        totalControlLeft.setOption(self.totalControlLeft);
+        });
 
         /**
          * 纵向柱形图
          */
+        var controlData = self.DataShow;   // 取得总的数据
+        var statusControl = [];  // 现状控制率
+        var plannerControl = []; // 规划控制率
+        _.each(controlData, function (v) {
+          statusControl.push(v.properties.现状控制率)
+          plannerControl.push(v.properties.规划控制率)
+        })
         var totalControlRight = self.$echarts.init(document.getElementById("totalControlRight"));  //获取标签ID
-        self.totalControlRight = {
+        totalControlRight.setOption({
           color:['#0000CD','#EE7600'],
           title : {
             text: '排水分区年径流总量控制率',
@@ -600,8 +595,8 @@
             feature : {
               mark : {show: true},
               /*dataView : {show: true, readOnly: false},
-              restore : {show: true},
-              magicType : {show: true, type: ['line']},*/
+               restore : {show: true},
+               magicType : {show: true, type: ['line']},*/
               saveAsImage : {show: true}
             }
           },
@@ -609,7 +604,7 @@
           xAxis : [
             {
               type : 'category',
-              data : ['1#','2#','3#','4#','5#','6#','7#']
+              data : ['1','2','3','4','5','6','7']
             }
           ],
           yAxis : [
@@ -627,46 +622,23 @@
               type:'bar',
               itemStyle: {
                 normal: {
-                  barBorderRadius:[5, 5, 5, 5]
+                  barBorderRadius:[3, 3, 3, 3]
                 }
               },
               data:[20, 49, 50, 23.2, 25.6, 54.7, 35.6]
-              /*markPoint : {
-                data : [
-                  {type : 'max', name: '最大值'},
-                  {type : 'min', name: '最小值'}
-                ]
-              },
-              markLine : {
-                data : [
-                  {type : 'average', name: '平均值'}
-                ]
-              }*/
             },
             {
               name:'目标',
               type:'bar',
               itemStyle: {
                 normal: {
-                  barBorderRadius:[5, 5, 5, 5]
+                  barBorderRadius:[3, 3, 3, 3]
                 }
               },
               data:[70, 70, 70, 70, 70, 70, 70]
-              /*markPoint : {
-                data : [
-                  {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
-                  {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
-                ]
-              },
-              markLine : {
-                data : [
-                  {type : 'average', name : '平均值'}
-                ]
-              }*/
             }
           ]
-        };
-        totalControlRight.setOption(self.totalControlRight);
+        });
       },
       /**
        * 使用echarts统计图:项目数量完成度柱状图
@@ -695,9 +667,6 @@
             wancheng.push(sum)
             meiyou.push(ed)
           });
-
-          console.log("v: ", vWater)
-
           var title = self.datalis + index;
           (self.$echarts.init(document.getElementById(self.datalis + index))).setOption({
             title: {

@@ -1,0 +1,117 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HDOUT",
+        "Elevation": "8",
+        "Type": "FREE",
+        "Stage": "NO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75912807836819,
+          113.91681687231421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "WSCLC",
+        "Elevation": "9",
+        "Type": "FREE",
+        "Stage": "NO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760309343371674,
+          113.91681078161338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-133",
+        "Elevation": "22.985",
+        "Type": "FREE",
+        "Stage": "NO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.763342682196267,
+          113.95206383841199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-135",
+        "Elevation": "23.317",
+        "Type": "FREE",
+        "Stage": "NO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.763570946299684,
+          113.95185325155619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-142",
+        "Elevation": "19.5",
+        "Type": "FREE",
+        "Stage": "NO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.768092043792503,
+          113.94132287442352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-598",
+        "Elevation": "19.64",
+        "Type": "FREE",
+        "Stage": "NO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76703276712173,
+          113.9409989858565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HDOUT2",
+        "Elevation": "30.5",
+        "Type": "FREE",
+        "Stage": "NO"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75046572060049,
+          113.95391353584404
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,8023 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "B-468",
+        "Elevation": "21.007",
+        "MaxDepth": "3.54",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.547"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76126424490421,
+          113.93862592543796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD11",
+        "Elevation": "9.5",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "9.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75795458961449,
+          113.92574515901651
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD12",
+        "Elevation": "9.7",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "9.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75793722768803,
+          113.92600784342935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD13",
+        "Elevation": "10",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "10.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757843836733695,
+          113.92649444222204
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD14",
+        "Elevation": "10.2",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "10.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758062467931556,
+          113.92744597843127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD16",
+        "Elevation": "10.9",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "10.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758188075117715,
+          113.92956290383971
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD17",
+        "Elevation": "11.6",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "11.6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75826721147187,
+          113.93140834225358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD2",
+        "Elevation": "8.4",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "8.4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75912954277252,
+          113.9173791001903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD25",
+        "Elevation": "12.6",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "12.6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756551532476806,
+          113.93280508416419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD26",
+        "Elevation": "12.8",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "12.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75601583798075,
+          113.9328496389896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD27",
+        "Elevation": "13",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "13.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755830522049795,
+          113.933502235915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD27-1",
+        "Elevation": "12.9",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "12.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755811454236543,
+          113.93330704177585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD27-2",
+        "Elevation": "12.9",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "12.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755899201443572,
+          113.93303667644129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD27-3",
+        "Elevation": "12.9",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "12.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755826066090183,
+          113.93315192189473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD3",
+        "Elevation": "8.5",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "8.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759147481927165,
+          113.91906282730403
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD34-1",
+        "Elevation": "14.4",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "14.4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754239353537013,
+          113.9371234606548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD35",
+        "Elevation": "14.5",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "14.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75426246098711,
+          113.93735302663401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD36",
+        "Elevation": "14.8",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "14.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75428021686875,
+          113.93771952043542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD40",
+        "Elevation": "16.2",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "16.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75238170078465,
+          113.93976269165802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD40-1",
+        "Elevation": "16.3",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "16.3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752312707865027,
+          113.93984722410029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD43",
+        "Elevation": "16.9",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "16.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7504803656123,
+          113.94237662874299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD44",
+        "Elevation": "17",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "17.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7502362990421,
+          113.94272223051118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD45",
+        "Elevation": "17.2",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "17.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750134285911642,
+          113.94289550171416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD48",
+        "Elevation": "18.3",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "18.3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74950096314037,
+          113.94426168115065
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD5",
+        "Elevation": "8.7",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "8.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75895763721686,
+          113.9201645698457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD52",
+        "Elevation": "19.5",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "19.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748847014616697,
+          113.94574259546621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD52-1",
+        "Elevation": "19.5",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "19.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74882728237181,
+          113.9457921509374
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD52-2",
+        "Elevation": "19.8",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "19.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748799467942533,
+          113.94587517984263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD52-3",
+        "Elevation": "20",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "20.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748794240913877,
+          113.94594614871903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD57",
+        "Elevation": "22",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "22.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747983582496786,
+          113.94930575092143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD58",
+        "Elevation": "23",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "23.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748078243481753,
+          113.94957753549201
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD58-1",
+        "Elevation": "25",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "25.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748359918917263,
+          113.95025658351636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD58-2",
+        "Elevation": "24",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "24.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74831249921043,
+          113.94999880102881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD59",
+        "Elevation": "26",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "26.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74855146814271,
+          113.95059043454748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD6",
+        "Elevation": "8.8",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "8.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75849314898431,
+          113.92081108419826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD60",
+        "Elevation": "28",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "28.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750833115621866,
+          113.95064387157548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD65",
+        "Elevation": "30.2",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "30.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7505159716035,
+          113.95298081782984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD7",
+        "Elevation": "8.9",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "8.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75791264069546,
+          113.92151235861307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD8",
+        "Elevation": "9",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "9.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758123637017285,
+          113.92274234220584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD8-1",
+        "Elevation": "9.1",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "9.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75824981941525,
+          113.92313599708005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "HD9",
+        "Elevation": "9.2",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "9.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758268025539568,
+          113.92349548255974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP1",
+        "Elevation": "21.27",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748763640937852,
+          113.9458076691633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP13",
+        "Elevation": "12",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "16.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757921774231185,
+          113.92781991076392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP15",
+        "Elevation": "10.92",
+        "MaxDepth": "3.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "14.42"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757990611360857,
+          113.92329882996188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP16",
+        "Elevation": "10.78",
+        "MaxDepth": "2.41",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "13.19"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757980643892072,
+          113.92268203693685
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP2",
+        "Elevation": "21.2",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74879224591113,
+          113.9457238477684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP3",
+        "Elevation": "20.41",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.91"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749424718948628,
+          113.94421298360056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP4",
+        "Elevation": "18.55",
+        "MaxDepth": "2.78",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.330000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750144507116666,
+          113.94276868926886
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP5",
+        "Elevation": "17.39",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752274567207753,
+          113.9397914387884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP5-1",
+        "Elevation": "16.4",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754160848314054,
+          113.93772572934292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP5-2",
+        "Elevation": "15.2",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754154576498905,
+          113.9372138549395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP6",
+        "Elevation": "14.16",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755757346255233,
+          113.93316299902551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP7",
+        "Elevation": "14.06",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.060000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7558784418698,
+          113.93293588443355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP15",
+        "Elevation": "11.5",
+        "MaxDepth": "2.86",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "14.36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757627491512775,
+          113.92647255629674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP16",
+        "Elevation": "11.27",
+        "MaxDepth": "3.03",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "14.299999999999999"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757738235036516,
+          113.9259012701829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP17",
+        "Elevation": "11.1",
+        "MaxDepth": "2.76",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "13.86"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7577793469506,
+          113.92574635861068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP19-1",
+        "Elevation": "10.8",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "13.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757996810115607,
+          113.92290382836714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP2",
+        "Elevation": "22.2",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7487694733374,
+          113.94589761455308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP20",
+        "Elevation": "10.8",
+        "MaxDepth": "2.59",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "13.39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75819108882942,
+          113.92153941500743
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP21",
+        "Elevation": "10.7",
+        "MaxDepth": "2.71",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "13.41"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758587881037087,
+          113.92114117237378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP22",
+        "Elevation": "10.6",
+        "MaxDepth": "2.46",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "13.059999999999999"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759067641865062,
+          113.92049236719205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP24",
+        "Elevation": "10.52",
+        "MaxDepth": "2.49",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "13.01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759527296517213,
+          113.91928615145996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP25",
+        "Elevation": "10.34",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "12.84"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75950643864815,
+          113.9173283069159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP4",
+        "Elevation": "18.1",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75034113842239,
+          113.94245577327288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP5",
+        "Elevation": "17.9",
+        "MaxDepth": "3.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750445930608507,
+          113.94232123812779
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP6",
+        "Elevation": "17.5",
+        "MaxDepth": "3.2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752226420568718,
+          113.93986221310297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP7-1",
+        "Elevation": "16.35",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.35"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754158006248716,
+          113.93742791683921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP8",
+        "Elevation": "14.23",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "16.73"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755737592058157,
+          113.93348399989301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP9",
+        "Elevation": "14.2",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "17.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75575365791554,
+          113.93319330466424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RP9-1",
+        "Elevation": "14.1",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755859611368514,
+          113.93296983410602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-104",
+        "Elevation": "44.274",
+        "MaxDepth": "2.752",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "47.026"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74708542673005,
+          113.96062636475595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-106",
+        "Elevation": "43.94",
+        "MaxDepth": "2.473",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.413"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749035564982133,
+          113.9605260254716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-108",
+        "Elevation": "41.745",
+        "MaxDepth": "3.783",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "45.528"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750989220074985,
+          113.9582248475827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-110",
+        "Elevation": "39.807",
+        "MaxDepth": "5.136",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "44.943000000000005"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751195102835904,
+          113.95794945997302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-111",
+        "Elevation": "36.999",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.499"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750745843714988,
+          113.95301198516486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-112",
+        "Elevation": "37.4",
+        "MaxDepth": "4.47",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.87"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75189458936543,
+          113.95293906418873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-113",
+        "Elevation": "21.351",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.851"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749981309763577,
+          113.94259286404115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-114",
+        "Elevation": "22.51",
+        "MaxDepth": "6.89",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.400000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74898091226694,
+          113.94149421342874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-115",
+        "Elevation": "18.773",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.773"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750287563443734,
+          113.94277406031676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-116",
+        "Elevation": "18.804",
+        "MaxDepth": "4.091",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.895"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750361495670674,
+          113.94283507359373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-117",
+        "Elevation": "22.458",
+        "MaxDepth": "3.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.958"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748821300798753,
+          113.94591895361874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-118",
+        "Elevation": "22.535",
+        "MaxDepth": "3.994",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.529"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748971277299056,
+          113.94598681741392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-120",
+        "Elevation": "22.641",
+        "MaxDepth": "3.752",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.392999999999997"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74940932553693,
+          113.9461394360848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-121",
+        "Elevation": "22.273",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.773"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74865919619183,
+          113.94575897762499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-122",
+        "Elevation": "24.212",
+        "MaxDepth": "4.33",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.542"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747232596129304,
+          113.94505793731204
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-123",
+        "Elevation": "27.481",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.981"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74788382649758,
+          113.94956336599121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-124",
+        "Elevation": "28.546",
+        "MaxDepth": "3.483",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "32.028999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.746452064481296,
+          113.94949406811048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-125",
+        "Elevation": "25.303",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.803"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74805828977287,
+          113.94969755452256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-126",
+        "Elevation": "25.349",
+        "MaxDepth": "6.567",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "31.916"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748024501706283,
+          113.94991925698712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-127",
+        "Elevation": "26.96",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.46"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74830653066979,
+          113.95027206437015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-128",
+        "Elevation": "32.22",
+        "MaxDepth": "3.866",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.086"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747894146191598,
+          113.95268654874083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-129",
+        "Elevation": "27.298",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.798"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748448230854375,
+          113.95004561885675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-13",
+        "Elevation": "12.4",
+        "MaxDepth": "6",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757713133856708,
+          113.92785076239812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-130",
+        "Elevation": "32.649",
+        "MaxDepth": "2.878",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.527"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75002842940701,
+          113.94977869388308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-131",
+        "Elevation": "27.07",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74870949284467,
+          113.95040578793267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-132",
+        "Elevation": "31.985",
+        "MaxDepth": "5.64",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.625"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750177660146477,
+          113.9500161451198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-134",
+        "Elevation": "25.218",
+        "MaxDepth": "5.656",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.874"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761734991512263,
+          113.95176729567709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-136",
+        "Elevation": "24.623",
+        "MaxDepth": "3.184",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.807000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.762861323152325,
+          113.95175026593687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-14",
+        "Elevation": "12.9",
+        "MaxDepth": "6.417",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.317"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75721183050695,
+          113.9280402917919
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-143",
+        "Elevation": "21.308",
+        "MaxDepth": "2.159",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.467"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.766788288157944,
+          113.94043962955939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-15",
+        "Elevation": "13.64",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "16.14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75787033482111,
+          113.92968440959108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-16",
+        "Elevation": "15.615",
+        "MaxDepth": "3.784",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.399"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75622095915003,
+          113.93054774354762
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-17",
+        "Elevation": "15",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "17.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7562268302781,
+          113.93300789942668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-18",
+        "Elevation": "15.5",
+        "MaxDepth": "6.865",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.365000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757636121193766,
+          113.93413518013331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-187",
+        "Elevation": "23.61",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.11"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7654152450542,
+          113.93951022646195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-191",
+        "Elevation": "32.75",
+        "MaxDepth": "2.884",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.634"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759964711786534,
+          113.95120934977608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-192",
+        "Elevation": "27.451",
+        "MaxDepth": "7.609",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760125532798025,
+          113.95147111310351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-193",
+        "Elevation": "37.2",
+        "MaxDepth": "2.562",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.762"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752044643875646,
+          113.9501492298868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-194",
+        "Elevation": "38.2",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "40.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75186384794304,
+          113.94988583111017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-195",
+        "Elevation": "34.97",
+        "MaxDepth": "3.223",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.193"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747379046859226,
+          113.95435055963556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-196",
+        "Elevation": "27.483",
+        "MaxDepth": "4.601",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "32.084"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74639550200236,
+          113.94983122336322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-197",
+        "Elevation": "31.391",
+        "MaxDepth": "3.747",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.138"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747630143479004,
+          113.9525490428618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-198",
+        "Elevation": "29.999",
+        "MaxDepth": "4.496",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.495"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744449952699426,
+          113.94941784451132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-199",
+        "Elevation": "25.061",
+        "MaxDepth": "4.532",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.593"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74662858724832,
+          113.94474927781421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-200",
+        "Elevation": "28.247",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.747"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74675379024263,
+          113.94702829761951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-201",
+        "Elevation": "25.339",
+        "MaxDepth": "2.88",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.218999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74806824575483,
+          113.94378236863464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-202",
+        "Elevation": "24.277",
+        "MaxDepth": "5.246",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.523000000000003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75058259544836,
+          113.94645324564303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-203",
+        "Elevation": "22.842",
+        "MaxDepth": "3.444",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.285999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749223764176477,
+          113.94610378006428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-204",
+        "Elevation": "28.75",
+        "MaxDepth": "2.133",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.883"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748207789051598,
+          113.94915245323607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-205",
+        "Elevation": "20.837",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.337"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751229993236528,
+          113.94157949912426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-206",
+        "Elevation": "19.299",
+        "MaxDepth": "3.174",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.473"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750590387927364,
+          113.94301800213161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-207",
+        "Elevation": "24.29",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.79"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74908192225019,
+          113.9456246084596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-208",
+        "Elevation": "43.65",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.15"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751832247784375,
+          113.95466649155357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-209",
+        "Elevation": "43.05",
+        "MaxDepth": "5.632",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "48.681999999999995"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74899703807002,
+          113.9577565353349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-21",
+        "Elevation": "16.5",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755939348581347,
+          113.93326226122339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-210",
+        "Elevation": "42.16",
+        "MaxDepth": "3.605",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "45.76499999999999"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75001468887527,
+          113.95945642031941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-211",
+        "Elevation": "44.56",
+        "MaxDepth": "2.15",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.71"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747630955459684,
+          113.96039925323348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-212",
+        "Elevation": "44.83",
+        "MaxDepth": "2.12",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.949999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747114479889955,
+          113.96032397152929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-22",
+        "Elevation": "16.791",
+        "MaxDepth": "3.247",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.038"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757037311635365,
+          113.93402792079995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-23",
+        "Elevation": "15.76",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.759999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75580355277704,
+          113.9328838766854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-24",
+        "Elevation": "16.664",
+        "MaxDepth": "4.287",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.951"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754160151378937,
+          113.9317369776129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-248",
+        "Elevation": "21.336",
+        "MaxDepth": "3.269",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.604999999999997"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753070398355533,
+          113.9394121467582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-249",
+        "Elevation": "21.01",
+        "MaxDepth": "3.154",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.164"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75264186240095,
+          113.9401893706926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-25",
+        "Elevation": "15.72",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.72"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755684881947637,
+          113.93309731363676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-250",
+        "Elevation": "24.84",
+        "MaxDepth": "5.617",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.457"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749744169251585,
+          113.93753848003527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-251",
+        "Elevation": "20.979",
+        "MaxDepth": "4.879",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.857999999999997"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754499321922427,
+          113.9378891896327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-252",
+        "Elevation": "21.8",
+        "MaxDepth": "2.848",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.648"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75205793193564,
+          113.93547035879824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-253",
+        "Elevation": "20.971",
+        "MaxDepth": "6.119",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751146499292442,
+          113.93854257926846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-254",
+        "Elevation": "17.404",
+        "MaxDepth": "7.306",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.71"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752146845783223,
+          113.93538259174522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-255",
+        "Elevation": "16.01",
+        "MaxDepth": "5.337",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.347"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753913797403335,
+          113.93188228291699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-256",
+        "Elevation": "16.959",
+        "MaxDepth": "3.916",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.875"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753611583444012,
+          113.93138195589223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-257",
+        "Elevation": "16.557",
+        "MaxDepth": "4.435",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.991999999999997"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758753660761283,
+          113.93490829598889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-258",
+        "Elevation": "16.06",
+        "MaxDepth": "3.997",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.057"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757437217148937,
+          113.93431072676289
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-259",
+        "Elevation": "17.59",
+        "MaxDepth": "3.834",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.424"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754572065654965,
+          113.93141694200479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-26",
+        "Elevation": "15.92",
+        "MaxDepth": "4.04",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.96"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754919907397124,
+          113.93257221656954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-260",
+        "Elevation": "13.2",
+        "MaxDepth": "7.098",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.298"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756512607126115,
+          113.92666805659029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-261",
+        "Elevation": "13.2",
+        "MaxDepth": "6.217",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.416999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756071139228105,
+          113.92847142211251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-265",
+        "Elevation": "14.53",
+        "MaxDepth": "2.734",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "17.264"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754753136409064,
+          113.92321112935366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-266",
+        "Elevation": "13.83",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "16.83"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75690701898355,
+          113.92161124662778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-269",
+        "Elevation": "14.659",
+        "MaxDepth": "2.715",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "17.374000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754625007126343,
+          113.92296523593959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-27",
+        "Elevation": "16.605",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.605"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75401858434649,
+          113.9371879474083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-270",
+        "Elevation": "15.669",
+        "MaxDepth": "2.673",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.342"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75296355063208,
+          113.92428115963835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-271",
+        "Elevation": "15.904",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.404"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755726057962683,
+          113.925125498835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-275",
+        "Elevation": "13.5",
+        "MaxDepth": "6.217",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "19.717"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754481583517542,
+          113.92932630210419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-276",
+        "Elevation": "13.5",
+        "MaxDepth": "5.28",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.78"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755812956004217,
+          113.9252958214245
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-277",
+        "Elevation": "16.327",
+        "MaxDepth": "4.416",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.743000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758164683201894,
+          113.93480249430995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-278",
+        "Elevation": "18.02",
+        "MaxDepth": "3.824",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.844"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760459451874528,
+          113.93604281441986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-279",
+        "Elevation": "17.44",
+        "MaxDepth": "4.004",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.444000000000003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75277063715346,
+          113.93071627815823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-28",
+        "Elevation": "16.888",
+        "MaxDepth": "4.041",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.929000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753295655864385,
+          113.93650230115827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-280",
+        "Elevation": "17.4",
+        "MaxDepth": "4.726",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.125999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752197505395454,
+          113.93072639929959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-281",
+        "Elevation": "22.63",
+        "MaxDepth": "3.793",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.423"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75118861923617,
+          113.93444971427462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-282",
+        "Elevation": "19.54",
+        "MaxDepth": "4.848",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.387999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753364126843156,
+          113.9340394034606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-283",
+        "Elevation": "22.57",
+        "MaxDepth": "3.879",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.449"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751077749965155,
+          113.93450283476348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-284",
+        "Elevation": "23.4",
+        "MaxDepth": "7.681",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "31.081"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74996185559903,
+          113.93747613261783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-285",
+        "Elevation": "21.941",
+        "MaxDepth": "3.818",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.759"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754048681409316,
+          113.93830055287769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-286",
+        "Elevation": "21.094",
+        "MaxDepth": "4.378",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.472"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75474394627453,
+          113.93815344047545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-287",
+        "Elevation": "25.395",
+        "MaxDepth": "4.159",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.554"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748527139707576,
+          113.9386546279742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-288",
+        "Elevation": "25.32",
+        "MaxDepth": "2.811",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.131"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748748527313897,
+          113.93663353175266
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-289",
+        "Elevation": "30.615",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "32.614999999999995"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753527622913783,
+          113.94103454456263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-29",
+        "Elevation": "19.441",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.941"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75404293219294,
+          113.93746049924943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-290",
+        "Elevation": "21.478",
+        "MaxDepth": "3.425",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.903000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753216673681628,
+          113.93958526629984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-291",
+        "Elevation": "22.147",
+        "MaxDepth": "3.831",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.977999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753746020060635,
+          113.93874248629182
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-3",
+        "Elevation": "13.4",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "15.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75790383105544,
+          113.92283427437927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-30",
+        "Elevation": "19.661",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.161"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753157822422615,
+          113.9365572899781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-31",
+        "Elevation": "20.793",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.793"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754350191653,
+          113.93759142401251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-32",
+        "Elevation": "20.87",
+        "MaxDepth": "4.216",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.086000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754600294222534,
+          113.93783284567601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-323",
+        "Elevation": "45.553",
+        "MaxDepth": "3.922",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "49.474999999999994"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.745810120193333,
+          113.96024209373499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-324",
+        "Elevation": "43.45",
+        "MaxDepth": "6.149",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "49.599000000000004"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748974442921448,
+          113.95906062972502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-325",
+        "Elevation": "42.929",
+        "MaxDepth": "3.051",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "45.980000000000004"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74946793267221,
+          113.96015562590979
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-326",
+        "Elevation": "43.65",
+        "MaxDepth": "7.116",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "50.766"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748978117683677,
+          113.95872783248382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-327",
+        "Elevation": "20.539",
+        "MaxDepth": "2.011",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.55"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751450364842768,
+          113.94176733993356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-328",
+        "Elevation": "23.2",
+        "MaxDepth": "4.275",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.475"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752379413817096,
+          113.94416548163964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-329",
+        "Elevation": "23.981",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.481"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749355697303272,
+          113.94573059095998
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-33",
+        "Elevation": "19.4",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752211322719035,
+          113.93973265304331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-330",
+        "Elevation": "21.26",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.76"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7520977844777,
+          113.9403240375672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-331",
+        "Elevation": "25.537",
+        "MaxDepth": "2.969",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.506"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748854932281702,
+          113.94765937988883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-332",
+        "Elevation": "26.5",
+        "MaxDepth": "3.093",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.593"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75220919320399,
+          113.94664466483945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-333",
+        "Elevation": "25.756",
+        "MaxDepth": "5.292",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "31.048000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74869537332418,
+          113.94267680235431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-334",
+        "Elevation": "31.7",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "33.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.746512910216406,
+          113.94913748275322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-335",
+        "Elevation": "31.811",
+        "MaxDepth": "5.543",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.354"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.741776556243643,
+          113.94917584112247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-336",
+        "Elevation": "31.759",
+        "MaxDepth": "3.772",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.531"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74758557440258,
+          113.95273030122848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-337",
+        "Elevation": "29.856",
+        "MaxDepth": "4.548",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.404"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744581569786256,
+          113.949737143069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-338",
+        "Elevation": "36.042",
+        "MaxDepth": "2.9",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.942"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747140598972553,
+          113.95511275900064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-339",
+        "Elevation": "37.8",
+        "MaxDepth": "4.276",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "42.07599999999999"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7519388143522,
+          113.95233043793135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-34",
+        "Elevation": "21.17",
+        "MaxDepth": "4.817",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.987000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751241650212343,
+          113.93889908169628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-340",
+        "Elevation": "29.684",
+        "MaxDepth": "6.887",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.571"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75851418055148,
+          113.9511753188808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-341",
+        "Elevation": "34.037",
+        "MaxDepth": "2.648",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.685"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76007067498716,
+          113.95029877394649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-342",
+        "Elevation": "33.51",
+        "MaxDepth": "2.081",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.591"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7597399335499,
+          113.95116831766747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-346",
+        "Elevation": "35.238",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.738"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759844838438624,
+          113.95026704603592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-347",
+        "Elevation": "34.338",
+        "MaxDepth": "2.555",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.893"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758243578556137,
+          113.95089554698417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-348",
+        "Elevation": "34.824",
+        "MaxDepth": "3.513",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.336999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760176635622607,
+          113.94938819857684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-349",
+        "Elevation": "31.917",
+        "MaxDepth": "5.974",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.891000000000005"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756900796348905,
+          113.9508799388615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-35",
+        "Elevation": "20.604",
+        "MaxDepth": "2.7",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.304"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752373397359076,
+          113.93992076080318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-350",
+        "Elevation": "39.083",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.583"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748934621635456,
+          113.95516193774924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-351",
+        "Elevation": "40.654",
+        "MaxDepth": "2.174",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "42.828"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.745861121046126,
+          113.95760750522594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-352",
+        "Elevation": "32.886",
+        "MaxDepth": "2.807",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.693000000000005"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74452342508131,
+          113.95107626336136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-353",
+        "Elevation": "31.766",
+        "MaxDepth": "2.88",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.646"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74440472697747,
+          113.94971616387582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-354",
+        "Elevation": "32.235",
+        "MaxDepth": "6.045",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74689248837069,
+          113.95491736818136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-355",
+        "Elevation": "33.41",
+        "MaxDepth": "2.364",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.773999999999994"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74046874239125,
+          113.94843975204833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-356",
+        "Elevation": "26.26",
+        "MaxDepth": "2.936",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.196"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749111751065506,
+          113.94184370223611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-357",
+        "Elevation": "29.007",
+        "MaxDepth": "7.377",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.384"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753816628897265,
+          113.94678378798325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-358",
+        "Elevation": "28.943",
+        "MaxDepth": "7.129",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.072"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75211341747624,
+          113.94868296560696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-359",
+        "Elevation": "27.66",
+        "MaxDepth": "3.002",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.662"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748485969525525,
+          113.94921500836963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-36",
+        "Elevation": "20.66",
+        "MaxDepth": "2.707",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.367"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752470766931502,
+          113.94002621444493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-360",
+        "Elevation": "24.645",
+        "MaxDepth": "3.758",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.403"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752632419068767,
+          113.94334405913729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-361",
+        "Elevation": "24.779",
+        "MaxDepth": "9.796",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.575"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75430685775978,
+          113.9443667245325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-362",
+        "Elevation": "26.95",
+        "MaxDepth": "2.208",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.158"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75223506542202,
+          113.9460939598791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-363",
+        "Elevation": "21.26",
+        "MaxDepth": "2.706",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.966"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752315142915464,
+          113.94052082547687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-364",
+        "Elevation": "43.18",
+        "MaxDepth": "3.271",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.451"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749159713777953,
+          113.96040376377917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-365",
+        "Elevation": "44.22",
+        "MaxDepth": "2.35",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74733906213152,
+          113.95898173753402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-367",
+        "Elevation": "44",
+        "MaxDepth": "2.667",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.667"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74894964393019,
+          113.96018632278451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-387",
+        "Elevation": "22.276",
+        "MaxDepth": "3.451",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.727"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753868026623216,
+          113.93892239623223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-388",
+        "Elevation": "37.7",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754206684050274,
+          113.94158088650482
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-389",
+        "Elevation": "30.263",
+        "MaxDepth": "4.178",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.441"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75594063240047,
+          113.93923731608302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-390",
+        "Elevation": "21.956",
+        "MaxDepth": "3.891",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.847"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754288219802916,
+          113.93855321020332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-391",
+        "Elevation": "21.798",
+        "MaxDepth": "12.696",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.494"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755744519114767,
+          113.93937690682948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-392",
+        "Elevation": "19.468",
+        "MaxDepth": "5.903",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.371"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751060284989567,
+          113.92989979170615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-393",
+        "Elevation": "18.799",
+        "MaxDepth": "3.525",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "22.323999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75197205077404,
+          113.93024074665375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-395",
+        "Elevation": "20.206",
+        "MaxDepth": "3.71",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.916"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.763065142159956,
+          113.93778648300797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-396",
+        "Elevation": "16.482",
+        "MaxDepth": "4.404",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.886"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75841730610469,
+          113.93497645514633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-397",
+        "Elevation": "13.8",
+        "MaxDepth": "3.555",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "17.355"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752891402232628,
+          113.93018480463606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-398",
+        "Elevation": "17.691",
+        "MaxDepth": "2.673",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.363999999999997"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751171055289884,
+          113.92535167184677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-399",
+        "Elevation": "15.795",
+        "MaxDepth": "2.585",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "18.38"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752840719429393,
+          113.92403203338812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-4",
+        "Elevation": "14.4",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "16.9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757213087951254,
+          113.92150599509027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-401",
+        "Elevation": "17.571",
+        "MaxDepth": "2.585",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.156000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751053542913883,
+          113.92509932019217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-402",
+        "Elevation": "18.83",
+        "MaxDepth": "2.651",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.480999999999998"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749376065748198,
+          113.92642361770412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-403",
+        "Elevation": "17.577",
+        "MaxDepth": "4.35",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.927"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760204617091997,
+          113.93620847268592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-404",
+        "Elevation": "21.86",
+        "MaxDepth": "3.247",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.107"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.764931943031918,
+          113.93912735938501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-405",
+        "Elevation": "19.658",
+        "MaxDepth": "3.546",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.204"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75122310047082,
+          113.92967807230139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-406",
+        "Elevation": "20.45",
+        "MaxDepth": "6.443",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.893"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750572206963515,
+          113.92944564798091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-407",
+        "Elevation": "32.18",
+        "MaxDepth": "3.438",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.618"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755972310766854,
+          113.93962234875802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-420",
+        "Elevation": "25.713",
+        "MaxDepth": "11.211",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.924"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75415190478403,
+          113.94286369073254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-421",
+        "Elevation": "25.924",
+        "MaxDepth": "9.904",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.828"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75459728953308,
+          113.94551608467692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-422",
+        "Elevation": "25.201",
+        "MaxDepth": "10.167",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.368"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754524383918323,
+          113.94437037904278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-423",
+        "Elevation": "25.291",
+        "MaxDepth": "4.042",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.333"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752885361374314,
+          113.94252264021358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-424",
+        "Elevation": "30.994",
+        "MaxDepth": "5.656",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.65"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755092657481114,
+          113.94689469801031
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-425",
+        "Elevation": "35.952",
+        "MaxDepth": "3.123",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.074999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74554479098331,
+          113.95488545818584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-426",
+        "Elevation": "33.146",
+        "MaxDepth": "5.285",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.431"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.746821680212765,
+          113.95512811523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-427",
+        "Elevation": "32.303",
+        "MaxDepth": "6.13",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.433"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.741971611768236,
+          113.94959565755758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-428",
+        "Elevation": "34.522",
+        "MaxDepth": "2.725",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.247"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744490409701584,
+          113.95242060528679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-429",
+        "Elevation": "42.768",
+        "MaxDepth": "4.257",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "47.025"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.745208386564645,
+          113.95879464580939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-430",
+        "Elevation": "42.108",
+        "MaxDepth": "3.564",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "45.672"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747310697865167,
+          113.95767273346833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-431",
+        "Elevation": "43.185",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "45.685"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75072572911689,
+          113.95521610208576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-432",
+        "Elevation": "34.15",
+        "MaxDepth": "5.395",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.545"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755285265299825,
+          113.9505849860746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-433",
+        "Elevation": "35.44",
+        "MaxDepth": "3.028",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.467999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76033391571977,
+          113.94869086556584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-434",
+        "Elevation": "35.166",
+        "MaxDepth": "3.182",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.348"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75674544540116,
+          113.95062312714649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-435",
+        "Elevation": "35.706",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.206"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759950807632354,
+          113.94935646908999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-436",
+        "Elevation": "36.13",
+        "MaxDepth": "2.678",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.808"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76010942071976,
+          113.94860700071264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-437",
+        "Elevation": "36.294",
+        "MaxDepth": "3.094",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.388"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755245462068263,
+          113.95035109518884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-438",
+        "Elevation": "35.885",
+        "MaxDepth": "3.674",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.559"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755186938045647,
+          113.95056862147524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-439",
+        "Elevation": "38.197",
+        "MaxDepth": "4.778",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "42.975"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755234800330435,
+          113.95368248510519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-440",
+        "Elevation": "43.84",
+        "MaxDepth": "2.979",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "46.819"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747093741188287,
+          113.9589699686459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-441",
+        "Elevation": "44.08",
+        "MaxDepth": "3.564",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "47.644"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748663497541447,
+          113.95770398378033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-442",
+        "Elevation": "47.62",
+        "MaxDepth": "4.586",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "52.205999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744402515529153,
+          113.96029628923418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-443",
+        "Elevation": "34.974",
+        "MaxDepth": "2.539",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.513"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74446600081455,
+          113.95270252706763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-444",
+        "Elevation": "33.124",
+        "MaxDepth": "4.6",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.724000000000004"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.741440179425595,
+          113.94946612743075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-445",
+        "Elevation": "36.018",
+        "MaxDepth": "3.315",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.333"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.745531253835246,
+          113.95503593234633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-446",
+        "Elevation": "38.51",
+        "MaxDepth": "3.611",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "42.120999999999995"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74548761968037,
+          113.95759886743603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-447",
+        "Elevation": "37.25",
+        "MaxDepth": "2.312",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.562"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744836915188667,
+          113.9548495264126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-448",
+        "Elevation": "35.059",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.559"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75493563123944,
+          113.9461632679834
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-449",
+        "Elevation": "33.956",
+        "MaxDepth": "7.253",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.209"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755353062804364,
+          113.94820930816716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-450",
+        "Elevation": "25.955",
+        "MaxDepth": "4.345",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.299999999999997"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753176647221718,
+          113.94167956598982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-451",
+        "Elevation": "25.627",
+        "MaxDepth": "11.377",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.004"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754339169644307,
+          113.94292397417226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-452",
+        "Elevation": "25.837",
+        "MaxDepth": "10.621",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.458"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754784251290154,
+          113.94548611077721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-453",
+        "Elevation": "26.223",
+        "MaxDepth": "14.435",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "40.658"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754565331795945,
+          113.94143833999159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-460",
+        "Elevation": "32.26",
+        "MaxDepth": "3.364",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.623999999999995"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756102684736387,
+          113.93979261925995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-461",
+        "Elevation": "39.7",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75475464460547,
+          113.94098448110388
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-462",
+        "Elevation": "22.55",
+        "MaxDepth": "2.459",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.009"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750274521949795,
+          113.92911414739947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-463",
+        "Elevation": "20.64",
+        "MaxDepth": "3.57",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.750435724238866,
+          113.92893741385143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-464",
+        "Elevation": "19.229",
+        "MaxDepth": "4.197",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.426"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76230697422714,
+          113.93767115454524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-465",
+        "Elevation": "20.882",
+        "MaxDepth": "3.344",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.226000000000003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759715487676697,
+          113.93733265149773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-466",
+        "Elevation": "18.707",
+        "MaxDepth": "2.2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.907"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749263877143022,
+          113.92616802839868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-467",
+        "Elevation": "21.588",
+        "MaxDepth": "4.435",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.023"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75913920163168,
+          113.93865659530935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-469",
+        "Elevation": "19.467",
+        "MaxDepth": "4.204",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "23.671"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.762534128220064,
+          113.93784464140359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-470",
+        "Elevation": "25.19",
+        "MaxDepth": "5.335",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.525000000000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748793434997186,
+          113.93009375115523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-471",
+        "Elevation": "40.55",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "43.05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755118311841986,
+          113.94083926036235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-475",
+        "Elevation": "26.328",
+        "MaxDepth": "14.999",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.327"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754732948314025,
+          113.94153237966415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-476",
+        "Elevation": "37.3",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755350209403527,
+          113.94963695042178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-477",
+        "Elevation": "42.28",
+        "MaxDepth": "2.341",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "44.621"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.743665085874333,
+          113.95756035372344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-478",
+        "Elevation": "43.357",
+        "MaxDepth": "4.703",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "48.06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744764446948693,
+          113.9589461431996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-479",
+        "Elevation": "37.25",
+        "MaxDepth": "2.275",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.525"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74481581724272,
+          113.95501320451807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-480",
+        "Elevation": "33.41",
+        "MaxDepth": "2.257",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.666999999999994"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74031512919344,
+          113.948776370315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-481",
+        "Elevation": "35.767",
+        "MaxDepth": "3.395",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.162000000000006"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744466709675397,
+          113.95367806416654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-482",
+        "Elevation": "53.28",
+        "MaxDepth": "6.543",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "59.823"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.743611323483417,
+          113.96176907415573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-483",
+        "Elevation": "44.91",
+        "MaxDepth": "2.877",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "47.787"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.746793420933688,
+          113.9601560382473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-484",
+        "Elevation": "44.62",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "47.12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74530824225425,
+          113.95888471028358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-485",
+        "Elevation": "38.802",
+        "MaxDepth": "4.609",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "43.411"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75482247217773,
+          113.95451664448132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-486",
+        "Elevation": "37.23",
+        "MaxDepth": "4.112",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.342"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753716535525953,
+          113.95030125364951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-487",
+        "Elevation": "37.985",
+        "MaxDepth": "5.017",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "43.002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755118314459946,
+          113.95368446942194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-488",
+        "Elevation": "37.318",
+        "MaxDepth": "3.595",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "40.913"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753750200860235,
+          113.95008065487302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-489",
+        "Elevation": "38.2",
+        "MaxDepth": "2.917",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.117000000000004"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752505227004974,
+          113.9499122921035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-490",
+        "Elevation": "38.81",
+        "MaxDepth": "4.533",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "43.343"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754766849241026,
+          113.95442822132465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-491",
+        "Elevation": "38.2",
+        "MaxDepth": "2.8",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752490908414096,
+          113.95014108591283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-492",
+        "Elevation": "39.912",
+        "MaxDepth": "10.734",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "50.646"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.753191440771673,
+          113.95572198370654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-493",
+        "Elevation": "58.416",
+        "MaxDepth": "6.543",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "64.959"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74281941332443,
+          113.96324194849203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-494",
+        "Elevation": "36.622",
+        "MaxDepth": "3.168",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.79"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744441707882505,
+          113.95473638283595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-495",
+        "Elevation": "48.325",
+        "MaxDepth": "4.31",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "52.635000000000005"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744050689351212,
+          113.96026608239835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-5",
+        "Elevation": "12.5",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "15.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75789885228772,
+          113.92336899410773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-501",
+        "Elevation": "20.003",
+        "MaxDepth": "4.309",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.312"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.763294255769786,
+          113.93836420796251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-502",
+        "Elevation": "20.756",
+        "MaxDepth": "4.107",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.863"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761470344258118,
+          113.93891290725688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-503",
+        "Elevation": "22.189",
+        "MaxDepth": "3.816",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.005"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760022084978544,
+          113.93996242964604
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-504",
+        "Elevation": "21.82",
+        "MaxDepth": "4.055",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.875"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75896510026482,
+          113.9391008435319
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-505",
+        "Elevation": "27.257",
+        "MaxDepth": "3.217",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.474"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75758568551827,
+          113.93882045888192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-506",
+        "Elevation": "23.78",
+        "MaxDepth": "2.323",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.103"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760004994560752,
+          113.93963420216389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-507",
+        "Elevation": "22.04",
+        "MaxDepth": "3.917",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.957"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75888839148233,
+          113.93929657919799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-508",
+        "Elevation": "22.346",
+        "MaxDepth": "3.748",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.094"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759826756105465,
+          113.93979430585347
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-509",
+        "Elevation": "22.416",
+        "MaxDepth": "3.654",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.07"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76023228183048,
+          113.94016015436227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-510",
+        "Elevation": "21.751",
+        "MaxDepth": "4.33",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.081000000000003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76038604147279,
+          113.94000808741339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-511",
+        "Elevation": "21.022",
+        "MaxDepth": "3.911",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.933"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.764022314334287,
+          113.93889173450354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-516",
+        "Elevation": "50.715",
+        "MaxDepth": "4.712",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "55.42700000000001"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74367962679257,
+          113.96095856313623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-517",
+        "Elevation": "36.791",
+        "MaxDepth": "3.105",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "39.895999999999994"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744246975267888,
+          113.95473032493678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-518",
+        "Elevation": "60.04",
+        "MaxDepth": "6.343",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "66.383"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.742025974603585,
+          113.96471439772532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-520",
+        "Elevation": "39.999",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "43.999"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75373396581912,
+          113.95517685540305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-521",
+        "Elevation": "40.65",
+        "MaxDepth": "3.612",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "44.262"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75209866793871,
+          113.95512748114946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-522",
+        "Elevation": "40.2",
+        "MaxDepth": "4.132",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "44.332"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75350779451924,
+          113.95534610851628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-524",
+        "Elevation": "40.182",
+        "MaxDepth": "2.48",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "42.662"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74375260822908,
+          113.95674429459258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-525",
+        "Elevation": "36.743",
+        "MaxDepth": "3.341",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "40.084"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74402941987051,
+          113.95471497892815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-526",
+        "Elevation": "52.999",
+        "MaxDepth": "5.668",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "58.667"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.743324793681346,
+          113.96162005395537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-530",
+        "Elevation": "21.93",
+        "MaxDepth": "3.611",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.541"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.764733324188676,
+          113.9394104662411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-531",
+        "Elevation": "22.22",
+        "MaxDepth": "4.396",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.616"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76147714487305,
+          113.94095036167381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-532",
+        "Elevation": "23.03",
+        "MaxDepth": "3.639",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.669"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761283209296334,
+          113.9410803083494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-533",
+        "Elevation": "27.304",
+        "MaxDepth": "2.814",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.118"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75764352007326,
+          113.93900253352965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-534",
+        "Elevation": "23.07",
+        "MaxDepth": "3.379",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.449"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75947718801571,
+          113.93957978891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-535",
+        "Elevation": "32.86",
+        "MaxDepth": "2.046",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.906"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756222577543884,
+          113.93939047152777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-536",
+        "Elevation": "32.76",
+        "MaxDepth": "2.245",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.004999999999995"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756373331891314,
+          113.93958944371629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-537",
+        "Elevation": "24",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.762192066088332,
+          113.94195059986642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-538",
+        "Elevation": "23.078",
+        "MaxDepth": "3.873",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.951"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.762081815465773,
+          113.94151471064207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-540",
+        "Elevation": "55.169",
+        "MaxDepth": "5.924",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "61.092999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.742987341364188,
+          113.96224898195898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-541",
+        "Elevation": "38.845",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.345"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74269952470302,
+          113.95468317396076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-542",
+        "Elevation": "41.48",
+        "MaxDepth": "2.431",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "43.910999999999994"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.743322220993264,
+          113.95755238058673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-543",
+        "Elevation": "40.383",
+        "MaxDepth": "3.995",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "44.378"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752939517338834,
+          113.9552856300916
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-544",
+        "Elevation": "40.317",
+        "MaxDepth": "9.053",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "49.370000000000005"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75313573790132,
+          113.95563358420915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-546",
+        "Elevation": "40.65",
+        "MaxDepth": "4.103",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "44.753"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75210525330086,
+          113.95525866869531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-547",
+        "Elevation": "43.38",
+        "MaxDepth": "2.034",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "45.414"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.742970124128366,
+          113.9588135484725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-548",
+        "Elevation": "40.61",
+        "MaxDepth": "8.744",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "49.354"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.741367687645322,
+          113.95464392628888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-549",
+        "Elevation": "58.163",
+        "MaxDepth": "5.724",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "63.887"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.742558156429986,
+          113.96306140084936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-550",
+        "Elevation": "25.22",
+        "MaxDepth": "2.43",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.65"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.763731575480072,
+          113.94334011742276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-551",
+        "Elevation": "26",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.763585635542224,
+          113.94352627399775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-552",
+        "Elevation": "61.285",
+        "MaxDepth": "3.882",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "65.167"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.742078125419035,
+          113.96396977565833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-553",
+        "Elevation": "43.98",
+        "MaxDepth": "4.046",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "48.025999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.742736887254605,
+          113.95967111776207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-555",
+        "Elevation": "63.5",
+        "MaxDepth": "2.806",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "66.306"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74172545339705,
+          113.96460417438377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-556",
+        "Elevation": "22.47",
+        "MaxDepth": "2.76",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.229999999999997"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757507252088136,
+          113.93701939115924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-558",
+        "Elevation": "23.2",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761214369197507,
+          113.94119737047076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-559",
+        "Elevation": "23.5",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76111128192603,
+          113.94133653292694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-560",
+        "Elevation": "23.8",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76099066884401,
+          113.94169882138091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-561",
+        "Elevation": "24",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761029945390266,
+          113.94271441467099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-562",
+        "Elevation": "24.2",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761099514058188,
+          113.94289143028884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-563",
+        "Elevation": "24.5",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76126196749133,
+          113.94295899146499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-564",
+        "Elevation": "25",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761835114481695,
+          113.94295224460036
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-565",
+        "Elevation": "25.2",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76193779798314,
+          113.94300368841091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-566",
+        "Elevation": "25.5",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761992974317472,
+          113.94312318362861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-567",
+        "Elevation": "26",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.762005360944084,
+          113.944035466545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-568",
+        "Elevation": "27",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75973138251133,
+          113.94406793679335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-569",
+        "Elevation": "27.3",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "29.3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75952198166556,
+          113.94414795964252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-570",
+        "Elevation": "28",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759127276276427,
+          113.94447569168447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-571",
+        "Elevation": "29",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "31.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758884893529526,
+          113.94509643078682
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-572",
+        "Elevation": "30",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "32.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75889732099623,
+          113.9453032517243
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-573",
+        "Elevation": "32",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759064108409756,
+          113.94562428634917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-574",
+        "Elevation": "32.5",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759345078119924,
+          113.94573649484421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-575",
+        "Elevation": "33",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759477956072764,
+          113.94573232331248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-577",
+        "Elevation": "26.5",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.762700393667078,
+          113.94475864647227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-578",
+        "Elevation": "33",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.759678741007818,
+          113.94573235833329
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-579",
+        "Elevation": "32",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76093535122002,
+          113.94571915678955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-580",
+        "Elevation": "31.8",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "33.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761377669340778,
+          113.94585960386613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-581",
+        "Elevation": "31.5",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "33.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761658920543233,
+          113.94611393062668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-584",
+        "Elevation": "23",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.765292725898494,
+          113.94198488534752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-585",
+        "Elevation": "25",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "27.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76411380628774,
+          113.94341671377568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-586",
+        "Elevation": "28",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "30.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.762934059269906,
+          113.94484867636228
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-587",
+        "Elevation": "31.27",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "33.269999999999996"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.761753412587506,
+          113.94628077500087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-588",
+        "Elevation": "36.16",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "38.16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76057938945246,
+          113.94770384240444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-589",
+        "Elevation": "20",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76673846562927,
+          113.94072875012391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-590",
+        "Elevation": "22",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76547301270823,
+          113.94224685563536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-591",
+        "Elevation": "24",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "26.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76420668435447,
+          113.9437650897805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-592",
+        "Elevation": "26",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "28.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.763081241117774,
+          113.94511887579243
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-593",
+        "Elevation": "32.24",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76195499557049,
+          113.94647278490592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-595",
+        "Elevation": "35.73",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.73"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.760882610904275,
+          113.94778645933852
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-596",
+        "Elevation": "23",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.76521072040047,
+          113.93969765831889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-597",
+        "Elevation": "22",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.766500461963723,
+          113.9405595043035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-599",
+        "Elevation": "35",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "37.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754760242802536,
+          113.9461814455209
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-6",
+        "Elevation": "13.8",
+        "MaxDepth": "3",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "16.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.757017183546584,
+          113.92184482925413
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-600",
+        "Elevation": "30.701",
+        "MaxDepth": "5.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "36.201"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754901613802822,
+          113.94687690227055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-601",
+        "Elevation": "31.5",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "34.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75511486681834,
+          113.94776795573341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-602",
+        "Elevation": "32.5",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.755159173974153,
+          113.94963273868962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-603",
+        "Elevation": "38.797",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.297"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75459768040473,
+          113.95306014884589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-605",
+        "Elevation": "32.929",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "35.429"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.744338693321453,
+          113.95198335970025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-608",
+        "Elevation": "39.397",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "41.897"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74324674342493,
+          113.95724272430598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-609",
+        "Elevation": "42.661",
+        "MaxDepth": "2.5",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "45.161"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.741436847470457,
+          113.95752415566844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-610",
+        "Elevation": "22",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75764654641461,
+          113.9352522105746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-611",
+        "Elevation": "19",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756500335338885,
+          113.93623426106389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-612",
+        "Elevation": "22",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75782098444689,
+          113.93549312707107
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-613",
+        "Elevation": "19.5",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "21.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75669316243462,
+          113.93644847016515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-615",
+        "Elevation": "22",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.754994884334405,
+          113.93751877634638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-617",
+        "Elevation": "22",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "24.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75518465461139,
+          113.93774682589661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-618",
+        "Elevation": "18",
+        "MaxDepth": "2",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "20.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.756478831212856,
+          113.9362080138442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Z1",
+        "Elevation": "11",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "15.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75904891325425,
+          113.9202780913484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Z2",
+        "Elevation": "11.2",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "15.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758578712251772,
+          113.92093469717776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Z3",
+        "Elevation": "11.5",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "15.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758102330245983,
+          113.92142487691446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Z4",
+        "Elevation": "11.8",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "15.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.758081510813806,
+          113.9229052827816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Z5",
+        "Elevation": "11.2",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "15.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75934721032794,
+          113.91745446982797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LP1-1",
+        "Elevation": "21.27",
+        "MaxDepth": "4",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "100",
+        "groundele": "25.27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.748769600814935,
+          113.94581333749949
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "3",
+        "Elevation": "31",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "31.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75072422991174,
+          113.95462786250405
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "4",
+        "Elevation": "31.5",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "31.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751702936493295,
+          113.95524732933222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "5",
+        "Elevation": "31.8",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "31.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752221087731755,
+          113.95619341777012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "6",
+        "Elevation": "32",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "32.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.752261660211538,
+          113.9569527574152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "7",
+        "Elevation": "34",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "34.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.751453717388898,
+          113.9586719716683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "8",
+        "Elevation": "35",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "35.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75048627645013,
+          113.9599627871736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "9",
+        "Elevation": "36",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "36.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74903018380946,
+          113.96109820602834
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "10",
+        "Elevation": "38",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "38.0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.747056975376697,
+          113.96102105540099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-109",
+        "Elevation": "37.767",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "37.767"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75200656890555,
+          113.95690773380295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-107",
+        "Elevation": "39.5",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "39.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.75125515882807,
+          113.9584872136011
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-105",
+        "Elevation": "41.8",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "41.8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.749013490758376,
+          113.96086082910536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Y-103",
+        "Elevation": "43.6",
+        "MaxDepth": "0",
+        "InitDepth": "0",
+        "SurDepth": "0",
+        "Aponded": "0",
+        "groundele": "43.6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.74706043749803,
+          113.96082680062162
+        ]
+      }
+    }
+  ]
+}
