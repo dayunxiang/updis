@@ -54,7 +54,7 @@ Vue.use(VueAwesomeSwiper) // vue-awesome-swiper
 
 Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
-  ak: "b6f5329e518fb9d4e22d4fe7900332b6"
+  ak: "uH3KggnMkUjGjbG5F6nHGVzgavzdWfMl"
 })
 Vue.use(Element, {
   size: 'medium', // set element-ui default size

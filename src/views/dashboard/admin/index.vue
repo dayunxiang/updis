@@ -21,7 +21,6 @@
         :is-hide-rain-outfalls = 'isHideRainOutfalls'
         :is-hide-sewage-outfalls="isHideSewageOutfalls"
         :is-hide-companys = 'isHideCompanys'
-        @getInfo = "getInfo"
       />
       <!--左-->
       <div :class="isCollapse?'open':'off'" class="left-content">
@@ -49,25 +48,25 @@
                   @click="handleHideAllOutfalls()"
                   @click.stop/>
                 <span class="submenu-title">排口</span>
-                <span class="number">{{this.outfalls.meregeOutfalls.length+this.outfalls.rainOutfalls.length+this.outfalls.sewageOutfalls.length}}</span>
+                <span class="number">{{this.outfalls.rainOutfalls.length+this.outfalls.meregeOutfalls.length+this.outfalls.sewageOutfalls.length}}</span>
               </template>
               <!--分组设置-->
-                <!--合流排口-->
+              <!--合流排口-->
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/mergeOutfall-img.png" alt=""></span>
-                    <i
-                      :class="isHideMergeOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                      class="iconfont"
-                      @click="handleMergeOutfalls()"
-                      @click.stop/>
-                    <span style="color:black;font-size: 16px;">混流排口</span>
-                    <span style="color:black;font-size: 16px;">{{this.outfalls.meregeOutfalls.length}}</span>
+                  <i
+                    :class="isHideMergeOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleMergeOutfalls()"
+                    @click.stop/>
+                  <span style="color:black;font-size: 16px;">混流排口</span>
+                  <span style="color:black;font-size: 16px;">{{this.outfalls.meregeOutfalls.length}}</span>
                 </template>
                 <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
                 <!--<el-menu-item index="1-2">选项2</el-menu-item>-->
               </el-menu-item-group>
-                <!--雨水排口-->
+              <!--雨水排口-->
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/rainOutfall-img.png" alt=""></span>
@@ -80,7 +79,7 @@
                   <span style="color: black;font-size: 16px;">{{this.outfalls.rainOutfalls.length}}</span>
                 </template>
               </el-menu-item-group>
-                <!--污水排口-->
+              <!--污水排口-->
               <el-menu-item-group>
                 <template slot="title">
                   <span class="logo"><img src="/static/img/sewageOutfall-img.png" alt=""></span>
@@ -112,10 +111,10 @@
                 <template slot="title">
                   <span class="logo"><img src="/static/img/rainConduit-img.png" alt=""></span>
                   <i
-                  :class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                  class="iconfont"
-                  @click="handleHideRainConduits()"
-                  @click.stop/>
+                    :class="isHideRainConduits?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideRainConduits()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">雨水管</span>
                   <span style="color: black;font-size: 16px;">{{this.conduits.rainConduits.length}}</span>
                 </template>
@@ -178,10 +177,10 @@
                 <template slot="title">
                   <span class="logo"><img src="/static/img/lvdi.png" alt=""></span>
                   <i
-                  :class="isHideLvdi?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                  class="iconfont"
-                  @click="handleHideLvdi()"
-                  @click.stop/>
+                    :class="isHideLvdi?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideLvdi()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">绿地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.lvDi.length}}</span>
                 </template>
@@ -191,10 +190,10 @@
                 <template slot="title">
                   <span class="logo"><img src="/static/img/juzhu.png" alt=""></span>
                   <i
-                  :class="isHideJuzhu?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                  class="iconfont"
-                  @click="handleHideJuzhu()"
-                  @click.stop/>
+                    :class="isHideJuzhu?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideJuzhu()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">居住用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.juZhuYongDi.length}}</span>
                 </template>
@@ -204,10 +203,10 @@
                 <template slot="title">
                   <span class="logo"><img src="/static/img/zhengfu.png" alt=""></span>
                   <i
-                  :class="isHideZhengfu?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                  class="iconfont"
-                  @click="handleHideZhengfu()"
-                  @click.stop/>
+                    :class="isHideZhengfu?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideZhengfu()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">政府社团用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.zhengFu.length}}</span>
                 </template>
@@ -217,10 +216,10 @@
                 <template slot="title">
                   <span class="logo"><img src="/static/img/gongye.png" alt=""></span>
                   <i
-                  :class="isHideGongye?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                  class="iconfont"
-                  @click="handleHideGongye()"
-                  @click.stop/>
+                    :class="isHideGongye?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideGongye()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">工业用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.gongYe.length}}</span>
                 </template>
@@ -230,10 +229,10 @@
                 <template slot="title">
                   <span class="logo"><img src="/static/img/shangye.png" alt=""></span>
                   <i
-                  :class="isHideShangye?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                  class="iconfont"
-                  @click="handleHideShangye()"
-                  @click.stop/>
+                    :class="isHideShangye?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleHideShangye()"
+                    @click.stop/>
                   <span style="color: black;font-size: 16px;">商业服务业设施用地</span>
                   <span style="color: black;font-size: 16px;">{{this.subcatchments.shangYe.length}}</span>
                 </template>
@@ -267,13 +266,13 @@
           <div>
             <el-collapse v-model="activeName" accordion>
               <!--地块-->
-              <el-collapse-item  v-model="data" name="1" v-if="data.type=='地块'">
+              <el-collapse-item  v-model="dataInfo" name="1" v-if="dataInfo.type=='地块'">
                 <template slot="title">
-                  <span>{{data.type}}</span>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);" @click="handleSubcatchmentsSelectRainConduits(data.info.id)" @click.stop>查下游雨水管+排口</el-button>
+                  <span>{{dataInfo.type}}</span>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);" @click="handleSubcatchmentsSelectRainConduits(dataInfo.id)" @click.stop>查下游雨水管+排口</el-button>
                   <!--<el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);" @click="handleSubcatchmentsSelectRainOutfalls(data.info.id)" @click.stop >查下游雨水排口</el-button>-->
                   <!--<el-button type="primary" style="padding: 3px; font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>-->
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);" @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop >查下游污水去向</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);" @click="handleSubcatchmentsSelectSewageConduits(dataInfo.id)" @click.stop >查下游污水去向</el-button>
 
                 </template>
                 <div>
@@ -283,88 +282,88 @@
                         <li>
                           <div class="info-title">编号</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.name" placement="top-start">
-                              <el-button class="info-button">{{data.info.name}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.name" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.name}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">面积</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="String(data.info.area)" placement="top-start">
-                              <el-button class="info-button" style="height: 20px">{{data.info.area}}m<sup>2</sup></el-button>
+                            <el-tooltip class="item" effect="dark" :content="String(dataInfo.area)" placement="top-start">
+                              <el-button class="info-button" style="height: 20px">{{dataInfo.area}}m<sup>2</sup></el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">用地类型</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.YDLX" placement="top-start">
-                              <el-button class="info-button">{{data.info.YDLX}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.YDLX" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.YDLX}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">建设状态</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.JSZT" placement="top-start">
-                              <el-button class="info-button">{{data.info.JSZT}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.JSZT" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.JSZT}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">项目名称</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.XMMC" placement="top-start">
-                              <el-button class="info-button">{{data.info.XMMC}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.XMMC" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.XMMC}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">排入河道</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.PRHD" placement="top-start">
-                              <el-button class="info-button">{{data.info.PRHD}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.PRHD" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.PRHD}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">所属流域</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.SSLY" placement="top-start">
-                              <el-button class="info-button">{{data.info.SSLY}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.SSLY" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.SSLY}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">所属排水分区</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.SSPSFQ" placement="top-start">
-                              <el-button class="info-button">{{data.info.SSPSFQ}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.SSPSFQ" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.SSPSFQ}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">是否为正本清源项目</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.ZBQY" placement="top-start">
-                              <el-button class="info-button">{{data.info.ZBQY}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.ZBQY" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.ZBQY}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">是否为海绵项目</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.HMCS" placement="top-start">
-                              <el-button class="info-button">{{data.info.HMCS}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.HMCS" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.HMCS}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">海绵类型</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.HMLX" placement="top-start">
-                              <el-button class="info-button">{{data.info.HMLX}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.HMLX" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.HMLX}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
@@ -374,11 +373,11 @@
                 </div>
               </el-collapse-item>
               <!--排口-->
-              <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='排口'">
+              <el-collapse-item v-model="dataInfo" :title="dataInfo.leixing+'信息'" name="1" v-if="dataInfo.type=='排口'">
                 <template slot="title">
-                  <span>{{data.type}}</span>
-                  <el-button @click.stop type="primary" round @click="handleSelectConduits(data.info.name)">查询上游管道</el-button>
-                  <el-button type="primary" round  @click="handleSelectSubcatchments(data.info.name)" @click.stop>查询上游地块</el-button>
+                  <span>{{dataInfo.leixing}}信息</span>
+                  <el-button @click.stop type="primary" round @click="handleSelectConduits(dataInfo.name)">查询上游管道</el-button>
+                  <el-button type="primary" round  @click="handleSelectSubcatchments(dataInfo.name)" @click.stop>查询上游地块</el-button>
                 </template>
                 <div>
                   <el-collapse v-model="activeNames" >
@@ -387,24 +386,24 @@
                         <li>
                           <div class="info-title">排口编号</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.name" placement="top-start">
-                              <el-button class="info-button">{{data.info.name}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.name" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.name}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">类型</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.leixing" placement="top-start">
-                              <el-button class="info-button">{{data.info.leixing}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.leixing" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.leixing}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">排向</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.paixiang" placement="top-start">
-                              <el-button class="info-button">{{data.info.paixiang}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.paixiang" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.paixiang}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
@@ -414,7 +413,7 @@
                 </div>
               </el-collapse-item>
               <!--管线-->
-              <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='管线'">
+              <el-collapse-item v-model="data" :title="dataInfo.leixing +'信息'"  name="1" v-if="dataInfo.type == '管线'">
                 <div>
                   <el-collapse v-model="activeNames" >
                     <el-collapse-item title="基本信息" name="1">
@@ -422,24 +421,24 @@
                         <li>
                           <div class="info-title">管道编号</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.name" placement="top-start">
-                              <el-button class="info-button">{{data.info.name}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.name" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.name}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">管道类型</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.leixing" placement="top-start">
-                              <el-button class="info-button">{{data.info.leixing}}</el-button>
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.leixing" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.leixing}}</el-button>
                             </el-tooltip>
                           </div>
                         </li>
                         <li>
                           <div class="info-title">管径</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="data.info.guanjing" placement="top-start">
-                              <el-button class="info-button">{{data.info.guanjing*1000}} <span style="color:#42b983">mm</span></el-button>
+                            <el-tooltip class="item" effect="dark" :content= "dataInfo.guanjing"placement="top-start">
+                              <el-button class="info-button">{{dataInfo.guanjing*1000}} <span style="color:#42b983">mm</span></el-button>
                             </el-tooltip>
                           </div>
                         </li>
@@ -449,9 +448,9 @@
                 </div>
               </el-collapse-item>
               <!--企业-->
-              <el-collapse-item v-model="data" :title="data.type+'信息'" name="1" v-if="data.type=='企业'">
+              <el-collapse-item v-model="dataInfo" :title="dataInfo.type+'信息'" name="1" v-if="dataInfo.type=='企业'">
                 <template slot="title">
-                  <span>{{data.type}}</span>
+                  <span>{{dataInfo.type}}</span>
                   <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageConduits(data.geos)" @click.stop>查下游污水管+污水去向</el-button>
                   <!--<el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageOutfall(data.geos)" @click.stop>查下游污水去向</el-button>-->
                 </template>
@@ -461,8 +460,8 @@
                       <li>
                         <div class="info-title">企业名称</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.QYMC)" placement="top-start">
-                            <el-button class="info-button">{{data.info.QYMC}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.QYMC)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.QYMC}}</el-button>
                           </el-tooltip>
                         </div>
 
@@ -470,8 +469,8 @@
                       <li>
                         <div class="info-title">X_坐标</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.X_cor)" placement="top-start">
-                            <el-button class="info-button">{{data.info.X_cor}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.X_cor)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.X_cor}}</el-button>
                           </el-tooltip>
                         </div>
 
@@ -479,8 +478,8 @@
                       <li>
                         <div class="info-title">Y_坐标</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.Y_cor)" placement="top-start">
-                            <el-button class="info-button">{{data.info.Y_cor}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.Y_cor)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.Y_cor}}</el-button>
                           </el-tooltip>
                         </div>
 
@@ -488,120 +487,120 @@
                       <li>
                         <div class="info-title">街道</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.JDMC)" placement="top-start">
-                            <el-button class="info-button">{{data.info.JDMC}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.JDMC)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.JDMC}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">社区</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.SQMC)" placement="top-start">
-                            <el-button class="info-button">{{data.info.SQMC}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.SQMC)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.SQMC}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">地址</div>
-                          <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.SCJYDZ)" placement="top-start">
-                            <el-button class="info-button">{{data.info.SCJYDZ}}</el-button>
+                        <div class="info-span">
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.SCJYDZ)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.SCJYDZ}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">法人代表</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.FDDBR)" placement="top-start">
-                            <el-button class="info-button">{{data.info.FDDBR}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.FDDBR)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.FDDBR}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">联系方式</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.LXFS)" placement="top-start">
-                            <el-button class="info-button">{{data.info.LXFS}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.LXFS)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.LXFS}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">企业人数</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.QYRS)" placement="top-start">
-                            <el-button class="info-button">{{data.info.QYRS}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.QYRS)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.QYRS}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">行业类别</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.HYLB)" placement="top-start">
-                            <el-button class="info-button">{{data.info.HYLB}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.HYLB)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.HYLB}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">生产用水量</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.SCYSL)" placement="top-start">
-                            <el-button class="info-button">{{data.info.SCYSL}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.SCYSL)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.SCYSL}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">排水量</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.PSL)" placement="top-start">
-                            <el-button class="info-button">{{data.info.PSL}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.PSL)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.PSL}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">主要生产工艺</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.ZYSCGY)" placement="top-start">
-                            <el-button class="info-button">{{data.info.ZYSCGY}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.ZYSCGY)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.ZYSCGY}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">产品</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.GPZL)" placement="top-start">
-                            <el-button class="info-button">{{data.info.GPZL}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.GPZL)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.GPZL}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">环评</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.HPPFWJ)" placement="top-start">
-                            <el-button class="info-button">{{data.info.HPPFWJ}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.HPPFWJ)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.HPPFWJ}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">环评有效性</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.HPPFWJYXX)" placement="top-start">
-                            <el-button class="info-button">{{data.info.HPPFWJYXX}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.HPPFWJYXX)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.HPPFWJYXX}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">排污许可证</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.PWXKZ)" placement="top-start">
-                            <el-button class="info-button">{{data.info.PWXKZ}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.PWXKZ)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.PWXKZ}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
                       <li>
                         <div class="info-title">废水处理方式</div>
                         <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(data.info.FSCLFS)" placement="top-start">
-                            <el-button class="info-button">{{data.info.FSCLFS}}</el-button>
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.FSCLFS)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.FSCLFS}}</el-button>
                           </el-tooltip>
                         </div>
                       </li>
@@ -625,9 +624,23 @@
 <script>
   import _each from '@/utils/_each'
   import BaiduMap from './components/map/baidu'
+  import request from '@/utils/request'
 
   export default {
     name: 'Home',
+    computed:{
+       info (){
+         return this.$store.state.mapData.info;
+       },
+    },
+    watch:{
+      info:function(info){
+        console.log('我被点击了')
+        this.infoManager = true;
+        this.dataInfo = info;
+        console.log(this.dataInfo)
+      },
+    },
     components: {
       BaiduMap
     },
@@ -680,20 +693,17 @@
         isCollapse: true,
         tabPosition: 'right',
         activeName: '1',
-        data:{
-          geos:{},
-          type:'',
-          info:{}
-        },
+        data:{},
         mapData:{},
-        activeNames: ['1']
+        activeNames: ['1'],
+        dataInfo:{},
       }
     },
-    create(){
+    create() {
 
     },
     mounted(){
-      this.getProjectId();
+      this.getProjectId()
       this.getMapData();
     },
     methods: {
@@ -704,44 +714,103 @@
       // 取得mapData
       getMapData(){
         var self = this;
-        var mapData = this.$store.state.mapData
-        _each(mapData,function(index,mapData){
-          self.outfalls.rainOutfalls = mapData.outfalls.rainOutfall;
-          self.outfalls.sewageOutfalls = mapData.outfalls.sewageOutfall;
-          self.outfalls.meregeOutfalls = mapData.outfalls.mergeOutfall;
-          self.conduits.rainConduits = mapData.conduits.rainConduits;
-          self.conduits.sewageConduits = mapData.conduits.sewageConduits;
-          //地块
-          self.subcatchments.road = mapData.subcatchments.road;
-          self.subcatchments.shiZheng = mapData.subcatchments.shiZheng;
-          self.subcatchments.gongYe =mapData.subcatchments.gongYe;
-          self.subcatchments.juZhuYongDi = mapData.subcatchments.juZhuYongDi;
-          self.subcatchments.lvDi = mapData.subcatchments.lvDi;
-          self.subcatchments.zhengFu =mapData.subcatchments.zhengFu;
-          self.subcatchments.shangYe = mapData.subcatchments.shangYe;
-          //企业
-          self.companys = mapData.companys;
+        var projectId = this.projectId;
+        request('shapes', {
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: projectId
+                },
+              }
+            }
+          }
+        }).then(resp => {
+          var data = resp.data;
+          //正则 匹配道路 的正则
+          var daoluReg = /^[S][^A-Za-z]$/;
+          // 市政公用设施用地
+          var shiZhengReg = /^[U][^A-Za-z]$/;
+          // 绿地
+          var lvDiReg = /^[G,E][^A-Za-z]/;
+          // 居住用地
+          var juZhuYongDiReg = /^[R][^A-Za-z]/;
+          // 政府
+          var zhengFuReg = /^[G][I][C]/;
+          // 工业
+          var gongYeReg = /^[M]/;
+          // 商业服务业设施用地
+          var shangyeReg = /^[C][^A-Za-z]/;
+          for(var i = 0;i<data.length;i++){
+            var category = data[i].category;
+            var properties = JSON.parse(data[i].properties).properties;
+            if(category == 'COMPANY'){
+              self.companys.push(data[i])
+            }
+            if(category == 'OUTFALLS'){
+                if(properties.leixing == '污水排口'){
+                  self.outfalls.sewageOutfalls.push(data[i])
+                }
+              if(properties.leixing == '混流排口'){
+                self.outfalls.meregeOutfalls.push(data[i])
+              }
+              if(properties.leixing == '雨水排水口'){
+                self.outfalls.rainOutfalls.push(data[i])
+              }
+            }
+            if(category == 'CONDUITS'){
+              if(properties.leixing == '污水管'){
+                self.conduits.sewageConduits.push(data[i])
+              }
+              if(properties.leixing == '雨水管'){
+                self.conduits.rainConduits.push(data[i])
+              }
+            }
+            if(category == 'SUBCATCHMENTS'){
+              var YDLX = properties.YDLX;
+              if((YDLX == '道路' || daoluReg.test(YDLX))){
+                console.log('Test');
+              }
+            }
+          }
         })
+        // var self = this;
+        // var map = self.$store.state.mapData
+        // var mapData = map.mapData;
+        // console.log(mapData);
+        // _each(mapData,function(index,mapData){
+        //   self.outfalls.rainOutfalls = mapData.outfalls.rainOutfall;
+        //   self.outfalls.sewageOutfalls = mapData.outfalls.sewageOutfall;
+        //   self.outfalls.meregeOutfalls = mapData.outfalls.mergeOutfall;
+        //   self.conduits.rainConduits = mapData.conduits.rainConduits;
+        //   self.conduits.sewageConduits = mapData.conduits.sewageConduits;
+        //   //地块
+        //   self.subcatchments.road = mapData.subcatchments.road;
+        //   self.subcatchments.shiZheng = mapData.subcatchments.shiZheng;
+        //   self.subcatchments.gongYe =mapData.subcatchments.gongYe;
+        //   self.subcatchments.juZhuYongDi = mapData.subcatchments.juZhuYongDi;
+        //   self.subcatchments.lvDi = mapData.subcatchments.lvDi;
+        //   self.subcatchments.zhengFu =mapData.subcatchments.zhengFu;
+        //   self.subcatchments.shangYe = mapData.subcatchments.shangYe;
+        //   //企业
+        //   self.companys = mapData.companys;
+        // })
       },
-      //获取信息
-      getInfo(data) {
-        const self  = this;
-        self.infoManager = true;
-        self.data.type = data.type;
-        self.data.info = data.info
-        self.data.geos = data.geos;
-      },
+
+
       /**
        * 显示/隐藏全部地块
        */
       handleHideAllSubcatchments() {
         this.isHideAllSubcatchments = !this.isHideAllSubcatchments;
       },
-        //隐藏道路
+      //隐藏道路
       handleHideDaolu(){
         this.isHideDaolu = !this.isHideDaolu;
       },
-       // 隐藏市政
+      // 隐藏市政
       handleHideShiZheng(){
         this.isHideShizheng = !this.isHideShizheng;
       },
@@ -786,15 +855,15 @@
       handleHideAllOutfalls() {
         this.isHideAllOutfalls = !this.isHideAllOutfalls
       },
-        // 显示/隐藏合流排口
+      // 显示/隐藏合流排口
       handleMergeOutfalls(){
         this.isHideMergeOutfalls = !this.isHideMergeOutfalls
       },
-        // 显示/隐藏雨水排口
+      // 显示/隐藏雨水排口
       handleRainOutfalls(){
         this.isHideRainOutfalls = !this.isHideRainOutfalls
       },
-        // 显示/隐藏污水排口
+      // 显示/隐藏污水排口
       handleSewageOutfalls(){
         this.isHideSewageOutfalls = !this.isHideSewageOutfalls
       },
@@ -811,7 +880,7 @@
        *
        */
       handleHideAllCompanys(){
-       this.isHideCompanys = !this.isHideCompanys;
+        this.isHideCompanys = !this.isHideCompanys;
       },
       /**
        * 根据排口查询上游管线
@@ -831,7 +900,7 @@
       handleSubcatchmentsSelectRainConduits(data){
         this.$refs.map.handleSubcatchmentsSelectRainConduits(data);
       },
-        // 根据地块查询污水管道
+      // 根据地块查询污水管道
       handleSubcatchmentsSelectSewageConduits(data){
         this.$refs.map.handleSubcatchmentsSelectSewageConduits(data);
       },
@@ -910,7 +979,7 @@
   .el-icon-yanjing_yincang{cursor: pointer}
   .el-icon-yanjing_xianshi{cursor: pointer}
   .el-menu-item-group__title{background: none;}
-  .logo{display:inline-block;width: 20px;height: 10px;
+  .logo{display:inline-block;width: 20px;height: 20px;position: relative; top:5px;
     img{width: 100%;height: 100%;}
   }
   .el-button + .el-button{margin: 0px;}
