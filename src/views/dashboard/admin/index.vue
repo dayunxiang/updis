@@ -51,21 +51,6 @@
                 <span class="number">{{this.outfalls.rainOutfalls.length+this.outfalls.meregeOutfalls.length+this.outfalls.sewageOutfalls.length}}</span>
               </template>
               <!--分组设置-->
-              <!--合流排口-->
-              <el-menu-item-group>
-                <template slot="title">
-                  <span class="logo"><img src="/static/img/mergeOutfall-img.png" alt=""></span>
-                  <i
-                    :class="isHideMergeOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
-                    class="iconfont"
-                    @click="handleMergeOutfalls()"
-                    @click.stop/>
-                  <span style="color:black;font-size: 16px;">混流排口</span>
-                  <span style="color:black;font-size: 16px;">{{this.outfalls.meregeOutfalls.length}}</span>
-                </template>
-                <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
-                <!--<el-menu-item index="1-2">选项2</el-menu-item>-->
-              </el-menu-item-group>
               <!--雨水排口-->
               <el-menu-item-group>
                 <template slot="title">
@@ -91,6 +76,21 @@
                   <span style="color:black ;font-size: 16px;">污水去向</span>
                   <span style="color:black;font-size: 16px;">{{this.outfalls.sewageOutfalls.length}}</span>
                 </template>
+              </el-menu-item-group>
+              <!--合流排口-->
+              <el-menu-item-group>
+                <template slot="title">
+                  <span class="logo"><img src="/static/img/mergeOutfall-img.png" alt=""></span>
+                  <i
+                    :class="isHideMergeOutfalls?'el-icon-yanjing_yincang':'el-icon-yanjing_xianshi'"
+                    class="iconfont"
+                    @click="handleMergeOutfalls()"
+                    @click.stop/>
+                  <span style="color:black;font-size: 16px;">混流排口</span>
+                  <span style="color:black;font-size: 16px;">{{this.outfalls.meregeOutfalls.length}}</span>
+                </template>
+                <!--<el-menu-item index="1-1">选项1</el-menu-item>-->
+                <!--<el-menu-item index="1-2">选项2</el-menu-item>-->
               </el-menu-item-group>
             </el-submenu>
             <!--管线-->
@@ -367,6 +367,22 @@
                             </el-tooltip>
                           </div>
                         </li>
+                        <li>
+                          <div class="info-title">现状控制率</div>
+                          <div class="info-span">
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.现状控制率" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.现状控制率}}</el-button>
+                            </el-tooltip>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="info-title">规划控制率</div>
+                          <div class="info-span">
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.规划控制率" placement="top-start">
+                              <el-button class="info-button">{{dataInfo.规划控制率}}</el-button>
+                            </el-tooltip>
+                          </div>
+                        </li>
                       </ul>
                     </el-collapse-item>
                   </el-collapse>
@@ -604,6 +620,14 @@
                           </el-tooltip>
                         </div>
                       </li>
+                      <li>
+                        <div class="info-title">特征污染物</div>
+                        <div class="info-span">
+                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.TZWRW)" placement="top-start">
+                            <el-button class="info-button">{{dataInfo.TZWRW}}</el-button>
+                          </el-tooltip>
+                        </div>
+                      </li>
                     </ul>
                   </el-collapse-item>
                 </el-collapse>
@@ -629,16 +653,14 @@
   export default {
     name: 'Home',
     computed:{
-       info (){
-         return this.$store.state.mapData.info;
-       },
+      info (){
+        return this.$store.state.mapData.info;
+      },
     },
     watch:{
       info:function(info){
-        console.log('我被点击了')
         this.infoManager = true;
         this.dataInfo = info;
-        console.log(this.dataInfo)
       },
     },
     components: {
@@ -743,60 +765,57 @@
           var gongYeReg = /^[M]/;
           // 商业服务业设施用地
           var shangyeReg = /^[C][^A-Za-z]/;
-          for(var i = 0;i<data.length;i++){
+          for(var i = 0;i<data.length;i++) {
             var category = data[i].category;
             var properties = JSON.parse(data[i].properties).properties;
-            if(category == 'COMPANY'){
+            if (category == 'COMPANY') {
               self.companys.push(data[i])
             }
-            if(category == 'OUTFALLS'){
-                if(properties.leixing == '污水排口'){
-                  self.outfalls.sewageOutfalls.push(data[i])
-                }
-              if(properties.leixing == '混流排口'){
+            if (category == 'OUTFALLS') {
+              if (properties.leixing == '污水排口') {
+                self.outfalls.sewageOutfalls.push(data[i])
+              }
+              if (properties.leixing == '混流排口') {
                 self.outfalls.meregeOutfalls.push(data[i])
               }
-              if(properties.leixing == '雨水排水口'){
+              if (properties.leixing == '雨水排水口') {
                 self.outfalls.rainOutfalls.push(data[i])
               }
             }
-            if(category == 'CONDUITS'){
-              if(properties.leixing == '污水管'){
+            if (category == 'CONDUITS') {
+              if (properties.leixing == '污水管') {
                 self.conduits.sewageConduits.push(data[i])
               }
-              if(properties.leixing == '雨水管'){
+              if (properties.leixing == '雨水管') {
                 self.conduits.rainConduits.push(data[i])
               }
             }
-            if(category == 'SUBCATCHMENTS'){
+            if (category == 'SUBCATCHMENTS') {
               var YDLX = properties.YDLX;
-              if((YDLX == '道路' || daoluReg.test(YDLX))){
-                console.log('Test');
+              if ((YDLX == '道路' || daoluReg.test(YDLX))) {
+                self.subcatchments.road.push(data[i])
+              }
+              if (shiZhengReg.test(YDLX)) {
+                self.subcatchments.shiZheng.push(data[i])
+              }
+              if (lvDiReg.test(YDLX)) {
+                self.subcatchments.lvDi.push(data[i])
+              }
+              if (juZhuYongDiReg.test(YDLX)) {
+                self.subcatchments.juZhuYongDi.push(data[i])
+              }
+              if (zhengFuReg.test(YDLX)) {
+                self.subcatchments.zhengFu.push(data[i])
+              }
+              if (gongYeReg.test(YDLX)) {
+                self.subcatchments.gongYe.push(data[i])
+              }
+              if (shangyeReg.test(YDLX)) {
+                self.subcatchments.shangYe.push(data[i])
               }
             }
           }
         })
-        // var self = this;
-        // var map = self.$store.state.mapData
-        // var mapData = map.mapData;
-        // console.log(mapData);
-        // _each(mapData,function(index,mapData){
-        //   self.outfalls.rainOutfalls = mapData.outfalls.rainOutfall;
-        //   self.outfalls.sewageOutfalls = mapData.outfalls.sewageOutfall;
-        //   self.outfalls.meregeOutfalls = mapData.outfalls.mergeOutfall;
-        //   self.conduits.rainConduits = mapData.conduits.rainConduits;
-        //   self.conduits.sewageConduits = mapData.conduits.sewageConduits;
-        //   //地块
-        //   self.subcatchments.road = mapData.subcatchments.road;
-        //   self.subcatchments.shiZheng = mapData.subcatchments.shiZheng;
-        //   self.subcatchments.gongYe =mapData.subcatchments.gongYe;
-        //   self.subcatchments.juZhuYongDi = mapData.subcatchments.juZhuYongDi;
-        //   self.subcatchments.lvDi = mapData.subcatchments.lvDi;
-        //   self.subcatchments.zhengFu =mapData.subcatchments.zhengFu;
-        //   self.subcatchments.shangYe = mapData.subcatchments.shangYe;
-        //   //企业
-        //   self.companys = mapData.companys;
-        // })
       },
 
 
