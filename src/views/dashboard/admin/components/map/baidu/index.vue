@@ -343,6 +343,8 @@
             self.test();
             self.$store.dispatch('getInfo',info)
             this.setFillColor('red');
+            this.type = '选中的排口'
+            console.log(this.type);
           });
         })
 
@@ -487,7 +489,7 @@
         //  排口覆盖物
         for(var i = 0;i<overlay.Circle.length;i++){
           var outfallColor = overlay.Circle[i].getFillColor();
-          var leixing = overlay.Circle[i].leixing;
+          console.log(overlay.Circle[i]);
           if(leixing == '雨水排水口'){
             overlay.Circle[i].setFillColor('#E8E8E8');
           }
@@ -498,6 +500,8 @@
             overlay.Circle[i].setFillColor('#E8E8E8');
           }
         }
+       //   地块覆盖物
+        for(var i = 0;i<overlay.Circle.length)
 
       },
       //排口查询上游管线
