@@ -52,7 +52,10 @@
             <el-table-column prop="SSPSFQ"  align="center" width="130" :sortable="true" :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"    align="center" width="175" :sortable="true" :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"    align="center" width="130" :sortable="true" :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-            <el-table-column prop="ZLKZL"   align="center" width="160" :sortable="true" :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
+
+            <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
+            <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
+
             <el-table-column prop="area"    align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -92,7 +95,10 @@
             <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-            <el-table-column prop="ZLKZL"  align="center" width="160" sortable :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
+
+            <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
+            <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
+
             <el-table-column prop="area"   align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -132,7 +138,10 @@
             <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-            <el-table-column prop="ZLKZL"  align="center" width="160" sortable :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
+
+            <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
+            <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
+
             <el-table-column prop="area"   align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -172,7 +181,10 @@
             <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-            <el-table-column prop="ZLKZL"  align="center" width="160" sortable :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
+
+            <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
+            <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
+
             <el-table-column prop="area"   align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -206,7 +218,10 @@
             <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-            <el-table-column prop="ZLKZL"  align="center" width="160" sortable :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
+
+            <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
+            <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
+
             <el-table-column prop="area"   align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -240,7 +255,10 @@
             <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-            <el-table-column prop="ZLKZL"  align="center" width="160" sortable :show-overflow-tooltip="true" label="年径流总量控制率"></el-table-column>
+
+            <el-table-column prop="XZKZL"   align="center" width="170" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
+            <el-table-column prop="GHKZL"   align="center" width="170" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
+
             <el-table-column prop="area"   align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -315,11 +333,18 @@
                       :disabled="this.hodelView == 'view' ? false : true"
                       v-model="optionData.JSQK"></el-input>
           </el-form-item>
-          <el-form-item label="年径流总量控制率：" prop="ZLKZL">
+
+          <el-form-item label="年径流总量控制率：" prop="XZKZL">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
-                      v-model="optionData.ZLKZL"></el-input>
+                      v-model="optionData.XZKZL"></el-input>
           </el-form-item>
+          <el-form-item label="年径流总量控制率：" prop="GHKZL">
+            <el-input class="elementMadel"
+                      :disabled="this.hodelView == 'view' ? false : true"
+                      v-model="optionData.GHKZL"></el-input>
+          </el-form-item>
+
           <el-form-item label="面积：" prop="area">
             <el-input class="elementMadel"
                       :disabled="this.hodelView == 'view' ? false : true"
@@ -435,8 +460,11 @@
           JSQK: [
             { required: true, message: '海绵建设情况', trigger: 'blur' }
           ],
-          ZLKZL: [
-            { required: true, message: '年径流总量控制率', trigger: 'blur' }
+          XZKZL: [
+            { required: true, message: '现状年径流总量控制率', trigger: 'blur' }
+          ],
+          GHKZL: [
+            { required: true, message: '规划年径流总量控制率', trigger: 'blur' }
           ],
           area: [
             { required: true, message: '面积', trigger: 'blur' }
@@ -470,8 +498,11 @@
           JSQK: [
             { required: false, message: '海绵建设情况', trigger: 'blur' }
           ],
-          ZLKZL: [
-            { required: false, message: '年径流总量控制率', trigger: 'blur' }
+          XZKZL: [
+            { required: false, message: '现状年径流总量控制率', trigger: 'blur' }
+          ],
+          GHKZL: [
+            { required: false, message: '规划年径流总量控制率', trigger: 'blur' }
           ],
           area: [
             { required: false, message: '面积', trigger: 'blur' }
@@ -553,6 +584,7 @@
         var data = res.data;
         _.each(data, function (L) {
           var TestData = JSON.parse(L.properties);    // 解析
+          console.log(TestData.properties)
           var letter = ( TestData.properties.YDLX ).substr(0, 1);     // 截取字符
           var threeTest = ( TestData.properties.YDLX ).substr(0, 3);  // 截取字符
           /**
@@ -569,46 +601,39 @@
             RoadTest.SSLY = TestData.properties.SSLY;
             RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
             RoadTest.ZBQY = TestData.properties.ZBQY;
+            RoadTest.XZKZL = TestData.properties.现状控制率;
+            RoadTest.GHKZL = TestData.properties.规划控制率;
             RoadTest.area = Math.abs(((TestData.properties.area)/10000).toFixed(2));
             /**
              * 判断海绵建设情况
              */
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              RoadTest.ZLKZL = "60%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
-              RoadTest.ZLKZL = "40%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
               RoadTest.JSQK = TestData.properties.JSZT + '';
-              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              RoadTest.ZLKZL = "65%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
-              RoadTest.ZLKZL = "40%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
               debugger
               RoadTest.JSQK = TestData.properties.JSZT + '';
-              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
               RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
-              RoadTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
               RoadTest.JSQK = "规划管控" + '';
-              RoadTest.ZLKZL = "65%";
             }
             self.roadSquare.push(RoadTest);
           } else
@@ -626,45 +651,38 @@
             builTest.SSLY = TestData.properties.SSLY;
             builTest.SSPSFQ = TestData.properties.SSPSFQ;
             builTest.ZBQY = TestData.properties.ZBQY;
+            builTest.XZKZL = TestData.properties.现状控制率;
+            builTest.GHKZL = TestData.properties.规划控制率;
             builTest.area = Math.abs(((TestData.properties.area)/10000).toFixed(2));
             /**
              * 判断海绵建设情况
              */
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              builTest.ZLKZL = "65%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + "无海绵";
-              builTest.ZLKZL = "50%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
               builTest.JSQK = TestData.properties.JSZT + '';
-              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              builTest.ZLKZL = "70%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + "无海绵";
-              builTest.ZLKZL = "50%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
               builTest.JSQK = TestData.properties.JSZT + '';
-              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
               builTest.JSQK = TestData.properties.JSZT + "无海绵";
-              builTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
               builTest.JSQK = "规划管控" + '';
-              builTest.ZLKZL = "65%";
             }
             self.buildSquare.push(builTest);
           } else
@@ -682,45 +700,38 @@
             parkTest.SSLY = TestData.properties.SSLY;
             parkTest.SSPSFQ = TestData.properties.SSPSFQ;
             parkTest.ZBQY = TestData.properties.ZBQY;
+            parkTest.XZKZL = TestData.properties.现状控制率;
+            parkTest.GHKZL = TestData.properties.规划控制率;
             parkTest.area = Math.abs(((TestData.properties.area)/10000).toFixed(2));
             /**
              * 判断海绵建设情况
              */
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              parkTest.ZLKZL = "70%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + "无海绵";
-              parkTest.ZLKZL = "60%";
             }
             if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
               parkTest.JSQK = TestData.properties.JSZT + '';
-              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              parkTest.ZLKZL = "80%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + "无海绵";
-              parkTest.ZLKZL = "60%";
             }
             if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
               parkTest.JSQK = TestData.properties.JSZT + '';
-              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
-              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
               parkTest.JSQK = TestData.properties.JSZT + "无海绵";
-              parkTest.ZLKZL = "";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
               parkTest.JSQK = "" + '';
-              parkTest.ZLKZL = "80%";
             }
             self.parkSquare.push(parkTest);
           }
@@ -728,9 +739,9 @@
         this.totalFrist = self.buildSquare.length;
         this.totalSecond = self.parkSquare.length;
         this.totalThree = self.roadSquare.length;
-        /*console.log("道路广场: ", self.roadSquare);
+        console.log("道路广场: ", self.roadSquare);
         console.log("建筑小区: ", self.buildSquare);
-        console.log("公园绿地: ", self.parkSquare); */
+        console.log("公园绿地: ", self.parkSquare);
       },
       /**
        * 排水分区排序
