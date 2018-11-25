@@ -37,7 +37,9 @@
                @tab-click="handleClick">
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
-          <el-table :data="buildSquare.slice(( currentPageNum1 - 1 ) * pageSizeNum1 , currentPageNum1 * pageSizeNum1)" style="width: 100%" border>
+          <el-table :data="buildSquare.slice(( currentPageNum1 - 1 ) * pageSizeNum1 , currentPageNum1 * pageSizeNum1)"
+                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sortChangeList'
+                    style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSizeNum1 * ( currentPageNum1 - 1 ) }}
@@ -49,7 +51,7 @@
             <el-table-column prop="XMMC"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="项目名称"></el-table-column>
             <el-table-column prop="PRHD"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
             <el-table-column prop="SSLY"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ"  align="center" width="130" :sortable="true" :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
+            <el-table-column prop="SSPSFQ"  align="center" width="130" :sortable="true" :sort-method="sortChange" :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"    align="center" width="175" :sortable="true" :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"    align="center" width="130" :sortable="true" :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
 
@@ -398,7 +400,6 @@
         },
         pageNo : 1,
         projectId: '',
-
         buildSquare: [], // 公园绿地
         roadSquare: [],  // 道路广场
         parkSquare: [],  // 建筑小区
@@ -415,7 +416,6 @@
         currentPageNum2: 1,//默认开始页面
         currentPageNum3: 1,//默认开始页面
         pageSizeData: [10,20,50],
-
         ListTest: [],
         dialogVisible: false,     // 查看获取的用户的信息
         dialogAdd: false,         // 添加
@@ -430,7 +430,6 @@
           mingcheng: []
         },
         targetName: '',
-
         /* 表单验证 */
         rules: {
           name: [
@@ -584,7 +583,6 @@
         var data = res.data;
         _.each(data, function (L) {
           var TestData = JSON.parse(L.properties);    // 解析
-          console.log(TestData.properties)
           var letter = ( TestData.properties.YDLX ).substr(0, 1);     // 截取字符
           var threeTest = ( TestData.properties.YDLX ).substr(0, 3);  // 截取字符
           /**
@@ -731,7 +729,7 @@
               parkTest.JSQK = TestData.properties.JSZT + "无海绵";
             }
             if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
-              parkTest.JSQK = "" + '';
+              parkTest.JSQK = "规划管控" + '';
             }
             self.parkSquare.push(parkTest);
           }
@@ -739,20 +737,24 @@
         this.totalFrist = self.buildSquare.length;
         this.totalSecond = self.parkSquare.length;
         this.totalThree = self.roadSquare.length;
-        console.log("道路广场: ", self.roadSquare);
+        /*console.log("道路广场: ", self.roadSquare);
         console.log("建筑小区: ", self.buildSquare);
-        console.log("公园绿地: ", self.parkSquare);
+        console.log("公园绿地: ", self.parkSquare);*/
       },
       /**
        * 排水分区排序
        */
       sortChange(a, b){
-        //return a.SSPSFQ-b.SSPSFQ
         var removeChines1 = a.SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
         var number1 = removeChines1.replace(/#/g, '')
         var removeChines2 = b.SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
         var number2 = removeChines2.replace(/#/g, '')
         return number1-number2
+      },
+      sortChangeList(column, prop, order){
+        console.log(column);  //prop标签 => nickname
+        console.log(column.prop);  //prop标签 => nickname
+        console.log(column.order); //descending降序、ascending升序
       },
       /**
        * 标签页

@@ -83,7 +83,7 @@
     name: 'figure',
     data(){
       return {
-        dataTotol: ['建筑小区','道路广场','公园绿地','河道治理','涉水基础设施','PPP项目'],
+        dataTotol: ['建筑小区','公园绿地','道路广场','河道治理','涉水基础设施','PPP项目'],
         datalis: 'list',
         /**
          * 表头数据
@@ -125,6 +125,12 @@
          */
         list: 'list',  // 完成度中分区ID
         completeList: [],
+        /**
+         *  年径流总量控制率
+         */
+        drainageControl: [],    //排水分区控制率中的目标
+        actualTotalControl: [],    // 实际总控制率
+        actualTotal: []           // 实际控制率
 
       }
     },
@@ -468,9 +474,37 @@
        */
       drawControl(){
         const self = this;
+        var controlData = self.DataShow;   // 取得总的数据
+        var targetNum = []; // 控制率的总数据
+        var talta = [];     // 现状已落实控制率的总数据
         /**
          * 横向柱形图
          */
+        _.each(controlData, function (m) {
+          var demoNum = (m.properties.现状控制率).replace(/%/g, '');
+          var xzControl   = Number(demoNum)/100;  // 现状控制率
+          var areaControl = Math.abs(m.properties.area)/10000;     // 面积
+          var psControl = m.properties.SSPSFQ;     // 所属排水分区
+          var statusQuo = m.properties.JSZT;        // 获取现状
+          var xzalready = m.properties.HMCS;        // 获取已落实
+          var total = areaControl * xzControl;
+          if( total !== undefined && total !== null ) {
+            targetNum.push(total);
+          }
+          if( statusQuo === "现状" && xzalready === "已落实海绵" ) {
+            var num =  areaControl * xzControl
+            if( num !== undefined && num !== null ) {
+              talta.push(num);
+            }
+          }
+        })
+        var taltaListData = eval(talta.join("+"));  // 现状已落实控制率的和
+        var targetNumData = eval(targetNum.join("+"));  // 控制率的总数据的和
+        var demoTotal = ((taltaListData/targetNumData)*100).toFixed(2);  // 求得百分比
+        var target = [70.00, demoTotal];
+        _.each(target, function (le) {
+          self.actualTotalControl.push(Number(le).toFixed(2))
+        })
         var colorList = ['#4876FF','#0000CD',];
         var totalControlLeft = self.$echarts.init(document.getElementById("totalControlLeft"));  //获取标签ID
         totalControlLeft.setOption({
@@ -548,20 +582,42 @@
                   }
                 }
               },
-              data: [70, 56]
+              data: self.actualTotalControl
             }
           ]
         });
-
         /**
          * 纵向柱形图
          */
-        var controlData = self.DataShow;   // 取得总的数据
-        var statusControl = [];  // 现状控制率
-        var plannerControl = []; // 规划控制率
-        _.each(controlData, function (v) {
-          statusControl.push(v.properties.现状控制率)
-          plannerControl.push(v.properties.规划控制率)
+        var targetControl = [70.00, 72.00, 65.70, 95.00, 50.00, 65.80, 68.30, 69.00, 0.00];
+        _.each(self.partition, function (n) {
+          _.each(controlData, function (m) {
+            var psControl = m.properties.SSPSFQ;     // 所属排水分区
+            if( n === psControl ) {
+              var demoNum = (m.properties.现状控制率).replace(/%/g, '');
+              var xzControl   = Number(demoNum)/100;  // 现状控制率
+              var areaControl = Math.abs(m.properties.area)/10000;  // 面积
+              var statusQuo = m.properties.JSZT;   // 获取现状
+              var xzalready = m.properties.HMCS;   // 获取已落实
+              var total = areaControl * xzControl;
+              if( total !== undefined && total !== null ) {
+                targetNum.push(total);
+              }
+              if( statusQuo === "现状" && xzalready === "已落实海绵" ) {
+                var num =  areaControl * xzControl
+                if( num !== undefined && num !== null  ) {
+                  talta.push(num);
+                }
+              }
+            }
+          })
+          var taltaListData = eval(talta.join("+"));  // 现状已落实控制率的和
+          var targetNumData = eval(targetNum.join("+"));  // 控制率的总数据的和
+          var controlbaifenbi = ((taltaListData/targetNumData)*100).toFixed(2);  // 求得百分比
+          self.actualTotal.push(controlbaifenbi)
+        })
+        _.each(targetControl, function (v) {
+          self.drainageControl.push(v.toFixed(2))
         })
         var totalControlRight = self.$echarts.init(document.getElementById("totalControlRight"));  //获取标签ID
         totalControlRight.setOption({
@@ -571,7 +627,10 @@
             x: 'center'
           },
           tooltip : {
-            /*formatter: '{b} <br> {c} % ',*/
+            formatter:function(a) {
+              return a[0].name + `<br>` + a[0].seriesName+': ' + a[0].value+'%'
+                  + `<br>` + a[1].seriesName+': ' + a[1].value+'%'
+            },
             trigger: 'axis',
             axisPointer: {
               type: 'shadow'
@@ -594,9 +653,6 @@
             },
             feature : {
               mark : {show: true},
-              /*dataView : {show: true, readOnly: false},
-               restore : {show: true},
-               magicType : {show: true, type: ['line']},*/
               saveAsImage : {show: true}
             }
           },
@@ -604,7 +660,7 @@
           xAxis : [
             {
               type : 'category',
-              data : ['1#排水分区','2#排水分区','3#排水分区','4#排水分区','5#排水分区','6#排水分区','7#排水分区']
+              data : self.partition
             }
           ],
           yAxis : [
@@ -625,7 +681,7 @@
                   barBorderRadius:[3, 3, 3, 3]
                 }
               },
-              data:[20, 49, 50, 23.2, 25.6, 54.7, 35.6]
+              data: self.actualTotal,
             },
             {
               name:'目标',
@@ -635,7 +691,7 @@
                   barBorderRadius:[3, 3, 3, 3]
                 }
               },
-              data:[70, 70, 70, 70, 70, 70, 70]
+              data: self.drainageControl
             }
           ]
         });
@@ -645,7 +701,118 @@
        */
       drawLine(res){
         const self = this;
-        var totalData = self.partition;   // 分区总数据
+        var totalData = self.partition;      // 分区总数据
+        var totalShowData = self.DataShow;   // 接口总数据
+        _.each(totalData, function (vWater, index) {
+          console.log("分区开始：", vWater)
+          var zongshu1 = [];            // 道路总数
+          var wanchengshu1 = [];        // 道路完成数
+          var zongshu2 = [];            // 建筑小区总数
+          var wanchengshu2 = [];        // 建筑小区完成数
+          var zongshu3 = [];            // 公园绿地总数
+          var wanchengshu3 = [];        // 公园绿地完成数
+          _.each(totalShowData, function (lo) {
+            var psControl = lo.properties.SSPSFQ;   // 所属排水分区
+            var statusQuo = lo.properties.JSZT;     // 获取现状
+            var xzalready = lo.properties.HMCS;     // 获取已落实
+            var TheRoad = lo.properties.YDLX;       // 道路
+            var letter = TheRoad.substr(0, 1);      // 截取字符
+            var threeTest = TheRoad.substr(0, 3);   // 截取字符
+            if (vWater === psControl) {
+              /**
+               * 道路广场
+               */
+              var demoNum = lo.properties.现状控制率;
+              if (TheRoad === "道路" || letter === "S") {
+                zongshu1.push(demoNum)
+                if (statusQuo === "现状" && xzalready === "已落实海绵") {
+                  wanchengshu1.push(demoNum);
+                }
+              } else
+              /**
+               * 建筑小区
+               */
+              if (letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC") {
+                zongshu2.push(demoNum)
+                if (statusQuo === "现状" && xzalready === "已落实海绵") {
+                  wanchengshu2.push(demoNum);
+                }
+              } else
+              /**
+               * 公园绿地
+               */
+              if (letter === "G") {
+                zongshu3.push(demoNum)
+                if (statusQuo === "现状" && xzalready === "已落实海绵") {
+                  wanchengshu3.push(demoNum);
+                }
+              }
+            }
+          })
+          var num1 = zongshu1.length - wanchengshu1.length;
+          var num2 = zongshu2.length - wanchengshu2.length;
+          var num3 = zongshu3.length - wanchengshu3.length;
+          var unfinished = [num1, num2, num3, 0, 0, 0];       // 未完成
+          var HasBeenCompleted = [wanchengshu1.length, wanchengshu2.length, wanchengshu3.length, 0, 0, 0];   // 已完成
+          console.log("未完成", unfinished);
+          console.log("已完成", HasBeenCompleted);
+
+          (self.$echarts.init(document.getElementById(self.datalis + index))).setOption({
+            title: {
+              text: vWater
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              selectedMode: false,
+              data: ['已完成', '未完成']
+            },
+            toolbox: {
+              show: true,
+              right: 20,
+              feature: {
+                /*magicType : { show: true, type: ['line'] },
+                 restore : { show: true },*/
+                saveAsImage: {show: true}
+              }
+            },
+            grid: {
+              left: '3%',
+              right: '3%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: {
+              type: 'category',
+              data: self.dataTotol
+            },
+            yAxis: {
+              type: 'value'
+            },
+            series: [
+              {
+                name: '已完成',
+                type: 'bar',
+                barWidth: 20,
+                data: HasBeenCompleted
+              },
+              {
+                name: '未完成',
+                type: 'bar',
+                barWidth: 20,
+                data: unfinished
+              }
+            ]
+          });
+        })
+
+
+
+
         _.each( totalData, function (vWater, index) {
           var nameData = TestData.tongName;
           var DataTest = [];   // 获取列表
@@ -667,218 +834,9 @@
             wancheng.push(sum)
             meiyou.push(ed)
           });
-          var title = self.datalis + index;
-          (self.$echarts.init(document.getElementById(self.datalis + index))).setOption({
-            title: {
-              text: vWater
-            },
-            tooltip: {
-              trigger: 'axis',
-              axisPointer: {
-                type: 'shadow'
-              }
-            },
-            legend: {
-              selectedMode:false,
-              data: ['已完成', '未完成']
-            },
-            toolbox: {
-              show : true,
-              right: 20,
-              feature : {
-                /*magicType : { show: true, type: ['line'] },
-                 restore : { show: true },*/
-                saveAsImage : { show: true }
-              }
-            },
-            grid: {
-              left: '3%',
-              right: '3%',
-              bottom: '3%',
-              containLabel: true
-            },
-            xAxis: {
-              type: 'category',
-              data: DataTest
-            },
-            yAxis: {
-              type: 'value'
-            },
-            series: [
-              {
-                name: '已完成',
-                type: 'bar',
-                barWidth : 20,
-                data: wancheng
-              },
-              {
-                name: '未完成',
-                type: 'bar',
-                barWidth : 20,
-                data: meiyou
-              }
-            ]
-          });
-        })
-        //var optionBar1 = self.$echarts.init(document.getElementById("optionBar1"));  //获取标签ID
-       /* optionBar1.setOption({
-          title: {
-            text: '排水分区一'
-          },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'shadow'
-            }
-          },
-          legend: {
-            selectedMode:false,
-            data: ['已完成', '未完成']
-          },
-          toolbox: {
-            show : true,
-            right: 20,
-            feature : {
-              /!*magicType : { show: true, type: ['line'] },
-               restore : { show: true },*!/
-              saveAsImage : { show: true }
-            }
-          },
-          grid: {
-            left: '3%',
-            right: '3%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: {
-            type: 'category',
-            data: DataTest
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [
-            {
-              name: '已完成',
-              type: 'bar',
-              barWidth : 20,
-              data: wancheng
-            },
-            {
-              name: '未完成',
-              type: 'bar',
-              barWidth : 20,
-              data: meiyou
-            }
-          ]
-        });*/
-        /*var optionBar2 = self.$echarts.init(document.getElementById("optionBar2"));  //获取标签ID
-        self.optionBar2 =  {
-          title: {
-            text: '排水分区二'
-          },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'shadow'
-            }
-          },
-          legend: {
-            selectedMode:false,
-            data: ['已完成', '未完成']
-          },
-          toolbox: {
-            show : true,
-            right: 20,
-            feature : {
-              /!*magicType : { show: true, type: ['line'] },
-              restore : { show: true },*!/
-              saveAsImage : { show: true }
-            }
-          },
-          grid: {
-            left: '3%',
-            right: '3%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: {
-            type: 'category',
-            data: DataTest
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [
-            {
-              name: '已完成',
-              type: 'bar',
-              barWidth : 10,
-              data: [12, 2, 9, 5, 17, 13]
-            },
-            {
-              name: '未完成',
-              type: 'bar',
-              barWidth : 10,
-              data: [3, 14, 12, 10, 7, 8]
-            }
-          ]
-        };
-        optionBar2.setOption(self.optionBar2);
 
-        var optionBar3 = self.$echarts.init(document.getElementById("optionBar3"));  //获取标签ID
-        self.optionBar3 =  {
-          title: {
-            text: '排水分区三'
-          },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'shadow'
-            }
-          },
-          legend: {
-            selectedMode:false,
-            data: ['已完成', '未完成']
-          },
-          toolbox: {
-            show : true,
-            right: 20,
-            feature : {
-              /!*magicType : { show: true, type: ['line'] },
-              restore : { show: true },*!/
-              saveAsImage : { show: true }
-            }
-          },
-          grid: {
-            left: '3%',
-            right: '3%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: {
-            type: 'category',
-            data: DataTest
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [
-            {
-              name: '已完成',
-              type: 'bar',
-              barWidth : 10,
-              data: [12, 2, 9, 5, 17, 13]
-            },
-            {
-              name: '未完成',
-              type: 'bar',
-              barWidth : 10,
-              data: [3, 14, 12, 10, 7, 8]
-            }
-          ]
-        };
-        optionBar3.setOption(self.optionBar3);*/
+
+        })
       },
       /**
        * 使用echarts统计图:项目数量完成度饼图
