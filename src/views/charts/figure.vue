@@ -271,9 +271,12 @@
           var ZJYLSList = [];     // 在建已落实面积
           var ZJWUMList = [];     // 在建无海绵面积
           var GHGKList  = [];     // 规划管控面积
+
+          var suoyoudikuai = [];
           _.each(sweegerData, function (vn) {
             var dsd = vn.properties;
             if (ld == dsd.SSPSFQ) {
+              suoyoudikuai.push(dsd.area);
               if (dsd.JSZT === "现状" && dsd.HMCS === "已落实海绵") {
                 XZYLSList.push(Number(Math.abs(dsd.area)));    // 获取现状已落实面积
               } else
@@ -291,6 +294,12 @@
               }
             }
           });
+//          console.log("现状已落实", XZYLSList);
+//          console.log("现状无海绵", XZWHMList);
+//          console.log("在建已落实", ZJYLSList);
+//          console.log("在建无海绵", ZJWUMList);
+//          console.log("规划管控", GHGKList);
+//          console.log("所有地块: ", suoyoudikuai);
           var numtota1 = 0;   // 现状已落实面积
           var numtota2 = 0;   // 现状无海绵面积
           var numtota3 = 0;   // 在建已落实面积
@@ -312,7 +321,7 @@
           jianyou.push(((numtota3/sum) * 100).toFixed(2));
           jianwu.push(((numtota4/sum) * 100).toFixed(2));
           guihuan.push(((numtota5/sum) * 100).toFixed(2));
-          console.log("总和: ", sum);
+//          console.log("总和: ", sum);
 //          console.log("获取现状已落实面积: ", numtota1);
 //          console.log("规划管控百分比:    ", self.ghList)
 //          console.log("获取现状无海绵面积: ", numtota2);

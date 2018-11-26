@@ -38,7 +38,7 @@
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
           <el-table :data="buildSquare.slice(( currentPageNum1 - 1 ) * pageSizeNum1 , currentPageNum1 * pageSizeNum1)"
-                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sortChangeList'
+                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change'
                     style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
@@ -51,13 +51,11 @@
             <el-table-column prop="XMMC"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="项目名称"></el-table-column>
             <el-table-column prop="PRHD"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
             <el-table-column prop="SSLY"    align="center" width="105" :sortable="true" :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ"  align="center" width="130" :sortable="true" :sort-method="sortChange" :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
+            <el-table-column prop="SSPSFQ"  align="center" width="130" :sortable="true" :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"    align="center" width="175" :sortable="true" :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"    align="center" width="130" :sortable="true" :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-
             <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
             <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
-
             <el-table-column prop="area"    align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -82,7 +80,9 @@
 
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
-          <el-table :data="parkSquare.slice( (currentPageNum2 - 1 ) * pageSizeNum2 , currentPageNum2*pageSizeNum2 )" style="width: 100%" border>
+          <el-table :data="parkSquare.slice( (currentPageNum2 - 1 ) * pageSizeNum2 , currentPageNum2*pageSizeNum2 )"
+                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change'
+                    style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSizeNum2 * (currentPageNum2 - 1) }}
@@ -94,7 +94,7 @@
             <el-table-column prop="XMMC"   align="center" width="105" sortable :show-overflow-tooltip="true" label="项目名称"></el-table-column>
             <el-table-column prop="PRHD"   align="center" width="105" sortable :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
             <el-table-column prop="SSLY"   align="center" width="105" sortable :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
+            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
 
@@ -125,7 +125,9 @@
 
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
-          <el-table :data="roadSquare.slice( (currentPageNum3-1)*pageSizeNum3 , currentPageNum3*pageSizeNum3 )" style="width: 100%" border>
+          <el-table :data="roadSquare.slice( (currentPageNum3-1)*pageSizeNum3 , currentPageNum3*pageSizeNum3 )"
+                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change'
+                    style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSizeNum3 * (currentPageNum3 - 1) }}
@@ -137,7 +139,7 @@
             <el-table-column prop="XMMC"   align="center" width="105" sortable :show-overflow-tooltip="true" label="项目名称"></el-table-column>
             <el-table-column prop="PRHD"   align="center" width="105" sortable :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
             <el-table-column prop="SSLY"   align="center" width="105" sortable :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
+            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
 
@@ -180,7 +182,7 @@
             <el-table-column prop="XMMC"   align="center" width="105" sortable :show-overflow-tooltip="true" label="项目名称"></el-table-column>
             <el-table-column prop="PRHD"   align="center" width="105" sortable :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
             <el-table-column prop="SSLY"   align="center" width="105" sortable :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
+            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
 
@@ -217,7 +219,7 @@
             <el-table-column prop="XMMC"   align="center" width="105" sortable :show-overflow-tooltip="true" label="项目名称"></el-table-column>
             <el-table-column prop="PRHD"   align="center" width="105" sortable :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
             <el-table-column prop="SSLY"   align="center" width="105" sortable :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
+            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
 
@@ -254,7 +256,7 @@
             <el-table-column prop="XMMC"   align="center" width="105" sortable :show-overflow-tooltip="true" label="项目名称"></el-table-column>
             <el-table-column prop="PRHD"   align="center" width="105" sortable :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
             <el-table-column prop="SSLY"   align="center" width="105" sortable :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" :sort-method="sortChange" label="所属排水分区"></el-table-column>
+            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
 
@@ -400,18 +402,21 @@
         },
         pageNo : 1,
         projectId: '',
-        buildSquare: [], // 公园绿地
+        buildSquare: [], // 建筑小区
         roadSquare: [],  // 道路广场
-        parkSquare: [],  // 建筑小区
-        total: 0,//默认数据总数
+        parkSquare: [],  // 公园绿地
+        saveArray1: [],  // 建筑小区
+        saveArray2: [],  // 道路广场
+        saveArray3: [],  // 公园绿地
+        total: 0,        // 默认数据总数
         totalFrist : 0,
         totalSecond: 0,
         totalThree: 0,
-        pageSize: 10,//每页的数据条数
+        pageSize: 10,    //每页的数据条数
         pageSizeNum1: 10,//每页的数据条数
         pageSizeNum2: 10,//每页的数据条数
         pageSizeNum3: 10,//每页的数据条数
-        currentPage: 1,//默认开始页面
+        currentPage: 1,  //默认开始页面
         currentPageNum1: 1,//默认开始页面
         currentPageNum2: 1,//默认开始页面
         currentPageNum3: 1,//默认开始页面
@@ -430,7 +435,9 @@
           mingcheng: []
         },
         targetName: '',
-        /* 表单验证 */
+        /**
+         *  表单验证
+         */
         rules: {
           name: [
             { required: true, message: '地块编号', trigger: 'blur' }
@@ -634,6 +641,7 @@
               RoadTest.JSQK = "规划管控" + '';
             }
             self.roadSquare.push(RoadTest);
+            self.saveArray2.push(RoadTest)
           } else
           /**
            * 建筑小区
@@ -683,6 +691,7 @@
               builTest.JSQK = "规划管控" + '';
             }
             self.buildSquare.push(builTest);
+            self.saveArray1.push(builTest)
           } else
           /**
            * 公园绿地
@@ -732,6 +741,7 @@
               parkTest.JSQK = "规划管控" + '';
             }
             self.parkSquare.push(parkTest);
+            self.saveArray3.push(parkTest)
           }
         });
         this.totalFrist = self.buildSquare.length;
@@ -744,18 +754,203 @@
       /**
        * 排水分区排序
        */
-      sortChange(a, b){
-        var removeChines1 = a.SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
-        var number1 = removeChines1.replace(/#/g, '')
-        var removeChines2 = b.SSPSFQ.replace(/[\u4e00-\u9fa5]/g, '');
-        var number2 = removeChines2.replace(/#/g, '')
-        return number1-number2
+
+      sort_change(column) {
+        const self = this;
+        console.log("order:", column.prop);
+        if (column.prop === null){
+          self.buildSquare = self.saveArray1;
+          self.roadSquare  = self.saveArray2;
+          self.parkSquare  = self.saveArray3;
+        }
+        if (column.prop === 'area') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var area1 = a.area;
+              var area2 = b.area;
+              return area2 - area1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var area1 = a.area;
+              var area2 = b.area;
+              return area1 - area2
+            })
+          }
+        }
+        if (column.prop === 'XZKZL') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var XZKZL1 = a.XZKZL.replace(/%/g, '');
+              var XZKZL2 = b.XZKZL.replace(/%/g, '');
+              return XZKZL2 - XZKZL1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var XZKZL1 = a.XZKZL.replace(/%/g, '');
+              var XZKZL2 = b.XZKZL.replace(/%/g, '');
+              return XZKZL1 - XZKZL2
+            })
+          }
+        }
+        if (column.prop === 'GHKZL') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var GHKZL1 = a.GHKZL.replace(/%/g, '');
+              var GHKZL2 = b.GHKZL.replace(/%/g, '');
+              return GHKZL2 - GHKZL1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var GHKZL1 = a.GHKZL.replace(/%/g, '');
+              var GHKZL2 = b.GHKZL.replace(/%/g, '');
+              return GHKZL1 - GHKZL2
+            })
+          }
+        }
+        if (column.prop === 'SSPSFQ') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var SSPSFQ1 = a.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              var SSPSFQ2 = b.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              return SSPSFQ2 - SSPSFQ1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var SSPSFQ1 = a.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              var SSPSFQ2 = b.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              return SSPSFQ1 - SSPSFQ2
+            })
+          }
+        }
+        if (column.prop === 'JSZT') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              return JSZT2.localeCompare(JSZT1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              return JSZT1.localeCompare(JSZT2)
+            })
+          }
+        }
+        if (column.prop === 'JSQK') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var JSQK1 = a.JSQK;
+              var JSQK2 = b.JSQK;
+              return JSQK2.localeCompare(JSQK1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var JSQK1 = a.JSQK;
+              var JSQK2 = b.JSQK;
+              return JSQK1.localeCompare(JSQK2)
+            })
+          }
+        }
+        if (column.prop === 'SSLY') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var SSLY1 = a.SSLY;
+              var SSLY2 = b.SSLY;
+              return SSLY2.localeCompare(SSLY1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var SSLY1 = a.SSLY;
+              var SSLY2 = b.SSLY;
+              return SSLY1.localeCompare(SSLY2)
+            })
+          }
+        }
+        if (column.prop === 'PRHD') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var PRHD1 = a.PRHD;
+              var PRHD2 = b.PRHD;
+              return PRHD2.localeCompare(PRHD1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var PRHD1 = a.PRHD;
+              var PRHD2 = b.PRHD;
+              return PRHD1.localeCompare(PRHD2)
+            })
+          }
+        }
+        if (column.prop === 'name') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var name1 = a.name.substr(0, 2);
+              var name2 = b.name.substr(0, 2);
+              return name2 - name1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var name1 = a.name.substr(0, 2);
+              var name2 = b.name.substr(0, 2);
+              return name1 - name2
+            })
+          }
+        }
+        if (column.prop === 'YDLX') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX.replace(/\+/g, '');
+              var YDLX2 = b.YDLX.replace(/\+/g, '');
+              return (YDLX2 + '').localeCompare(YDLX1 + '')
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX.replace(/\+/g, '');
+              var YDLX2 = b.YDLX.replace(/\+/g, '');
+              return (YDLX1 + '').localeCompare(YDLX2 + '')
+            })
+          }
+        }
+        if (column.prop === 'XMMC') {
+          if (column.order === 'descending') {
+            self.buildSquare = self.buildSquare.sort(function(a,b){
+              console.log(a.XMMC,b.XMMC)
+              if(b.XMMC !== null && a.XMMC !== null) {
+                var XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                var XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                return XMMC2.localeCompare(XMMC1)
+              }else {
+                return XMMC2 - XMMC1
+              }
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.buildSquare = self.buildSquare.sort(function (a, b) {
+              if (b.XMMC !== null && a.XMMC !== null) {
+                var XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
+                var XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
+                return XMMC1.localeCompare(XMMC2)
+              }else{
+                return XMMC2 - XMMC1
+              }
+            })
+          }
+        }
       },
-      sortChangeList(column, prop, order){
-        console.log(column);  //prop标签 => nickname
-        console.log(column.prop);  //prop标签 => nickname
-        console.log(column.order); //descending降序、ascending升序
-      },
+
+
       /**
        * 标签页
        */
