@@ -927,12 +927,14 @@
           if (column.order === 'descending') {
             self.buildSquare = self.buildSquare.sort(function(a,b){
               console.log(a.XMMC,b.XMMC)
+              var XMMC1
+              var XMMC2
               if(b.XMMC !== null && a.XMMC !== null) {
-                var XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
-                var XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
-                return XMMC2.localeCompare(XMMC1)
+                 XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                 XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                return (XMMC1 + '').localeCompare(XMMC2 + '')
               }else {
-                return XMMC2 - XMMC1
+                return
               }
             })
           } else
@@ -941,9 +943,9 @@
               if (b.XMMC !== null && a.XMMC !== null) {
                 var XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
                 var XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
-                return XMMC1.localeCompare(XMMC2)
+                return (XMMC2 + '').localeCompare(XMMC1 + '')
               }else{
-                return XMMC2 - XMMC1
+                return
               }
             })
           }
