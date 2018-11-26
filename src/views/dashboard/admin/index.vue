@@ -1,8 +1,6 @@
 <template>
   <div class="map-context">
-    <div class="map-tab"
-
-    >
+    <div class="map-tab">
       <BaiduMap
         ref="map"
         :is-hide-all-subcatchments="isHideAllSubcatchments"
@@ -25,12 +23,12 @@
       <!--左-->
       <div :class="isCollapse?'open':'off'" class="left-content">
         <!--搜索框-->
-        <el-row class="map-search">
-          <div class="map-search">
-            <el-input class="map-input" placeholder="请输入内容"/>
-            <el-button type="primary" class="search-button">搜索</el-button>
-          </div>
-        </el-row>
+        <!--<el-row class="map-search">-->
+          <!--<div class="map-search">-->
+            <!--<el-input class="map-input" placeholder="请输入内容"/>-->
+            <!--<el-button type="primary" class="search-button">搜索</el-button>-->
+          <!--</div>-->
+        <!--</el-row>-->
         <!--菜单-->
         <el-row class="menu-box">
           <el-menu
@@ -290,8 +288,8 @@
                         <li>
                           <div class="info-title">面积</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content="String(dataInfo.area)" placement="top-start">
-                              <el-button class="info-button" style="height: 20px">{{dataInfo.area}}m<sup>2</sup></el-button>
+                            <el-tooltip class="item" effect="dark" :content="String(dataInfo.area.toFixed(2))" placement="top-start">
+                              <el-button class="info-button" style="height: 20px">{{dataInfo.area.toFixed(2)}}m<sup>2</sup></el-button>
                             </el-tooltip>
                           </div>
                         </li>
@@ -467,7 +465,7 @@
               <el-collapse-item v-model="dataInfo" :title="dataInfo.type+'信息'" name="1" v-if="dataInfo.type=='企业'">
                 <template slot="title">
                   <span>{{dataInfo.type}}</span>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageConduits(data.geos)" @click.stop>查下游污水管+污水去向</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageConduits(dataInfo.geos)" @click.stop>查下游污水管+污水去向</el-button>
                   <!--<el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageOutfall(data.geos)" @click.stop>查下游污水去向</el-button>-->
                 </template>
                 <el-collapse v-model="activeNames" >
@@ -478,24 +476,6 @@
                         <div class="info-span">
                           <el-tooltip class="item" effect="dark" :content="String(dataInfo.QYMC)" placement="top-start">
                             <el-button class="info-button">{{dataInfo.QYMC}}</el-button>
-                          </el-tooltip>
-                        </div>
-
-                      </li>
-                      <li>
-                        <div class="info-title">X_坐标</div>
-                        <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.X_cor)" placement="top-start">
-                            <el-button class="info-button">{{dataInfo.X_cor}}</el-button>
-                          </el-tooltip>
-                        </div>
-
-                      </li>
-                      <li>
-                        <div class="info-title">Y_坐标</div>
-                        <div class="info-span">
-                          <el-tooltip class="item" effect="dark" :content="String(dataInfo.Y_cor)" placement="top-start">
-                            <el-button class="info-button">{{dataInfo.Y_cor}}</el-button>
                           </el-tooltip>
                         </div>
 
@@ -635,16 +615,273 @@
               <!--企业结束-->
             </el-collapse>
           </div>
-
         </div>
-        <div class="label">
+        <div class="label" @click="handleShowSelect">
           反向查询
+        </div>
+        <div  class="selectContext" v-show="isSelect" >
+          <div class="select-search">
+            <el-autocomplete
+              style="width: 450px;"
+              class="inline-input"
+              v-model="state1"
+              :fetch-suggestions="querySearch"
+              placeholder="请输入内容"
+              @select="handleSelect"
+            ></el-autocomplete>
+            <el-button type="success" icon="el-icon-search" circle></el-button>
+          </div>
+          <div class="result-ul" v-show = 'isResult'>
+            <el-tabs type="border-card" v-model="select">
+              <el-tab-pane style="max-height: 500px;overflow: auto" v-if = "select.outfalls.length"      :label= "'排口'+'（'+select.outfalls.length+')'">
+                <el-table :data="outfallsData" border max-height="500" style="width: 100%;" key="outfallTable">
+                  <el-table-column
+                    fixed
+                    prop="id"
+                    label="序号"
+                    width="100">
+                  </el-table-column>
+                  <el-table-column
+                    prop="projectName"
+                    label="项目编号"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="leixing"
+                    label="类型"
+                    :filters="[{ text: '雨水排水口', value: '雨水排水口' }, { text: '污水排口', value: '污水排口'},{ text: '混流排口', value: '混流排口'}]"
+                    filter-placement="bottom-end"
+                    :filter-method="filterleixing"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="name"
+                    label="排口编号"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="lng_lat"
+                    label="地理位置坐标"
+                    width="400">
+                  </el-table-column>
+
+                  <el-table-column
+                    prop="paixiang"
+                    label="排向"
+                    width="120">
+                  </el-table-column>
+                </el-table>
+              </el-tab-pane>
+              <el-tab-pane style="max-height: 500px;overflow: auto" v-if = "select.conduits.length"      :label= "'管线'+'（'+select.conduits.length+')'">
+                <el-table :data="conduitsData" border max-height="500" style="width: 100%;" key="conduitData">
+                  <el-table-column
+                    fixed
+                    prop="id"
+                    label="序号"
+                    width="50">
+                  </el-table-column>
+                  <el-table-column
+                    prop="name"
+                    label="名称"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="leixing"
+                    label="类型"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="guanjing"
+                    label="管径(毫米)"
+                    width="100">
+                  </el-table-column>
+                </el-table>
+              </el-tab-pane>
+              <el-tab-pane v-if = "select.subcatchments.length" :label= "'地块'+'（'+select.subcatchments.length+')'" style="max-height: 500px;overflow: auto">
+                <el-table :data="subcatchmentData" border max-height="500" style="width: 100%;" key="conduitData">
+                  <el-table-column
+                    prop="name"
+                    label="编号"
+                    sortable
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="area"
+                    label="面积(平方米)"
+                    sortable
+                    width="250">
+                  </el-table-column>
+                  <el-table-column
+                    prop="YDLX"
+                    label="用地类型"
+                    width="200">
+                  </el-table-column>
+                  <el-table-column
+                    prop="JSZT"
+                    label="建设状态"
+                    sortable
+                    width="200">
+                  </el-table-column>
+                  <el-table-column
+                    prop="XMMC"
+                    label="项目名称"
+                    sortable
+                    width="250">
+                  </el-table-column>
+                  <el-table-column
+                    prop="PRHD"
+                    label="排入河道"
+                    sortable
+                    width="200">
+                  </el-table-column>
+                  <el-table-column
+                    prop="SSLY"
+                    label="所属流域"
+                    sortable
+                    width="200">
+                  </el-table-column>
+                  <el-table-column
+                    prop="SSPSFQ"
+                    label="所属排水分区"
+                    sortable
+                    width="200">
+                  </el-table-column>
+                  <el-table-column
+                    prop="ZBQY"
+                    label="是否为正本清源项目"
+                    sortable
+                    width="200">
+                  </el-table-column>
+                  <el-table-column
+                    prop="HMCS"
+                    label="是否为海绵项目"
+                    sortable
+                    width="200">
+                  </el-table-column>
+                  <el-table-column
+                    prop="HMLX"
+                    label="海绵类型"
+                    sortable
+                    width="200">
+                  </el-table-column>
+                </el-table>
+              </el-tab-pane>
+              <el-tab-pane style="max-height: 500px;overflow: auto" v-if = "select.companys.length"      :label= "'企业'+'（'+select.companys.length+')'">
+                <el-table :data="companysData" border max-height="500" style="width: 100%;" key="companyTable">
+                  <el-table-column
+                    fixed
+                    prop="id"
+                    label="序号"
+                    width="50">
+                  </el-table-column>
+                  <el-table-column
+                    prop="projectName"
+                    label="项目编号"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="category"
+                    label="类型"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="lng_lat"
+                    label="坐标"
+                    width="400">
+                  </el-table-column>
+                  <el-table-column
+                    prop="JDMC"
+                    label="街道名称"
+                    width="300">
+                  </el-table-column>
+                  <el-table-column
+                    prop="SQMC"
+                    label="社区名称"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="SCJYDZ"
+                    label="地址"
+                    width="400">
+                  </el-table-column>
+                  <el-table-column
+                    prop="FDDBR"
+                    label="法人代表"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="LXFS"
+                    label="联系方式"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="QYRS"
+                    label="企业人数"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="HYLB"
+                    label="行业类别"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="SCYSL"
+                    label="生产用水量"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="PSL"
+                    label="排水量"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="ZYSCGY"
+                    label="主要生产工艺"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="GPZL"
+                    label="产品"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="HPPFWJ"
+                    label="环评"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="HPPFWJYXX"
+                    label="环评有效性"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="PWXKZ"
+                    label="排污许可证"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    prop="FSCLFS"
+                    label="废水处理方式"
+                    width="120">
+                  </el-table-column>
+                  <el-table-column
+                    fixed="right"
+                    label="操作"
+                    width="100">
+                  </el-table-column>
+                </el-table>
+              </el-tab-pane>
+            </el-tabs>
+          </div>
+        </div>
+        <!--重新绘制-->
+        <div class="label" style="background: red" @click="handleReset">
+           重新绘制
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
   import _each from '@/utils/_each'
   import BaiduMap from './components/map/baidu'
@@ -668,6 +905,11 @@
     },
     data() {
       return {
+        subcatchmentData:[],
+        conduitsData:[],
+        outfallsData:[],
+        companysData:[],
+        isResult:false,
         isLoading: true,
         projectId:'',
         outfalls:{
@@ -712,6 +954,7 @@
         isHideCompanys:true,
         //消息提示
         infoManager: false,
+        isSelect:false,
         isCollapse: true,
         tabPosition: 'right',
         activeName: '1',
@@ -719,14 +962,34 @@
         mapData:{},
         activeNames: ['1'],
         dataInfo:{},
+      //  输入项
+        restaurants: [],
+        state1: '',
+      //  查询结果
+        selectResult:{
+          subcatchments : [],
+          conduits:[],
+          junctions:[],
+          outfalls:[],
+          companys:[]
+        },
+        select:{
+          subcatchments : [],
+          conduits:[],
+          junctions:[],
+          outfalls:[],
+          companys:[]
+        },
       }
     },
     create() {
 
+
     },
     mounted(){
-      this.getProjectId()
+      this.getProjectId();
       this.getMapData();
+      this.restaurants = this.loadAll();
     },
     methods: {
       // 取得项目编号
@@ -737,6 +1000,7 @@
       getMapData(){
         var self = this;
         var projectId = this.projectId;
+
         request('shapes', {
           params: {
             pageNo: 1,
@@ -751,6 +1015,7 @@
           }
         }).then(resp => {
           var data = resp.data;
+          var selectOpaction = []
           //正则 匹配道路 的正则
           var daoluReg = /^[S][^A-Za-z]$/;
           // 市政公用设施用地
@@ -768,6 +1033,17 @@
           for(var i = 0;i<data.length;i++) {
             var category = data[i].category;
             var properties = JSON.parse(data[i].properties).properties;
+            var arr = []
+            for (let i in properties) {
+              if(i == 'WP' || i == 'YP' || i=='center' || i== 'area' || i == 'X_cor' || i == 'Y_cor' ){
+              }else{
+                var value = {
+                  value :properties[i]
+                }
+                selectOpaction.push(value);
+              }
+
+            }
             if (category == 'COMPANY') {
               self.companys.push(data[i])
             }
@@ -815,10 +1091,22 @@
               }
             }
           }
+          //数组去重
+          var newArr = []
+          for(var i = 0;i<selectOpaction.length;i++){
+            var flag = true;
+            for(var j=0;j<newArr.length;j++){
+              if(selectOpaction[i].value == newArr[j].value){
+                flag = false
+              }
+            }
+            if(flag){
+              newArr.push(selectOpaction[i])
+            }
+          }
+          self.restaurants = newArr;
         })
       },
-
-
       /**
        * 显示/隐藏全部地块
        */
@@ -889,6 +1177,7 @@
       // 是否显示
       handleShow() {
         this.infoManager = !this.infoManager
+        this.isSelect = !this.isSelect;
       },
       // 折叠展开
       hanleFold() {
@@ -941,11 +1230,130 @@
       },
       handleSubcatchmentsSelectSewageOutfalls(data){
         this.$refs.map.handleSubcatchmentsSelectSewageOutfalls(data)
-      }
-    },
-    created() {
+      },
+      /**
+       * 重新绘制事件
+       * */
+      handleReset(){
+        this.$refs.map.handleReset();
+      },
+      /**
+       * 反向查询
+       * */
+      handleShowSelect(){
+        this.infoManager = !this.infoManager
+        this.isSelect = !this.isSelect;
+      },
+      querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) => {
+          return (restaurant.value);
+        };
+      },
+      //查询
+      handleSelect(item) {
+        var self = this;
+        self.selectResult.subcatchments =[];
+        self.selectResult.conduits = [];
+        self.selectResult.outfalls = [];
+        self.selectResult.companys = [];
+        self.selectResult.junctions = [];
+        var value = item.value;
+        //请求全部数据
+        var projectId = this.projectId;
+        request('shapes', {
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: projectId
+                },
+              }
+            }
+          }
+        }).then(resp => {
+          var data = resp.data;
+          var result = []
+          for(var i = 0;i<data.length;i++) {
+            var category = data[i].category;
+            var properties = JSON.parse(data[i].properties).properties;
+            for (let item in properties) {
+              if (properties[item] == value) {
+                result.push(data[i])
+                // }
+              }
+            }
+          }
+          //  拿到结果 进行处理
+          var newArr = []
+          for(var i = 0;i<result.length;i++){
+            var flag = true;
+            for(var j=0;j<newArr.length;j++){
+              if(result[i].id == newArr[j].id){
+                flag = false
+              }
+            }
+            if(flag){
+              newArr.push(result[i])
+            }
+          }
+        //  拿到结果进行处理  用于页面展示  用于 地图绘制
+          for(var i = 0;i<newArr.length;i++){
+            var category = newArr[i].category;
 
+            switch (category) {
+              case 'SUBCATCHMENTS':
+                 var properties = JSON.parse(newArr[i].properties);
+                 var subcatchments = {
+                   properties:properties.properties
+                 }
+                self.select.subcatchments.push(subcatchments)
+                self.subcatchmentData.push(subcatchments.properties)
+                self.selectResult.subcatchments.push(newArr[i])
+                break;
+              case 'CONDUITS':
+                var properties = JSON.parse(newArr[i].properties);
+                var conduits = {
+                  properties:properties.properties
+                }
+                self.select.conduitsData.push(conduits.properties)
+                self.select.conduits.push(conduits)
+                self.selectResult.conduits.push(newArr[i])
+                break;
+              case 'OUTFALLS':
+                var properties = JSON.parse(newArr[i].properties);
+                var outfalls = {
+                  properties:properties.properties
+                }
+                self.outfallsData.push(outfalls.properties)
+                self.select.outfalls.push(outfalls)
+                self.selectResult.outfalls.push(newArr[i])
+                break;
+              case 'COMPANY':
+               var properties = JSON.parse(newArr[i].properties);
+                var companys= {
+                  properties:properties.properties
+                }
+                self.companysData.push(companys.properties)
+                self.select.companys.push(companys)
+                self.selectResult.companys.push(newArr[i])
+                break;
+            }
+          }
+          self.isResult = !self.isResult
+          this.$refs.map.showResult(self.selectResult);
+
+        })
+      }
     }
+    //  备选项分类
   }
 </script>
 <style rel="stylesheet/scss" scoped>
@@ -984,6 +1392,9 @@
             .info-button{width: 100%;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;border: 0px;}
           }
         }
+      }
+      .selectContext{position:absolute;top:58px;left:-500px; width:500px;max-height:700px;background:rgba(255,255,255,0.5);
+        .result-ul li{float:left; width: 80px;}
       }
     }
 

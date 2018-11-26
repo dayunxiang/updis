@@ -280,31 +280,31 @@
             pointArr.push(point)
           }
           if(YDLX == '道路' || daoluReg.test(YDLX)){
-            var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(242,242,242)',fillOpacity:0.3})
+            var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(242,242,242)',fillOpacity:0.3})
             polygon.type = info.type
           }
           if(shiZhengReg.test(YDLX)){
-            var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,0,254)',fillOpacity:0.3})
+            var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,0,254)',fillOpacity:0.3})
             polygon.type = info.type
           }
           if(lvDiReg.test(YDLX)) {
-            var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,255,1)',fillOpacity:0.3})
+            var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,255,1)',fillOpacity:0.3})
             polygon.type = info.type
           }
           if(juZhuYongDiReg.test(YDLX)) {
-            var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,255,1)',fillOpacity:0.3})
+            var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,255,1)',fillOpacity:0.3})
             polygon.type = info.type
           }
           if(zhengFuReg.test(YDLX)){
-            var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,0,255)',fillOpacity:0.3})
+            var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,0,255)',fillOpacity:0.3})
             polygon.type = info.type
           }
           if(gongYeReg.test(YDLX)){
-            var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(127,63,1)',fillOpacity:0.3})
+            var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(127,63,1)',fillOpacity:0.3})
             polygon.type = info.type
           }
           if(shangyeReg.test(YDLX)){
-            var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(245,0,0)',fillOpacity:0.3})
+            var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(245,0,0)',fillOpacity:0.3})
             polygon.type = info.type
           }
           map.addOverlay(polygon);
@@ -541,11 +541,32 @@
         }
        //   地块覆盖物
         for(var i = 0;i<overlay.Polygon.length;i++){
+<<<<<<< HEAD
           overlay.Polygon[i].setFillOpacity(0.1);
+=======
+          overlay.Polygon[i].setFillOpacity(0.025);
+          overlay.Polygon[i].setStrokeColor("rgba(128,128,128,0.1)");
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
         }
       //   管线覆盖物
         for(var i = 0;i<overlay.Polyline.length;i++){
            var leixing = overlay.Polyline[i].type
+<<<<<<< HEAD
+=======
+
+          if(leixing == '雨水管'){
+            overlay.Polyline[i].setStrokeColor('rgb(193 223 255)');
+          }
+          if(leixing == '污水管'){
+            overlay.Polyline[i].setStrokeColor('rgb(250 228 252)');
+
+          }
+        }
+      // 企业覆盖物
+        for(var i = 0;i<overlay.Marker.length;i++){
+          map.removeOverlay(overlay.Marker[i])
+        }
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
 
           if(leixing == '雨水管'){
             overlay.Polyline[i].setStrokeColor('rgb(193 223 255)');
@@ -560,6 +581,43 @@
           map.removeOverlay(overlay.Marker[i])
         }
 
+      },
+      //清除查询出来的管线
+      clearSelectConduits(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //查出来的污水管
+        for(var i = 0; i<overlay.Polyline.length;i++){
+          var type = overlay.Polyline[i].type;
+          if(type == '查出来的污水管'){
+            map.removeOverlay(overlay.Polyline[i])
+          }
+          if(type == '查出来的雨水管'){
+            map.removeOverlay(overlay.Polyline[i])
+          }
+        }
       },
       //清除查询出来的管线
       clearSelectConduits(){
@@ -732,6 +790,7 @@
             }
             //渲染地块
             if(YDLX == '道路' || daoluReg.test(YDLX)){
+<<<<<<< HEAD
               var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(242,242,242)',fillOpacity:0.5})
               polygon.type = info.type
             }
@@ -757,6 +816,33 @@
             }
             if(shangyeReg.test(YDLX)){
               var polygon = new BMap.Polygon(pointArr,{strokeColor:"#808080", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(245,0,0)',fillOpacity:0.5})
+=======
+              var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(242,242,242)',fillOpacity:0.5})
+              polygon.type = info.type
+            }
+            if(shiZhengReg.test(YDLX)){
+              var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,0,254)',fillOpacity:0.5})
+              polygon.type = info.type
+            }
+            if(lvDiReg.test(YDLX)) {
+              var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,255,1)',fillOpacity:0.5})
+              polygon.type = info.type
+            }
+            if(juZhuYongDiReg.test(YDLX)) {
+              var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,255,1)',fillOpacity:0.5})
+              polygon.type = info.type
+            }
+            if(zhengFuReg.test(YDLX)){
+              var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,0,255)',fillOpacity:0.5})
+              polygon.type = info.type
+            }
+            if(gongYeReg.test(YDLX)){
+              var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(127,63,1)',fillOpacity:0.5})
+              polygon.type = info.type
+            }
+            if(shangyeReg.test(YDLX)){
+              var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(245,0,0)',fillOpacity:0.5})
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
               polygon.type = info.type
             }
             map.addOverlay(polygon);
@@ -920,7 +1006,10 @@
         var self =this;
         self.test2();
         var allmap = self.map;
+<<<<<<< HEAD
         var map = new BMap.Map("map");
+=======
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
         var lng_lat = data;
         var overlays = []
         var arr = []
@@ -1028,6 +1117,7 @@
       showResult(data){
         var self = this;
         var map = self.map;
+<<<<<<< HEAD
         self.test2();
         var companys = data.companys;
         var conduits = data.conduits;
@@ -1063,6 +1153,17 @@
           var gongYeReg = /^[M]/;
           // 商业服务业设施用地
           var shangyeReg = /^[C][^A-Za-z]/;
+=======
+        var companys = self.mapData.companys;
+        self.test2();
+        var companysData = data.companys;
+        var conduitsData = data.conduits;
+        var outfallsData = data.outfalls;
+        var subcatchmentsData = data.subcatchments;
+        //开始判断
+        if(subcatchmentsData.length>0){
+          var subcatchmens  = [];
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
           for(var i = 0;i<subcatchmentsData.length;i++){
             var subcatchment = {
               id:subcatchmentsData[i].id,
@@ -1070,6 +1171,7 @@
             }
             subcatchmens.push(subcatchment)
           }
+<<<<<<< HEAD
           // 根据用地类型渲染
           _each(subcatchmens, function(index,subcatchment) {
             var id = subcatchment.id;
@@ -1145,6 +1247,95 @@
             }
             outfallsData.push(mapData)
           }
+=======
+          self.drawSubcatchments(subcatchmens);
+       /**
+        * 1、获取所有企业数据  获取每个企业的坐标   没有转过坐标
+        * 2、判断这个点是否在查询出来的地块中  没有转过
+        * */
+          var selectSubcatchmets = []
+          var selectCompanys = [];
+          for(var i=0;i<subcatchmentsData.length;i++){
+              var properties = JSON.parse(subcatchmentsData[i].properties);
+              var geos = properties.geometry.coordinates[0];
+              var selectSubcatchmet = {
+                properties:properties,
+                overlays:[]
+              }
+              for(var j = 0;j<geos.length;j++){
+                var points = new BMap.Point(geos[j][1],geos[j][0]);
+                selectSubcatchmet.overlays.push(points)
+              }
+            selectSubcatchmets.push(selectSubcatchmet)
+          }
+          //工业企业
+          for(var i = 0; i< companys.length;i++) {
+            var properties = JSON.parse(companys[i].properties);
+            var lng_lat = properties.geometry.coordinates;
+            var point = new BMap.Point(lng_lat[1], lng_lat[0])
+            var propertie = {
+              properties:properties
+            }
+            var selectCompany = {
+              point:point,
+              properties:propertie,
+            }
+            selectCompanys.push(selectCompany)
+          }
+          var selectCompanysResult = []
+          for(var i =0;i<selectCompanys.length;i++){
+            var point = selectCompanys[i].point;
+            for(var j = 0;j<selectSubcatchmets.length;j++){
+              var overlays = selectSubcatchmets[j].overlays
+              var ply = new BMap.Polygon(overlays);
+              var result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
+              if(result == true){
+                selectCompanysResult.push(selectCompanys[i].properties)
+              }
+            }
+          }
+          self.drawCompanys(selectCompanysResult)
+
+          // 根据地块查雨水排口 并展示
+          var rainOutfalls = [];
+          for(var i=0;i < subcatchmentsData.length;i++){
+            var properties = JSON.parse(subcatchmentsData[i].properties);
+            var cy = geojson2cytoscape(self.geoJson);
+            var ConduitsType = '雨水管'
+
+            var rainOutfall= getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsType);
+            var conduit = getDescendantConduitsOfSubcatchment(properties, cy,ConduitsType);
+            if(rainOutfall.length>0){
+              rainOutfalls.push(rainOutfall[0])
+            }
+            if(conduit.length>0){
+              var rainJunction_Lng_lat  = conduit[0].properties.geometry.coordinates[0];
+              var centerPoint= properties.properties.center;
+              //渲染引导线
+              var polyline = new BMap.Polyline([
+                new BMap.Point(centerPoint[1]+ 0.005363, centerPoint[0] - 0.00402),
+                new BMap.Point(rainJunction_Lng_lat[1]+ 0.005363, rainJunction_Lng_lat[0]- 0.00402),
+              ], {strokeColor:"blue", strokeWeight:3, strokeOpacity:1,strokeStyle:'dashed'});
+              map.addOverlay(polyline);
+              //渲染管线
+              _each(conduit, function(index, conduitData) {
+                var lng_lat = conduitData.properties.geometry.coordinates;
+                var pointArr = [];
+                for(var i = 0;i<lng_lat.length;i++){
+                  var point = new BMap.Point(lng_lat[i][1]+0.005363,lng_lat[i][0]-0.00402);
+                  pointArr.push(point);
+                }
+                var polyline = new BMap.Polyline(pointArr,{strokeColor:"blue", strokeWeight:4.5, strokeOpacity:1})
+                map.addOverlay(polyline);
+              })
+              console.log('一波完成')
+            }
+          }
+          self.drawOutfalls(rainOutfalls)
+
+        }
+        if(outfallsData.length>0){
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
           var outfalls = [];
           for(var i = 0;i<outfallsData.length;i++){
             var outfall = {
@@ -1152,6 +1343,7 @@
             }
             outfalls.push(outfall)
           }
+<<<<<<< HEAD
           _each(outfalls, function(index,outfall) {
             var lng_lat = outfall.properties.geometry.coordinates;
             var info = outfall.properties.properties;
@@ -1196,6 +1388,14 @@
             }
             conduitsData.push(mapData)
           }
+=======
+          self.drawOutfalls(outfalls);
+        }
+        if(conduitsData.length>0){
+          var self =this;
+          var map = this.map
+          var conduitsData = self.mapData.conduits;
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
           var conduits  = [];
           for(var i = 0;i<conduitsData.length;i++){
             var subcatchment = {
@@ -1203,6 +1403,7 @@
             }
             conduits.push(subcatchment)
           }
+<<<<<<< HEAD
           _each(conduits, function(index,conduit) {
             var lng_lat = conduit.properties.geometry.coordinates;
             var info = conduit.properties.properties;
@@ -1280,6 +1481,100 @@
 
 
   },
+=======
+          self.drawConduits(conduits);
+        }
+        //企业
+        if(companysData.length>0){
+          var companys = [];
+          var selectSubcatchmets = []
+          var selectCompanysResult = [];
+          var subcatchmentsData = self.mapData.subcatchments;
+          //地块数据
+          for(var j = 0;j<subcatchmentsData.length;j++){
+            var properties = JSON.parse(subcatchmentsData[j].properties)
+
+            var geos = properties.geometry.coordinates[0];
+            var selectSubcatchmet = {
+              properties:properties,
+              overlays:[]
+            }
+            for(var i = 0;i<geos.length;i++){
+              var points = new BMap.Point(geos[i][1],geos[i][0]);
+              selectSubcatchmet.overlays.push(points)
+            }
+            selectSubcatchmets.push(selectSubcatchmet);
+          }
+          //企业数据
+          for(var i = 0;i<companysData.length;i++){
+            var properties = JSON.parse(companysData[i].properties);
+            var companyLng_lat = properties.geometry.coordinates;
+            var point = new BMap.Point(companyLng_lat [1], companyLng_lat [0]);
+            //作比较
+            for(var j = 0;j<selectSubcatchmets.length;j++){
+              var overlays = selectSubcatchmets[j].overlays
+              var ply = new BMap.Polygon(overlays);
+              var result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
+              if(result == true){
+                var data = selectSubcatchmets[j].properties;
+                var cy = geojson2cytoscape(self.geoJson);
+                var ConduitsType = '污水管'
+                let conduits = getDescendantConduitsOfSubcatchment(data, cy,ConduitsType);
+                var dataArr = []
+                for(var k =0 ;k<conduits.length;k++){
+                  dataArr[k]=conduits[k].properties;
+                }
+                var conduitsData = dataArr;
+                //引导线
+                var rainJunction_Lng_lat = dataArr[0].geometry.coordinates[0];
+                var polyline = new BMap.Polyline([
+                  new BMap.Point(companyLng_lat[1]+ 0.005363, companyLng_lat[0] - 0.00402),
+                  new BMap.Point(rainJunction_Lng_lat[1]+ 0.005363, rainJunction_Lng_lat[0]- 0.00402),
+                ], {strokeColor:"#e868f2", strokeWeight:3, strokeOpacity:1,strokeStyle:'dashed'});
+                map.addOverlay(polyline);
+                // //渲染污水管线
+                _each(conduitsData, function(index, conduit) {
+                  var lng_lat = conduit.geometry.coordinates;
+                  var info = conduit.properties;
+                  info.type = '管线'
+                  var leixing = info.leixing;
+                  var pointArr = [];
+                  for(var i = 0;i<lng_lat.length;i++){
+                    var point = new BMap.Point(lng_lat[i][1]+0.005363,lng_lat[i][0]-0.00402);
+                    pointArr.push(point);
+                  }
+                  var polyline = new BMap.Polyline(pointArr,{strokeColor:"#e868f2", strokeWeight:4.5, strokeOpacity:1})
+                  map.addOverlay(polyline);
+                  //拿到排口 渲染排口
+                  var rainOutfall= getDescendantOutfallsOfSubcatchment(data,cy,ConduitsType);
+                  _each(rainOutfall, function(index,outfall) {
+                    var lng_lat = outfall.properties.geometry.coordinates;
+                    var info = outfall.properties.properties;
+                    info.type = '排口'
+                    var leixing = info.leixing;
+                    var point = new BMap.Point(lng_lat[1]+0.005363,lng_lat[0]-0.00402);
+                    var  circle = new BMap.Circle(point,10,{fillColor:"#e868f2", strokeWeight: 1 ,fillOpacity: 0.5, strokeOpacity: 0.3})
+                    circle.leixing = "污水排水口"
+                    map.addOverlay(circle);
+                  })
+                })
+
+                selectCompanysResult.push(selectSubcatchmets[j])
+
+              }
+            }
+
+            var  company = {
+              properties:JSON.parse(companysData[i].properties)
+            }
+            companys.push(company)
+          }
+          // 画出企业
+          self.drawCompanys(companys);
+          self.drawSubcatchments(selectCompanysResult)
+        }
+      },
+>>>>>>> 44e8e02df76e2d8f7bd4b88bdffadc7ae21b3213
     }
   }
 </script>
