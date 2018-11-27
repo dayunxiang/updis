@@ -257,7 +257,7 @@
       </div>
       <!--右-->
       <div class="right-box">
-        <div class="label info-label" @click="handleShow">
+        <div class="label info-label" @click="handleInfoShow">
           信息管理
         </div>
         <div v-show="infoManager" class="context">
@@ -616,20 +616,20 @@
             </el-collapse>
           </div>
         </div>
-        <div class="label" @click="handleShowSelect">
+        <div class="label" @click="handleSelectShow">
           反向查询
         </div>
         <div  class="selectContext" v-show="isSelect" >
           <div class="select-search">
             <el-autocomplete
-              style="width: 450px;"
-              class="inline-input"
+              class="el-input"
+              style="width: 450px"
               v-model="state1"
-              :fetch-suggestions="querySearch"
-              placeholder="请输入内容"
-              @select="handleSelect"
-            ></el-autocomplete>
-            <el-button type="success" icon="el-icon-search" circle></el-button>
+              :fetch-suggestions="querySearchAsync"
+              placeholder="请输入查询条件,多条件之间用;(分号隔开)"
+              :trigger-on-focus="false">
+            </el-autocomplete>
+            <el-button type="success" icon="el-icon-search" circle @click="handleSelect"></el-button>
           </div>
           <div class="result-ul" v-show = 'isResult'>
             <el-tabs type="border-card" v-model="select">
@@ -905,6 +905,10 @@
     },
     data() {
       return {
+        dynamicTags: ['标签一', '标签二', '标签三'],
+        inputVisible: false,
+        inputValue: '',
+
         subcatchmentData:[],
         conduitsData:[],
         outfallsData:[],
@@ -993,11 +997,11 @@
     },
     methods: {
       // 取得项目编号
-      getProjectId(){
+      getProjectId() {
         this.projectId = this.$route.query.projectId
       },
       // 取得mapData
-      getMapData(){
+      getMapData() {
         var self = this;
         var projectId = this.projectId;
 
@@ -1030,15 +1034,24 @@
           var gongYeReg = /^[M]/;
           // 商业服务业设施用地
           var shangyeReg = /^[C][^A-Za-z]/;
-          for(var i = 0;i<data.length;i++) {
+          for (var i = 0; i < data.length; i++) {
             var category = data[i].category;
             var properties = JSON.parse(data[i].properties).properties;
             var arr = []
             for (let i in properties) {
-              if(i == 'WP' || i == 'YP' || i=='center' || i== 'area' || i == 'X_cor' || i == 'Y_cor' ){
-              }else{
+              if (i == 'WP' || i == 'YP' || i == 'center' || i == 'area' || i == 'X_cor' || i == 'Y_cor' || i == null) {
+              } else {
+                //如果字符串中含有多个的处理
+                if(String(properties[i]).indexOf('、') !=-1){
+                  for(var s = 0;s<properties[i].split('、').length;s++){
+                     var value = {
+                       value:properties[i].split('、')[s]
+                     }
+                    selectOpaction.push(value);
+                  }
+                }
                 var value = {
-                  value :properties[i]
+                  value: properties[i]
                 }
                 selectOpaction.push(value);
               }
@@ -1092,20 +1105,49 @@
             }
           }
           //数组去重
+          var TempArr = []
           var newArr = []
-          for(var i = 0;i<selectOpaction.length;i++){
-            var flag = true;
-            for(var j=0;j<newArr.length;j++){
-              if(selectOpaction[i].value == newArr[j].value){
+          var selection = []
+          for (var i = 0; i < selectOpaction.length; i++) {
+            if (selectOpaction[i].value == null) {
+            }
+            else {
+              TempArr.push(selectOpaction[i])
+            }
+          }
+          for (var i = 0; i < TempArr.length; i++) {
+            var flag = true
+            for (var j = 0; j < newArr.length; j++) {
+              if (String(TempArr[i].value) == String(newArr[j].value)) {
                 flag = false
               }
             }
-            if(flag){
-              newArr.push(selectOpaction[i])
+            if (flag) {
+              var obj = {
+                value: String(selectOpaction[i].value)
+              }
+              newArr.push(obj)
+
             }
           }
-          self.restaurants = newArr;
+          for (var i = 0; i < newArr.length; i++) {
+            flag = true
+            for (var j = 0; j < selection.length; j++) {
+              if (newArr[i].value == selection[j].value) {
+                flag = false
+              }
+            }
+            if (flag) {
+              selection.push(newArr[i])
+            }
+          }
+          self.restaurants = selection;
+
         })
+      },
+      // 折叠展开
+      hanleFold() {
+        this.isCollapse = !this.isCollapse
       },
       /**
        * 显示/隐藏全部地块
@@ -1114,31 +1156,31 @@
         this.isHideAllSubcatchments = !this.isHideAllSubcatchments;
       },
       //隐藏道路
-      handleHideDaolu(){
+      handleHideDaolu() {
         this.isHideDaolu = !this.isHideDaolu;
       },
       // 隐藏市政
-      handleHideShiZheng(){
+      handleHideShiZheng() {
         this.isHideShizheng = !this.isHideShizheng;
       },
       // 隐藏绿地
-      handleHideLvdi(){
+      handleHideLvdi() {
         this.isHideLvdi = !this.isHideLvdi;
       },
       // 隐藏居住用地
-      handleHideJuzhu(){
+      handleHideJuzhu() {
         this.isHideJuzhu = !this.isHideJuzhu;
       },
       // 隐藏政府
-      handleHideZhengfu(){
+      handleHideZhengfu() {
         this.isHideZhengfu = !this.isHideZhengfu;
       },
       // 隐藏工业用地
-      handleHideGongye(){
+      handleHideGongye() {
         this.isHideGongye = !this.isHideGongye;
       },
       // 隐藏商业
-      handleHideShangye(){
+      handleHideShangye() {
         this.isHideShangye = !this.isHideShangye;
       },
       /**
@@ -1148,11 +1190,11 @@
         this.isHideAllConduits = !this.isHideAllConduits;
       },
       // 显示/隐藏雨水管线
-      handleHideRainConduits(){
+      handleHideRainConduits() {
         this.isHideRainConduits = !this.isHideRainConduits;
       },
       // 显示/隐藏污水管线
-      handleHideSewageConduits(){
+      handleHideSewageConduits() {
         this.isHideSewageConduits = !this.isHideSewageConduits;
       },
 
@@ -1163,63 +1205,62 @@
         this.isHideAllOutfalls = !this.isHideAllOutfalls
       },
       // 显示/隐藏合流排口
-      handleMergeOutfalls(){
+      handleMergeOutfalls() {
         this.isHideMergeOutfalls = !this.isHideMergeOutfalls
       },
       // 显示/隐藏雨水排口
-      handleRainOutfalls(){
+      handleRainOutfalls() {
         this.isHideRainOutfalls = !this.isHideRainOutfalls
       },
       // 显示/隐藏污水排口
-      handleSewageOutfalls(){
+      handleSewageOutfalls() {
         this.isHideSewageOutfalls = !this.isHideSewageOutfalls
       },
-      // 是否显示
-      handleShow() {
+      // 信息管理是否显示
+      handleInfoShow() {
         this.infoManager = !this.infoManager
-        this.isSelect = !this.isSelect;
+        if(this.isSelect){
+          this.isSelect = !this.isSelect;
+        }
       },
-      // 折叠展开
-      hanleFold() {
-        this.isCollapse = !this.isCollapse
-      },
+
       /**
        * 显示/隐藏全部企业
        *
        */
-      handleHideAllCompanys(){
+      handleHideAllCompanys() {
         this.isHideCompanys = !this.isHideCompanys;
       },
       /**
        * 根据排口查询上游管线
        */
-      handleSelectConduits(outFallName){
+      handleSelectConduits(outFallName) {
         this.$refs.map.handleSelectConduits(outFallName);
       },
       /**
        *根据排口查上游地块
        */
-      handleSelectSubcatchments(outFallName){
+      handleSelectSubcatchments(outFallName) {
         this.$refs.map.handleSelectSubcatchments(outFallName);
       },
       /**
        *根据地块查询下游雨水管道
        */
-      handleSubcatchmentsSelectRainConduits(data){
+      handleSubcatchmentsSelectRainConduits(data) {
         this.$refs.map.handleSubcatchmentsSelectRainConduits(data);
       },
       // 根据地块查询污水管道
-      handleSubcatchmentsSelectSewageConduits(data){
+      handleSubcatchmentsSelectSewageConduits(data) {
         this.$refs.map.handleSubcatchmentsSelectSewageConduits(data);
       },
       /**
        * 根据企业查询下游污水排口
        * */
-      handleCompanySelectSewageOutfall(data){
+      handleCompanySelectSewageOutfall(data) {
         this.$refs.map.handleCompanySelectSewageOutfall(data);
       },
       //根据企业查询污水管道
-      handleCompanySelectSewageConduits(data){
+      handleCompanySelectSewageConduits(data) {
         this.$refs.map.handleCompanySelectSewageConduits(data)
       },
       /**
@@ -1228,42 +1269,51 @@
       handleSubcatchmentsSelectRainOutfalls(data) {
         this.$refs.map.handleSubcatchmentsSelectRainOutfalls(data);
       },
-      handleSubcatchmentsSelectSewageOutfalls(data){
+      handleSubcatchmentsSelectSewageOutfalls(data) {
         this.$refs.map.handleSubcatchmentsSelectSewageOutfalls(data)
       },
       /**
        * 重新绘制事件
        * */
-      handleReset(){
+      handleReset() {
         this.$refs.map.handleReset();
       },
       /**
        * 反向查询
        * */
-      handleShowSelect(){
-        this.infoManager = !this.infoManager
+      handleSelectShow() {
         this.isSelect = !this.isSelect;
+        if(this.infoManager){
+          this.infoManager= !this.infoManager;
+        }
       },
-      querySearch(queryString, cb) {
+      //反向查询组件
+      querySearchAsync(queryString, cb) {
+        if(this.state1.substr(this.state1.length-1,1)== ';'){
+          queryString == ''
+        }
         var restaurants = this.restaurants;
-        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
-        // 调用 callback 返回建议列表的数据
-        cb(results);
+        let results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants;
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          cb(results);
+        }, 1000 * Math.random());
       },
-      createFilter(queryString) {
-        return (restaurant) => {
-          return (restaurant.value);
+      createStateFilter(queryString) {
+        return (restaurants) => {
+          return (restaurants.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
         };
       },
-      //查询
-      handleSelect(item) {
+
+      //查询开始
+      handleSelect() {
         var self = this;
+        var selectArr = self.String2Array(self.state1);
         self.selectResult.subcatchments =[];
         self.selectResult.conduits = [];
         self.selectResult.outfalls = [];
         self.selectResult.companys = [];
         self.selectResult.junctions = [];
-        var value = item.value;
         //请求全部数据
         var projectId = this.projectId;
         request('shapes', {
@@ -1280,17 +1330,90 @@
           }
         }).then(resp => {
           var data = resp.data;
-          var result = []
-          for(var i = 0;i<data.length;i++) {
+          var companys = [];
+          var outfalls = [];
+          var conduits = [];
+          var subcatchments = [];
+          var result = [];
+          for(var i = 0;i<data.length;i++){
             var category = data[i].category;
-            var properties = JSON.parse(data[i].properties).properties;
-            for (let item in properties) {
-              if (properties[item] == value) {
-                result.push(data[i])
-                // }
-              }
+            if (category == 'COMPANY') {
+              companys.push(data[i])
             }
+            if (category == 'OUTFALLS') {
+               outfalls.push(data[i])
+            }
+            if (category == 'CONDUITS') {
+               conduits.push(data[i]);
+            }
+            if (category == 'SUBCATCHMENTS') {
+               subcatchments.push(data[i])
+            }
+
           }
+          if(selectArr.length>0){
+            for(var j = 0;j<selectArr.length;j++){
+              //循环企业
+              for(var a = 0;a<companys.length;a++) {
+                var properties = JSON.parse(companys[a].properties).properties;
+                for (let i in properties) {
+                  if(String(properties[i]).indexOf('、') !=-1){
+                    for(var s = 0;s<properties[i].split('、').length;s++){
+                      if(properties[i].split('、')[s] == selectArr[j]){
+                        result.push(companys[a])
+                      }
+                    }
+                  }
+                  // if(String(properties[i]).indexOf('、') !=-1){
+                  //   for(var s = 0;s<properties[i].split('、').length;s++){
+                  //     console.log(properties[i][s]);
+                  //   }
+                  // }
+                }
+              }
+              //循环管线
+              for(var d = 0;d<conduits.length;d++){
+                var properties = JSON.parse(conduits[d].properties).properties;
+                for (let item in properties) {
+                  if(String(properties[item]) == selectArr[j]){
+                  }
+                }
+              }
+              //循环地块
+              for(var b = 0;b<subcatchments.length;b++){
+                var properties = JSON.parse(subcatchments[b].properties).properties;
+                for (let i in properties) {
+                  if(String(properties[i]) == selectArr[j]){
+                    result.push(subcatchments[b])
+                  }
+                }
+              }
+              //循环排口
+              for(var e = 0;e<outfalls.length;e++){
+                var properties = JSON.parse(outfalls[e].properties).properties;
+                for (let i in properties) {
+                  if(String(properties[i]) == selectArr[j]){
+                     console.log(selectArr[j])
+                     console.log(properties[i])
+                  }
+                }
+              }
+
+
+            }
+            }else{
+            console.log('请输入查询条件');
+          }
+          // for(var i = 0;i<data.length;i++) {
+          //   var category = data[i].category;
+          //   var properties = JSON.parse(data[i].properties).properties;
+          //   for (let item in properties) {
+          //     if (properties[item] == value) {
+          //       result.push(data[i])
+          //       // }
+          //     }
+          //   }
+          // }
           //  拿到结果 进行处理
           var newArr = []
           for(var i = 0;i<result.length;i++){
@@ -1351,6 +1474,11 @@
           this.$refs.map.showResult(self.selectResult);
 
         })
+      },
+      //字符串转数组
+      String2Array(data){
+         var selectArr = data.split(';')
+         return selectArr;
       }
     }
     //  备选项分类

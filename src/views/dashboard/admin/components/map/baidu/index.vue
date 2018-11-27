@@ -23,7 +23,7 @@
   export default {
     data(){
       return {
-        isLoading: false,
+        isLoading: true,
         pipeNetwork:[],
         map:{},
         geoJson: {
@@ -98,6 +98,7 @@
       //根据ID获取所有项目数据
       getDataInfo() {
         var self = this;
+        self.isLoading = true
         var projectId = self.projectId;
         request('shapes', {
           params: {
@@ -154,6 +155,7 @@
         self.renderringJunctions();
         self.renderringOutfalls();
         self.renderringCompanys();
+        self.isLoading = false
       },
       //渲染地块
       renderingSubcatchments(){
@@ -1026,6 +1028,7 @@
       },
     //  渲染查询结果
       showResult(data){
+        console.log(data);
         var self = this;
         var map = self.map;
         var companys = self.mapData.companys;
@@ -1037,6 +1040,7 @@
         //开始判断
         if(subcatchmentsData.length>0){
           var subcatchmens  = [];
+          self.isLoading = true;
           for(var i = 0;i<subcatchmentsData.length;i++){
             var subcatchment = {
               id:subcatchmentsData[i].id,
@@ -1091,7 +1095,6 @@
             }
           }
           self.drawCompanys(selectCompanysResult)
-
           // 根据地块查雨水排口 并展示
           var rainOutfalls = [];
           for(var i=0;i < subcatchmentsData.length;i++){
@@ -1124,11 +1127,10 @@
                 var polyline = new BMap.Polyline(pointArr,{strokeColor:"blue", strokeWeight:4.5, strokeOpacity:1})
                 map.addOverlay(polyline);
               })
-              console.log('一波完成')
             }
           }
           self.drawOutfalls(rainOutfalls)
-
+          self.isLoading = false;
         }
         if(outfallsData.length>0){
           var outfalls = [];
@@ -1141,6 +1143,7 @@
           self.drawOutfalls(outfalls);
         }
         if(conduitsData.length>0){
+          console.log(conduitsData)
           var self =this;
           var map = this.map
           var conduitsData = self.mapData.conduits;
