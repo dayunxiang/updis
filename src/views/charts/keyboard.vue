@@ -38,7 +38,7 @@
         <el-tab-pane label="建筑和小区" name="0" algin="center">
           <!--表格-->
           <el-table :data="buildSquare.slice(( currentPageNum1 - 1 ) * pageSizeNum1 , currentPageNum1 * pageSizeNum1)"
-                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change'
+                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change1'
                     style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
@@ -81,28 +81,26 @@
         <el-tab-pane label="公园绿地" name="1" algin="center">
           <!--表格-->
           <el-table :data="parkSquare.slice( (currentPageNum2 - 1 ) * pageSizeNum2 , currentPageNum2*pageSizeNum2 )"
-                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change'
+                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change2'
                     style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
                 {{ scope.$index + 1 + pageSizeNum2 * (currentPageNum2 - 1) }}
               </template>
             </el-table-column>
-            <el-table-column prop="name"   align="center" width="105" sortable :show-overflow-tooltip="true" label="地块编号"></el-table-column>
-            <el-table-column prop="YDLX"   align="center" width="105" sortable :show-overflow-tooltip="true" label="用地类型"></el-table-column>
-            <el-table-column prop="JSZT"   align="center" width="105" sortable :show-overflow-tooltip="true" label="建设状态"></el-table-column>
-            <el-table-column prop="XMMC"   align="center" width="105" sortable :show-overflow-tooltip="true" label="项目名称"></el-table-column>
-            <el-table-column prop="PRHD"   align="center" width="105" sortable :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
-            <el-table-column prop="SSLY"   align="center" width="105" sortable :show-overflow-tooltip="true" label="所属流域"></el-table-column>
-            <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
-            <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
-            <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-
+            <el-table-column prop="name"    align="center" width="105" sortable :show-overflow-tooltip="true" label="地块编号"></el-table-column>
+            <el-table-column prop="YDLX"    align="center" width="105" sortable :show-overflow-tooltip="true" label="用地类型"></el-table-column>
+            <el-table-column prop="JSZT"    align="center" width="105" sortable :show-overflow-tooltip="true" label="建设状态"></el-table-column>
+            <el-table-column prop="XMMC"    align="center" width="105" sortable :show-overflow-tooltip="true" label="项目名称"></el-table-column>
+            <el-table-column prop="PRHD"    align="center" width="105" sortable :show-overflow-tooltip="true" label="排入河道" ></el-table-column>
+            <el-table-column prop="SSLY"    align="center" width="105" sortable :show-overflow-tooltip="true" label="所属流域"></el-table-column>
+            <el-table-column prop="SSPSFQ"  align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
+            <el-table-column prop="ZBQY"    align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
+            <el-table-column prop="JSQK"    align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
             <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
             <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
-
-            <el-table-column prop="area"   align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
-            <el-table-column align="center" fixed="right" width="160" label="操作">
+            <el-table-column prop="area"    align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
+            <el-table-column align="center" fixed="right" width="160"  label="操作">
               <template slot-scope="scope">
                 <el-button @click="handleCheck(scope.row)" type="text" size="small" v-model="hodelView">查看</el-button>
                 <el-button @click="handleEditor(scope.row)" type="text" size="small" v-model="hodelView">编辑</el-button>
@@ -126,7 +124,7 @@
         <el-tab-pane label="道路广场" name="2" algin="center">
           <!--表格-->
           <el-table :data="roadSquare.slice( (currentPageNum3-1)*pageSizeNum3 , currentPageNum3*pageSizeNum3 )"
-                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change'
+                    :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='sort_change3'
                     style="width: 100%" border>
             <el-table-column align="center" fixed="left" label="序号" width="50">
               <template slot-scope="scope">
@@ -142,10 +140,8 @@
             <el-table-column prop="SSPSFQ" align="center" width="130" sortable :show-overflow-tooltip="true" label="所属排水分区"></el-table-column>
             <el-table-column prop="ZBQY"   align="center" width="175" sortable :show-overflow-tooltip="true" label="是否为正本清源项目"></el-table-column>
             <el-table-column prop="JSQK"   align="center" width="130" sortable :show-overflow-tooltip="true" label="海绵建设情况"></el-table-column>
-
             <el-table-column prop="XZKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="现状年径流总量控制率"></el-table-column>
             <el-table-column prop="GHKZL"   align="center" width="120" :sortable="true" :show-overflow-tooltip="true" label="规划年径流总量控制率"></el-table-column>
-
             <el-table-column prop="area"   align="center" width="120" sortable :show-overflow-tooltip="true" label="面积(公顷)"></el-table-column>
             <el-table-column align="center" fixed="right" width="160" label="操作">
               <template slot-scope="scope">
@@ -754,14 +750,11 @@
       /**
        * 排水分区排序
        */
-
-      sort_change(column) {
+      sort_change1(column) {
         const self = this;
         console.log("order:", column.prop);
         if (column.prop === null){
           self.buildSquare = self.saveArray1;
-          self.roadSquare  = self.saveArray2;
-          self.parkSquare  = self.saveArray3;
         }
         if (column.prop === 'area') {
           if (column.order === 'descending') {
@@ -951,13 +944,407 @@
           }
         }
       },
-
+      sort_change2(column) {
+        const self = this;
+        if (column.prop === null){
+          self.parkSquare  = self.saveArray3;
+        }
+        if (column.prop === 'area') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var area1 = a.area;
+              var area2 = b.area;
+              return area2 - area1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var area1 = a.area;
+              var area2 = b.area;
+              return area1 - area2
+            })
+          }
+        }
+        if (column.prop === 'XZKZL') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var XZKZL1 = a.XZKZL.replace(/%/g, '');
+              var XZKZL2 = b.XZKZL.replace(/%/g, '');
+              return XZKZL2 - XZKZL1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var XZKZL1 = a.XZKZL.replace(/%/g, '');
+              var XZKZL2 = b.XZKZL.replace(/%/g, '');
+              return XZKZL1 - XZKZL2
+            })
+          }
+        }
+        if (column.prop === 'GHKZL') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var GHKZL1 = a.GHKZL.replace(/%/g, '');
+              var GHKZL2 = b.GHKZL.replace(/%/g, '');
+              return GHKZL2 - GHKZL1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var GHKZL1 = a.GHKZL.replace(/%/g, '');
+              var GHKZL2 = b.GHKZL.replace(/%/g, '');
+              return GHKZL1 - GHKZL2
+            })
+          }
+        }
+        if (column.prop === 'SSPSFQ') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var SSPSFQ1 = a.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              var SSPSFQ2 = b.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              return SSPSFQ2 - SSPSFQ1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var SSPSFQ1 = a.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              var SSPSFQ2 = b.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              return SSPSFQ1 - SSPSFQ2
+            })
+          }
+        }
+        if (column.prop === 'JSZT') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              return JSZT2.localeCompare(JSZT1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              return JSZT1.localeCompare(JSZT2)
+            })
+          }
+        }
+        if (column.prop === 'JSQK') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var JSQK1 = a.JSQK;
+              var JSQK2 = b.JSQK;
+              return JSQK2.localeCompare(JSQK1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var JSQK1 = a.JSQK;
+              var JSQK2 = b.JSQK;
+              return JSQK1.localeCompare(JSQK2)
+            })
+          }
+        }
+        if (column.prop === 'SSLY') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var SSLY1 = a.SSLY;
+              var SSLY2 = b.SSLY;
+              return SSLY2.localeCompare(SSLY1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            parkSquareself.parkSquare = self.parkSquare.sort(function(a,b){
+              var SSLY1 = a.SSLY;
+              var SSLY2 = b.SSLY;
+              return SSLY1.localeCompare(SSLY2)
+            })
+          }
+        }
+        if (column.prop === 'PRHD') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var PRHD1 = a.PRHD;
+              var PRHD2 = b.PRHD;
+              return PRHD2.localeCompare(PRHD1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var PRHD1 = a.PRHD;
+              var PRHD2 = b.PRHD;
+              return PRHD1.localeCompare(PRHD2)
+            })
+          }
+        }
+        if (column.prop === 'name') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var name1 = a.name.substr(0, 2);
+              var name2 = b.name.substr(0, 2);
+              return name2 - name1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var name1 = a.name.substr(0, 2);
+              var name2 = b.name.substr(0, 2);
+              return name1 - name2
+            })
+          }
+        }
+        if (column.prop === 'YDLX') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX.replace(/\+/g, '');
+              var YDLX2 = b.YDLX.replace(/\+/g, '');
+              return (YDLX2 + '').localeCompare(YDLX1 + '')
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX.replace(/\+/g, '');
+              var YDLX2 = b.YDLX.replace(/\+/g, '');
+              return (YDLX1 + '').localeCompare(YDLX2 + '')
+            })
+          }
+        }
+        if (column.prop === 'XMMC') {
+          if (column.order === 'descending') {
+            self.parkSquare = self.parkSquare.sort(function(a,b){
+              console.log(a.XMMC,b.XMMC)
+              var XMMC1
+              var XMMC2
+              if(b.XMMC !== null && a.XMMC !== null) {
+                XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                return (XMMC1 + '').localeCompare(XMMC2 + '')
+              }else {
+                return
+              }
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.parkSquare = self.parkSquare.sort(function (a, b) {
+              if (b.XMMC !== null && a.XMMC !== null) {
+                var XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
+                var XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
+                return (XMMC2 + '').localeCompare(XMMC1 + '')
+              }else{
+                return
+              }
+            })
+          }
+        }
+      },
+      sort_change3(column) {
+        const self = this;
+        console.log("order:", column.prop);
+        if (column.prop === null){
+          self.roadSquare  = self.saveArray2;
+        }
+        if (column.prop === 'area') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var area1 = a.area;
+              var area2 = b.area;
+              return area2 - area1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var area1 = a.area;
+              var area2 = b.area;
+              return area1 - area2
+            })
+          }
+        }
+        if (column.prop === 'XZKZL') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var XZKZL1 = a.XZKZL.replace(/%/g, '');
+              var XZKZL2 = b.XZKZL.replace(/%/g, '');
+              return XZKZL2 - XZKZL1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var XZKZL1 = a.XZKZL.replace(/%/g, '');
+              var XZKZL2 = b.XZKZL.replace(/%/g, '');
+              return XZKZL1 - XZKZL2
+            })
+          }
+        }
+        if (column.prop === 'GHKZL') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var GHKZL1 = a.GHKZL.replace(/%/g, '');
+              var GHKZL2 = b.GHKZL.replace(/%/g, '');
+              return GHKZL2 - GHKZL1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var GHKZL1 = a.GHKZL.replace(/%/g, '');
+              var GHKZL2 = b.GHKZL.replace(/%/g, '');
+              return GHKZL1 - GHKZL2
+            })
+          }
+        }
+        if (column.prop === 'SSPSFQ') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var SSPSFQ1 = a.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              var SSPSFQ2 = b.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              return SSPSFQ2 - SSPSFQ1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var SSPSFQ1 = a.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              var SSPSFQ2 = b.SSPSFQ.replace(/#|[\u4e00-\u9fa5]/g, '');
+              return SSPSFQ1 - SSPSFQ2
+            })
+          }
+        }
+        if (column.prop === 'JSZT') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              return JSZT2.localeCompare(JSZT1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              return JSZT1.localeCompare(JSZT2)
+            })
+          }
+        }
+        if (column.prop === 'JSQK') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var JSQK1 = a.JSQK;
+              var JSQK2 = b.JSQK;
+              return JSQK2.localeCompare(JSQK1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var JSQK1 = a.JSQK;
+              var JSQK2 = b.JSQK;
+              return JSQK1.localeCompare(JSQK2)
+            })
+          }
+        }
+        if (column.prop === 'SSLY') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var SSLY1 = a.SSLY;
+              var SSLY2 = b.SSLY;
+              return SSLY2.localeCompare(SSLY1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var SSLY1 = a.SSLY;
+              var SSLY2 = b.SSLY;
+              return SSLY1.localeCompare(SSLY2)
+            })
+          }
+        }
+        if (column.prop === 'PRHD') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var PRHD1 = a.PRHD;
+              var PRHD2 = b.PRHD;
+              return PRHD2.localeCompare(PRHD1)
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var PRHD1 = a.PRHD;
+              var PRHD2 = b.PRHD;
+              return PRHD1.localeCompare(PRHD2)
+            })
+          }
+        }
+        if (column.prop === 'name') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var name1 = a.name.substr(0, 2);
+              var name2 = b.name.substr(0, 2);
+              return name2 - name1
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var name1 = a.name.substr(0, 2);
+              var name2 = b.name.substr(0, 2);
+              return name1 - name2
+            })
+          }
+        }
+        if (column.prop === 'YDLX') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX.replace(/\+/g, '');
+              var YDLX2 = b.YDLX.replace(/\+/g, '');
+              return (YDLX2 + '').localeCompare(YDLX1 + '')
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX.replace(/\+/g, '');
+              var YDLX2 = b.YDLX.replace(/\+/g, '');
+              return (YDLX1 + '').localeCompare(YDLX2 + '')
+            })
+          }
+        }
+        if (column.prop === 'XMMC') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              console.log(a.XMMC,b.XMMC)
+              var XMMC1
+              var XMMC2
+              if(b.XMMC !== null && a.XMMC !== null) {
+                XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g,"");
+                return (XMMC1 + '').localeCompare(XMMC2 + '')
+              }else {
+                return
+              }
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function (a, b) {
+              if (b.XMMC !== null && a.XMMC !== null) {
+                var XMMC1 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
+                var XMMC2 = a.XMMC.replace(/[&\|\\\*^%（）$#@\-]/g, "");
+                return (XMMC2 + '').localeCompare(XMMC1 + '')
+              }else{
+                return
+              }
+            })
+          }
+        }
+      },
 
       /**
        * 标签页
        */
       handleClick(tab, event, res) {
         const self = this;
+        if(tab.index === '0') {
+
+        }else if(tab.index === '1'){
+
+        }else if(tab.index === '2'){
+
+        }
+        console.log(tab.index)
       },
       /**
        * 分页部分
@@ -1021,28 +1408,6 @@
         }
         console.log("前：", self.option4.name);
       },
-      /**
-       * 删除标签
-       */
-      //      removeTab(  ) {
-      //        const self = this;
-      //        let tabs = self.tongName;
-      //        let activeName = self.activeNameTest;
-      //        if (activeName === self.targetName) {
-      //          _.each(tabs, function (vn , index) {
-      //            console.log("名称：", vn.name);
-      //            if(vn.name === self.targetName) {
-      //              let nextTab = tabs[index + 1] || tabs[index - 1];
-      //              if (nextTab) {
-      //                activeName = nextTab.name;
-      //              }
-      //            }
-      //          });
-      //        }
-      //        self.activeNameTest = activeName;
-      ////        this.tongName = tabs.filter();
-      //        console.log("名称：", this.targetName);
-      //      },
       /**
        * 删除信息
        * */

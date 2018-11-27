@@ -35,12 +35,12 @@
     <el-tabs class="listChart"
              tab-position="top"
              v-model="activeNo">
-      <el-tab-pane align="center" label="海绵面积覆盖度" name="1">
+      <el-tab-pane align="center" label="海绵面积覆盖度" name="0">
         <div style="margin-top:2px; padding-top:5px;">
           <div id="completeDegree" :style="{width: '1200px', height: '500px'}" ></div>
         </div>
       </el-tab-pane>
-      <el-tab-pane align="center" label="年径流总量控制率" name="0">
+      <el-tab-pane align="center" label="年径流总量控制率" name="1">
 
         <!--横向状柱形图-->
         <div style="margin-top:2px; padding-top:5px;">
