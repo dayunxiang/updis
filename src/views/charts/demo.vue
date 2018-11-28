@@ -89,10 +89,9 @@
       }
     },
     created() {
-      this.init();
     },
     mounted() {
-      this.ProductInit();
+      this.init();
     },
     methods: {
       init(){
@@ -117,23 +116,17 @@
             var TestData = JSON.parse(ls.properties);  // 将字符串解析为对象
             _this.createBeforeData.push(TestData);     // 保存初始数据
           })
+          _this.ProductInit();
         })
       },
       ProductInit (){
         const _this = this;
         var data = _this.createBeforeData;
+        _.each(data, function (ls) {
+          
+        })
         debugger
       },
-
-
-
-
-
-
-
-
-
-
 
     }
   }
