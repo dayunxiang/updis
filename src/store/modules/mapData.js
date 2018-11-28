@@ -1,7 +1,8 @@
 const  mapData = {
    state:{
      mapData:{},
-     info:{}
+     info:{},
+     resultData:{}
    },
   actions:{
      getMapData(ctx,mapData){
@@ -9,6 +10,9 @@ const  mapData = {
      },
      getInfo(ctx,info){
        ctx.commit('getInfo',info)
+     },
+     getResultData(ctx,resultData){
+       ctx.commit('getResultData',resultData)
      }
   },
   mutations:{
@@ -18,6 +22,9 @@ const  mapData = {
     },
     getInfo(state,info){
       state.info = info;
+    },
+    getResultData(state,resultData){
+      state.resultData = resultData
     }
   }
 }
