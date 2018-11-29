@@ -1110,7 +1110,7 @@
               rainOutfalls.push(rainOutfall[0])
             }
             if(sewageOutfall.length>0){
-               sewageOutfalls.push(sewageOutfall[0])
+              sewageOutfalls.push(sewageOutfall[0])
             }
 
             if(conduit.length>0){
@@ -1137,7 +1137,7 @@
             if(sewageConduit.length>0){
               var sewageJunction_lng_lat = sewageConduit[0].properties.geometry.coordinates[0];
               var centerPoint= properties.properties.center
-            //  渲染引导线
+              //  渲染引导线
               var polyline = new BMap.Polyline([
                 new BMap.Point(centerPoint[1]+ 0.005363, centerPoint[0] - 0.00402),
                 new BMap.Point(sewageJunction_lng_lat[1]+ 0.005363, sewageJunction_lng_lat[0]- 0.00402),
@@ -1283,8 +1283,8 @@
           self.drawCompanys(companys);
           self.drawSubcatchments(selectCompanysResult)
         }
-      //  统计拿到所有数据
-      //  数组去重
+        //  统计拿到所有数据
+        //  数组去重
         var newResultData = [];
         for(var i =0;i<resultData.length;i++){
           var flag = true;

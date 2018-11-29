@@ -230,8 +230,10 @@
       TestList(res){
         const self = this;
         _.each(self.partList, function (vm) {
-          var num = vm+"#排水分区";
-          self.partition.push(num);
+          if(vm !== '20' ) {
+            var num = vm+"#排水分区";
+            self.partition.push(num);
+          }
         });
         /**
          * 项目海绵面积覆盖度
@@ -252,8 +254,10 @@
         const self = this;
         var bagaqwe = [];
         _.each(self.partList, function (vm) {
-          var num = vm + "#排水分区";
-          bagaqwe.push(num);
+          if(vm !== '20') {
+            var num = vm + "#排水分区";
+            bagaqwe.push(num);
+          }
         });
         var sweegerData = self.DataShow;
 
@@ -273,7 +277,7 @@
           var suoyoudikuai = [];
           _.each(sweegerData, function (vn) {
             var dsd = vn.properties;
-            if (ld == dsd.SSPSFQ) {
+            if (ld == dsd.SSPSFQ  &&  ld !== '20#排水分区' ) {
               suoyoudikuai.push(dsd.area);
               if (dsd.JSZT === "现状" && dsd.HMCS === "已落实海绵") {
                 XZYLSList.push(Number(Math.abs(dsd.area)));    // 获取现状已落实面积
