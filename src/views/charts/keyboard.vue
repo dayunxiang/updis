@@ -591,13 +591,12 @@
           /**
            * 道路广场
            */
-          if ( TestData.properties.YDLX === "道路" || letter === "S" ) {
+          if (TestData.properties.SSPSFQ !== '20#排水分区' && TestData.properties.YDLX === "道路" || letter === "S" ) {
             var RoadTest = {};
             RoadTest.name = TestData.properties.name;
             RoadTest.YDLX = TestData.properties.YDLX;
             RoadTest.JSZT = TestData.properties.JSZT;
             RoadTest.XMMC = TestData.properties.XMMC;
-            RoadTest.HMLX = TestData.properties.HMLX;
             RoadTest.PRHD = TestData.properties.PRHD;
             RoadTest.SSLY = TestData.properties.SSLY;
             RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
@@ -637,12 +636,12 @@
               RoadTest.JSQK = "规划管控" + '';
             }
             self.roadSquare.push(RoadTest);
-            self.saveArray2.push(RoadTest)
+            self.saveArray2.push(RoadTest);
           } else
           /**
            * 建筑小区
            */
-          if ( letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC" ) {
+          if ( letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC" && TestData.properties.SSPSFQ !== '20#排水分区' ) {
             var builTest = {};
             builTest.name = TestData.properties.name;
             builTest.YDLX = TestData.properties.YDLX;
@@ -692,7 +691,7 @@
           /**
            * 公园绿地
            */
-          if ( letter === "G"  ) {
+          if ( letter === "G"  && TestData.properties.SSPSFQ !== '20#排水分区' ) {
             var parkTest = {};
             parkTest.name = TestData.properties.name;
             parkTest.YDLX = TestData.properties.YDLX;
@@ -740,6 +739,7 @@
             self.saveArray3.push(parkTest)
           }
         });
+        //console.log(self.roadSquare);
         this.totalFrist = self.buildSquare.length;
         this.totalSecond = self.parkSquare.length;
         this.totalThree = self.roadSquare.length;
@@ -905,14 +905,14 @@
             self.buildSquare = self.buildSquare.sort(function(a,b){
               var YDLX1 = a.YDLX.replace(/\+/g, '');
               var YDLX2 = b.YDLX.replace(/\+/g, '');
-              return (YDLX2 + '').localeCompare(YDLX1 + '')
+              return YDLX2.localeCompare(YDLX1)
             })
           } else
           if (column.order === 'ascending') {
             self.buildSquare = self.buildSquare.sort(function(a,b){
               var YDLX1 = a.YDLX.replace(/\+/g, '');
               var YDLX2 = b.YDLX.replace(/\+/g, '');
-              return (YDLX1 + '').localeCompare(YDLX2 + '')
+              return YDLX1.localeCompare(YDLX2)
             })
           }
         }
@@ -1018,14 +1018,18 @@
             self.parkSquare = self.parkSquare.sort(function(a,b){
               var JSZT1 = a.JSZT;
               var JSZT2 = b.JSZT;
-              return JSZT2.localeCompare(JSZT1)
+              if(JSZT1 !== undefined || JSZT1 !== null || JSZT2 !== null || JSZT1 !== undefined ) {
+                return JSZT2.localeCompare(JSZT1)
+              }
             })
           } else
           if (column.order === 'ascending') {
             self.parkSquare = self.parkSquare.sort(function(a,b){
               var JSZT1 = a.JSZT;
               var JSZT2 = b.JSZT;
-              return JSZT1.localeCompare(JSZT2)
+              if(JSZT1 !== undefined || JSZT1 !== null || JSZT2 !== null || JSZT1 !== undefined ) {
+                return JSZT1.localeCompare(JSZT2)
+              }
             })
           }
         }
@@ -1096,16 +1100,16 @@
         if (column.prop === 'YDLX') {
           if (column.order === 'descending') {
             self.parkSquare = self.parkSquare.sort(function(a,b){
-              var YDLX1 = a.YDLX.replace(/\+/g, '');
-              var YDLX2 = b.YDLX.replace(/\+/g, '');
-              return (YDLX2 + '').localeCompare(YDLX1 + '')
+              var YDLX1 = a.YDLX;
+              var YDLX2 = b.YDLX;
+              return YDLX2.localeCompare(YDLX1)
             })
           } else
           if (column.order === 'ascending') {
             self.parkSquare = self.parkSquare.sort(function(a,b){
-              var YDLX1 = a.YDLX.replace(/\+/g, '');
-              var YDLX2 = b.YDLX.replace(/\+/g, '');
-              return (YDLX1 + '').localeCompare(YDLX2 + '')
+              var YDLX1 = a.YDLX;
+              var YDLX2 = b.YDLX;
+              return YDLX1.localeCompare(YDLX2)
             })
           }
         }
@@ -1142,6 +1146,22 @@
         console.log("order:", column.prop);
         if (column.prop === null){
           self.roadSquare  = self.saveArray2;
+        }
+        if (column.prop === 'YDLX') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX;
+              var YDLX2 = b.YDLX;
+              return YDLX2.localeCompare(YDLX1,"zh")
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var YDLX1 = a.YDLX;
+              var YDLX2 = b.YDLX;
+              return YDLX1.localeCompare(YDLX2,"zh")
+            })
+          }
         }
         if (column.prop === 'area') {
           if (column.order === 'descending') {
@@ -1207,22 +1227,6 @@
             })
           }
         }
-        if (column.prop === 'JSZT') {
-          if (column.order === 'descending') {
-            self.roadSquare = self.roadSquare.sort(function(a,b){
-              var JSZT1 = a.JSZT;
-              var JSZT2 = b.JSZT;
-              return JSZT2.localeCompare(JSZT1)
-            })
-          } else
-          if (column.order === 'ascending') {
-            self.roadSquare = self.roadSquare.sort(function(a,b){
-              var JSZT1 = a.JSZT;
-              var JSZT2 = b.JSZT;
-              return JSZT1.localeCompare(JSZT2)
-            })
-          }
-        }
         if (column.prop === 'JSQK') {
           if (column.order === 'descending') {
             self.roadSquare = self.roadSquare.sort(function(a,b){
@@ -1274,32 +1278,16 @@
         if (column.prop === 'name') {
           if (column.order === 'descending') {
             self.roadSquare = self.roadSquare.sort(function(a,b){
-              var name1 = a.name.substr(0, 2);
-              var name2 = b.name.substr(0, 2);
+              var name1 = a.name;
+              var name2 = b.name;
               return name2 - name1
             })
           } else
           if (column.order === 'ascending') {
             self.roadSquare = self.roadSquare.sort(function(a,b){
-              var name1 = a.name.substr(0, 2);
-              var name2 = b.name.substr(0, 2);
+              var name1 = a.name;
+              var name2 = b.name;
               return name1 - name2
-            })
-          }
-        }
-        if (column.prop === 'YDLX') {
-          if (column.order === 'descending') {
-            self.roadSquare = self.roadSquare.sort(function(a,b){
-              var YDLX1 = a.YDLX.replace(/\+/g, '');
-              var YDLX2 = b.YDLX.replace(/\+/g, '');
-              return (YDLX2 + '').localeCompare(YDLX1 + '')
-            })
-          } else
-          if (column.order === 'ascending') {
-            self.roadSquare = self.roadSquare.sort(function(a,b){
-              var YDLX1 = a.YDLX.replace(/\+/g, '');
-              var YDLX2 = b.YDLX.replace(/\+/g, '');
-              return (YDLX1 + '').localeCompare(YDLX2 + '')
             })
           }
         }
@@ -1326,6 +1314,26 @@
                 return (XMMC2 + '').localeCompare(XMMC1 + '')
               }else{
                 return
+              }
+            })
+          }
+        }
+        if (column.prop === 'JSZT') {
+          if (column.order === 'descending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              if(JSZT1 !== undefined && JSZT2 !== undefined) {
+                return JSZT2.localeCompare(JSZT1)
+              }
+            })
+          } else
+          if (column.order === 'ascending') {
+            self.roadSquare = self.roadSquare.sort(function(a,b){
+              var JSZT1 = a.JSZT;
+              var JSZT2 = b.JSZT;
+              if(JSZT1 !== undefined && JSZT2 !== undefined) {
+                return JSZT1.localeCompare(JSZT2)
               }
             })
           }

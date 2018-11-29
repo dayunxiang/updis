@@ -492,12 +492,12 @@
           var statusQuo = m.properties.JSZT;        // 获取现状
           var xzalready = m.properties.HMCS;        // 获取已落实
           var total = areaControl * xzControl;
-          if( total !== undefined && total !== null ) {
+          if( total !== undefined && total !== null && !isNaN(parseInt(total)) ) {
             targetNum.push(total);
           }
           if( statusQuo === "现状" && xzalready === "已落实海绵" ) {
             var num =  areaControl * xzControl
-            if( num !== undefined && num !== null ) {
+            if( num !== undefined && num !== null && !isNaN(parseInt(num)) ) {
               talta.push(num);
             }
           }
@@ -604,12 +604,12 @@
               var statusQuo = m.properties.JSZT;   // 获取现状
               var xzalready = m.properties.HMCS;   // 获取已落实
               var total = areaControl * xzControl;
-              if( total !== undefined && total !== null ) {
+              if( total !== undefined && total !== null && !isNaN(parseInt(num)) ) {
                 targetNum.push(total);
               }
               if( statusQuo === "现状" && xzalready === "已落实海绵" ) {
                 var num =  areaControl * xzControl
-                if( num !== undefined && num !== null  ) {
+                if( num !== undefined && num !== null && !isNaN(parseInt(num))   ) {
                   talta.push(num);
                 }
               }
