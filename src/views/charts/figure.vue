@@ -279,19 +279,19 @@
             var dsd = vn.properties;
             if (ld == dsd.SSPSFQ  &&  ld !== '20#排水分区' ) {
               suoyoudikuai.push(dsd.area);
-              if (dsd.JSZT === "现状" && dsd.HMCS === "已落实海绵") {
+              if (dsd.JSZT === "现状" && dsd.HMCS === "已落实海绵" && dsd.area <  10000000) {
                 XZYLSList.push(Number(Math.abs(dsd.area)));    // 获取现状已落实面积
               } else
-              if (dsd.JSZT === "现状" && dsd.HMCS === "未落实海绵") {
+              if (dsd.JSZT === "现状" && dsd.HMCS === "未落实海绵" && dsd.area <  10000000) {
                 XZWHMList.push(Number(Math.abs(dsd.area)));    // 获取现状无海绵面积
               } else
-              if (dsd.JSZT === "在建" && dsd.HMCS === "已落实海绵") {
+              if (dsd.JSZT === "在建" && dsd.HMCS === "已落实海绵" && dsd.area <  10000000) {
                 ZJYLSList.push(Number(Math.abs(dsd.area)));    // 获取在建已落实面积
               } else
-              if (dsd.JSZT === "在建" && dsd.HMCS === "未落实海绵") {
+              if (dsd.JSZT === "在建" && dsd.HMCS === "未落实海绵" && dsd.area <  10000000) {
                 ZJWUMList.push(Number(Math.abs(dsd.area)));    // 获取在建无海绵面积
               } else
-              if (dsd.JSZT === "规划" && dsd.HMCS === null) {
+              if (dsd.JSZT === "规划" && dsd.HMCS === null && dsd.area <  10000000 ) {
                 GHGKList.push(Number(Math.abs(dsd.area)));     // 获取规划管控面积
               }
             }
