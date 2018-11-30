@@ -594,6 +594,9 @@
          * 纵向柱形图
          */
         var targetControl = [70.00, 72.00, 65.70, 95.00, 50.00, 65.80, 68.30, 69.00, 0.00];
+        _.each(targetControl, function (v) {
+          self.drainageControl.push(v.toFixed(2))
+        })
         _.each(self.partition, function (n) {
           _.each(controlData, function (m) {
             var psControl = m.properties.SSPSFQ;     // 所属排水分区
@@ -617,7 +620,7 @@
           })
           var taltaListData = eval(talta.join("+"));  // 现状已落实控制率的和
           var targetNumData = eval(targetNum.join("+"));  // 控制率的总数据的和
-          var controlbaifenbi = ((taltaListData/targetNumData)*50).toFixed(2);  // 求得百分比
+          var controlbaifenbi = ((taltaListData/targetNumData)*80).toFixed(2);  // 求得百分比
           self.actualTotal.push(controlbaifenbi)
         })
         _.each(targetControl, function (v) {
