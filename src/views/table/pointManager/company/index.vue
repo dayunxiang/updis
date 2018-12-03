@@ -42,11 +42,6 @@
           width="120">
         </el-table-column>
         <el-table-column
-          prop="lng_lat"
-          label="坐标"
-          width="400">
-        </el-table-column>
-        <el-table-column
           prop="JDMC"
           label="街道名称"
           width="300">

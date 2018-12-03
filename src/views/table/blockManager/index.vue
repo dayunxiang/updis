@@ -37,12 +37,12 @@
           sortable
           width="120">
         </el-table-column>
-        <el-table-column
-          prop="area"
-          label="面积(平方米)"
-          sortable
-          width="250">
-        </el-table-column>
+        <!--<el-table-column-->
+          <!--prop="area"-->
+          <!--label="面积(平方米)"-->
+          <!--sortable-->
+          <!--width="250">-->
+        <!--</el-table-column>-->
         <el-table-column
           prop="YDLX"
           label="用地类型"

@@ -13,9 +13,8 @@
         on-exceed：文件超出个数限制时候的钩子函数
         file-list：上传的文件列表
       -->
-
       <el-upload class="uploadfile" action="" :http-request='uploadFileMethod' :show-file-list="false" multiple>
-        <el-button class="custom-btn" size="small">上传shap文件</el-button>
+        <el-button class="custom-btn" size="small">上传shape文件</el-button>
       </el-upload>
     </div>
 </template>

@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="manager-select">
-      <el-form :inline="true" :model="formInline" class="demo-form-inline select-form">
+      <el-form :inline="true" :model="project" class="demo-form-inline select-form">
         <el-form-item label="项目名称">
-          <el-input v-model="formInline.user" placeholder="项目名称"></el-input>
+          <el-input v-model="project.name" placeholder="项目名称"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary"  @click="handleSelectProject">查询</el-button>
@@ -16,7 +16,7 @@
     <el-row class="project-list">
       <el-col :span="24">
         <el-table
-          :data="tableData"
+          :data="projectData"
           stripe
           style="width: 100%">
           <el-table-column
@@ -58,7 +58,8 @@
             width="100">
             <template slot-scope="scope">
               <el-button type="text" size="small" @click="dialogEdit = true">编辑</el-button>
-              <el-button  @click.native.prevent="deleteRow(scope.$index, tableData)"type="text" size="small">删除</el-button>
+              <!--<el-button  @click.native.prevent="deleteRow(scope.$index, projectData)"type="text" size="small">删除</el-button>-->
+              <el-button type="text" size="small" @click="dialogDelete = true">删除</el-button>
               <el-button @click="handleToDashboard(scope.row)">进入</el-button>
             </template>
           </el-table-column>
@@ -71,7 +72,7 @@
         :page-sizes="[10, 20]"
         :page-size="10"
         layout="total, sizes, prev, pager, next, jumper"
-        :total=tableData.length>
+        :total=projectData.length>
       </el-pagination>
     </div>
     <!--表格弹出层-->
@@ -154,10 +155,10 @@
     <!--编辑项目弹出层-->
     <div>
       <el-dialog title="编辑项目" :visible.sync="dialogEdit" width="40%">
-        <el-form ref="form" :model="tableData" label-width="200px" width="100%">
+        <el-form ref="form" :model="projectData" label-width="200px" width="100%">
           <el-form-item label="项目编号">
             <el-col :span="12">
-              <el-input v-model="tableData.name" value="fdsfsfadf"></el-input>
+              <el-input v-model="projectData.name" value="fdsfsfadf"></el-input>
             </el-col>
           </el-form-item>
           <el-form-item label="项目名称">
@@ -237,6 +238,18 @@
         </el-form>
       </el-dialog>
     </div>
+    <!--删除项目-->
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogDelete"
+      width="30%"
+      >
+      <span>确定要删除此项目?</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogDelete = false">取 消</el-button>
+    <el-button type="primary" @click="dialogDelete = false">确 定</el-button>
+  </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -248,29 +261,13 @@
       data() {
         return {
           dialogEdit:false,
+          dialogDelete:false,
           fileList: [],
-          tableData: [],
-          formInline: {
-            user: '',
-            region: ''
+          projectDatas:[],
+          projectData: [],
+          project: {
+            name: '',
           },
-          gridData: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }],
           dialogTableVisible: false,
           dialogFormVisible: false,
           dialogEditVisible:false,
@@ -306,7 +303,8 @@
         },
         getSuccessProjectInfo(res){
           var ProjectData = res.data;
-          this.tableData = ProjectData;
+          this.projectData = ProjectData;
+          this.projectDatas = ProjectData
 
         },
         // 进入项目事件
@@ -317,9 +315,21 @@
             query: { projectId: projectID }
           })
         },
-        // 查询项目点击事件
+        /**
+         * 获取项目名称进行搜索
+         */
         handleSelectProject(){
-          console.log('我被点击了');
+           var self = this;
+           var projectName = self.project.name;
+           var projectDatas = self.projectDatas;
+           self.projectData = []
+           for(var i =0;i<projectDatas.length;i++){
+             var name = projectDatas[i].name;
+             if(name.indexOf(projectName) != -1){
+               self.projectData.push(projectDatas[i])
+             }
+
+           }
         },
         // 删除项目按钮
         deleteRow(index, rows) {
@@ -344,7 +354,8 @@
         },
         handlePreview(file) {
           console.log(file);
-        }
+        },
+        //删除项目
       },
       mounted(){
         this.getProjectInfo();

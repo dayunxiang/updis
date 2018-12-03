@@ -1,7 +1,7 @@
 <template>
   <div class="allmap" id="allmap"
        v-loading="isLoading"
-       element-loading-text="拼命加载中"
+       element-loading-text="正在查询中"
        element-loading-spinner="el-icon-loading"
        element-loading-background="rgba(0, 0, 0, 0.8)"
   >
@@ -9,6 +9,7 @@
 </template>
 <script>
   import BMap from 'BMap'
+  import commonApi from '@/api/commonApi'
   import request from '@/utils/request'
   import _each from '@/utils/_each'
   import {geojson2cytoscape,
@@ -17,10 +18,15 @@
     getAncestorSubcatchmentsOfOutfall,
     getDescendantConduitsOfSubcatchment,
     getDescendantOutfallsOfSubcatchment,
-    getNearestNodeOfPoint
+    getNearestNodeOfPoint,
+    getCenterPointOfSubcatchment
   } from '@/utils/mapUtil'
   import '@/utils/GeoUtils.js'
   export default {
+    props: ['isHideAllSubcatchments','isHideDaolu','isHideShizheng','isHideLvdi','isHideJuzhu','isHideZhengfu','isHideGongye','isHideShangye',
+      'isHideAllConduits','isHideRainConduits','isHideSewageConduits',
+      'isHideAllOutfalls','isHideMergeOutfalls','isHideRainOutfalls','isHideSewageOutfalls',
+      'isHideCompanys'],
     data(){
       return {
         isLoading: false,
@@ -40,6 +46,57 @@
         },
       }
     },
+    watch: {
+      isHideAllSubcatchments: function() {
+        this.isHideAllSubcatchments ? this.showAllSubcatchments() : this.hideAllSubcatchments()
+      },
+      isHideDaolu:function(){
+        this.isHideDaolu ? this.showDaolu():this.hideDaolu();
+      },
+      isHideShizheng:function(){
+        this.isHideShizheng ? this.showShizheng():this.hideShizheng()
+      },
+      isHideLvdi:function(){
+        this.isHideLvdi ? this.showLvdi():this.hideLvdi()
+      },
+      isHideJuzhu:function(){
+        this.isHideJuzhu? this.showJuzhu():this.hideJuzhu();
+      },
+      isHideZhengfu:function(){
+        this.isHideZhengfu?this.showZhengfu():this.hideZhengfu();
+      },
+      isHideGongye:function(){
+        this.isHideGongye ? this.showGongye():this.hideGongye();
+      },
+      isHideShangye:function(){
+        this.isHideShangye ? this.showShangye():this.hideShangye();
+      },
+      //
+      isHideAllConduits: function() {
+        this.isHideAllConduits ? this.showAllConduits() : this.hideAllConduits()
+      },
+      isHideRainConduits: function(){
+        this.isHideRainConduits ? this.showRainConduits() : this.hideRainConduits()
+      },
+      isHideSewageConduits: function(){
+        this.isHideSewageConduits ? this.showSewageConduits():this.hideSewageConduits()
+      },
+      isHideAllOutfalls: function() {
+        this.isHideAllOutfalls ? this.showAllOutfalls() : this.hideAllOutfalls()
+      },
+      isHideMergeOutfalls:function(){
+        this.isHideMergeOutfalls ? this.showMergeOutfalls():this.hideMergeOutfalls()
+      },
+      isHideRainOutfalls:function(){
+        this.isHideRainOutfalls ? this.showRainOutfalls():this.hideRainOutfalls()
+      },
+      isHideSewageOutfalls:function(){
+        this.isHideSewageOutfalls ? this.showSewageOutfalls():this.hideSewageOutfalls()
+      },
+      isHideCompanys:function(){
+        this.isHideCompanys ? this.showAllCompanys():this.hideAllCompanys()
+      }
+    },
     created(){
       this.getProjectId();
       this.getDataInfo();
@@ -47,7 +104,7 @@
     },
     mounted(){
       this.createMap();
-
+      this.UpdateData();
 
     },
     methods: {
@@ -282,30 +339,37 @@
           if(YDLX == '道路' || daoluReg.test(YDLX)){
             var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(242,242,242)',fillOpacity:0.3})
             polygon.type = info.type
+            polygon.sonType = '道路'
           }
           if(shiZhengReg.test(YDLX)){
             var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,0,254)',fillOpacity:0.3})
             polygon.type = info.type
+            polygon.sonType = '市政'
           }
           if(lvDiReg.test(YDLX)) {
             var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,255,1)',fillOpacity:0.3})
             polygon.type = info.type
+            polygon.sonType = '绿地'
           }
           if(juZhuYongDiReg.test(YDLX)) {
             var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,255,1)',fillOpacity:0.3})
             polygon.type = info.type
+            polygon.sonType = '居住'
           }
           if(zhengFuReg.test(YDLX)){
             var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,0,255)',fillOpacity:0.3})
             polygon.type = info.type
+            polygon.sonType = '政府'
           }
           if(gongYeReg.test(YDLX)){
             var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(127,63,1)',fillOpacity:0.3})
             polygon.type = info.type
+            polygon.sonType = '工业'
           }
           if(shangyeReg.test(YDLX)){
             var polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(245,0,0)',fillOpacity:0.3})
             polygon.type = info.type
+            polygon.sonType = '商业'
           }
           map.addOverlay(polygon);
           //地块点击事件
@@ -1099,13 +1163,14 @@
           var sewageOutfalls = [];
           for(var i=0;i < subcatchmentsData.length;i++){
             var properties = JSON.parse(subcatchmentsData[i].properties);
+            console.log(properties)
             var cy = geojson2cytoscape(self.geoJson);
             var ConduitsRain = '雨水管'
             var ConduitsSewage= '污水管'
-            var rainOutfall= getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsRain);
-            var conduit = getDescendantConduitsOfSubcatchment(properties, cy,ConduitsRain);
-            var sewageOutfall = getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsSewage);
-            var sewageConduit = getDescendantConduitsOfSubcatchment(properties, cy,ConduitsSewage)
+            var rainOutfall= self.getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsRain);
+            var conduit = self.getDescendantConduitsOfSubcatchment(properties, cy,ConduitsRain);
+            var sewageOutfall = self.getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsSewage);
+            var sewageConduit = self.getDescendantConduitsOfSubcatchment(properties, cy,ConduitsSewage)
             if(rainOutfall.length>0){
               rainOutfalls.push(rainOutfall[0])
             }
@@ -1170,6 +1235,7 @@
             resultData.push(sewageOutfalls[i])
           }
         }
+        //排口
         if(outfallsData.length>0){
           var outfalls = [];
           for(var i = 0;i<outfallsData.length;i++){
@@ -1181,6 +1247,7 @@
           self.drawOutfalls(outfalls);
 
         }
+        //管线
         if(conduitsData.length>0){
           var self =this;
           var map = this.map
@@ -1298,8 +1365,1176 @@
           }
         }
         self.$store.dispatch('getResultData',newResultData);
-        console.log('终于打印出我了 百度');
+        console.log('查询结束');
       },
+    //  隐藏排口
+      hideAllOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+            overlay.Circle[i].hide()
+          }
+          if(leixing == '污水排口'){
+            overlay.Circle[i].hide()
+          }
+          if(leixing == '混流排口'){
+            overlay.Circle[i].hide()
+          }
+        }
+     },
+      showAllOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+            overlay.Circle[i].show()
+          }
+          if(leixing == '污水排口'){
+            overlay.Circle[i].show()
+          }
+          if(leixing == '混流排口'){
+            overlay.Circle[i].show()
+          }
+        }
+      },
+      hideMergeOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+          }
+          if(leixing == '污水排口'){
+
+          }
+          if(leixing == '混流排口'){
+            overlay.Circle[i].hide()
+          }
+        }
+      },
+      showMergeOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+          }
+          if(leixing == '污水排口'){
+
+          }
+          if(leixing == '混流排口'){
+            overlay.Circle[i].show()
+          }
+        }
+      },
+      hideRainOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+            overlay.Circle[i].hide()
+          }
+          if(leixing == '污水排口'){
+
+          }
+          if(leixing == '混流排口'){
+          }
+        }
+      },
+      showRainOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+            overlay.Circle[i].show()
+          }
+          if(leixing == '污水排口'){
+
+          }
+          if(leixing == '混流排口'){
+          }
+        }
+      },
+      hideSewageOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+
+          }
+          if(leixing == '污水排口'){
+            overlay.Circle[i].hide()
+          }
+          if(leixing == '混流排口'){
+          }
+        }
+      },
+      showSewageOutfalls(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  排口覆盖物
+        for(var i = 0;i<overlay.Circle.length;i++){
+          var outfallColor = overlay.Circle[i].getFillColor();
+          var leixing = overlay.Circle[i].leixing;
+          if(leixing == '雨水排水口'){
+
+          }
+          if(leixing == '污水排口'){
+            overlay.Circle[i].show()
+          }
+          if(leixing == '混流排口'){
+          }
+        }
+      },
+    // 隐藏管线
+      hideAllConduits(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  管线覆盖物
+        for(var i = 0;i<overlay.Polyline.length;i++){
+          var type = overlay.Polyline[i].type;
+          if(type  == '污水管'){
+            overlay.Polyline[i].hide()
+          }
+          if(type  == '雨水管'){
+            overlay.Polyline[i].hide()
+          }
+        }
+      },
+      showAllConduits(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  管线覆盖物
+        for(var i = 0;i<overlay.Polyline.length;i++){
+          var type = overlay.Polyline[i].type;
+          if(type  == '污水管'){
+            overlay.Polyline[i].show()
+          }
+          if(type  == '雨水管'){
+            overlay.Polyline[i].show()
+          }
+        }
+      },
+      hideRainConduits(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  管线覆盖物
+        for(var i = 0;i<overlay.Polyline.length;i++){
+          var type = overlay.Polyline[i].type;
+          if(type  == '污水管'){
+          }
+          if(type  == '雨水管'){
+            overlay.Polyline[i].hide()
+          }
+        }
+      },
+      showRainConduits(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  管线覆盖物
+        for(var i = 0;i<overlay.Polyline.length;i++){
+          var type = overlay.Polyline[i].type;
+          if(type  == '污水管'){
+          }
+          if(type  == '雨水管'){
+            overlay.Polyline[i].show()
+          }
+        }
+      },
+      hideSewageConduits(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  管线覆盖物
+        for(var i = 0;i<overlay.Polyline.length;i++){
+          var type = overlay.Polyline[i].type;
+          if(type  == '污水管'){
+            overlay.Polyline[i].hide()
+          }
+          if(type  == '雨水管'){
+
+          }
+        }
+      },
+      showSewageConduits(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        //  管线覆盖物
+        for(var i = 0;i<overlay.Polyline.length;i++){
+          var type = overlay.Polyline[i].type;
+          if(type  == '污水管'){
+            overlay.Polyline[i].show()
+          }
+          if(type  == '雨水管'){
+
+          }
+        }
+      },
+    //  隐藏地块
+      hideAllSubcatchments(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          overlay.Polygon[i].hide();
+        }
+      },
+      showAllSubcatchments(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          overlay.Polygon[i].show();
+        }
+      },
+      //隐藏道路
+      hideDaolu(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '道路'){
+            overlay.Polygon[i].hide();
+          }
+        }
+      },
+      showDaolu(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '道路'){
+            overlay.Polygon[i].show();
+          }
+        }
+      },
+      //隐藏市政
+      hideShizheng(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '市政'){
+            overlay.Polygon[i].hide();
+          }
+        }
+      },
+      showShizheng(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '市政'){
+            overlay.Polygon[i].show();
+          }
+        }
+      },
+      //隐藏绿地
+      hideLvdi(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '绿地'){
+            overlay.Polygon[i].hide();
+          }
+        }
+      },
+      showLvdi(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '绿地'){
+            overlay.Polygon[i].show();
+          }
+        }
+      },
+      //隐藏居住
+      hideJuzhu(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '居住'){
+            overlay.Polygon[i].hide();
+          }
+        }
+      },
+      showJuzhu(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '居住'){
+            overlay.Polygon[i].show();
+          }
+        }
+      },
+      //隐藏政府
+      hideZhengfu(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '政府'){
+            overlay.Polygon[i].hide();
+          }
+        }
+      },
+      showZhengfu(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '政府'){
+            overlay.Polygon[i].show();
+          }
+        }
+      },
+      //隐藏工业
+      hideGongye(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '工业'){
+            overlay.Polygon[i].hide();
+          }
+        }
+      },
+      showGongye(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '工业'){
+            overlay.Polygon[i].show();
+          }
+        }
+      },
+      //隐藏商业
+      hideShangye(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '商业'){
+            overlay.Polygon[i].hide();
+          }
+        }
+      },
+      showShangye(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Polygon.length;i++){
+          var sonType = overlay.Polygon[i].sonType;
+          if(sonType == '商业'){
+            overlay.Polygon[i].show();
+          }
+        }
+      },
+    //  隐藏企业
+      hideAllCompanys(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Marker.length;i++){
+          overlay.Marker[i].hide();
+        }
+      },
+      showAllCompanys(){
+        var self = this;
+        var map = self.map;
+        var allOverlay = map.getOverlays();  //获得所有覆盖物
+        var overlay = {
+          Polygon:[],
+          Polyline:[],
+          Circle:[],
+          Marker:[]
+        }
+        for(var i = 0; i<allOverlay.length;i++){
+          var overlayType = allOverlay[i].toString();
+          if(overlayType == '[object Polygon]'){
+            overlay.Polygon.push(allOverlay[i])
+          }
+          if(overlayType == '[object Polyline]'){
+            overlay.Polyline.push(allOverlay[i])
+          }
+          if(overlayType == '[object Circle]'){
+            overlay.Circle.push(allOverlay[i])
+          }
+          if(overlayType == '[object Marker]'){
+            overlay.Marker.push(allOverlay[i])
+          }
+        }
+        for(var i = 0;i<overlay.Marker.length;i++){
+          overlay.Marker[i].show();
+        }
+      },
+    //  拓扑查询加快方式
+    //  根据地块查下游排口 （管道类型）
+      getDescendantOutfallsOfSubcatchment(feature, cy, conduitType){
+        if(feature['geometry']['type'] !== 'Polygon') {
+          console.warn('输入的feature不合法：feature的类型应该为Polygon')
+          return []
+        }
+        let center = feature.properties.center;
+        let subcatchmentCenterPoint = [center[1],center[0]];
+        let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
+        return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().nodes('[businessType="OUTFALLS"]'), node => {
+          return node.data()
+        })
+      },
+    //  根据地块查询下游管道
+      getDescendantConduitsOfSubcatchment(feature, cy, conduitType){
+        if(feature['geometry']['type'] !== 'Polygon') {
+          console.warn('输入的feature不合法：feature的类型应该为Polygon')
+          return []
+        }
+        let center = feature.properties.center;
+        let subcatchmentCenterPoint = [center[1],center[0]];
+        let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
+
+        return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().edges(), edge => {
+          return edge.data()
+        })
+      },
+    //  测试函数
+      UpdateData(){
+        var self = this;
+        request('shapes',{
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: self.projectId
+                },
+                'category':{
+                  equalTo: 'SUBCATCHMENTS'
+                }
+              }
+            }
+          }
+        }).then(resp =>{
+          var data = resp.data;
+          for(var i = 0;i<data.length;i++){
+            var shapeid = data[i].id
+            var feature = data[i].properties;
+            var properties = JSON.parse(feature)
+            if(properties.properties.JSZT == '现状' && properties.properties.JSZT == '已落实海绵'){
+              // properties.properties.现状控制率 = properties.properties.规划控制率
+              // var dataNew ={
+              //   properties:JSON.stringify(properties)
+              // }
+              // console.log(dataNew)
+              // commonApi.edit('shapes',shapeid,dataNew).then(function(){
+              //   console.log('执行完成');
+              // })
+            }
+          }
+        })
+      }
     }
   }
 </script>
