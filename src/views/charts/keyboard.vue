@@ -353,7 +353,7 @@
         </el-form>
 
         <span slot="footer" class="dialog-footer">
-          <el-button @click="quxiao('optionData')">取 消</el-button>
+          <el-button @click="handleCancel('optionData')">取 消</el-button>
           <el-button v-show="this.hodelView == 'view' ? false : true" type="primary"
                      @click="dialogVisible = false">确 定</el-button>
           <el-button v-show="this.hodelView == 'view' ? true : false" type="primary"
@@ -586,53 +586,54 @@
         var data = res.data;
         _.each(data, function (L) {
           var TestData = JSON.parse(L.properties);    // 解析
-          var letter = ( TestData.properties.YDLX ).substr(0, 1);     // 截取字符
-          var threeTest = ( TestData.properties.YDLX ).substr(0, 3);  // 截取字符
+          var com = TestData.properties;
+          var letter = ( com.YDLX ).substr(0, 1);     // 截取字符
+          var threeTest = ( com.YDLX ).substr(0, 3);  // 截取字符
           /**
            * 道路广场
            */
-          if (TestData.properties.SSPSFQ !== '20#排水分区' && TestData.properties.YDLX === "道路" || letter === "S" ) {
+          if (com.SSPSFQ !== '20#排水分区' && com.YDLX === "道路" || letter === "S" ) {
             var RoadTest = {};
-            RoadTest.name = TestData.properties.name;
-            RoadTest.YDLX = TestData.properties.YDLX;
-            RoadTest.JSZT = TestData.properties.JSZT;
-            RoadTest.XMMC = TestData.properties.XMMC;
-            RoadTest.PRHD = TestData.properties.PRHD;
-            RoadTest.SSLY = TestData.properties.SSLY;
-            RoadTest.SSPSFQ = TestData.properties.SSPSFQ;
-            RoadTest.ZBQY = TestData.properties.ZBQY;
-            RoadTest.XZKZL = TestData.properties.现状控制率;
-            RoadTest.GHKZL = TestData.properties.规划控制率;
-            RoadTest.area = Math.abs(((TestData.properties.area)/10000).toFixed(2));
+            RoadTest.name = com.name;
+            RoadTest.YDLX = com.YDLX;
+            RoadTest.JSZT = com.JSZT;
+            RoadTest.XMMC = com.XMMC;
+            RoadTest.PRHD = com.PRHD;
+            RoadTest.SSLY = com.SSLY;
+            RoadTest.SSPSFQ = com.SSPSFQ;
+            RoadTest.ZBQY = com.ZBQY;
+            RoadTest.XZKZL = com.现状控制率;
+            RoadTest.GHKZL = com.规划控制率;
+            RoadTest.area = Math.abs(((com.area)/10000).toFixed(2));
             /**
              * 判断海绵建设情况
              */
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "现状" && com.HMCS === "已落实海绵" ) {
+              RoadTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "现状" && com.HMCS === "未落实海绵" ) {
+              RoadTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
-              RoadTest.JSQK = TestData.properties.JSZT + '';
+            if( com.JSZT === "现状" && com.HMCS === null ) {
+              RoadTest.JSQK = com.JSZT + '';
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "在建" && com.HMCS === "已落实海绵" ) {
+              RoadTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "在建" && com.HMCS === "未落实海绵" ) {
+              RoadTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
+            if( com.JSZT === "在建" && com.HMCS === null ) {
               debugger
-              RoadTest.JSQK = TestData.properties.JSZT + '';
+              RoadTest.JSQK = com.JSZT + '';
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "规划" && com.HMCS === "已落实海绵" ) {
+              RoadTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              RoadTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "规划" && com.HMCS === "未落实海绵" ) {
+              RoadTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+            if( com.JSZT === "规划" && com.HMCS === null ) {
               RoadTest.JSQK = "规划管控" + '';
             }
             self.roadSquare.push(RoadTest);
@@ -641,48 +642,48 @@
           /**
            * 建筑小区
            */
-          if ( letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC" && TestData.properties.SSPSFQ !== '20#排水分区' ) {
+          if ( letter === "R" || letter === "M" || letter === "C" || threeTest === "GIC" && com.SSPSFQ !== '20#排水分区' ) {
             var builTest = {};
-            builTest.name = TestData.properties.name;
-            builTest.YDLX = TestData.properties.YDLX;
-            builTest.JSZT = TestData.properties.JSZT;
-            builTest.XMMC = TestData.properties.XMMC;
-            builTest.HMLX = TestData.properties.HMLX;
-            builTest.PRHD = TestData.properties.PRHD;
-            builTest.SSLY = TestData.properties.SSLY;
-            builTest.SSPSFQ = TestData.properties.SSPSFQ;
-            builTest.ZBQY = TestData.properties.ZBQY;
-            builTest.XZKZL = TestData.properties.现状控制率;
-            builTest.GHKZL = TestData.properties.规划控制率;
-            builTest.area = Math.abs(((TestData.properties.area)/10000).toFixed(2));
+            builTest.name = com.name;
+            builTest.YDLX = com.YDLX;
+            builTest.JSZT = com.JSZT;
+            builTest.XMMC = com.XMMC;
+            builTest.HMLX = com.HMLX;
+            builTest.PRHD = com.PRHD;
+            builTest.SSLY = com.SSLY;
+            builTest.SSPSFQ = com.SSPSFQ;
+            builTest.ZBQY = com.ZBQY;
+            builTest.XZKZL = com.现状控制率;
+            builTest.GHKZL = com.规划控制率;
+            builTest.area = Math.abs(((com.area)/10000).toFixed(2));
             /**
              * 判断海绵建设情况
              */
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "现状" && com.HMCS === "已落实海绵" ) {
+              builTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "现状" && com.HMCS === "未落实海绵" ) {
+              builTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
-              builTest.JSQK = TestData.properties.JSZT + '';
+            if( com.JSZT === "现状" && com.HMCS === null ) {
+              builTest.JSQK = com.JSZT + '';
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "在建" && com.HMCS === "已落实海绵" ) {
+              builTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "在建" && com.HMCS === "未落实海绵" ) {
+              builTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
-              builTest.JSQK = TestData.properties.JSZT + '';
+            if( com.JSZT === "在建" && com.HMCS === null ) {
+              builTest.JSQK = com.JSZT + '';
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "规划" && com.HMCS === "已落实海绵" ) {
+              builTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              builTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "规划" && com.HMCS === "未落实海绵" ) {
+              builTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+            if( com.JSZT === "规划" && com.HMCS === null ) {
               builTest.JSQK = "规划管控" + '';
             }
             self.buildSquare.push(builTest);
@@ -691,48 +692,48 @@
           /**
            * 公园绿地
            */
-          if ( letter === "G"  && TestData.properties.SSPSFQ !== '20#排水分区' ) {
+          if ( letter === "G"  && com.SSPSFQ !== '20#排水分区' ) {
             var parkTest = {};
-            parkTest.name = TestData.properties.name;
-            parkTest.YDLX = TestData.properties.YDLX;
-            parkTest.JSZT = TestData.properties.JSZT;
-            parkTest.XMMC = TestData.properties.XMMC;
-            parkTest.HMLX = TestData.properties.HMLX;
-            parkTest.PRHD = TestData.properties.PRHD;
-            parkTest.SSLY = TestData.properties.SSLY;
-            parkTest.SSPSFQ = TestData.properties.SSPSFQ;
-            parkTest.ZBQY = TestData.properties.ZBQY;
-            parkTest.XZKZL = TestData.properties.现状控制率;
-            parkTest.GHKZL = TestData.properties.规划控制率;
-            parkTest.area = Math.abs(((TestData.properties.area)/10000).toFixed(2));
+            parkTest.name = com.name;
+            parkTest.YDLX = com.YDLX;
+            parkTest.JSZT = com.JSZT;
+            parkTest.XMMC = com.XMMC;
+            parkTest.HMLX = com.HMLX;
+            parkTest.PRHD = com.PRHD;
+            parkTest.SSLY = com.SSLY;
+            parkTest.SSPSFQ = com.SSPSFQ;
+            parkTest.ZBQY = com.ZBQY;
+            parkTest.XZKZL = com.现状控制率;
+            parkTest.GHKZL = com.规划控制率;
+            parkTest.area = Math.abs(((com.area)/10000).toFixed(2));
             /**
              * 判断海绵建设情况
              */
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "已落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "现状" && com.HMCS === "已落实海绵" ) {
+              parkTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "现状" && com.HMCS === "未落实海绵" ) {
+              parkTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "现状" && TestData.properties.HMCS === null ) {
-              parkTest.JSQK = TestData.properties.JSZT + '';
+            if( com.JSZT === "现状" && com.HMCS === null ) {
+              parkTest.JSQK = com.JSZT + '';
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "已落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "在建" && com.HMCS === "已落实海绵" ) {
+              parkTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "在建" && com.HMCS === "未落实海绵" ) {
+              parkTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "在建" && TestData.properties.HMCS === null ) {
-              parkTest.JSQK = TestData.properties.JSZT + '';
+            if( com.JSZT === "在建" && com.HMCS === null ) {
+              parkTest.JSQK = com.JSZT + '';
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "已落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + TestData.properties.HMCS;
+            if( com.JSZT === "规划" && com.HMCS === "已落实海绵" ) {
+              parkTest.JSQK = com.JSZT + com.HMCS;
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === "未落实海绵" ) {
-              parkTest.JSQK = TestData.properties.JSZT + "无海绵";
+            if( com.JSZT === "规划" && com.HMCS === "未落实海绵" ) {
+              parkTest.JSQK = com.JSZT + "无海绵";
             }
-            if( TestData.properties.JSZT === "规划" && TestData.properties.HMCS === null ) {
+            if( com.JSZT === "规划" && com.HMCS === null ) {
               parkTest.JSQK = "规划管控" + '';
             }
             self.parkSquare.push(parkTest);
@@ -1278,15 +1279,15 @@
         if (column.prop === 'name') {
           if (column.order === 'descending') {
             self.roadSquare = self.roadSquare.sort(function(a,b){
-              var name1 = a.name;
-              var name2 = b.name;
+              var name1 = Number(a.name.replace(/DL|\s+|-/g, ''));
+              var name2 = Number(b.name.replace(/DL|\s+|-/g, ''));
               return name2 - name1
             })
           } else
           if (column.order === 'ascending') {
             self.roadSquare = self.roadSquare.sort(function(a,b){
-              var name1 = a.name;
-              var name2 = b.name;
+              var name1 = Number(a.name.replace(/DL|\s+|-/g, ''));
+              var name2 = Number(b.name.replace(/DL|\s+|-/g, ''));
               return name1 - name2
             })
           }
@@ -1345,13 +1346,6 @@
        */
       handleClick(tab, event, res) {
         const self = this;
-        if(tab.index === '0') {
-
-        }else if(tab.index === '1'){
-
-        }else if(tab.index === '2'){
-
-        }
         console.log(tab.index)
       },
       /**
@@ -1395,10 +1389,9 @@
         self.dialogVisible = true;
         self.optionData = row;
         self.rulersTest = self.rules;
-        self.$refs[formRule].resetFields();
         console.log("进入编辑信息页面", self.rulers);
       },
-      quxiao(formRule){
+      handleCancel(formRule){
         const self = this;
         self.dialogVisible = false;
         self.$refs[formRule].resetFields();
