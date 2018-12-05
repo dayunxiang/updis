@@ -1,6 +1,9 @@
 <template>
   <div class="map-context"
-
+       v-loading="isLoading"
+       element-loading-text="正在查询中"
+       element-loading-spinner="el-icon-loading"
+       element-loading-background="rgba(0, 0, 0, 0.8)"
   >
     <div class="map-tab">
       <BaiduMap
@@ -633,8 +636,8 @@
             </el-autocomplete>
             <el-button type="success" icon="el-icon-search" circle @click="handleSelect"></el-button>
           </div>
-          <div class="result-ul" v-show = 'isResult'>
-            <el-tabs type="border-card" v-model="select">
+          <div class="result-ul" v-show = 'isSelect'>
+            <el-tabs type="border-card" v-model="select" >
               <el-tab-pane style="max-height: 500px;overflow: auto" v-if = " selectOutfalls.length"      :label= "'排口'+'（'+ selectOutfalls.length+')'">
                 <el-table :data=" selectOutfalls" border max-height="500" style="width: 100%;" key="outfallTable">
 
@@ -655,31 +658,6 @@
                   </el-table-column>
                 </el-table>
               </el-tab-pane>
-              <el-tab-pane style="max-height: 500px;overflow: auto" v-if = "select.conduits.length"      :label= "'管线'+'（'+select.conduits.length+')'">
-                <el-table :data="conduitsData" border max-height="500" style="width: 100%;" key="conduitData">
-                  <el-table-column
-                    fixed
-                    prop="id"
-                    label="序号"
-                    width="50">
-                  </el-table-column>
-                  <el-table-column
-                    prop="name"
-                    label="名称"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="leixing"
-                    label="类型"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="guanjing"
-                    label="管径(毫米)"
-                    width="100">
-                  </el-table-column>
-                </el-table>
-              </el-tab-pane>
               <el-tab-pane v-if = "selectSubcatchmentData.length" :label= "'地块'+'（'+selectSubcatchmentData.length+')'" style="max-height: 500px;overflow: auto">
                 <el-table :data="selectSubcatchmentData" border max-height="500" style="width: 100%;" key="conduitData">
                   <el-table-column
@@ -697,7 +675,7 @@
                     prop="area"
                     label="面积(平方米)"
                     sortable
-                    width="250">
+                    width="100">
                   </el-table-column>
                   <el-table-column
                     prop="JSZT"
@@ -880,7 +858,7 @@
           switch (category) {
             case 'SUBCATCHMENTS':
               var subcatchment = {
-                area :resultData[i].properties.area.toFixed(2),
+                area : Math.abs(resultData[i].properties.area.toFixed(2)),
                 HMCS:resultData[i].properties.HMCS,
                 HMLX:resultData[i].properties.HMLX,
                 JSZT:resultData[i].properties.JSZT,
@@ -912,6 +890,7 @@
     },
     data() {
       return {
+        isLoading: false,
         //搜索出来的结果
         selectSubcatchmentData:[],
         selectOutfalls:[],
@@ -922,7 +901,7 @@
         outfallsData: [],
         companysData: [],
         isResult: false,
-        isLoading: true,
+
         projectId: '',
         outfalls: {
           rainOutfalls: [],
@@ -1116,6 +1095,9 @@
           var newArr = []
           var selection = []
           for (var i = 0; i < selectOpaction.length; i++) {
+            if(selectOpaction[i].value == '光明医院' || selectOpaction[i].value == 'GIC4'){
+              selection.push(selectOpaction[i])
+            }
             if (selectOpaction[i].value == null) {
             }
             else {
@@ -1149,6 +1131,9 @@
             }
           }
           self.restaurants = selection;
+          // for(var i = 0;i<self.restaurants.length;i++){
+          //   console.log(self.restaurants[i].value == '光明医院')
+          // }
 
         })
       },
@@ -1283,7 +1268,11 @@
        * 重新绘制事件
        * */
       handleReset() {
-        this.$refs.map.handleReset();
+        var self = this;
+        self.selectSubcatchmentData = [];
+        self.selectOutfalls = [];
+        self.selectCompanys = [];
+        self.$refs.map.handleReset();
       },
       /**
        * 反向查询
@@ -1315,6 +1304,10 @@
       //查询开始
       handleSelect() {
         var self = this;
+        self.isLoading = true;
+        self.selectSubcatchmentData = [];
+        self.selectOutfalls = [];
+        self.selectCompanys = [];
         var selectArr = self.String2Array(self.state1);
         self.selectResult.subcatchments = [];
         self.selectResult.conduits = [];
@@ -1523,8 +1516,8 @@
           //  拿到结果进行处理  用于页面展示  用于 地图绘制
 
           self.isResult = !self.isResult
-
           this.$refs.map.showResult(self.selectResult);
+          self.isLoading = false;
         })
       },
       //字符串转数组
