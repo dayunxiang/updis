@@ -806,31 +806,24 @@
                   simpleName: data.simpleName,
                   params: JSON.stringify({'depPhone': data.depPhone, 'depTime': data.depTime, 'address': data.address})
                 }).then(function (res) {
-                  if (res.data.message === '门店已存在') {
-                    self.$message({
-                      message: '门店已存在',
-                      type: 'success'
-                    })
-                  } else {
-                    if (self.adminShowCom === true) { // 创建的是公司
-                      commonApi.create('hm_dicts', {
-                        type: '部门类型',
-                        key: res.data.id,
-                        value: JSON.stringify(['公司'])
-                      }).then(function (resDic) {
-                        self.adminShowCom = false
-                      })
-                    }
-                    self.adminShowDep = false
-                    // 刷新树形结构
-                    console.log('self.departmentLists:', self.departmentLists)
-                    self.departmentLists.push(res.data)
-                    self.departmentTree = toTree(self.departmentLists, 'parentDepartmentId')
-                    self.$message({
-                      message: '保存成功',
-                      type: 'success'
+                  if (self.adminShowCom === true) { // 创建的是公司
+                    commonApi.create('hm_dicts', {
+                      type: '部门类型',
+                      key: res.data.id,
+                      value: JSON.stringify(['公司'])
+                    }).then(function (resDic) {
+                      self.adminShowCom = false
                     })
                   }
+                  self.adminShowDep = false
+                  // 刷新树形结构
+                  console.log('self.departmentLists:', self.departmentLists)
+                  self.departmentLists.push(res.data)
+                  self.departmentTree = toTree(self.departmentLists, 'parentDepartmentId')
+                  self.$message({
+                    message: '保存成功',
+                    type: 'success'
+                  })
                 })
               }
             })
