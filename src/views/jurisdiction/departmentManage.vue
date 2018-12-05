@@ -18,7 +18,7 @@
           <el-tab-pane label="部门设置" name="organizationalStructure">
             <div class="organization-select">
               <div class="btn-title" v-show="isDepSet">
-                <el-button v-show="!isStore" class="filter-item" type="primary" v-waves icon="el-icon-plus" @click="showAddDepartmentDialog">创建部门
+                <el-button class="filter-item" type="primary" v-waves icon="el-icon-plus" @click="showAddDepartmentDialog">创建部门
                 </el-button>
                 <el-button class="filter-item" type="primary" v-waves icon="el-icon-close" @click="delDepartmentId">删除
                 </el-button>
@@ -103,7 +103,6 @@
         userRoles: [],  // 当前用户的角色
         selectedDepartmentType: null, // 部门类型的默认值
         isDepSet: false, // 是否显示部门设置中的顶部按钮
-        isStore: false, // 是否为最后一级部门类型
         newDepType: '', // 新建部门的类型
         isSuper: 1, // 登录角色  1:是超级管理员 2:不是超级管理员
         adminTypeShow: false, // 设置主管
@@ -136,10 +135,7 @@
           { name: '部门电话', codeCamel: 'depPhone', widgetType: 1,
             rule: [
               { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的部门电话', trigger: 'change,blur' }]
-          },
-          { name: '营业时间', codeCamel: 'depTime', widgetType: 1, hide: true
-          },
-          { name: '经纬度', codeCamel: 'position', widgetType: 13, hide: true }
+          }
         ],
         showFormButtons: [{ // 部门设置的表单按钮
           text: '保存',
@@ -322,21 +318,14 @@
             self.departmentTree = toTree(self.departmentLists, 'parentDepartmentId')
             if (self.isSuper === 1) {
               _.each(reps.data, function(k) {
-                self.userOptions.newData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
-                self.userOptions.editData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
+                self.userOptions.newData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
+                self.userOptions.editData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
               })
             } else if (self.isSuper === 2) {
-              if (self.userDep.departmentType !== '门店') {
-                self.departmentTree = [{
-                  name: self.userDep.name,
-                  id: self.userInfo.includes.hm_user.departmentId,
-                  children: self.departmentTree
-                }]
-              }
               _.each(reps.data, function(k, index) {
                 if (k.name !== 'superAdmin') {
-                  self.userOptions.newData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
-                  self.userOptions.editData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
+                  self.userOptions.newData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
+                  self.userOptions.editData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
                 }
               })
             }
@@ -344,22 +333,6 @@
         })
       },
 
-      /**
-       * 角色选择
-       */
-      isRiderChange(data) {
-        const self = this
-        console.log(data)
-        if (data === 1) {
-          console.log('选择的是管理员')
-          self.userOptions.newData.showUserColumns[5].hide = false
-          self.userOptions.editData.showUserColumns[5].hide = false
-        } else {
-          console.log('选择的是骑手')
-          self.userOptions.newData.showUserColumns[5].hide = true
-          self.userOptions.editData.showUserColumns[5].hide = true
-        }
-      },
       /**
        * 员工新建的确认按钮
        */
@@ -437,14 +410,6 @@
               roleIds.push(v.roleId)
             })
           }
-          let isRider = 2
-          if (data[0].type === 3) {
-            isRider = 2
-            self.userOptions.editData.showUserColumns[5].disabled = true
-          } else {
-            isRider = 1
-            self.userOptions.editData.showUserColumns[5].disabled = false
-          }
           if(data[0].params) {
             const parmas = JSON.parse(data[0].params)
             self.$set(formModel, 'age', parmas.age)
@@ -456,7 +421,6 @@
           }
           self.$set(formModel, 'roleIds', roleIds)
           self.$set(formModel, 'id', data[0].id)
-          self.$set(formModel, 'isRider', isRider)
         })
         return formModel
       },
@@ -640,29 +604,9 @@
                     self.newDepType = _.trim(_.trim(_.words(respDic.data[0].value, /[^,]+/g)[index + 1], '[]'), '\"')
                   }
                 })
-              } else {
-                console.log('不可能没有')
-                self.newDepType = '门店'
               }
             })
           })
-          if (resp.data[0].departmentType === '门店') {
-            self.showFormColumns[6].hide = false // 右侧表单的营业时间字段
-            self.showFormColumns[7].hide = false // 右侧表单的经纬度字段
-            self.userOptions.newData.showUserColumns[4].hide = false // 员工管理新建表单的是否为骑手
-            self.userOptions.editData.showUserColumns[4].hide = false // 员工管理编辑表单的是否为骑手
-            self.userOptions.newData.showUserColumns[5].disabled = false // 员工管理新建表单的角色是否可操作
-            self.userOptions.editData.showUserColumns[5].disabled = false // 员工管理编辑表单的角色是否可操作
-            self.isStore = true
-          } else {
-            self.showFormColumns[6].hide = true // 右侧表单的营业时间字段
-            self.showFormColumns[7].hide = true // 右侧表单的经纬度字段
-            self.userOptions.newData.showUserColumns[4].hide = true // 员工管理新建表单的是否为骑手
-            self.userOptions.editData.showUserColumns[4].hide = true // 员工管理编辑表单的是否为骑手
-            self.userOptions.newData.showUserColumns[5].disabled = false // 员工管理新建表单的角色是否可操作
-            self.userOptions.editData.showUserColumns[5].disabled = false // 员工管理编辑表单的角色是否可操作
-            self.isStore = false
-          }
           const interval = setInterval(() => {
             if (self.$refs.paramsForm) {
               clearInterval(interval)
@@ -872,7 +816,7 @@
                       commonApi.create('hm_dicts', {
                         type: '部门类型',
                         key: res.data.id,
-                        value: JSON.stringify(['公司', '门店'])
+                        value: JSON.stringify(['公司'])
                       }).then(function (resDic) {
                         self.adminShowCom = false
                       })
@@ -1042,7 +986,7 @@
             return item.type === '部门类型' && item.key === self.selectedDepartment.id
           })
           if (showTypes.length === 0) {
-            self.departmentTypes = ['公司', '门店']
+            self.departmentTypes = ['公司']
           } else {
             self.departmentTypes = []
             _.each(_.words(showTypes[0].value, /[^,]+/g), function(v) {
@@ -1127,14 +1071,7 @@
                 { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的电话号码', trigger: 'change,blur' }
               ]
             },
-            { name: '是否为骑手', codeCamel: 'isRider', widgetType: 7, change: this.isRiderChange,
-              options: [
-                { label: 1, value: '管理员' }, // 单选的value是选项文字，label是选中值
-                { label: 2, value: '骑手' } // 如果数据库中存的数据类型是number，label值写number如1，如果为string，label值写string ,如'1'
-              ], hide: true,
-              rule: [{ required: false, message: '请选择是否为骑手', trigger: 'blur' }]
-            },
-            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true, disabled: true, hide: false
+            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true
             },
             { name: '年龄', codeCamel: 'age', widgetType: 1,
               rule: [
@@ -1187,14 +1124,7 @@
                 { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的电话号码', trigger: 'change,blur' }
               ]
             },
-            { name: '是否为骑手', codeCamel: 'isRider', widgetType: 7, change: this.isRiderChange,
-              options: [
-                { label: 1, value: '管理员' }, // 单选的value是选项文字，label是选中值
-                { label: 2, value: '骑手' } // 如果数据库中存的数据类型是number，label值写number如1，如果为string，label值写string ,如'1'
-              ], hide: true,
-              rule: [{ required: false, message: '请选择是否为骑手', trigger: 'blur' }]
-            },
-            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true, disabled: true, hide: false
+            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true
             },
             { name: '年龄', codeCamel: 'age', widgetType: 1,
               rule: [
