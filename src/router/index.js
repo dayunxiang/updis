@@ -219,20 +219,17 @@ export const asyncRouterMap = [
         name: 'coordinate',
         meta: {
           title: 'Gis坐标转换',
-          icon: 'documentation',
           noCache: true
         }
       },
       {
-        path: 'coordinate',
-        component: _import('Tools/coordinate'),
-        name: 'coordinate',
+        path: 'nianjingliu',
+        component: _import('Tools/nianjingliu'),
+        name: 'nianjingliu',
         meta: {
-          title: 'Gis坐标转换',
-          icon: 'documentation',
+          title: '年径流总量控制率转换',
           noCache: true
         },
-        hidden: true
       }
     ]
   },
