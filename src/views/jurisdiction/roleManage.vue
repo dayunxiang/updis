@@ -112,7 +112,7 @@
           isShow: true,
           showUserColumns: [
             {
-              name: '角色名', codeCamel: 'name', widgetType: 1,
+              name: '角色名', codeCamel: 'name', widgetType: 1, disabled: true,
               rule: {required: true, message: '请输入姓名', trigger: 'blur'}
             },
             {
@@ -223,12 +223,34 @@
               })
             } else {
               console.log('可以删除')
-              commonApi.delete('roles', data.id).then(function (res) {
-                self.$message({
-                  message: '删除成功',
-                  type: 'success'
+              request('role_menus', {
+                params: {
+                  filters: {
+                    'role_menu': {
+                      'role_id': {
+                        equalTo: data.id
+                      }
+                    }
+                  }
+                }
+              }).then(resp => {
+                const deleteIds = []
+                _.each(resp.data, function (v) {
+                  deleteIds.push(v.id)
                 })
-                self.$refs.hmComplexTable.getList() // 刷新列表
+                // 批量删除该角色之前的角色菜单表
+                const deleteParams = {
+                  ids: JSON.stringify(deleteIds)
+                }
+                roleMenuAllDelete(deleteParams).then(function (res) {
+                  commonApi.delete('roles', data.id).then(function (res) {
+                    self.$message({
+                      message: '删除成功',
+                      type: 'success'
+                    })
+                    self.$refs.hmComplexTable.getList() // 刷新列表
+                  })
+                })
               })
             }
           })
@@ -356,6 +378,12 @@
   }
   .dialog-footer>button{
     display: inline-block;
+  }
+  .el-input.is-disabled .el-input__inner {
+    background-color: #f5f7fa;
+    border-color: #e4e7ed;
+    color: #807474;
+    cursor: not-allowed;
   }
 </style>
 <style lang='scss' scoped>

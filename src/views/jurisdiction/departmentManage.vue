@@ -31,7 +31,7 @@
           </el-tab-pane>
           <!--员工信息组件-->
           <el-tab-pane label="员工管理" name="personnelManage">
-            <Tables :schema="schema['HmUser']" :columns='showUserColumns' :filters="userFilters"
+            <Tables :schema="schema['HmUser']" :columns='showUserColumns'
                     :includes='userIncludes' :options='userOptions' :userDefined="userDefined"
                     ref="hmComplexTable"></Tables>
           </el-tab-pane>
@@ -127,25 +127,19 @@
             rule: { required: true, message: '请输入部门编码', trigger: 'blur' }},
           { name: '部门名称 ', codeCamel: 'name', widgetType: 1, default: '',
             rule: { required: true, message: '请输入部门名称 ', trigger: 'blur' }},
-          { name: '部门简称', codeCamel: 'simpleName', widgetType: 1,
-            rule: { required: true, message: '请输入部门简称', trigger: 'blur' }
+          { name: '部门简称', codeCamel: 'simpleName', widgetType: 1
           },
           { name: '部门类型', codeCamel: 'departmentType', widgetType: 1, disabled: true
           },
-          { name: '描述', codeCamel: 'description', widgetType: 4,
-            textarea: {
-              style: { width: '100px' },
-              resize: 'none',
-              autosize: { minRows: 3, maxRows: 5 },
-              rows: 3 }
+          { name: '地址', codeCamel: 'address', widgetType: 1
           },
           { name: '部门电话', codeCamel: 'depPhone', widgetType: 1,
-            rule: [{ required: true, message: '请输入部门电话', trigger: 'blur' },
-              { pattern: /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/, message: '请输入正确的部门电话', trigger: 'change,blur' }]
+            rule: [
+              { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的部门电话', trigger: 'change,blur' }]
           },
-          { name: '营业时间', codeCamel: 'depTime', widgetType: 1
+          { name: '营业时间', codeCamel: 'depTime', widgetType: 1, hide: true
           },
-          { name: '经纬度', codeCamel: 'position', widgetType: 13 }
+          { name: '经纬度', codeCamel: 'position', widgetType: 13, hide: true }
         ],
         showFormButtons: [{ // 部门设置的表单按钮
           text: '保存',
@@ -168,20 +162,14 @@
           { name: '部门名称 ', codeCamel: 'name', widgetType: 1, default: '',
             rule: { required: true, message: '请输入部门名称 ', trigger: 'blur' }
           },
-          { name: '部门简称', codeCamel: 'simpleName', widgetType: 1,
-            rule: { required: true, message: '请输入部门简称', trigger: 'blur' }
+          { name: '部门简称', codeCamel: 'simpleName', widgetType: 1
           },
           { name: '部门电话', codeCamel: 'depPhone', widgetType: 1,
-            rule: [{ required: true, message: '请输入部门电话', trigger: 'blur' },
-              { pattern: /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/, message: '请输入正确的部门电话', trigger: 'change,blur' }]
+            rule: [
+              { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的部门电话', trigger: 'change,blur' }]
           },
           {
-            name: '描述', codeCamel: 'description', widgetType: 4, textarea: {
-              style: { width: '100px' },
-              resize: 'none',
-              autosize: { minRows: 3, maxRows: 5 },
-              rows: 3
-            }
+            name: '地址', codeCamel: 'description', widgetType: 1
           }
         ],
         newFormColumns1: [ // 添加部门的表单字段
@@ -191,22 +179,16 @@
           { name: '部门名称 ', codeCamel: 'name', widgetType: 1, default: '',
             rule: { required: true, message: '请输入部门名称 ', trigger: 'blur' }
           },
-          { name: '部门简称', codeCamel: 'simpleName', widgetType: 1,
-            rule: { required: true, message: '请输入部门简称', trigger: 'blur' }
+          { name: '部门简称', codeCamel: 'simpleName', widgetType: 1
           },
           { name: '部门电话', codeCamel: 'depPhone', widgetType: 1,
-            rule: [{ required: true, message: '请输入部门电话', trigger: 'blur' },
-              { pattern: /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/, message: '请输入正确的部门电话', trigger: 'change,blur' }]
+            rule: [
+              { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的部门电话', trigger: 'change,blur' }]
           },
           {
-            name: '描述', codeCamel: 'description', widgetType: 4, textarea: {
-            style: { width: '100px' },
-            resize: 'none',
-            autosize: { minRows: 3, maxRows: 5 },
-            rows: 3
-          }
+            name: '描述', codeCamel: 'description', widgetType: 1
           },
-          { name: '营业时间', codeCamel: 'depTime', widgetType: 1
+          { name: '营业时间', codeCamel: 'depTime', widgetType: 1, hide: true
           }
         ],
         newTips: {
@@ -308,7 +290,7 @@
           })
           self.isSuper = 1
         }else if(self.userRoles && (_.map(self.userRoles, 'name').indexOf('admin') >= 0 ||
-          _.map(self.userRoles, 'name').indexOf('middleAdmin') >= 0)) {
+            _.map(self.userRoles, 'name').indexOf('middleAdmin') >= 0)) {
           requestDepartment = request('getChildrenDepartments', {
             method: 'GET',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
@@ -338,16 +320,23 @@
           }).then(reps => {
             self.departmentLists = _.sortBy(resp.data, 'name')
             self.departmentTree = toTree(self.departmentLists, 'parentDepartmentId')
-            if (self.isSuper === 1) { // 获取员工表的角色下拉内容
+            if (self.isSuper === 1) {
               _.each(reps.data, function(k) {
-                self.userOptions.newData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
-                self.userOptions.editData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
+                self.userOptions.newData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
+                self.userOptions.editData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
               })
             } else if (self.isSuper === 2) {
+              if (self.userDep.departmentType !== '门店') {
+                self.departmentTree = [{
+                  name: self.userDep.name,
+                  id: self.userInfo.includes.hm_user.departmentId,
+                  children: self.departmentTree
+                }]
+              }
               _.each(reps.data, function(k, index) {
                 if (k.name !== 'superAdmin') {
-                  self.userOptions.newData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
-                  self.userOptions.editData.showUserColumns[4].options.push({ 'value': k.id, 'label': k.name })
+                  self.userOptions.newData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
+                  self.userOptions.editData.showUserColumns[5].options.push({ 'value': k.id, 'label': k.name })
                 }
               })
             }
@@ -355,6 +344,22 @@
         })
       },
 
+      /**
+       * 角色选择
+       */
+      isRiderChange(data) {
+        const self = this
+        console.log(data)
+        if (data === 1) {
+          console.log('选择的是管理员')
+          self.userOptions.newData.showUserColumns[5].hide = false
+          self.userOptions.editData.showUserColumns[5].hide = false
+        } else {
+          console.log('选择的是骑手')
+          self.userOptions.newData.showUserColumns[5].hide = true
+          self.userOptions.editData.showUserColumns[5].hide = true
+        }
+      },
       /**
        * 员工新建的确认按钮
        */
@@ -371,7 +376,8 @@
                 mobile: data.mobile,
                 email: data.email,
                 params: JSON.stringify({ 'age': data.age, 'sex': data.sex, 'IDNumber': data.IDNumber, 'address': data.address, 'nativePlace': data.nativePlace, 'codeCamel': data.codeCamel }),
-                jobStatus: 0
+                jobStatus: 0,
+                type: 1
               }
               commonApi.create('hm_users', paramsNew).then(function(resUser) {
                 if (resUser.data.message === '账号已存在') {
@@ -425,20 +431,32 @@
             }
           }
         }).then(res => {
-          formModel.roleIds = []
+          let roleIds = []
           if (res.data.length > 0) {
             _.each(res.data, function(v) {
-              formModel.roleIds.push(v.roleId)
+              roleIds.push(v.roleId)
             })
           }
-          const parmas = JSON.parse(data[0].params)
+          let isRider = 2
+          if (data[0].type === 3) {
+            isRider = 2
+            self.userOptions.editData.showUserColumns[5].disabled = true
+          } else {
+            isRider = 1
+            self.userOptions.editData.showUserColumns[5].disabled = false
+          }
+          if(data[0].params) {
+            const parmas = JSON.parse(data[0].params)
+            self.$set(formModel, 'age', parmas.age)
+            self.$set(formModel, 'sex', parmas.sex)
+            self.$set(formModel, 'IDNumber', parmas.IDNumber)
+            self.$set(formModel, 'address', parmas.address)
+            self.$set(formModel, 'nativePlace', parmas.nativePlace)
+            self.$set(formModel, 'codeCamel', parmas.codeCamel)
+          }
+          self.$set(formModel, 'roleIds', roleIds)
           self.$set(formModel, 'id', data[0].id)
-          self.$set(formModel, 'age', parmas.age)
-          self.$set(formModel, 'sex', parmas.sex)
-          self.$set(formModel, 'IDNumber', parmas.IDNumber)
-          self.$set(formModel, 'address', parmas.address)
-          self.$set(formModel, 'nativePlace', parmas.nativePlace)
-          self.$set(formModel, 'codeCamel', parmas.codeCamel)
+          self.$set(formModel, 'isRider', isRider)
         })
         return formModel
       },
@@ -454,7 +472,8 @@
               password: data.password,
               mobile: data.mobile,
               email: data.email,
-              params: JSON.stringify({ 'age': data.age, 'sex': data.sex, 'IDNumber': data.IDNumber, 'address': data.address, 'nativePlace': data.nativePlace, 'codeCamel': data.codeCamel })
+              params: JSON.stringify({ 'age': data.age, 'sex': data.sex, 'IDNumber': data.IDNumber, 'address': data.address, 'nativePlace': data.nativePlace, 'codeCamel': data.codeCamel }),
+              type: 1
             }
             commonApi.edit('hm_users', data.id, paramsNew).then(function(resUser) {
               request('user_roles', {
@@ -472,9 +491,8 @@
                   const deletOptionId = { ids: [] }
                   _.each(resp.data, function(v) {
                     deletOptionId.ids.push(v.id)
-                    deletOptionId.ids = JSON.stringify(deletOptionId.ids)
                   })
-                  request.post('user_roles/delete/batch?ids=' + deletOptionId.ids, {
+                  request.post('user_roles/delete/batch?ids=' + encodeURIComponent(JSON.stringify(deletOptionId.ids)), {
                     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
                   }).then(resp => {
                     if (data.roleIds.length > 0) {
@@ -483,9 +501,19 @@
                           roleId: v,
                           userId: data.id
                         }).then(function(res) {
+                          self.$message({
+                            message: '编辑成功',
+                            type: 'success'
+                          })
                           self.closeDialog()
                         })
                       })
+                    } else {
+                      self.$message({
+                        message: '编辑成功',
+                        type: 'success'
+                      })
+                      self.closeDialog()
                     }
                   })
                 } else {
@@ -495,9 +523,20 @@
                         roleId: v,
                         userId: data.id
                       }).then(function(res) {
+                        // console.log(res.data)
+                        self.$message({
+                          message: '编辑成功',
+                          type: 'success'
+                        })
                         self.closeDialog()
                       })
                     })
+                  } else {
+                    self.$message({
+                      message: '编辑成功',
+                      type: 'success'
+                    })
+                    self.closeDialog()
                   }
                 }
               })
@@ -598,19 +637,38 @@
               if (respDic.data[0].value.length > 0) {
                 _.each(_.words(respDic.data[0].value, /[^,]+/g), function(v, index) {
                   if(_.trim(_.trim(v, '[]'), '\"') === data.departmentType ) {
-                    if (_.trim(_.trim(_.words(respDic.data[0].value, /[^,]+/g)[index + 1], '[]'), '\"')) {
-                      self.newDepType = _.trim(_.trim(_.words(respDic.data[0].value, /[^,]+/g)[index + 1], '[]'), '\"')
-                      self.isStore = false
-                    } else {
-                      self.isStore = true
-                    }
+                    self.newDepType = _.trim(_.trim(_.words(respDic.data[0].value, /[^,]+/g)[index + 1], '[]'), '\"')
                   }
                 })
               } else {
-                self.newDepType = '不可能没有'
+                console.log('不可能没有')
+                self.newDepType = '门店'
               }
             })
           })
+          if (resp.data[0].departmentType === '门店') {
+            self.showFormColumns[6].hide = false // 右侧表单的营业时间字段
+            self.showFormColumns[7].hide = false // 右侧表单的经纬度字段
+            self.userOptions.newData.showUserColumns[4].hide = false // 员工管理新建表单的是否为骑手
+            self.userOptions.editData.showUserColumns[4].hide = false // 员工管理编辑表单的是否为骑手
+            self.userOptions.newData.showUserColumns[5].disabled = false // 员工管理新建表单的角色是否可操作
+            self.userOptions.editData.showUserColumns[5].disabled = false // 员工管理编辑表单的角色是否可操作
+            self.isStore = true
+          } else {
+            self.showFormColumns[6].hide = true // 右侧表单的营业时间字段
+            self.showFormColumns[7].hide = true // 右侧表单的经纬度字段
+            self.userOptions.newData.showUserColumns[4].hide = true // 员工管理新建表单的是否为骑手
+            self.userOptions.editData.showUserColumns[4].hide = true // 员工管理编辑表单的是否为骑手
+            self.userOptions.newData.showUserColumns[5].disabled = false // 员工管理新建表单的角色是否可操作
+            self.userOptions.editData.showUserColumns[5].disabled = false // 员工管理编辑表单的角色是否可操作
+            self.isStore = false
+          }
+          const interval = setInterval(() => {
+            if (self.$refs.paramsForm) {
+              clearInterval(interval)
+              self.$refs.paramsForm.getList()
+            }
+          }, 10)
           self.$refs.hmComplexTable.getList()
         })
       },
@@ -657,10 +715,7 @@
               type: 'success'
             })
             // 刷新树形结构
-            _.remove(self.departmentLists, function(v) {
-              return v.id === self.selectedDepartment.id
-            })
-            self.departmentTree = toTree(self.departmentLists, 'parentDepartmentId')
+            self.loadDepartments()
           })
         }).catch(() => {
           self.$message({
@@ -673,10 +728,21 @@
        * 部门设置表单编辑前数据的渲染
        */
       depSetBefore(data, formModel) {
+        const self = this
+        console.log(data,formModel)
         formModel.id = data[0].id
-        formModel.depPhone = JSON.parse(data[0].params).depPhone
-        formModel.depTime = JSON.parse(data[0].params).depTime
-        JSON.parse(data[0].params).position ? formModel.position =JSON.parse(data[0].params).position : ''
+        if (!formModel.simpleName || formModel.simpleName === 'undefined') {
+          formModel.simpleName = ''
+        }
+        if (JSON.parse(data[0].params)) {
+          JSON.parse(data[0].params).depPhone ? formModel.depPhone = JSON.parse(data[0].params).depPhone : formModel.depPhone = ''
+          JSON.parse(data[0].params).depTime ? formModel.depTime = JSON.parse(data[0].params).depTime : formModel.depTime = ''
+          JSON.parse(data[0].params).address ? formModel.address = JSON.parse(data[0].params).address : formModel.address = ''
+        } else {
+          formModel.depPhone = ''
+          formModel.depTime = ''
+          formModel.address = ''
+        }
         return formModel
       },
       /**
@@ -705,7 +771,8 @@
        */
       cancle: function() {
         const self = this
-        self.adminShow = false
+        self.adminShowCom = false
+        self.adminShowDep = false
       },
       /**
        * 编辑部门
@@ -714,18 +781,39 @@
         const self = this
         self.$refs.hmComplexForm.$refs.form.validate((valid) => {
           if (valid) {
-            const paramsNew = {
-              code: data.code,
-              name: data.name,
-              simpleName: data.simpleName,
-              params: JSON.stringify({ 'depPhone': data.depPhone, 'depTime': data.depTime, 'position': data.position }),
-              description: data.description
-            }
-            commonApi.edit('departments', data.id, paramsNew).then(function(resUser) {
-              self.$message({
-                message: '保存成功',
-                type: 'success'
-              })
+            request('departments', {
+              params: {
+                filters: {
+                  'department': {
+                    'code': {
+                      equalTo: data.code
+                    },
+                    'id': {
+                      notEqualTo: self.selectedDepartment.id
+                    }
+                  }
+                }
+              }
+            }).then(resp => {
+              console.log(resp.data)
+              if (resp.data.length > 0) {
+                self.$message({
+                  message: '部门编码重复，请重新输入！',
+                  type: 'error'
+                })
+                return false
+              } else {
+                console.log("部门编码不重复")
+                const paramsNew = {
+                  code: data.code,
+                  name: data.name,
+                  simpleName: data.simpleName,
+                  params: JSON.stringify({ 'depPhone': data.depPhone, 'depTime': data.depTime, 'address': data.address }),
+                }
+                commonApi.edit('departments', data.id, paramsNew).then(function(resUser) {
+                  self.loadDepartments()
+                })
+              }
             })
           } else {
             self.$message({
@@ -743,39 +831,62 @@
         const self = this
         self.$refs.newDepartmentForm.$refs.form.validate((valid) => {
           if (valid) {
-            commonApi.create('departments', {
-              parentDepartmentId: data.parentDepartmentId,
-              departmentType: data.departmentType,
-              code: data.code,
-              name: data.name,
-              simpleName: data.simpleName,
-              params: JSON.stringify({ 'depPhone': data.depPhone, 'depTime': data.depTime }),
-              description: data.description
-            }).then(function(res) {
-              if (res.data.message === '门店已存在') {
+            request('departments', {
+              params: {
+                filters: {
+                  'department': {
+                    'code': {
+                      equalTo: data.code
+                    },
+                    'id': {
+                      notEqualTo: self.selectedDepartment.id
+                    }
+                  }
+                }
+              }
+            }).then(resp => {
+              console.log(resp.data)
+              if (resp.data.length > 0) {
                 self.$message({
-                  message: '门店已存在',
-                  type: 'success'
+                  message: '部门编码重复，请重新输入！',
+                  type: 'error'
                 })
+                return false
               } else {
-                if (self.adminShowCom === true) { // 创建的是公司
-                  commonApi.create('hm_dicts', {
-                    type: '部门类型',
-                    key: res.data.id,
-                    value: JSON.stringify(['公司'])
-                  }).then(function(resDic) {
-                    self.adminShowCom = false
-                  })
-                }
-                if(self.adminShowDep === true) {
-                  self.adminShowDep = false
-                }
-                // 刷新树形结构
-                self.departmentLists.push(res.data)
-                self.departmentTree = toTree(self.departmentLists, 'parentDepartmentId')
-                self.$message({
-                  message: '保存成功',
-                  type: 'success'
+                console.log("部门编码不重复")
+                commonApi.create('departments', {
+                  parentDepartmentId: data.parentDepartmentId,
+                  departmentType: data.departmentType,
+                  code: data.code,
+                  name: data.name,
+                  simpleName: data.simpleName,
+                  params: JSON.stringify({'depPhone': data.depPhone, 'depTime': data.depTime, 'address': data.address})
+                }).then(function (res) {
+                  if (res.data.message === '门店已存在') {
+                    self.$message({
+                      message: '门店已存在',
+                      type: 'success'
+                    })
+                  } else {
+                    if (self.adminShowCom === true) { // 创建的是公司
+                      commonApi.create('hm_dicts', {
+                        type: '部门类型',
+                        key: res.data.id,
+                        value: JSON.stringify(['公司', '门店'])
+                      }).then(function (resDic) {
+                        self.adminShowCom = false
+                      })
+                    }
+                    self.adminShowDep = false
+                    // 刷新树形结构
+                    console.log('self.departmentLists:', self.departmentLists)
+                    self.departmentLists.push(res.data)
+                    self.departmentTree = toTree(self.departmentLists, 'parentDepartmentId')
+                    self.$message({
+                      message: '保存成功',
+                      type: 'success'
+                    })
+                  }
                 })
               }
             })
@@ -796,10 +907,43 @@
         this.$refs.hmComplexTable.getList() // 刷新列表
       },
       /**
+       * 导入
+       */
+      uploadSucc(data) {
+        const self = this
+        console.log('导入成功',data)
+        if (data["员工"].length > 0 && data["部门"].length === 0) {
+          self.$message({
+            message: '部分人员导入失败!',
+            type: 'warning'
+          })
+        } else if(data["部门"].length > 0 && data["员工"].length === 0) {
+          self.$message({
+            message: '部分部门导入失败!',
+            type: 'warning'
+          })
+        } else if(data["员工"].length > 0 && data["部门"].length > 0) {
+          self.$message({
+            message: '部分人员和部门导入失败!',
+            type: 'warning'
+          })
+        } else {
+          self.$message({
+            message: '导入成功',
+            type: 'success'
+          })
+        }
+        self.$refs.hmComplexTable.$refs.upload[0].clearFiles()
+        self.loadDepartments()
+      },
+      /**
        * 导出
        */
       export1: function() {
-        // console.log('导出')
+        const self = this
+        console.log('导出')
+        window.open(request.defaults.baseURL + '/export_people?filters=' + encodeURIComponent(JSON.stringify(self.exportParams)) + '&pageSize=9999&pageNo=1&sortItem=create_time&sortOrder=desc&fields=' + encodeURIComponent(JSON.stringify(
+          {"username":"用户姓名","mobile":"电话","age":"年龄","sex":"性别","IDNumber":"身份证","address":"地址","nativePlace":"籍贯","codeCamel":"社保","email":"邮箱",'在职状态':"jobStatus"})) + '&fileName=部门管理-员工表')
       },
       /**
        * 全部删除员工
@@ -898,7 +1042,7 @@
             return item.type === '部门类型' && item.key === self.selectedDepartment.id
           })
           if (showTypes.length === 0) {
-            self.departmentTypes = ['公司']
+            self.departmentTypes = ['公司', '门店']
           } else {
             self.departmentTypes = []
             _.each(_.words(showTypes[0].value, /[^,]+/g), function(v) {
@@ -952,20 +1096,18 @@
             })
           }
         })
-      }
+      },
     },
     created() {
       const self = this
       this.schema = schema
-      this.userFilters = [ // 员工管理的搜索条件
-        { placeholder: '请输入用户名', 'username': { 'like': '' }, isShow: true }
-      ]
       this.userOptions = { // 员工管理的表格
         pageSize: 10,
         sortItem: 'create_time',
         sortOrder: 'desc',
         changeValue: {
-          jobStatus: { 1: '离职', 0: '在职' }
+          jobStatus: { 1: '离职', 0: '在职' },
+          sex: { 1: '男', 2: '女' }
         },
         newData: { // 新建
           isShow: true,
@@ -982,34 +1124,40 @@
             { name: '电话', codeCamel: 'mobile', widgetType: 1,
               rule: [
                 { required: true, message: '请输入联系电话', trigger: 'blur' },
-                { pattern: /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/, message: '请输入正确的电话号码', trigger: 'change,blur' }
+                { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的电话号码', trigger: 'change,blur' }
               ]
             },
-            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true
+            { name: '是否为骑手', codeCamel: 'isRider', widgetType: 7, change: this.isRiderChange,
+              options: [
+                { label: 1, value: '管理员' }, // 单选的value是选项文字，label是选中值
+                { label: 2, value: '骑手' } // 如果数据库中存的数据类型是number，label值写number如1，如果为string，label值写string ,如'1'
+              ], hide: true,
+              rule: [{ required: false, message: '请选择是否为骑手', trigger: 'blur' }]
+            },
+            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true, disabled: true, hide: false
             },
             { name: '年龄', codeCamel: 'age', widgetType: 1,
-              rule: [{ required: true, message: '请输入年龄', trigger: 'blur' }]
+              rule: [
+                { pattern: /^\d+$/, message: '请输入正确的年龄', trigger: 'change,blur' }]
             },
             { name: '性别', codeCamel: 'sex', widgetType: 2,
               options: [{ value: '1', label: '男' }, { value: '2', label: '女' }],
-              multiple: false,
-              rule: [{ required: true, message: '请输入性别', trigger: 'blur' }]
+              multiple: false
             },
             { name: '身份证', codeCamel: 'IDNumber', widgetType: 1,
-              rule: [{ required: true, message: '请输入身份证', trigger: 'blur' }]
+              rule: [
+                { pattern: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/, message: '请输入正确的身份证号', trigger: 'change,blur' }]
             },
-            { name: '地址', codeCamel: 'address', widgetType: 1,
-              rule: { required: true, message: '请输入地址', trigger: 'blur' }
+            { name: '地址', codeCamel: 'address', widgetType: 1
             },
-            { name: '籍贯', codeCamel: 'nativePlace', widgetType: 1,
-              rule: { required: true, message: '请输入籍贯', trigger: 'blur' }
+            { name: '籍贯', codeCamel: 'nativePlace', widgetType: 1
             },
             { name: '社保', codeCamel: 'codeCamel', widgetType: 1,
-              rule: [{ required: true, message: '请输入社保', trigger: 'blur' }]
+              rule: [
+                { pattern: /^\d{18}$/, message: '请输入正确的社保号', trigger: 'change,blur' }]
             },
             { name: '邮箱', codeCamel: 'email', widgetType: 1,
               rule: [
-                { required: true, message: '请输入邮箱地址', trigger: 'blur' },
                 { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }
               ]
             }
@@ -1036,34 +1184,40 @@
             { name: '电话', codeCamel: 'mobile', widgetType: 1,
               rule: [
                 { required: true, message: '请输入联系电话', trigger: 'blur' },
-                { pattern: /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/, message: '请输入正确的电话号码', trigger: 'change,blur' }
+                { pattern: /^1(3|4|5|7|8)\d{9}$/, message: '请输入正确的电话号码', trigger: 'change,blur' }
               ]
             },
-            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true
+            { name: '是否为骑手', codeCamel: 'isRider', widgetType: 7, change: this.isRiderChange,
+              options: [
+                { label: 1, value: '管理员' }, // 单选的value是选项文字，label是选中值
+                { label: 2, value: '骑手' } // 如果数据库中存的数据类型是number，label值写number如1，如果为string，label值写string ,如'1'
+              ], hide: true,
+              rule: [{ required: false, message: '请选择是否为骑手', trigger: 'blur' }]
+            },
+            { name: '角色', codeCamel: 'roleIds', widgetType: 2, options: [], multiple: true, disabled: true, hide: false
             },
             { name: '年龄', codeCamel: 'age', widgetType: 1,
-              rule: [{ required: true, message: '请输入年龄', trigger: 'blur' }]
+              rule: [
+                { pattern: /^\d+$/, message: '请输入正确的年龄', trigger: 'change,blur' }]
             },
             { name: '性别', codeCamel: 'sex', widgetType: 2,
               options: [{ value: '1', label: '男' }, { value: '2', label: '女' }],
-              multiple: false,
-              rule: [{ required: true, message: '请输入性别', trigger: 'blur' }]
+              multiple: false
             },
             { name: '身份证', codeCamel: 'IDNumber', widgetType: 1,
-              rule: [{ required: true, message: '请输入身份证', trigger: 'blur' }]
+              rule: [
+                { pattern: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/, message: '请输入正确的身份证号', trigger: 'change,blur' }]
             },
-            { name: '地址', codeCamel: 'address', widgetType: 1,
-              rule: { required: true, message: '请输入地址', trigger: 'blur' }
+            { name: '地址', codeCamel: 'address', widgetType: 1
             },
-            { name: '籍贯', codeCamel: 'nativePlace', widgetType: 1,
-              rule: { required: true, message: '请输入籍贯', trigger: 'blur' }
+            { name: '籍贯', codeCamel: 'nativePlace', widgetType: 1
             },
             { name: '社保', codeCamel: 'codeCamel', widgetType: 1,
-              rule: [{ required: true, message: '请输入社保', trigger: 'blur' }]
+              rule: [
+                { pattern: /^\d{18}$/, message: '请输入正确的社保号', trigger: 'change,blur' }]
             },
             { name: '邮箱', codeCamel: 'email', widgetType: 1,
               rule: [
-                { required: true, message: '请输入邮箱地址', trigger: 'blur' },
                 { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }
               ]
             }
@@ -1093,58 +1247,66 @@
         showOverflowTooltip: true, // 限制宽度
         isBatchRemove: true, // 是否显示批量删除
         useTableTotal: false, // 是否使用了组件的total
-         promiseProcessing(value, params, definedOperate) { // 查表后显示的数据
-           const data = new Promise(function(resolve, reject) {
-               if (self.selectedDepartment.id) {
-                 request('hm_users', {
-                   params: {
-                     filters: {
-                       'hm_user': {
-                         'department_id': {
-                           equalTo: self.selectedDepartment.id
-                         }
-                       }
-                     },
-                     pageNo: params.pageNo,
-                     pageSize: params.pageSize,
-                     sortItem: params.sortItem,
-                     sortOrder: params.sortOrder
-                   }
-                 }).then(resp => {
-                   request('get/TopDepartment', {
-                     params: {
-                       deartmentId: self.selectedDepartment.id
-                     }
-                   }).then(resTop => {
-                     const tableArr = []
-                     self.$refs.hmComplexTable.total = resp.headers.total * 1
-                     _.each(resp.data, function(item, index) {
-                       tableArr[index] = item // 先将原有的值赋值给数组
-                       const parmas = JSON.parse(item.params)
-                       tableArr[index]['topDepartmentname'] = resTop.data.name
-                       tableArr[index]['departmentname'] = self.selectedDepartment.name
-                       tableArr[index]['departmentId'] = item.departmentId
-                       tableArr[index]['age'] = parmas.age
-                       tableArr[index]['sex'] = parmas.sex
-                       tableArr[index]['IDNumber'] = parmas.IDNumber
-                       tableArr[index]['address'] = parmas.address
-                       tableArr[index]['nativePlace'] = parmas.nativePlace
-                       tableArr[index]['codeCamel'] = parmas.codeCamel
-                       tableArr[index]['jobStatus'] = item.jobStatus === 1 ? '离职' : '在职'
-                     })
-                     resolve(tableArr)
-                   })
-                 })
-               } else {
-                 self.$refs.hmComplexTable.total = 0
-               }
-           })
-           return data
-         }
+        promiseProcessing(value, params, definedOperate) { // 查表后显示的数据
+          const data = new Promise(function(resolve, reject) {
+            if (self.selectedDepartment.id) {
+              const paramsPeo = {
+                params: {
+                  filters: {
+                    'hm_user': {
+                      'department_id': {
+                        equalTo: self.selectedDepartment.id
+                      },
+                      'username': {}
+                    }
+                  },
+                  pageNo: params.pageNo,
+                  pageSize: params.pageSize,
+                  sortItem: params.sortItem,
+                  sortOrder: params.sortOrder
+                }
+              }
+              definedOperate[0].value ? paramsPeo.params.filters.hm_user.username.like = '%' + definedOperate[0].value + '%' : delete paramsPeo.params.filters.hm_user.username
+              request('hm_users', paramsPeo).then(resp => {
+                self.exportParams = paramsPeo.params.filters
+                request('get/TopDepartment', {
+                  params: {
+                    deartmentId: self.selectedDepartment.id
+                  }
+                }).then(resTop => {
+                  const tableArr = []
+                  self.$refs.hmComplexTable.total = resp.headers.total * 1
+                  _.each(resp.data, function(item, index) {
+                    console.log('resp.data', item)
+                    tableArr[index] = item // 先将原有的值赋值给数组
+                    if (item.params) {
+                      const parmas = JSON.parse(item.params)
+                      tableArr[index]['age'] = parmas.age ? parmas.age : ''
+                      tableArr[index]['sex'] = parmas.sex === '1' ? '男' : parmas.sex === '2' ?  '女' : ''
+                      tableArr[index]['IDNumber'] = parmas.IDNumber
+                      tableArr[index]['address'] = parmas.address
+                      tableArr[index]['nativePlace'] = parmas.nativePlace
+                      tableArr[index]['codeCamel'] = parmas.codeCamel
+                    }
+                    tableArr[index]['topDepartmentname'] = resTop.data.name
+                    tableArr[index]['departmentname'] = self.selectedDepartment.name
+                    tableArr[index]['departmentId'] = item.departmentId
+                    tableArr[index]['jobStatus'] = item.jobStatus === 1 ? '离职' : '在职'
+                  })
+                  resolve(tableArr)
+                })
+              })
+            } else {
+              self.$refs.hmComplexTable.total = 0
+            }
+          })
+          return data
+        }
       }
       this.userDefined = { // 员工管理的自定义信息
         definedOperate: [
-          { type: 'upload', label: '导入', url: request.defaults.baseURL + '/import_people', param: 'file', icon: 'el-icon-search' },
+          {type: 'input', label: '', placeholder: '请输入用户名', code: 'username', value: ''},
+          { type: 'upload', label: '导入', url: request.defaults.baseURL + '/import_people', param: 'file', icon: 'el-icon-search', uploadSuccess: this.uploadSucc },
           { type: 'button', label: '导出', icon: 'el-icon-search', func: this.export1 },
           { type: 'button', label: '设置主管', icon: 'el-icon-edit', func: this.setAdmin },
           { type: 'button', label: '全部删除', icon: 'el-icon-delete', func: this.delAllUsers }
@@ -1173,12 +1335,26 @@
       commonApi.getRegisterInfo().then(function(res) {
         // 当前登录人的信息
         self.userInfo = res.data[0]
-        // 加载用户角色信息
-        self.getCurrentUserRoles(self.userInfo.includes.hm_user.id).then(resp => {
-          self.userRoles = _.map(resp.data, item => {
-            return item.includes.role
+        request('departments', {
+          params: {
+            filters: {
+              'department': {
+                'id': {
+                  equalTo: self.userInfo.includes.hm_user.departmentId
+                }
+              }
+            }
+          }
+        }).then(resp => {
+          self.userDep = resp.data[0]
+          // 加载用户角色信息
+          self.getCurrentUserRoles(self.userInfo.includes.hm_user.id).then(resp => {
+            self.userRoles = _.map(resp.data, item => {
+              return item.includes.role
+            })
+            console.log('self.userRoles: ', self.userRoles)
+            self.loadDepartments()
           })
-          self.loadDepartments()
         })
       })
     }
