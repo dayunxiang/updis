@@ -511,6 +511,7 @@
           ]
         },
         rulersTest: {},
+        demo: []
       }
     },
     created() {
@@ -519,8 +520,21 @@
       this.ProductInit();
       this.Test();
       this.getProjectsInfo();
+      this.mangtide();
     },
     methods: {
+      mangtide(){
+        console.log("demo:", this.demo);
+        var arr = this.demo;
+        var arrNew = [];
+        var arrOld = arr.slice(0);
+        console.log("arrOld", arrOld);
+        for (var i = 0; i < arr.length; i++) {
+          arrNew.push(arrMaxNum(arrOld).maxNum);
+          arrOld.splice(arrMaxNum(arrOld).index,1);
+        };
+        return (arrNew);
+      },
       //请求所有项目
       getProjectsInfo(){
         axios('/api/projects').then(this.getProjectSuccess);
@@ -638,6 +652,8 @@
             }
             self.roadSquare.push(RoadTest);
             self.saveArray2.push(RoadTest);
+
+            self.demo.push(com.name);
           } else
           /**
            * 建筑小区
@@ -692,7 +708,7 @@
           /**
            * 公园绿地
            */
-          if ( letter === "G"  && com.SSPSFQ !== '20#排水分区' ) {
+          if ( letter === "G"  && com.SSPSFQ !== '20#排水分区' && com.area > 0.0001 ) {
             var parkTest = {};
             parkTest.name = com.name;
             parkTest.YDLX = com.YDLX;
@@ -1340,7 +1356,6 @@
           }
         }
       },
-
       /**
        * 标签页
        */
