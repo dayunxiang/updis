@@ -624,196 +624,268 @@
         <div class="label" @click="handleSelectShow">
           反向查询
         </div>
-        <div  class="selectContext" v-show="isSelect" >
-          <div class="select-search">
-            <el-autocomplete
-              class="el-input"
-              style="width: 450px"
-              v-model="state1"
-              :fetch-suggestions="querySearchAsync"
-              placeholder="请输入查询条件,多条件之间用;(分号隔开)"
-              :trigger-on-focus="false">
-            </el-autocomplete>
-            <el-button type="success" icon="el-icon-search" circle @click="handleSelect"></el-button>
-          </div>
-          <div class="result-ul" v-show = 'isSelect'>
-            <el-tabs type="border-card" v-model="select" >
-              <el-tab-pane style="max-height: 500px;overflow: auto" v-if = " selectOutfalls.length"      :label= "'排口'+'（'+ selectOutfalls.length+')'">
-                <el-table :data=" selectOutfalls" border max-height="500" style="width: 100%;" key="outfallTable">
-
-                  <el-table-column
-                    prop="name"
-                    label="排口编号"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="leixing"
-                    label="类型"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="paixiang"
-                    label="排向"
-                    width="120">
-                  </el-table-column>
-                </el-table>
+        <div  class="selectContext" v-show="isSelect">
+          <div>
+            <el-tabs type="border-card" style="width: 100%">
+              <el-tab-pane label="精确查询">
+                <div style="float: left;width: 80%;">
+                  <ul>
+                    <li style="float: left;">
+                      <span>类型</span>
+                      <el-select v-model="value4" clearable placeholder="请选择" style="width: 120px">
+                        <el-option
+                          v-for="item in options"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </li>
+                    <li style="float: left">
+                      <span>属性</span>
+                      <el-select v-model="value4" clearable placeholder="请选择" style="width: 150px">
+                        <el-option
+                          v-for="item in options"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </li>
+                    <li style="float: left">
+                      <span>属性值</span>
+                      <el-select v-model="value4" clearable placeholder="请选择" style="width: 200px">
+                        <el-option
+                          v-for="item in options"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </li>
+                  </ul>
+                </div>
+                <ul style="float:left;background:rgba(0,0,0,.1);width: 20%;" >
+                  <li style="text-align: center;margin: 10px 0;" >
+                    <el-button type="primary" @click="handelAddTerm">增加查询条件</el-button>
+                  </li>
+                  <li style="text-align: center;margin: 10px 0;" >
+                    <el-button type="primary">清除查询条件</el-button>
+                  </li>
+                  <li style="text-align: center;margin: 10px 0;" >
+                    <el-button type="success">查询</el-button>
+                  </li>
+                </ul>
               </el-tab-pane>
-              <el-tab-pane v-if = "selectSubcatchmentData.length" :label= "'地块'+'（'+selectSubcatchmentData.length+')'" style="max-height: 500px;overflow: auto">
-                <el-table :data="selectSubcatchmentData" border max-height="500" style="width: 100%;" key="conduitData">
-                  <el-table-column
-                    prop="name"
-                    label="编号"
-                    sortable
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="YDLX"
-                    label="用地类型"
-                    width="50">
-                  </el-table-column>
-                  <el-table-column
-                    prop="area"
-                    label="面积(平方米)"
-                    sortable
-                    width="100">
-                  </el-table-column>
-                  <el-table-column
-                    prop="JSZT"
-                    label="建设状态"
-                    sortable
-                    width="200">
-                  </el-table-column>
-                  <el-table-column
-                    prop="XMMC"
-                    label="项目名称"
-                    sortable
-                    width="250">
-                  </el-table-column>
-                  <el-table-column
-                    prop="PRHD"
-                    label="排入河道"
-                    sortable
-                    width="200">
-                  </el-table-column>
-                  <el-table-column
-                    prop="SSLY"
-                    label="所属流域"
-                    sortable
-                    width="200">
-                  </el-table-column>
-                  <el-table-column
-                    prop="SSPSFQ"
-                    label="所属排水分区"
-                    sortable
-                    width="200">
-                  </el-table-column>
-                  <el-table-column
-                    prop="ZBQY"
-                    label="是否为正本清源项目"
-                    sortable
-                    width="200">
-                  </el-table-column>
-                  <el-table-column
-                    prop="HMCS"
-                    label="是否为海绵项目"
-                    sortable
-                    width="200">
-                  </el-table-column>
-                  <el-table-column
-                    prop="HMLX"
-                    label="海绵类型"
-                    sortable
-                    width="200">
-                  </el-table-column>
-                </el-table>
-              </el-tab-pane>
-              <el-tab-pane style="max-height: 500px;overflow: auto" v-if = "selectCompanys.length"      :label= "'企业'+'（'+selectCompanys.length+')'">
-                <el-table :data="selectCompanys" border max-height="500" style="width: 100%;" key="companyTable">
-                  <el-table-column
-                    prop="QYMC"
-                    label="企业名称"
-                    width="300">
-                  </el-table-column>
-                  <el-table-column
-                    prop="JDMC"
-                    label="街道名称"
-                    width="300">
-                  </el-table-column>
-                  <el-table-column
-                    prop="SQMC"
-                    label="社区名称"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="SCJYDZ"
-                    label="地址"
-                    width="400">
-                  </el-table-column>
-                  <el-table-column
-                    prop="FDDBR"
-                    label="法人代表"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="LXFS"
-                    label="联系方式"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="QYRS"
-                    label="企业人数"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="HYLB"
-                    label="行业类别"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="SCYSL"
-                    label="生产用水量"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="PSL"
-                    label="排水量"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="ZYSCGY"
-                    label="主要生产工艺"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="GPZL"
-                    label="产品"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="HPPFWJ"
-                    label="环评"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="HPPFWJYXX"
-                    label="环评有效性"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="PWXKZ"
-                    label="排污许可证"
-                    width="120">
-                  </el-table-column>
-                  <el-table-column
-                    prop="FSCLFS"
-                    label="废水处理方式"
-                    width="120">
-                  </el-table-column>
-                </el-table>
+              <el-tab-pane label="模糊查询">
+                <div>
+                  <el-autocomplete
+                    class="el-input"
+                    style="width: 450px"
+                    v-model="state1"
+                    :fetch-suggestions="querySearchAsync"
+                    placeholder="请输入查询条件,多条件之间用;(分号隔开)"
+                    :trigger-on-focus="false">
+                  </el-autocomplete>
+                  <el-button type="success"  @click="handleSelect" style="display:inline-block;width: 100px;line-height: 34px;">查询</el-button>
+                </div>
               </el-tab-pane>
             </el-tabs>
           </div>
+          <div>
+
+          </div>
         </div>
+        <!--<div  class="selectContext" v-show="isSelect" >-->
+          <!--<div class="select-search">-->
+            <!--<el-autocomplete-->
+              <!--class="el-input"-->
+              <!--style="width: 450px"-->
+              <!--v-model="state1"-->
+              <!--:fetch-suggestions="querySearchAsync"-->
+              <!--placeholder="请输入查询条件,多条件之间用;(分号隔开)"-->
+              <!--:trigger-on-focus="false">-->
+            <!--</el-autocomplete>-->
+            <!--<el-button type="success" icon="el-icon-search" circle @click="handleSelect"></el-button>-->
+          <!--</div>-->
+          <!--<div class="result-ul" v-show = 'isSelect'>-->
+            <!--<el-tabs type="border-card" v-model="select" >-->
+              <!--<el-tab-pane style="max-height: 500px;overflow: auto" v-if = " selectOutfalls.length"      :label= "'排口'+'（'+ selectOutfalls.length+')'">-->
+                <!--<el-table :data=" selectOutfalls" border max-height="500" style="width: 100%;" key="outfallTable">-->
+
+                  <!--<el-table-column-->
+                    <!--prop="name"-->
+                    <!--label="排口编号"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="leixing"-->
+                    <!--label="类型"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="paixiang"-->
+                    <!--label="排向"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                <!--</el-table>-->
+              <!--</el-tab-pane>-->
+              <!--<el-tab-pane v-if = "selectSubcatchmentData.length" :label= "'地块'+'（'+selectSubcatchmentData.length+')'" style="max-height: 500px;overflow: auto">-->
+                <!--<el-table :data="selectSubcatchmentData" border max-height="500" style="width: 100%;" key="conduitData">-->
+                  <!--<el-table-column-->
+                    <!--prop="name"-->
+                    <!--label="编号"-->
+                    <!--sortable-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="YDLX"-->
+                    <!--label="用地类型"-->
+                    <!--width="50">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="area"-->
+                    <!--label="面积(平方米)"-->
+                    <!--sortable-->
+                    <!--width="100">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="JSZT"-->
+                    <!--label="建设状态"-->
+                    <!--sortable-->
+                    <!--width="200">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="XMMC"-->
+                    <!--label="项目名称"-->
+                    <!--sortable-->
+                    <!--width="250">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="PRHD"-->
+                    <!--label="排入河道"-->
+                    <!--sortable-->
+                    <!--width="200">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="SSLY"-->
+                    <!--label="所属流域"-->
+                    <!--sortable-->
+                    <!--width="200">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="SSPSFQ"-->
+                    <!--label="所属排水分区"-->
+                    <!--sortable-->
+                    <!--width="200">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="ZBQY"-->
+                    <!--label="是否为正本清源项目"-->
+                    <!--sortable-->
+                    <!--width="200">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="HMCS"-->
+                    <!--label="是否为海绵项目"-->
+                    <!--sortable-->
+                    <!--width="200">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="HMLX"-->
+                    <!--label="海绵类型"-->
+                    <!--sortable-->
+                    <!--width="200">-->
+                  <!--</el-table-column>-->
+                <!--</el-table>-->
+              <!--</el-tab-pane>-->
+              <!--<el-tab-pane style="max-height: 500px;overflow: auto" v-if = "selectCompanys.length"      :label= "'企业'+'（'+selectCompanys.length+')'">-->
+                <!--<el-table :data="selectCompanys" border max-height="500" style="width: 100%;" key="companyTable">-->
+                  <!--<el-table-column-->
+                    <!--prop="QYMC"-->
+                    <!--label="企业名称"-->
+                    <!--width="300">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="JDMC"-->
+                    <!--label="街道名称"-->
+                    <!--width="300">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="SQMC"-->
+                    <!--label="社区名称"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="SCJYDZ"-->
+                    <!--label="地址"-->
+                    <!--width="400">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="FDDBR"-->
+                    <!--label="法人代表"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="LXFS"-->
+                    <!--label="联系方式"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="QYRS"-->
+                    <!--label="企业人数"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="HYLB"-->
+                    <!--label="行业类别"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="SCYSL"-->
+                    <!--label="生产用水量"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="PSL"-->
+                    <!--label="排水量"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="ZYSCGY"-->
+                    <!--label="主要生产工艺"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="GPZL"-->
+                    <!--label="产品"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="HPPFWJ"-->
+                    <!--label="环评"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="HPPFWJYXX"-->
+                    <!--label="环评有效性"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="PWXKZ"-->
+                    <!--label="排污许可证"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                  <!--<el-table-column-->
+                    <!--prop="FSCLFS"-->
+                    <!--label="废水处理方式"-->
+                    <!--width="120">-->
+                  <!--</el-table-column>-->
+                <!--</el-table>-->
+              <!--</el-tab-pane>-->
+            <!--</el-tabs>-->
+          <!--</div>-->
+        <!--</div>-->
         <!--重新绘制-->
         <div class="label" style="background: red" @click="handleReset">
           重新绘制
@@ -890,6 +962,22 @@
     },
     data() {
       return {
+        //
+        options: [{
+          value: '选项1',
+          label: '地块'
+        }, {
+          value: '选项2',
+          label: '工业企业'
+        }, {
+          value: '选项3',
+          label: '排口'
+        }, {
+          value: '选项4',
+          label: '管线'
+        }],
+        value4: '',
+        //
         isLoading: false,
         //搜索出来的结果
         selectSubcatchmentData:[],
@@ -1277,6 +1365,10 @@
       /**
        * 反向查询
        * */
+      //精确查询  ---  增加查询条件
+      handelAddTerm(){
+        console.log('增加查询条件');
+      },
       handleSelectShow() {
         this.isSelect = !this.isSelect;
         if (this.infoManager) {
@@ -1475,7 +1567,7 @@
             }
             for (var i = 0; i < newArr.length; i++) {
               var category = newArr[i].category;
-
+              console.log(category );
               switch (category) {
                 case 'SUBCATCHMENTS':
                   var properties = JSON.parse(newArr[i].properties);
@@ -1565,7 +1657,7 @@
           }
         }
       }
-      .selectContext{position:absolute;top:58px;left:-500px; width:500px;max-height:700px;background:rgba(255,255,255,0.5);
+      .selectContext{position:absolute;top:58px;left:-800px; width:800px;max-height:700px;background:rgba(255,255,255,0.5);
         .result-ul li{float:left; width: 80px;}
       }
     }

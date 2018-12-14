@@ -1,22 +1,42 @@
 <template>
-    <div class="context-box">
-      <!--
-        action：上传地址
-        multipe：是否支持多文件上传
-        data：上传的时候额外附带的参数
-        name：上传文件字段名
-        accept：接受上传的文件类型
-        limit：最大允许上传个数
-
-        on-remove：文件列表中移除的钩子
-        on-preview ：点击文件列表中已上传的文件时的钩子函数
-        on-exceed：文件超出个数限制时候的钩子函数
-        file-list：上传的文件列表
-      -->
-      <el-upload class="uploadfile" action="" :http-request='uploadFileMethod' :show-file-list="false" multiple>
-        <el-button class="custom-btn" size="small">上传shape文件</el-button>
+  <el-collapse v-model="activeName" accordion>
+    <el-collapse-item title="深圳坐标转换经纬坐标(GPS)" name="1">
+      <el-upload ref="upload"
+                 :limit="1"
+                 :auto-upload="false"
+                 drag
+                 :http-request="uploadFile"
+                 action="customize">
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将文件拖到此处，或
+          <em>点击上传</em>
+        </div>
+         <div class="el-upload__tip" slot="tip">目前只支持shape文件的zip压缩包</div>
       </el-upload>
-    </div>
+      <div>
+        <el-button @click="submitUpload">确认上传</el-button>
+        <el-input v-model="DowloadURL" placeholder="转换完成后请复制此链接下载"></el-input>
+      </div>
+    </el-collapse-item>
+    <el-collapse-item title="(GPS)经纬坐标转换深圳坐标" name="2">
+        <el-upload ref="upload"
+                   :limit="1"
+                   :auto-upload="false"
+                   drag
+                   :http-request="uploadFileGPS"
+                   action="customize">
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或
+            <em>点击上传</em>
+          </div>
+          <div class="el-upload__tip" slot="tip">目前只支持shape文件的zip压缩包</div>
+        </el-upload>
+        <div>
+          <el-button @click="submitUpload">确认上传</el-button>
+          <el-input v-model="DowloadGPSURL" placeholder="转换完成后请复制此链接下载"></el-input>
+        </div>
+    </el-collapse-item>
+  </el-collapse>
 </template>
 
 <script>
@@ -25,59 +45,52 @@
       name: "coordinate",
       data() {
         return {
-          fileList: []
-        };
+          DowloadURL: '',
+          DowloadGPSURL:''
+        }
       },
       methods: {
-        uploadFileMethod(param){
-          let fileObject = param.file;
+        //确认上传
+        submitUpload() {
+          console.log('Test');
+          this.$refs.upload.submit();
+
+        },
+        // 文件上传
+        uploadFile(params) {
+          const _file = params.file;
+          console.log(_file);
           var formData = new FormData();
-          formData.append("file",fileObject);
-          axios.post('/v1/zip2geojson', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then(this.getShapeSuccess);
+          formData.append("file",_file);
+          formData.append('method','sz2gps')
+          axios.post('/v1/shp/convert', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then(this.getShapeSuccess);
         },
         getShapeSuccess(res){
-          console.log(res);
+          var self = this;
+          self.DowloadURL = ''
+          self.DowloadURL = res.data.file;
+          // console.log('成功了');
+          console.log(res.data.file)
+        },
+      // 文件上传GPS
+        uploadFileGPS(params){
+          const _file = params.file;
+          console.log(_file);
+          var formData = new FormData();
+          formData.append("file",_file);
+          formData.append('method','sz2gps')
+          axios.post('/v1/shp/convert', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then(this.getShapeGPSSuccess);
+        },
+        getShapeGPSSuccess(res){
+          var self = this;
+          self.DowloadGPSURL = '';
+          self.DowloadGPSURL = res.data.file;
+          // console.log('成功了');
         }
       }
     }
 </script>
 
 <style scoped>
+
 </style>
-<!--<template>-->
-  <!--<div>-->
-    <!--<div v-for="(list,index) in siYuan" class="aa" :class="{ red:changeRed == index}" @click="change(index)">{{list.a}}</div>-->
-  <!--</div>-->
-<!--</template>-->
-
-<!--<script>-->
-  <!--export default {-->
-    <!--name: "coordinate",-->
-    <!--data(){-->
-      <!--return{-->
-        <!--siYuan:[-->
-          <!--{"a":"田"},-->
-          <!--{"a":"心"},-->
-          <!--{"a":"水"},-->
-          <!--{"a":"原"}-->
-        <!--],-->
-        <!--changeRed:-1-->
-      <!--}-->
-    <!--},-->
-    <!--methods:{-->
-      <!--change(index){-->
-        <!--this.changeRed = index;-->
-      <!--}-->
-    <!--}-->
-
-  <!--}-->
-<!--</script>-->
-
-<!--<style>-->
-  <!--.aa{-->
-    <!--cursor: pointer;-->
-  <!--}-->
-  <!--.red{-->
-    <!--color: red;-->
-  <!--}-->
-<!--</style>-->
