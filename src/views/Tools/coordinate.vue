@@ -14,7 +14,7 @@
          <div class="el-upload__tip" slot="tip">目前只支持shape文件的zip压缩包</div>
       </el-upload>
       <div>
-        <el-button @click="submitUpload">确认上传</el-button>
+        <el-button @click.native.prevent="submitUpload" >确认上传</el-button>
         <el-input v-model="DowloadURL" placeholder="转换完成后请复制此链接下载"></el-input>
       </div>
     </el-collapse-item>
@@ -45,6 +45,7 @@
       name: "coordinate",
       data() {
         return {
+          confirmUpload: false,
           DowloadURL: '',
           DowloadGPSURL:''
         }
@@ -52,6 +53,15 @@
       methods: {
         //确认上传
         submitUpload() {
+          const loading = this.$loading({
+            lock: true,
+            text: '上传中...',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
+          setTimeout(() => {
+            loading.close();
+        }, 2000);
           console.log('Test');
           this.$refs.upload.submit();
 
