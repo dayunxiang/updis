@@ -263,11 +263,12 @@
           let point = new BMap.Point(lng_lat[1]+0.005363,lng_lat[0]-0.00402);
 
           //  渲染管线
+          let circle = null;
           if(leixing == '雨水检查井'){
-            let  circle = new BMap.Circle(point,3,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 1, strokeOpacity: 0.3})
+            circle = new BMap.Circle(point,3,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 1, strokeOpacity: 0.3})
           }
           if(leixing == '污水检查井'){
-            let  circle = new BMap.Circle(point,3,{fillColor:"#e868f2", strokeWeight: 1 ,fillOpacity: 1, strokeOpacity: 0.3})
+            circle = new BMap.Circle(point,3,{fillColor:"#e868f2", strokeWeight: 1 ,fillOpacity: 1, strokeOpacity: 0.3})
           }
           map.addOverlay(circle);
         })
@@ -336,38 +337,40 @@
             let point = new BMap.Point(lng_lat_Arr[i][1]+0.005363,lng_lat_Arr[i][0]-0.00402);
             pointArr.push(point)
           }
+
+          let polygon = null;
           if(YDLX == '道路' || daoluReg.test(YDLX)){
-            let polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(242,242,242)',fillOpacity:0.3})
+            polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(242,242,242)',fillOpacity:0.3})
             polygon.type = info.type
             polygon.sonType = '道路'
           }
           if(shiZhengReg.test(YDLX)){
-            let polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,0,254)',fillOpacity:0.3})
+            polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,0,254)',fillOpacity:0.3})
             polygon.type = info.type
             polygon.sonType = '市政'
           }
           if(lvDiReg.test(YDLX)) {
-            let polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,255,1)',fillOpacity:0.3})
+            polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(0,255,1)',fillOpacity:0.3})
             polygon.type = info.type
             polygon.sonType = '绿地'
           }
           if(juZhuYongDiReg.test(YDLX)) {
-            let polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,255,1)',fillOpacity:0.3})
+            polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,255,1)',fillOpacity:0.3})
             polygon.type = info.type
             polygon.sonType = '居住'
           }
           if(zhengFuReg.test(YDLX)){
-            let polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,0,255)',fillOpacity:0.3})
+            polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(255,0,255)',fillOpacity:0.3})
             polygon.type = info.type
             polygon.sonType = '政府'
           }
           if(gongYeReg.test(YDLX)){
-            let polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(127,63,1)',fillOpacity:0.3})
+            polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(127,63,1)',fillOpacity:0.3})
             polygon.type = info.type
             polygon.sonType = '工业'
           }
           if(shangyeReg.test(YDLX)){
-            let polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(245,0,0)',fillOpacity:0.3})
+            polygon = new BMap.Polygon(pointArr,{strokeColor:"rgba(128,128,128,1)", strokeWeight:1, strokeOpacity:1,fillColor:'rgb(245,0,0)',fillOpacity:0.3})
             polygon.type = info.type
             polygon.sonType = '商业'
           }
@@ -402,12 +405,13 @@
             pointArr.push(point);
           }
           //  渲染管线
+          let polyline = null;
           if(leixing == '雨水管'){
-            let polyline = new BMap.Polyline(pointArr,{strokeColor:"blue", strokeWeight:3, strokeOpacity:1})
+            polyline = new BMap.Polyline(pointArr,{strokeColor:"blue", strokeWeight:3, strokeOpacity:1})
             polyline.type = '雨水管';
           }
           if(leixing == '污水管'){
-            let polyline = new BMap.Polyline(pointArr,{strokeColor:"#e868f2", strokeWeight:3, strokeOpacity:1})
+            polyline = new BMap.Polyline(pointArr,{strokeColor:"#e868f2", strokeWeight:3, strokeOpacity:1})
             polyline.type = '污水管';
           }
           map.addOverlay(polyline);
@@ -436,17 +440,18 @@
           let leixing = info.leixing;
           let point = new BMap.Point(lng_lat[1]+0.005363,lng_lat[0]-0.00402);
           //  渲染排口
+          let circle = null;
           if(leixing == '雨水排水口'){
-            let  circle = new BMap.Circle(point,10,{fillColor:"rgb(111,252,243)", strokeWeight: 1 ,fillOpacity: 0.5, strokeOpacity: 0.3})
+            circle = new BMap.Circle(point,10,{fillColor:"rgb(111,252,243)", strokeWeight: 1 ,fillOpacity: 0.5, strokeOpacity: 0.3})
             circle.leixing = "雨水排水口"
 
           }
           if(leixing == '污水排口'){
-            let  circle = new BMap.Circle(point,20,{fillColor:"#e868f2", strokeWeight: 1 ,fillOpacity: 0.5, strokeOpacity: 0.3})
+            circle = new BMap.Circle(point,20,{fillColor:"#e868f2", strokeWeight: 1 ,fillOpacity: 0.5, strokeOpacity: 0.3})
             circle.leixing = "污水排口"
           }
           if(leixing == '混流排口'){
-            let  circle = new BMap.Circle(point,5,{fillColor:"rgba(117,86,86,1)", strokeWeight: 1 ,fillOpacity:1, strokeOpacity: 0.3})
+            circle = new BMap.Circle(point,5,{fillColor:"rgba(117,86,86,1)", strokeWeight: 1 ,fillOpacity:1, strokeOpacity: 0.3})
             circle.leixing = "混流排口"
           }
           map.addOverlay(circle);
