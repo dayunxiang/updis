@@ -682,7 +682,7 @@
                   <el-autocomplete
                     class="el-input"
                     style="width: 450px"
-                    v-model="state1"
+                    v-model="queryStr"
                     :fetch-suggestions="querySearchAsync"
                     placeholder="请输入查询条件,多条件之间用;(分号隔开)"
                     :trigger-on-focus="false">
@@ -701,7 +701,7 @@
             <!--<el-autocomplete-->
               <!--class="el-input"-->
               <!--style="width: 450px"-->
-              <!--v-model="state1"-->
+              <!--v-model="queryStr"-->
               <!--:fetch-suggestions="querySearchAsync"-->
               <!--placeholder="请输入查询条件,多条件之间用;(分号隔开)"-->
               <!--:trigger-on-focus="false">-->
@@ -924,12 +924,12 @@
         this.dataInfo = info;
       },
       resultData: function(resultData) {
-        var self = this;
-        for (var i = 0; i < resultData.length; i++) {
-          var category = resultData[i].businessType;
+        let self = this;
+        for (let i = 0; i < resultData.length; i++) {
+          let category = resultData[i].businessType;
           switch (category) {
             case 'SUBCATCHMENTS':
-              var subcatchment = {
+              let subcatchment = {
                 area : Math.abs(resultData[i].properties.area.toFixed(2)),
                 HMCS:resultData[i].properties.HMCS,
                 HMLX:resultData[i].properties.HMLX,
@@ -941,8 +941,7 @@
                 YDLX:resultData[i].properties.YDLX,
                 ZBQY:resultData[i].properties.ZBQY,
                 name:resultData[i].properties.name,
-                现状控制率:resultData[i].properties.现状控制率,
-                规划控制率:resultData[i].properties.规划控制率
+                现状控制率:resultData[i].properties.现状控制率
               }
               self.selectSubcatchmentData.push(subcatchment);
               break;
@@ -1042,8 +1041,8 @@
         activeNames: ['1'],
         dataInfo: {},
         //  输入项
-        restaurants: [],
-        state1: '',
+        shapes: [],
+        queryStr: '',
         //  查询结果
         selectResult: {
           subcatchments: [],
@@ -1067,7 +1066,7 @@
     mounted() {
       this.getProjectId();
       this.getMapData();
-      this.restaurants = this.loadAll();
+      // this.shapes = this.loadAll();
     },
     methods: {
       // 取得项目编号
@@ -1076,8 +1075,8 @@
       },
       // 取得mapData
       getMapData() {
-        var self = this;
-        var projectId = this.projectId;
+        let self = this;
+        let projectId = this.projectId;
 
         request('shapes', {
           params: {
@@ -1092,135 +1091,121 @@
             }
           }
         }).then(resp => {
-          var data = resp.data;
-          var selectOpaction = []
-          //正则 匹配道路 的正则
-          var daoluReg = /^[S][^A-Za-z]$/;
-          // 市政公用设施用地
-          var shiZhengReg = /^[U][^A-Za-z]$/;
-          // 绿地
-          var lvDiReg = /^[G,E][^A-Za-z]/;
-          // 居住用地
-          var juZhuYongDiReg = /^[R][^A-Za-z]/;
-          // 政府
-          var zhengFuReg = /^[G][I][C]/;
-          // 工业
-          var gongYeReg = /^[M]/;
-          // 商业服务业设施用地
-          var shangyeReg = /^[C][^A-Za-z]/;
-          for (var i = 0; i < data.length; i++) {
-            var category = data[i].category;
-            var properties = JSON.parse(data[i].properties).properties;
-            var arr = []
+          let data = resp.data;
+          let selectOpaction = []
+          self.outfalls.sewageOutfalls = _.reject(data, item => {
+            return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '污水排口';
+          })
+          self.outfalls.meregeOutfalls = _.reject(data, item => {
+            return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '混流排口';
+          })
+          self.outfalls.rainOutfalls = _.reject(data, item => {
+            return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '雨水排水口';
+          })
+          self.companys = _.reject(data, item => {return item.category !== 'COMPANY';})
+          self.conduits.sewageConduits = _.reject(data, item => {
+            return item.category !== 'CONDUITS' && JSON.parse(item.properties).properties.leixing !== '污水管';
+          })
+          self.conduits.rainConduits = _.reject(data, item => {
+            return item.category !== 'CONDUITS' && JSON.parse(item.properties).properties.leixing !== '雨水管';
+          })
+          self.subcatchments.road = _.reject(data, item => {
+            let YDLX = JSON.parse(item.properties).properties.YDLX;
+            return item.category !== 'SUBCATCHMENTS' && YDLX !== '道路' && /^[S][^A-Za-z]$/.test(YDLX);
+          })
+          self.subcatchments.shiZheng = _.reject(data, item => {
+            let YDLX = JSON.parse(item.properties).properties.YDLX;
+            return item.category !== 'SUBCATCHMENTS' && /^[U][^A-Za-z]$/.test(YDLX);
+          })
+          self.subcatchments.lvDi = _.reject(data, item => {
+            let YDLX = JSON.parse(item.properties).properties.YDLX;
+            return item.category !== 'SUBCATCHMENTS' && /^[G,E][^A-Za-z]/.test(YDLX);
+          })
+          self.subcatchments.juZhuYongDi = _.reject(data, item => {
+            let YDLX = JSON.parse(item.properties).properties.YDLX;
+            return item.category !== 'SUBCATCHMENTS' && /^[R][^A-Za-z]/.test(YDLX);
+          })
+          self.subcatchments.zhengFu = _.reject(data, item => {
+            let YDLX = JSON.parse(item.properties).properties.YDLX;
+            return item.category !== 'SUBCATCHMENTS' && /^[G][I][C]/.test(YDLX);
+          })
+          self.subcatchments.gongYe = _.reject(data, item => {
+            let YDLX = JSON.parse(item.properties).properties.YDLX;
+            return item.category !== 'SUBCATCHMENTS' && /^[M]/.test(YDLX);
+          })
+          self.subcatchments.shangYe = _.reject(data, item => {
+            let YDLX = JSON.parse(item.properties).properties.YDLX;
+            return item.category !== 'SUBCATCHMENTS' && /^[C][^A-Za-z]/.test(YDLX);
+          })
+          for (let i = 0; i < data.length; i++) {
+            let properties = JSON.parse(data[i].properties).properties;
+
+            // @TODO: 以下代码貌似没有意义
             for (let i in properties) {
               if (i == 'WP' || i == 'YP' || i == 'center' || i == 'area' || i == 'X_cor' || i == 'Y_cor' || i == null) {
               } else {
                 //如果字符串中含有多个的处理
                 if (String(properties[i]).indexOf('、') != -1) {
-                  for (var s = 0; s < properties[i].split('、').length; s++) {
-                    var value = {
+                  for (let s = 0; s < properties[i].split('、').length; s++) {
+                    let value = {
                       value: properties[i].split('、')[s]
                     }
                     selectOpaction.push(value);
                   }
                 }
-                var value = {
+                let value = {
                   value: properties[i]
                 }
                 selectOpaction.push(value);
               }
+            }
+          }
+          // let TempArr = []
+          // let newArr = []
+          // @TODO: 可能要做去重
+          self.shapes = _.chain(selectOpaction).reject(item => {
+            return item.value !== '光明医院' && item.value !== 'GIC4';
+          }).value()
 
-            }
-            if (category == 'COMPANY') {
-              self.companys.push(data[i])
-            }
-            if (category == 'OUTFALLS') {
-              if (properties.leixing == '污水排口') {
-                self.outfalls.sewageOutfalls.push(data[i])
-              }
-              if (properties.leixing == '混流排口') {
-                self.outfalls.meregeOutfalls.push(data[i])
-              }
-              if (properties.leixing == '雨水排水口') {
-                self.outfalls.rainOutfalls.push(data[i])
-              }
-            }
-            if (category == 'CONDUITS') {
-              if (properties.leixing == '污水管') {
-                self.conduits.sewageConduits.push(data[i])
-              }
-              if (properties.leixing == '雨水管') {
-                self.conduits.rainConduits.push(data[i])
-              }
-            }
-            if (category == 'SUBCATCHMENTS') {
-              var YDLX = properties.YDLX;
-              if ((YDLX == '道路' || daoluReg.test(YDLX))) {
-                self.subcatchments.road.push(data[i])
-              }
-              if (shiZhengReg.test(YDLX)) {
-                self.subcatchments.shiZheng.push(data[i])
-              }
-              if (lvDiReg.test(YDLX)) {
-                self.subcatchments.lvDi.push(data[i])
-              }
-              if (juZhuYongDiReg.test(YDLX)) {
-                self.subcatchments.juZhuYongDi.push(data[i])
-              }
-              if (zhengFuReg.test(YDLX)) {
-                self.subcatchments.zhengFu.push(data[i])
-              }
-              if (gongYeReg.test(YDLX)) {
-                self.subcatchments.gongYe.push(data[i])
-              }
-              if (shangyeReg.test(YDLX)) {
-                self.subcatchments.shangYe.push(data[i])
-              }
-            }
-          }
-          //数组去重
-          var TempArr = []
-          var newArr = []
-          var selection = []
-          for (var i = 0; i < selectOpaction.length; i++) {
-            if(selectOpaction[i].value == '光明医院' || selectOpaction[i].value == 'GIC4'){
-              selection.push(selectOpaction[i])
-            }
-            if (selectOpaction[i].value == null) {
-            }
-            else {
-              TempArr.push(selectOpaction[i])
-            }
-          }
-          for (var i = 0; i < TempArr.length; i++) {
-            var flag = true
-            for (var j = 0; j < newArr.length; j++) {
-              if (String(TempArr[i].value) == String(newArr[j].value)) {
-                flag = false
-              }
-            }
-            if (flag) {
-              var obj = {
-                value: String(selectOpaction[i].value)
-              }
-              newArr.push(obj)
-
-            }
-          }
-          for (var i = 0; i < newArr.length; i++) {
-            flag = true
-            for (var j = 0; j < selection.length; j++) {
-              if (newArr[i].value == selection[j].value) {
-                flag = false
-              }
-            }
-            if (flag) {
-              selection.push(newArr[i])
-            }
-          }
-          self.restaurants = selection;
-          // for(var i = 0;i<self.restaurants.length;i++){
-          //   console.log(self.restaurants[i].value == '光明医院')
+          // for (let i = 0; i < selectOpaction.length; i++) {
+          //   if(selectOpaction[i].value == '光明医院' || selectOpaction[i].value == 'GIC4'){
+          //     selection.push(selectOpaction[i])
+          //   }
+          //   if (selectOpaction[i].value == null) {
+          //   }
+          //   else {
+          //     TempArr.push(selectOpaction[i])
+          //   }
+          // }
+          // for (let i = 0; i < TempArr.length; i++) {
+          //   let flag = true
+          //   for (let j = 0; j < newArr.length; j++) {
+          //     if (String(TempArr[i].value) == String(newArr[j].value)) {
+          //       flag = false
+          //     }
+          //   }
+          //   if (flag) {
+          //     let obj = {
+          //       value: String(selectOpaction[i].value)
+          //     }
+          //     newArr.push(obj)
+          //
+          //   }
+          // }
+          // for (let i = 0; i < newArr.length; i++) {
+          //   flag = true
+          //   for (let j = 0; j < selection.length; j++) {
+          //     if (newArr[i].value == selection[j].value) {
+          //       flag = false
+          //     }
+          //   }
+          //   if (flag) {
+          //     selection.push(newArr[i])
+          //   }
+          // }
+          // self.shapes = selection;
+          // for(let i = 0;i<self.shapes.length;i++){
+          //   console.log(self.shapes[i].value == '光明医院')
           // }
 
         })
@@ -1356,7 +1341,7 @@
        * 重新绘制事件
        * */
       handleReset() {
-        var self = this;
+        let self = this;
         self.selectSubcatchmentData = [];
         self.selectOutfalls = [];
         self.selectCompanys = [];
@@ -1377,37 +1362,37 @@
       },
       //反向查询组件
       querySearchAsync(queryString, cb) {
-        if (this.state1.substr(this.state1.length - 1, 1) == ';') {
+        if (this.queryStr.substr(this.queryStr.length - 1, 1) == ';') {
           queryString == ''
         }
-        var restaurants = this.restaurants;
-        let results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants;
+        let shapes = this.shapes;
+        let results = queryString ? shapes.filter(this.createStateFilter(queryString)) : shapes;
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
           cb(results);
         }, 1000 * Math.random());
       },
       createStateFilter(queryString) {
-        return (restaurants) => {
-          return (restaurants.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+        return (shapes) => {
+          return (shapes.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
         };
       },
 
       //查询开始
       handleSelect() {
-        var self = this;
+        let self = this;
         self.isLoading = true;
         self.selectSubcatchmentData = [];
         self.selectOutfalls = [];
         self.selectCompanys = [];
-        var selectArr = self.String2Array(self.state1);
+        let queryArry = self.queryStr.split(';');
         self.selectResult.subcatchments = [];
         self.selectResult.conduits = [];
         self.selectResult.outfalls = [];
         self.selectResult.companys = [];
         self.selectResult.junctions = [];
         //请求全部数据
-        var projectId = this.projectId;
+        let projectId = this.projectId;
         request('shapes', {
           params: {
             pageNo: 1,
@@ -1421,37 +1406,22 @@
             }
           }
         }).then(resp => {
-          var data = resp.data;
-          var companys = [];
-          var outfalls = [];
-          var conduits = [];
-          var subcatchments = [];
-          var result = [];
-          for (var i = 0; i < data.length; i++) {
-            var category = data[i].category;
-            if (category == 'COMPANY') {
-              companys.push(data[i])
-            }
-            if (category == 'OUTFALLS') {
-              outfalls.push(data[i])
-            }
-            if (category == 'CONDUITS') {
-              conduits.push(data[i]);
-            }
-            if (category == 'SUBCATCHMENTS') {
-              subcatchments.push(data[i])
-            }
+          let data = resp.data;
+          let companys = _.reject(data, item => {return item.category != 'COMPANY';});
+          let outfalls = _.reject(data, item => {return item.category != 'OUTFALLS';});
+          let conduits = _.reject(data, item => {return item.category != 'CONDUITS';});
+          let subcatchments = _.reject(data, item => {return item.category != 'SUBCATCHMENTS';});
+          let result = [];
 
-          }
-          if (selectArr.length > 0) {
-            for (var j = 0; j < selectArr.length; j++) {
+          if (queryArry.length > 0) {
+            for (let j = 0; j < queryArry.length; j++) {
               //循环企业
-              for (var a = 0; a < companys.length; a++) {
-                var properties = JSON.parse(companys[a].properties).properties;
+              for (let a = 0; a < companys.length; a++) {
+                let properties = JSON.parse(companys[a].properties).properties;
                 for (let i in properties) {
                   if (String(properties[i]).indexOf('、') != -1) {
-                    for (var s = 0; s < properties[i].split('、').length; s++) {
-                      if (properties[i].split('、')[s] == selectArr[j]) {
+                    for (let s = 0; s < properties[i].split('、').length; s++) {
+                      if (properties[i].split('、')[s] == queryArry[j]) {
                         result.push(companys[a])
                       }
                     }
@@ -1459,28 +1429,28 @@
                 }
               }
               //循环管线
-              for (var d = 0; d < conduits.length; d++) {
-                var properties = JSON.parse(conduits[d].properties).properties;
+              for (let d = 0; d < conduits.length; d++) {
+                let properties = JSON.parse(conduits[d].properties).properties;
                 for (let item in properties) {
-                  if (String(properties[item]) == selectArr[j]) {
+                  if (String(properties[item]) == queryArry[j]) {
                   }
                 }
               }
               //循环地块
-              for (var b = 0; b < subcatchments.length; b++) {
-                var properties = JSON.parse(subcatchments[b].properties).properties;
+              for (let b = 0; b < subcatchments.length; b++) {
+                let properties = JSON.parse(subcatchments[b].properties).properties;
                 for (let i in properties) {
-                  if (String(properties[i]) == selectArr[j]) {
+                  if (String(properties[i]) == queryArry[j]) {
                     result.push(subcatchments[b])
                   }
                 }
               }
               //循环排口
-              for (var e = 0; e < outfalls.length; e++) {
-                var properties = JSON.parse(outfalls[e].properties).properties;
+              for (let e = 0; e < outfalls.length; e++) {
+                let properties = JSON.parse(outfalls[e].properties).properties;
                 for (let i in properties) {
-                  if (String(properties[i]) == selectArr[j]) {
-                    console.log(selectArr[j])
+                  if (String(properties[i]) == queryArry[j]) {
+                    console.log(queryArry[j])
                     console.log(properties[i])
                   }
                 }
@@ -1490,26 +1460,18 @@
           }
           else {
             console.log('请输入查询条件');
+            return 0;
           }
-          // for(var i = 0;i<data.length;i++) {
-          //   var category = data[i].category;
-          //   var properties = JSON.parse(data[i].properties).properties;
-          //   for (let item in properties) {
-          //     if (properties[item] == value) {
-          //       result.push(data[i])
-          //       // }
-          //     }
-          //   }
-          // }
+
           //  拿到结果 进行处理
-          if(selectArr.length >1){
-            var thisCompanys = [];
-            var thisSubcatchments = []
-            var selectSubcatchmets = []
-            var comapnysToSubcatchments = []
+          if(queryArry.length >1){
+            let thisCompanys = [];
+            let thisSubcatchments = []
+            let selectSubcatchmets = []
+            let comapnysToSubcatchments = []
             console.log('我开始这行了');
-            for(var p = 0;p<result.length;p++){
-              var category = result[p].category;
+            for(let p = 0;p<result.length;p++){
+              let category = result[p].category;
               switch (category) {
                 case 'SUBCATCHMENTS':
                   // thisSubcatchments.push(JSON.parse(result[p].properties));
@@ -1522,28 +1484,28 @@
               }
             }
             // 地块
-            for(var z = 0;z<thisSubcatchments.length;z++){
-              var properties = JSON.parse(thisSubcatchments[z].properties)
-              var geos = properties.geometry.coordinates[0];
-              var selectSubcatchmet = {
+            for(let z = 0;z<thisSubcatchments.length;z++){
+              let properties = JSON.parse(thisSubcatchments[z].properties)
+              let geos = properties.geometry.coordinates[0];
+              let selectSubcatchmet = {
                 properties:thisSubcatchments[z],
                 overlays:[]
               }
-              for(var i = 0;i<geos.length;i++){
-                var points = new BMap.Point(geos[i][1],geos[i][0]);
+              for(let i = 0;i<geos.length;i++){
+                let points = new BMap.Point(geos[i][1],geos[i][0]);
                 selectSubcatchmet.overlays.push(points)
               }
               selectSubcatchmets.push(selectSubcatchmet);
             }
             //企业 地块
-            for(var q = 0;q<thisCompanys.length;q++){
-              var properties = JSON.parse(thisCompanys[q].properties);
-              var companyLng_lat = properties.geometry.coordinates;
-              var point = new BMap.Point(companyLng_lat [1], companyLng_lat [0]);
-              for(var j = 0;j<selectSubcatchmets.length;j++){
-                var overlays = selectSubcatchmets[j].overlays
-                var ply = new BMap.Polygon(overlays);
-                var result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
+            for(let q = 0;q<thisCompanys.length;q++){
+              let properties = JSON.parse(thisCompanys[q].properties);
+              let companyLng_lat = properties.geometry.coordinates;
+              let point = new BMap.Point(companyLng_lat [1], companyLng_lat [0]);
+              for(let j = 0;j<selectSubcatchmets.length;j++){
+                let overlays = selectSubcatchmets[j].overlays
+                let ply = new BMap.Polygon(overlays);
+                let result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
                 if(result){
                   self.selectResult.subcatchments.push(selectSubcatchmets[j].properties)
                   self.selectResult.companys.push(thisCompanys[q])
@@ -1552,11 +1514,11 @@
             }
             // console.log(comapnysToSubcatchments.propert);
           }
-          if(selectArr.length == 1){
-            var newArr = []
-            for (var i = 0; i < result.length; i++) {
-              var flag = true;
-              for (var j = 0; j < newArr.length; j++) {
+          if(queryArry.length == 1){
+            let newArr = []
+            for (let i = 0; i < result.length; i++) {
+              let flag = true;
+              for (let j = 0; j < newArr.length; j++) {
                 if (result[i].id == newArr[j].id) {
                   flag = false
                 }
@@ -1565,37 +1527,37 @@
                 newArr.push(result[i])
               }
             }
-            for (var i = 0; i < newArr.length; i++) {
-              var category = newArr[i].category;
+            for (let i = 0; i < newArr.length; i++) {
+              let category = newArr[i].category;
               console.log(category );
               switch (category) {
                 case 'SUBCATCHMENTS':
-                  var properties = JSON.parse(newArr[i].properties);
-                  var subcatchments = {
+                  properties = JSON.parse(newArr[i].properties);
+                  let subcatchments = {
                     properties: properties.properties
                   }
                   self.subcatchmentData.push(subcatchments.properties)
                   self.selectResult.subcatchments.push(newArr[i])
                   break;
                 case 'CONDUITS':
-                  var properties = JSON.parse(newArr[i].properties);
-                  var conduits = {
+                  properties = JSON.parse(newArr[i].properties);
+                  let conduits = {
                     properties: properties.properties
                   }
                   self.select.conduitsData.push(conduits.properties)
                   self.selectResult.conduits.push(newArr[i])
                   break;
                 case 'OUTFALLS':
-                  var properties = JSON.parse(newArr[i].properties);
-                  var outfalls = {
+                  properties = JSON.parse(newArr[i].properties);
+                  let outfalls = {
                     properties: properties.properties
                   }
                   self.outfallsData.push(outfalls.properties)
                   self.selectResult.outfalls.push(newArr[i])
                   break;
                 case 'COMPANY':
-                  var properties = JSON.parse(newArr[i].properties);
-                  var companys = {
+                  properties = JSON.parse(newArr[i].properties);
+                  let companys = {
                     properties: properties.properties
                   }
                   self.companysData.push(companys.properties)
@@ -1611,11 +1573,6 @@
           this.$refs.map.showResult(self.selectResult);
           self.isLoading = false;
         })
-      },
-      //字符串转数组
-      String2Array(data) {
-        var selectArr = data.split(';')
-        return selectArr;
       },
     }
   }

@@ -1357,18 +1357,18 @@
         }
         //  统计拿到所有数据
         //  数组去重
-        let newResultData = [];
-        for(let i =0;i<resultData.length;i++){
-          let flag = true;
-          for(let j = 0;j<newResultData.length;j++){
-            if(resultData[i].id ==newResultData[j].id){
-              flag = false
-            }
-          }
-          if(flag){
-            newResultData.push(resultData[i]);
-          }
-        }
+        let newResultData = _.uniq(resultData, 'id');
+        // for(let i =0;i<resultData.length;i++){
+        //   let flag = true;
+        //   for(let j = 0;j<newResultData.length;j++){
+        //     if(resultData[i].id == newResultData[j].id){
+        //       flag = false
+        //     }
+        //   }
+        //   if(flag){
+        //     newResultData.push(resultData[i]);
+        //   }
+        // }
         self.$store.dispatch('getResultData',newResultData);
         console.log('查询结束');
       },
