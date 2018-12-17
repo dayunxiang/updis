@@ -964,6 +964,7 @@
     data() {
       return {
         shapes: [],
+        shapeIdStrMap: {},
         //
         options: [{
           value: '选项1',
@@ -986,10 +987,6 @@
         selectOutfalls: [],
         selectCompanys: [],
         //end
-        subcatchmentData: [],
-        conduitsData: [],
-        outfallsData: [],
-        companysData: [],
         isResult: false,
 
         projectId: '',
@@ -1119,6 +1116,9 @@
         }).then(resp => {
           let data = resp.data;
           self.shapes = data;
+          _.each(self.shapes, shape => {
+            self.$set(self.shapeIdStrMap, shape.id, JSON.stringify(shape))
+          })
           self.outfalls.sewageOutfalls = _.reject(data, item => {
             return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '污水排口';
           })
@@ -1365,6 +1365,17 @@
         });
         let result = [];
 
+        let matchedShapes = _.chain(self.shapes).reject(shape => {
+          let flag = false
+          for(let i=0;i<queryArry.length;i++) {
+            if (self.shapeIdStrMap[shape.id].indexOf(queryArry[i]) < 0) {
+              flag = true;
+              continue;
+            }
+          }
+          return flag
+        })
+
         if (queryArry.length > 0) {
           for (let j = 0; j < queryArry.length; j++) {
             //循环企业
@@ -1488,7 +1499,6 @@
                 let subcatchments = {
                   properties: properties.properties
                 }
-                self.subcatchmentData.push(subcatchments.properties)
                 self.selectResult.subcatchments.push(newArr[i])
                 break;
               case 'CONDUITS':
@@ -1496,7 +1506,6 @@
                 let conduits = {
                   properties: properties.properties
                 }
-                self.select.conduitsData.push(conduits.properties)
                 self.selectResult.conduits.push(newArr[i])
                 break;
               case 'OUTFALLS':
@@ -1504,7 +1513,6 @@
                 let outfalls = {
                   properties: properties.properties
                 }
-                self.outfallsData.push(outfalls.properties)
                 self.selectResult.outfalls.push(newArr[i])
                 break;
               case 'COMPANY':
@@ -1512,7 +1520,6 @@
                 let companys = {
                   properties: properties.properties
                 }
-                self.companysData.push(companys.properties)
                 self.selectResult.companys.push(newArr[i])
                 break;
             }
