@@ -1115,54 +1115,57 @@
           }
         }).then(resp => {
           let data = resp.data;
-          self.shapes = data;
+          self.shapes = _.map(data, item => {
+            item.properties = JSON.parse(item.properties)
+            return item
+          });
           _.each(self.shapes, shape => {
             self.$set(self.shapeIdStrMap, shape.id, JSON.stringify(shape))
           })
-          self.outfalls.sewageOutfalls = _.reject(data, item => {
-            return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '污水排口';
+          self.outfalls.sewageOutfalls = _.reject(self.shapes, item => {
+            return item.category !== 'OUTFALLS' && item.properties.properties.leixing !== '污水排口';
           })
-          self.outfalls.meregeOutfalls = _.reject(data, item => {
-            return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '混流排口';
+          self.outfalls.meregeOutfalls = _.reject(self.shapes, item => {
+            return item.category !== 'OUTFALLS' && item.properties.properties.leixing !== '混流排口';
           })
-          self.outfalls.rainOutfalls = _.reject(data, item => {
-            return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '雨水排水口';
+          self.outfalls.rainOutfalls = _.reject(self.shapes, item => {
+            return item.category !== 'OUTFALLS' && item.properties.properties.leixing !== '雨水排水口';
           })
-          self.companys = _.reject(data, item => {
+          self.companys = _.reject(self.shapes, item => {
             return item.category !== 'COMPANY';
           })
-          self.conduits.sewageConduits = _.reject(data, item => {
-            return item.category !== 'CONDUITS' && JSON.parse(item.properties).properties.leixing !== '污水管';
+          self.conduits.sewageConduits = _.reject(self.shapes, item => {
+            return item.category !== 'CONDUITS' && item.properties.properties.leixing !== '污水管';
           })
-          self.conduits.rainConduits = _.reject(data, item => {
-            return item.category !== 'CONDUITS' && JSON.parse(item.properties).properties.leixing !== '雨水管';
+          self.conduits.rainConduits = _.reject(self.shapes, item => {
+            return item.category !== 'CONDUITS' && item.properties.properties.leixing !== '雨水管';
           })
-          self.subcatchments.road = _.reject(data, item => {
-            let YDLX = JSON.parse(item.properties).properties.YDLX;
+          self.subcatchments.road = _.reject(self.shapes, item => {
+            let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && YDLX !== '道路' && /^[S][^A-Za-z]$/.test(YDLX);
           })
-          self.subcatchments.shiZheng = _.reject(data, item => {
-            let YDLX = JSON.parse(item.properties).properties.YDLX;
+          self.subcatchments.shiZheng = _.reject(self.shapes, item => {
+            let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && /^[U][^A-Za-z]$/.test(YDLX);
           })
-          self.subcatchments.lvDi = _.reject(data, item => {
-            let YDLX = JSON.parse(item.properties).properties.YDLX;
+          self.subcatchments.lvDi = _.reject(self.shapes, item => {
+            let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && /^[G,E][^A-Za-z]/.test(YDLX);
           })
-          self.subcatchments.juZhuYongDi = _.reject(data, item => {
-            let YDLX = JSON.parse(item.properties).properties.YDLX;
+          self.subcatchments.juZhuYongDi = _.reject(self.shapes, item => {
+            let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && /^[R][^A-Za-z]/.test(YDLX);
           })
-          self.subcatchments.zhengFu = _.reject(data, item => {
-            let YDLX = JSON.parse(item.properties).properties.YDLX;
+          self.subcatchments.zhengFu = _.reject(self.shapes, item => {
+            let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && /^[G][I][C]/.test(YDLX);
           })
-          self.subcatchments.gongYe = _.reject(data, item => {
-            let YDLX = JSON.parse(item.properties).properties.YDLX;
+          self.subcatchments.gongYe = _.reject(self.shapes, item => {
+            let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && /^[M]/.test(YDLX);
           })
-          self.subcatchments.shangYe = _.reject(data, item => {
-            let YDLX = JSON.parse(item.properties).properties.YDLX;
+          self.subcatchments.shangYe = _.reject(self.shapes, item => {
+            let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && /^[C][^A-Za-z]/.test(YDLX);
           })
 
@@ -1337,7 +1340,7 @@
       },
 
       //查询开始
-      handleSelect() {
+      handleSelect: function () {
         let self = this;
         self.isLoading = true;
         self.selectSubcatchmentData = [];
@@ -1367,64 +1370,14 @@
 
         let matchedShapes = _.chain(self.shapes).reject(shape => {
           let flag = false
-          for(let i=0;i<queryArry.length;i++) {
-            if (self.shapeIdStrMap[shape.id].indexOf(queryArry[i]) < 0) {
+          for (let i = 0; i < queryArry.length; i++) {
+            if (self.shapeIdStrMap[shape.id].indexOf(queryArry[i]) < 0) { // 有一个查询条件不符合就过滤掉
               flag = true;
-              continue;
+              break;
             }
           }
           return flag
-        })
-
-        if (queryArry.length > 0) {
-          for (let j = 0; j < queryArry.length; j++) {
-            //循环企业
-            for (let a = 0; a < companys.length; a++) {
-              let properties = JSON.parse(companys[a].properties).properties;
-              for (let i in properties) {
-                if (String(properties[i]).indexOf('、') != -1) {
-                  for (let s = 0; s < properties[i].split('、').length; s++) {
-                    if (properties[i].split('、')[s] == queryArry[j]) {
-                      result.push(companys[a])
-                    }
-                  }
-                }
-              }
-            }
-            //循环管线
-            for (let d = 0; d < conduits.length; d++) {
-              let properties = JSON.parse(conduits[d].properties).properties;
-              for (let item in properties) {
-                if (String(properties[item]) == queryArry[j]) {
-                }
-              }
-            }
-            //循环地块
-            for (let b = 0; b < subcatchments.length; b++) {
-              let properties = JSON.parse(subcatchments[b].properties).properties;
-              for (let i in properties) {
-                if (String(properties[i]) == queryArry[j]) {
-                  result.push(subcatchments[b])
-                }
-              }
-            }
-            //循环排口
-            for (let e = 0; e < outfalls.length; e++) {
-              let properties = JSON.parse(outfalls[e].properties).properties;
-              for (let i in properties) {
-                if (String(properties[i]) == queryArry[j]) {
-                  console.log(queryArry[j])
-                  console.log(properties[i])
-                }
-              }
-            }
-
-          }
-        }
-        else {
-          console.log('请输入查询条件');
-          return 0;
-        }
+        }).value()
 
         //  拿到结果 进行处理
         if (queryArry.length > 1) {
@@ -1525,7 +1478,6 @@
             }
           }
         }
-
 
 
         //  拿到结果进行处理  用于页面展示  用于 地图绘制
