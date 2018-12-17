@@ -9,21 +9,21 @@
       <BaiduMap
         ref="map"
         :is-hide-all-subcatchments="isHideAllSubcatchments"
-        :is-hide-daolu = "isHideDaolu"
-        :is-hide-shizheng = "isHideShizheng"
-        :is-hide-lvdi = "isHideLvdi"
-        :is-hide-juzhu = "isHideJuzhu"
-        :is-hide-zhengfu = 'isHideZhengfu'
-        :is-hide-gongye = "isHideGongye"
-        :is-hide-shangye = "isHideShangye"
+        :is-hide-daolu="isHideDaolu"
+        :is-hide-shizheng="isHideShizheng"
+        :is-hide-lvdi="isHideLvdi"
+        :is-hide-juzhu="isHideJuzhu"
+        :is-hide-zhengfu='isHideZhengfu'
+        :is-hide-gongye="isHideGongye"
+        :is-hide-shangye="isHideShangye"
         :is-hide-all-conduits="isHideAllConduits"
-        :is-hide-rain-conduits = "isHideRainConduits"
-        :is-hide-sewage-conduits = "isHideSewageConduits"
+        :is-hide-rain-conduits="isHideRainConduits"
+        :is-hide-sewage-conduits="isHideSewageConduits"
         :is-hide-all-outfalls="isHideAllOutfalls"
-        :is-hide-merge-outfalls = 'isHideMergeOutfalls'
-        :is-hide-rain-outfalls = 'isHideRainOutfalls'
+        :is-hide-merge-outfalls='isHideMergeOutfalls'
+        :is-hide-rain-outfalls='isHideRainOutfalls'
         :is-hide-sewage-outfalls="isHideSewageOutfalls"
-        :is-hide-companys = 'isHideCompanys'
+        :is-hide-companys='isHideCompanys'
       />
       <!--左-->
       <div :class="isCollapse?'open':'off'" class="left-content">
@@ -269,13 +269,13 @@
           <div>
             <el-collapse v-model="activeName" accordion>
               <!--地块-->
-              <el-collapse-item  v-model="dataInfo" name="1" v-if="dataInfo.type=='地块'">
+              <el-collapse-item v-model="dataInfo" name="1" v-if="dataInfo.type=='地块'">
                 <template slot="title">
                   <span>{{dataInfo.type}}</span>
                   <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);" @click="handleSubcatchmentsSelectRainConduits(dataInfo.id)" @click.stop>查下游雨水管+排口</el-button>
                   <!--<el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(18,54,239,0.5);" @click="handleSubcatchmentsSelectRainOutfalls(data.info.id)" @click.stop >查下游雨水排口</el-button>-->
                   <!--<el-button type="primary" style="padding: 3px; font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleSubcatchmentsSelectSewageConduits(data.info.id)" @click.stop>查下游污水管</el-button>-->
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);" @click="handleSubcatchmentsSelectSewageConduits(dataInfo.id)" @click.stop >查下游污水去向</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);" @click="handleSubcatchmentsSelectSewageConduits(dataInfo.id)" @click.stop>查下游污水去向</el-button>
 
                 </template>
                 <div>
@@ -396,10 +396,10 @@
                 <template slot="title">
                   <span>{{dataInfo.leixing}}信息</span>
                   <el-button @click.stop type="primary" round @click="handleSelectConduits(dataInfo.name)">查询上游管道</el-button>
-                  <el-button type="primary" round  @click="handleSelectSubcatchments(dataInfo.name)" @click.stop>查询上游地块</el-button>
+                  <el-button type="primary" round @click="handleSelectSubcatchments(dataInfo.name)" @click.stop>查询上游地块</el-button>
                 </template>
                 <div>
-                  <el-collapse v-model="activeNames" >
+                  <el-collapse v-model="activeNames">
                     <el-collapse-item title="基本信息" name="1">
                       <ul class="info-content">
                         <li>
@@ -432,9 +432,9 @@
                 </div>
               </el-collapse-item>
               <!--管线-->
-              <el-collapse-item v-model="data" :title="dataInfo.leixing +'信息'"  name="1" v-if="dataInfo.type == '管线'">
+              <el-collapse-item v-model="data" :title="dataInfo.leixing +'信息'" name="1" v-if="dataInfo.type == '管线'">
                 <div>
-                  <el-collapse v-model="activeNames" >
+                  <el-collapse v-model="activeNames">
                     <el-collapse-item title="基本信息" name="1">
                       <ul class="info-content">
                         <li>
@@ -456,7 +456,7 @@
                         <li>
                           <div class="info-title">管径</div>
                           <div class="info-span">
-                            <el-tooltip class="item" effect="dark" :content= "dataInfo.guanjing"placement="top-start">
+                            <el-tooltip class="item" effect="dark" :content="dataInfo.guanjing" placement="top-start">
                               <el-button class="info-button">{{dataInfo.guanjing*1000}} <span style="color:#42b983">mm</span></el-button>
                             </el-tooltip>
                           </div>
@@ -470,10 +470,10 @@
               <el-collapse-item v-model="dataInfo" :title="dataInfo.type+'信息'" name="1" v-if="dataInfo.type=='企业'">
                 <template slot="title">
                   <span>{{dataInfo.type}}</span>
-                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageConduits(dataInfo.geos)" @click.stop>查下游污水管+污水去向</el-button>
+                  <el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);" @click="handleCompanySelectSewageConduits(dataInfo.geos)" @click.stop>查下游污水管+污水去向</el-button>
                   <!--<el-button type="primary" style="padding: 3px;font-size: 13px;background:rgba(255,0,255,0.5);"  @click="handleCompanySelectSewageOutfall(data.geos)" @click.stop>查下游污水去向</el-button>-->
                 </template>
-                <el-collapse v-model="activeNames" >
+                <el-collapse v-model="activeNames">
                   <el-collapse-item title="基本信息" name="1">
                     <ul class="info-content">
                       <li>
@@ -624,7 +624,7 @@
         <div class="label" @click="handleSelectShow">
           反向查询
         </div>
-        <div  class="selectContext" v-show="isSelect">
+        <div class="selectContext" v-show="isSelect">
           <div>
             <el-tabs type="border-card" style="width: 100%">
               <el-tab-pane label="精确查询">
@@ -665,14 +665,14 @@
                     </li>
                   </ul>
                 </div>
-                <ul style="float:left;background:rgba(0,0,0,.1);width: 20%;" >
-                  <li style="text-align: center;margin: 10px 0;" >
+                <ul style="float:left;background:rgba(0,0,0,.1);width: 20%;">
+                  <li style="text-align: center;margin: 10px 0;">
                     <el-button type="primary" @click="handelAddTerm">增加查询条件</el-button>
                   </li>
-                  <li style="text-align: center;margin: 10px 0;" >
+                  <li style="text-align: center;margin: 10px 0;">
                     <el-button type="primary">清除查询条件</el-button>
                   </li>
-                  <li style="text-align: center;margin: 10px 0;" >
+                  <li style="text-align: center;margin: 10px 0;">
                     <el-button type="success">查询</el-button>
                   </li>
                 </ul>
@@ -687,7 +687,7 @@
                     placeholder="请输入查询条件,多条件之间用;(分号隔开)"
                     :trigger-on-focus="false">
                   </el-autocomplete>
-                  <el-button type="success"  @click="handleSelect" style="display:inline-block;width: 100px;line-height: 34px;">查询</el-button>
+                  <el-button type="success" @click="handleSelect" style="display:inline-block;width: 100px;line-height: 34px;">查询</el-button>
                 </div>
               </el-tab-pane>
             </el-tabs>
@@ -697,194 +697,194 @@
           </div>
         </div>
         <!--<div  class="selectContext" v-show="isSelect" >-->
-          <!--<div class="select-search">-->
-            <!--<el-autocomplete-->
-              <!--class="el-input"-->
-              <!--style="width: 450px"-->
-              <!--v-model="queryStr"-->
-              <!--:fetch-suggestions="querySearchAsync"-->
-              <!--placeholder="请输入查询条件,多条件之间用;(分号隔开)"-->
-              <!--:trigger-on-focus="false">-->
-            <!--</el-autocomplete>-->
-            <!--<el-button type="success" icon="el-icon-search" circle @click="handleSelect"></el-button>-->
-          <!--</div>-->
-          <!--<div class="result-ul" v-show = 'isSelect'>-->
-            <!--<el-tabs type="border-card" v-model="select" >-->
-              <!--<el-tab-pane style="max-height: 500px;overflow: auto" v-if = " selectOutfalls.length"      :label= "'排口'+'（'+ selectOutfalls.length+')'">-->
-                <!--<el-table :data=" selectOutfalls" border max-height="500" style="width: 100%;" key="outfallTable">-->
+        <!--<div class="select-search">-->
+        <!--<el-autocomplete-->
+        <!--class="el-input"-->
+        <!--style="width: 450px"-->
+        <!--v-model="queryStr"-->
+        <!--:fetch-suggestions="querySearchAsync"-->
+        <!--placeholder="请输入查询条件,多条件之间用;(分号隔开)"-->
+        <!--:trigger-on-focus="false">-->
+        <!--</el-autocomplete>-->
+        <!--<el-button type="success" icon="el-icon-search" circle @click="handleSelect"></el-button>-->
+        <!--</div>-->
+        <!--<div class="result-ul" v-show = 'isSelect'>-->
+        <!--<el-tabs type="border-card" v-model="select" >-->
+        <!--<el-tab-pane style="max-height: 500px;overflow: auto" v-if = " selectOutfalls.length"      :label= "'排口'+'（'+ selectOutfalls.length+')'">-->
+        <!--<el-table :data=" selectOutfalls" border max-height="500" style="width: 100%;" key="outfallTable">-->
 
-                  <!--<el-table-column-->
-                    <!--prop="name"-->
-                    <!--label="排口编号"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="leixing"-->
-                    <!--label="类型"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="paixiang"-->
-                    <!--label="排向"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                <!--</el-table>-->
-              <!--</el-tab-pane>-->
-              <!--<el-tab-pane v-if = "selectSubcatchmentData.length" :label= "'地块'+'（'+selectSubcatchmentData.length+')'" style="max-height: 500px;overflow: auto">-->
-                <!--<el-table :data="selectSubcatchmentData" border max-height="500" style="width: 100%;" key="conduitData">-->
-                  <!--<el-table-column-->
-                    <!--prop="name"-->
-                    <!--label="编号"-->
-                    <!--sortable-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="YDLX"-->
-                    <!--label="用地类型"-->
-                    <!--width="50">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="area"-->
-                    <!--label="面积(平方米)"-->
-                    <!--sortable-->
-                    <!--width="100">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="JSZT"-->
-                    <!--label="建设状态"-->
-                    <!--sortable-->
-                    <!--width="200">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="XMMC"-->
-                    <!--label="项目名称"-->
-                    <!--sortable-->
-                    <!--width="250">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="PRHD"-->
-                    <!--label="排入河道"-->
-                    <!--sortable-->
-                    <!--width="200">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="SSLY"-->
-                    <!--label="所属流域"-->
-                    <!--sortable-->
-                    <!--width="200">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="SSPSFQ"-->
-                    <!--label="所属排水分区"-->
-                    <!--sortable-->
-                    <!--width="200">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="ZBQY"-->
-                    <!--label="是否为正本清源项目"-->
-                    <!--sortable-->
-                    <!--width="200">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="HMCS"-->
-                    <!--label="是否为海绵项目"-->
-                    <!--sortable-->
-                    <!--width="200">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="HMLX"-->
-                    <!--label="海绵类型"-->
-                    <!--sortable-->
-                    <!--width="200">-->
-                  <!--</el-table-column>-->
-                <!--</el-table>-->
-              <!--</el-tab-pane>-->
-              <!--<el-tab-pane style="max-height: 500px;overflow: auto" v-if = "selectCompanys.length"      :label= "'企业'+'（'+selectCompanys.length+')'">-->
-                <!--<el-table :data="selectCompanys" border max-height="500" style="width: 100%;" key="companyTable">-->
-                  <!--<el-table-column-->
-                    <!--prop="QYMC"-->
-                    <!--label="企业名称"-->
-                    <!--width="300">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="JDMC"-->
-                    <!--label="街道名称"-->
-                    <!--width="300">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="SQMC"-->
-                    <!--label="社区名称"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="SCJYDZ"-->
-                    <!--label="地址"-->
-                    <!--width="400">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="FDDBR"-->
-                    <!--label="法人代表"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="LXFS"-->
-                    <!--label="联系方式"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="QYRS"-->
-                    <!--label="企业人数"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="HYLB"-->
-                    <!--label="行业类别"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="SCYSL"-->
-                    <!--label="生产用水量"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="PSL"-->
-                    <!--label="排水量"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="ZYSCGY"-->
-                    <!--label="主要生产工艺"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="GPZL"-->
-                    <!--label="产品"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="HPPFWJ"-->
-                    <!--label="环评"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="HPPFWJYXX"-->
-                    <!--label="环评有效性"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="PWXKZ"-->
-                    <!--label="排污许可证"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                  <!--<el-table-column-->
-                    <!--prop="FSCLFS"-->
-                    <!--label="废水处理方式"-->
-                    <!--width="120">-->
-                  <!--</el-table-column>-->
-                <!--</el-table>-->
-              <!--</el-tab-pane>-->
-            <!--</el-tabs>-->
-          <!--</div>-->
+        <!--<el-table-column-->
+        <!--prop="name"-->
+        <!--label="排口编号"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="leixing"-->
+        <!--label="类型"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="paixiang"-->
+        <!--label="排向"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--</el-table>-->
+        <!--</el-tab-pane>-->
+        <!--<el-tab-pane v-if = "selectSubcatchmentData.length" :label= "'地块'+'（'+selectSubcatchmentData.length+')'" style="max-height: 500px;overflow: auto">-->
+        <!--<el-table :data="selectSubcatchmentData" border max-height="500" style="width: 100%;" key="conduitData">-->
+        <!--<el-table-column-->
+        <!--prop="name"-->
+        <!--label="编号"-->
+        <!--sortable-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="YDLX"-->
+        <!--label="用地类型"-->
+        <!--width="50">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="area"-->
+        <!--label="面积(平方米)"-->
+        <!--sortable-->
+        <!--width="100">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="JSZT"-->
+        <!--label="建设状态"-->
+        <!--sortable-->
+        <!--width="200">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="XMMC"-->
+        <!--label="项目名称"-->
+        <!--sortable-->
+        <!--width="250">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="PRHD"-->
+        <!--label="排入河道"-->
+        <!--sortable-->
+        <!--width="200">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="SSLY"-->
+        <!--label="所属流域"-->
+        <!--sortable-->
+        <!--width="200">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="SSPSFQ"-->
+        <!--label="所属排水分区"-->
+        <!--sortable-->
+        <!--width="200">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="ZBQY"-->
+        <!--label="是否为正本清源项目"-->
+        <!--sortable-->
+        <!--width="200">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="HMCS"-->
+        <!--label="是否为海绵项目"-->
+        <!--sortable-->
+        <!--width="200">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="HMLX"-->
+        <!--label="海绵类型"-->
+        <!--sortable-->
+        <!--width="200">-->
+        <!--</el-table-column>-->
+        <!--</el-table>-->
+        <!--</el-tab-pane>-->
+        <!--<el-tab-pane style="max-height: 500px;overflow: auto" v-if = "selectCompanys.length"      :label= "'企业'+'（'+selectCompanys.length+')'">-->
+        <!--<el-table :data="selectCompanys" border max-height="500" style="width: 100%;" key="companyTable">-->
+        <!--<el-table-column-->
+        <!--prop="QYMC"-->
+        <!--label="企业名称"-->
+        <!--width="300">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="JDMC"-->
+        <!--label="街道名称"-->
+        <!--width="300">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="SQMC"-->
+        <!--label="社区名称"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="SCJYDZ"-->
+        <!--label="地址"-->
+        <!--width="400">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="FDDBR"-->
+        <!--label="法人代表"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="LXFS"-->
+        <!--label="联系方式"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="QYRS"-->
+        <!--label="企业人数"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="HYLB"-->
+        <!--label="行业类别"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="SCYSL"-->
+        <!--label="生产用水量"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="PSL"-->
+        <!--label="排水量"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="ZYSCGY"-->
+        <!--label="主要生产工艺"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="GPZL"-->
+        <!--label="产品"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="HPPFWJ"-->
+        <!--label="环评"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="HPPFWJYXX"-->
+        <!--label="环评有效性"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="PWXKZ"-->
+        <!--label="排污许可证"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--<el-table-column-->
+        <!--prop="FSCLFS"-->
+        <!--label="废水处理方式"-->
+        <!--width="120">-->
+        <!--</el-table-column>-->
+        <!--</el-table>-->
+        <!--</el-tab-pane>-->
+        <!--</el-tabs>-->
+        <!--</div>-->
         <!--</div>-->
         <!--重新绘制-->
         <div class="label" style="background: red" @click="handleReset">
@@ -899,7 +899,8 @@
   import BaiduMap from './components/map/baidu'
   import request from '@/utils/request'
   import BMap from 'BMap'
-  import {geojson2cytoscape,
+  import {
+    geojson2cytoscape,
     getAncestorConduitsOfOutfall,
     calcAllSubcatchmentNearestNode,
     getAncestorSubcatchmentsOfOutfall,
@@ -908,6 +909,7 @@
     getNearestNodeOfPoint
   } from '@/utils/mapUtil'
   import '@/utils/GeoUtils.js'
+
   export default {
     name: 'Home',
     computed: {
@@ -919,35 +921,35 @@
       }
     },
     watch: {
-      info: function(info) {
+      info: function (info) {
         this.infoManager = true;
         this.dataInfo = info;
       },
-      resultData: function(resultData) {
+      resultData: function (resultData) {
         let self = this;
         for (let i = 0; i < resultData.length; i++) {
           let category = resultData[i].businessType;
           switch (category) {
             case 'SUBCATCHMENTS':
               let subcatchment = {
-                area : Math.abs(resultData[i].properties.area.toFixed(2)),
-                HMCS:resultData[i].properties.HMCS,
-                HMLX:resultData[i].properties.HMLX,
-                JSZT:resultData[i].properties.JSZT,
-                PRHD:resultData[i].properties.PRHD,
-                SSLY:resultData[i].properties.SSLY,
-                SSPSFQ:resultData[i].properties.SSPSFQ,
-                XMMC:resultData[i].properties.XMMC,
-                YDLX:resultData[i].properties.YDLX,
-                ZBQY:resultData[i].properties.ZBQY,
-                name:resultData[i].properties.name,
-                现状控制率:resultData[i].properties.现状控制率
+                area: Math.abs(resultData[i].properties.area.toFixed(2)),
+                HMCS: resultData[i].properties.HMCS,
+                HMLX: resultData[i].properties.HMLX,
+                JSZT: resultData[i].properties.JSZT,
+                PRHD: resultData[i].properties.PRHD,
+                SSLY: resultData[i].properties.SSLY,
+                SSPSFQ: resultData[i].properties.SSPSFQ,
+                XMMC: resultData[i].properties.XMMC,
+                YDLX: resultData[i].properties.YDLX,
+                ZBQY: resultData[i].properties.ZBQY,
+                name: resultData[i].properties.name,
+                现状控制率: resultData[i].properties.现状控制率
               }
               self.selectSubcatchmentData.push(subcatchment);
               break;
 
             case 'OUTFALLS':
-              self. selectOutfalls.push(resultData[i].properties.properties)
+              self.selectOutfalls.push(resultData[i].properties.properties)
               break;
             case 'COMPANY':
               self.selectCompanys.push(resultData[i].properties)
@@ -980,9 +982,9 @@
         //
         isLoading: false,
         //搜索出来的结果
-        selectSubcatchmentData:[],
-        selectOutfalls:[],
-        selectCompanys:[],
+        selectSubcatchmentData: [],
+        selectOutfalls: [],
+        selectCompanys: [],
         //end
         subcatchmentData: [],
         conduitsData: [],
@@ -1076,10 +1078,26 @@
       },
 
       /**
-       * @TODO: 根据属性值得到查询时的下拉选项
+       * 根据属性值得到查询时的下拉选项
        * */
       getQueryOptions() {
         let self = this;
+        _.each(self.shapes, shape => {
+          let properties = JSON.parse(shape.properties).properties
+          _.each(_.keys(properties), key => {
+            if (!key || !properties[key] || ['WP', 'YP', 'center', 'area', 'X_cor', 'Y_cor'].indexOf(key) >= 0) {
+              return 0;
+            }
+
+            _.each(String(properties[key]).split('、'), option => {
+              if (['光明医院', 'GIC4'].indexOf(option) >= 0) {
+                return 0;
+              }
+              self.queryOptions.push({value: option})
+            })
+          })
+        })
+        self.queryOptions = _.uniqBy(self.queryOptions, 'value')
       },
       // 取得mapData
       getMapData() {
@@ -1110,7 +1128,9 @@
           self.outfalls.rainOutfalls = _.reject(data, item => {
             return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '雨水排水口';
           })
-          self.companys = _.reject(data, item => {return item.category !== 'COMPANY';})
+          self.companys = _.reject(data, item => {
+            return item.category !== 'COMPANY';
+          })
           self.conduits.sewageConduits = _.reject(data, item => {
             return item.category !== 'CONDUITS' && JSON.parse(item.properties).properties.leixing !== '污水管';
           })
@@ -1146,22 +1166,7 @@
             return item.category !== 'SUBCATCHMENTS' && /^[C][^A-Za-z]/.test(YDLX);
           })
 
-          _.each(self.shapes, shape => {
-            let properties = JSON.parse(shape.properties).properties
-            _.each(_.keys(properties), key => {
-              if (!key || !properties[key] || ['WP', 'YP', 'center', 'area', 'X_cor', 'Y_cor'].indexOf(key) >= 0) {
-                return 0;
-              }
-
-              _.each(String(properties[key]).split('、'), option => {
-                if(['光明医院', 'GIC4'].indexOf(option) >= 0){
-                  return 0;
-                }
-                self.queryOptions.push({value: option})
-              })
-            })
-          })
-          self.queryOptions = _.uniqBy(self.queryOptions, 'value')
+          self.getQueryOptions();
         })
       },
       // 折叠展开
@@ -1305,7 +1310,7 @@
        * 反向查询
        * */
       //精确查询  ---  增加查询条件
-      handelAddTerm(){
+      handelAddTerm() {
         console.log('增加查询条件');
       },
       handleSelectShow() {
@@ -1344,248 +1349,400 @@
         self.selectResult.outfalls = [];
         self.selectResult.companys = [];
         self.selectResult.junctions = [];
-        //请求全部数据
-        let projectId = this.projectId;
-        request('shapes', {
-          params: {
-            pageNo: 1,
-            pageSize: 100000000,
-            filters: {
-              'shape': {
-                'project_id': {
-                  equalTo: projectId
-                },
-              }
-            }
-          }
-        }).then(resp => {
-          let data = resp.data;
-          let companys = _.reject(data, item => {return item.category != 'COMPANY';});
-          let outfalls = _.reject(data, item => {return item.category != 'OUTFALLS';});
-          let conduits = _.reject(data, item => {return item.category != 'CONDUITS';});
-          let subcatchments = _.reject(data, item => {return item.category != 'SUBCATCHMENTS';});
-          let result = [];
 
-          if (queryArry.length > 0) {
-            for (let j = 0; j < queryArry.length; j++) {
-              //循环企业
-              for (let a = 0; a < companys.length; a++) {
-                let properties = JSON.parse(companys[a].properties).properties;
-                for (let i in properties) {
-                  if (String(properties[i]).indexOf('、') != -1) {
-                    for (let s = 0; s < properties[i].split('、').length; s++) {
-                      if (properties[i].split('、')[s] == queryArry[j]) {
-                        result.push(companys[a])
-                      }
+        let data = self.shapes;
+        let companys = _.reject(data, item => {
+          return item.category !== 'COMPANY';
+        });
+        let outfalls = _.reject(data, item => {
+          return item.category !== 'OUTFALLS';
+        });
+        let conduits = _.reject(data, item => {
+          return item.category !== 'CONDUITS';
+        });
+        let subcatchments = _.reject(data, item => {
+          return item.category !== 'SUBCATCHMENTS';
+        });
+        let result = [];
+
+        if (queryArry.length > 0) {
+          for (let j = 0; j < queryArry.length; j++) {
+            //循环企业
+            for (let a = 0; a < companys.length; a++) {
+              let properties = JSON.parse(companys[a].properties).properties;
+              for (let i in properties) {
+                if (String(properties[i]).indexOf('、') != -1) {
+                  for (let s = 0; s < properties[i].split('、').length; s++) {
+                    if (properties[i].split('、')[s] == queryArry[j]) {
+                      result.push(companys[a])
                     }
                   }
                 }
               }
-              //循环管线
-              for (let d = 0; d < conduits.length; d++) {
-                let properties = JSON.parse(conduits[d].properties).properties;
-                for (let item in properties) {
-                  if (String(properties[item]) == queryArry[j]) {
-                  }
+            }
+            //循环管线
+            for (let d = 0; d < conduits.length; d++) {
+              let properties = JSON.parse(conduits[d].properties).properties;
+              for (let item in properties) {
+                if (String(properties[item]) == queryArry[j]) {
                 }
               }
-              //循环地块
-              for (let b = 0; b < subcatchments.length; b++) {
-                let properties = JSON.parse(subcatchments[b].properties).properties;
-                for (let i in properties) {
-                  if (String(properties[i]) == queryArry[j]) {
-                    result.push(subcatchments[b])
-                  }
+            }
+            //循环地块
+            for (let b = 0; b < subcatchments.length; b++) {
+              let properties = JSON.parse(subcatchments[b].properties).properties;
+              for (let i in properties) {
+                if (String(properties[i]) == queryArry[j]) {
+                  result.push(subcatchments[b])
                 }
               }
-              //循环排口
-              for (let e = 0; e < outfalls.length; e++) {
-                let properties = JSON.parse(outfalls[e].properties).properties;
-                for (let i in properties) {
-                  if (String(properties[i]) == queryArry[j]) {
-                    console.log(queryArry[j])
-                    console.log(properties[i])
-                  }
+            }
+            //循环排口
+            for (let e = 0; e < outfalls.length; e++) {
+              let properties = JSON.parse(outfalls[e].properties).properties;
+              for (let i in properties) {
+                if (String(properties[i]) == queryArry[j]) {
+                  console.log(queryArry[j])
+                  console.log(properties[i])
                 }
               }
+            }
 
-            }
           }
-          else {
-            console.log('请输入查询条件');
-            return 0;
-          }
+        }
+        else {
+          console.log('请输入查询条件');
+          return 0;
+        }
 
-          //  拿到结果 进行处理
-          if(queryArry.length >1){
-            let thisCompanys = [];
-            let thisSubcatchments = []
-            let selectSubcatchmets = []
-            let comapnysToSubcatchments = []
-            console.log('我开始这行了');
-            for(let p = 0;p<result.length;p++){
-              let category = result[p].category;
-              switch (category) {
-                case 'SUBCATCHMENTS':
-                  // thisSubcatchments.push(JSON.parse(result[p].properties));
-                  thisSubcatchments.push(result[p]);
-                  break;
-                case 'COMPANY':
-                  // thisCompanys.push(JSON.parse(result[p].properties))
-                  thisCompanys.push(result[p])
-                  break;
-              }
+        //  拿到结果 进行处理
+        if (queryArry.length > 1) {
+          let thisCompanys = [];
+          let thisSubcatchments = []
+          let selectSubcatchmets = []
+          let comapnysToSubcatchments = []
+          console.log('我开始这行了');
+          for (let p = 0; p < result.length; p++) {
+            let category = result[p].category;
+            switch (category) {
+              case 'SUBCATCHMENTS':
+                // thisSubcatchments.push(JSON.parse(result[p].properties));
+                thisSubcatchments.push(result[p]);
+                break;
+              case 'COMPANY':
+                // thisCompanys.push(JSON.parse(result[p].properties))
+                thisCompanys.push(result[p])
+                break;
             }
-            // 地块
-            for(let z = 0;z<thisSubcatchments.length;z++){
-              let properties = JSON.parse(thisSubcatchments[z].properties)
-              let geos = properties.geometry.coordinates[0];
-              let selectSubcatchmet = {
-                properties:thisSubcatchments[z],
-                overlays:[]
-              }
-              for(let i = 0;i<geos.length;i++){
-                let points = new BMap.Point(geos[i][1],geos[i][0]);
-                selectSubcatchmet.overlays.push(points)
-              }
-              selectSubcatchmets.push(selectSubcatchmet);
-            }
-            //企业 地块
-            for(let q = 0;q<thisCompanys.length;q++){
-              let properties = JSON.parse(thisCompanys[q].properties);
-              let companyLng_lat = properties.geometry.coordinates;
-              let point = new BMap.Point(companyLng_lat [1], companyLng_lat [0]);
-              for(let j = 0;j<selectSubcatchmets.length;j++){
-                let overlays = selectSubcatchmets[j].overlays
-                let ply = new BMap.Polygon(overlays);
-                let result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
-                if(result){
-                  self.selectResult.subcatchments.push(selectSubcatchmets[j].properties)
-                  self.selectResult.companys.push(thisCompanys[q])
-                }
-              }
-            }
-            // console.log(comapnysToSubcatchments.propert);
           }
-          if(queryArry.length == 1){
-            let newArr = []
-            for (let i = 0; i < result.length; i++) {
-              let flag = true;
-              for (let j = 0; j < newArr.length; j++) {
-                if (result[i].id == newArr[j].id) {
-                  flag = false
-                }
-              }
-              if (flag) {
-                newArr.push(result[i])
-              }
+          // 地块
+          for (let z = 0; z < thisSubcatchments.length; z++) {
+            let properties = JSON.parse(thisSubcatchments[z].properties)
+            let geos = properties.geometry.coordinates[0];
+            let selectSubcatchmet = {
+              properties: thisSubcatchments[z],
+              overlays: []
             }
-            for (let i = 0; i < newArr.length; i++) {
-              let category = newArr[i].category;
-              console.log(category );
-              switch (category) {
-                case 'SUBCATCHMENTS':
-                  properties = JSON.parse(newArr[i].properties);
-                  let subcatchments = {
-                    properties: properties.properties
-                  }
-                  self.subcatchmentData.push(subcatchments.properties)
-                  self.selectResult.subcatchments.push(newArr[i])
-                  break;
-                case 'CONDUITS':
-                  properties = JSON.parse(newArr[i].properties);
-                  let conduits = {
-                    properties: properties.properties
-                  }
-                  self.select.conduitsData.push(conduits.properties)
-                  self.selectResult.conduits.push(newArr[i])
-                  break;
-                case 'OUTFALLS':
-                  properties = JSON.parse(newArr[i].properties);
-                  let outfalls = {
-                    properties: properties.properties
-                  }
-                  self.outfallsData.push(outfalls.properties)
-                  self.selectResult.outfalls.push(newArr[i])
-                  break;
-                case 'COMPANY':
-                  properties = JSON.parse(newArr[i].properties);
-                  let companys = {
-                    properties: properties.properties
-                  }
-                  self.companysData.push(companys.properties)
-                  self.selectResult.companys.push(newArr[i])
-                  break;
+            for (let i = 0; i < geos.length; i++) {
+              let points = new BMap.Point(geos[i][1], geos[i][0]);
+              selectSubcatchmet.overlays.push(points)
+            }
+            selectSubcatchmets.push(selectSubcatchmet);
+          }
+          //企业 地块
+          for (let q = 0; q < thisCompanys.length; q++) {
+            let properties = JSON.parse(thisCompanys[q].properties);
+            let companyLng_lat = properties.geometry.coordinates;
+            let point = new BMap.Point(companyLng_lat [1], companyLng_lat [0]);
+            for (let j = 0; j < selectSubcatchmets.length; j++) {
+              let overlays = selectSubcatchmets[j].overlays
+              let ply = new BMap.Polygon(overlays);
+              let result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
+              if (result) {
+                self.selectResult.subcatchments.push(selectSubcatchmets[j].properties)
+                self.selectResult.companys.push(thisCompanys[q])
               }
             }
           }
+          // console.log(comapnysToSubcatchments.propert);
+        }
+        if (queryArry.length == 1) {
+          let newArr = []
+          for (let i = 0; i < result.length; i++) {
+            let flag = true;
+            for (let j = 0; j < newArr.length; j++) {
+              if (result[i].id == newArr[j].id) {
+                flag = false
+              }
+            }
+            if (flag) {
+              newArr.push(result[i])
+            }
+          }
+          for (let i = 0; i < newArr.length; i++) {
+            let category = newArr[i].category;
+            console.log(category);
+            switch (category) {
+              case 'SUBCATCHMENTS':
+                properties = JSON.parse(newArr[i].properties);
+                let subcatchments = {
+                  properties: properties.properties
+                }
+                self.subcatchmentData.push(subcatchments.properties)
+                self.selectResult.subcatchments.push(newArr[i])
+                break;
+              case 'CONDUITS':
+                properties = JSON.parse(newArr[i].properties);
+                let conduits = {
+                  properties: properties.properties
+                }
+                self.select.conduitsData.push(conduits.properties)
+                self.selectResult.conduits.push(newArr[i])
+                break;
+              case 'OUTFALLS':
+                properties = JSON.parse(newArr[i].properties);
+                let outfalls = {
+                  properties: properties.properties
+                }
+                self.outfallsData.push(outfalls.properties)
+                self.selectResult.outfalls.push(newArr[i])
+                break;
+              case 'COMPANY':
+                properties = JSON.parse(newArr[i].properties);
+                let companys = {
+                  properties: properties.properties
+                }
+                self.companysData.push(companys.properties)
+                self.selectResult.companys.push(newArr[i])
+                break;
+            }
+          }
+        }
 
-          //  拿到结果进行处理  用于页面展示  用于 地图绘制
 
-          self.isResult = !self.isResult
-          this.$refs.map.showResult(self.selectResult);
-          self.isLoading = false;
-        })
+
+        //  拿到结果进行处理  用于页面展示  用于 地图绘制
+
+        self.isResult = !self.isResult
+        this.$refs.map.showResult(self.selectResult);
+        self.isLoading = false;
       },
     }
   }
 </script>
 <style rel="stylesheet/scss" scoped>
-  .el-menu-item menu-item{background: black;}
-  #app .nest-menu .el-submenu > .el-submenu__title, #app .el-submenu .el-menu-item{background-color: rgba(255, 255, 255, 0.5) !important;}
-  ul li{list-style-type: none;}
-  *{margin: 0px;padding: 0px}
+  .el-menu-item menu-item {
+    background: black;
+  }
+
+  #app .nest-menu .el-submenu > .el-submenu__title, #app .el-submenu .el-menu-item {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+
+  * {
+    margin: 0px;
+    padding: 0px
+  }
 </style>
 <style rel="stylesheet/scss" lang="scss">
-  *{margin: 0px;padding: 0px;}
-  .submenu-title{color: black;}
-  .el-menu-item-group__title{background: rgb(204,204,204);}
-  .menuitem{color:black}
-  .map-context{width: 100%;height: 100%;
-    .map-tab{width: 100%;height: 100%;}
-    .left-content{position:absolute;top:0px;height: 100%;background:rgba(255,255,255,0.5);
-      .map-search{width: 100%;height: 40px;overflow: hidden;
-        .map-input{width: 75%;}
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .submenu-title {
+    color: black;
+  }
+
+  .el-menu-item-group__title {
+    background: rgb(204, 204, 204);
+  }
+
+  .menuitem {
+    color: black
+  }
+
+  .map-context {
+    width: 100%;
+    height: 100%;
+    .map-tab {
+      width: 100%;
+      height: 100%;
+    }
+    .left-content {
+      position: absolute;
+      top: 0px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      .map-search {
+        width: 100%;
+        height: 40px;
+        overflow: hidden;
+        .map-input {
+          width: 75%;
+        }
       }
-      .menu-box{padding-bottom:20px;width: 100%;height:100%;overflow: auto;color:black;
-        .number{color:#42b983;}
-        .display{display: inline-block;position: relative;}
+      .menu-box {
+        padding-bottom: 20px;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        color: black;
+        .number {
+          color: #42b983;
+        }
+        .display {
+          display: inline-block;
+          position: relative;
+        }
       }
-      .fold-button{position: absolute; top: 40%;right: -30px;padding: 0px;margin: 0px;width: 30px;height: 100px;list-style: none;background:rgba(255,255,255,0.5);cursor: pointer;
-        i{text-align: center;line-height: 100px;font-weight: bold;color:#666666;font-size: 30px;}
+      .fold-button {
+        position: absolute;
+        top: 40%;
+        right: -30px;
+        padding: 0px;
+        margin: 0px;
+        width: 30px;
+        height: 100px;
+        list-style: none;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        i {
+          text-align: center;
+          line-height: 100px;
+          font-weight: bold;
+          color: #666666;
+          font-size: 30px;
+        }
       }
     }
-    .right-box{position: absolute;top:60px;right:0px;
-      .label{position:relative;padding:10px 20px;margin-bottom:20px;background: #66b1ff;color: white;cursor:pointer;}
-      .context{position: absolute;left:-500px;top:0px;background: red;width: 500px;background:rgba(255,255,255,0.5);color: black;
-        .el-collapse-item__header{padding:0px 10px;font-size:20px;background:rgba(255,255,255,0.5);}
-        .el-collapse-item__content{padding-bottom: 0px;}
-        .info-content{max-height: 500px;overflow: auto;padding-bottom:20px;
-          .info-title{display:inline-block;margin-left: 20px;}
-          .info-span{display: inline-block;width:200px;float:right;margin-right:100px;text-align:center;
-            .info-button{width: 100%;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;border: 0px;}
+    .right-box {
+      position: absolute;
+      top: 60px;
+      right: 0px;
+      .label {
+        position: relative;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        background: #66b1ff;
+        color: white;
+        cursor: pointer;
+      }
+      .context {
+        position: absolute;
+        left: -500px;
+        top: 0px;
+        background: red;
+        width: 500px;
+        background: rgba(255, 255, 255, 0.5);
+        color: black;
+        .el-collapse-item__header {
+          padding: 0px 10px;
+          font-size: 20px;
+          background: rgba(255, 255, 255, 0.5);
+        }
+        .el-collapse-item__content {
+          padding-bottom: 0px;
+        }
+        .info-content {
+          max-height: 500px;
+          overflow: auto;
+          padding-bottom: 20px;
+          .info-title {
+            display: inline-block;
+            margin-left: 20px;
+          }
+          .info-span {
+            display: inline-block;
+            width: 200px;
+            float: right;
+            margin-right: 100px;
+            text-align: center;
+            .info-button {
+              width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              border: 0px;
+            }
           }
         }
       }
-      .selectContext{position:absolute;top:58px;left:-800px; width:800px;max-height:700px;background:rgba(255,255,255,0.5);
-        .result-ul li{float:left; width: 80px;}
+      .selectContext {
+        position: absolute;
+        top: 58px;
+        left: -800px;
+        width: 800px;
+        max-height: 700px;
+        background: rgba(255, 255, 255, 0.5);
+        .result-ul li {
+          float: left;
+          width: 80px;
+        }
       }
     }
 
   }
-  .search-button{width: 60px;line-height: 30px;}
-  .iconfont{margin-right: 10px;}
-  .menu{overflow: auto;}
-  .BMap_cpyCtrl {display: none;}
-  .anchorBL {display: none;}
-  .open{width: 320px;}
-  .off{width: 0px;}
-  .el-icon-yanjing_yincang{cursor: pointer}
-  .el-icon-yanjing_xianshi{cursor: pointer}
-  .el-menu-item-group__title{background: none;}
-  .logo{display:inline-block;width: 20px;height: 20px;position: relative; top:5px;
-    img{width: 100%;height: 100%;}
+
+  .search-button {
+    width: 60px;
+    line-height: 30px;
   }
-  .el-button + .el-button{margin: 0px;}
+
+  .iconfont {
+    margin-right: 10px;
+  }
+
+  .menu {
+    overflow: auto;
+  }
+
+  .BMap_cpyCtrl {
+    display: none;
+  }
+
+  .anchorBL {
+    display: none;
+  }
+
+  .open {
+    width: 320px;
+  }
+
+  .off {
+    width: 0px;
+  }
+
+  .el-icon-yanjing_yincang {
+    cursor: pointer
+  }
+
+  .el-icon-yanjing_xianshi {
+    cursor: pointer
+  }
+
+  .el-menu-item-group__title {
+    background: none;
+  }
+
+  .logo {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 5px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .el-button + .el-button {
+    margin: 0px;
+  }
 </style>
 
