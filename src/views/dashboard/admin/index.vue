@@ -961,6 +961,7 @@
     },
     data() {
       return {
+        shapes: [],
         //
         options: [{
           value: '选项1',
@@ -1041,7 +1042,7 @@
         activeNames: ['1'],
         dataInfo: {},
         //  输入项
-        shapes: [],
+        queryOptions: [],
         queryStr: '',
         //  查询结果
         selectResult: {
@@ -1073,6 +1074,13 @@
       getProjectId() {
         this.projectId = this.$route.query.projectId
       },
+
+      /**
+       * @TODO: 根据属性值得到查询时的下拉选项
+       * */
+      getQueryOptions() {
+        let self = this;
+      },
       // 取得mapData
       getMapData() {
         let self = this;
@@ -1092,7 +1100,7 @@
           }
         }).then(resp => {
           let data = resp.data;
-          let selectOpaction = []
+          self.shapes = data;
           self.outfalls.sewageOutfalls = _.reject(data, item => {
             return item.category !== 'OUTFALLS' && JSON.parse(item.properties).properties.leixing !== '污水排口';
           })
@@ -1137,77 +1145,23 @@
             let YDLX = JSON.parse(item.properties).properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' && /^[C][^A-Za-z]/.test(YDLX);
           })
-          for (let i = 0; i < data.length; i++) {
-            let properties = JSON.parse(data[i].properties).properties;
 
-            // @TODO: 以下代码貌似没有意义
-            for (let i in properties) {
-              if (i == 'WP' || i == 'YP' || i == 'center' || i == 'area' || i == 'X_cor' || i == 'Y_cor' || i == null) {
-              } else {
-                //如果字符串中含有多个的处理
-                if (String(properties[i]).indexOf('、') != -1) {
-                  for (let s = 0; s < properties[i].split('、').length; s++) {
-                    let value = {
-                      value: properties[i].split('、')[s]
-                    }
-                    selectOpaction.push(value);
-                  }
-                }
-                let value = {
-                  value: properties[i]
-                }
-                selectOpaction.push(value);
+          _.each(self.shapes, shape => {
+            let properties = JSON.parse(shape.properties).properties
+            _.each(_.keys(properties), key => {
+              if (!key || !properties[key] || ['WP', 'YP', 'center', 'area', 'X_cor', 'Y_cor'].indexOf(key) >= 0) {
+                return 0;
               }
-            }
-          }
-          // let TempArr = []
-          // let newArr = []
-          // @TODO: 可能要做去重
-          self.shapes = _.chain(selectOpaction).reject(item => {
-            return item.value !== '光明医院' && item.value !== 'GIC4';
-          }).value()
 
-          // for (let i = 0; i < selectOpaction.length; i++) {
-          //   if(selectOpaction[i].value == '光明医院' || selectOpaction[i].value == 'GIC4'){
-          //     selection.push(selectOpaction[i])
-          //   }
-          //   if (selectOpaction[i].value == null) {
-          //   }
-          //   else {
-          //     TempArr.push(selectOpaction[i])
-          //   }
-          // }
-          // for (let i = 0; i < TempArr.length; i++) {
-          //   let flag = true
-          //   for (let j = 0; j < newArr.length; j++) {
-          //     if (String(TempArr[i].value) == String(newArr[j].value)) {
-          //       flag = false
-          //     }
-          //   }
-          //   if (flag) {
-          //     let obj = {
-          //       value: String(selectOpaction[i].value)
-          //     }
-          //     newArr.push(obj)
-          //
-          //   }
-          // }
-          // for (let i = 0; i < newArr.length; i++) {
-          //   flag = true
-          //   for (let j = 0; j < selection.length; j++) {
-          //     if (newArr[i].value == selection[j].value) {
-          //       flag = false
-          //     }
-          //   }
-          //   if (flag) {
-          //     selection.push(newArr[i])
-          //   }
-          // }
-          // self.shapes = selection;
-          // for(let i = 0;i<self.shapes.length;i++){
-          //   console.log(self.shapes[i].value == '光明医院')
-          // }
-
+              _.each(String(properties[key]).split('、'), option => {
+                if(['光明医院', 'GIC4'].indexOf(option) >= 0){
+                  return 0;
+                }
+                self.queryOptions.push({value: option})
+              })
+            })
+          })
+          self.queryOptions = _.uniqBy(self.queryOptions, 'value')
         })
       },
       // 折叠展开
@@ -1365,16 +1319,15 @@
         if (this.queryStr.substr(this.queryStr.length - 1, 1) == ';') {
           queryString == ''
         }
-        let shapes = this.shapes;
-        let results = queryString ? shapes.filter(this.createStateFilter(queryString)) : shapes;
+        let results = queryString ? this.queryOptions.filter(this.createStateFilter(queryString)) : this.queryOptions;
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
           cb(results);
         }, 1000 * Math.random());
       },
       createStateFilter(queryString) {
-        return (shapes) => {
-          return (shapes.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+        return (queryOptions) => {
+          return (queryOptions.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
         };
       },
 
