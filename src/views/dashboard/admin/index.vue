@@ -626,7 +626,7 @@
         </div>
         <div  class="selectContext" v-show="isSelect">
           <div>
-            <el-tabs type="border-card" style="width: 100%">
+            <el-tabs type="border-card" style="width: 100%" @tab-click="handleClicktabClick">
               <el-tab-pane label="精确查询">
                 <div style="float: left;width: 80%;">
                   <ul v-for="list in ulList" :key="list.id" style="display:inline-block;margin-bottom:10px; ">
@@ -656,7 +656,7 @@
                       <span> 属性值 </span>
                       <el-select v-model="value3" clearable placeholder="请选择" style="width: 200px">
                         <el-option
-                          v-for="item in options"
+                          v-for="item in attributeValueData"
                           :key="item.value"
                           :label="item.label"
                           :value="item.value">
@@ -692,21 +692,91 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-if="tabPaneLabel" style="background-color:#fff; padding:5px 10px;" >
-            <el-tabs>
-              <el-tab-pane v-for="item in tableDataList" :key="item.firstId" :label="item.name" :name="item.firstId">
-                <el-table  v-model="activeNameFiast" :data="item.fromData" style="width: 100%" height="200" @current-change="handleCurrentChange">
-                  <el-table-column fixed prop="id" label="序号" width="50" align="center"></el-table-column>
-                  <el-table-column align="center"
-                                   :sortable="true"
-                                   min-width="170"
-                                   :show-overflow-tooltip="true"
-                                   v-for="lie in item.fromData"
-                                   :key="lie.value"
-                                   :prop="lie.name"
-                                   :label="lie.label"
-                  ></el-table-column>
+          <div v-show="tabPaneLabel" class="tabPaneLabel">
+            <el-tabs class="tabPaneSpan">
+              <el-tab-pane :label=" '地块(' + totalNumber1 + ')'" name="0">
+                <el-table :data="tableDataList[0].fromData.slice( (currentPageNum1 - 1) * pageSizeValue1 , currentPageNum1 * pageSizeValue1 )"
+                          style="width: 100%" height="280" v-model="activeNameFiast" >
+                  <el-table-column fixed prop="id" width="50" label="序号"  align="center">
+                    <template slot-scope="scope">
+                      {{ scope.$index + 1 + pageSizeValue1 * (currentPageNum1 - 1) }}
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true"  label="编号" prop="massifNumber"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="面积(平方米)" prop="massifArea"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="用地类型" prop="massifType"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="建设状态" prop="massifState"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="项目名称" prop="massifRowNamer"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排入河道" prop="massifRowRiver"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="所属流域" prop="massifRowBasin"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="所属排水分区" prop="massifPartition"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="是否为正本清源项目" prop="massifNum"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="是否为海绵项目" prop="massifReform"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="海绵类型" prop="spongeType"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="现状控制率" prop="massifPresent"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="规划控制率" prop="massifPlan"></el-table-column>
                 </el-table>
+                <el-pagination style="text-align:center;"
+                  @size-change="handleSizeChange1"
+                  @current-change="handleCurrentChangeHandel1"
+                  :page-sizes="pageSizeNum"
+                  layout="total, sizes, prev, pager, next, jumper"
+                  :total="totalNumber1">
+                </el-pagination>
+              </el-tab-pane>
+              <el-tab-pane :label=" '企业(' + totalNumber2 + ')'" name="1">
+                <el-table :data="tableDataList[1].fromData.slice( (currentPageNum2-1)*pageSizeValue2 , currentPageNum2 * pageSizeValue2 )"
+                          style="width: 100%" height="280" v-model="activeNameFiast" >
+                  <el-table-column fixed prop="id" width="50" label="序号"  align="center">
+                    <template slot-scope="scope">
+                      {{ scope.$index + 1 + pageSizeValue2 * (currentPageNum2 - 1) }}
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true"  label="企业名称" prop="EnterName"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="街道" prop="EnterStreet"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="社区" prop="EnterCommunity"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="地址" prop="EnterAddress"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="法人代表" prop="EnterPerson"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="联系方式" prop="EnterPhone"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="企业人数" prop="EnterNum"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="行业类别" prop="EnterCategory"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="生产用水量" prop="EnterWater"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排水量" prop="EnterDrainage"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="主要生产工艺" prop="EnterTechnology"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="产品" prop="EnterProduct"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="环评" prop="EnterEvaluate"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="环评有效性" prop="EnterEffective"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排污许可证" prop="EnterPermit"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="废水处理方式" prop="EnterHandle"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="特征污染物" prop="EnterFilth"></el-table-column>
+                </el-table>
+                <el-pagination style="text-align:center;"
+                               @size-change="handleSizeChange2"
+                               @current-change="handleCurrentChangeHandel2"
+                               :page-sizes="pageSizeNum"
+                               layout="total, sizes, prev, pager, next, jumper"
+                               :total="totalNumber2">
+                </el-pagination>
+              </el-tab-pane>
+              <el-tab-pane :label=" '排口(' + totalNumber3 + ')'" name="2">
+                <el-table :data="tableDataList[2].fromData.slice( (currentPageNum3-1)*pageSizeValue3 , currentPageNum3 * pageSizeValue3 )"
+                          style="width: 100%" height="280" v-model="activeNameFiast" >
+                  <el-table-column fixed prop="id" width="50" label="序号"  align="center">
+                    <template slot-scope="scope">
+                      {{ scope.$index + 1 + pageSizeValue3 * (currentPageNum3 - 1) }}
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排口编号" prop="RowMouthNum"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="类型" prop="RowMouthType"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="排向" prop="RowMouthDirection"></el-table-column>
+                </el-table>
+                <el-pagination style="text-align:center;"
+                               @size-change="handleSizeChange3"
+                               @current-change="handleCurrentChangeHandel3"
+                               :page-sizes="pageSizeNum"
+                               layout="total, sizes, prev, pager, next, jumper"
+                               :total="totalNumber3">
+                </el-pagination>
               </el-tab-pane>
             </el-tabs>
           </div>
@@ -982,53 +1052,31 @@
     },
     data() {
       return {
+        count1:0,
+        count2:0,
+        count3:0,
+        currentPageNum1: 1,  //默认开始页面
+        currentPageNum2: 1,  //默认开始页面
+        currentPageNum3: 1,  //默认开始页面
+        pageSizeValue1:5,
+        pageSizeValue2:5,
+        pageSizeValue3:5,
+        pageSizeNum: [3,5,7],   //每页的数据条数
+        currentPage4: 4,
+        totalNumber1: 5,
+        totalNumber2: 5,
+        totalNumber3: 5,
         tabPaneLabel: false,
         activeNameFiast: 0,
         tableDataList: [
           {firstId: 0, name: '地块',
-            fromData:[
-              { value:'1', label:'编号', name: 'massifNum'},
-              { value:'2', label:'面积', name: 'massifArea' },
-              { value:'3', label:'用地类型', name: 'massifType' },
-              { value:'4', label:'建设状态', name: 'massifState' },
-              { value:'5', label:'项目名称', name: 'massifRowNamer' },
-              { value:'6', label:'排入河道', name: 'massifRowRiver' },
-              { value:'7', label:'所属流域', name: 'massifRowBasin' },
-              { value:'8', label:'所属排水分区', name: 'massifPartition' },
-              { value:'9', label:'是否为正本清源项目', name: 'massifNum' },
-              { value:'10', label:'是否为海绵项目', name: 'massifReform' },
-              { value:'11', label:'海绵类型', name: 'spongeType' },
-              { value:'12', label:'现状控制率', name: 'massifPresent' },
-              { value:'13', label:'规划控制率', name: 'massifPlan' }
-            ]
+            fromData:[]
           },
           {firstId: 1, name: '企业',
-            fromData: [
-              { value:'1', label:'企业名称', name: 'EnterName' },
-              { value:'2', label:'街道', name: 'EnterStreet' },
-              { value:'3', label:'社区', name: 'EnterCommunity' },
-              { value:'4', label:'地址', name: 'EnterAddress' },
-              { value:'5', label:'法人代表', name: 'EnterPerson' },
-              { value:'6', label:'联系方式', name: 'EnterPhone' },
-              { value:'7', label:'企业人数', name: 'EnterNum' },
-              { value:'8', label:'行业类别', name: 'EnterCategory' },
-              { value:'9', label:'生产用水量', name: 'EnterWater' },
-              { value:'10', label:'排水量', name: 'EnterDrainage' },
-              { value:'11', label:'主要生产工艺', name: 'EnterTechnology' },
-              { value:'12', label:'产品', name: 'EnterProduct' },
-              { value:'13', label:'环评', name: 'EnterEvaluate' },
-              { value:'14', label:'环评有效性', name: 'EnterEffective' },
-              { value:'15', label:'排污许可证', name: 'EnterPermit' },
-              { value:'16', label:'废水处理方式', name: 'EnterHandle' },
-              { value:'17', label:'特征污染物', name: 'EnterFilth' },
-            ]
+            fromData: []
           },
           {firstId: 2, name: '排口',
-            fromData: [
-              { value:'1', label:'排口编号', name: 'RowMouthNum' },
-              { value:'2', label:'类型', name: 'RowMouthType' },
-              { value:'3', label:'排向', name: 'RowMouthDirection' },
-            ]
+            fromData: []
           },
         ],
 
@@ -1071,18 +1119,18 @@
         value2:'',
         attributeValueData: [
           { value:'1', label:'02-06-8' },
-          { value:'2', label:'62003.52平方米' },
-          { value:'3', label:'G1' },
-          { value:'4', label:'现状' },
-          { value:'5', label:'' },
-          { value:'6', label:'东坑水' },
-          { value:'7', label:'东坑水' },
-          { value:'8', label:'19#排水分区' },
-          { value:'9', label:'' },
-          { value:'10', label:'已落实海绵' },
-          { value:'11', label:'海绵型公园绿地' },
-          { value:'12', label:'85%' },
-          { value:'13', label:'85%' }
+          { value:'2', label:'02-07-7' },
+          { value:'3', label:'02-08-6' },
+          { value:'4', label:'02-09-5' },
+          { value:'5', label:'02-10-4' },
+          { value:'6', label:'02-11-3' },
+          { value:'7', label:'02-12-2' },
+          { value:'8', label:'02-13-1' },
+          { value:'9', label:'02-14-10' },
+          { value:'10', label:'02-15-11' },
+          { value:'11', label:'02-16-12' },
+          { value:'12', label:'02-17-13' },
+          { value:'13', label:'02-18-14' }
         ],
         value3:'',
         junctionsLayData: [],    // 交汇点数据
@@ -1222,7 +1270,7 @@
 
         })
         this.nameTypeDataAll = nameTypeDataList;
-        console.log("res数据:", this.nameTypeDataAll);
+        // console.log("res数据:", this.nameTypeDataAll);
       })
       },
       // 取得项目编号
@@ -1517,12 +1565,22 @@
         self.selectCompanys = [];
         self.$refs.map.handleReset();
       },
+      /************* 切换标签页 **************/
+      handleClicktabClick(tab, event){
+        if( this.tabPaneLabel === true) {
+          this.tabPaneLabel = false
+        }
+      },
       /**
        * 反向查询
        * */
       //精确查询  ---  增加查询条件
       handelAddTerm(){
-        var lengthId = this.ulList.length;
+        const _this = this;
+        _this.value1 = '';
+        _this.value2 = '';
+        _this.value3 = '';
+        var lengthId = _this.ulList.length;
         var id = 1;
         var deId = id++
         if(lengthId < 3) {
@@ -1532,10 +1590,66 @@
       handelDeleteTerm(){
         var index = this.ulList.length - 1;
         this.ulList.splice(1,index);
-        console.log(this.ulList);
+        // console.log(this.ulList);
       },
       handelQueryTerm(){
-        console.log("查询")
+        const _this = this;
+        if(_this.value1 !== '' && _this.value2 !== '') {
+          _this.tabPaneLabel = true
+        }
+        var desData = _this.nameTypeDataAll
+        _.each(desData,function (vb,index) {
+          var ns = vb.properties;
+          if( vb.businessType === 'SUBCATCHMENTS' ) {
+            _this.tableDataList[0].fromData.push({
+              massifNumber: ns.name,
+              massifArea: (ns.area).toFixed(2),
+              massifType: ns.YDLX,
+              massifState: ns.JSZT,
+              massifRowNamer: ns.XMMC,
+              massifRowRiver: ns.PRHD,
+              massifRowBasin: ns.SSLY,
+              massifPartition: ns.SSPSFQ,
+              massifNum: ns.ZBQY,
+              massifReform: ns.HMCS,
+              spongeType: ns.HMLX,
+              massifPresent: ns.现状控制率,
+              massifPlan: ns.规划控制率
+            })
+          }
+          if( vb.businessType === 'COMPANY' ) {
+            _this.tableDataList[1].fromData.push({
+              EnterName: ns.name,
+              EnterStreet: ns.JDMC,
+              EnterCommunity: ns.SQMC,
+              EnterAddress: ns.SCJYDZ,
+              EnterPerson: ns.FDDBR,
+              EnterPhone: ns.LXFS,
+              EnterNum: ns.QYRS,
+              EnterCategory: ns.HYLB,
+              EnterWater: ns.SCYSL,
+              EnterDrainage: ns.PSL,
+              EnterTechnology: ns.ZYSCGY,
+              EnterProduct: ns.CPZL,
+              EnterEvaluate: ns.OBJECTID,
+              EnterEffective: ns.HPPFWJYXX,
+              EnterPermit: ns.HPPFWJ,
+              EnterHandle: ns.FSCLFS,
+              EnterFilth: ns.TZWRW
+            })
+          }
+          if( vb.businessType === 'JUNCTIONS' ){
+            _this.tableDataList[2].fromData.push({
+              RowMouthNum: ns.name,
+              RowMouthType: ns.leixing,
+              RowMouthDirection: ''
+            })
+          }
+        })
+        _this.totalNumber1 = _this.tableDataList[0].fromData.length;
+        _this.totalNumber2 = _this.tableDataList[1].fromData.length;
+        _this.totalNumber3 = _this.tableDataList[2].fromData.length;
+        console.log("数据", _this.tableDataList[1])
       },
       demoListDataModel(value){
         this.attributeData = [];
@@ -1601,12 +1715,15 @@
             { value:'13', label:'规划控制率' }
           ]
         }
-        console.log("value1:",value.label);
+        // console.log("value1:",value.label);
       },
       handleSelectShow() {
         this.isSelect = !this.isSelect;
         if (this.infoManager) {
           this.infoManager = !this.infoManager;
+        }
+        if( this.tabPaneLabel === true) {
+          this.tabPaneLabel = false
         }
         var labelData = this.nameTypeDataAll;
         var typeName1 = '';  // 工业企业
@@ -1621,7 +1738,7 @@
           if(vn.businessType === 'COMPANY') {
             typeName1 = '工业企业'
             // COMtypeData.push(nameTypeData.properties);
-            console.log("转换", vn.properties);
+            // console.log("转换", vn.properties);
           }
           if(vn.businessType === 'SUBCATCHMENTS') {
             typeName2 = '地块'
@@ -1646,13 +1763,30 @@
         this.companysLayData = COMtypeData ;  // 公司数据
         this.subLayData = SUBtypeData;        // 地块数据
       },
-
+      handleSizeChange1(pageSizeValue1) {
+        this.pageSizeValue1 = pageSizeValue1
+      },
+      handleSizeChange2(pageSizeValue2) {
+        this.pageSizeValue2 = pageSizeValue2
+      },
+      handleSizeChange3(pageSizeValue3) {
+        this.pageSizeValue3 = pageSizeValue3
+      },
+      handleCurrentChangeHandel1(currentPageNum1){
+        this.currentPageNum1 = currentPageNum1;
+        // console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChangeHandel2(currentPageNum2){
+        this.currentPageNum2 = currentPageNum2;
+        // console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChangeHandel3(currentPageNum3){
+        this.currentPageNum3 = currentPageNum3;
+        // console.log(`每页 ${val} 条`);
+      },
       handleCurrentChange(val) {
         this.currentRow = val;
       },
-
-
-
       //反向查询组件
       querySearchAsync(queryString, cb) {
         if (this.state1.substr(this.state1.length - 1, 1) == ';') {
@@ -1674,6 +1808,7 @@
       //查询开始
       handleSelect() {
         var self = this;
+        self.tabPaneLabel = true;
         self.isLoading = true;
         self.selectSubcatchmentData = [];
         self.selectOutfalls = [];
@@ -1845,7 +1980,7 @@
             }
             for (var i = 0; i < newArr.length; i++) {
               var category = newArr[i].category;
-              console.log(category );
+              // console.log(category );
               switch (category) {
                 case 'SUBCATCHMENTS':
                   var properties = JSON.parse(newArr[i].properties);
@@ -1905,6 +2040,16 @@
   *{margin: 0px;padding: 0px}
 </style>
 <style rel="stylesheet/scss" lang="scss">
+  .tabPaneLabel {
+    background-color:#fff;
+    padding:5px 10px;
+    .el-table th.is-sortable {
+      padding:0 !important;
+    }
+    .el-tabs__header{
+      margin: 0;
+    }
+  }
   *{margin: 0px;padding: 0px;}
   .submenu-title{color: black;}
   .el-menu-item-group__title{background: rgb(204,204,204);}
@@ -1956,4 +2101,3 @@
   }
   .el-button + .el-button{margin: 0px;}
 </style>
-
