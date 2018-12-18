@@ -758,7 +758,7 @@
                                :total="totalNumber2">
                 </el-pagination>
               </el-tab-pane>
-              <el-tab-pane :label=" '排口(' + totalNumber3 + ')'" name="2">
+              <el-tab-pane label=" 排口(74)'" name="2">
                 <el-table :data="tableDataList[2].fromData.slice( (currentPageNum3-1)*pageSizeValue3 , currentPageNum3 * pageSizeValue3 )"
                           style="width: 100%" height="280" v-model="activeNameFiast" >
                   <el-table-column fixed prop="id" width="50" label="序号"  align="center">
