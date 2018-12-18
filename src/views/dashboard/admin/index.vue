@@ -692,6 +692,24 @@
               </el-tab-pane>
             </el-tabs>
           </div>
+          <div v-if="tabPaneLabel" style="background-color:#fff; padding:5px 10px;" >
+            <el-tabs>
+              <el-tab-pane v-for="item in tableDataList" :key="item.firstId" :label="item.name" :name="item.firstId">
+                <el-table  v-model="activeNameFiast" :data="item.fromData" style="width: 100%" height="200" @current-change="handleCurrentChange">
+                  <el-table-column fixed prop="id" label="序号" width="50" align="center"></el-table-column>
+                  <el-table-column align="center"
+                                   :sortable="true"
+                                   min-width="170"
+                                   :show-overflow-tooltip="true"
+                                   v-for="lie in item.fromData"
+                                   :key="lie.value"
+                                   :prop="lie.name"
+                                   :label="lie.label"
+                  ></el-table-column>
+                </el-table>
+              </el-tab-pane>
+            </el-tabs>
+          </div>
           <div></div>
         </div>
         <!--<div  class="selectContext" v-show="isSelect" >
@@ -964,6 +982,58 @@
     },
     data() {
       return {
+        tabPaneLabel: false,
+        activeNameFiast: 0,
+        tableDataList: [
+          {firstId: 0, name: '地块',
+            fromData:[
+              { value:'1', label:'编号', name: 'massifNum'},
+              { value:'2', label:'面积', name: 'massifArea' },
+              { value:'3', label:'用地类型', name: 'massifType' },
+              { value:'4', label:'建设状态', name: 'massifState' },
+              { value:'5', label:'项目名称', name: 'massifRowNamer' },
+              { value:'6', label:'排入河道', name: 'massifRowRiver' },
+              { value:'7', label:'所属流域', name: 'massifRowBasin' },
+              { value:'8', label:'所属排水分区', name: 'massifPartition' },
+              { value:'9', label:'是否为正本清源项目', name: 'massifNum' },
+              { value:'10', label:'是否为海绵项目', name: 'massifReform' },
+              { value:'11', label:'海绵类型', name: 'spongeType' },
+              { value:'12', label:'现状控制率', name: 'massifPresent' },
+              { value:'13', label:'规划控制率', name: 'massifPlan' }
+            ]
+          },
+          {firstId: 1, name: '企业',
+            fromData: [
+              { value:'1', label:'企业名称', name: 'EnterName' },
+              { value:'2', label:'街道', name: 'EnterStreet' },
+              { value:'3', label:'社区', name: 'EnterCommunity' },
+              { value:'4', label:'地址', name: 'EnterAddress' },
+              { value:'5', label:'法人代表', name: 'EnterPerson' },
+              { value:'6', label:'联系方式', name: 'EnterPhone' },
+              { value:'7', label:'企业人数', name: 'EnterNum' },
+              { value:'8', label:'行业类别', name: 'EnterCategory' },
+              { value:'9', label:'生产用水量', name: 'EnterWater' },
+              { value:'10', label:'排水量', name: 'EnterDrainage' },
+              { value:'11', label:'主要生产工艺', name: 'EnterTechnology' },
+              { value:'12', label:'产品', name: 'EnterProduct' },
+              { value:'13', label:'环评', name: 'EnterEvaluate' },
+              { value:'14', label:'环评有效性', name: 'EnterEffective' },
+              { value:'15', label:'排污许可证', name: 'EnterPermit' },
+              { value:'16', label:'废水处理方式', name: 'EnterHandle' },
+              { value:'17', label:'特征污染物', name: 'EnterFilth' },
+            ]
+          },
+          {firstId: 2, name: '排口',
+            fromData: [
+              { value:'1', label:'排口编号', name: 'RowMouthNum' },
+              { value:'2', label:'类型', name: 'RowMouthType' },
+              { value:'3', label:'排向', name: 'RowMouthDirection' },
+            ]
+          },
+        ],
+
+
+
         dataList: [
           { id: 1, name: '类型',
             label:[
@@ -1576,6 +1646,13 @@
         this.companysLayData = COMtypeData ;  // 公司数据
         this.subLayData = SUBtypeData;        // 地块数据
       },
+
+      handleCurrentChange(val) {
+        this.currentRow = val;
+      },
+
+
+
       //反向查询组件
       querySearchAsync(queryString, cb) {
         if (this.state1.substr(this.state1.length - 1, 1) == ';') {
