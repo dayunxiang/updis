@@ -692,8 +692,13 @@
               </el-tab-pane>
             </el-tabs>
           </div>
+          <div></div>
           <div>
-
+            <el-tabs v-model="activeName2" type="card">
+              <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+              <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+              <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+            </el-tabs>
           </div>
         </div>
         <!--<div  class="selectContext" v-show="isSelect" >
@@ -966,6 +971,31 @@
     },
     data() {
       return {
+        dataList: [
+          { id: 1, name: '类型',
+            label:[
+              {value:1, label: '地块',
+                listName:[
+                  {value: 1, label: '编号'},
+                  {value: 1, label: '面积'},
+                  {value: 1, label: '用地类型'},
+                ]
+              },
+              {value:2, label: '工业企业'},
+              {value:3, label: '排口'},
+              {value:4, label: '管线'},
+            ]
+          },
+          { id: 2, name: '属性',
+            labelName:[
+              {value:1, label: '地块'},
+            ]
+          },
+          { id: 3, name: '属性值'},
+        ],
+
+
+        activeName2: 'first',
         ulList:[0],
         exactQuery: [
           { value:'1', label:'' },
@@ -1429,9 +1459,12 @@
        * */
       //精确查询  ---  增加查询条件
       handelAddTerm(){
+        var lengthId = this.ulList.length;
         var id = 1;
         var deId = id++
-        this.ulList.push(deId);
+        if(lengthId < 3) {
+          this.ulList.push(deId);
+        }
       },
       handelDeleteTerm(){
         var index = this.ulList.length - 1;
