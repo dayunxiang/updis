@@ -758,7 +758,7 @@
                                :total="totalNumber2">
                 </el-pagination>
               </el-tab-pane>
-              <el-tab-pane label=" 排口(74)'" name="2">
+              <el-tab-pane :label=" '管线(' + totalNumber3 + ')'" name="2">
                 <el-table :data="tableDataList[2].fromData.slice( (currentPageNum3-1)*pageSizeValue3 , currentPageNum3 * pageSizeValue3 )"
                           style="width: 100%" height="280" v-model="activeNameFiast" >
                   <el-table-column fixed prop="id" width="50" label="序号"  align="center">
@@ -766,9 +766,9 @@
                       {{ scope.$index + 1 + pageSizeValue3 * (currentPageNum3 - 1) }}
                     </template>
                   </el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排口编号" prop="RowMouthNum"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="类型" prop="RowMouthType"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="排向" prop="RowMouthDirection"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true"  label="管道编号" prop="RowMouthNum"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管道类型" prop="RowMouthType"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管径" prop="RowMouthDirection"></el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange3"
@@ -1058,9 +1058,9 @@
         currentPageNum1: 1,  //默认开始页面
         currentPageNum2: 1,  //默认开始页面
         currentPageNum3: 1,  //默认开始页面
-        pageSizeValue1:5,
-        pageSizeValue2:5,
-        pageSizeValue3:5,
+        pageSizeValue1:3,
+        pageSizeValue2:3,
+        pageSizeValue3:3,
         pageSizeNum: [3,5,7],   //每页的数据条数
         currentPage4: 4,
         totalNumber1: 5,
@@ -1244,7 +1244,7 @@
       this.init();
       this.getProjectId();
       this.getMapData();
-      this.restaurants = this.loadAll();
+      // this.restaurants = this.loadAll();
     },
     methods: {
       init(){
@@ -1565,12 +1565,6 @@
         self.selectCompanys = [];
         self.$refs.map.handleReset();
       },
-      /************* 切换标签页 **************/
-      handleClicktabClick(tab, event){
-        if( this.tabPaneLabel === true) {
-          this.tabPaneLabel = false
-        }
-      },
       /**
        * 反向查询
        * */
@@ -1587,11 +1581,13 @@
           this.ulList.push(deId);
         }
       },
+      /************* 清空查询 ***************/
       handelDeleteTerm(){
         var index = this.ulList.length - 1;
         this.ulList.splice(1,index);
         // console.log(this.ulList);
       },
+      /************* 查询按钮 ***************/
       handelQueryTerm(){
         const _this = this;
         if(_this.value1 !== '' && _this.value2 !== '') {
@@ -1600,6 +1596,13 @@
         var desData = _this.nameTypeDataAll
         _.each(desData,function (vb,index) {
           var ns = vb.properties;
+          if(vb.businessType === 'CONDUITS') {
+            _this.tableDataList[2].fromData.push({
+              RowMouthNum: ns.fromnode,
+              RowMouthType: ns.leixing,
+              RowMouthDirection: ns.guanjing
+            })
+          }
           if( vb.businessType === 'SUBCATCHMENTS' ) {
             _this.tableDataList[0].fromData.push({
               massifNumber: ns.name,
@@ -1638,19 +1641,20 @@
               EnterFilth: ns.TZWRW
             })
           }
-          if( vb.businessType === 'JUNCTIONS' ){
-            _this.tableDataList[2].fromData.push({
-              RowMouthNum: ns.name,
-              RowMouthType: ns.leixing,
-              RowMouthDirection: ''
-            })
-          }
+          // if( vb.businessType === 'JUNCTIONS' ){
+          //   _this.tableDataList[2].fromData.push({
+          //     RowMouthNum: ns.name,
+          //     RowMouthType: ns.leixing,
+          //     RowMouthDirection: ''
+          //   })
+          // }
         })
         _this.totalNumber1 = _this.tableDataList[0].fromData.length;
         _this.totalNumber2 = _this.tableDataList[1].fromData.length;
         _this.totalNumber3 = _this.tableDataList[2].fromData.length;
         console.log("数据", _this.tableDataList[1])
       },
+      /************* 选择框 ***************/
       demoListDataModel(value){
         this.attributeData = [];
         if(value.label === '工业企业') {
@@ -1737,20 +1741,15 @@
         _.each(labelData, function (vn) {
           if(vn.businessType === 'COMPANY') {
             typeName1 = '工业企业'
-            // COMtypeData.push(nameTypeData.properties);
-            // console.log("转换", vn.properties);
           }
           if(vn.businessType === 'SUBCATCHMENTS') {
             typeName2 = '地块'
-            // SUBtypeData.push(nameTypeData.properties)
           }
           if(vn.businessType === 'CONDUITS') {
             typeName3 = '管线'
-            // CONtypeData.push(nameTypeData.properties)
           }
           if(vn.businessType === 'JUNCTIONS') {
             typeName4 = '排口'
-            // JUNtypeData.push(nameTypeData.properties)
           }
         })
 
@@ -1784,8 +1783,11 @@
         this.currentPageNum3 = currentPageNum3;
         // console.log(`每页 ${val} 条`);
       },
-      handleCurrentChange(val) {
-        this.currentRow = val;
+      /************* 切换标签页 **************/
+      handleClicktabClick(tab, event){
+        if( this.tabPaneLabel === true) {
+          this.tabPaneLabel = false
+        }
       },
       //反向查询组件
       querySearchAsync(queryString, cb) {
@@ -2042,13 +2044,13 @@
 <style rel="stylesheet/scss" lang="scss">
   .tabPaneLabel {
     background-color:#fff;
-    padding:5px 10px;
-    .el-table th.is-sortable {
-      padding:0 !important;
-    }
-    .el-tabs__header{
-      margin: 0;
-    }
+    padding-left:10px;
+    /*.el-table th.is-sortable {*/
+      /*padding:0 !important;*/
+    /*}*/
+    /*.el-tabs__header{*/
+      /*margin: 0;*/
+    /*}*/
   }
   *{margin: 0px;padding: 0px;}
   .submenu-title{color: black;}
