@@ -643,7 +643,7 @@
                     </li>
                     <li style="float: left" >
                       <span> 属性 </span>
-                      <el-select v-model="value2" clearable placeholder="请选择" style="width: 150px">
+                      <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择" style="width: 150px">
                         <el-option
                           v-for="item in attributeData"
                           :key="item.value"
@@ -654,7 +654,7 @@
                     </li>
                     <li style="float: left">
                       <span> 属性值 </span>
-                      <el-select v-model="value3" clearable placeholder="请选择" style="width: 200px">
+                      <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width: 200px">
                         <el-option
                           v-for="item in attributeValueData"
                           :key="item.value"
@@ -694,37 +694,84 @@
           </div>
           <div v-show="tabPaneLabel" class="tabPaneLabel">
             <el-tabs class="tabPaneSpan">
-              <el-tab-pane :label=" '地块(' + totalNumber1 + ')'" name="0">
-                <el-table :data="tableDataList[0].fromData.slice( (currentPageNum1 - 1) * pageSizeValue1 , currentPageNum1 * pageSizeValue1 )"
-                          style="width: 100%" height="280" v-model="activeNameFiast" >
+              <el-tab-pane :label=" '地块（'+count+'）'" name="0">
+                <!--<el-table :data="tableDataList[0].fromData.slice( (currentPageNum1 - 1) * pageSizeValue1 , currentPageNum1 * pageSizeValue1 )"
+                                              style="width: 100%" height="280" v-model="activeNameFiast" >
                   <el-table-column fixed prop="id" width="50" label="序号"  align="center">
                     <template slot-scope="scope">
                       {{ scope.$index + 1 + pageSizeValue1 * (currentPageNum1 - 1) }}
                     </template>
-                  </el-table-column>
+                  </el-table-column>-->
+                <el-table :data="displayData" style="width: 100%" height="280" v-model="activeNameFiast" >
+                  <el-table-column fixed prop="id" width="50" label="序号"  align="center"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true"  label="编号" prop="massifNumber"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="面积(平方米)" prop="massifArea"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="用地类型" prop="massifType"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="建设状态" prop="massifState"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="项目名称" prop="massifRowNamer"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排入河道" prop="massifRowRiver"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="所属流域" prop="massifRowBasin"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="所属排水分区" prop="massifPartition"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true"  label="用地类型" prop="massifType"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true"  label="建设状态" prop="massifState"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true"  label="项目名称" prop="massifRowNamer"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true"  label="排入河道" prop="massifRowRiver"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true"  label="所属流域" prop="massifRowBasin"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="150" :show-overflow-tooltip="true"  label="所属排水分区" prop="massifPartition"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="是否为正本清源项目" prop="massifNum"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="是否为海绵项目" prop="massifReform"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="海绵类型" prop="spongeType"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="现状控制率" prop="massifPresent"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="规划控制率" prop="massifPlan"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="150" :show-overflow-tooltip="true"  label="海绵建设情况" prop="massifReform"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true"  label="现状控制率" prop="massifPresent"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true"  label="规划控制率" prop="massifPlan"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true"  label="面积(公顷)" prop="massifArea"></el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                   @size-change="handleSizeChange1"
                   @current-change="handleCurrentChangeHandel1"
-                  :page-sizes="pageSizeNum"
+                  :page-sizes="[3,5]"
+                  :page-size="5"
                   layout="total, sizes, prev, pager, next, jumper"
-                  :total="totalNumber1">
+                  :total="count">
                 </el-pagination>
               </el-tab-pane>
-              <el-tab-pane :label=" '企业(' + totalNumber2 + ')'" name="1">
+              <el-tab-pane label=" 企业(0)" name="1">
+                <el-table :data="displayData1" style="width: 100%" height="280" v-model="activeNameFiast" >
+                  <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true"  label="企业名称" prop="EnterName"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="街道" prop="EnterStreet"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="社区" prop="EnterCommunity"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="地址" prop="EnterAddress"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="法人代表" prop="EnterPerson"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="联系方式" prop="EnterPhone"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="企业人数" prop="EnterNum"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="行业类别" prop="EnterCategory"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="生产用水量" prop="EnterWater"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排水量" prop="EnterDrainage"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="主要生产工艺" prop="EnterTechnology"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="产品" prop="EnterProduct"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="环评" prop="EnterEvaluate"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="环评有效性" prop="EnterEffective"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="排污许可证" prop="EnterPermit"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="废水处理方式" prop="EnterHandle"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true"  label="特征污染物" prop="EnterFilth"></el-table-column>
+                </el-table>
+                <el-pagination style="text-align:center;"
+                               @size-change="handleSizeChange1"
+                               @current-change="handleCurrentChangeHandel1"
+                               :page-sizes="[5]"
+                               :page-size="5"
+                               layout="total, sizes, prev, pager, next, jumper"
+                               :total="0">
+                </el-pagination>
+              </el-tab-pane>
+              <el-tab-pane label=" 管线(0)" name="2">
+                <el-table :data="displayData2" style="width: 100%" height="280" v-model="activeNameFiast" >
+                  <el-table-column fixed prop="id" width="50" label="序号"  align="center"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管道编号" prop="RowMouthNum"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管道类型" prop="RowMouthType"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管径" prop="RowMouthDirection"></el-table-column>
+                </el-table>
+                <el-pagination style="text-align:center;"
+                               @size-change="handleSizeChange1"
+                               @current-change="handleCurrentChangeHandel1"
+                               :page-sizes="[5]"
+                               :page-size="5"
+                               layout="total, sizes, prev, pager, next, jumper"
+                               :total="0">
+                </el-pagination>
+              </el-tab-pane>
+              <!--<el-tab-pane :label=" '企业(' + totalNumber2 + ')'" name="1">
                 <el-table :data="tableDataList[1].fromData.slice( (currentPageNum2-1)*pageSizeValue2 , currentPageNum2 * pageSizeValue2 )"
                           style="width: 100%" height="280" v-model="activeNameFiast" >
                   <el-table-column fixed prop="id" width="50" label="序号"  align="center">
@@ -777,7 +824,7 @@
                                layout="total, sizes, prev, pager, next, jumper"
                                :total="totalNumber3">
                 </el-pagination>
-              </el-tab-pane>
+              </el-tab-pane>-->
             </el-tabs>
           </div>
           <div></div>
@@ -1052,6 +1099,83 @@
     },
     data() {
       return {
+        count: 0,
+        displayData1: [],
+        displayData2: [],
+        displayData:[],
+        listDemoData: [
+          { id: 1 ,
+            massifNumber: '06-01',
+            massifType: 'G1',
+            massifState: '现状',
+            massifRowNamer: '',
+            massifRowRiver: '东坑水',
+            massifRowBasin: '东坑水',
+            massifPartition: '6#排水分区',
+            massifNum: '',
+            massifReform: '现状无海绵',
+            massifPresent: '73%',
+            massifPlan: '73%',
+            massifArea: '0.24'
+          },
+          { id: 2 ,
+            massifNumber: '05-03',
+            massifType: 'G1',
+            massifState: '在建',
+            massifRowNamer: '',
+            massifRowRiver: '东坑水',
+            massifRowBasin: '东坑水',
+            massifPartition: '2#排水分区',
+            massifNum: '',
+            massifReform: '在建已落实海绵',
+            massifPresent: '80%',
+            massifPlan: '80%',
+            massifArea: '0.26'
+          },
+          { id: 3 ,
+            massifNumber: '01-10-2',
+            massifType: 'G1',
+            massifState: '规划',
+            massifRowNamer: '',
+            massifRowRiver: '东坑水',
+            massifRowBasin: '东坑水',
+            massifPartition: '7#排水分区',
+            massifNum: '',
+            massifReform: '规划管控',
+            massifPresent: '73%',
+            massifPlan: '73%',
+            massifArea: '0.32'
+          },
+          { id: 4 ,
+            massifNumber: '03-14',
+            massifType: 'G1',
+            massifState: '规划',
+            massifRowNamer: '',
+            massifRowRiver: '东坑水',
+            massifRowBasin: '东坑水',
+            massifPartition: '3#排水分区',
+            massifNum: '',
+            massifReform: '规划管控',
+            massifPresent: '80%',
+            massifPlan: '80%',
+            massifArea: '1.83'
+          },
+          { id: 5 ,
+            massifNumber: '05-17',
+            massifType: 'G1',
+            massifState: '在建',
+            massifRowNamer: '',
+            massifRowRiver: '东坑水',
+            massifRowBasin: '东坑水',
+            massifPartition: '3#排水分区',
+            massifNum: '',
+            massifReform: '在建已落实海绵',
+            massifPresent: '73%',
+            massifPlan: '73%',
+            massifArea: '1.22'
+          }
+        ],
+        /***********************/
         count1:0,
         count2:0,
         count3:0,
@@ -1079,33 +1203,6 @@
             fromData: []
           },
         ],
-
-
-
-        dataList: [
-          { id: 1, name: '类型',
-            label:[
-              {value:1, label: '地块',
-                listName:[
-                  {value: 1, label: '编号'},
-                  {value: 1, label: '面积'},
-                  {value: 1, label: '用地类型'},
-                ]
-              },
-              {value:2, label: '工业企业'},
-              {value:3, label: '排口'},
-              {value:4, label: '管线'},
-            ]
-          },
-          { id: 2, name: '属性',
-            labelName:[
-              {value:1, label: '地块'},
-            ]
-          },
-          { id: 3, name: '属性值'},
-        ],
-
-
         activeName2: 'first',
         ulList:[0],
         exactQuery: [
@@ -1117,21 +1214,7 @@
         value1: '',
         attributeData: [],
         value2:'',
-        attributeValueData: [
-          { value:'1', label:'02-06-8' },
-          { value:'2', label:'02-07-7' },
-          { value:'3', label:'02-08-6' },
-          { value:'4', label:'02-09-5' },
-          { value:'5', label:'02-10-4' },
-          { value:'6', label:'02-11-3' },
-          { value:'7', label:'02-12-2' },
-          { value:'8', label:'02-13-1' },
-          { value:'9', label:'02-14-10' },
-          { value:'10', label:'02-15-11' },
-          { value:'11', label:'02-16-12' },
-          { value:'12', label:'02-17-13' },
-          { value:'13', label:'02-18-14' }
-        ],
+        attributeValueData: [],
         value3:'',
         junctionsLayData: [],    // 交汇点数据
         conduitsLayData: [],     // 管道数据
@@ -1655,6 +1738,105 @@
         console.log("数据", _this.tableDataList[1])
       },
       /************* 选择框 ***************/
+      demoListDataListDemo(value){
+        console.log("??????????",value);
+
+        if(value == '1') {
+          this.displayData = this.listDemoData;
+          this.count = this.displayData.length
+        }
+        if(value == '2') {
+          this.displayData = [];
+          this.displayData = [
+            { id: 1 ,
+              massifNumber: '06-18',
+              massifType: 'M1',
+              massifState: '现状',
+              massifRowNamer: '招商光明科技园企业加速器',
+              massifRowRiver: '东坑水',
+              massifRowBasin: '东坑水',
+              massifPartition: '6#排水分区',
+              massifNum: '工业区正本清源',
+              massifReform: '现状已落实海绵',
+              massifPresent: '70%',
+              massifPlan: '70%',
+              massifArea: '8.14'
+            },
+            { id: 2 ,
+              massifNumber: '06-08',
+              massifType: 'M1',
+              massifState: '在建',
+              massifRowNamer: '汇业科技园',
+              massifRowRiver: '东坑水',
+              massifRowBasin: '东坑水',
+              massifPartition: '6#排水分区',
+              massifNum: '工业区正本清源',
+              massifReform: '在建已落实海绵',
+              massifPresent: '70%',
+              massifPlan: '70%',
+              massifArea: '7.6'
+            },
+          ]
+          this.count = this.displayData.length
+        }
+        if(value == '3'){
+          this.displayData = [];
+          this.displayData = [
+            { id: 1 ,
+              massifNumber: 'DL-1',
+              massifType: '道路',
+              massifState: '规划',
+              massifRowNamer: '',
+              massifRowRiver: '东坑水',
+              massifRowBasin: '东坑水',
+              massifPartition: '19#排水分区',
+              massifNum: '',
+              massifReform: '规划管控',
+              massifPresent: '55%',
+              massifPlan: '55%',
+              massifArea: '0.04'
+            },
+            { id: 2 ,
+              massifNumber: 'DL-10',
+              massifType: '道路',
+              massifState: '规划',
+              massifRowNamer: '光源二路',
+              massifRowRiver: '东坑水',
+              massifRowBasin: '东坑水',
+              massifPartition: '6#排水分区',
+              massifNum: '',
+              massifReform: '规划管控',
+              massifPresent: '55%',
+              massifPlan: '55%',
+              massifArea: '0.23'
+            },
+            { id: 3 ,
+              massifNumber: 'DL-2',
+              massifType: '道路',
+              massifState: '规划',
+              massifRowNamer: '泉鸣路',
+              massifRowRiver: '东坑水',
+              massifRowBasin: '东坑水',
+              massifPartition: '2#排水分区',
+              massifNum: '',
+              massifReform: '规划管控',
+              massifPresent: '55%',
+              massifPlan: '55%',
+              massifArea: '0.13'
+            },
+          ]
+          this.count = this.displayData.length
+        }
+      },
+      demoListDataModelType(value){
+        if(value == '3') {
+          this.attributeValueData = [
+            { value:'1', label:'G1' },
+            { value:'2', label:'M1' },
+            { value:'3', label:'道路' },
+          ]
+        }
+      },
       demoListDataModel(value){
         this.attributeData = [];
         if(value.label === '工业企业') {
