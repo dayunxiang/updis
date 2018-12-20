@@ -795,6 +795,10 @@
   export default {
     name: 'Home',
     watch: {
+      info: function (info) {
+        this.infoManager = true;
+        this.dataInfo = info;
+      }
     },
     components: {
       BaiduMap
@@ -1010,6 +1014,12 @@
       }
     },
     computed: {
+      info() {
+        return this.$store.state.mapData.info;
+      },
+      resultData() {
+        return this.$store.state.mapData.resultData;
+      },
       shapeIdStrMap() {
         let self = this
         let ret = {}

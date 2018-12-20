@@ -401,6 +401,7 @@
           });
           //管线点击事件
           polyline.addEventListener("click",function(){
+            console.log('点击管线：', info)
             self.$store.dispatch('getInfo',info)
           });
         })
