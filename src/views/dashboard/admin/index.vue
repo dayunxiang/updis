@@ -158,7 +158,7 @@
                     @click="handleHideDaolu()"
                     @click.stop/>
                   <span style="color: black;font-size: 16px;">道路&道路广场用地</span>
-                  <span style="color: black;font-size: 16px;">{{this.subcatchments.road.length}}</span>
+                  <span style="color: black;font-size: 16px;">{{subcatchments.road.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--市政公用设施用地-->
@@ -171,7 +171,7 @@
                     @click="handleHideShiZheng()"
                     @click.stop/>
                   <span style="color: black;font-size: 16px;">市政公用设施用地</span>
-                  <span style="color: black;font-size: 16px;">{{this.subcatchments.shiZheng.length}}</span>
+                  <span style="color: black;font-size: 16px;">{{subcatchments.shiZheng.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--绿地-->
@@ -184,7 +184,7 @@
                     @click="handleHideLvdi()"
                     @click.stop/>
                   <span style="color: black;font-size: 16px;">绿地</span>
-                  <span style="color: black;font-size: 16px;">{{this.subcatchments.lvDi.length}}</span>
+                  <span style="color: black;font-size: 16px;">{{subcatchments.lvDi.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--居住用地-->
@@ -197,7 +197,7 @@
                     @click="handleHideJuzhu()"
                     @click.stop/>
                   <span style="color: black;font-size: 16px;">居住用地</span>
-                  <span style="color: black;font-size: 16px;">{{this.subcatchments.juZhuYongDi.length}}</span>
+                  <span style="color: black;font-size: 16px;">{{subcatchments.juZhuYongDi.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--政府社团用地-->
@@ -210,7 +210,7 @@
                     @click="handleHideZhengfu()"
                     @click.stop/>
                   <span style="color: black;font-size: 16px;">政府社团用地</span>
-                  <span style="color: black;font-size: 16px;">{{this.subcatchments.zhengFu.length}}</span>
+                  <span style="color: black;font-size: 16px;">{{subcatchments.zhengFu.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--工业用地-->
@@ -223,7 +223,7 @@
                     @click="handleHideGongye()"
                     @click.stop/>
                   <span style="color: black;font-size: 16px;">工业用地</span>
-                  <span style="color: black;font-size: 16px;">{{this.subcatchments.gongYe.length}}</span>
+                  <span style="color: black;font-size: 16px;">{{subcatchments.gongYe.length}}</span>
                 </template>
               </el-menu-item-group>
               <!--商业-->
@@ -236,7 +236,7 @@
                     @click="handleHideShangye()"
                     @click.stop/>
                   <span style="color: black;font-size: 16px;">商业服务业设施用地</span>
-                  <span style="color: black;font-size: 16px;">{{this.subcatchments.shangYe.length}}</span>
+                  <span style="color: black;font-size: 16px;">{{subcatchments.shangYe.length}}</span>
                 </template>
               </el-menu-item-group>
             </el-submenu>
@@ -1042,13 +1042,13 @@
         let self = this;
         return {
           rainOutfalls: _.reject(self.shapes, item => {
-            return item.category !== 'OUTFALLS' && item.properties.properties.leixing !== '雨水排水口';
+            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '雨水排水口';
           }),
           sewageOutfalls: _.reject(self.shapes, item => {
-            return item.category !== 'OUTFALLS' && item.properties.properties.leixing !== '污水排口';
+            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '污水排口';
           }),
           meregeOutfalls: _.reject(self.shapes, item => {
-            return item.category !== 'OUTFALLS' && item.properties.properties.leixing !== '混流排口';
+            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '混流排口';
           })
         };
       },
@@ -1056,10 +1056,10 @@
         let self = this;
         return {
           rainConduits: _.reject(self.shapes, item => {
-            return item.category !== 'CONDUITS' && item.properties.properties.leixing !== '雨水管';
+            return item.category !== 'CONDUITS' || item.properties.properties.leixing !== '雨水管';
           }),
           sewageConduits: _.reject(self.shapes, item => {
-            return item.category !== 'CONDUITS' && item.properties.properties.leixing !== '污水管';
+            return item.category !== 'CONDUITS' || item.properties.properties.leixing !== '污水管';
           })
         };
       },
@@ -1068,31 +1068,31 @@
         return {
           road: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' && YDLX !== '道路' && /^[S][^A-Za-z]$/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || YDLX !== '道路' || !/^[S][^A-Za-z]$/.test(YDLX);
           }),
           shiZheng: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' && /^[U][^A-Za-z]$/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || !/^[U][^A-Za-z]$/.test(YDLX);
           }),
           lvDi: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' && /^[G,E][^A-Za-z]/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || !/^[G,E][^A-Za-z]/.test(YDLX);
           }),
           juZhuYongDi: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' && /^[R][^A-Za-z]/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || !/^[R][^A-Za-z]/.test(YDLX);
           }),
           zhengFu: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' && /^[G][I][C]/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || !/^[G][I][C]/.test(YDLX);
           }),
           gongYe: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' && /^[M]/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || !/^[M]/.test(YDLX);
           }),
           shangYe: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' && /^[C][^A-Za-z]/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || !/^[C][^A-Za-z]/.test(YDLX);
           })
         };
       },
