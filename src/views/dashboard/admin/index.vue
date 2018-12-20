@@ -1046,14 +1046,6 @@
 
   export default {
     name: 'Home',
-    computed: {
-      info() {
-        return this.$store.state.mapData.info;
-      },
-      resultData() {
-        return this.$store.state.mapData.resultData;
-      }
-    },
     watch: {
       info: function (info) {
         this.infoManager = true;
@@ -1231,7 +1223,6 @@
         companysLayData: [],     // 公司数据
         subLayData: [], // 地块数据
         shapes: [],
-        shapeIdStrMap: {},
         /**********************************************************************************************************************************/
         options: [{
           value: '选项1',
@@ -1259,8 +1250,6 @@
         outfallsData: [],
         companysData: [],
         isResult: false,
-
-        projectId: '',
 
         selectLoading: false,
         //显示隐藏地块
@@ -1294,8 +1283,8 @@
         activeNames: ['1'],
         dataInfo: {},
         //  输入项
-        queryOptions: [],
         queryStr: '',
+        queryOptions: [],
         //  查询结果
         selectResult: {
           subcatchments: [],
@@ -1314,6 +1303,22 @@
       }
     },
     computed: {
+      info() {
+        return this.$store.state.mapData.info;
+      },
+      resultData() {
+        return this.$store.state.mapData.resultData;
+      },
+      shapeIdStrMap() {
+        let ret = {}
+        _.each(self.shapes, shape => {
+          self.$set(ret, shape.id, JSON.stringify(shape))
+        })
+        return ret
+      },
+      shapeIdMap() {
+        return _.keyBy(self.shapes, 'id')
+      },
       companies(){
         let self = this;
         return _.reject(self.shapes, item => {
@@ -1384,9 +1389,6 @@
     },
     mounted() {
       this.init();
-      this.projectId = this.$route.query.projectId;
-      this.getMapData();
-      // this.queryOptions = this.loadAll();
     },
     methods: {
       /**
@@ -1395,7 +1397,12 @@
       getQueryOptions() {
         let self = this;
         _.each(self.shapes, shape => {
-          let properties = JSON.parse(shape.properties).properties
+          let properties = shape.properties.properties;
+
+          if(!properties) {
+            return 0;
+          }
+
           _.each(_.keys(properties), key => {
             if (!key || !properties[key] || ['WP', 'YP', 'center', 'area', 'X_cor', 'Y_cor'].indexOf(key) >= 0) {
               return 0;
@@ -1429,17 +1436,8 @@
         }).then((res) => {
           self.shapes = JSON.parse(JSON.stringify(res.data));
           _.each(self.shapes, function(item) { item.properties = JSON.parse(item.properties) })
-          console.log("res数据:", this.shapes);
+          self.getQueryOptions()
         })
-      },
-      // 取得mapData
-      getMapData() {
-        let self = this;
-        _.each(self.shapes, shape => {
-          self.$set(self.shapeIdStrMap, shape.id, JSON.stringify(shape))
-        })
-
-        self.getQueryOptions();
       },
       // 折叠展开
       hanleFold() {
@@ -1908,11 +1906,11 @@
       },
       //反向查询组件
       querySearchAsync(queryString, cb) {
+        let self = this;
         if (this.queryStr.substr(this.queryStr.length - 1, 1) == ';') {
           queryString == ''
         }
-        var queryOptions = this.queryOptions;
-        let results = queryString ? queryOptions.filter(this.createStateFilter(queryString)) : queryOptions;
+        let results = queryString ? this.queryOptions.filter(this.createStateFilter(queryString)) : this.queryOptions;
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
           cb(results);
@@ -1938,21 +1936,6 @@
         self.selectResult.companies = [];
         self.selectResult.junctions = [];
 
-        let data = self.shapes;
-        let companies = _.reject(data, item => {
-          return item.category !== 'COMPANY';
-        });
-        let outfalls = _.reject(data, item => {
-          return item.category !== 'OUTFALLS';
-        });
-        let conduits = _.reject(data, item => {
-          return item.category !== 'CONDUITS';
-        });
-        let subcatchments = _.reject(data, item => {
-          return item.category !== 'SUBCATCHMENTS';
-        });
-        let result = [];
-
         let matchedShapes = _.chain(self.shapes).reject(shape => {
           let flag = false
           for (let i = 0; i < queryArry.length; i++) {
@@ -1964,107 +1947,24 @@
           return flag
         }).value()
 
-        //  拿到结果 进行处理
-        if (queryArry.length > 1) {
-          let thisCompanys = [];
-          let thisSubcatchments = []
-          let selectSubcatchmets = []
-          let comapnysToSubcatchments = []
-          console.log('我开始这行了');
-          for (let p = 0; p < result.length; p++) {
-            let category = result[p].category;
-            switch (category) {
-              case 'SUBCATCHMENTS':
-                // thisSubcatchments.push(JSON.parse(result[p].properties));
-                thisSubcatchments.push(result[p]);
-                break;
-              case 'COMPANY':
-                // thisCompanys.push(JSON.parse(result[p].properties))
-                thisCompanys.push(result[p])
-                break;
-            }
-          }
-          // 地块
-          for (let z = 0; z < thisSubcatchments.length; z++) {
-            let properties = JSON.parse(thisSubcatchments[z].properties)
-            let geos = properties.geometry.coordinates[0];
-            let selectSubcatchmet = {
-              properties: thisSubcatchments[z],
-              overlays: []
-            }
-            for (let i = 0; i < geos.length; i++) {
-              let points = new BMap.Point(geos[i][1], geos[i][0]);
-              selectSubcatchmet.overlays.push(points)
-            }
-            selectSubcatchmets.push(selectSubcatchmet);
-          }
-          //企业 地块
-          for (let q = 0; q < thisCompanys.length; q++) {
-            let properties = JSON.parse(thisCompanys[q].properties);
-            let companyLng_lat = properties.geometry.coordinates;
-            let point = new BMap.Point(companyLng_lat [1], companyLng_lat [0]);
-            for (let j = 0; j < selectSubcatchmets.length; j++) {
-              let overlays = selectSubcatchmets[j].overlays
-              let ply = new BMap.Polygon(overlays);
-              let result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
-              if (result) {
-                self.selectResult.subcatchments.push(selectSubcatchmets[j].properties)
-                self.selectResult.companies.push(thisCompanys[q])
-              }
-            }
-          }
-          // console.log(comapnysToSubcatchments.propert);
-        }
-        if (queryArry.length == 1) {
-          let newArr = []
-          for (let i = 0; i < result.length; i++) {
-            let flag = true;
-            for (let j = 0; j < newArr.length; j++) {
-              if (result[i].id == newArr[j].id) {
-                flag = false
-              }
-            }
-            if (flag) {
-              newArr.push(result[i])
-            }
-          }
-          for (let i = 0; i < newArr.length; i++) {
-            let category = newArr[i].category;
-            console.log(category);
-            switch (category) {
-              case 'SUBCATCHMENTS':
-                properties = JSON.parse(newArr[i].properties);
-                let subcatchments = {
-                  properties: properties.properties
-                }
-                self.selectResult.subcatchments.push(newArr[i])
-                break;
-              case 'CONDUITS':
-                properties = JSON.parse(newArr[i].properties);
-                let conduits = {
-                  properties: properties.properties
-                }
-                self.selectResult.conduits.push(newArr[i])
-                break;
-              case 'OUTFALLS':
-                properties = JSON.parse(newArr[i].properties);
-                let outfalls = {
-                  properties: properties.properties
-                }
-                self.selectResult.outfalls.push(newArr[i])
-                break;
-              case 'COMPANY':
-                properties = JSON.parse(newArr[i].properties);
-                let companies = {
-                  properties: properties.properties
-                }
-                self.selectResult.companies.push(newArr[i])
-                break;
-            }
-          }
-        }
-
         //  拿到结果进行处理  用于页面展示  用于 地图绘制
+        self.selectResult = {
+          subcatchments: _.reject(matchedShapes, function(item) {
+            return item.category !== 'SUBCATCHMENTS';
+          }),
+          conduits: _.reject(matchedShapes, function(item) {
+            return item.category !== 'CONDUITS';
+          }),
+          junctions: _.reject(matchedShapes, function(item) {
+            return item.category !== 'JUNCTIONS';
+          }),
+          outfalls: _.reject(matchedShapes, function(item) {
+            return item.category !== 'OUTFALLS';
+          }),
+          companies: _.reject(matchedShapes, function(item) {
+            return item.category !== 'COMPANY';
+          }),
+        }
 
         self.isResult = !self.isResult
         this.$refs.map.showResult(self.selectResult);
