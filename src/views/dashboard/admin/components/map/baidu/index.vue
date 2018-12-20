@@ -30,21 +30,23 @@
     data(){
       return {
         isLoading: false,
-        pipeNetwork:[],
         map:{},
-        geoJson: {
-          "type": "FeatureCollection",
-          "features":[]
-        },
         projectId:'',
+        shapes: [],
+        geojson: {
+          'type': 'FeatureCollection',
+          'features': []
+        },
         mapData: {
           conduits: [],
           outfalls:[],
           junctions: [],
           subcatchments:[],
-          companys:[]
+          companies:[]
         },
       }
+    },
+    computed: {
     },
     watch: {
       isHideAllSubcatchments: function() {
@@ -100,7 +102,6 @@
     created(){
       this.getProjectId();
       this.getDataInfo();
-      this.getGeoJson();
     },
     mounted(){
       this.createMap();
@@ -108,32 +109,6 @@
 
     },
     methods: {
-      //请求geoJson数据
-      getGeoJson(){
-        let self = this;
-        request('shapes',{
-          params: {
-            pageNo: 1,
-            pageSize: 100000000,
-            filters: {
-              'shape': {
-                'project_id': {
-                  equalTo: self.projectId
-                }
-              }
-            }
-          }
-        }).then(resp =>{
-          let data = resp.data;
-          this.getGeoJsonSuccess(data);
-        })
-      },
-      getGeoJsonSuccess(data){
-        let self = this;
-        for(let i = 0; i < data.length; i++){
-          self.geoJson.features.push(JSON.parse(data[i].properties));
-        }
-      },
       //获取项目ID
       getProjectId() {
         this.projectId = this.$route.query.projectId;
@@ -170,8 +145,9 @@
           }
         }).then(resp => {
           let data = resp.data;
-          self.pipeNetwork = data;
-          this.getDataInfoSuccess(data);
+          self.shapes = JSON.parse(JSON.stringify(resp.data));
+          _.each(self.shapes, function(item) { item.properties = JSON.parse(item.properties) })
+          this.getDataInfoSuccess(self.shapes);
         })
       },
       //处理请求过来的所有数据
@@ -200,7 +176,7 @@
               self.mapData.outfalls.push(mapData);
               break;
             case 'COMPANY':
-              self.mapData.companys.push(mapData);
+              self.mapData.companies.push(mapData);
               break;
           }
         }
@@ -221,7 +197,7 @@
         for(let i = 0;i<subcatchmentsData.length;i++){
           let subcatchment = {
             id:subcatchmentsData[i].id,
-            properties:JSON.parse(subcatchmentsData[i].properties)
+            properties:subcatchmentsData[i].properties
           }
           subcatchmens.push(subcatchment)
         }
@@ -236,7 +212,7 @@
         let conduits  = [];
         for(let i = 0;i<conduitsData.length;i++){
           let subcatchment = {
-            properties:JSON.parse(conduitsData[i].properties)
+            properties:conduitsData[i].properties
           }
           conduits.push(subcatchment)
         }
@@ -251,7 +227,7 @@
         let junctions = [];
         for(let i = 0;i<junctionsData.length;i++){
           let junction = {
-            properties:JSON.parse(junctionsData[i].properties)
+            properties:junctionsData[i].properties
           }
           junctions.push(junction)
         }
@@ -281,7 +257,7 @@
         let outfalls = [];
         for(let i = 0;i<outfallsData.length;i++){
           let outfall = {
-            properties:JSON.parse(outfallsData[i].properties)
+            properties:outfallsData[i].properties
           }
           outfalls.push(outfall)
         }
@@ -292,15 +268,15 @@
       renderringCompanys(){
         let self =this;
         let map = this.map
-        let companysData = self.mapData.companys;
-        let companys = [];
+        let companysData = self.mapData.companies;
+        let companies = [];
         for(let i = 0;i<companysData.length;i++){
           let outfall = {
-            properties:JSON.parse(companysData[i].properties)
+            properties:companysData[i].properties
           }
-          companys.push(outfall)
+          companies.push(outfall)
         }
-        self.drawCompanys(companys);
+        self.drawCompanys(companies);
       },
       //绘制地块
       drawSubcatchments(data){
@@ -766,8 +742,7 @@
           let subcatchments = []
           let subcatchmentsToOutfall =[]
           for(let i = 0;i<data.length;i++){
-            let properties = data[i].properties;
-            subcatchments.push(JSON.parse(properties))
+            subcatchments.push(data[i].properties)
           }
           let outfallType = outfallName.substring(0,2);
           if(outfallType == 'WP'){
@@ -995,7 +970,7 @@
         let arr = []
         let subcatchments = this.mapData.subcatchments;
         for(let i = 0; i< subcatchments.length;i++){
-          let properties = JSON.parse(subcatchments[i].properties);
+          let properties = subcatchments[i].properties;
           let geos = properties.geometry.coordinates[0]
           let subcatchment = {
             id : subcatchments[i].id,
@@ -1030,7 +1005,7 @@
             }).then(resp => {
               let feature = JSON.parse(resp.data[0].properties);
               feature.businessType="SUBCATCHMENTS";
-              let cy = geojson2cytoscape(self.geoJson);
+              let cy = geojson2cytoscape(self.geojson);
               let ConduitsType = '污水管'
               let conduits = getDescendantConduitsOfSubcatchment(feature, cy,ConduitsType);
               let dataArr = []
@@ -1061,6 +1036,11 @@
               //拿到排口渲染排口
               let rainOutfall= getDescendantOutfallsOfSubcatchment(feature,cy,ConduitsType);
               _each(rainOutfall, function(index,outfall) {
+                if(!outfall.properties.geometry) {
+                  console.log(outfall)
+                  return 0;
+                }
+
                 let lng_lat = outfall.properties.geometry.coordinates;
                 let info = outfall.properties.properties;
                 info.type = '排口'
@@ -1094,13 +1074,15 @@
 
       },
       //  渲染查询结果
-      showResult(data){
+      showResult(data, shapes){
         let self = this;
+        self.shapes = shapes;
+        self.geojson['features'] = _.map(self.shapes, shape => shape.properties)
         let map = self.map;
-        let companys = self.mapData.companys;
+        let companies = data.companies;
         let resultData = []
         self.test2();
-        let companysData = data.companys;
+        let companysData = data.companies;
         let conduitsData = data.conduits;
         let outfallsData = data.outfalls;
         let subcatchmentsData = data.subcatchments;
@@ -1110,7 +1092,7 @@
           for(let i = 0;i<subcatchmentsData.length;i++){
             let subcatchment = {
               id:subcatchmentsData[i].id,
-              properties:JSON.parse(subcatchmentsData[i].properties)
+              properties: subcatchmentsData[i].properties
             }
             subcatchmens.push(subcatchment)
           }
@@ -1122,7 +1104,7 @@
           let selectSubcatchmets = []
           let selectCompanys = [];
           for(let i=0;i<subcatchmentsData.length;i++){
-            let properties = JSON.parse(subcatchmentsData[i].properties);
+            let properties = subcatchmentsData[i].properties;
             let geos = properties.geometry.coordinates[0];
             let selectSubcatchmet = {
               properties:properties,
@@ -1136,8 +1118,13 @@
             resultData.push(properties)
           }
           //工业企业
-          for(let i = 0; i< companys.length;i++) {
-            let properties = JSON.parse(companys[i].properties);
+          for(let i = 0; i< companies.length;i++) {
+            let properties = companies[i].properties;
+
+            if (!properties.geometry) {
+              console.log(companies[i])
+              continue;
+            }
             let lng_lat = properties.geometry.coordinates;
             let point = new BMap.Point(lng_lat[1], lng_lat[0])
             let propertie = {
@@ -1167,9 +1154,9 @@
           let rainOutfalls = [];
           let sewageOutfalls = [];
           for(let i=0;i < subcatchmentsData.length;i++){
-            let properties = JSON.parse(subcatchmentsData[i].properties);
+            let properties = subcatchmentsData[i].properties;
             console.log(properties)
-            let cy = geojson2cytoscape(self.geoJson);
+            let cy = geojson2cytoscape(self.geojson);
             let ConduitsRain = '雨水管'
             let ConduitsSewage= '污水管'
             let rainOutfall= self.getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsRain);
@@ -1245,7 +1232,7 @@
           let outfalls = [];
           for(let i = 0;i<outfallsData.length;i++){
             let outfall = {
-              properties:JSON.parse(outfallsData[i].properties)
+              properties: outfallsData[i].properties
             }
             outfalls.push(outfall)
           }
@@ -1260,7 +1247,7 @@
           let conduits  = [];
           for(let i = 0;i<conduitsData.length;i++){
             let subcatchment = {
-              properties:JSON.parse(conduitsData[i].properties)
+              properties: conduitsData[i].properties
             }
             conduits.push(subcatchment)
           }
@@ -1268,13 +1255,13 @@
         }
         //企业
         if(companysData.length>0){
-          let companys = [];
+          let companies = [];
           let selectSubcatchmets = []
           let selectCompanysResult = [];
           let subcatchmentsData = self.mapData.subcatchments;
           //地块数据
           for(let j = 0;j<subcatchmentsData.length;j++){
-            let properties = JSON.parse(subcatchmentsData[j].properties)
+            let properties = subcatchmentsData[j].properties
 
             let geos = properties.geometry.coordinates[0];
             let selectSubcatchmet = {
@@ -1289,7 +1276,7 @@
           }
           //企业数据
           for(let i = 0;i<companysData.length;i++){
-            let properties = JSON.parse(companysData[i].properties);
+            let properties = companysData[i].properties;
             let companyLng_lat = properties.geometry.coordinates;
             let point = new BMap.Point(companyLng_lat [1], companyLng_lat [0]);
             //作比较
@@ -1299,7 +1286,7 @@
               let result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
               if(result == true){
                 let data = selectSubcatchmets[j].properties;
-                let cy = geojson2cytoscape(self.geoJson);
+                let cy = geojson2cytoscape(self.geojson);
                 let ConduitsType = '污水管'
                 let conduits = getDescendantConduitsOfSubcatchment(data, cy,ConduitsType);
                 let dataArr = []
@@ -1347,12 +1334,12 @@
             }
 
             let  company = {
-              properties:JSON.parse(companysData[i].properties)
+              properties: companysData[i].properties
             }
-            companys.push(company)
+            companies.push(company)
           }
           // 画出企业
-          self.drawCompanys(companys);
+          self.drawCompanys(companies);
           self.drawSubcatchments(selectCompanysResult)
         }
         //  统计拿到所有数据
@@ -2525,8 +2512,8 @@
           let data = resp.data;
           for(let i = 0;i<data.length;i++){
             let shapeid = data[i].id
-            let feature = data[i].properties;
-            let properties = JSON.parse(feature)
+            let feature = JSON.parse(data[i].properties);
+            let properties = feature
             if(properties.properties.JSZT == '现状' && properties.properties.JSZT == '已落实海绵'){
               // properties.properties.现状控制率 = properties.properties.规划控制率
               // let dataNew ={
