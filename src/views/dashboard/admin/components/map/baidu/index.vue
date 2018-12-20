@@ -147,6 +147,8 @@
           let data = resp.data;
           self.shapes = JSON.parse(JSON.stringify(resp.data));
           _.each(self.shapes, function(item) { item.properties = JSON.parse(item.properties) })
+          self.geojson['features'] = _.map(self.shapes, shape => shape.properties)
+          self.cy = geojson2cytoscape(self.geojson)
           this.getDataInfoSuccess(self.shapes);
         })
       },
@@ -670,8 +672,7 @@
       SelectConduits(data){
         let self = this;
         let map = self.map;
-        let cy = geojson2cytoscape(this.geoJson);
-        let OutFallToConduits = getAncestorConduitsOfOutfall(data, cy);
+        let OutFallToConduits = getAncestorConduitsOfOutfall(data, self.cy);
         // 拿到管线渲染
         let dataArr = []
         for(let i =0 ;i<OutFallToConduits.length;i++){
@@ -847,9 +848,8 @@
       SubcatchmentsSelectRainConduits(data){
         let self = this;
         let map = self.map;
-        let cy = geojson2cytoscape(this.geoJson);
         let ConduitsType = '雨水管'
-        let conduits = getDescendantConduitsOfSubcatchment(data, cy,ConduitsType);
+        let conduits = getDescendantConduitsOfSubcatchment(data, self.cy,ConduitsType);
         //渲染雨水管线
         let dataArr = []
         for(let i =0 ;i<conduits.length;i++){
@@ -879,7 +879,7 @@
           map.addOverlay(polyline);
         })
         //拿到排口 渲染排口
-        let rainOutfall= getDescendantOutfallsOfSubcatchment(data,cy,ConduitsType);
+        let rainOutfall= getDescendantOutfallsOfSubcatchment(data,self.cy,ConduitsType);
         _each(rainOutfall, function(index,outfall) {
           let lng_lat = outfall.properties.geometry.coordinates;
           let info = outfall.properties.properties;
@@ -917,9 +917,8 @@
       SubcatchmentsSelectSewageConduits(data){
         let self = this;
         let map = self.map;
-        let cy = geojson2cytoscape(this.geoJson);
         let ConduitsType = '污水管'
-        let conduits = getDescendantConduitsOfSubcatchment(data, cy,ConduitsType);
+        let conduits = getDescendantConduitsOfSubcatchment(data, self.cy,ConduitsType);
         //渲染雨水管线
         let dataArr = []
         for(let i =0 ;i<conduits.length;i++){
@@ -949,7 +948,7 @@
           map.addOverlay(polyline);
         })
         //拿到排口 渲染排口
-        let rainOutfall= getDescendantOutfallsOfSubcatchment(data,cy,ConduitsType);
+        let rainOutfall= getDescendantOutfallsOfSubcatchment(data,self.cy,ConduitsType);
         _each(rainOutfall, function(index,outfall) {
           let lng_lat = outfall.properties.geometry.coordinates;
           let info = outfall.properties.properties;
@@ -1006,9 +1005,8 @@
             }).then(resp => {
               let feature = JSON.parse(resp.data[0].properties);
               feature.businessType="SUBCATCHMENTS";
-              let cy = geojson2cytoscape(self.geojson);
               let ConduitsType = '污水管'
-              let conduits = getDescendantConduitsOfSubcatchment(feature, cy,ConduitsType);
+              let conduits = getDescendantConduitsOfSubcatchment(feature, self.cy,ConduitsType);
               let dataArr = []
               for(let i =0 ;i<conduits.length;i++){
                 dataArr[i]=conduits[i].properties;
@@ -1035,7 +1033,7 @@
                 allmap.addOverlay(polyline);
               })
               //拿到排口渲染排口
-              let rainOutfall= getDescendantOutfallsOfSubcatchment(feature,cy,ConduitsType);
+              let rainOutfall= getDescendantOutfallsOfSubcatchment(feature,self.cy,ConduitsType);
               _each(rainOutfall, function(index,outfall) {
                 if(!outfall.properties.geometry) {
                   console.log(outfall)
@@ -1078,7 +1076,6 @@
       showResult(data, shapes){
         let self = this;
         self.shapes = shapes;
-        self.geojson['features'] = _.map(self.shapes, shape => shape.properties)
         let map = self.map;
         let companies = data.companies;
         let resultData = []
@@ -1157,13 +1154,12 @@
           for(let i=0;i < subcatchmentsData.length;i++){
             let properties = subcatchmentsData[i].properties;
             console.log(properties)
-            let cy = geojson2cytoscape(self.geojson);
             let ConduitsRain = '雨水管'
             let ConduitsSewage= '污水管'
-            let rainOutfall= self.getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsRain);
-            let conduit = self.getDescendantConduitsOfSubcatchment(properties, cy,ConduitsRain);
-            let sewageOutfall = self.getDescendantOutfallsOfSubcatchment(properties,cy,ConduitsSewage);
-            let sewageConduit = self.getDescendantConduitsOfSubcatchment(properties, cy,ConduitsSewage)
+            let rainOutfall= self.getDescendantOutfallsOfSubcatchment(properties,self.cy,ConduitsRain);
+            let conduit = self.getDescendantConduitsOfSubcatchment(properties, self.cy,ConduitsRain);
+            let sewageOutfall = self.getDescendantOutfallsOfSubcatchment(properties,self.cy,ConduitsSewage);
+            let sewageConduit = self.getDescendantConduitsOfSubcatchment(properties, self.cy,ConduitsSewage)
             if(rainOutfall.length>0){
               rainOutfalls.push(rainOutfall[0])
             }
@@ -1287,9 +1283,8 @@
               let result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
               if(result == true){
                 let data = selectSubcatchmets[j].properties;
-                let cy = geojson2cytoscape(self.geojson);
                 let ConduitsType = '污水管'
-                let conduits = getDescendantConduitsOfSubcatchment(data, cy,ConduitsType);
+                let conduits = getDescendantConduitsOfSubcatchment(data, self.cy,ConduitsType);
                 let dataArr = []
                 for(let k =0 ;k<conduits.length;k++){
                   dataArr[k]=conduits[k].properties;
@@ -1316,7 +1311,7 @@
                   let polyline = new BMap.Polyline(pointArr,{strokeColor:"#e868f2", strokeWeight:4.5, strokeOpacity:1})
                   map.addOverlay(polyline);
                   //拿到排口 渲染排口
-                  let rainOutfall= getDescendantOutfallsOfSubcatchment(data,cy,ConduitsType);
+                  let rainOutfall= getDescendantOutfallsOfSubcatchment(data,self.cy,ConduitsType);
                   _each(rainOutfall, function(index,outfall) {
                     let lng_lat = outfall.properties.geometry.coordinates;
                     let info = outfall.properties.properties;
