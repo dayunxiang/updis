@@ -1714,7 +1714,20 @@
           }),
         }
 
-        // @TODO: 可能要做百度地图运算。参考郭世伟之前的代码 new BMap
+        // 在匹配地块内的公司，也得放到结果selectResult.companies中。 @TODO: 这一部分代码不能删除。应该提前计算完。因为isPointInPolygon速度非常慢。
+        // _.each(self.companies, company =>  {
+        //   _.each(self.selectResult.subcatchments, subcatchment => {
+        //     let overlays = _.map(subcatchment.properties.geometry.coordinates[0], point => {
+        //       return new BMap.Point(point[1], point[0])
+        //     })
+        //     let polygon = new BMap.Polygon(overlays);
+        //     let companyCoordinate = company.properties.geometry.coordinates;
+        //     let point = new BMap.Point(companyCoordinate[1], companyCoordinate[0]);
+        //     if(BMapLib.GeoUtils.isPointInPolygon(point, polygon)){
+        //       self.selectResult.companies.push(company)
+        //     }
+        //   })
+        // })
 
         self.isResult = !self.isResult
         this.$refs.map.showResult(self.selectResult, self.shapes);
