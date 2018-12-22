@@ -764,7 +764,7 @@
                                :total="0">
                 </el-pagination>
               </el-tab-pane>
-              <el-tab-pane :label=" '排口('+showResult.outfalls.length+')'" name="2">
+              <el-tab-pane :label=" '排口('+showResult.outfalls.length+')'" name="3">
                 <el-table :data="showResult.outfalls" style="width: 100%" height="280">
                   <el-table-column fixed type="index" width="50" label="序号" align="center"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="排口编号" prop="name"></el-table-column>
@@ -1084,7 +1084,7 @@
         return {
           road: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' || YDLX !== '道路' || !/^[S][^A-Za-z]$/.test(YDLX);
+            return item.category !== 'SUBCATCHMENTS' || (YDLX !== '道路' && !/^[S][^A-Za-z]$/.test(YDLX));
           }),
           shiZheng: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
@@ -1095,7 +1095,7 @@
             return item.category !== 'SUBCATCHMENTS' || !/^[G,E][^A-Za-z]/.test(YDLX);
           }),
           juZhuYongDi: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX;
+            let YDLX = item.properties.properties.YDLX
             return item.category !== 'SUBCATCHMENTS' || !/^[R][^A-Za-z]/.test(YDLX);
           }),
           zhengFu: _.reject(self.shapes, item => {
