@@ -1735,7 +1735,7 @@
           self.$refs.map.showResult(self.selectResult, self.shapes);
           self.isLoading = false;
           self.tabPaneLabel = true
-        }, 50)
+        }, 200)
       },
     }
   }
