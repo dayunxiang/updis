@@ -764,6 +764,22 @@
                                :total="0">
                 </el-pagination>
               </el-tab-pane>
+              <el-tab-pane :label=" '排口('+showResult.outfalls.length+')'" name="2">
+                <el-table :data="showResult.outfalls" style="width: 100%" height="280">
+                  <el-table-column fixed type="index" width="50" label="序号" align="center"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="排口编号" prop="name"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="排口类型" prop="leixing"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="排向" prop="paixiang"></el-table-column>
+                </el-table>
+                <el-pagination style="text-align:center;"
+                               @size-change="handleSizeChange1"
+                               @current-change="handleCurrentChangeHandel1"
+                               :page-sizes="[5]"
+                               :page-size="5"
+                               layout="total, sizes, prev, pager, next, jumper"
+                               :total="0">
+                </el-pagination>
+              </el-tab-pane>
             </el-tabs>
           </div>
           <div></div>
