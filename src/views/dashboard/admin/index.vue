@@ -1057,6 +1057,9 @@
       outfalls() {
         let self = this;
         return {
+          all: _.reject(self.shapes, item => {
+            return item.category !== 'OUTFALLS';
+          }),
           rainOutfalls: _.reject(self.shapes, item => {
             return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '雨水排水口';
           }),
@@ -1071,6 +1074,9 @@
       conduits() {
         let self = this;
         return {
+          all: _.reject(self.shapes, item => {
+            return item.category !== 'CONDUITS';
+          }),
           rainConduits: _.reject(self.shapes, item => {
             return item.category !== 'CONDUITS' || item.properties.properties.leixing !== '雨水管';
           }),
@@ -1082,6 +1088,9 @@
       subcatchments() {
         let self = this;
         return {
+          all: _.reject(self.shapes, item => {
+            return item.category !== 'SUBCATCHMENTS';
+          }),
           road: _.reject(self.shapes, item => {
             let YDLX = item.properties.properties.YDLX;
             return item.category !== 'SUBCATCHMENTS' || (YDLX !== '道路' && !/^[S][^A-Za-z]$/.test(YDLX));
