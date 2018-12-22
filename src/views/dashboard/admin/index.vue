@@ -1674,6 +1674,7 @@
       handleSelect() {
         let self = this;
         self.isLoading = true;
+        console.log('isLoading: ', self.isLoading)
         self.selectSubcatchmentData = [];
         self.selectOutfalls = [];
         self.selectCompanys = [];
@@ -1730,9 +1731,11 @@
         // })
 
         self.isResult = !self.isResult
-        this.$refs.map.showResult(self.selectResult, self.shapes);
-        self.isLoading = false;
-        self.tabPaneLabel = true
+        setTimeout(function() {
+          self.$refs.map.showResult(self.selectResult, self.shapes);
+          self.isLoading = false;
+          self.tabPaneLabel = true
+        }, 50)
       },
     }
   }
