@@ -691,14 +691,24 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-show="tabPaneLabel" class="tabPaneLabel">
+          <div v-if="tabPaneLabel" class="tabPaneLabel">
             <el-tabs class="tabPaneSpan">
               <el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
-                <el-table :data="showResult.subcatchments" style="width: 100%" height="280">
-                  <el-table-column fixed width="50" label="序号" align="center" type="index"></el-table-column>
+                <!--<el-table :data="showResultSlice"-->
+                <el-table :data="(showResult.subcatchments).slice(( currentPageNum1 - 1 ) * totalNumber1 , currentPageNum1 * totalNumber1)"
+                          style="width: 100%" height="280" @selection-change="queryChangeHandle">
+                  <el-table-column align="center" default-sort type="selection"></el-table-column>
+                  <el-table-column fixed width="50" label="序号" align="center" type="index">
+                    <template slot-scope="scope">
+                      {{ scope.$index + 1 + totalNumber1 * ( currentPageNum1 - 1 ) }}
+                    </template>
+                  </el-table-column>
                   <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true" label="编号" prop="name"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="用地类型" prop="YDLX"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="建设状态" prop="JSZT"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="120" :show-overflow-tooltip="true" label="建设状态" prop="JSZT"
+                                   column-key="date" :filters="listDemo"
+                                   :filter-method="filterHandler"
+                  ></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="项目名称" prop="XMMC"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="排入河道" prop="PRHD"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="所属流域" prop="SSLY"></el-table-column>
@@ -708,19 +718,28 @@
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="现状控制率" prop="现状控制率"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="规划控制率" prop="规划控制率"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="面积(公顷)" prop="area"></el-table-column>
+                  <el-table-column align="center" fixed="right" label="操作" width="120">
+                    <template slot-scope="scope">
+                      <el-button @click="queryHandleClick" type="primary" plain size="small">查询</el-button>
+                      <el-button type="primary" plain size="small" v-if="isShowButton" :disabled="isDisabled" class="prohibit"
+                                 @click="queryLowerSwim">查询下游
+                      </el-button>
+                    </template>
+                  </el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange1"
                                @current-change="handleCurrentChangeHandel1"
-                               :page-sizes="[3,5]"
+                               :page-sizes="[5]"
                                :page-size="5"
                                layout="total, sizes, prev, pager, next, jumper"
-                               :total="count">
+                               :total="showResult.subcatchments.length">
                 </el-pagination>
               </el-tab-pane>
               <el-tab-pane :label=" '企业('+showResult.companies.length+')'" name="1">
-                <el-table :data="showResult.companies" style="width: 100%" height="280">
-                  <el-table-column fixed width="50" label="序号" align="center" type="index"></el-table-column>
+                <el-table :data="(showResult.companies).slice(( currentPageNum2 - 1 ) * totalNumber2 , currentPageNum2 * totalNumber2)"
+                          style="width: 100%" height="280">
+                  <el-table-column fixed label="序号" align="center" type="index"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true" label="企业名称" prop="QYMC"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="街道" prop="JDMC"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="社区" prop="SQMC"></el-table-column>
@@ -738,25 +757,36 @@
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="排污许可证" prop="PWXKZ"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="废水处理方式" prop="FSCLFS"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="特征污染物" prop="TZWRW"></el-table-column>
+                  <el-table-column fixed="right" label="操作" width="120">
+                    <template slot-scope="scope">
+                      <el-button @click="queryHandleClick" type="primary" plain size="small">查询</el-button>
+                      <el-button type="primary" plain size="small" v-if="isShowButton" @click="queryHandleClick" :disabled="isDisabled" class="prohibit" >查询下游</el-button>
+                    </template>
+                  </el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
-                               @size-change="handleSizeChange1"
+                               @size-change="handleSizeChange2"
                                @current-change="handleCurrentChangeHandel1"
                                :page-sizes="[5]"
                                :page-size="5"
                                layout="total, sizes, prev, pager, next, jumper"
-                               :total="0">
+                               :total="showResult.companies.length">
                 </el-pagination>
               </el-tab-pane>
               <el-tab-pane :label=" '管线('+showResult.conduits.length+')'" name="2">
-                <el-table :data="showResult.conduits" style="width: 100%" height="280">
-                  <el-table-column fixed type="index" width="50" label="序号" align="center"></el-table-column>
+                <el-table :data="(showResult.conduits).slice(( currentPageNum3 - 1 ) * totalNumber3 , currentPageNum3 * totalNumber3)"
+                          style="width: 100%" height="280">
+                  <el-table-column fixed type="index" width="50" label="序号" align="center">
+                    <template slot-scope="scope">
+                      {{ scope.$index + 1 + totalNumber3 * ( currentPageNum3 - 1 ) }}
+                    </template>
+                  </el-table-column>
                   <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管道编号" prop="name"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管道类型" prop="leixing"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管径" prop="leixing"></el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
-                               @size-change="handleSizeChange1"
+                               @size-change="handleSizeChange3"
                                @current-change="handleCurrentChangeHandel1"
                                :page-sizes="[5]"
                                :page-size="5"
@@ -765,21 +795,50 @@
                 </el-pagination>
               </el-tab-pane>
               <el-tab-pane :label=" '排口('+showResult.outfalls.length+')'" name="3">
-                <el-table :data="showResult.outfalls" style="width: 100%" height="280">
-                  <el-table-column fixed type="index" width="50" label="序号" align="center"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="排口编号" prop="name"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="排口类型" prop="leixing"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="排向" prop="paixiang"></el-table-column>
+                <el-table :data="(showResult.outfalls).slice((currentPageNum4-1)*totalNumber4, currentPageNum4*totalNumber4)"
+                          style="width: 100%" height="280" @selection-change="queryChangeRowMouth" ref="multipleTable">
+                  <el-table-column align="center" default-sort type="selection"></el-table-column>
+                  <el-table-column fixed type="index" width="50" label="序号" align="center">
+                    <template slot-scope="scope">
+                      {{ scope.$index + 1 + totalNumber4 * ( currentPageNum4 - 1 ) }}
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" :sortable="true" width="200" :show-overflow-tooltip="true" label="排口编号" prop="name"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="200" :show-overflow-tooltip="true" label="排口类型" prop="leixing"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="200" :show-overflow-tooltip="true" label="排向" prop="paixiang"></el-table-column>
+                  <el-table-column align="center" fixed="right" label="操作" width="120">
+                    <template slot-scope="scope">
+                      <el-button @click="queryHandleClick" type="primary" plain size="small">查询</el-button>
+                      <el-button type="primary" plain size="small" v-if="isShowButton" :disabled="isDisabled" class="prohibit"
+                                 @click="queryUpperSwim">查询上游
+                      </el-button>
+                    </template>
+                  </el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
-                               @size-change="handleSizeChange1"
-                               @current-change="handleCurrentChangeHandel1"
+                               @size-change="handleSizeChange4"
+                               @current-change="handleCurrentChangeHandel4"
                                :page-sizes="[5]"
                                :page-size="5"
                                layout="total, sizes, prev, pager, next, jumper"
-                               :total="0">
+                               :total="showResult.outfalls.length">
                 </el-pagination>
               </el-tab-pane>
+            </el-tabs>
+          </div>
+          <!-- 查询下游 -->
+          <div v-if="queryDown" class="tabPaneLabel">
+            <el-tabs  @tab-click="queryUpDownHandleClick">
+              <el-tab-pane label="下游管线" name="0">下游管线信息</el-tab-pane>
+              <el-tab-pane label="下游排口" name="1">下游排口信息</el-tab-pane>
+            </el-tabs>
+          </div>
+          <!-- 查询上游 -->
+          <div v-if="queryUp" class="tabPaneLabel">
+            <el-tabs v-model="firstModel" @tab-click="queryUpDownHandleClick">
+              <el-tab-pane label="上游地块" name="first">上游地块信息</el-tab-pane>
+              <el-tab-pane label="上游企业" name="second">上游企业信息</el-tab-pane>
+              <el-tab-pane label="上游管线" name="third">上游管线信息</el-tab-pane>
             </el-tabs>
           </div>
           <div></div>
@@ -821,6 +880,17 @@
     },
     data() {
       return {
+        firstModel: 'first',
+        queryUp: false,  // 查询上游
+        queryDown: false,     // 查询下游
+        listDemo: [
+          {text: '规划', value: '规划'},
+          {text: '在建', value: '在建'},
+          {text: '现状', value: '现状'}
+        ],      // 按条件选择排序
+        isShowButton: false,  // 多选按钮
+        isDisabled: true,    // 禁用按钮
+        /***************************/
         count: 0,
         displayData1: [],
         displayData2: [],
@@ -909,14 +979,17 @@
         currentPageNum1: 1,  //默认开始页面
         currentPageNum2: 1,  //默认开始页面
         currentPageNum3: 1,  //默认开始页面
+        currentPageNum4: 1,  //默认开始页面
         pageSizeValue1: 3,
         pageSizeValue2: 3,
         pageSizeValue3: 3,
-        pageSizeNum: [3, 5, 7],   //每页的数据条数
+        pageSizeNum: [5],   //每页的数据条数
         currentPage4: 4,
+        totalNumber: 5,
         totalNumber1: 5,
         totalNumber2: 5,
         totalNumber3: 5,
+        totalNumber4: 5,
         tabPaneLabel: false,
         activeNameFiast: 0,
         tableDataList: [
@@ -951,7 +1024,7 @@
         companysLayData: [],     // 公司数据
         subLayData: [], // 地块数据
         shapes: [],
-        /**********************************************************************************************************************************/
+        /***************************************************/
         options: [{
           value: '选项1',
           label: '地块'
@@ -1030,6 +1103,7 @@
       }
     },
     computed: {
+
       info() {
         return this.$store.state.mapData.info;
       },
@@ -1139,6 +1213,46 @@
       this.init();
     },
     methods: {
+      showResultSlice(){
+        return (this.selectResult.subcatchments).slice(( this.currentPageNum1 - 1 ) * this.totalNumber1 , this.currentPageNum1 * this.totalNumber1)
+      },
+      queryHandleClick(){},
+      /****** 查询上游 ********/
+      queryUpperSwim(row){
+        const _this = this;
+        _this.tabPaneLabel = false;
+        _this.queryUp = true;
+        _this.queryDown = false;
+      },
+      /****** 查询下游 ********/
+      queryLowerSwim(row){
+        const _this = this;
+        console.log("========", _this,row);
+        _this.tabPaneLabel = false;
+        _this.queryDown = true;
+      },
+      queryUpDownHandleClick(){},
+      queryChangeRowMouth(val){
+        const _this = this;
+        var mouthData = _this.showResult.outfalls
+        if(val.length > 0) {
+          _this.isShowButton = true
+        }else{
+          _this.isShowButton = false
+        }
+      },
+      queryChangeHandle(val){
+        const _this = this;
+        if(val.length > 0) {
+          _this.isShowButton = true
+        }else {
+          _this.isShowButton = false
+        }
+      },
+      filterHandler(value, row, column){
+        const property = column['property'];
+        return row[property] === value;
+      },
       /**
        * 根据属性值得到查询时的下拉选项
        * */
@@ -1634,6 +1748,9 @@
       handleSizeChange3(pageSizeValue3) {
         this.pageSizeValue3 = pageSizeValue3
       },
+      handleSizeChange4(pageSizeValue4) {
+        this.pageSizeValue4 = pageSizeValue4
+      },
       handleCurrentChangeHandel1(currentPageNum1) {
         this.currentPageNum1 = currentPageNum1;
         // console.log(`每页 ${val} 条`);
@@ -1646,10 +1763,20 @@
         this.currentPageNum3 = currentPageNum3;
         // console.log(`每页 ${val} 条`);
       },
+      handleCurrentChangeHandel4(currentPageNum4) {
+        this.currentPageNum4 = currentPageNum4;
+        // console.log(`每页 ${val} 条`);
+      },
       /************* 切换标签页 **************/
       handleClicktabClick(tab, event) {
         if (this.tabPaneLabel === true) {
           this.tabPaneLabel = false
+        }
+        if(this.queryDown === true) {
+          this.queryDown = false
+        }
+        if(this.queryUp === true) {
+          this.queryUp = false
         }
       },
       //反向查询组件
@@ -1674,6 +1801,8 @@
       handleSelect() {
         let self = this;
         self.isLoading = true;
+        self.queryDown = false;
+        self.queryUp = false;
         console.log('isLoading: ', self.isLoading)
         self.selectSubcatchmentData = [];
         self.selectOutfalls = [];
@@ -1741,6 +1870,11 @@
   }
 </script>
 <style rel="stylesheet/scss" scoped>
+
+  button, html [type="button"], [type="reset"], [type="submit"] {
+    padding: 2px 5px;
+  }
+
   .el-menu-item menu-item {
     background: black;
   }
@@ -1759,6 +1893,13 @@
   }
 </style>
 <style rel="stylesheet/scss" lang="scss">
+  .el-table .sort-caret.ascending{
+    border-bottom-color: #c0c4cc ;
+  }
+  .el-table .sort-caret.descending{
+    border-top-color: #c0c4cc;
+    bottom: 7px;
+  }
   .tabPaneLabel {
     background-color: #fff;
     padding-left: 10px;
