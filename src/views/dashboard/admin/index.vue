@@ -627,18 +627,48 @@
           <div>
             <el-tabs type="border-card" style="width: 100%" @tab-click="handleClicktabClick">
               <el-tab-pane label="精确查询">
-                <div style="padding:5px 0px;">
+                <div style="padding:5px 0px;" v-for="list in ulList" :key="list.id">
                   <span>选择空间：</span>
-                  <el-select v-model="elOptionValue" placeholder="请选择空间" clearable>
+                  <el-autocomplete
+                    class="el-input"
+                    style="width:150px"
+                    v-model="spaceRange"
+                    :fetch-suggestions="spaceRangeAsync"
+                    placeholder="请输入查询条件,多条件之间用;(分号隔开)"
+                    :trigger-on-focus="false">
+                  </el-autocomplete>
+                  <span> 类型: </span>
+                  <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择"
+                             style="width:100px">
                     <el-option
-                      v-for="item in elOptionData"
+                      v-for="item in exactQuery"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item">
+                    </el-option>
+                  </el-select>
+                  <span> 属性: </span>
+                  <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择"
+                             style="width:160px">
+                    <el-option
+                      v-for="item in attributeData"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                  </el-select>
+                  <span> 属性值: </span>
+                  <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择"
+                             style="width:100px">
+                    <el-option
+                      v-for="item in attributeValueData"
                       :key="item.value"
                       :label="item.label"
                       :value="item.value">
                     </el-option>
                   </el-select>
                 </div>
-                <div style="float: left;width: 80%;">
+                <!--<div style="float: left;width: 80%;">
                   <ul v-for="list in ulList" :key="list.id" style="display:inline-block;margin-bottom:10px; ">
                     <li style="float: left;">
                       <span> 类型 </span>
@@ -674,8 +704,8 @@
                       </el-select>
                     </li>
                   </ul>
-                </div>
-                <div style="padding:2px;" class="divSpanButton">
+                </div>-->
+                <div style="padding:2px 22px;float:right" class="divSpanButton">
                   <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
                   <el-button type="primary" icon="el-icon-minus" @click="handelDeleteTerm"></el-button>
                   <el-button type="success" @click="handelQueryTerm">查询</el-button>
@@ -696,20 +726,21 @@
               </el-tab-pane>
               <el-tab-pane label="模糊查询">
                 <div style="padding:5px 0px;">
-                  <span>选择空间：</span>
-                  <el-select v-model="elOptionValue" placeholder="请选择空间" clearable>
-                    <el-option
-                      v-for="item in elOptionData"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value">
-                    </el-option>
-                  </el-select>
-                </div>
-                <div>
+                  <span style="display:inline-block;min-width:85px;text-align:right;">按空间范围:</span>
                   <el-autocomplete
                     class="el-input"
-                    style="width: 450px"
+                    style="width:450px"
+                    v-model="spaceRange"
+                    :fetch-suggestions="spaceRangeAsync"
+                    placeholder="请输入查询条件,多条件之间用;(分号隔开)"
+                    :trigger-on-focus="false">
+                  </el-autocomplete>
+                </div>
+                <div>
+                  <span style="display:inline-block;min-width:85px;text-align:right;">按属性值:</span>
+                  <el-autocomplete
+                    class="el-input"
+                    style="width:450px"
                     v-model="queryStr"
                     :fetch-suggestions="querySearchAsync"
                     placeholder="请输入查询条件,多条件之间用;(分号隔开)"
@@ -758,11 +789,11 @@
                                :total="showResult.subcatchments.length">
                 </el-pagination>
               </el-tab-pane>-->
-
               <el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
                 <!--<el-table :data="showResultSlice"-->
                 <el-table :data="(showResult.subcatchments).slice((currentPageNum1-1)*totalNumber1, currentPageNum1*totalNumber1)"
-                          style="width: 100%" height="280" @selection-change="queryChangeHandle" border>
+                          @selection-change="queryChangeHandle"
+                          style="width: 100%" height="280" border >
                   <el-table-column align="center" default-sort type="selection"></el-table-column>
                   <el-table-column fixed width="50" label="序号" align="center" type="index">
                     <template slot-scope="scope">
@@ -770,26 +801,31 @@
                     </template>
                   </el-table-column>
                   <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true" label="编号" prop="name"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="用地类型" prop="YDLX"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="120" :show-overflow-tooltip="true" label="用地类型" prop="YDLX"
+                                   column-key="YDLX" :filters="YDLXData"
+                                   :filter-method="YDLXHandler"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="120" :show-overflow-tooltip="true" label="建设状态" prop="JSZT"
-                                   column-key="date" :filters="listDemo"
-                                   :filter-method="filterHandler"
+                                   column-key="JSZT" :filters="JSZTData"
+                                   :filter-method="JSZTHandler"
                   ></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="项目名称" prop="XMMC"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="排入河道" prop="PRHD"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="所属流域" prop="SSLY"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="150" :show-overflow-tooltip="true" label="所属排水分区" prop="SSPSFQ"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="150" :show-overflow-tooltip="true" label="所属排水分区" prop="SSPSFQ"
+                                   column-key="SSPSFQ" :filters="SSPSFQData"
+                                   :filter-method="SSPSFQHandler"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="180" :show-overflow-tooltip="true" label="是否为正本清源项目" prop="ZBQY"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="150" :show-overflow-tooltip="true" label="海绵建设情况" prop="HMCS"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="现状控制率" prop="现状控制率"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="规划控制率" prop="规划控制率"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="面积(公顷)" prop="area"></el-table-column>
-                  <el-table-column align="center" fixed="right" label="操作" width="120">
+                  <el-table-column align="center" fixed="right" label="操作" width="140">
                     <template slot-scope="scope">
-                      <el-button @click="queryHandleClick" type="primary" plain size="small">查询</el-button>
-                      <el-button type="primary" plain size="small" v-if="isShowButton" :disabled="isDisabled" class="prohibit"
+                      <el-button @click="queryHandleClick" type="primary" plain size="mini">查询下游水管及排口</el-button>
+                      <el-button @click="sewageHandleClick" type="primary" plain size="mini">查询下游污水去向  </el-button>
+                      <!--<el-button type="primary" plain size="small" v-if="isShowButton" :disabled="isDisabled" class="prohibit"
                                  @click="queryLowerSwim">查询下游
-                      </el-button>
+                      </el-button>-->
                     </template>
                   </el-table-column>
                 </el-table>
@@ -823,12 +859,6 @@
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="排污许可证" prop="PWXKZ"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="废水处理方式" prop="FSCLFS"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="特征污染物" prop="TZWRW"></el-table-column>
-                  <el-table-column fixed="right" label="操作" width="120">
-                    <template slot-scope="scope">
-                      <el-button @click="queryHandleClick" type="primary" plain size="small">查询</el-button>
-                      <el-button type="primary" plain size="small" v-if="isShowButton" @click="queryHandleClick" :disabled="isDisabled" class="prohibit" >查询下游</el-button>
-                    </template>
-                  </el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange2"
@@ -874,10 +904,8 @@
                   <el-table-column align="center" :sortable="true" width="200" :show-overflow-tooltip="true" label="排向" prop="paixiang"></el-table-column>
                   <el-table-column align="center" fixed="right" label="操作" width="120">
                     <template slot-scope="scope">
-                      <el-button @click="queryHandleClick" type="primary" plain size="small">查询</el-button>
-                      <el-button type="primary" plain size="small" v-if="isShowButton" :disabled="isDisabled" class="prohibit"
-                                 @click="queryUpperSwim">查询上游
-                      </el-button>
+                      <el-button @click="conduitHandleClick" type="primary" plain size="mini">查询上游管道</el-button>
+                      <el-button @click="massifHandleClick" type="primary" plain size="mini">查询上游地块</el-button>
                     </template>
                   </el-table-column>
                 </el-table>
@@ -960,11 +988,32 @@
         firstModel: 'first',
         queryUp: false,  // 查询上游
         queryDown: false,     // 查询下游
-        listDemo: [
+        YDLXData: [
+          {text: 'G1', value: 'G1'},
+          {text: 'G2', value: 'G2'},
+          {text: 'E1', value: 'E1'},
+          {text: 'E2', value: 'E2'},
+          {text: 'M1', value: 'M1'},
+          {text: 'U1', value: 'U1'}
+        ],   // YDLX筛选
+        JSZTData: [
           {text: '规划', value: '规划'},
           {text: '在建', value: '在建'},
           {text: '现状', value: '现状'}
-        ],      // 按条件选择排序
+        ],   // JSZT筛选
+        SSPSFQData: [
+          {text: '1#排水分区', value: '1#排水分区'},
+          {text: '2#排水分区', value: '2#排水分区'},
+          {text: '3#排水分区', value: '3#排水分区'},
+          {text: '4#排水分区', value: '4#排水分区'},
+          {text: '5#排水分区', value: '5#排水分区'},
+          {text: '6#排水分区', value: '6#排水分区'},
+          {text: '7#排水分区', value: '7#排水分区'},
+          {text: '8#排水分区', value: '8#排水分区'},
+          {text: '9#排水分区', value: '9#排水分区'},
+          {text: '10#排水分区', value: '10#排水分区'},
+          {text: '19#排水分区', value: '19#排水分区'}
+        ], // SSPSFQ筛选
         isShowButton: false,  // 多选按钮
         isDisabled: true,    // 禁用按钮
         /***************************/
@@ -1154,7 +1203,9 @@
         data: {},
         activeNames: ['1'],
         dataInfo: {},
-        //  输入项
+        //  空间输入项
+        spaceRange: '',
+        //  属性输入项
         queryStr: '',
         queryOptions: [],
         //  查询结果
@@ -1285,7 +1336,27 @@
       this.init();
     },
     methods: {
+      /**** 表头筛选 *****/
+      YDLXHandler(value, row, column){
+        const property = column['property'];
+        return row[property] === value;
+      },
+      JSZTHandler(value, row, column){
+        const property = column['property'];
+        return row[property] === value;
+      },
+      SSPSFQHandler(value, row, column){
+        const property = column['property'];
+        return row[property] === value;
+      },
+      /**** 查询下游水管及排口 *****/
       queryHandleClick(){},
+      /**** 查询下游污水去向 *****/
+      sewageHandleClick(){},
+      /**** 查询上游管道 *****/
+      conduitHandleClick(){},
+      /**** 查询上游地块 *****/
+      massifHandleClick(){},
       /****** 查询上游 ********/
       queryUpperSwim(row){
         const _this = this;
@@ -1318,10 +1389,7 @@
           _this.isShowButton = false
         }
       },
-      filterHandler(value, row, column){
-        const property = column['property'];
-        return row[property] === value;
-      },
+
       /**
        * 根据属性值得到查询时的下拉选项
        * */
@@ -1889,6 +1957,23 @@
         if(this.queryUp === true) {
           this.queryUp = false
         }
+      },
+      /****** 反向空间查询 *******/
+      spaceRangeAsync(queryString, cb){
+        let self = this;
+        if (this.spaceRange.substr(this.spaceRange.length - 1, 1) == ';') {
+          queryString == ''
+        }
+        let results = queryString ? this.queryOptions.filter(this.spaceRangeFilter(queryString)) : this.queryOptions;
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          cb(results);
+        }, 1000 * Math.random());
+      },
+      spaceRangeFilter(queryString){
+        return (queryOptions) => {
+          return (queryOptions.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+        };
       },
       //反向查询组件
       querySearchAsync(queryString, cb) {
