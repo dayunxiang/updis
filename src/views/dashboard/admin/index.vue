@@ -628,55 +628,60 @@
             <el-tabs type="border-card" style="width: 100%" @tab-click="handleClicktabClick">
               <el-tab-pane label="精确查询">
                 <div style="height:50px;">
-                  <div style="padding:5px 0px;float:left;height:50px;">
-                    <span>选择空间:</span>
-                    <span style="margin:2px 5px;" v-for="lay in spaceList" :key="lay.id">
-                      <el-select v-model="spaceValue" clearable placeholder="请选择" style="width:120px">
-                      <el-option
-                        v-for="item in spaceOptions"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                      </el-option>
-                    </el-select>
+                  <div style="padding:5px 0px;float:left;width:100%">
+                    <span style="float:left;display:inline-block;line-height: 40px;">选择空间:</span>
+                    <div style="float:left;max-width:570px;">
+                      <span style="margin:3px 5px;display:inline-block" v-for="lay in spaceList" :key="lay.id">
+                        <el-select v-model="spaceValue" clearable placeholder="请选择" style="width:180px">
+                        <el-option
+                          v-for="item in spaceOptions"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                      </span>
+                    </div>
+                    <span style="float:left;display:inline-block;margin:5px;">
+                      <el-button style="padding:8px 10px;" type="primary" icon="el-icon-plus" @click="handelAddTea"></el-button>
                     </span>
-                    <el-button style="padding:8px 10px;" type="primary" icon="el-icon-plus" @click="handelAddTea"></el-button>
-                    <!--<el-button style="padding:8px 10px;" type="primary" icon="el-icon-minus" @click="handelDeleteCloa"></el-button>-->
                   </div>
                 </div>
-                <div>
-                  <span class="anshuxing">按属性:</span>
-                  <div style="padding:7px 0px;float:right;margin-right:68px;" class="divSpanButton">
-                    <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
+                <div style="position: relative;">
+                  <div class="anshuxing">按属性:</div>
+                  <div style="float:left;">
+                    <div style="padding-bottom:3px" v-for="list in TypeList" :key="list.id">
+                      <span> 类型: </span>
+                      <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择" style="width:120px">
+                        <el-option
+                          v-for="item in exactQuery"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item">
+                        </el-option>
+                      </el-select>
+                      <span> 属性: </span>
+                      <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择" style="width:160px">
+                        <el-option
+                          v-for="item in attributeData"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                      <span> 属性值: </span>
+                      <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width:120px">
+                        <el-option
+                          v-for="item in attributeValueData"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </div>
                   </div>
-                  <div style="padding:5px 0px;float:left;" v-for="list in TypeList" :key="list.id">
-                    <span> 类型: </span>
-                    <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择" style="width:120px">
-                      <el-option
-                        v-for="item in exactQuery"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item">
-                      </el-option>
-                    </el-select>
-                    <span> 属性: </span>
-                    <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择" style="width:160px">
-                      <el-option
-                        v-for="item in attributeData"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                      </el-option>
-                    </el-select>
-                    <span> 属性值: </span>
-                    <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width:120px">
-                      <el-option
-                        v-for="item in attributeValueData"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                      </el-option>
-                    </el-select>
+                  <div class="divSpanButton">
+                    <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
                   </div>
                   <div style="float:right; display:inline-block;padding-right:140px;">
                     <el-button type="primary" style="padding:5px 10px;" @click="handelDeleteTerm">清楚</el-button>
@@ -761,11 +766,11 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-if="tabPaneLabel" style="background-color: #fff;padding-left: 10px;">
+          <div v-if="tabPaneLabel" style="background-color: #fff;padding-left: 10px;position:relative;">
             <span class="buttonList">
-              <el-button @click="queryHandleClick" v-if="queryHandleClick" type="primary" plain size="mini"
+              <el-button @click="queryHandleClick" v-if="queryHandleShow" type="primary" plain size="mini"
                          :style="'background:' + xiayouBackgound +';color:' + xiayouClolor"> {{xiayouName}} </el-button>
-              <el-button @click="sewageHandleClick" v-if="sewageHandleClick" type="primary" plain size="mini"
+              <el-button @click="sewageHandleClick" v-if="sewageHandleShow" type="primary" plain size="mini"
                          :style="'background:' + shangyouBackgound +';color:' + shangyouClolor"> {{shangyouName}} </el-button>
               <!--<el-button @click="sewageHandleClick" v-if="sewageHandleClick" type="primary" plain size="mini"> 下游污水 + 去向 </el-button>
               <el-button @click="queryHandleClick" v-if="queryHandleClick" type="primary" plain size="mini"> 下游管线 + 排口 </el-button>
@@ -997,8 +1002,8 @@
         shangyouClolor: '#fff',
         xiayouName: '下游管线 + 排口',
         shangyouName: '下游污水 + 去向',
-        queryHandleClick: true,
-        sewageHandleClick: true,
+        queryHandleShow: true,
+        sewageHandleShow: true,
         spaceOptions: [],
         spaceValue: '',
         elOptionValue:'',
@@ -1391,8 +1396,8 @@
           this.xiayouClolor =  '#fff';
           this.shangyouBackgound = 'rgba(255, 0, 255, 0.5)';
           this.shangyouClolor = '#fff';
-          this.queryHandleClick = true;
-          this.sewageHandleClick = true;
+          this.queryHandleShow = true;
+          this.sewageHandleShow = true;
         }
         if(tab.index == '1') {
           this.shangyouName = '下游污水 + 去向';
@@ -1400,14 +1405,14 @@
           this.xiayouClolor =  '#fff';
           this.shangyouBackgound = 'rgba(255, 0, 255, 0.5)';
           this.shangyouClolor = '#fff';
-          this.queryHandleClick = false;
-          this.sewageHandleClick = true;
+          this.queryHandleShow = false;
+          this.sewageHandleShow = true;
         }
         if(tab.index == '2') {
           this.shangyouName = '上游';
           this.xiayouName = '上游';
-          this.queryHandleClick = false;
-          this.sewageHandleClick = false;
+          this.queryHandleShow = false;
+          this.sewageHandleShow = false;
         }
         if(tab.index == '3') {
           this.xiayouName = '上游管道';
@@ -1416,8 +1421,8 @@
           this.xiayouClolor = '#fff';
           this.shangyouBackgound = '#00BF8B';
           this.shangyouClolor = '#fff';
-          this.queryHandleClick = true;
-          this.sewageHandleClick = true;
+          this.queryHandleShow = true;
+          this.sewageHandleShow = true;
         }
       },
       /**** 查询下游水管及排口 *****/
@@ -1666,7 +1671,7 @@
         let id = 1;
         let deId = id++
         let spaceId = _this.spaceList.length;
-        if (spaceId < 3) {
+        if (spaceId < 7) {
           _this.spaceList.push(deId);
         }
       },
@@ -2318,31 +2323,33 @@
       }
       .selectContext {
         position: absolute;
-        top: 58px;
+        /*top: 58px;*/
+        top:-60px;
         left: -800px;
         width: 800px;
         max-height: 700px;
         background: rgba(255, 255, 255, 0.5);
-        .divSpanButton > .el-button{
-          padding:8px 10px;
+        .divSpanButton {
+          padding: 3px 7px;
+          display: inline-block;
+          .el-button{
+            padding:8px 10px;
+          }
         }
         .buttonList {
           position: absolute;
-          top:38%;
-          left: 375px;
+          left: 340px;
+          top: 4px;
           z-index: 1;
           button {
-            padding:7px 10px;
+            padding:8px 10px;
           }
         }
         .anshuxing {
-          display: inline-block;
           float: left;
-          height: 95px;
-          width: 80px;
-          line-height: 43px;
-          padding-right: 11px;
-          text-align: right;
+          width: 85px;
+          text-align: center;
+          line-height: 33px;
         }
         /*.result-ul li {*/
           /*float: left;*/
