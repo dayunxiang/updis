@@ -627,49 +627,64 @@
           <div>
             <el-tabs type="border-card" style="width: 100%" @tab-click="handleClicktabClick">
               <el-tab-pane label="精确查询">
-                <div style="padding:5px 0px;" v-for="list in ulList" :key="list.id">
-                  <span>选择空间：</span>
-                  <el-autocomplete
-                    class="el-input"
-                    style="width:150px"
-                    v-model="spaceRange"
-                    :fetch-suggestions="spaceRangeAsync"
-                    placeholder="请输入查询条件,多条件之间用;(分号隔开)"
-                    :trigger-on-focus="false">
-                  </el-autocomplete>
-                  <span> 类型: </span>
-                  <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择"
-                             style="width:100px">
-                    <el-option
-                      v-for="item in exactQuery"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item">
-                    </el-option>
-                  </el-select>
-                  <span> 属性: </span>
-                  <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择"
-                             style="width:160px">
-                    <el-option
-                      v-for="item in attributeData"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value">
-                    </el-option>
-                  </el-select>
-                  <span> 属性值: </span>
-                  <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择"
-                             style="width:100px">
-                    <el-option
-                      v-for="item in attributeValueData"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value">
-                    </el-option>
-                  </el-select>
+                <div style="height:50px;">
+                  <div style="padding:5px 0px;float:left;height:50px;">
+                    <span>选择空间:</span>
+                    <span style="margin:2px 5px;" v-for="lay in spaceList" :key="lay.id">
+                      <el-select v-model="spaceValue" clearable placeholder="请选择" style="width:120px">
+                      <el-option
+                        v-for="item in spaceOptions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
+                    </span>
+                    <el-button style="padding:8px 10px;" type="primary" icon="el-icon-plus" @click="handelAddTea"></el-button>
+                    <!--<el-button style="padding:8px 10px;" type="primary" icon="el-icon-minus" @click="handelDeleteCloa"></el-button>-->
+                  </div>
+                </div>
+                <div>
+                  <span class="anshuxing">按属性:</span>
+                  <div style="padding:7px 0px;float:right;margin-right:68px;" class="divSpanButton">
+                    <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
+                  </div>
+                  <div style="padding:5px 0px;float:left;" v-for="list in TypeList" :key="list.id">
+                    <span> 类型: </span>
+                    <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择" style="width:120px">
+                      <el-option
+                        v-for="item in exactQuery"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item">
+                      </el-option>
+                    </el-select>
+                    <span> 属性: </span>
+                    <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择" style="width:160px">
+                      <el-option
+                        v-for="item in attributeData"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
+                    <span> 属性值: </span>
+                    <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width:120px">
+                      <el-option
+                        v-for="item in attributeValueData"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
+                  </div>
+                  <div style="float:right; display:inline-block;padding-right:140px;">
+                    <el-button type="primary" style="padding:5px 10px;" @click="handelDeleteTerm">清楚</el-button>
+                    <el-button type="success" style="padding:5px 10px;" @click="handelQueryTerm">查询</el-button>
+                  </div>
                 </div>
                 <!--<div style="float: left;width: 80%;">
-                  <ul v-for="list in ulList" :key="list.id" style="display:inline-block;margin-bottom:10px; ">
+                  <ul v-for="list in TypeList" :key="list.id" style="display:inline-block;margin-bottom:10px; ">
                     <li style="float: left;">
                       <span> 类型 </span>
                       <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择" style="width: 120px">
@@ -705,11 +720,6 @@
                     </li>
                   </ul>
                 </div>-->
-                <div style="padding:2px 22px;float:right" class="divSpanButton">
-                  <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
-                  <el-button type="primary" icon="el-icon-minus" @click="handelDeleteTerm"></el-button>
-                  <el-button type="success" @click="handelQueryTerm">查询</el-button>
-                </div>
                 <!--<ul style="float:left;background:rgba(0,0,0,.1);width: 20%;">
                   <li style="text-align: center;margin: 10px 0;">
                     <el-button type="primary" @click="handelAddTerm" style="padding:5px 15px !important;"> +</el-button>
@@ -736,7 +746,7 @@
                     :trigger-on-focus="false">
                   </el-autocomplete>
                 </div>
-                <div>
+                <div style="width:540px;">
                   <span style="display:inline-block;min-width:85px;text-align:right;">按属性值:</span>
                   <el-autocomplete
                     class="el-input"
@@ -746,13 +756,24 @@
                     placeholder="请输入查询条件,多条件之间用;(分号隔开)"
                     :trigger-on-focus="false">
                   </el-autocomplete>
-                  <el-button type="success" @click="handleSelect" style="display:inline-block;width: 100px;line-height: 34px;">查询</el-button>
+                  <el-button type="success" @click="handleSelect" style="display:inline-block;width:100px;line-height:34px;float:right;margin:10px 0px;">查询</el-button>
                 </div>
               </el-tab-pane>
             </el-tabs>
           </div>
           <div v-if="tabPaneLabel" style="background-color: #fff;padding-left: 10px;">
-            <el-tabs class="tabPaneSpan">
+            <span class="buttonList">
+              <el-button @click="queryHandleClick" v-if="queryHandleClick" type="primary" plain size="mini"
+                         :style="'background:' + xiayouBackgound +';color:' + xiayouClolor"> {{xiayouName}} </el-button>
+              <el-button @click="sewageHandleClick" v-if="sewageHandleClick" type="primary" plain size="mini"
+                         :style="'background:' + shangyouBackgound +';color:' + shangyouClolor"> {{shangyouName}} </el-button>
+              <!--<el-button @click="sewageHandleClick" v-if="sewageHandleClick" type="primary" plain size="mini"> 下游污水 + 去向 </el-button>
+              <el-button @click="queryHandleClick" v-if="queryHandleClick" type="primary" plain size="mini"> 下游管线 + 排口 </el-button>
+              <el-button @click="qiyeHandleClick" v-if="qiyeHandleClick" type="primary" plain size="mini">  下游污水 + 去向 </el-button>
+              <el-button @click="conduitHandleClick" v-if="conduitHandleClick" type="primary" plain size="mini"> 上游管道 </el-button>
+              <el-button @click="massifHandleClick" v-if="massifHandleClick" type="primary" plain size="mini">  上游地块 </el-button>-->
+            </span>
+            <el-tabs class="tabPaneSpan"  @tab-click="tableListComlde">
               <!--<el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
                 &lt;!&ndash;表格&ndash;&gt;
                 <el-table :data="tableData" @selection-change="queryChangeHandle"
@@ -761,20 +782,26 @@
                     <el-table-column align="center" default-sort type="selection"></el-table-column>
                     <el-table-column fixed width="50" label="序号" align="center" type="index"></el-table-column>
                     <template v-for="(col ,index) in cols">
-                      <el-table-column v-if="col.prop !== 'JSZT'" :prop="col.prop" :label="col.label" :width="col.width"
+                      <el-table-column v-if="col.type === 'sort'" :prop="col.prop" :label="col.label" :width="col.width"
                                        :show-overflow-tooltip="true" align="center" sortable>
                       </el-table-column>
-                      <el-table-column v-if="col.prop === 'JSZT'" :prop="col.prop" :label="col.label" :width="col.width"
-                                       :show-overflow-tooltip="true" align="center" sortable column-key="date" :filters="listDemo"
-                                       :filter-method="filterHandler">
+                      <el-table-column v-if="col.type === 'YDLXnor'" :filters="YDLXData" :filter-method="YDLXHandler"
+                                       :prop="col.prop" :label="col.label" :width="col.width" :column-key="col.prop"
+                                       :show-overflow-tooltip="true" align="center" sortable>
+                      </el-table-column>
+                      <el-table-column v-if="col.type === 'JSZTnor'" :filters="JSZTData" :filter-method="JSZTHandler"
+                                       :prop="col.prop" :label="col.label" :width="col.width" :column-key="col.prop"
+                                       :show-overflow-tooltip="true" align="center" sortable>
+                      </el-table-column>
+                      <el-table-column v-if="col.type === 'SSPSFQnor'" :filters="SSPSFQData" :filter-method="SSPSFQHandler"
+                                       :prop="col.prop" :label="col.label" :width="col.width":column-key="col.prop"
+                                       :show-overflow-tooltip="true" align="center" sortable>
                       </el-table-column>
                     </template>
-                    <el-table-column align="center" fixed="right" label="操作" width="130">
+                    <el-table-column align="center" fixed="right" label="操作" width="140">
                       <template slot-scope="scope">
-                        <el-button @click="queryHandleClick" type="primary" plain size="small">查询</el-button>
-                        <el-button v-if="isShowButton" :disabled="isDisabled" type="primary" plain size="small" class="prohibit"
-                                   @click="queryLowerSwim">查询下游
-                        </el-button>
+                        <el-button @click="queryHandleClick" type="primary" plain size="mini">查询下游水管及排口</el-button>
+                        <el-button @click="sewageHandleClick" type="primary" plain size="mini">查询下游污水去向  </el-button>
                       </template>
                     </el-table-column>
                   </template>
@@ -790,7 +817,6 @@
                 </el-pagination>
               </el-tab-pane>-->
               <el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
-                <!--<el-table :data="showResultSlice"-->
                 <el-table :data="(showResult.subcatchments).slice((currentPageNum1-1)*totalNumber1, currentPageNum1*totalNumber1)"
                           @selection-change="queryChangeHandle"
                           style="width: 100%" height="280" border >
@@ -819,15 +845,6 @@
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="现状控制率" prop="现状控制率"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="规划控制率" prop="规划控制率"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="130" :show-overflow-tooltip="true" label="面积(公顷)" prop="area"></el-table-column>
-                  <el-table-column align="center" fixed="right" label="操作" width="140">
-                    <template slot-scope="scope">
-                      <el-button @click="queryHandleClick" type="primary" plain size="mini">查询下游水管及排口</el-button>
-                      <el-button @click="sewageHandleClick" type="primary" plain size="mini">查询下游污水去向  </el-button>
-                      <!--<el-button type="primary" plain size="small" v-if="isShowButton" :disabled="isDisabled" class="prohibit"
-                                 @click="queryLowerSwim">查询下游
-                      </el-button>-->
-                    </template>
-                  </el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange1"
@@ -974,6 +991,16 @@
     },
     data() {
       return {
+        xiayouBackgound: 'rgba(18, 54, 239, 0.5)',
+        xiayouClolor: '#fff',
+        shangyouBackgound: 'rgba(255, 0, 255, 0.5)',
+        shangyouClolor: '#fff',
+        xiayouName: '下游管线 + 排口',
+        shangyouName: '下游污水 + 去向',
+        queryHandleClick: true,
+        sewageHandleClick: true,
+        spaceOptions: [],
+        spaceValue: '',
         elOptionValue:'',
         elOptionData:[],
         comend: null,
@@ -1128,7 +1155,8 @@
           },
         ],
         activeName2: 'first',
-        ulList: [0],
+        TypeList: [0],
+        spaceList: [0],
         exactQuery: [
           {value: '1', label: '地块'},
           {value: '2', label: '工业企业'},
@@ -1146,19 +1174,24 @@
         subLayData: [], // 地块数据
         shapes: [],
         /***************************************************/
-        options: [{
-          value: '选项1',
-          label: '地块'
-        }, {
-          value: '选项2',
-          label: '工业企业'
-        }, {
-          value: '选项3',
-          label: '排口'
-        }, {
-          value: '选项4',
-          label: '管线'
-        }],
+        options: [
+          {
+            value: '选项1',
+            label: '地块'
+          },
+          {
+            value: '选项2',
+            label: '工业企业'
+          },
+          {
+            value: '选项3',
+            label: '排口'
+          },
+          {
+            value: '选项4',
+            label: '管线'
+          }
+        ],
         value4: '',
         //
         isLoading: false,
@@ -1349,10 +1382,50 @@
         const property = column['property'];
         return row[property] === value;
       },
+      /**** table页的切换 *******/
+      tableListComlde(tab, event){
+        if(tab.index == '0') {
+          this.shangyouName = '下游污水 + 去向';
+          this.xiayouName = '下游管线 + 排口';
+          this.xiayouBackgound = 'rgba(18, 54, 239, 0.5)';
+          this.xiayouClolor =  '#fff';
+          this.shangyouBackgound = 'rgba(255, 0, 255, 0.5)';
+          this.shangyouClolor = '#fff';
+          this.queryHandleClick = true;
+          this.sewageHandleClick = true;
+        }
+        if(tab.index == '1') {
+          this.shangyouName = '下游污水 + 去向';
+          this.xiayouBackgound = 'rgba(18, 54, 239, 0.5)';
+          this.xiayouClolor =  '#fff';
+          this.shangyouBackgound = 'rgba(255, 0, 255, 0.5)';
+          this.shangyouClolor = '#fff';
+          this.queryHandleClick = false;
+          this.sewageHandleClick = true;
+        }
+        if(tab.index == '2') {
+          this.shangyouName = '上游';
+          this.xiayouName = '上游';
+          this.queryHandleClick = false;
+          this.sewageHandleClick = false;
+        }
+        if(tab.index == '3') {
+          this.xiayouName = '上游管道';
+          this.shangyouName = '上游地块';
+          this.xiayouBackgound = '#00BF8B';
+          this.xiayouClolor = '#fff';
+          this.shangyouBackgound = '#00BF8B';
+          this.shangyouClolor = '#fff';
+          this.queryHandleClick = true;
+          this.sewageHandleClick = true;
+        }
+      },
       /**** 查询下游水管及排口 *****/
       queryHandleClick(){},
       /**** 查询下游污水去向 *****/
       sewageHandleClick(){},
+      /**** 查询企业下游污水 ******/
+      qiyeHandleClick(){},
       /**** 查询上游管道 *****/
       conduitHandleClick(){},
       /**** 查询上游地块 *****/
@@ -1581,24 +1654,37 @@
       //精确查询  ---  增加查询条件
       handelAddTerm() {
         const _this = this;
-        let lengthId = _this.ulList.length;
+        let lengthId = _this.TypeList.length;
         let id = 1;
         let deId = id++
         if (lengthId < 3) {
-          this.ulList.push(deId);
+          this.TypeList.push(deId);
+        }
+      },
+      handelAddTea(){
+        const _this = this;
+        let id = 1;
+        let deId = id++
+        let spaceId = _this.spaceList.length;
+        if (spaceId < 3) {
+          _this.spaceList.push(deId);
         }
       },
       /************* 清空查询 ***************/
       handelDeleteTerm() {
-        let index = this.ulList.length - 1;
-        this.ulList.splice(1, index);
-        // console.log(this.ulList);
+        let index = this.TypeList.length - 1;
+        this.TypeList.splice(1, index);
+        let indexId = this.spaceList.length - 1;
+        this.spaceList.splice(1, indexId);
       },
+      /*handelDeleteCloa(){
+        let indexId = this.spaceList.length - 1;
+        this.spaceList.splice(1, indexId);
+      },*/
       /************* 查询按钮 ***************/
       handelQueryTerm() {
         const _this = this;
-        if (_this.value1 !== '' && _this.value2 !== '' && _this.value3 !== ''
-        ) {
+        if (_this.value1 !== '' && _this.value2 !== '' && _this.value3 !== '') {
           console.log("属性传值+++++++", _this.value2);
           _this.tabPaneLabel = true;
           _.each(_this.shapes, function (vb) {
@@ -1608,18 +1694,18 @@
               _this.cols = [];   // 初始化表头
               _this.tableData = [];  // 初始化表格数据
               _this.cols = [
-                {width: '100', prop: 'name', label: '编号'},
-                {width: '110', prop: 'YDLX', label: '用地类型'},
-                {width: '120', prop: 'JSZT', label: '建设状态', culme: 'modify'},
-                {width: '110', prop: 'XMMC', label: '项目名称'},
-                {width: '110', prop: 'PRHD', label: '排入河道'},
-                {width: '110', prop: 'SSLY', label: '所属流域'},
-                {width: '150', prop: 'SSPSFQ', label: '所属排水分区'},
-                {width: '180', prop: 'ZBQY', label: '是否为正本清源项目'},
-                {width: '150', prop: 'HMCS', label: '海绵建设情况'},
-                {width: '130', prop: '现状控制率', label: '现状控制率'},
-                {width: '130', prop: '规划控制率', label: '规划控制率'},
-                {width: '130', prop: 'area', label: '面积(公顷)'}
+                {width: '100', prop: 'name', label: '编号', type: "sort"},
+                {width: '120', prop: 'YDLX', label: '用地类型', type: "YDLXnor"},
+                {width: '120', prop: 'JSZT', label: '建设状态', type: "JSZTnor" },
+                {width: '110', prop: 'XMMC', label: '项目名称', type: "sort"},
+                {width: '110', prop: 'PRHD', label: '排入河道', type: "sort"},
+                {width: '110', prop: 'SSLY', label: '所属流域', type: "sort"},
+                {width: '160', prop: 'SSPSFQ', label: '所属排水分区', type: "SSPSFQnor"},
+                {width: '180', prop: 'ZBQY', label: '是否为正本清源项目', type: "sort"},
+                {width: '150', prop: 'HMCS', label: '海绵建设情况', type: "sort"},
+                {width: '130', prop: '现状控制率', label: '现状控制率', type: "sort"},
+                {width: '130', prop: '规划控制率', label: '规划控制率', type: "sort"},
+                {width: '130', prop: 'area', label: '面积(公顷)', type: "sort"}
               ],
               _this.tableData.push({
                 name: des.name,
@@ -2239,6 +2325,24 @@
         background: rgba(255, 255, 255, 0.5);
         .divSpanButton > .el-button{
           padding:8px 10px;
+        }
+        .buttonList {
+          position: absolute;
+          top:38%;
+          left: 375px;
+          z-index: 1;
+          button {
+            padding:7px 10px;
+          }
+        }
+        .anshuxing {
+          display: inline-block;
+          float: left;
+          height: 95px;
+          width: 80px;
+          line-height: 43px;
+          padding-right: 11px;
+          text-align: right;
         }
         /*.result-ul li {*/
           /*float: left;*/
