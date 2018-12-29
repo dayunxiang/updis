@@ -684,7 +684,7 @@
                     <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
                   </div>
                   <div style="float:right; display:inline-block;padding-right:140px;">
-                    <el-button type="primary" style="padding:5px 10px;" @click="handelDeleteTerm">清楚</el-button>
+                    <el-button type="primary" style="padding:5px 10px;" @click="handelDeleteTerm">清除</el-button>
                     <el-button type="success" style="padding:5px 10px;" @click="handelQueryTerm">查询</el-button>
                   </div>
                 </div>
