@@ -54,7 +54,7 @@ export function geojson2cytoscape(geojson) {
 
 
 /**
- * 获取地块的中心. TODO: 测试
+ * 获取地块的中心. 测试
  * @param {*} feature geojson里面对应的feature
  */
 export function getCenterPointOfSubcatchment(feature) {
@@ -72,7 +72,7 @@ export function getCenterPointOfSubcatchment(feature) {
 
 
 /**
- * 判断一个点是否在一个多边形内. TODO: 需要测试
+ * 判断一个点是否在一个多边形内. 需要测试
  * @param {*} node cytoscape里的node对象
  * @param {*} feature geojson里的feature对象
  */
@@ -274,4 +274,84 @@ export function calcLineRotateAngle(line){
   }
 
   return 360 - Math.atan(delta_y / delta_x) / Math.PI * 180
+}
+
+/**
+ * 判断检查井是否在空间范围内
+ * @param junctionShape 检查井shape元素
+ * @param rangeShape 空间范围shape元素
+ * @returns {boolean}
+ */
+export function isJunctionInRange(junctionShape, rangeShape) {
+  let coordinate = junctionShape.properties.geometry.coordinates;
+  let point = new BMap.Point(coordinate[1], coordinate[0]);
+
+  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
+  });
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+}
+
+/**
+ * 判断排口是否在空间范围内
+ * @param outfallShape
+ * @param rangeShape
+ * @returns {Boolean|*}
+ */
+export function isOutfallInRange(outfallShape, rangeShape) {
+  let coordinate = outfallShape.properties.geometry.coordinates;
+  let point = new BMap.Point(coordinate[1], coordinate[0]);
+
+  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
+  });
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+}
+
+/**
+ * 判断地块是否在空间范围内
+ * @param subcatchmentShape
+ * @param rangeShape
+ */
+export function isSubcatchmentInRange(subcatchmentShape, rangeShape) {
+  let reversedCoordinate = getCenterPointOfSubcatchment(subcatchmentShape.properties);
+  let point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1]);
+
+  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
+  });
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+}
+
+/**
+ * 判断公司是否在空间范围内
+ * @param companyShape
+ * @param rangeShape
+ */
+export function isCompanyInRange(companyShape, rangeShape) {
+  let reversedCoordinate = getCenterPointOfSubcatchment(companyShape.properties);
+  let point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1]);
+
+  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
+  });
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+}
+
+/**
+ * 判断管线是否在空间范围内
+ * @param conduitShape
+ * @param rangeShape
+ */
+export function isConduitInRange(conduitShape, rangeShape) {
+  let coordinate1 = conduitShape.properties.geometry.coordinates[0];
+  let coordinate2 = conduitShape.properties.geometry.coordinates[1];
+  let point1 = new BMap.Point(coordinate1[1], coordinate1[0]);
+  let point2 = new BMap.Point(coordinate2[1], coordinate2[0]);
+
+  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
+  });
+  return BMapLib.GeoUtils.isPointInPolygon(point1, new BMap.Polygon(overlays))
+    || BMapLib.GeoUtils.isPointInPolygon(point2, new BMap.Polygon(overlays));
 }
