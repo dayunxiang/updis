@@ -6,8 +6,8 @@ import permission from './modules/permission'
 import tagsView from './modules/tagsView'
 import user from './modules/user'
 import getters from './getters'
-//mapData
-import mapData from  './modules/mapData'
+// mapData
+import mapData from './modules/mapData'
 
 Vue.use(Vuex)
 

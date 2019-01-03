@@ -1,29 +1,28 @@
-const  mapData = {
-   state:{
-     mapData:{},
-     info:{},
-     resultData:{}
-   },
-  actions:{
-     getMapData(ctx,mapData){
-        ctx.commit('getMapData',mapData)
-     },
-     getInfo(ctx,info){
-       ctx.commit('getInfo',info)
-     },
-     getResultData(ctx,resultData){
-       ctx.commit('getResultData',resultData)
-     }
+const mapData = {
+  state: {
+    mapData: {},
+    info: {},
+    resultData: {}
   },
-  mutations:{
-    getMapData(state,mapData){
-      state.mapData = mapData;
-
+  actions: {
+    getMapData(ctx, mapData) {
+      ctx.commit('getMapData', mapData)
     },
-    getInfo(state,info){
-      state.info = info;
+    getInfo(ctx, info) {
+      ctx.commit('getInfo', info)
     },
-    getResultData(state,resultData){
+    getResultData(ctx, resultData) {
+      ctx.commit('getResultData', resultData)
+    }
+  },
+  mutations: {
+    getMapData(state, mapData) {
+      state.mapData = mapData
+    },
+    getInfo(state, info) {
+      state.info = info
+    },
+    getResultData(state, resultData) {
       state.resultData = resultData
     }
   }

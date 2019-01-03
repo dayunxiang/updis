@@ -1671,28 +1671,20 @@
       handelQueryTerm() {
         const _this = this
         console.log('_this.shapes', _this.shapes)
-        // placeholderModel属性值
         self.selectResult.subcatchments = []
         self.selectResult.conduits = []
         self.selectResult.outfalls = []
         self.selectResult.companies = []
         self.selectResult.junctions = []
-  
-        // self.selectResult = {
-        //   subcatchments: _.reject(matchedShapes, function(item) {
-        //     return item.category !== 'SUBCATCHMENTS'
-        //   }),
-        //   conduits: _.reject(matchedShapes, function(item) {
-        //     return item.category !== 'CONDUITS'
-        //   }),
-        //   junctions: _.reject(matchedShapes, function(item) {
-        //     return item.category !== 'JUNCTIONS'
-        //   }),
-        //   outfalls: _.reject(matchedShapes, function(item) {
-        //     return item.category !== 'OUTFALLS'
-        //   }),
-        //   companies: _.reject(matchedShapes, function(item) {
-        //     return item.category !== 'COMPANY'
+        console.log('_this.value1:', _this.value1)
+        console.log('_this.value2:', _this.value2)
+        console.log('placeholderModel属性值:', _this.placeholderModel)
+        let matchedShapes = []
+        // if (_this.value1) {
+        //   matchedShapes = _.chain(self.shapes).reject(shape => {
+        //     if (shape.category !== '') {
+        //
+        //     }
         //   })
         // }
   

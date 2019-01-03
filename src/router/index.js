@@ -34,7 +34,7 @@ export const constantRouterMap = [
   { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
   { path: '/404', component: _import('errorPage/404'), hidden: true },
   { path: '/401', component: _import('errorPage/401'), hidden: true },
-  //项目管理
+  // 项目管理
   {
     path: '',
     component: Layout,
@@ -43,7 +43,7 @@ export const constantRouterMap = [
       path: 'project-manager',
       component: _import('project-manager/index'),
       name: 'project-manager',
-      meta: { title: '项目管理', icon: 'tab' , noCache: true }
+      meta: { title: '项目管理', icon: 'tab', noCache: true }
     }]
   },
   // 首页
@@ -51,7 +51,7 @@ export const constantRouterMap = [
     path: '/dashboard',
     component: Layout,
     redirect: '/dashboard/index',
-    hidden:true,
+    hidden: true,
     children: [
       {
         path: 'index',
@@ -86,26 +86,26 @@ export const asyncRouterMap = [
       // 点管理
       {
         path: '/point-manager',
-        component: () => import('@/views/table/pointManager/index'),   // Parent router-view
+        component: () => import('@/views/table/pointManager/index'), // Parent router-view
         name: 'pointManager',
         meta: {
           title: '点管理',
-          icon: 'documentation',
+          icon: 'documentation'
         },
         redirect: '/infoManager/point-manager/outfall',
-        //三级子菜单
+        // 三级子菜单
         children: [
           {
             path: 'outfall',
             component: () => import('@/views/table/pointManager/outfall'),
             name: 'outfall',
-            meta: { title: '排口管理' },
+            meta: { title: '排口管理' }
           },
           {
             path: 'company',
             component: () => import('@/views/table/pointManager/company'),
             name: 'company',
-            meta: { title: '工业企业管理' },
+            meta: { title: '工业企业管理' }
           }
         ]
       },
@@ -130,7 +130,7 @@ export const asyncRouterMap = [
           icon: 'documentation',
           noCache: true
         }
-      },
+      }
     ]
   },
   /**
@@ -229,7 +229,7 @@ export const asyncRouterMap = [
         meta: {
           title: '年径流总量控制率转换',
           noCache: true
-        },
+        }
       }
     ]
   },

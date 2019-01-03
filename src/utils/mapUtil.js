@@ -1,7 +1,8 @@
 import cytoscape from 'cytoscape'
 import _ from 'lodash'
+import BMap from 'BMap'
 
-const inside = require('point-in-polygon');
+const inside = require('point-in-polygon')
 
 /**
  * 将GeoJSON转换为cytoscape的拓扑
@@ -20,7 +21,7 @@ export function geojson2cytoscape(geojson) {
             x: feature['geometry']['coordinates'][1],
             y: feature['geometry']['coordinates'][0]
           },
-          properties:  feature
+          properties: feature
         }
       })
     }
@@ -52,24 +53,22 @@ export function geojson2cytoscape(geojson) {
   return cy
 }
 
-
 /**
  * 获取地块的中心. 测试
  * @param {*} feature geojson里面对应的feature
  */
 export function getCenterPointOfSubcatchment(feature) {
-  if(feature['geometry']['type'] !== 'Polygon') {
+  if (feature['geometry']['type'] !== 'Polygon') {
     console.warn('输入的feature不合法：feature的类型应该为Polygon')
     return []
   }
 
-  let coord = feature['geometry']['coordinates'][0]
-  let center = coord.reduce(function (x,y) {
-    return [x[0] + y[0]/coord.length, x[1] + y[1]/coord.length]
-  }, [0,0])
+  const coord = feature['geometry']['coordinates'][0]
+  const center = coord.reduce(function(x, y) {
+    return [x[0] + y[0] / coord.length, x[1] + y[1] / coord.length]
+  }, [0, 0])
   return [center[1], center[0]]
 }
-
 
 /**
  * 判断一个点是否在一个多边形内. 需要测试
@@ -77,14 +76,13 @@ export function getCenterPointOfSubcatchment(feature) {
  * @param {*} feature geojson里的feature对象
  */
 export function isNodeInPolygon(node, feature) {
-  if(feature['geometry']['type'] !== 'Polygon') {
+  if (feature['geometry']['type'] !== 'Polygon') {
     console.warn('输入的feature不合法：feature的类型应该为Polygon')
     return []
   }
 
   return inside([node.position().x, node.position().y], feature['geometry']['coordinates'][0])
 }
-
 
 /**
  * 获取跟点最接近的检查井. @TODO: 需要支持conduitType
@@ -96,22 +94,22 @@ export function getNearestNodeOfPoint(point, cy, conduitType) {
   let minDistance = Infinity
   let nearestNode = null
   let nodeDistance = 0
-  for(let i=0;i<cy.nodes().length;i++) {
-    nodeDistance = (point[0]-cy.nodes()[i].data().position.x)**2 + (point[1]-cy.nodes()[i].data().position.y)**2
+  for (let i = 0; i < cy.nodes().length; i++) {
+    nodeDistance = (point[0] - cy.nodes()[i].data().position.x) ** 2 + (point[1] - cy.nodes()[i].data().position.y) ** 2
     // 判断点对应的导管类型。
-    if(!!conduitType) {
-      let edges = cy.nodes()[i].connectedEdges()
-      if(!edges.length){
+    if (conduitType) {
+      const edges = cy.nodes()[i].connectedEdges()
+      if (!edges.length) {
         continue
       }
-      if(edges[0].data()['properties']['properties']['leixing'] === conduitType) {
-        if(nodeDistance < minDistance) {
+      if (edges[0].data()['properties']['properties']['leixing'] === conduitType) {
+        if (nodeDistance < minDistance) {
           nearestNode = cy.nodes()[i]
           minDistance = nodeDistance
         }
       }
     } else {
-      if(nodeDistance < minDistance) {
+      if (nodeDistance < minDistance) {
         nearestNode = cy.nodes()[i]
         minDistance = nodeDistance
       }
@@ -121,7 +119,6 @@ export function getNearestNodeOfPoint(point, cy, conduitType) {
   return nearestNode.data()
 }
 
-
 /**
  * 查询地块下游管道.
  * @param feature
@@ -130,13 +127,13 @@ export function getNearestNodeOfPoint(point, cy, conduitType) {
  * @returns {Array}
  */
 export function getDescendantConduitsOfSubcatchment(feature, cy, conduitType) {
-  if(feature['geometry']['type'] !== 'Polygon') {
+  if (feature['geometry']['type'] !== 'Polygon') {
     console.warn('输入的feature不合法：feature的类型应该为Polygon')
     return []
   }
 
-  let subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
-  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
+  const subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
+  const nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
 
   return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().edges(), edge => {
     return edge.data()
@@ -147,7 +144,7 @@ export function getDescendantConduitsOfSubcatchment(feature, cy, conduitType) {
  * TODO: 查询地块下游地块. 暂时不实现
  */
 export function getDescendantSubcatchmentsOfSubcatchment(feature, cy) {
-  if(feature['geometry']['type'] !== 'Polygon') {
+  if (feature['geometry']['type'] !== 'Polygon') {
     console.warn('输入的feature不合法：feature的类型应该为Polygon')
     return []
   }
@@ -161,13 +158,13 @@ export function getDescendantSubcatchmentsOfSubcatchment(feature, cy) {
  * @returns {Array}
  */
 export function getDescendantOutfallsOfSubcatchment(feature, cy, conduitType) {
-  if(feature['geometry']['type'] !== 'Polygon') {
+  if (feature['geometry']['type'] !== 'Polygon') {
     console.warn('输入的feature不合法：feature的类型应该为Polygon')
     return []
   }
 
-  let subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
-  let nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
+  const subcatchmentCenterPoint = getCenterPointOfSubcatchment(feature)
+  const nearestJunctionNodeData = getNearestNodeOfPoint(subcatchmentCenterPoint, cy, conduitType)
 
   return _.map(cy.nodes(`[id="${nearestJunctionNodeData['id']}"]`).successors().nodes('[businessType="OUTFALLS"]'), node => {
     return node.data()
@@ -178,18 +175,17 @@ export function getDescendantOutfallsOfSubcatchment(feature, cy, conduitType) {
  * 查询排口上游管道
  */
 export function getAncestorConduitsOfOutfall(feature, cy) {
-  if(feature['geometry']['type'] !== 'Point') {
+  if (feature['geometry']['type'] !== 'Point') {
     console.warn('输入的feature不合法：feature的类型应该为Point')
     return []
   }
 
-  let outfallNode = cy.nodes(`[id="${feature.properties.name}"]`)
+  const outfallNode = cy.nodes(`[id="${feature.properties.name}"]`)
 
   return _.map(outfallNode.predecessors().edges(), edge => {
     return edge.data()
   })
 }
-
 
 /**
  * 计算得到所有地块最近点的字典.
@@ -197,19 +193,18 @@ export function getAncestorConduitsOfOutfall(feature, cy) {
  * @param cy
  */
 export function calcAllSubcatchmentNearestNode(geojson, cy) {
-  let allSubcatchments = _.reject(geojson['features'], feature => {
+  const allSubcatchments = _.reject(geojson['features'], feature => {
     return feature['geometry']['type'] !== 'Polygon'
   })
 
-  let map = {}
+  const map = {}
   _.each(allSubcatchments, subcatchment => {
-    let centerPoint = getCenterPointOfSubcatchment(subcatchment)
+    const centerPoint = getCenterPointOfSubcatchment(subcatchment)
     map[subcatchment['properties']['name']] = getNearestNodeOfPoint(centerPoint, cy)['id']
   })
 
   return map
 }
-
 
 /**
  * 根据名称查找geojson的feature
@@ -219,14 +214,13 @@ export function calcAllSubcatchmentNearestNode(geojson, cy) {
 export function findFeatureByName(name, geojson) {
   let ret = null
   _.each(geojson['features'], feature => {
-    if(feature['properties']['name'] === name) {
+    if (feature['properties']['name'] === name) {
       ret = feature
       return 0
     }
   })
   return ret
 }
-
 
 /**
  * 查询排口上游地块
@@ -236,20 +230,20 @@ export function findFeatureByName(name, geojson) {
  * @param {*} subcatchmentNearestNodes
  */
 export function getAncestorSubcatchmentsOfOutfall(outfallFeature, geojson, cy, subcatchmentNearestNodes) {
-  if(outfallFeature['geometry']['type'] !== 'Point') {
+  if (outfallFeature['geometry']['type'] !== 'Point') {
     console.warn('输入的feature不合法：feature的类型应该为Point')
     return []
   }
 
-  let outfallNode = cy.nodes(`[id="${outfallFeature.properties.name}"]`)
+  const outfallNode = cy.nodes(`[id="${outfallFeature.properties.name}"]`)
 
   // 得到排水口所有上游的检查井
-  let allPredecessorNodes = outfallNode.predecessors().nodes()
+  const allPredecessorNodes = outfallNode.predecessors().nodes()
 
   // 根据检查井得到对应的地块
-  let ancestorSubcatchmentFeatures = []
-  for(let subcatchmentName in subcatchmentNearestNodes) {
-    if(allPredecessorNodes.filter(`[id="${subcatchmentNearestNodes[subcatchmentName]}"]`).length) {
+  const ancestorSubcatchmentFeatures = []
+  for (const subcatchmentName in subcatchmentNearestNodes) {
+    if (allPredecessorNodes.filter(`[id="${subcatchmentNearestNodes[subcatchmentName]}"]`).length) {
       ancestorSubcatchmentFeatures.push(findFeatureByName(subcatchmentName, geojson))
     }
   }
@@ -257,19 +251,18 @@ export function getAncestorSubcatchmentsOfOutfall(outfallFeature, geojson, cy, s
   return ancestorSubcatchmentFeatures
 }
 
-
 /**
  * 计算无向线的角度。这个角度以css transform rotate里的值为标准。 范围为 +/- 90°
  * @param line [[x1, y1], [x2, y2]]
  */
-export function calcLineRotateAngle(line){
-  let delta_x = line[1][0] - line[0][0]
-  let delta_y = line[1][1] - line[0][1]
-  if(!delta_x && delta_y > 0) {
+export function calcLineRotateAngle(line) {
+  const delta_x = line[1][0] - line[0][0]
+  const delta_y = line[1][1] - line[0][1]
+  if (!delta_x && delta_y > 0) {
     return 270
   }
 
-  if(!delta_x && delta_y < 0) {
+  if (!delta_x && delta_y < 0) {
     return 90
   }
 
@@ -283,13 +276,13 @@ export function calcLineRotateAngle(line){
  * @returns {boolean}
  */
 export function isJunctionInRange(junctionShape, rangeShape) {
-  let coordinate = junctionShape.properties.geometry.coordinates;
-  let point = new BMap.Point(coordinate[1], coordinate[0]);
+  const coordinate = junctionShape.properties.geometry.coordinates
+  const point = new BMap.Point(coordinate[1], coordinate[0])
 
-  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
-    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
-  });
-  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+  const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
+  })
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays))
 }
 
 /**
@@ -299,13 +292,13 @@ export function isJunctionInRange(junctionShape, rangeShape) {
  * @returns {Boolean|*}
  */
 export function isOutfallInRange(outfallShape, rangeShape) {
-  let coordinate = outfallShape.properties.geometry.coordinates;
-  let point = new BMap.Point(coordinate[1], coordinate[0]);
+  const coordinate = outfallShape.properties.geometry.coordinates
+  const point = new BMap.Point(coordinate[1], coordinate[0])
 
-  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
-    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
-  });
-  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+  const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
+  })
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays))
 }
 
 /**
@@ -314,13 +307,13 @@ export function isOutfallInRange(outfallShape, rangeShape) {
  * @param rangeShape
  */
 export function isSubcatchmentInRange(subcatchmentShape, rangeShape) {
-  let reversedCoordinate = getCenterPointOfSubcatchment(subcatchmentShape.properties);
-  let point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1]);
+  const reversedCoordinate = getCenterPointOfSubcatchment(subcatchmentShape.properties)
+  const point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1])
 
-  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
-    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
-  });
-  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+  const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
+  })
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays))
 }
 
 /**
@@ -329,13 +322,13 @@ export function isSubcatchmentInRange(subcatchmentShape, rangeShape) {
  * @param rangeShape
  */
 export function isCompanyInRange(companyShape, rangeShape) {
-  let reversedCoordinate = getCenterPointOfSubcatchment(companyShape.properties);
-  let point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1]);
+  const reversedCoordinate = getCenterPointOfSubcatchment(companyShape.properties)
+  const point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1])
 
-  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
-    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
-  });
-  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays));
+  const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
+  })
+  return BMapLib.GeoUtils.isPointInPolygon(point, new BMap.Polygon(overlays))
 }
 
 /**
@@ -344,14 +337,14 @@ export function isCompanyInRange(companyShape, rangeShape) {
  * @param rangeShape
  */
 export function isConduitInRange(conduitShape, rangeShape) {
-  let coordinate1 = conduitShape.properties.geometry.coordinates[0];
-  let coordinate2 = conduitShape.properties.geometry.coordinates[1];
-  let point1 = new BMap.Point(coordinate1[1], coordinate1[0]);
-  let point2 = new BMap.Point(coordinate2[1], coordinate2[0]);
+  const coordinate1 = conduitShape.properties.geometry.coordinates[0]
+  const coordinate2 = conduitShape.properties.geometry.coordinates[1]
+  const point1 = new BMap.Point(coordinate1[1], coordinate1[0])
+  const point2 = new BMap.Point(coordinate2[1], coordinate2[0])
 
-  let overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
-    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402); // 转换到百度地图的结果有偏移，这里做矫正。
-  });
-  return BMapLib.GeoUtils.isPointInPolygon(point1, new BMap.Polygon(overlays))
-    || BMapLib.GeoUtils.isPointInPolygon(point2, new BMap.Polygon(overlays));
+  const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
+    return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
+  })
+  return BMapLib.GeoUtils.isPointInPolygon(point1, new BMap.Polygon(overlays)) ||
+    BMapLib.GeoUtils.isPointInPolygon(point2, new BMap.Polygon(overlays))
 }

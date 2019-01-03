@@ -30,7 +30,7 @@ import './mock' // simulation data
 
 import * as filters from './filters' // global filters
 // 郭世伟增加
-import './assets/icon/iconfont.css' //iconfont图标库
+import './assets/icon/iconfont.css' // iconfont图标库
 import BaiduMap from 'vue-baidu-map'// 百度地图
 // Vue.use(BaiduMap,{
 //   ak:'b6f5329e518fb9d4e22d4fe7900332b6'
@@ -39,11 +39,10 @@ import BaiduMap from 'vue-baidu-map'// 百度地图
 // import Blob from './excel/Blob.js'
 // import Export2Excel from './excel/Export2Excel.js'
 
-
 /* 添加 echarts */
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
-/*******************************/
+/** *****************************/
 
 // @TODO socket.io
 
@@ -54,7 +53,7 @@ Vue.use(VueAwesomeSwiper) // vue-awesome-swiper
 
 Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
-  ak: "uH3KggnMkUjGjbG5F6nHGVzgavzdWfMl"
+  ak: 'uH3KggnMkUjGjbG5F6nHGVzgavzdWfMl'
 })
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
