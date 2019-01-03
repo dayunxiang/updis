@@ -689,56 +689,6 @@
                     <el-button type="success" style="padding:12px 35px;" @click="handelQueryTerm">查询</el-button>
                   </div>
                 </div>
-                <!--<div style="float: left;width: 80%;">
-                  <ul v-for="list in TypeList" :key="list.id" style="display:inline-block;margin-bottom:10px; ">
-                    <li style="float: left;">
-                      <span> 类型 </span>
-                      <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择" style="width: 120px">
-                        <el-option
-                          v-for="item in exactQuery"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item">
-                        </el-option>
-                      </el-select>
-                    </li>
-                    <li style="float: left">
-                      <span> 属性 </span>
-                      <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择" style="width: 150px">
-                        <el-option
-                          v-for="item in attributeData"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </li>
-                    <li style="float: left">
-                      <span> 属性值 </span>
-                      <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width: 200px">
-                        <el-option
-                          v-for="item in attributeValueData"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </li>
-                  </ul>
-                </div>-->
-                <!--<ul style="float:left;background:rgba(0,0,0,.1);width: 20%;">
-                  <li style="text-align: center;margin: 10px 0;">
-                    <el-button type="primary" @click="handelAddTerm" style="padding:5px 15px !important;"> +</el-button>
-                  </li>
-                  <li style="text-align: center;margin: 10px 0;">
-                    <el-button type="primary" @click="handelDeleteTerm" style="padding:5px 15px !important;"> -
-                    </el-button>
-                  </li>
-                  <li style="text-align: center;margin: 10px 0;">
-                    <el-button type="success" @click="handelQueryTerm" style="padding:5px 15px !important;">查询
-                    </el-button>
-                  </li>
-                </ul>-->
               </el-tab-pane>
               <el-tab-pane label="模糊查询">
                 <div style="padding:5px 0px;">
@@ -781,50 +731,8 @@
                          type="primary" plain size="mini">上游地块</el-button>
             </span>
             <el-tabs class="tabPaneSpan"  @tab-click="tableListComlde">
-              <!--<el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
-                &lt;!&ndash;表格&ndash;&gt;
-                <el-table :data="tableData" @selection-change="queryChangeHandle"
-                          style="width: 100%" highlight-current-row border height="280">
-                  <template>
-                    <el-table-column align="center" default-sort type="selection"></el-table-column>
-                    <el-table-column fixed width="50" label="序号" align="center" type="index"></el-table-column>
-                    <template v-for="(col ,index) in cols">
-                      <el-table-column v-if="col.type === 'sort'" :prop="col.prop" :label="col.label" :width="col.width"
-                                       :show-overflow-tooltip="true" align="center" sortable>
-                      </el-table-column>
-                      <el-table-column v-if="col.type === 'YDLXnor'" :filters="YDLXData" :filter-method="YDLXHandler"
-                                       :prop="col.prop" :label="col.label" :width="col.width" :column-key="col.prop"
-                                       :show-overflow-tooltip="true" align="center" sortable>
-                      </el-table-column>
-                      <el-table-column v-if="col.type === 'JSZTnor'" :filters="JSZTData" :filter-method="JSZTHandler"
-                                       :prop="col.prop" :label="col.label" :width="col.width" :column-key="col.prop"
-                                       :show-overflow-tooltip="true" align="center" sortable>
-                      </el-table-column>
-                      <el-table-column v-if="col.type === 'SSPSFQnor'" :filters="SSPSFQData" :filter-method="SSPSFQHandler"
-                                       :prop="col.prop" :label="col.label" :width="col.width":column-key="col.prop"
-                                       :show-overflow-tooltip="true" align="center" sortable>
-                      </el-table-column>
-                    </template>
-                    <el-table-column align="center" fixed="right" label="操作" width="140">
-                      <template slot-scope="scope">
-                        <el-button @click="queryHandleClick" type="primary" plain size="mini">查询下游水管及排口</el-button>
-                        <el-button @click="sewageHandleClick" type="primary" plain size="mini">查询下游污水去向  </el-button>
-                      </template>
-                    </el-table-column>
-                  </template>
-                </el-table>
-                &lt;!&ndash;分页&ndash;&gt;
-                <el-pagination style="text-align:center;"
-                               @size-change="handleSizeChange1"
-                               @current-change="handleCurrentChangeHandel1"
-                               :page-sizes="[5]"
-                               :page-size="5"
-                               layout="total, sizes, prev, pager, next, jumper"
-                               :total="showResult.subcatchments.length">
-                </el-pagination>
-              </el-tab-pane>-->
               <el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
-                <el-table :data="(showResult.subcatchments).slice((currentPageNum1-1)*totalNumber1, currentPageNum1*totalNumber1)"
+                 <el-table :data="(showResult.subcatchments).slice((currentPageNum1-1)*totalNumber1, currentPageNum1*totalNumber1)"
                           @selection-change="queryChangeHandle"
                           style="width: 100%" height="280" border >
                   <el-table-column align="center" default-sort type="selection"></el-table-column>
@@ -1008,9 +916,9 @@
   export default {
     name: 'Home',
     watch: {
-      info: function (info) {
-        this.infoManager = true;
-        this.dataInfo = info;
+      info: function(info) {
+        this.infoManager = true
+        this.dataInfo = info
       }
     },
     components: {
@@ -1019,61 +927,59 @@
     data() {
       return {
         placeholderModel: '',
-        dialogTheader: [],  // 初始化表头
-        dialogTableData: [],  // 弹框表格数据
-        tabPaneName:[],  // 弹框标签页数据
-        dialogVisible: false,  // 弹框
-        underPipelineMouth: false,  // 下游管线 +  排口按钮
-        underSewageWhere: false,    // 下游污水 + 去向
+        dialogTheader: [], // 初始化表头
+        dialogTableData: [], // 弹框表格数据
+        tabPaneName: [], // 弹框标签页数据
+        dialogVisible: false, // 弹框
+        underPipelineMouth: false, // 下游管线 +  排口按钮
+        underSewageWhere: false, // 下游污水 + 去向
         entUnderSewageWhere: false, // 下游污水 + 去向
-        paikouOnPipe: false,    // 上游管道
-        paikouOnPlot: false,    // 上游地块
+        paikouOnPipe: false, // 上游管道
+        paikouOnPlot: false, // 上游地块
         BackCor: '#00BF8B',
         underBackCor: 'rgba(18, 54, 239, 0.5)',
         onBackCor: 'rgba(255, 0, 255, 0.5)',
         textCor: '#fff',
 
-
         spaceOptions: [],
         spaceValue: '',
-        elOptionValue:'',
-        elOptionData:[],
+        elOptionValue: '',
+        elOptionData: [],
         comend: null,
-        cols: [],
         tableData: [],
-        /*************/
+        /** ***********/
         firstModel: 'first',
-        queryUp: false,  // 查询上游
-        queryDown: false,     // 查询下游
+        queryUp: false, // 查询上游
+        queryDown: false, // 查询下游
         YDLXData: [
-          {text: 'G1', value: 'G1'},
-          {text: 'G2', value: 'G2'},
-          {text: 'E1', value: 'E1'},
-          {text: 'E2', value: 'E2'},
-          {text: 'M1', value: 'M1'},
-          {text: 'U1', value: 'U1'}
-        ],   // YDLX筛选
+          { text: 'G1', value: 'G1' },
+          { text: 'G2', value: 'G2' },
+          { text: 'E1', value: 'E1' },
+          { text: 'E2', value: 'E2' },
+          { text: 'M1', value: 'M1' },
+          { text: 'U1', value: 'U1' }
+        ], // YDLX筛选
         JSZTData: [
-          {text: '规划', value: '规划'},
-          {text: '在建', value: '在建'},
-          {text: '现状', value: '现状'}
-        ],   // JSZT筛选
+          { text: '规划', value: '规划' },
+          { text: '在建', value: '在建' },
+          { text: '现状', value: '现状' }
+        ], // JSZT筛选
         SSPSFQData: [
-          {text: '1#排水分区', value: '1#排水分区'},
-          {text: '2#排水分区', value: '2#排水分区'},
-          {text: '3#排水分区', value: '3#排水分区'},
-          {text: '4#排水分区', value: '4#排水分区'},
-          {text: '5#排水分区', value: '5#排水分区'},
-          {text: '6#排水分区', value: '6#排水分区'},
-          {text: '7#排水分区', value: '7#排水分区'},
-          {text: '8#排水分区', value: '8#排水分区'},
-          {text: '9#排水分区', value: '9#排水分区'},
-          {text: '10#排水分区', value: '10#排水分区'},
-          {text: '19#排水分区', value: '19#排水分区'}
+          { text: '1#排水分区', value: '1#排水分区' },
+          { text: '2#排水分区', value: '2#排水分区' },
+          { text: '3#排水分区', value: '3#排水分区' },
+          { text: '4#排水分区', value: '4#排水分区' },
+          { text: '5#排水分区', value: '5#排水分区' },
+          { text: '6#排水分区', value: '6#排水分区' },
+          { text: '7#排水分区', value: '7#排水分区' },
+          { text: '8#排水分区', value: '8#排水分区' },
+          { text: '9#排水分区', value: '9#排水分区' },
+          { text: '10#排水分区', value: '10#排水分区' },
+          { text: '19#排水分区', value: '19#排水分区' }
         ], // SSPSFQ筛选
-        isShowButton: false,  // 多选按钮
-        isDisabled: true,    // 禁用按钮
-        /***************************/
+        isShowButton: false, // 多选按钮
+        isDisabled: true, // 禁用按钮
+        /** *************************/
         count: 0,
         displayData: [],
         listDemoData: [
@@ -1153,15 +1059,15 @@
             massifArea: '1.22'
           }
         ],
-        /***********************/
-        currentPageNum1: 1,  //默认开始页面
-        currentPageNum2: 1,  //默认开始页面
-        currentPageNum3: 1,  //默认开始页面
-        currentPageNum4: 1,  //默认开始页面
+        /** *********************/
+        currentPageNum1: 1, // 默认开始页面
+        currentPageNum2: 1, // 默认开始页面
+        currentPageNum3: 1, // 默认开始页面
+        currentPageNum4: 1, // 默认开始页面
         pageSizeValue1: 3,
         pageSizeValue2: 3,
         pageSizeValue3: 3,
-        pageSizeNum: [5],   //每页的数据条数
+        pageSizeNum: [5], // 每页的数据条数
         currentPage4: 4,
         totalNumber: 5,
         totalNumber1: 5,
@@ -1182,28 +1088,28 @@
           {
             firstId: 2, name: '排口',
             fromData: []
-          },
+          }
         ],
         activeName2: 'first',
         TypeList: [0],
         spaceList: [0],
         exactQuery: [
-          {value: '1', label: '地块'},
-          {value: '2', label: '工业企业'},
-          {value: '3', label: '排口'},
-          {value: '4', label: '管线'}
+          { value: '1', label: '地块' },
+          { value: '2', label: '工业企业' },
+          { value: '3', label: '排口' },
+          { value: '4', label: '管线' }
         ],
         value1: '',
         attributeData: [],
         value2: '',
         attributeValueData: [],
         value3: '',
-        junctionsLayData: [],    // 交汇点数据
-        conduitsLayData: [],     // 管道数据
-        companysLayData: [],     // 公司数据
+        junctionsLayData: [], // 交汇点数据
+        conduitsLayData: [], // 管道数据
+        companysLayData: [], // 公司数据
         subLayData: [], // 地块数据
         shapes: [],
-        /***************************************************/
+        /** *************************************************/
         options: [
           {
             value: '选项1',
@@ -1225,11 +1131,11 @@
         value4: '',
         //
         isLoading: false,
-        //搜索出来的结果
+        // 搜索出来的结果
         selectSubcatchmentData: [],
         selectOutfalls: [],
         selectCompanys: [],
-        //end
+        // end
         subcatchmentData: [],
         conduitsData: [],
         outfallsData: [],
@@ -1237,7 +1143,7 @@
         isResult: false,
 
         selectLoading: false,
-        //显示隐藏地块
+        // 显示隐藏地块
         isHideAllSubcatchments: true,
         isHideDaolu: true,
         isHideShizheng: true,
@@ -1246,18 +1152,18 @@
         isHideZhengfu: true,
         isHideGongye: true,
         isHideShangye: true,
-        //显示隐藏管线
+        // 显示隐藏管线
         isHideAllConduits: true,
         isHideRainConduits: true,
         isHideSewageConduits: true,
-        //显示隐藏排口
+        // 显示隐藏排口
         isHideAllOutfalls: true,
         isHideMergeOutfalls: true,
         isHideRainOutfalls: true,
         isHideSewageOutfalls: true,
-        //显示隐藏企业
+        // 显示隐藏企业
         isHideCompanys: true,
-        //消息提示
+        // 消息提示
         infoManager: false,
         isSelect: false,
         isCollapse: true,
@@ -1285,106 +1191,106 @@
           junctions: [],
           outfalls: [],
           companies: []
-        },
+        }
       }
     },
     computed: {
 
       info() {
-        return this.$store.state.mapData.info;
+        return this.$store.state.mapData.info
       },
       resultData() {
-        return this.$store.state.mapData.resultData;
+        return this.$store.state.mapData.resultData
       },
       shapeIdStrMap() {
-        let self = this
-        let ret = {}
+        const self = this
+        const ret = {}
         _.each(self.shapes, shape => {
           self.$set(ret, shape.id, JSON.stringify(shape))
         })
         return ret
       },
       shapeIdMap() {
-        let self = this
+        const self = this
         return _.keyBy(self.shapes, 'id')
       },
-      companies(){
-        let self = this;
+      companies() {
+        const self = this
         return _.reject(self.shapes, item => {
-          return item.category !== 'COMPANY';
+          return item.category !== 'COMPANY'
         })
       },
       outfalls() {
-        let self = this;
+        const self = this
         return {
           all: _.reject(self.shapes, item => {
-            return item.category !== 'OUTFALLS';
+            return item.category !== 'OUTFALLS'
           }),
           rainOutfalls: _.reject(self.shapes, item => {
-            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '雨水排水口';
+            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '雨水排水口'
           }),
           sewageOutfalls: _.reject(self.shapes, item => {
-            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '污水排口';
+            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '污水排口'
           }),
           meregeOutfalls: _.reject(self.shapes, item => {
-            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '混流排口';
+            return item.category !== 'OUTFALLS' || item.properties.properties.leixing !== '混流排口'
           })
-        };
+        }
       },
       conduits() {
-        let self = this;
+        const self = this
         return {
           all: _.reject(self.shapes, item => {
-            return item.category !== 'CONDUITS';
+            return item.category !== 'CONDUITS'
           }),
           rainConduits: _.reject(self.shapes, item => {
-            return item.category !== 'CONDUITS' || item.properties.properties.leixing !== '雨水管';
+            return item.category !== 'CONDUITS' || item.properties.properties.leixing !== '雨水管'
           }),
           sewageConduits: _.reject(self.shapes, item => {
-            return item.category !== 'CONDUITS' || item.properties.properties.leixing !== '污水管';
+            return item.category !== 'CONDUITS' || item.properties.properties.leixing !== '污水管'
           })
-        };
+        }
       },
       subcatchments() {
-        let self = this;
+        const self = this
         return {
           all: _.reject(self.shapes, item => {
-            return item.category !== 'SUBCATCHMENTS';
+            return item.category !== 'SUBCATCHMENTS'
           }),
           road: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' || (YDLX !== '道路' && !/^[S][^A-Za-z]$/.test(YDLX));
+            const YDLX = item.properties.properties.YDLX
+            return item.category !== 'SUBCATCHMENTS' || (YDLX !== '道路' && !/^[S][^A-Za-z]$/.test(YDLX))
           }),
           shiZheng: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' || !/^[U][^A-Za-z]$/.test(YDLX);
+            const YDLX = item.properties.properties.YDLX
+            return item.category !== 'SUBCATCHMENTS' || !/^[U][^A-Za-z]$/.test(YDLX)
           }),
           lvDi: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' || !/^[G,E][^A-Za-z]/.test(YDLX);
+            const YDLX = item.properties.properties.YDLX
+            return item.category !== 'SUBCATCHMENTS' || !/^[G,E][^A-Za-z]/.test(YDLX)
           }),
           juZhuYongDi: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX
-            return item.category !== 'SUBCATCHMENTS' || !/^[R][^A-Za-z]/.test(YDLX);
+            const YDLX = item.properties.properties.YDLX
+            return item.category !== 'SUBCATCHMENTS' || !/^[R][^A-Za-z]/.test(YDLX)
           }),
           zhengFu: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' || !/^[G][I][C]/.test(YDLX);
+            const YDLX = item.properties.properties.YDLX
+            return item.category !== 'SUBCATCHMENTS' || !/^[G][I][C]/.test(YDLX)
           }),
           gongYe: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' || !/^[M]/.test(YDLX);
+            const YDLX = item.properties.properties.YDLX
+            return item.category !== 'SUBCATCHMENTS' || !/^[M]/.test(YDLX)
           }),
           shangYe: _.reject(self.shapes, item => {
-            let YDLX = item.properties.properties.YDLX;
-            return item.category !== 'SUBCATCHMENTS' || !/^[C][^A-Za-z]/.test(YDLX);
+            const YDLX = item.properties.properties.YDLX
+            return item.category !== 'SUBCATCHMENTS' || !/^[C][^A-Za-z]/.test(YDLX)
           })
-        };
+        }
       },
       showResult() {
-        let self = this
+        const self = this
         return {
-          subcatchments: _.map(self.selectResult.subcatchments, item => item.properties.properties ),
+          subcatchments: _.map(self.selectResult.subcatchments, item => item.properties.properties),
           outfalls: _.map(self.selectResult.outfalls, item => item.properties.properties),
           junctions: _.map(self.selectResult.junctions, item => item.properties.properties),
           conduits: _.map(self.selectResult.conduits, item => item.properties.properties),
@@ -1396,86 +1302,87 @@
 
     },
     mounted() {
-      this.init();
+      this.init()
     },
     methods: {
-      /**** 表头筛选 *****/
-      YDLXHandler(value, row, column){
-        const property = column['property'];
-        return row[property] === value;
+      /** ** 表头筛选 *****/
+      YDLXHandler(value, row, column) {
+        const property = column['property']
+        return row[property] === value
       },
-      JSZTHandler(value, row, column){
-        const property = column['property'];
-        return row[property] === value;
+      JSZTHandler(value, row, column) {
+        const property = column['property']
+        return row[property] === value
       },
-      SSPSFQHandler(value, row, column){
-        const property = column['property'];
-        return row[property] === value;
+      SSPSFQHandler(value, row, column) {
+        const property = column['property']
+        return row[property] === value
       },
-      /**** table页的切换 *******/
-      tableListComlde(tab, event){
-        if(tab.index == '0') {
-          this.underPipelineMouth = true;
-          this.underSewageWhere = true;
-          this.entUnderSewageWhere = false;
-          this.paikouOnPipe = false;
-          this.paikouOnPlot = false;
+      /** ** table页的切换 *******/
+      tableListComlde(tab, event) {
+        if (tab.index === '0') {
+          this.underPipelineMouth = true
+          this.underSewageWhere = true
+          this.entUnderSewageWhere = false
+          this.paikouOnPipe = false
+          this.paikouOnPlot = false
         }
-        if(tab.index == '1') {
-          this.underPipelineMouth = false;
-          this.underSewageWhere = false;
-          this.entUnderSewageWhere = true;
-          this.paikouOnPipe = false;
-          this.paikouOnPlot = false;
+        if (tab.index === '1') {
+          this.underPipelineMouth = false
+          this.underSewageWhere = false
+          this.entUnderSewageWhere = true
+          this.paikouOnPipe = false
+          this.paikouOnPlot = false
         }
-        if(tab.index == '2') {this.underPipelineMouth = false;
-          this.underSewageWhere = false;
-          this.entUnderSewageWhere = false;
-          this.paikouOnPipe = false;
-          this.paikouOnPlot = false;
+        if (tab.index === '2') {
+          this.underPipelineMouth = false
+          this.underSewageWhere = false
+          this.entUnderSewageWhere = false
+          this.paikouOnPipe = false
+          this.paikouOnPlot = false
         }
-        if(tab.index == '3') {
-          this.underPipelineMouth = false;
-          this.underSewageWhere = false;
-          this.entUnderSewageWhere = false;
-          this.paikouOnPipe = true;
-          this.paikouOnPlot = true;
+        if (tab.index === '3') {
+          this.underPipelineMouth = false
+          this.underSewageWhere = false
+          this.entUnderSewageWhere = false
+          this.paikouOnPipe = true
+          this.paikouOnPlot = true
         }
       },
-      /**** 弹框提交按钮 ********/
-      dialogVisibleSubmit(){
-        console.log("弹框提交按钮")
+      /** ** 弹框提交按钮 ********/
+      dialogVisibleSubmit() {
+        console.log('弹框提交按钮')
       },
-      /**** 查询下游水管及排口 *****/
-      underPipeClick(value){
+      /** ** 查询下游水管及排口 *****/
+      underPipeClick(value) {
         debugger
-        const _this = this;
-        _this.dialogVisible = true;
+        const _this = this
+        _this.dialogVisible = true
         _this.tabPaneName = [
           { labelName: '管线', labelId: 0, id: 0 },
           { labelName: '排口', labelId: 1, id: 1 }
-        ];
-        _.each(_this.shapes, function (vb) {
-          _this.dialogTheader = [];   // 初始化表头
-          _this.dialogTableData = []; // 初始化表格数据
-          var des = vb.properties.properties;
-          var busType = vb.properties.businessType;
+        ]
+        _.each(_this.shapes, function(vb) {
+          _this.dialogTheader = [] // 初始化表头
+          _this.dialogTableData = [] // 初始化表格数据
+          var des = vb.properties.properties
+          var busType = vb.properties.businessType
           // debugger
           if (_this.value1.labelId === busType) {
             _this.dialogTheader = [
-              {width: '100', prop: 'name', label: '编号', type: "sort"},
-              {width: '120', prop: 'YDLX', label: '用地类型', type: "sort"},
-              {width: '120', prop: 'JSZT', label: '建设状态', type: "sort" },
-              {width: '110', prop: 'XMMC', label: '项目名称', type: "sort"},
-              {width: '110', prop: 'PRHD', label: '排入河道', type: "sort"},
-              {width: '110', prop: 'SSLY', label: '所属流域', type: "sort"},
-              {width: '160', prop: 'SSPSFQ', label: '所属排水分区', type: "sort"},
-              {width: '180', prop: 'ZBQY', label: '是否为正本清源项目', type: "sort"},
-              {width: '150', prop: 'HMCS', label: '海绵建设情况', type: "sort"},
-              {width: '130', prop: '现状控制率', label: '现状控制率', type: "sort"},
-              {width: '130', prop: '规划控制率', label: '规划控制率', type: "sort"},
-              {width: '130', prop: 'area', label: '面积(公顷)', type: "sort"}
-            ];
+              { width: '100', prop: 'name', label: '编号', type: 'sort' },
+              { width: '120', prop: 'YDLX', label: '用地类型', type: 'sort' },
+              { width: '120', prop: 'JSZT', label: '建设状态', type: 'sort' },
+              { width: '110', prop: 'XMMC', label: '项目名称', type: 'sort' },
+              { width: '110', prop: 'PRHD', label: '排入河道', type: 'sort' },
+              { width: '110', prop: 'SSLY', label: '所属流域', type: 'sort' },
+              { width: '160', prop: 'SSPSFQ', label: '所属排水分区', type: 'sort' },
+              { width: '180', prop: 'ZBQY', label: '是否为正本清源项目', type: 'sort' },
+              { width: '150', prop: 'HMCS', label: '海绵建设情况', type: 'sort' },
+              { width: '130', prop: '现状控制率', label: '现状控制率', type: 'sort' },
+              { width: '130', prop: '规划控制率', label: '规划控制率', type: 'sort' },
+              { width: '130', prop: 'area', label: '面积(公顷)', type: 'sort' }
+            ]
             _this.dialogTableData.push({
               name: des.name,
               YDLX: des.YDLX,
@@ -1493,51 +1400,51 @@
           }
         })
       },
-      /**** 查询下游污水去向 *****/
-      underSewageClick(){
-        console.log("地块下游污水 + 去向");
+      /** ** 查询下游污水去向 *****/
+      underSewageClick() {
+        console.log('地块下游污水 + 去向')
       },
-      /**** 查询企业下游污水 ******/
-      entUnderClick(){
-        console.log("查询企业下游污水");
+      /** ** 查询企业下游污水 ******/
+      entUnderClick() {
+        console.log('查询企业下游污水')
       },
-      /**** 查询上游管道 *****/
-      paikouOnPipeClick(){
-        console.log("查询上游管道");
+      /** ** 查询上游管道 *****/
+      paikouOnPipeClick() {
+        console.log('查询上游管道')
       },
-      /**** 查询上游地块 *****/
-      paikouOnPlotClick(){
-        console.log("查询上游地块");
+      /** ** 查询上游地块 *****/
+      paikouOnPlotClick() {
+        console.log('查询上游地块')
       },
-      /****** 查询上游 ********/
-      queryUpperSwim(row){
-        const _this = this;
-        _this.tabPaneLabel = false;
-        _this.queryUp = true;
-        _this.queryDown = false;
+      /** **** 查询上游 ********/
+      queryUpperSwim(row) {
+        const _this = this
+        _this.tabPaneLabel = false
+        _this.queryUp = true
+        _this.queryDown = false
       },
-      /****** 查询下游 ********/
-      queryLowerSwim(row){
-        const _this = this;
-        console.log("========", _this,row);
-        _this.tabPaneLabel = false;
-        _this.queryDown = true;
+      /** **** 查询下游 ********/
+      queryLowerSwim(row) {
+        const _this = this
+        console.log('========', _this, row)
+        _this.tabPaneLabel = false
+        _this.queryDown = true
       },
-      queryUpDownHandleClick(){},
-      queryChangeRowMouth(val){
-        const _this = this;
+      queryUpDownHandleClick() {},
+      queryChangeRowMouth(val) {
+        const _this = this
         var mouthData = _this.showResult.outfalls
-        if(val.length > 0) {
+        if (val.length > 0) {
           _this.isShowButton = true
-        }else{
+        } else {
           _this.isShowButton = false
         }
       },
-      queryChangeHandle(val){
-        const _this = this;
-        if(val.length > 0) {
+      queryChangeHandle(val) {
+        const _this = this
+        if (val.length > 0) {
           _this.isShowButton = true
-        }else {
+        } else {
           _this.isShowButton = false
         }
       },
@@ -1546,32 +1453,32 @@
        * 根据属性值得到查询时的下拉选项
        * */
       getQueryOptions() {
-        let self = this;
+        const self = this
         _.each(self.shapes, shape => {
-          let properties = shape.properties.properties;
+          const properties = shape.properties.properties
 
-          if(!properties) {
-            return 0;
+          if (!properties) {
+            return 0
           }
 
           _.each(_.keys(properties), key => {
             if (!key || !properties[key] || ['WP', 'YP', 'center', 'area', 'X_cor', 'Y_cor'].indexOf(key) >= 0) {
-              return 0;
+              return 0
             }
 
             _.each(String(properties[key]).split('、'), option => {
               if (['光明医院', 'GIC4'].indexOf(option) >= 0) {
-                return 0;
+                return 0
               }
-              self.queryOptions.push({value: option})
+              self.queryOptions.push({ value: option })
             })
           })
         })
         self.queryOptions = _.uniqBy(self.queryOptions, 'value')
       },
       init() {
-        const self = this;
-        self.shapes = [];
+        const self = this
+        self.shapes = []
         request('shapes', {
           params: {
             pageNo: 1,
@@ -1585,7 +1492,7 @@
             }
           }
         }).then((res) => {
-          self.shapes = JSON.parse(JSON.stringify(res.data));
+          self.shapes = JSON.parse(JSON.stringify(res.data))
           _.each(self.shapes, function(item) { item.properties = JSON.parse(item.properties) })
           self.getQueryOptions()
         })
@@ -1598,49 +1505,49 @@
        * 显示/隐藏全部地块
        */
       handleHideAllSubcatchments() {
-        this.isHideAllSubcatchments = !this.isHideAllSubcatchments;
+        this.isHideAllSubcatchments = !this.isHideAllSubcatchments
       },
-      //隐藏道路
+      // 隐藏道路
       handleHideDaolu() {
-        this.isHideDaolu = !this.isHideDaolu;
+        this.isHideDaolu = !this.isHideDaolu
       },
       // 隐藏市政
       handleHideShiZheng() {
-        this.isHideShizheng = !this.isHideShizheng;
+        this.isHideShizheng = !this.isHideShizheng
       },
       // 隐藏绿地
       handleHideLvdi() {
-        this.isHideLvdi = !this.isHideLvdi;
+        this.isHideLvdi = !this.isHideLvdi
       },
       // 隐藏居住用地
       handleHideJuzhu() {
-        this.isHideJuzhu = !this.isHideJuzhu;
+        this.isHideJuzhu = !this.isHideJuzhu
       },
       // 隐藏政府
       handleHideZhengfu() {
-        this.isHideZhengfu = !this.isHideZhengfu;
+        this.isHideZhengfu = !this.isHideZhengfu
       },
       // 隐藏工业用地
       handleHideGongye() {
-        this.isHideGongye = !this.isHideGongye;
+        this.isHideGongye = !this.isHideGongye
       },
       // 隐藏商业
       handleHideShangye() {
-        this.isHideShangye = !this.isHideShangye;
+        this.isHideShangye = !this.isHideShangye
       },
       /**
        * 显示/隐藏所有管线
        */
       handleHideAllConduits() {
-        this.isHideAllConduits = !this.isHideAllConduits;
+        this.isHideAllConduits = !this.isHideAllConduits
       },
       // 显示/隐藏雨水管线
       handleHideRainConduits() {
-        this.isHideRainConduits = !this.isHideRainConduits;
+        this.isHideRainConduits = !this.isHideRainConduits
       },
       // 显示/隐藏污水管线
       handleHideSewageConduits() {
-        this.isHideSewageConduits = !this.isHideSewageConduits;
+        this.isHideSewageConduits = !this.isHideSewageConduits
       },
 
       /**
@@ -1665,7 +1572,7 @@
       handleInfoShow() {
         this.infoManager = !this.infoManager
         if (this.isSelect) {
-          this.isSelect = !this.isSelect;
+          this.isSelect = !this.isSelect
         }
       },
 
@@ -1674,37 +1581,37 @@
        *
        */
       handleHideAllCompanys() {
-        this.isHideCompanys = !this.isHideCompanys;
+        this.isHideCompanys = !this.isHideCompanys
       },
       /**
        * 根据排口查询上游管线
        */
       handleSelectConduits(outFallName) {
-        this.$refs.map.handleSelectConduits(outFallName);
+        this.$refs.map.handleSelectConduits(outFallName)
       },
       /**
        *根据排口查上游地块
        */
       handleSelectSubcatchments(outFallName) {
-        this.$refs.map.handleSelectSubcatchments(outFallName);
+        this.$refs.map.handleSelectSubcatchments(outFallName)
       },
       /**
        *根据地块查询下游雨水管道
        */
       handleSubcatchmentsSelectRainConduits(data) {
-        this.$refs.map.handleSubcatchmentsSelectRainConduits(data);
+        this.$refs.map.handleSubcatchmentsSelectRainConduits(data)
       },
       // 根据地块查询污水管道
       handleSubcatchmentsSelectSewageConduits(data) {
-        this.$refs.map.handleSubcatchmentsSelectSewageConduits(data);
+        this.$refs.map.handleSubcatchmentsSelectSewageConduits(data)
       },
       /**
        * 根据企业查询下游污水排口
        * */
       handleCompanySelectSewageOutfall(data) {
-        this.$refs.map.handleCompanySelectSewageOutfall(data);
+        this.$refs.map.handleCompanySelectSewageOutfall(data)
       },
-      //根据企业查询污水管道
+      // 根据企业查询污水管道
       handleCompanySelectSewageConduits(data) {
         this.$refs.map.handleCompanySelectSewageConduits(data)
       },
@@ -1712,7 +1619,7 @@
        * 根据地块查询下游雨水排口
        */
       handleSubcatchmentsSelectRainOutfalls(data) {
-        this.$refs.map.handleSubcatchmentsSelectRainOutfalls(data);
+        this.$refs.map.handleSubcatchmentsSelectRainOutfalls(data)
       },
       handleSubcatchmentsSelectSewageOutfalls(data) {
         this.$refs.map.handleSubcatchmentsSelectSewageOutfalls(data)
@@ -1721,166 +1628,94 @@
        * 重新绘制事件
        * */
       handleReset() {
-        let self = this;
-        self.selectSubcatchmentData = [];
-        self.selectOutfalls = [];
-        self.selectCompanys = [];
-        self.$refs.map.handleReset();
+        const self = this
+        self.selectSubcatchmentData = []
+        self.selectOutfalls = []
+        self.selectCompanys = []
+        self.$refs.map.handleReset()
       },
       /**
        * 反向查询
        * */
-      //精确查询  ---  增加查询条件
+      // 精确查询  ---  增加查询条件
       handelAddTerm() {
-        const _this = this;
-        let lengthId = _this.TypeList.length;
-        let id = 1;
-        let deId = id++
+        const _this = this
+        const lengthId = _this.TypeList.length
+        let id = 1
+        const deId = id++
         if (lengthId < 3) {
-          this.TypeList.push(deId);
+          this.TypeList.push(deId)
         }
       },
-      handelAddTea(){
-        const _this = this;
-        let id = 1;
-        let deId = id++
-        let spaceId = _this.spaceList.length;
+      handelAddTea() {
+        const _this = this
+        let id = 1
+        const deId = id++
+        const spaceId = _this.spaceList.length
         if (spaceId < 7) {
-          _this.spaceList.push(deId);
+          _this.spaceList.push(deId)
         }
       },
-      /************* 清空查询 ***************/
+      /** *********** 清空查询 ***************/
       handelDeleteTerm() {
-        let index = this.TypeList.length - 1;
-        this.TypeList.splice(1, index);
-        let indexId = this.spaceList.length - 1;
-        this.spaceList.splice(1, indexId);
+        const index = this.TypeList.length - 1
+        this.TypeList.splice(1, index)
+        const indexId = this.spaceList.length - 1
+        this.spaceList.splice(1, indexId)
       },
-      /*handelDeleteCloa(){
+      /* handelDeleteCloa(){
         let indexId = this.spaceList.length - 1;
         this.spaceList.splice(1, indexId);
       },*/
-      /************* 查询按钮 ***************/
+      /** *********** 查询按钮 ***************/
       handelQueryTerm() {
-        const _this = this;
-        if (_this.value1 !== '' && _this.value2 !== '' && _this.value3 !== '') {
-          console.log("属性传值+++++++", _this.value2);
-          _this.tabPaneLabel = true;
-          _this.underPipelineMouth = true;  // 地块按钮
-          _this.underSewageWhere = true;    // 地块按钮
-          _.each(_this.shapes, function (vb) {
-            var des = vb.properties.properties;
-            var busType = vb.properties.businessType;
-            if (_this.value1.labelId === busType) {
-              _this.cols = [];   // 初始化表头
-              _this.tableData = [];  // 初始化表格数据
-              _this.cols = [
-                {width: '100', prop: 'name', label: '编号', type: "sort"},
-                {width: '120', prop: 'YDLX', label: '用地类型', type: "YDLXnor"},
-                {width: '120', prop: 'JSZT', label: '建设状态', type: "JSZTnor" },
-                {width: '110', prop: 'XMMC', label: '项目名称', type: "sort"},
-                {width: '110', prop: 'PRHD', label: '排入河道', type: "sort"},
-                {width: '110', prop: 'SSLY', label: '所属流域', type: "sort"},
-                {width: '160', prop: 'SSPSFQ', label: '所属排水分区', type: "SSPSFQnor"},
-                {width: '180', prop: 'ZBQY', label: '是否为正本清源项目', type: "sort"},
-                {width: '150', prop: 'HMCS', label: '海绵建设情况', type: "sort"},
-                {width: '130', prop: '现状控制率', label: '现状控制率', type: "sort"},
-                {width: '130', prop: '规划控制率', label: '规划控制率', type: "sort"},
-                {width: '130', prop: 'area', label: '面积(公顷)', type: "sort"}
-              ],
-              _this.tableData.push({
-                name: des.name,
-                YDLX: des.YDLX,
-                JSZT: des.JSZT,
-                XMMC: des.XMMC,
-                PRHD: des.PRHD,
-                SSLY: des.SSLY,
-                SSPSFQ: des.SSPSFQ,
-                ZBQY: des.ZBQY,
-                HMCS: des.HMCS,
-                现状控制率: des.现状控制率,
-                规划控制率: des.规划控制率,
-                area: (des.area).toFixed(2)
-              })
-            }
-          })
-
-
-          // _.each(desData, function (vb, index) {
-          //   let ns = vb.properties;
-          //   if(vb.businessType === 'SUBCATCHMENTS') {
-          //     debugger
-          //
-          //   }
-          //   if (vb.businessType === 'CONDUITS') {
-          //     _this.tableDataList[2].fromData.push({
-          //       RowMouthNum: ns.fromnode,
-          //       RowMouthType: ns.leixing,
-          //       RowMouthDirection: ns.guanjing
-          //     })
-          //   }
-          //   if (vb.businessType === 'SUBCATCHMENTS') {
-          //     _this.tableDataList[0].fromData.push({
-          //       massifNumber: ns.name,
-          //       massifArea: (ns.area).toFixed(2),
-          //       massifType: ns.YDLX,
-          //       massifState: ns.JSZT,
-          //       massifRowNamer: ns.XMMC,
-          //       massifRowRiver: ns.PRHD,
-          //       massifRowBasin: ns.SSLY,
-          //       massifPartition: ns.SSPSFQ,
-          //       massifNum: ns.ZBQY,
-          //       massifReform: ns.HMCS,
-          //       spongeType: ns.HMLX,
-          //       massifPresent: ns.现状控制率,
-          //       massifPlan: ns.规划控制率
-          //     })
-          //   }
-          //   if (vb.businessType === 'COMPANY') {
-          //     _this.tableDataList[1].fromData.push({
-          //       EnterName: ns.name,
-          //       EnterStreet: ns.JDMC,
-          //       EnterCommunity: ns.SQMC,
-          //       EnterAddress: ns.SCJYDZ,
-          //       EnterPerson: ns.FDDBR,
-          //       EnterPhone: ns.LXFS,
-          //       EnterNum: ns.QYRS,
-          //       EnterCategory: ns.HYLB,
-          //       EnterWater: ns.SCYSL,
-          //       EnterDrainage: ns.PSL,
-          //       EnterTechnology: ns.ZYSCGY,
-          //       EnterProduct: ns.CPZL,
-          //       EnterEvaluate: ns.OBJECTID,
-          //       EnterEffective: ns.HPPFWJYXX,
-          //       EnterPermit: ns.HPPFWJ,
-          //       EnterHandle: ns.FSCLFS,
-          //       EnterFilth: ns.TZWRW
-          //     })
-          //   }
-          //   // if( vb.businessType === 'JUNCTIONS' ){
-          //   //   _this.tableDataList[2].fromData.push({
-          //   //     RowMouthNum: ns.name,
-          //   //     RowMouthType: ns.leixing,
-          //   //     RowMouthDirection: ''
-          //   //   })
-          //   // }
-          // })
-          // _this.totalNumber1 = _this.tableDataList[0].fromData.length;
-          // _this.totalNumber2 = _this.tableDataList[1].fromData.length;
-          // _this.totalNumber3 = _this.tableDataList[2].fromData.length;
-          // console.log("数据", _this.tableDataList[1])
-        }
+        const _this = this
+        console.log('_this.shapes', _this.shapes)
+        // placeholderModel属性值
+        self.selectResult.subcatchments = []
+        self.selectResult.conduits = []
+        self.selectResult.outfalls = []
+        self.selectResult.companies = []
+        self.selectResult.junctions = []
+  
+        // self.selectResult = {
+        //   subcatchments: _.reject(matchedShapes, function(item) {
+        //     return item.category !== 'SUBCATCHMENTS'
+        //   }),
+        //   conduits: _.reject(matchedShapes, function(item) {
+        //     return item.category !== 'CONDUITS'
+        //   }),
+        //   junctions: _.reject(matchedShapes, function(item) {
+        //     return item.category !== 'JUNCTIONS'
+        //   }),
+        //   outfalls: _.reject(matchedShapes, function(item) {
+        //     return item.category !== 'OUTFALLS'
+        //   }),
+        //   companies: _.reject(matchedShapes, function(item) {
+        //     return item.category !== 'COMPANY'
+        //   })
+        // }
+  
+        console.log('selectResult🙃:', self.selectResult)
+        self.isResult = !self.isResult
+        setTimeout(function() {
+          self.$refs.map.showResult(self.selectResult, self.shapes)
+          self.isLoading = false
+          self.tabPaneLabel = true
+          self.underPipelineMouth = true // 地块
+          self.underSewageWhere = true // 地块
+        }, 200)
       },
-      /************* 选择框 ***************/
+      /** *********** 选择框 ***************/
       demoListDataListDemo(value) {
-        console.log("??????????", value);
+        console.log('??????????', value)
 
-        if (value == '1') {
-          this.displayData = this.listDemoData;
+        if (value === '1') {
+          this.displayData = this.listDemoData
           this.count = this.displayData.length
         }
-        if (value == '2') {
-          this.displayData = [];
+        if (value === '2') {
+          this.displayData = []
           this.displayData = [
             {
               id: 1,
@@ -1911,12 +1746,12 @@
               massifPresent: '70%',
               massifPlan: '70%',
               massifArea: '7.6'
-            },
+            }
           ]
           this.count = this.displayData.length
         }
         if (value === '3') {
-          this.displayData = [];
+          this.displayData = []
           this.displayData = [
             {
               id: 1,
@@ -1962,7 +1797,7 @@
               massifPresent: '55%',
               massifPlan: '55%',
               massifArea: '0.13'
-            },
+            }
           ]
           this.count = this.displayData.length
         }
@@ -1970,120 +1805,120 @@
       demoListDataModelType(value) {
         if (value === '3') {
           this.attributeValueData = [
-            {value: '1', label: 'G1'},
-            {value: '2', label: 'M1'},
-            {value: '3', label: '道路'},
+            { value: '1', label: 'G1' },
+            { value: '2', label: 'M1' },
+            { value: '3', label: '道路' }
           ]
         }
       },
       demoListDataModel(value) {
-        this.attributeData = [];
+        this.attributeData = []
         if (value.label === '工业企业') {
           this.attributeData = [
-            {value: '1', label: '企业信息'},
-            {value: '2', label: '街道'},
-            {value: '3', label: '社区'},
-            {value: '4', label: '地址'},
-            {value: '5', label: '法人代表'},
-            {value: '6', label: '联系方式'},
-            {value: '7', label: '企业人数'},
-            {value: '8', label: '行业类别'},
-            {value: '9', label: '生产用水量'},
-            {value: '10', label: '排水量'},
-            {value: '11', label: '主要生产工艺'},
-            {value: '12', label: '产品'},
-            {value: '13', label: '环评'},
-            {value: '14', label: '环评有效性'},
-            {value: '15', label: '排污许可证'},
-            {value: '16', label: '废水处理方式'},
-            {value: '17', label: '特征污染物'},
+            { value: '1', label: '企业信息' },
+            { value: '2', label: '街道' },
+            { value: '3', label: '社区' },
+            { value: '4', label: '地址' },
+            { value: '5', label: '法人代表' },
+            { value: '6', label: '联系方式' },
+            { value: '7', label: '企业人数' },
+            { value: '8', label: '行业类别' },
+            { value: '9', label: '生产用水量' },
+            { value: '10', label: '排水量' },
+            { value: '11', label: '主要生产工艺' },
+            { value: '12', label: '产品' },
+            { value: '13', label: '环评' },
+            { value: '14', label: '环评有效性' },
+            { value: '15', label: '排污许可证' },
+            { value: '16', label: '废水处理方式' },
+            { value: '17', label: '特征污染物' }
           ]
         }
         if (value.label === '地块') {
           this.attributeData = [
-            {value: '1', label: '编号'},
-            {value: '2', label: '面积'},
-            {value: '3', label: '用地类型'},
-            {value: '4', label: '建设状态'},
-            {value: '5', label: '项目名称'},
-            {value: '6', label: '排入河道'},
-            {value: '7', label: '所属流域'},
-            {value: '8', label: '所属排水分区'},
-            {value: '9', label: '是否为正本清源项目'},
-            {value: '10', label: '是否为海绵项目'},
-            {value: '11', label: '海绵类型'},
-            {value: '12', label: '现状控制率'},
-            {value: '13', label: '规划控制率'}
+            { value: '1', label: '编号' },
+            { value: '2', label: '面积' },
+            { value: '3', label: '用地类型' },
+            { value: '4', label: '建设状态' },
+            { value: '5', label: '项目名称' },
+            { value: '6', label: '排入河道' },
+            { value: '7', label: '所属流域' },
+            { value: '8', label: '所属排水分区' },
+            { value: '9', label: '是否为正本清源项目' },
+            { value: '10', label: '是否为海绵项目' },
+            { value: '11', label: '海绵类型' },
+            { value: '12', label: '现状控制率' },
+            { value: '13', label: '规划控制率' }
           ]
         }
         if (value.label === '管线') {
           this.attributeData = [
-            {value: '1', label: '管道编号'},
-            {value: '2', label: '管道类型'},
-            {value: '3', label: '管径'},
+            { value: '1', label: '管道编号' },
+            { value: '2', label: '管道类型' },
+            { value: '3', label: '管径' }
           ]
         }
         if (value.label === '排口') {
           this.attributeData = [
-            {value: '1', label: '编号'},
-            {value: '2', label: '面积'},
-            {value: '3', label: '用地类型'},
-            {value: '4', label: '建设状态'},
-            {value: '5', label: '项目名称'},
-            {value: '6', label: '排入河道'},
-            {value: '7', label: '所属流域'},
-            {value: '8', label: '所属排水分区'},
-            {value: '9', label: '是否为正本清源项目'},
-            {value: '10', label: '是否为海绵项目'},
-            {value: '11', label: '海绵类型'},
-            {value: '12', label: '现状控制率'},
-            {value: '13', label: '规划控制率'}
+            { value: '1', label: '编号' },
+            { value: '2', label: '面积' },
+            { value: '3', label: '用地类型' },
+            { value: '4', label: '建设状态' },
+            { value: '5', label: '项目名称' },
+            { value: '6', label: '排入河道' },
+            { value: '7', label: '所属流域' },
+            { value: '8', label: '所属排水分区' },
+            { value: '9', label: '是否为正本清源项目' },
+            { value: '10', label: '是否为海绵项目' },
+            { value: '11', label: '海绵类型' },
+            { value: '12', label: '现状控制率' },
+            { value: '13', label: '规划控制率' }
           ]
         }
         // console.log("value1:",value.label);
       },
       handleSelectShow() {
-        const _this = this;
-        _this.isSelect = !_this.isSelect;
+        const _this = this
+        _this.isSelect = !_this.isSelect
         if (this.infoManager) {
-          _this.infoManager = !_this.infoManager;
+          _this.infoManager = !_this.infoManager
         }
         if (this.tabPaneLabel === true) {
           _this.tabPaneLabel = false
         }
-        _this.exactQuery[0].labelId = 'SUBCATCHMENTS'; // 地块
-        _this.exactQuery[1].labelId = 'CONDUITS'; // 工业企业
-        _this.exactQuery[2].labelId = 'JUNCTIONS'; // 排口
-        _this.exactQuery[3].labelId = 'OUTFALLS'; // 管线
-        // let typeName1 = '';  // 工业企业
-        // let typeName2 = '';  // 地块
-        // let typeName3 = '';  // 管线
-        // let typeName4 = '';  // 排口
-        // let COMtypeData = [];  // 公司数据
-        // let SUBtypeData = [];  // 地块数据
-        // let CONtypeData = [];  // 管道数据
-        // let JUNtypeData = [];  // 交汇点数据
-        // _.each(labelData, function (vn) {
-        //   if (vn.businessType === 'COMPANY') {
-        //     typeName1 = '工业企业'
-        //   }
-        //   if (vn.businessType === 'SUBCATCHMENTS') {
-        //     typeName2 = '地块'
-        //   }
-        //   if (vn.businessType === 'CONDUITS') {
-        //     typeName3 = '管线'
-        //   }
-        //   if (vn.businessType === 'JUNCTIONS') {
-        //     typeName4 = '排口'
-        //   }
-        // })
-        //
+        _this.exactQuery[0].labelId = 'SUBCATCHMENTS' // 地块
+        _this.exactQuery[1].labelId = 'CONDUITS' // 工业企业
+        _this.exactQuery[2].labelId = 'JUNCTIONS' // 排口
+        _this.exactQuery[3].labelId = 'OUTFALLS' // 管线
+      // let typeName1 = '';  // 工业企业
+      // let typeName2 = '';  // 地块
+      // let typeName3 = '';  // 管线
+      // let typeName4 = '';  // 排口
+      // let COMtypeData = [];  // 公司数据
+      // let SUBtypeData = [];  // 地块数据
+      // let CONtypeData = [];  // 管道数据
+      // let JUNtypeData = [];  // 交汇点数据
+      // _.each(labelData, function (vn) {
+      //   if (vn.businessType === 'COMPANY') {
+      //     typeName1 = '工业企业'
+      //   }
+      //   if (vn.businessType === 'SUBCATCHMENTS') {
+      //     typeName2 = '地块'
+      //   }
+      //   if (vn.businessType === 'CONDUITS') {
+      //     typeName3 = '管线'
+      //   }
+      //   if (vn.businessType === 'JUNCTIONS') {
+      //     typeName4 = '排口'
+      //   }
+      // })
+      //
 
-        // this.junctionsLayData = JUNtypeData;  // 交汇点数据
-        // this.conduitsLayData = CONtypeData;  // 管道数据
-        // this.companysLayData = COMtypeData;  // 公司数据
-        // this.subLayData = SUBtypeData;        // 地块数据
-        // debugger
+      // this.junctionsLayData = JUNtypeData;  // 交汇点数据
+      // this.conduitsLayData = CONtypeData;  // 管道数据
+      // this.companysLayData = COMtypeData;  // 公司数据
+      // this.subLayData = SUBtypeData;        // 地块数据
+      // debugger
       },
       handleSizeChange1(pageSizeValue1) {
         this.pageSizeValue1 = pageSizeValue1
@@ -2098,91 +1933,91 @@
         this.pageSizeValue4 = pageSizeValue4
       },
       handleCurrentChangeHandel1(currentPageNum1) {
-        this.currentPageNum1 = currentPageNum1;
-        // console.log(`每页 ${val} 条`);
+        this.currentPageNum1 = currentPageNum1
+      // console.log(`每页 ${val} 条`);
       },
       handleCurrentChangeHandel2(currentPageNum2) {
-        this.currentPageNum2 = currentPageNum2;
-        // console.log(`每页 ${val} 条`);
+        this.currentPageNum2 = currentPageNum2
+      // console.log(`每页 ${val} 条`);
       },
       handleCurrentChangeHandel3(currentPageNum3) {
-        this.currentPageNum3 = currentPageNum3;
-        // console.log(`每页 ${val} 条`);
+        this.currentPageNum3 = currentPageNum3
+      // console.log(`每页 ${val} 条`);
       },
       handleCurrentChangeHandel4(currentPageNum4) {
-        this.currentPageNum4 = currentPageNum4;
-        // console.log(`每页 ${val} 条`);
+        this.currentPageNum4 = currentPageNum4
+      // console.log(`每页 ${val} 条`);
       },
-      /************* 切换标签页 **************/
+      /** *********** 切换标签页 **************/
       handleClicktabClick(tab, event) {
         if (this.tabPaneLabel === true) {
           this.tabPaneLabel = false
         }
-        if(this.queryDown === true) {
+        if (this.queryDown === true) {
           this.queryDown = false
         }
-        if(this.queryUp === true) {
+        if (this.queryUp === true) {
           this.queryUp = false
         }
       },
-      /****** 反向空间查询 *******/
-      spaceRangeAsync(queryString, cb){
-        let self = this;
+      /** **** 反向空间查询 *******/
+      spaceRangeAsync(queryString, cb) {
+        const self = this
         if (this.spaceRange.substr(this.spaceRange.length - 1, 1) == ';') {
-          queryString == ''
+          queryString === ''
         }
-        let results = queryString ? this.queryOptions.filter(this.spaceRangeFilter(queryString)) : this.queryOptions;
-        clearTimeout(this.timeout);
+        const results = queryString ? this.queryOptions.filter(this.spaceRangeFilter(queryString)) : this.queryOptions
+        clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          cb(results);
-        }, 1000 * Math.random());
+          cb(results)
+        }, 1000 * Math.random())
       },
-      spaceRangeFilter(queryString){
+      spaceRangeFilter(queryString) {
         return (queryOptions) => {
-          return (queryOptions.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
-        };
-      },
-      //反向查询组件
-      querySearchAsync(queryString, cb) {
-        let self = this;
-        if (this.queryStr.substr(this.queryStr.length - 1, 1) == ';') {
-          queryString == ''
+          return (queryOptions.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1)
         }
-        let results = queryString ? this.queryOptions.filter(this.createStateFilter(queryString)) : this.queryOptions;
-        clearTimeout(this.timeout);
+      },
+      // 反向查询组件
+      querySearchAsync(queryString, cb) {
+        const self = this
+        if (this.queryStr.substr(this.queryStr.length - 1, 1) == ';') {
+          queryString === ''
+        }
+        const results = queryString ? this.queryOptions.filter(this.createStateFilter(queryString)) : this.queryOptions
+        clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          cb(results);
-        }, 1000 * Math.random());
+          cb(results)
+        }, 1000 * Math.random())
       },
       createStateFilter(queryString) {
         return (queryOptions) => {
-          return (queryOptions.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
-        };
+          return (queryOptions.value.toLowerCase().indexOf(queryString.toLowerCase()) !== -1)
+        }
       },
 
-      //查询开始
+      // 查询开始
       handleSelect() {
-        let self = this;
-        self.isLoading = true;
-        self.queryDown = false;
-        self.queryUp = false;
+        const self = this
+        self.isLoading = true
+        self.queryDown = false
+        self.queryUp = false
         console.log('isLoading: ', self.isLoading)
-        self.selectSubcatchmentData = [];
-        self.selectOutfalls = [];
-        self.selectCompanys = [];
-        let queryArry = self.queryStr.split(';');
-        self.selectResult.subcatchments = [];
-        self.selectResult.conduits = [];
-        self.selectResult.outfalls = [];
-        self.selectResult.companies = [];
-        self.selectResult.junctions = [];
+        self.selectSubcatchmentData = []
+        self.selectOutfalls = []
+        self.selectCompanys = []
+        const queryArry = self.queryStr.split(';')
+        self.selectResult.subcatchments = []
+        self.selectResult.conduits = []
+        self.selectResult.outfalls = []
+        self.selectResult.companies = []
+        self.selectResult.junctions = []
 
-        let matchedShapes = _.chain(self.shapes).reject(shape => {
+        const matchedShapes = _.chain(self.shapes).reject(shape => {
           let flag = false
           for (let i = 0; i < queryArry.length; i++) {
             if (self.shapeIdStrMap[shape.id].indexOf(queryArry[i]) < 0) { // 有一个查询条件不符合就过滤掉
-              flag = true;
-              break;
+              flag = true
+              break
             }
           }
           return flag
@@ -2191,22 +2026,23 @@
         //  拿到结果进行处理  用于页面展示  用于 地图绘制
         self.selectResult = {
           subcatchments: _.reject(matchedShapes, function(item) {
-            return item.category !== 'SUBCATCHMENTS';
+            return item.category !== 'SUBCATCHMENTS'
           }),
           conduits: _.reject(matchedShapes, function(item) {
-            return item.category !== 'CONDUITS';
+            return item.category !== 'CONDUITS'
           }),
           junctions: _.reject(matchedShapes, function(item) {
-            return item.category !== 'JUNCTIONS';
+            return item.category !== 'JUNCTIONS'
           }),
           outfalls: _.reject(matchedShapes, function(item) {
-            return item.category !== 'OUTFALLS';
+            return item.category !== 'OUTFALLS'
           }),
           companies: _.reject(matchedShapes, function(item) {
-            return item.category !== 'COMPANY';
-          }),
+            return item.category !== 'COMPANY'
+          })
         }
 
+        console.log('selectResult🙃:', self.selectResult)
         // 在匹配地块内的公司，也得放到结果selectResult.companies中。 @TODO: 这一部分代码不能删除。应该提前计算完。因为isPointInPolygon速度非常慢。
         // _.each(self.companies, company =>  {
         //   _.each(self.selectResult.subcatchments, subcatchment => {
@@ -2224,13 +2060,13 @@
 
         self.isResult = !self.isResult
         setTimeout(function() {
-          self.$refs.map.showResult(self.selectResult, self.shapes);
-          self.isLoading = false;
+          self.$refs.map.showResult(self.selectResult, self.shapes)
+          self.isLoading = false
           self.tabPaneLabel = true
-          self.underPipelineMouth = true;  // 地块
-          self.underSewageWhere = true;    // 地块
+          self.underPipelineMouth = true // 地块
+          self.underSewageWhere = true // 地块
         }, 200)
-      },
+      }
     }
   }
 </script>
