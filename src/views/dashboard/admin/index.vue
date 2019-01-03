@@ -642,7 +642,7 @@
                       </el-select>
                       </span>
                     </div>
-                    <span style="float:left;display:inline-block;margin:5px;">
+                    <span style="float:left;display:inline-block;margin:5px 12px;">
                       <el-button style="padding:8px 10px;" type="primary" icon="el-icon-plus" @click="handelAddTea"></el-button>
                     </span>
                   </div>

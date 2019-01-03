@@ -1339,7 +1339,7 @@
             //作比较
             for (let j = 0; j < selectSubcatchmets.length; j++) {
               let overlays = selectSubcatchmets[j].overlays
-              let ply = new BMap.Polygon(overlays);
+              let ply = new BMap.Polyoverlaysgon(overlays);
               let result = BMapLib.GeoUtils.isPointInPolygon(point, ply);
               if (result == true) {
                 let data = selectSubcatchmets[j].properties;
