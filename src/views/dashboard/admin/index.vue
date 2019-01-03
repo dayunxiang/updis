@@ -670,22 +670,23 @@
                         </el-option>
                       </el-select>
                       <span> 属性值: </span>
-                      <el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width:120px">
+                      <el-input placeholder="请输入属性值" v-model="placeholderModel" style="width:130px;" clearable></el-input>
+                      <!--<el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width:120px">
                         <el-option
                           v-for="item in attributeValueData"
                           :key="item.value"
                           :label="item.label"
                           :value="item.value">
                         </el-option>
-                      </el-select>
+                      </el-select>-->
                     </div>
                   </div>
                   <div class="divSpanButton">
                     <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
                   </div>
-                  <div style="float:right; display:inline-block;padding-right:140px;">
-                    <el-button type="primary" style="padding:5px 10px;" @click="handelDeleteTerm">清除</el-button>
-                    <el-button type="success" style="padding:5px 10px;" @click="handelQueryTerm">查询</el-button>
+                  <div style="float:right; display:inline-block;padding-right:80px;padding-top:5px;">
+                    <el-button type="primary" style="padding:12px 35px;" @click="handelDeleteTerm">清除</el-button>
+                    <el-button type="success" style="padding:12px 35px;" @click="handelQueryTerm">查询</el-button>
                   </div>
                 </div>
                 <!--<div style="float: left;width: 80%;">
@@ -1017,6 +1018,7 @@
     },
     data() {
       return {
+        placeholderModel: '',
         dialogTheader: [],  // 初始化表头
         dialogTableData: [],  // 弹框表格数据
         tabPaneName:[],  // 弹框标签页数据
