@@ -942,7 +942,7 @@
             <el-dialog title="下游管线 + 排口" :visible.sync="dialogVisible" width="80%">
               <el-tabs type="card">
                 <!-- 标签页 -->
-                <el-tab-pane v-for="lay in tabPaneName" :label="lay.labelName" :name="lay.labelId" :key="lay.id">
+                <!--<el-tab-pane v-for="lay in tabPaneName" :label="lay.labelName" :name="lay.id" :key="lay.id">-->
                   <!-- 表格 -->
                   <!--<el-table :data="dialogTableData" @selection-change="queryChangeHandle" style="width: 100%" highlight-current-row border height="280">-->
                     <!--<template>-->
@@ -955,7 +955,7 @@
                     <!--</template>-->
                   <!--</el-table>-->
 
-                </el-tab-pane>
+                <!--</el-tab-pane>-->
               </el-tabs>
               <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
