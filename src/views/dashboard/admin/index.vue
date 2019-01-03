@@ -642,7 +642,7 @@
                       </el-select>
                       </span>
                     </div>
-                    <span style="float:left;display:inline-block;margin:5px;">
+                    <span style="float:left;display:inline-block;margin:5px 12px;">
                       <el-button style="padding:8px 10px;" type="primary" icon="el-icon-plus" @click="handelAddTea"></el-button>
                     </span>
                   </div>
@@ -1763,7 +1763,7 @@
       /************* 查询按钮 ***************/
       handelQueryTerm() {
         const _this = this;
-        if (_this.value1 !== '' && _this.value2 !== '' && _this.value3 !== '') {
+        if (_this.value1 !== '' && _this.value2 !== '' || _this.value3 !== '') {
           console.log("属性传值+++++++", _this.value2);
           _this.tabPaneLabel = true;
           _this.underPipelineMouth = true;  // 地块按钮
