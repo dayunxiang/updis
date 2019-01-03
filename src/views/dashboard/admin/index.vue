@@ -768,15 +768,16 @@
           </div>
           <div v-if="tabPaneLabel" style="background-color: #fff;padding-left: 10px;position:relative;">
             <span class="buttonList">
-              <el-button @click="queryHandleClick" v-if="queryHandleShow" type="primary" plain size="mini"
-                         :style="'background:' + xiayouBackgound +';color:' + xiayouClolor"> {{xiayouName}} </el-button>
-              <el-button @click="sewageHandleClick" v-if="sewageHandleShow" type="primary" plain size="mini"
-                         :style="'background:' + shangyouBackgound +';color:' + shangyouClolor"> {{shangyouName}} </el-button>
-              <!--<el-button @click="sewageHandleClick" v-if="sewageHandleClick" type="primary" plain size="mini"> 下游污水 + 去向 </el-button>
-              <el-button @click="queryHandleClick" v-if="queryHandleClick" type="primary" plain size="mini"> 下游管线 + 排口 </el-button>
-              <el-button @click="qiyeHandleClick" v-if="qiyeHandleClick" type="primary" plain size="mini">  下游污水 + 去向 </el-button>
-              <el-button @click="conduitHandleClick" v-if="conduitHandleClick" type="primary" plain size="mini"> 上游管道 </el-button>
-              <el-button @click="massifHandleClick" v-if="massifHandleClick" type="primary" plain size="mini">  上游地块 </el-button>-->
+              <el-button @click="underPipeClick" v-if="underPipelineMouth" :style="'background:'+underBackCor+';color:'+textCor"
+                         type="primary" plain size="mini">下游管线 + 排口</el-button>
+              <el-button @click="underSewageClick" v-if="underSewageWhere" :style="'background:'+onBackCor+';color:'+textCor"
+                         type="primary" plain size="mini">下游污水 + 去向</el-button>
+              <el-button @click="entUnderClick" v-if="entUnderSewageWhere" :style="'background:'+onBackCor+';color:'+textCor"
+                         type="primary" plain size="mini">下游污水 + 去向</el-button>
+              <el-button @click="paikouOnPipeClick" v-if="paikouOnPipe" :style="'background:'+BackCor+';color:'+textCor"
+                         type="primary" plain size="mini">上游管道</el-button>
+              <el-button @click="paikouOnPlotClick" v-if="paikouOnPlot" :style="'background:'+BackCor+';color:'+textCor"
+                         type="primary" plain size="mini">上游地块</el-button>
             </span>
             <el-tabs class="tabPaneSpan"  @tab-click="tableListComlde">
               <!--<el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
@@ -862,25 +863,26 @@
               </el-tab-pane>
               <el-tab-pane :label=" '企业('+showResult.companies.length+')'" name="1">
                 <el-table :data="(showResult.companies).slice(( currentPageNum2 - 1 ) * totalNumber2 , currentPageNum2 * totalNumber2)"
-                          style="width: 100%" height="280">
-                  <el-table-column fixed label="序号" align="center" type="index"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true" label="企业名称" prop="QYMC"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="街道" prop="JDMC"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="社区" prop="SQMC"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="地址" prop="SCJYDZ"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="法人代表" prop="FDDBR"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="联系方式" prop="LXFS"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="企业人数" prop="QYRS"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="行业类别" prop="QYLXR"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="生产用水量" prop="SCYSL"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="排水量" prop="PSL"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="主要生产工艺" prop="ZYSCGY"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="产品" prop="CPZL"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="环评" prop="HPPFWJ"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="环评有效性" prop="EnterEffective"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="排污许可证" prop="PWXKZ"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="废水处理方式" prop="FSCLFS"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="170" :show-overflow-tooltip="true" label="特征污染物" prop="TZWRW"></el-table-column>
+                          style="width: 100%" height="280" border>
+                  <el-table-column align="center" default-sort type="selection"></el-table-column>
+                  <el-table-column fixed label="序号" align="center" type="index" width="50"></el-table-column>
+                  <el-table-column align="center" sortable width="110" :show-overflow-tooltip="true" label="企业名称" prop="QYMC"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="街道" prop="JDMC"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="社区" prop="SQMC"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="地址" prop="SCJYDZ"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="法人代表" prop="FDDBR"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="联系方式" prop="LXFS"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="企业人数" prop="QYRS"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="行业类别" prop="QYLXR"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="生产用水量" prop="SCYSL"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="排水量" prop="PSL"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="主要生产工艺" prop="ZYSCGY"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="产品" prop="CPZL"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="环评" prop="HPPFWJ"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="环评有效性" prop="EnterEffective"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="排污许可证" prop="PWXKZ"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="废水处理方式" prop="FSCLFS"></el-table-column>
+                  <el-table-column align="center" sortable width="170" :show-overflow-tooltip="true" label="特征污染物" prop="TZWRW"></el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange2"
@@ -893,7 +895,8 @@
               </el-tab-pane>
               <el-tab-pane :label=" '管线('+showResult.conduits.length+')'" name="2">
                 <el-table :data="(showResult.conduits).slice(( currentPageNum3 - 1 ) * totalNumber3 , currentPageNum3 * totalNumber3)"
-                          style="width: 100%" height="280">
+                          style="width: 100%" height="280" borde>
+                  <el-table-column align="center" default-sort type="selection"></el-table-column>
                   <el-table-column fixed type="index" width="50" label="序号" align="center">
                     <template slot-scope="scope">
                       {{ scope.$index + 1 + totalNumber3 * ( currentPageNum3 - 1 ) }}
@@ -914,22 +917,16 @@
               </el-tab-pane>
               <el-tab-pane :label=" '排口('+showResult.outfalls.length+')'" name="3">
                 <el-table :data="(showResult.outfalls).slice((currentPageNum4-1)*totalNumber4, currentPageNum4*totalNumber4)"
-                          style="width: 100%" height="280" @selection-change="queryChangeRowMouth" ref="multipleTable">
+                          style="width: 100%" height="280" @selection-change="queryChangeRowMouth" ref="multipleTable" border="">
                   <el-table-column align="center" default-sort type="selection"></el-table-column>
                   <el-table-column fixed type="index" width="50" label="序号" align="center">
                     <template slot-scope="scope">
                       {{ scope.$index + 1 + totalNumber4 * ( currentPageNum4 - 1 ) }}
                     </template>
                   </el-table-column>
-                  <el-table-column align="center" :sortable="true" width="200" :show-overflow-tooltip="true" label="排口编号" prop="name"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="200" :show-overflow-tooltip="true" label="排口类型" prop="leixing"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="200" :show-overflow-tooltip="true" label="排向" prop="paixiang"></el-table-column>
-                  <el-table-column align="center" fixed="right" label="操作" width="120">
-                    <template slot-scope="scope">
-                      <el-button @click="conduitHandleClick" type="primary" plain size="mini">查询上游管道</el-button>
-                      <el-button @click="massifHandleClick" type="primary" plain size="mini">查询上游地块</el-button>
-                    </template>
-                  </el-table-column>
+                  <el-table-column align="center" sortable width="210" :show-overflow-tooltip="true" label="排口编号" prop="name"></el-table-column>
+                  <el-table-column align="center" sortable width="210" :show-overflow-tooltip="true" label="排口类型" prop="leixing"></el-table-column>
+                  <el-table-column align="center" sortable width="210" :show-overflow-tooltip="true" label="排向" prop="paixiang"></el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange4"
@@ -941,6 +938,30 @@
                 </el-pagination>
               </el-tab-pane>
             </el-tabs>
+            <!-- 点击按钮弹出框 -->
+            <el-dialog title="下游管线 + 排口" :visible.sync="dialogVisible" width="80%">
+              <el-tabs type="card">
+                <!-- 标签页 -->
+                <el-tab-pane v-for="lay in tabPaneName" :label="lay.labelName" :name="lay.labelId" :key="lay.id">
+                  <!-- 表格 -->
+                  <!--<el-table :data="dialogTableData" @selection-change="queryChangeHandle" style="width: 100%" highlight-current-row border height="280">-->
+                    <!--<template>-->
+                      <!--<el-table-column fixed width="50" label="序号" align="center" type="index"></el-table-column>-->
+                      <!--<template v-for="col in dialogTheader">-->
+                        <!--<el-table-column v-if="col.type == 'sort'" :prop="col.prop" :label="col.label" :width="col.width"-->
+                                         <!--:show-overflow-tooltip="true" align="center">-->
+                        <!--</el-table-column>-->
+                      <!--</template>-->
+                    <!--</template>-->
+                  <!--</el-table>-->
+
+                </el-tab-pane>
+              </el-tabs>
+              <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogVisibleSubmit">确 定</el-button>
+              </span>
+            </el-dialog>
           </div>
           <!-- 查询下游 -->
           <div v-if="queryDown" class="tabPaneLabel">
@@ -996,25 +1017,27 @@
     },
     data() {
       return {
-        xiayouBackgound: 'rgba(18, 54, 239, 0.5)',
-        xiayouClolor: '#fff',
-        shangyouBackgound: 'rgba(255, 0, 255, 0.5)',
-        shangyouClolor: '#fff',
-        xiayouName: '下游管线 + 排口',
-        shangyouName: '下游污水 + 去向',
-        queryHandleShow: true,
-        sewageHandleShow: true,
+        dialogTheader: [],  // 初始化表头
+        dialogTableData: [],  // 弹框表格数据
+        tabPaneName:[],  // 弹框标签页数据
+        dialogVisible: false,  // 弹框
+        underPipelineMouth: false,  // 下游管线 +  排口按钮
+        underSewageWhere: false,    // 下游污水 + 去向
+        entUnderSewageWhere: false, // 下游污水 + 去向
+        paikouOnPipe: false,    // 上游管道
+        paikouOnPlot: false,    // 上游地块
+        BackCor: '#00BF8B',
+        underBackCor: 'rgba(18, 54, 239, 0.5)',
+        onBackCor: 'rgba(255, 0, 255, 0.5)',
+        textCor: '#fff',
+
+
         spaceOptions: [],
         spaceValue: '',
         elOptionValue:'',
         elOptionData:[],
         comend: null,
-        cols: [
-          { label: "节点编号", prop: "node"},
-          { label: "名称", prop: "name"},
-          { label: "类型", prop: "type"},
-          { label: "坐标", prop: "coordinate"}
-        ],
+        cols: [],
         tableData: [],
         /*************/
         firstModel: 'first',
@@ -1390,51 +1413,100 @@
       /**** table页的切换 *******/
       tableListComlde(tab, event){
         if(tab.index == '0') {
-          this.shangyouName = '下游污水 + 去向';
-          this.xiayouName = '下游管线 + 排口';
-          this.xiayouBackgound = 'rgba(18, 54, 239, 0.5)';
-          this.xiayouClolor =  '#fff';
-          this.shangyouBackgound = 'rgba(255, 0, 255, 0.5)';
-          this.shangyouClolor = '#fff';
-          this.queryHandleShow = true;
-          this.sewageHandleShow = true;
+          this.underPipelineMouth = true;
+          this.underSewageWhere = true;
+          this.entUnderSewageWhere = false;
+          this.paikouOnPipe = false;
+          this.paikouOnPlot = false;
         }
         if(tab.index == '1') {
-          this.shangyouName = '下游污水 + 去向';
-          this.xiayouBackgound = 'rgba(18, 54, 239, 0.5)';
-          this.xiayouClolor =  '#fff';
-          this.shangyouBackgound = 'rgba(255, 0, 255, 0.5)';
-          this.shangyouClolor = '#fff';
-          this.queryHandleShow = false;
-          this.sewageHandleShow = true;
+          this.underPipelineMouth = false;
+          this.underSewageWhere = false;
+          this.entUnderSewageWhere = true;
+          this.paikouOnPipe = false;
+          this.paikouOnPlot = false;
         }
-        if(tab.index == '2') {
-          this.shangyouName = '上游';
-          this.xiayouName = '上游';
-          this.queryHandleShow = false;
-          this.sewageHandleShow = false;
+        if(tab.index == '2') {this.underPipelineMouth = false;
+          this.underSewageWhere = false;
+          this.entUnderSewageWhere = false;
+          this.paikouOnPipe = false;
+          this.paikouOnPlot = false;
         }
         if(tab.index == '3') {
-          this.xiayouName = '上游管道';
-          this.shangyouName = '上游地块';
-          this.xiayouBackgound = '#00BF8B';
-          this.xiayouClolor = '#fff';
-          this.shangyouBackgound = '#00BF8B';
-          this.shangyouClolor = '#fff';
-          this.queryHandleShow = true;
-          this.sewageHandleShow = true;
+          this.underPipelineMouth = false;
+          this.underSewageWhere = false;
+          this.entUnderSewageWhere = false;
+          this.paikouOnPipe = true;
+          this.paikouOnPlot = true;
         }
       },
+      /**** 弹框提交按钮 ********/
+      dialogVisibleSubmit(){
+        console.log("弹框提交按钮")
+      },
       /**** 查询下游水管及排口 *****/
-      queryHandleClick(){},
+      underPipeClick(value){
+        debugger
+        const _this = this;
+        _this.dialogVisible = true;
+        _this.tabPaneName = [
+          { labelName: '管线', labelId: 0, id: 0 },
+          { labelName: '排口', labelId: 1, id: 1 }
+        ];
+        _.each(_this.shapes, function (vb) {
+          _this.dialogTheader = [];   // 初始化表头
+          _this.dialogTableData = []; // 初始化表格数据
+          var des = vb.properties.properties;
+          var busType = vb.properties.businessType;
+          // debugger
+          if (_this.value1.labelId === busType) {
+            _this.dialogTheader = [
+              {width: '100', prop: 'name', label: '编号', type: "sort"},
+              {width: '120', prop: 'YDLX', label: '用地类型', type: "sort"},
+              {width: '120', prop: 'JSZT', label: '建设状态', type: "sort" },
+              {width: '110', prop: 'XMMC', label: '项目名称', type: "sort"},
+              {width: '110', prop: 'PRHD', label: '排入河道', type: "sort"},
+              {width: '110', prop: 'SSLY', label: '所属流域', type: "sort"},
+              {width: '160', prop: 'SSPSFQ', label: '所属排水分区', type: "sort"},
+              {width: '180', prop: 'ZBQY', label: '是否为正本清源项目', type: "sort"},
+              {width: '150', prop: 'HMCS', label: '海绵建设情况', type: "sort"},
+              {width: '130', prop: '现状控制率', label: '现状控制率', type: "sort"},
+              {width: '130', prop: '规划控制率', label: '规划控制率', type: "sort"},
+              {width: '130', prop: 'area', label: '面积(公顷)', type: "sort"}
+            ];
+            _this.dialogTableData.push({
+              name: des.name,
+              YDLX: des.YDLX,
+              JSZT: des.JSZT,
+              XMMC: des.XMMC,
+              PRHD: des.PRHD,
+              SSLY: des.SSLY,
+              SSPSFQ: des.SSPSFQ,
+              ZBQY: des.ZBQY,
+              HMCS: des.HMCS,
+              现状控制率: des.现状控制率,
+              规划控制率: des.规划控制率,
+              area: (des.area).toFixed(2)
+            })
+          }
+        })
+      },
       /**** 查询下游污水去向 *****/
-      sewageHandleClick(){},
+      underSewageClick(){
+        console.log("地块下游污水 + 去向");
+      },
       /**** 查询企业下游污水 ******/
-      qiyeHandleClick(){},
+      entUnderClick(){
+        console.log("查询企业下游污水");
+      },
       /**** 查询上游管道 *****/
-      conduitHandleClick(){},
+      paikouOnPipeClick(){
+        console.log("查询上游管道");
+      },
       /**** 查询上游地块 *****/
-      massifHandleClick(){},
+      paikouOnPlotClick(){
+        console.log("查询上游地块");
+      },
       /****** 查询上游 ********/
       queryUpperSwim(row){
         const _this = this;
@@ -1692,6 +1764,8 @@
         if (_this.value1 !== '' && _this.value2 !== '' && _this.value3 !== '') {
           console.log("属性传值+++++++", _this.value2);
           _this.tabPaneLabel = true;
+          _this.underPipelineMouth = true;  // 地块按钮
+          _this.underSewageWhere = true;    // 地块按钮
           _.each(_this.shapes, function (vb) {
             var des = vb.properties.properties;
             var busType = vb.properties.businessType;
@@ -2151,6 +2225,8 @@
           self.$refs.map.showResult(self.selectResult, self.shapes);
           self.isLoading = false;
           self.tabPaneLabel = true
+          self.underPipelineMouth = true;  // 地块
+          self.underSewageWhere = true;    // 地块
         }, 200)
       },
     }
