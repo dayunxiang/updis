@@ -294,7 +294,6 @@ export function isJunctionInRange(junctionShape, rangeShape) {
 export function isOutfallInRange(outfallShape, rangeShape) {
   const coordinate = outfallShape.properties.geometry.coordinates
   const point = new BMap.Point(coordinate[1], coordinate[0])
-
   const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
     return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
   })
@@ -308,8 +307,7 @@ export function isOutfallInRange(outfallShape, rangeShape) {
  */
 export function isSubcatchmentInRange(subcatchmentShape, rangeShape) {
   const reversedCoordinate = getCenterPointOfSubcatchment(subcatchmentShape.properties)
-  const point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1])
-
+  const point = new BMap.Point(reversedCoordinate[1], reversedCoordinate[0])
   const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
     return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
   })
@@ -323,8 +321,7 @@ export function isSubcatchmentInRange(subcatchmentShape, rangeShape) {
  */
 export function isCompanyInRange(companyShape, rangeShape) {
   const reversedCoordinate = getCenterPointOfSubcatchment(companyShape.properties)
-  const point = new BMap.Point(reversedCoordinate[0], reversedCoordinate[1])
-
+  const point = new BMap.Point(reversedCoordinate[1], reversedCoordinate[0])
   const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
     return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
   })
@@ -341,7 +338,6 @@ export function isConduitInRange(conduitShape, rangeShape) {
   const coordinate2 = conduitShape.properties.geometry.coordinates[1]
   const point1 = new BMap.Point(coordinate1[1], coordinate1[0])
   const point2 = new BMap.Point(coordinate2[1], coordinate2[0])
-
   const overlays = _.map(rangeShape.properties.geometry.coordinates[0], item => {
     return new BMap.Point(item[1] + 0.005363, item[0] - 0.00402) // 转换到百度地图的结果有偏移，这里做矫正。
   })

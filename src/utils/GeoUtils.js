@@ -7,7 +7,7 @@
  * @author Baidu Map Api Group
  * @version 1.2
  */
-
+import BMap from 'BMap'
 /**
  * @namespace BMap的所有library类均放在BMapLib命名空间下
  */
@@ -41,6 +41,9 @@ var BMapLib = window.BMapLib = BMapLib || {};
     // 检查类型是否正确
     if (!(point instanceof BMap.Point) ||
       !(bounds instanceof BMap.Bounds)) {
+      return false
+    }
+    if (!bounds.He && !bounds.Le && !bounds.Ol && !bounds.Vd && !bounds.Xd && !bounds.xl) {
       return false
     }
     var sw = bounds.getSouthWest() // 西南脚点

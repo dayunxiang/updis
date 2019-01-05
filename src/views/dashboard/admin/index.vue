@@ -632,12 +632,12 @@
                     <span style="float:left;display:inline-block;line-height: 40px;">选择空间:</span>
                     <div style="float:left;max-width:570px;">
                       <span style="margin:3px 5px;display:inline-block" v-for="lay in spaceList" :key="lay.id">
-                        <el-select v-model="spaceValue" clearable placeholder="请选择" style="width:180px">
+                        <el-select v-model="lay.spaceValue" clearable placeholder="请选择" style="width:180px">
                         <el-option
-                          v-for="item in spaceOptions"
+                          v-for="item in rangeData"
                           :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
+                          :label="item.name"
+                          :value="item.name">
                         </el-option>
                       </el-select>
                       </span>
@@ -650,9 +650,9 @@
                 <div style="position: relative;">
                   <div class="anshuxing">按属性:</div>
                   <div style="float:left;">
-                    <div style="padding-bottom:3px" v-for="list in TypeList" :key="list.id">
+                    <div style="padding-bottom:3px" v-for="(list, index) in TypeList" :key="list.id">
                       <span> 类型: </span>
-                      <el-select v-model="value1" @change="demoListDataModel" clearable placeholder="请选择" style="width:120px">
+                      <el-select v-model="list.seletctType" @change="demoListDataModel(list, index)" clearable placeholder="请选择" style="width:120px">
                         <el-option
                           v-for="item in exactQuery"
                           :key="item.value"
@@ -661,7 +661,7 @@
                         </el-option>
                       </el-select>
                       <span> 属性: </span>
-                      <el-select v-model="value2" @change="demoListDataModelType" clearable placeholder="请选择" style="width:160px">
+                      <el-select v-model="list.selectAttribute" @change="demoListDataModelType(list, index)" clearable placeholder="请选择" style="width:160px">
                         <el-option
                           v-for="item in attributeData"
                           :key="item.value"
@@ -670,15 +670,15 @@
                         </el-option>
                       </el-select>
                       <span> 属性值: </span>
-                      <el-input placeholder="请输入属性值" v-model="placeholderModel" style="width:130px;" clearable></el-input>
-                      <!--<el-select v-model="value3" @change="demoListDataListDemo" clearable placeholder="请选择" style="width:120px">
-                        <el-option
-                          v-for="item in attributeValueData"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>-->
+                      <el-autocomplete
+                        class="el-input"
+                        style="width:130px"
+                        v-model="list.AttributeValue"
+                        :fetch-suggestions="AttributeValueFunc"
+                        placeholder="请输入属性值"
+                        :trigger-on-focus="true"
+                        @focus="AttributeValueFocus(list.attribute)">
+                      </el-autocomplete>
                     </div>
                   </div>
                   <div class="divSpanButton">
@@ -717,7 +717,7 @@
               </el-tab-pane>
             </el-tabs>
           </div>
-          <div v-if="tabPaneLabel" style="background-color: #fff;padding-left: 10px;position:relative;">
+          <div v-if="tabPaneLabel" v-show="selectTable === selectLabel" style="background-color: #fff;padding-left: 10px;position:relative;">
             <span class="buttonList">
               <el-button @click="underPipeClick" v-if="underPipelineMouth" :style="'background:'+underBackCor+';color:'+textCor"
                          type="primary" plain size="mini">下游管线 + 排口</el-button>
@@ -743,17 +743,17 @@
                   </el-table-column>
                   <el-table-column align="center" :sortable="true" width="100" :show-overflow-tooltip="true" label="编号" prop="name"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="120" :show-overflow-tooltip="true" label="用地类型" prop="YDLX"
-                                   column-key="YDLX" :filters="YDLXData"
+                                   column-key="YDLX" :filters="tableFilter(showResult.subcatchments, 'YDLX')"
                                    :filter-method="YDLXHandler"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="120" :show-overflow-tooltip="true" label="建设状态" prop="JSZT"
-                                   column-key="JSZT" :filters="JSZTData"
+                                   column-key="JSZT" :filters="tableFilter(showResult.subcatchments, 'JSZT')"
                                    :filter-method="JSZTHandler"
                   ></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="项目名称" prop="XMMC"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="排入河道" prop="PRHD"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="110" :show-overflow-tooltip="true" label="所属流域" prop="SSLY"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="150" :show-overflow-tooltip="true" label="所属排水分区" prop="SSPSFQ"
-                                   column-key="SSPSFQ" :filters="SSPSFQData"
+                                   column-key="SSPSFQ" :filters="tableFilter(showResult.subcatchments, 'SSPSFQ')"
                                    :filter-method="SSPSFQHandler"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="180" :show-overflow-tooltip="true" label="是否为正本清源项目" prop="ZBQY"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="150" :show-overflow-tooltip="true" label="海绵建设情况" prop="HMCS"></el-table-column>
@@ -813,7 +813,7 @@
                   </el-table-column>
                   <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管道编号" prop="name"></el-table-column>
                   <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管道类型" prop="leixing"></el-table-column>
-                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管径" prop="leixing"></el-table-column>
+                  <el-table-column align="center" :sortable="true" width="240" :show-overflow-tooltip="true" label="管径" prop="guanjing"></el-table-column>
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange3"
@@ -908,7 +908,12 @@
     getAncestorSubcatchmentsOfOutfall,
     getDescendantConduitsOfSubcatchment,
     getDescendantOutfallsOfSubcatchment,
-    getNearestNodeOfPoint
+    getNearestNodeOfPoint,
+    isJunctionInRange,
+    isOutfallInRange,
+    isSubcatchmentInRange,
+    isCompanyInRange,
+    isConduitInRange
   } from '@/utils/mapUtil'
   import '@/utils/GeoUtils.js'
   import _ from 'lodash'
@@ -926,7 +931,6 @@
     },
     data() {
       return {
-        placeholderModel: '',
         dialogTheader: [], // 初始化表头
         dialogTableData: [], // 弹框表格数据
         tabPaneName: [], // 弹框标签页数据
@@ -940,9 +944,6 @@
         underBackCor: 'rgba(18, 54, 239, 0.5)',
         onBackCor: 'rgba(255, 0, 255, 0.5)',
         textCor: '#fff',
-
-        spaceOptions: [],
-        spaceValue: '',
         elOptionValue: '',
         elOptionData: [],
         comend: null,
@@ -951,32 +952,6 @@
         firstModel: 'first',
         queryUp: false, // 查询上游
         queryDown: false, // 查询下游
-        YDLXData: [
-          { text: 'G1', value: 'G1' },
-          { text: 'G2', value: 'G2' },
-          { text: 'E1', value: 'E1' },
-          { text: 'E2', value: 'E2' },
-          { text: 'M1', value: 'M1' },
-          { text: 'U1', value: 'U1' }
-        ], // YDLX筛选
-        JSZTData: [
-          { text: '规划', value: '规划' },
-          { text: '在建', value: '在建' },
-          { text: '现状', value: '现状' }
-        ], // JSZT筛选
-        SSPSFQData: [
-          { text: '1#排水分区', value: '1#排水分区' },
-          { text: '2#排水分区', value: '2#排水分区' },
-          { text: '3#排水分区', value: '3#排水分区' },
-          { text: '4#排水分区', value: '4#排水分区' },
-          { text: '5#排水分区', value: '5#排水分区' },
-          { text: '6#排水分区', value: '6#排水分区' },
-          { text: '7#排水分区', value: '7#排水分区' },
-          { text: '8#排水分区', value: '8#排水分区' },
-          { text: '9#排水分区', value: '9#排水分区' },
-          { text: '10#排水分区', value: '10#排水分区' },
-          { text: '19#排水分区', value: '19#排水分区' }
-        ], // SSPSFQ筛选
         isShowButton: false, // 多选按钮
         isDisabled: true, // 禁用按钮
         /** *************************/
@@ -1091,19 +1066,25 @@
           }
         ],
         activeName2: 'first',
-        TypeList: [0],
-        spaceList: [0],
+        TypeList: [{
+          seletctType: '',
+          selectAttribute: '',
+          AttributeValue: ''
+        }],
+        spaceList: [{
+          spaceValue: ''
+        }],
+        // 精确查找类型
         exactQuery: [
-          { value: '1', label: '地块' },
-          { value: '2', label: '工业企业' },
-          { value: '3', label: '排口' },
-          { value: '4', label: '管线' }
+          { value: 'outfalls', label: '排口' },
+          { value: 'conduits', label: '管线' },
+          { value: 'subcatchments', label: '地块' },
+          { value: 'companies', label: '工业企业' }
         ],
-        value1: '',
+        AttributeValue: [], // 精确查找属性值推荐
+        selectLabel: '', // 反向查询当前lable
+        selectTable: '精确查询', // 反向查询当前查询的tab
         attributeData: [],
-        value2: '',
-        attributeValueData: [],
-        value3: '',
         junctionsLayData: [], // 交汇点数据
         conduitsLayData: [], // 管道数据
         companysLayData: [], // 公司数据
@@ -1296,6 +1277,11 @@
           conduits: _.map(self.selectResult.conduits, item => item.properties.properties),
           companies: _.map(self.selectResult.companies, item => item.properties.properties)
         }
+      },
+      rangeData() {
+        return _.filter(this.shapes, function(item) {
+          return item.category === 'RANGE'
+        })
       }
     },
     create() {
@@ -1368,7 +1354,7 @@
           var des = vb.properties.properties
           var busType = vb.properties.businessType
           // debugger
-          if (_this.value1.labelId === busType) {
+          if (_this.seletctType.labelId === busType) {
             _this.dialogTheader = [
               { width: '100', prop: 'name', label: '编号', type: 'sort' },
               { width: '120', prop: 'YDLX', label: '用地类型', type: 'sort' },
@@ -1639,29 +1625,31 @@
        * */
       // 精确查询  ---  增加查询条件
       handelAddTerm() {
-        const _this = this
-        const lengthId = _this.TypeList.length
-        let id = 1
-        const deId = id++
-        if (lengthId < 3) {
-          this.TypeList.push(deId)
+        if (this.TypeList.length < 3) {
+          this.TypeList.push({
+            seletctType: '',
+            selectAttribute: '',
+            AttributeValue: ''
+          })
         }
       },
       handelAddTea() {
-        const _this = this
-        let id = 1
-        const deId = id++
-        const spaceId = _this.spaceList.length
-        if (spaceId < 7) {
-          _this.spaceList.push(deId)
+        if (this.spaceList.length < 7) {
+          this.spaceList.push({
+            spaceValue: ''
+          })
         }
       },
       /** *********** 清空查询 ***************/
       handelDeleteTerm() {
-        const index = this.TypeList.length - 1
-        this.TypeList.splice(1, index)
-        const indexId = this.spaceList.length - 1
-        this.spaceList.splice(1, indexId)
+        this.TypeList = [{
+          seletctType: '',
+          selectAttribute: '',
+          AttributeValue: ''
+        }]
+        this.spaceList = [{
+          spaceValue: ''
+        }]
       },
       /* handelDeleteCloa(){
         let indexId = this.spaceList.length - 1;
@@ -1670,33 +1658,54 @@
       /** *********** 查询按钮 ***************/
       handelQueryTerm() {
         const _this = this
-        console.log('_this.shapes', _this.shapes)
-        self.selectResult.subcatchments = []
-        self.selectResult.conduits = []
-        self.selectResult.outfalls = []
-        self.selectResult.companies = []
-        self.selectResult.junctions = []
-        console.log('_this.value1:', _this.value1)
-        console.log('_this.value2:', _this.value2)
-        console.log('placeholderModel属性值:', _this.placeholderModel)
-        let matchedShapes = []
-        // if (_this.value1) {
-        //   matchedShapes = _.chain(self.shapes).reject(shape => {
-        //     if (shape.category !== '') {
-        //
-        //     }
-        //   })
-        // }
-  
-        console.log('selectResult🙃:', self.selectResult)
-        self.isResult = !self.isResult
+        _this.isLoading = true
+        _this.selectResult = {
+          subcatchments: [],
+          conduits: [],
+          outfalls: [],
+          companies: [],
+          junctions: []
+        }
+        let shapesData = _.cloneDeep(_this.shapes)
+        let range = [] // 当前选中的空间
+        _.each(_this.spaceList, item => {
+          if (item.spaceValue) {
+            range.push(_.filter(_this.rangeData, data => { return data.name === item.spaceValue })[0])
+          }
+        })
+        let shapesDatas = []
+        _.each(range, data => {
+          shapesDatas.length ? shapesDatas = _.concat((_.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })), shapesDatas) : shapesDatas = _.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })
+        })
+        if (shapesDatas.length) {
+          shapesData = shapesDatas
+        }
+        _.each(_this.TypeList, function(list) {
+          if (list.seletctType && list.seletctType.value && list.selectAttribute && list.AttributeValue) {
+            const matchedShapes = _.filter(shapesData, shape => {
+              return shape.category === (list.seletctType.value === 'companies' ? 'COMPANY' : list.seletctType.value.toUpperCase()) &&
+                shape.properties.properties[list.selectAttribute] === list.AttributeValue
+            })
+            _this.selectResult[list.seletctType.value].length ? _this.selectResult[list.seletctType.value] = _.concat(_this.selectResult[list.seletctType.value], matchedShapes) : _this.selectResult[list.seletctType.value] = matchedShapes
+          }
+        })
+        _this.selectLabel = '精确查询'
         setTimeout(function() {
-          self.$refs.map.showResult(self.selectResult, self.shapes)
-          self.isLoading = false
-          self.tabPaneLabel = true
-          self.underPipelineMouth = true // 地块
-          self.underSewageWhere = true // 地块
+          _this.$refs.map.showResult(_this.selectResult, shapesData)
+          _this.isLoading = false
+          _this.tabPaneLabel = true
+          _this.underPipelineMouth = true // 地块
+          _this.underSewageWhere = true // 地块
         }, 200)
+      },
+      // tableFilter
+      tableFilter(data, value) {
+        console.log('data🙃', data)
+        const filter = []
+        _.each(data, item => {
+          filter.push({ value: item[value], text: item[value] })
+        })
+        return _.uniqBy(filter, 'value')
       },
       /** *********** 选择框 ***************/
       demoListDataListDemo(value) {
@@ -1794,80 +1803,77 @@
           this.count = this.displayData.length
         }
       },
-      demoListDataModelType(value) {
-        if (value === '3') {
-          this.attributeValueData = [
-            { value: '1', label: 'G1' },
-            { value: '2', label: 'M1' },
-            { value: '3', label: '道路' }
-          ]
-        }
+      demoListDataModelType(value, index) {
+        console.log(value, index)
+        value.attribute = []
+        _.each(this.shapes, item => {
+          if (item.properties.businessType === value.seletctType.value.toUpperCase()) {
+            value.attribute.push(item.properties.properties[value.selectAttribute])
+          }
+        })
+        value.attribute = _.uniq(value.attribute)
+        value.AttributeValue = ''
       },
-      demoListDataModel(value) {
+      AttributeValueFocus(attribute) {
+        this.AttributeValue = attribute
+      },
+      demoListDataModel(value, index) {
         this.attributeData = []
-        if (value.label === '工业企业') {
+        if (value.seletctType.label === '排口') {
           this.attributeData = [
-            { value: '1', label: '企业信息' },
-            { value: '2', label: '街道' },
-            { value: '3', label: '社区' },
-            { value: '4', label: '地址' },
-            { value: '5', label: '法人代表' },
-            { value: '6', label: '联系方式' },
-            { value: '7', label: '企业人数' },
-            { value: '8', label: '行业类别' },
-            { value: '9', label: '生产用水量' },
-            { value: '10', label: '排水量' },
-            { value: '11', label: '主要生产工艺' },
-            { value: '12', label: '产品' },
-            { value: '13', label: '环评' },
-            { value: '14', label: '环评有效性' },
-            { value: '15', label: '排污许可证' },
-            { value: '16', label: '废水处理方式' },
-            { value: '17', label: '特征污染物' }
+            { value: 'name', label: '排口编号' },
+            { value: 'leixing', label: '排口类型' },
+            { value: 'paixiang', label: '排向' }
           ]
         }
-        if (value.label === '地块') {
+  
+        if (value.seletctType.label === '管线') {
           this.attributeData = [
-            { value: '1', label: '编号' },
-            { value: '2', label: '面积' },
-            { value: '3', label: '用地类型' },
-            { value: '4', label: '建设状态' },
-            { value: '5', label: '项目名称' },
-            { value: '6', label: '排入河道' },
-            { value: '7', label: '所属流域' },
-            { value: '8', label: '所属排水分区' },
-            { value: '9', label: '是否为正本清源项目' },
-            { value: '10', label: '是否为海绵项目' },
-            { value: '11', label: '海绵类型' },
-            { value: '12', label: '现状控制率' },
-            { value: '13', label: '规划控制率' }
+            { value: 'name', label: '管道编号' },
+            { value: 'leixing', label: '管道类型' },
+            { value: 'guanjing', label: '管径' }
           ]
         }
-        if (value.label === '管线') {
+        if (value.seletctType.label === '地块') {
           this.attributeData = [
-            { value: '1', label: '管道编号' },
-            { value: '2', label: '管道类型' },
-            { value: '3', label: '管径' }
+            { value: 'name', label: '编号' },
+            { value: 'YDLX', label: '用地类型' },
+            { value: 'JSZT', label: '建设状态' },
+            { value: 'XMMC', label: '项目名称' },
+            { value: 'PRHD', label: '排入河道' },
+            { value: 'SSLY', label: '所属流域' },
+            { value: 'SSPSFQ', label: '所属排水分区' },
+            { value: 'ZBQY', label: '是否为正本清源项目' },
+            { value: 'HMCS', label: '海绵建设情况' },
+            { value: '现状控制率', label: '现状控制率' },
+            { value: '规划控制率', label: '规划控制率' },
+            { value: 'area', label: '面积(公顷)' }
           ]
         }
-        if (value.label === '排口') {
+        if (value.seletctType.label === '工业企业') {
           this.attributeData = [
-            { value: '1', label: '编号' },
-            { value: '2', label: '面积' },
-            { value: '3', label: '用地类型' },
-            { value: '4', label: '建设状态' },
-            { value: '5', label: '项目名称' },
-            { value: '6', label: '排入河道' },
-            { value: '7', label: '所属流域' },
-            { value: '8', label: '所属排水分区' },
-            { value: '9', label: '是否为正本清源项目' },
-            { value: '10', label: '是否为海绵项目' },
-            { value: '11', label: '海绵类型' },
-            { value: '12', label: '现状控制率' },
-            { value: '13', label: '规划控制率' }
+            { value: 'QYMC', label: '企业名称' },
+            { value: 'JDMC', label: '街道' },
+            { value: 'SQMC', label: '社区' },
+            { value: 'SCJYDZ', label: '地址' },
+            { value: 'FDDBR', label: '法人代表' },
+            { value: 'LXFS', label: '联系方式' },
+            { value: 'QYRS', label: '企业人数' },
+            { value: 'QYLXR', label: '行业类别' },
+            { value: 'SCYSL', label: '生产用水量' },
+            { value: 'PSL', label: '排水量' },
+            { value: 'ZYSCGY', label: '主要生产工艺' },
+            { value: 'CPZL', label: '产品' },
+            { value: 'HPPFWJ', label: '环评' },
+            { value: 'EnterEffective', label: '环评有效性' },
+            { value: 'PWXKZ', label: '排污许可证' },
+            { value: 'FSCLFS', label: '废水处理方式' },
+            { value: 'TZWRW', label: '特征污染物' }
           ]
         }
-        // console.log("value1:",value.label);
+        value.AttributeValue = ''
+        value.selectAttribute = ''
+        // console.log("seletctType:",value.label);
       },
       handleSelectShow() {
         const _this = this
@@ -1875,42 +1881,6 @@
         if (this.infoManager) {
           _this.infoManager = !_this.infoManager
         }
-        if (this.tabPaneLabel === true) {
-          _this.tabPaneLabel = false
-        }
-        _this.exactQuery[0].labelId = 'SUBCATCHMENTS' // 地块
-        _this.exactQuery[1].labelId = 'CONDUITS' // 工业企业
-        _this.exactQuery[2].labelId = 'JUNCTIONS' // 排口
-        _this.exactQuery[3].labelId = 'OUTFALLS' // 管线
-      // let typeName1 = '';  // 工业企业
-      // let typeName2 = '';  // 地块
-      // let typeName3 = '';  // 管线
-      // let typeName4 = '';  // 排口
-      // let COMtypeData = [];  // 公司数据
-      // let SUBtypeData = [];  // 地块数据
-      // let CONtypeData = [];  // 管道数据
-      // let JUNtypeData = [];  // 交汇点数据
-      // _.each(labelData, function (vn) {
-      //   if (vn.businessType === 'COMPANY') {
-      //     typeName1 = '工业企业'
-      //   }
-      //   if (vn.businessType === 'SUBCATCHMENTS') {
-      //     typeName2 = '地块'
-      //   }
-      //   if (vn.businessType === 'CONDUITS') {
-      //     typeName3 = '管线'
-      //   }
-      //   if (vn.businessType === 'JUNCTIONS') {
-      //     typeName4 = '排口'
-      //   }
-      // })
-      //
-
-      // this.junctionsLayData = JUNtypeData;  // 交汇点数据
-      // this.conduitsLayData = CONtypeData;  // 管道数据
-      // this.companysLayData = COMtypeData;  // 公司数据
-      // this.subLayData = SUBtypeData;        // 地块数据
-      // debugger
       },
       handleSizeChange1(pageSizeValue1) {
         this.pageSizeValue1 = pageSizeValue1
@@ -1942,9 +1912,8 @@
       },
       /** *********** 切换标签页 **************/
       handleClicktabClick(tab, event) {
-        if (this.tabPaneLabel === true) {
-          this.tabPaneLabel = false
-        }
+        console.log('selectTable === selectLabel', this.selectTable === this.selectLabel)
+        this.selectTable = tab.label
         if (this.queryDown === true) {
           this.queryDown = false
         }
@@ -1952,16 +1921,39 @@
           this.queryUp = false
         }
       },
+      /** **** 属性值查询 *******/
+      AttributeValueFunc(queryString, cb) {
+        let result = []
+        const results = _.filter(this.AttributeValue, item => {
+          return item.indexOf(queryString) !== -1
+        })
+        _.each(results || this.AttributeValue, function(item) {
+          if (result.length < 10) {
+            result.push({ value: item })
+          }
+        })
+        this.timeout = setTimeout(() => {
+          cb(result)
+        }, 1000 * Math.random())
+      },
       /** **** 反向空间查询 *******/
       spaceRangeAsync(queryString, cb) {
         const self = this
         if (this.spaceRange.substr(this.spaceRange.length - 1, 1) == ';') {
           queryString === ''
         }
-        const results = queryString ? this.queryOptions.filter(this.spaceRangeFilter(queryString)) : this.queryOptions
+        console.log(queryString)
+        const results = _.filter(self.rangeData, item => {
+          return item.name.indexOf(queryString) !== -1
+        })
+        let result = []
+        _.each(results, function(item) {
+          result.push({ value: item.name })
+        })
+        console.log(results)
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          cb(results)
+          cb(result)
         }, 1000 * Math.random())
       },
       spaceRangeFilter(queryString) {
@@ -2003,8 +1995,22 @@
         self.selectResult.outfalls = []
         self.selectResult.companies = []
         self.selectResult.junctions = []
-
-        const matchedShapes = _.chain(self.shapes).reject(shape => {
+        const spaceList = self.spaceRange.split(';')
+        let shapesData = _.cloneDeep(self.shapes)
+        let range = [] // 当前选中的空间
+        _.each(spaceList, item => {
+          if (item) {
+            range.push(_.filter(self.rangeData, data => { return data.name === item })[0])
+          }
+        })
+        let shapesDatas = []
+        _.each(range, data => {
+          shapesDatas.length ? shapesDatas = _.concat((_.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })), shapesDatas) : shapesDatas = _.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })
+        })
+        if (shapesDatas.length) {
+          shapesData = shapesDatas
+        }
+        const matchedShapes = _.chain(shapesData).reject(shape => {
           let flag = false
           for (let i = 0; i < queryArry.length; i++) {
             if (self.shapeIdStrMap[shape.id].indexOf(queryArry[i]) < 0) { // 有一个查询条件不符合就过滤掉
@@ -2034,7 +2040,6 @@
           })
         }
 
-        console.log('selectResult🙃:', self.selectResult)
         // 在匹配地块内的公司，也得放到结果selectResult.companies中。 @TODO: 这一部分代码不能删除。应该提前计算完。因为isPointInPolygon速度非常慢。
         // _.each(self.companies, company =>  {
         //   _.each(self.selectResult.subcatchments, subcatchment => {
@@ -2051,8 +2056,9 @@
         // })
 
         self.isResult = !self.isResult
+        self.selectLabel = '模糊查询'
         setTimeout(function() {
-          self.$refs.map.showResult(self.selectResult, self.shapes)
+          self.$refs.map.showResult(self.selectResult, shapesData)
           self.isLoading = false
           self.tabPaneLabel = true
           self.underPipelineMouth = true // 地块
