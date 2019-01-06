@@ -44,8 +44,9 @@
           outfalls: [],
           junctions: [],
           subcatchments: [],
-          companies: []
-        },
+          companies: [],
+          range: []
+        }
       }
     },
     computed: {
@@ -257,6 +258,9 @@
             case 'COMPANY':
               self.mapData.companies.push(mapData);
               break;
+            case 'RANGE':
+              self.mapData.range.push(mapData);
+              break;
           }
         }
         let mapData = self.mapData
@@ -266,6 +270,7 @@
         self.renderringJunctions();
         self.renderringOutfalls();
         self.renderringCompanys();
+        self.renderringRange(self.mapData.range);
       },
       //渲染地块
       renderingSubcatchments() {
@@ -282,6 +287,30 @@
         }
         // 根据用地类型渲染
         self.drawSubcatchments(subcatchmens)
+      },
+      renderringRange(data) {
+        let self = this
+        let range = []
+        let pointArr = []
+        _.each(data, item => {
+          range.push({
+            id: item.id,
+            properties: item.properties
+          })
+        })
+        _.each(range, function(subcatchment) {
+          _.each(subcatchment.properties.geometry.coordinates[0], item => {
+            pointArr.push(new BMap.Point(item[0] + 0.005363, item[1] - 0.00402))
+          })
+        })
+        let polygon = new BMap.Polygon(pointArr, {
+          strokeColor: 'red',
+          strokeStyle: 'dashed',
+          strokeWeight: 1,
+          strokeOpacity: 1,
+          fillOpacity: 0
+        })
+        self.map.addOverlay(polygon)
       },
       //渲染管线
       renderingConduits() {
@@ -341,7 +370,6 @@
           outfalls.push(outfall)
         }
         self.drawOutfalls(outfalls);
-
       },
       //渲染工业企业
       renderringCompanys() {
@@ -1397,6 +1425,10 @@
           // 画出企业
           self.drawCompanys(companies);
           self.drawSubcatchments(selectCompanysResult)
+        }
+  
+        if (data.range.length) {
+          self.renderringRange(data.range)
         }
         //  统计拿到所有数据
         //  数组去重

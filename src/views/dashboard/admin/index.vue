@@ -1341,7 +1341,6 @@
       },
       /** ** 查询下游水管及排口 *****/
       underPipeClick(value) {
-        debugger
         const _this = this
         _this.dialogVisible = true
         _this.tabPaneName = [
@@ -1655,16 +1654,22 @@
         let indexId = this.spaceList.length - 1;
         this.spaceList.splice(1, indexId);
       },*/
+      // 判断是否在范围内
+      isRange(item, data) {
+        return (item.category === 'RANGE' && item.name === data.name) || (item.category === 'JUNCTIONS' && isJunctionInRange(item, data)) || (item.category === 'OUTFALLS' && isOutfallInRange(item, data)) || (item.category === 'SUBCATCHMENTS' && isSubcatchmentInRange(item, data)) || (item.category === 'COMPANY' && isCompanyInRange(item, data)) || (item.category === 'CONDUITS' && isConduitInRange(item, data))
+      },
       /** *********** 查询按钮 ***************/
       handelQueryTerm() {
         const _this = this
         _this.isLoading = true
+        let isTypeList = false
         _this.selectResult = {
           subcatchments: [],
           conduits: [],
           outfalls: [],
           companies: [],
-          junctions: []
+          junctions: [],
+          range: []
         }
         let shapesData = _.cloneDeep(_this.shapes)
         let range = [] // 当前选中的空间
@@ -1674,14 +1679,21 @@
           }
         })
         let shapesDatas = []
+        console.log('range🙃', range)
         _.each(range, data => {
-          shapesDatas.length ? shapesDatas = _.concat((_.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })), shapesDatas) : shapesDatas = _.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })
+          shapesDatas.length ? shapesDatas = _.concat((_.filter(shapesData, item => {
+            return _this.isRange(item, data)
+          })), shapesDatas) : shapesDatas = _.filter(shapesData, item => {
+            return _this.isRange(item, data)
+          })
         })
         if (shapesDatas.length) {
           shapesData = shapesDatas
         }
+        console.log('_this.TypeList:', _this.TypeList)
         _.each(_this.TypeList, function(list) {
           if (list.seletctType && list.seletctType.value && list.selectAttribute && list.AttributeValue) {
+            isTypeList = true
             const matchedShapes = _.filter(shapesData, shape => {
               return shape.category === (list.seletctType.value === 'companies' ? 'COMPANY' : list.seletctType.value.toUpperCase()) &&
                 shape.properties.properties[list.selectAttribute] === list.AttributeValue
@@ -1689,7 +1701,30 @@
             _this.selectResult[list.seletctType.value].length ? _this.selectResult[list.seletctType.value] = _.concat(_this.selectResult[list.seletctType.value], matchedShapes) : _this.selectResult[list.seletctType.value] = matchedShapes
           }
         })
+        if (!isTypeList) {
+          _this.selectResult = {
+            subcatchments: _.reject(shapesData, function(item) {
+              return item.category !== 'SUBCATCHMENTS'
+            }),
+            conduits: _.reject(shapesData, function(item) {
+              return item.category !== 'CONDUITS'
+            }),
+            junctions: _.reject(shapesData, function(item) {
+              return item.category !== 'JUNCTIONS'
+            }),
+            outfalls: _.reject(shapesData, function(item) {
+              return item.category !== 'OUTFALLS'
+            }),
+            companies: _.reject(shapesData, function(item) {
+              return item.category !== 'COMPANY'
+            }),
+            range: _.reject(shapesData, function(item) {
+              return item.category !== 'RANGE'
+            })
+          }
+        }
         _this.selectLabel = '精确查询'
+        console.log('😆', _this.selectResult, shapesData)
         setTimeout(function() {
           _this.$refs.map.showResult(_this.selectResult, shapesData)
           _this.isLoading = false
@@ -1700,7 +1735,6 @@
       },
       // tableFilter
       tableFilter(data, value) {
-        console.log('data🙃', data)
         const filter = []
         _.each(data, item => {
           filter.push({ value: item[value], text: item[value] })
@@ -1995,6 +2029,7 @@
         self.selectResult.outfalls = []
         self.selectResult.companies = []
         self.selectResult.junctions = []
+        self.selectResult.range = []
         const spaceList = self.spaceRange.split(';')
         let shapesData = _.cloneDeep(self.shapes)
         let range = [] // 当前选中的空间
@@ -2005,7 +2040,11 @@
         })
         let shapesDatas = []
         _.each(range, data => {
-          shapesDatas.length ? shapesDatas = _.concat((_.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })), shapesDatas) : shapesDatas = _.filter(shapesData, item => { return item.category !== 'RANGE' && isSubcatchmentInRange(data, item) })
+          shapesDatas.length ? shapesDatas = _.concat((_.filter(shapesData, item => {
+            return self.isRange(item, data)
+          })), shapesDatas) : shapesDatas = _.filter(shapesData, item => {
+            return self.isRange(item, data)
+          })
         })
         if (shapesDatas.length) {
           shapesData = shapesDatas
@@ -2037,6 +2076,9 @@
           }),
           companies: _.reject(matchedShapes, function(item) {
             return item.category !== 'COMPANY'
+          }),
+          range: _.reject(shapesData, function(item) {
+            return item.category !== 'RANGE'
           })
         }
 
