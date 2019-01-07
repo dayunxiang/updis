@@ -712,7 +712,10 @@
                     placeholder="请输入查询条件,多条件之间用;(分号隔开)"
                     :trigger-on-focus="false">
                   </el-autocomplete>
-                  <el-button type="success" @click="handleSelect" style="display:inline-block;width:100px;line-height:34px;float:right;margin:10px 0px;">查询</el-button>
+                  <div class="buttonDouble">
+                    <el-button type="success" @click="handleSelect">查询</el-button>
+                    <el-button type="primary" @click="handelDeleteTerm">清除</el-button>
+                  </div>
                 </div>
               </el-tab-pane>
             </el-tabs>
@@ -1649,7 +1652,8 @@
         this.spaceList = [{
           spaceValue: ''
         }]
-        this.tabPaneLabel = false
+        this.tabPaneLabel = false;
+        this.handleReset();
       },
       /* handelDeleteCloa(){
         let indexId = this.spaceList.length - 1;
@@ -2284,6 +2288,16 @@
         width: 800px;
         max-height: 700px;
         background: rgba(255, 255, 255, 0.5);
+        .buttonDouble{
+          float: right;
+          width:210px;
+          button{
+            display:inline-block;
+            width:100px;
+            line-height:34px;
+            margin:10px 0px;
+          }
+        }
         .divSpanButton {
           padding: 3px 7px;
           display: inline-block;
