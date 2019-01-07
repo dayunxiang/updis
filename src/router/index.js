@@ -165,7 +165,7 @@ export const asyncRouterMap = [
       },
       {
         path: 'figure',
-        component: _import('charts/demo'),
+        component: _import('charts/figure'),
         name: 'figure',
         meta: {
           title: '海绵项目统计分析图',
@@ -239,6 +239,16 @@ export const asyncRouterMap = [
           title: '年径流总量控制率转换',
           noCache: true
         }
+      },
+      {
+        path: 'nianjingliu12',
+        component: _import('Tools/nianjingliu'),
+        name: 'nianjingliu12',
+        meta: {
+          title: 'add12',
+          noCache: true
+        },
+        hidden:true
       }
     ]
   },

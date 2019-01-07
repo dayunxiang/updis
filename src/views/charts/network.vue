@@ -2,8 +2,8 @@
   <div style="width:100%;height:800px;overflow:auto;padding-top:30px">
     <div id="networkFigure" :style="{width: '1000px', height: '400px'}" ></div>
     <div style="width:100%" class="networkBottom">
-      <div id="networkLeftFigure" :style="{width: '600px', height: '400px'}" ></div>
-      <div id="networkRightFigure" :style="{width: '600px', height: '400px'}" ></div>
+      <div id="networkLeftFigure" :style="{width: '50%', height: '400px'}" ></div>
+      <div id="networkRightFigure" :style="{width: '50%', height: '400px'}" ></div>
     </div>
     <div style="height:1000px;width: 100%"></div>
   </div>
@@ -214,12 +214,12 @@
             {
               name:'污水管',
               type:'bar',
-              data: [18203, 23489, 104970, 131744, 630230]
+              data: [183, 239, 170, 131, 744, 630, 230, 134]
             },
             {
               name:'雨水管',
               type:'bar',
-              data:[19325, 23438, 31000, 134141, 681807]
+              data:[125, 238, 310, 134, 141, 681, 807, 170]
             }
           ]
         });
@@ -253,7 +253,7 @@
             type: 'plain',
             orient: 'horizontal',
             top:25 ,
-            data:['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+            data:['600', '800','1000','1200','1400']
           },
           xAxis : [
             {
@@ -263,40 +263,40 @@
           yAxis : [
             {
               type : 'category',
-              data :  ['周一','周二','周三','周四','周五','周六','周日']
+              data :  this.SSPSFQData
             }
           ],
           series : [
             {
-              name:'直接访问',
+              name:'600',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[320, 302, 301, 334, 390, 330, 320]
             },
             {
-              name:'邮件营销',
+              name:'800',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[120, 132, 101, 134, 90, 230, 210]
             },
             {
-              name:'联盟广告',
+              name:'1000',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[220, 182, 191, 234, 290, 330, 310]
             },
             {
-              name:'视频广告',
+              name:'1200',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[150, 212, 201, 154, 190, 330, 410]
             },
             {
-              name:'搜索引擎',
+              name:'1400',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
@@ -334,7 +334,7 @@
             type: 'plain',
             orient: 'horizontal',
             top: 25 ,
-            data: ['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+            data: ['400', '500','600','700','800']
           },
           xAxis : [
             {
@@ -344,40 +344,40 @@
           yAxis : [
             {
               type : 'category',
-              data :  ['周一','周二','周三','周四','周五','周六','周日']
+              data : this.SSPSFQData
             }
           ],
           series : [
             {
-              name:'直接访问',
+              name:'400',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[320, 302, 301, 334, 390, 330, 320]
             },
             {
-              name:'邮件营销',
+              name:'500',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[120, 132, 101, 134, 90, 230, 210]
             },
             {
-              name:'联盟广告',
+              name:'600',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[220, 182, 191, 234, 290, 330, 310]
             },
             {
-              name:'视频广告',
+              name:'700',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
               data:[150, 212, 201, 154, 190, 330, 410]
             },
             {
-              name:'搜索引擎',
+              name:'800',
               type:'bar',
               stack: '总量',
               itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
