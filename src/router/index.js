@@ -146,6 +146,15 @@ export const asyncRouterMap = [
     },
     children: [
       {
+        path: 'network',
+        component: _import('charts/network'),
+        name: 'network',
+        meta: {
+          title: '管网统计分析',
+          noCache: true
+        }
+      },
+      {
         path: 'keyboard',
         component: _import('charts/keyboard'),
         name: 'keyboard',
@@ -156,7 +165,7 @@ export const asyncRouterMap = [
       },
       {
         path: 'figure',
-        component: _import('charts/figure'),
+        component: _import('charts/demo'),
         name: 'figure',
         meta: {
           title: '海绵项目统计分析图',

@@ -685,8 +685,8 @@
                     <el-button type="primary" icon="el-icon-plus" @click="handelAddTerm"></el-button>
                   </div>
                   <div style="float:right; display:inline-block;padding-right:80px;padding-top:5px;">
-                    <el-button type="primary" style="padding:12px 35px;" @click="handelDeleteTerm">清除</el-button>
                     <el-button type="success" style="padding:12px 35px;" @click="handelQueryTerm">查询</el-button>
+                    <el-button type="primary" style="padding:12px 35px;" @click="handelDeleteTerm">清除</el-button>
                   </div>
                 </div>
               </el-tab-pane>
@@ -1649,6 +1649,7 @@
         this.spaceList = [{
           spaceValue: ''
         }]
+        this.tabPaneLabel = false
       },
       /* handelDeleteCloa(){
         let indexId = this.spaceList.length - 1;
@@ -1860,7 +1861,7 @@
             { value: 'paixiang', label: '排向' }
           ]
         }
-  
+
         if (value.seletctType.label === '管线') {
           this.attributeData = [
             { value: 'name', label: '管道编号' },
@@ -2292,7 +2293,7 @@
         }
         .buttonList {
           position: absolute;
-          left: 340px;
+          left: 370px;
           top: 4px;
           z-index: 1;
           button {
