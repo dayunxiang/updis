@@ -233,16 +233,13 @@
       // 处理请求过来的所有数据
       getDataInfoSuccess(data) {
         const self = this
-        for (let i = 0; i < data.length; i++) {
-          const category = data[i].category
-          const properties = data[i].properties
-          const id = data[i].id
+        _.each(data, item => {
           const mapData = {
-            id: id,
-            category: category,
-            properties: properties
+            id: item.id,
+            category: item.category,
+            properties: item.properties
           }
-          switch (category) {
+          switch (item.category) {
             case 'SUBCATCHMENTS':
               self.mapData.subcatchments.push(mapData)
               break
@@ -262,7 +259,7 @@
               self.mapData.range.push(mapData)
               break
           }
-        }
+        })
         const mapData = self.mapData
         self.$store.dispatch('getMapData', mapData)
         self.renderingRange(self.mapData.range) // 分区
@@ -273,113 +270,7 @@
         self.renderingCompanys(self.mapData.companies) // 公司
       },
       // 渲染地块
-      renderingSubcatchments() {
-        const self = this
-        const subcatchmens = []
-        _.each(self.mapData.subcatchments, item => {
-          subcatchmens.push({
-            id: item.id,
-            properties: item.properties
-          })
-        })
-        // 根据用地类型渲染
-        self.drawSubcatchments(subcatchmens)
-      },
-      // 查询范围
-      renderingRange(data) {
-        const self = this
-        const range = []
-        _.each(data, item => {
-          range.push({
-            id: item.id,
-            properties: item.properties
-          })
-        })
-        _.each(range, function(subcatchment) {
-          const pointArr = []
-          _.each(subcatchment.properties.geometry.coordinates[0], item => {
-            pointArr.push(new BMap.Point(item[0] + 0.005363, item[1] - 0.00402))
-          })
-          self.map.addOverlay(new BMap.Polygon(pointArr, {
-            strokeColor: 'red',
-            strokeStyle: 'dashed',
-            strokeWeight: 3,
-            strokeOpacity: 1,
-            fillOpacity: 0
-          }))
-        })
-      },
-      // 渲染管线
-      renderingConduits(data) {
-        const self = this
-        const conduits = []
-        _.each(data, item => {
-          conduits.push({
-            properties: item.properties
-          })
-        })
-        self.drawConduits(conduits)
-      },
-      // 渲染检查井
-      renderingJunctions() {
-        const self = this
-        const map = this.map
-        const junctionsData = self.mapData.junctions
-        const junctions = []
-        for (let i = 0; i < junctionsData.length; i++) {
-          const junction = {
-            properties: junctionsData[i].properties
-          }
-          junctions.push(junction)
-        }
-        //  渲染检查井
-        _each(junctions, function(index, junction) {
-          const lng_lat = junction.properties.geometry.coordinates
-          const info = junction.properties.properties
-          const leixing = info.leixing
-          const point = new BMap.Point(lng_lat[1] + 0.005363, lng_lat[0] - 0.00402)
-
-          //  渲染管线
-          let circle = null
-          if (leixing === '雨水检查井') {
-            circle = new BMap.Circle(point, 3, { fillColor: 'blue', strokeWeight: 1, fillOpacity: 1, strokeOpacity: 0.3 })
-          }
-          if (leixing === '污水检查井') {
-            circle = new BMap.Circle(point, 3, { fillColor: '#e868f2', strokeWeight: 1, fillOpacity: 1, strokeOpacity: 0.3 })
-          }
-          map.addOverlay(circle)
-        })
-      },
-      // 渲染排口
-      renderingOutfalls() {
-        const self = this
-        const map = this.map
-        const outfallsData = self.mapData.outfalls
-        const outfalls = []
-        for (let i = 0; i < outfallsData.length; i++) {
-          const outfall = {
-            properties: outfallsData[i].properties
-          }
-          outfalls.push(outfall)
-        }
-        self.drawOutfalls(outfalls)
-      },
-      // 渲染工业企业
-      renderingCompanys() {
-        const self = this
-        const map = this.map
-        const companysData = self.mapData.companies
-        const companies = []
-        for (let i = 0; i < companysData.length; i++) {
-          const outfall = {
-            properties: companysData[i].properties
-          }
-          companies.push(outfall)
-        }
-        self.drawCompanys(companies)
-      },
-      // 绘制地块
-      drawSubcatchments(data) {
+      renderingSubcatchments(data) {
         const self = this
         const map = this.map
         // 正则 匹配道路 的正则
@@ -396,7 +287,7 @@
         const gongYeReg = /^[M]/
         // 商业服务业设施用地
         const shangyeReg = /^[C][^A-Za-z]/
-        _.each(data, (subcatchment, index) => {
+        _.each(_.cloneDeep(data), subcatchment => {
           subcatchment.properties.properties.type = '地块'
           subcatchment.properties.properties.id = subcatchment.id
           const YDLX = subcatchment.properties.properties.YDLX
@@ -404,7 +295,6 @@
           _.each(subcatchment.properties.geometry.coordinates[0], item => {
             pointArr.push(new BMap.Point(item[1] + 0.005363, item[0] - 0.00402))
           })
-
           let polygon = null
           if (YDLX === '道路' || daoluReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, { strokeColor: 'rgba(128,128,128,1)', strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(242,242,242)', fillOpacity: 0.3 })
@@ -457,15 +347,31 @@
           })
         })
       },
-      // 绘制管线
-      drawConduits(data) {
+      // 查询分区
+      renderingRange(data) {
+        const self = this
+        _.each(data, function(subcatchment) {
+          const pointArr = []
+          _.each(subcatchment.properties.geometry.coordinates[0], item => {
+            pointArr.push(new BMap.Point(item[0] + 0.005363, item[1] - 0.00402))
+          })
+          self.map.addOverlay(new BMap.Polygon(pointArr, {
+            strokeColor: 'red',
+            strokeStyle: 'dashed',
+            strokeWeight: 3,
+            strokeOpacity: 1,
+            fillOpacity: 0
+          }))
+        })
+      },
+      // 渲染管线
+      renderingConduits(data) {
         const self = this
         const map = this.map
-        _.each(data, conduit => {
+        _.each(_.cloneDeep(data), conduit => {
           conduit.properties.properties.type = '管线'
           const pointArr = []
           _.each(conduit.properties.geometry.coordinates, (item) => {
-            console.log('🙃')
             pointArr.push(new BMap.Point(item[1] + 0.005363, item[0] - 0.00402))
           })
           //  渲染管线
@@ -493,27 +399,42 @@
           })
         })
       },
-      // 绘制排口
-      drawOutfalls(data) {
+      // 渲染检查井
+      renderingJunctions(data) {
+        const map = this.map
+        //  渲染检查井
+        _.each(data, item => {
+          const point = new BMap.Point(item.properties.geometry.coordinates[1] + 0.005363, item.properties.geometry.coordinates[0] - 0.00402)
+          //  渲染管线
+          let circle = null
+          if (item.properties.properties.leixing === '雨水检查井') {
+            circle = new BMap.Circle(point, 3, { fillColor: 'blue', strokeWeight: 1, fillOpacity: 1, strokeOpacity: 0.3 })
+          }
+          if (item.properties.properties.leixing === '污水检查井') {
+            circle = new BMap.Circle(point, 3, { fillColor: '#e868f2', strokeWeight: 1, fillOpacity: 1, strokeOpacity: 0.3 })
+          }
+          map.addOverlay(circle)
+        })
+      },
+      // 渲染排口
+      renderingOutfalls(data) {
         const self = this
         const map = this.map
-        _each(data, function(index, outfall) {
-          const lng_lat = outfall.properties.geometry.coordinates
-          const info = outfall.properties.properties
-          info.type = '排口'
-          const leixing = info.leixing
-          const point = new BMap.Point(lng_lat[1] + 0.005363, lng_lat[0] - 0.00402)
+        _.each(_.cloneDeep(data), outfall => {
+          outfall.properties.properties.type = '排口'
+          const leixing = outfall.properties.properties.leixing
+          const point = new BMap.Point(outfall.properties.geometry.coordinates[1] + 0.005363, outfall.properties.geometry.coordinates[0] - 0.00402)
           //  渲染排口
           let circle = null
-          if (leixing === '雨水排水口') {
+          if (outfall.properties.properties.leixing === '雨水排水口') {
             circle = new BMap.Circle(point, 10, { fillColor: 'rgb(111,252,243)', strokeWeight: 1, fillOpacity: 0.5, strokeOpacity: 0.3 })
             circle.leixing = '雨水排水口'
           }
-          if (leixing === '污水排口') {
+          if (outfall.properties.properties.leixing === '污水排口') {
             circle = new BMap.Circle(point, 20, { fillColor: '#e868f2', strokeWeight: 1, fillOpacity: 0.5, strokeOpacity: 0.3 })
             circle.leixing = '污水排口'
           }
-          if (leixing === '混流排口') {
+          if (outfall.properties.properties.leixing === '混流排口') {
             circle = new BMap.Circle(point, 5, { fillColor: 'rgba(117,86,86,1)', strokeWeight: 1, fillOpacity: 1, strokeOpacity: 0.3 })
             circle.leixing = '混流排口'
           }
@@ -522,31 +443,29 @@
           circle.addEventListener('click', function() {
             self.test()
             self.clearSelectConduits()
-            self.$store.dispatch('getInfo', info)
+            self.$store.dispatch('getInfo', outfall.properties.properties)
             this.setFillColor('red')
             this.type = '选中的排口'
           })
         })
       },
-      // 绘制工业企业
-      drawCompanys(data) {
+      // 渲染工业企业
+      renderingCompanys(data) {
         const self = this
         const map = this.map
-        _each(data, function(index, company) {
+        _.each(_.cloneDeep(data), company => {
           const lng_lat = company.properties.geometry.coordinates
-          const info = company.properties.properties
-          info.type = '企业'
+          company.properties.properties.type = '企业'
           const point = new BMap.Point(lng_lat[1] + 0.005363, lng_lat[0] - 0.00402)
-          info.geos = [lng_lat[1] + 0.005363, lng_lat[0] - 0.00402]
+          company.properties.properties.geos = [lng_lat[1] + 0.005363, lng_lat[0] - 0.00402]
           const myIcon = new BMap.Icon('/static/icon/companys_32.ico', new BMap.Size(32, 32))
           const marker = new BMap.Marker(point, { icon: myIcon })
-          marker.type = info.type
+          marker.type = company.properties.properties.type
           // //  渲染工业企业
           map.addOverlay(marker)
-
           // 工业企业点击事件
           marker.addEventListener('click', function() {
-            self.$store.dispatch('getInfo', info)
+            self.$store.dispatch('getInfo', company.properties.properties)
             self.test()
           })
         })
@@ -1126,296 +1045,27 @@
           map.removeOverlay(allOverlay[i])
         }
         map.clearOverlays()
-        if (map.getOverlays() === '') {
-          self.renderingSubcatchments()
-          self.renderingConduits()
-          self.renderingJunctions()
-          self.renderingOutfalls()
-          self.renderingCompanys()
+        if (map.getOverlays().length === 0) {
+          self.getDataInfo()
         }
       },
       //  渲染查询结果
       showResult(data, shapes) {
         const self = this
         self.shapes = shapes
-        const map = self.map
-        const companies = data.companies
-        const resultData = []
-        self.test2()
-        const companysData = data.companies
-        const conduitsData = data.conduits
-        const outfallsData = data.outfalls // 排口
-        const subcatchmentsData = data.subcatchments
-        // 分区
-        if (data.range.length) {
-          self.renderingRange(data.range)
+
+        const allOverlay = self.map.getOverlays()
+        for (let i = 0; i < allOverlay.length; i++) {
+          self.map.removeOverlay(allOverlay[i])
         }
-        // 开始判断
-        if (subcatchmentsData.length > 0) {
-          const subcatchmens = []
-          for (let i = 0; i < subcatchmentsData.length; i++) {
-            const subcatchment = {
-              id: subcatchmentsData[i].id,
-              properties: subcatchmentsData[i].properties
-            }
-            subcatchmens.push(subcatchment)
-          }
-          self.drawSubcatchments(subcatchmens)
-          /**
-         * 1、获取所有企业数据  获取每个企业的坐标   没有转过坐标
-         * 2、判断这个点是否在查询出来的地块中  没有转过
-         * */
-          const selectSubcatchmets = []
-          const selectCompanys = []
-          for (let i = 0; i < subcatchmentsData.length; i++) {
-            const properties = subcatchmentsData[i].properties
-            const geos = properties.geometry.coordinates[0]
-            const selectSubcatchmet = {
-              properties: properties,
-              overlays: []
-            }
-            for (let j = 0; j < geos.length; j++) {
-              const points = new BMap.Point(geos[j][1], geos[j][0])
-              selectSubcatchmet.overlays.push(points)
-            }
-            selectSubcatchmets.push(selectSubcatchmet)
-            resultData.push(properties)
-          }
-          // 工业企业
-          for (let i = 0; i < companies.length; i++) {
-            const properties = companies[i].properties
-
-            if (!properties.geometry) {
-              console.log(companies[i])
-              continue
-            }
-            const lng_lat = properties.geometry.coordinates
-            const point = new BMap.Point(lng_lat[1], lng_lat[0])
-            const propertie = {
-              properties: properties
-            }
-            const selectCompany = {
-              point: point,
-              properties: propertie
-            }
-            selectCompanys.push(selectCompany)
-          }
-          const selectCompanysResult = []
-          for (let i = 0; i < selectCompanys.length; i++) {
-            const point = selectCompanys[i].point
-            for (let j = 0; j < selectSubcatchmets.length; j++) {
-              const overlays = selectSubcatchmets[j].overlays
-              const ply = new BMap.Polygon(overlays)
-              const result = BMapLib.GeoUtils.isPointInPolygon(point, ply)
-              if (result === true) {
-                selectCompanysResult.push(selectCompanys[i].properties)
-              }
-            }
-          }
-          self.drawCompanys(selectCompanysResult)
-
-          // 根据地块查雨水排口 并展示
-          const rainOutfalls = []
-          const sewageOutfalls = []
-          for (let i = 0; i < subcatchmentsData.length; i++) {
-            const properties = subcatchmentsData[i].properties
-            console.log(properties)
-            const ConduitsRain = '雨水管'
-            const ConduitsSewage = '污水管'
-            const rainOutfall = self.getDescendantOutfallsOfSubcatchment(properties, self.cy, ConduitsRain)
-            const conduit = self.getDescendantConduitsOfSubcatchment(properties, self.cy, ConduitsRain)
-            const sewageOutfall = self.getDescendantOutfallsOfSubcatchment(properties, self.cy, ConduitsSewage)
-            const sewageConduit = self.getDescendantConduitsOfSubcatchment(properties, self.cy, ConduitsSewage)
-            if (rainOutfall.length > 0) {
-              rainOutfalls.push(rainOutfall[0])
-            }
-            if (sewageOutfall.length > 0) {
-              sewageOutfalls.push(sewageOutfall[0])
-            }
-
-            if (conduit.length > 0) {
-              const rainJunction_Lng_lat = conduit[0].properties.geometry.coordinates[0]
-              const centerPoint = properties.properties.center
-              // 渲染引导线
-              const polyline = new BMap.Polyline([
-                new BMap.Point(centerPoint[1] + 0.005363, centerPoint[0] - 0.00402),
-                new BMap.Point(rainJunction_Lng_lat[1] + 0.005363, rainJunction_Lng_lat[0] - 0.00402)
-              ], { strokeColor: 'blue', strokeWeight: 1.5, strokeOpacity: 0.5, strokeStyle: 'dashed' })
-              map.addOverlay(polyline)
-              // 渲染管线
-              _each(conduit, function(index, conduitData) {
-                const lng_lat = conduitData.properties.geometry.coordinates
-                const pointArr = []
-                for (let i = 0; i < lng_lat.length; i++) {
-                  const point = new BMap.Point(lng_lat[i][1] + 0.005363, lng_lat[i][0] - 0.00402)
-                  pointArr.push(point)
-                }
-                const polyline = new BMap.Polyline(pointArr, { strokeColor: 'blue', strokeWeight: 3, strokeOpacity: 1 })
-                map.addOverlay(polyline)
-              })
-            }
-            if (sewageConduit.length > 0) {
-              const sewageJunction_lng_lat = sewageConduit[0].properties.geometry.coordinates[0]
-              const centerPoint = properties.properties.center
-              //  渲染引导线
-              const polyline = new BMap.Polyline([
-                new BMap.Point(centerPoint[1] + 0.005363, centerPoint[0] - 0.00402),
-                new BMap.Point(sewageJunction_lng_lat[1] + 0.005363, sewageJunction_lng_lat[0] - 0.00402)
-              ], { strokeColor: '#e868f2', strokeWeight: 1.5, strokeOpacity: 0.5, strokeStyle: 'dashed' })
-              map.addOverlay(polyline)
-              // 渲染管线
-              _each(sewageConduit, function(index, conduitData) {
-                const lng_lat = conduitData.properties.geometry.coordinates
-                const pointArr = []
-                for (let i = 0; i < lng_lat.length; i++) {
-                  const point = new BMap.Point(lng_lat[i][1] + 0.005363, lng_lat[i][0] - 0.00402)
-                  pointArr.push(point)
-                }
-                const polyline = new BMap.Polyline(pointArr, { strokeColor: '#e868f2', strokeWeight: 3, strokeOpacity: 1 })
-                map.addOverlay(polyline)
-              })
-            }
-          }
-
-          // 结果合并
-          for (let i = 0; i < selectCompanysResult.length; i++) {
-            resultData.push(selectCompanysResult[i].properties)
-          }
-          for (let i = 0; i < rainOutfalls.length; i++) {
-            resultData.push(rainOutfalls[i])
-          }
-          for (let i = 0; i < sewageOutfalls.length; i++) {
-            resultData.push(sewageOutfalls[i])
-          }
-        }
-        // 排口
-        if (outfallsData.length > 0) {
-          const outfalls = []
-          for (let i = 0; i < outfallsData.length; i++) {
-            const outfall = {
-              properties: outfallsData[i].properties
-            }
-            outfalls.push(outfall)
-          }
-          self.drawOutfalls(outfalls)
-        }
-        // 管线
-        if (conduitsData.length > 0) {
-          const self = this
-          const map = this.map
-          const conduitsData = self.mapData.conduits
-          const conduits = []
-          for (let i = 0; i < conduitsData.length; i++) {
-            const subcatchment = {
-              properties: conduitsData[i].properties
-            }
-            conduits.push(subcatchment)
-          }
-          self.drawConduits(conduits)
-        }
-        // 企业
-        if (companysData.length > 0) {
-          const companies = []
-          const selectSubcatchmets = []
-          const selectCompanysResult = []
-          const subcatchmentsData = self.mapData.subcatchments
-          // 地块数据
-          for (let j = 0; j < subcatchmentsData.length; j++) {
-            const properties = subcatchmentsData[j].properties
-
-            const geos = properties.geometry.coordinates[0]
-            const selectSubcatchmet = {
-              properties: properties,
-              overlays: []
-            }
-            for (let i = 0; i < geos.length; i++) {
-              const points = new BMap.Point(geos[i][1], geos[i][0])
-              selectSubcatchmet.overlays.push(points)
-            }
-            selectSubcatchmets.push(selectSubcatchmet)
-          }
-          // 企业数据
-          for (let i = 0; i < companysData.length; i++) {
-            const properties = companysData[i].properties
-            const companyLng_lat = properties.geometry.coordinates
-            const point = new BMap.Point(companyLng_lat[1], companyLng_lat[0])
-            // 作比较
-            for (let j = 0; j < selectSubcatchmets.length; j++) {
-              const overlays = selectSubcatchmets[j].overlays
-              const ply = new BMap.Polygon(overlays)
-              const result = BMapLib.GeoUtils.isPointInPolygon(point, ply)
-              if (result === true) {
-                const data = selectSubcatchmets[j].properties
-                const ConduitsType = '污水管'
-                const conduits = getDescendantConduitsOfSubcatchment(data, self.cy, ConduitsType)
-                const dataArr = []
-                for (let k = 0; k < conduits.length; k++) {
-                  dataArr[k] = conduits[k].properties
-                }
-                const conduitsData = dataArr
-                // 引导线
-                const rainJunction_Lng_lat = dataArr[0].geometry.coordinates[0]
-                const polyline = new BMap.Polyline([
-                  new BMap.Point(companyLng_lat[1] + 0.005363, companyLng_lat[0] - 0.00402),
-                  new BMap.Point(rainJunction_Lng_lat[1] + 0.005363, rainJunction_Lng_lat[0] - 0.00402)
-                ], { strokeColor: '#e868f2', strokeWeight: 3, strokeOpacity: 1, strokeStyle: 'dashed' })
-                map.addOverlay(polyline)
-                // //渲染污水管线
-                _each(conduitsData, function(index, conduit) {
-                  const lng_lat = conduit.geometry.coordinates
-                  const info = conduit.properties
-                  info.type = '管线'
-                  const leixing = info.leixing
-                  const pointArr = []
-                  for (let i = 0; i < lng_lat.length; i++) {
-                    const point = new BMap.Point(lng_lat[i][1] + 0.005363, lng_lat[i][0] - 0.00402)
-                    pointArr.push(point)
-                  }
-                  const polyline = new BMap.Polyline(pointArr, { strokeColor: '#e868f2', strokeWeight: 4.5, strokeOpacity: 1 })
-                  map.addOverlay(polyline)
-                  // 拿到排口 渲染排口
-                  const rainOutfall = getDescendantOutfallsOfSubcatchment(data, self.cy, ConduitsType)
-                  _each(rainOutfall, function(index, outfall) {
-                    const lng_lat = outfall.properties.geometry.coordinates
-                    const info = outfall.properties.properties
-                    info.type = '排口'
-                    const leixing = info.leixing
-                    const point = new BMap.Point(lng_lat[1] + 0.005363, lng_lat[0] - 0.00402)
-                    const circle = new BMap.Circle(point, 10, { fillColor: '#e868f2', strokeWeight: 1, fillOpacity: 0.5, strokeOpacity: 0.3 })
-                    circle.leixing = '污水排水口'
-                    map.addOverlay(circle)
-                  })
-                })
-
-                selectCompanysResult.push(selectSubcatchmets[j])
-              }
-            }
-
-            const company = {
-              properties: companysData[i].properties
-            }
-            companies.push(company)
-          }
-          // 画出企业
-          self.drawCompanys(companies)
-          self.drawSubcatchments(selectCompanysResult)
-        }
-        //  统计拿到所有数据
-        //  数组去重
-        const newResultData = _.uniq(resultData, 'id')
-        // for(let i =0;i<resultData.length;i++){
-        //   let flag = true;
-        //   for(let j = 0;j<newResultData.length;j++){
-        //     if(resultData[i].id === newResultData[j].id){
-        //       flag = false
-        //     }
-        //   }
-        //   if(flag){
-        //     newResultData.push(resultData[i]);
-        //   }
-        // }
-        self.$store.dispatch('getResultData', newResultData)
-        console.log('查询结束')
+        self.$store.dispatch('getMapData', data)
+        self.renderingRange(data.range)
+        self.renderingSubcatchments(data.subcatchments) // 地块
+        self.renderingConduits(data.conduits) // 管线
+        self.renderingJunctions(data.junctions) // 井
+        self.renderingOutfalls(data.outfalls) // 排口
+        self.renderingCompanys(data.companies) // 公司
+        return false
       },
       //  隐藏排口
       hideAllOutfalls() {
