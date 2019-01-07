@@ -265,33 +265,30 @@
         }
         let mapData = self.mapData
         self.$store.dispatch('getMapData', mapData)
-        self.renderingSubcatchments();
-        self.renderingConduits();
-        self.renderringJunctions();
-        self.renderringOutfalls();
-        self.renderringCompanys();
-        self.renderringRange(self.mapData.range);
+        self.renderingRange(self.mapData.range) // 分区
+        self.renderingSubcatchments(self.mapData.subcatchments) // 地块
+        self.renderingConduits(self.mapData.conduits) // 管线
+        self.renderingJunctions(self.mapData.junctions) // 井
+        self.renderingOutfalls(self.mapData.outfalls) // 排口
+        self.renderingCompanys(self.mapData.companies) // 公司
       },
       //渲染地块
       renderingSubcatchments() {
         let self = this;
-        let map = this.map
-        let subcatchmentsData = self.mapData.subcatchments;
         let subcatchmens = [];
-        for (let i = 0; i < subcatchmentsData.length; i++) {
-          let subcatchment = {
-            id: subcatchmentsData[i].id,
-            properties: subcatchmentsData[i].properties
-          }
-          subcatchmens.push(subcatchment)
-        }
+        _.each(self.mapData.subcatchments, item => {
+          subcatchmens.push({
+            id: item.id,
+            properties: item.properties
+          })
+        })
         // 根据用地类型渲染
         self.drawSubcatchments(subcatchmens)
       },
-      renderringRange(data) {
+      // 查询范围
+      renderingRange(data) {
         let self = this
         let range = []
-        let pointArr = []
         _.each(data, item => {
           range.push({
             id: item.id,
@@ -299,18 +296,18 @@
           })
         })
         _.each(range, function(subcatchment) {
+          let pointArr = []
           _.each(subcatchment.properties.geometry.coordinates[0], item => {
             pointArr.push(new BMap.Point(item[0] + 0.005363, item[1] - 0.00402))
           })
+          self.map.addOverlay(new BMap.Polygon(pointArr, {
+            strokeColor: 'red',
+            strokeStyle: 'dashed',
+            strokeWeight: 3,
+            strokeOpacity: 1,
+            fillOpacity: 0
+          }))
         })
-        let polygon = new BMap.Polygon(pointArr, {
-          strokeColor: 'red',
-          strokeStyle: 'dashed',
-          strokeWeight: 1,
-          strokeOpacity: 1,
-          fillOpacity: 0
-        })
-        self.map.addOverlay(polygon)
       },
       //渲染管线
       renderingConduits() {
@@ -328,7 +325,7 @@
 
       },
       //渲染检查井
-      renderringJunctions() {
+      renderingJunctions() {
         let self = this;
         let map = this.map
         let junctionsData = self.mapData.junctions;
@@ -358,7 +355,7 @@
         })
       },
       //渲染排口
-      renderringOutfalls() {
+      renderingOutfalls() {
         let self = this;
         let map = this.map
         let outfallsData = self.mapData.outfalls;
@@ -372,7 +369,7 @@
         self.drawOutfalls(outfalls);
       },
       //渲染工业企业
-      renderringCompanys() {
+      renderingCompanys() {
         let self = this;
         let map = this.map
         let companysData = self.mapData.companies;
@@ -403,72 +400,63 @@
         let gongYeReg = /^[M]/;
         // 商业服务业设施用地
         let shangyeReg = /^[C][^A-Za-z]/;
-        _each(data, function (index, subcatchment) {
-          let id = subcatchment.id;
-          let lng_lat = subcatchment.properties.geometry.coordinates;
-          let info = subcatchment.properties.properties
-          info.type = '地块'
-          info.id = id;
-          let YDLX = info.YDLX
-          let centerLng_lat = info.center;
-          let lng_lat_Arr = [];
-          let pointArr = [];
-          for (let i = 0; i < lng_lat[0].length; i++) {
-            lng_lat_Arr.push(lng_lat[0][i])
-          }
-          for (let i = 0; i < lng_lat_Arr.length; i++) {
-            let point = new BMap.Point(lng_lat_Arr[i][1] + 0.005363, lng_lat_Arr[i][0] - 0.00402);
-            pointArr.push(point)
-          }
+        _.each(data, (subcatchment, index) => {
+          subcatchment.properties.properties.type = '地块'
+          subcatchment.properties.properties.id = subcatchment.id
+          let YDLX = subcatchment.properties.properties.YDLX
+          let pointArr = []
+          _.each(subcatchment.properties.geometry.coordinates[0], item => {
+            pointArr.push(new BMap.Point(item[1] + 0.005363, item[0] - 0.00402))
+          })
 
           let polygon = null;
-          if (YDLX == '道路' || daoluReg.test(YDLX)) {
+          if (YDLX === '道路' || daoluReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, {strokeColor: "rgba(128,128,128,1)", strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(242,242,242)', fillOpacity: 0.3})
-            polygon.type = info.type
+            polygon.type = subcatchment.properties.properties.type
             polygon.sonType = '道路'
           }
           if (shiZhengReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, {strokeColor: "rgba(128,128,128,1)", strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(0,0,254)', fillOpacity: 0.3})
-            polygon.type = info.type
+            polygon.type = subcatchment.properties.properties.type
             polygon.sonType = '市政'
           }
           if (lvDiReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, {strokeColor: "rgba(128,128,128,1)", strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(0,255,1)', fillOpacity: 0.3})
-            polygon.type = info.type
+            polygon.type = subcatchment.properties.properties.type
             polygon.sonType = '绿地'
           }
           if (juZhuYongDiReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, {strokeColor: "rgba(128,128,128,1)", strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(255,255,1)', fillOpacity: 0.3})
-            polygon.type = info.type
+            polygon.type = subcatchment.properties.properties.type
             polygon.sonType = '居住'
           }
           if (zhengFuReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, {strokeColor: "rgba(128,128,128,1)", strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(255,0,255)', fillOpacity: 0.3})
-            polygon.type = info.type
+            polygon.type = subcatchment.properties.properties.type
             polygon.sonType = '政府'
           }
           if (gongYeReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, {strokeColor: "rgba(128,128,128,1)", strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(127,63,1)', fillOpacity: 0.3})
-            polygon.type = info.type
+            polygon.type = subcatchment.properties.properties.type
             polygon.sonType = '工业'
           }
           if (shangyeReg.test(YDLX)) {
             polygon = new BMap.Polygon(pointArr, {strokeColor: "rgba(128,128,128,1)", strokeWeight: 1, strokeOpacity: 1, fillColor: 'rgb(245,0,0)', fillOpacity: 0.3})
-            polygon.type = info.type
+            polygon.type = subcatchment.properties.properties.type
             polygon.sonType = '商业'
           }
-          map.addOverlay(polygon);
-          //地块点击事件
-          polygon.addEventListener("click", function () {
-            self.$store.dispatch('getInfo', info)
+          map.addOverlay(polygon)
+          // 地块点击事件
+          polygon.addEventListener('click', function() {
+            self.$store.dispatch('getInfo', subcatchment.properties.properties)
             //  获得地块中心点，创建 marker
-            let point = new BMap.Point(centerLng_lat[1] + 0.005363, centerLng_lat[0] - 0.00402);
+            let point = new BMap.Point(subcatchment.properties.properties.center[1] + 0.005363, subcatchment.properties.properties.center[0] - 0.00402)
             let marker = new BMap.Marker(point);
             self.test();
             self.test1();
             marker.type = '标注'
-            map.addOverlay(marker);               // 将标注添加到地图中
-            marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+            map.addOverlay(marker); // 将标注添加到地图中
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE); // 跳动的动画
             self.clearSelectConduits();
           });
         })
@@ -1154,9 +1142,9 @@
         if (map.getOverlays() == '') {
           self.renderingSubcatchments();
           self.renderingConduits();
-          self.renderringJunctions();
-          self.renderringOutfalls();
-          self.renderringCompanys();
+          self.renderingJunctions();
+          self.renderingOutfalls();
+          self.renderingCompanys();
         }
 
       },
@@ -1170,9 +1158,13 @@
         self.test2();
         let companysData = data.companies;
         let conduitsData = data.conduits;
-        let outfallsData = data.outfalls;
+        let outfallsData = data.outfalls;  // 排口
         let subcatchmentsData = data.subcatchments;
-        //开始判断
+        // 分区
+        if (data.range.length) {
+          self.renderingRange(data.range)
+        }
+        // 开始判断
         if (subcatchmentsData.length > 0) {
           let subcatchmens = [];
           for (let i = 0; i < subcatchmentsData.length; i++) {
@@ -1298,8 +1290,6 @@
               })
             }
           }
-          self.drawOutfalls(rainOutfalls);
-          self.drawOutfalls(sewageOutfalls);
 
           //结果合并
           for (let i = 0; i < selectCompanysResult.length; i++) {
@@ -1425,10 +1415,6 @@
           // 画出企业
           self.drawCompanys(companies);
           self.drawSubcatchments(selectCompanysResult)
-        }
-  
-        if (data.range.length) {
-          self.renderringRange(data.range)
         }
         //  统计拿到所有数据
         //  数组去重
