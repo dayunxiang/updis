@@ -1728,6 +1728,7 @@
             })
           }
         }
+        _this.tableDispose(_this.selectResult)
         _this.selectLabel = '精确查询'
         console.log('😆', _this.selectResult, shapesData)
         setTimeout(function() {
@@ -1737,6 +1738,21 @@
           _this.underPipelineMouth = true // 地块
           _this.underSewageWhere = true // 地块
         }, 200)
+      },
+      // 处理反向查询的数据
+      tableDispose(selectResult) {
+        // 处理管线直径
+        if (selectResult.conduits.length) {
+          _.map(selectResult.conduits, item => {
+            item.properties.properties.guanjing = item.properties.properties.guanjing * 1000
+          })
+        }
+        // 处理地块面积
+        if (selectResult.subcatchments.length) {
+          _.map(selectResult.subcatchments, item => {
+            item.properties.properties.area = (item.properties.properties.area / 10000).toFixed(2)
+          })
+        }
       },
       // tableFilter
       tableFilter(data, value) {
@@ -1846,10 +1862,11 @@
         console.log(value, index)
         value.attribute = []
         _.each(this.shapes, item => {
-          if (item.properties.businessType === value.seletctType.value.toUpperCase()) {
+          if (item.properties.businessType === (value.seletctType.value === 'companies' ? 'COMPANY' : value.seletctType.value.toUpperCase())) {
             value.attribute.push(item.properties.properties[value.selectAttribute])
           }
         })
+        console.log('demoListDataModelType🙃：', value)
         value.attribute = _.uniq(value.attribute)
         value.AttributeValue = ''
       },
@@ -2101,7 +2118,7 @@
         //     }
         //   })
         // })
-
+        self.tableDispose(self.selectResult)
         self.isResult = !self.isResult
         self.selectLabel = '模糊查询'
         setTimeout(function() {

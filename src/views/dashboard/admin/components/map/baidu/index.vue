@@ -356,7 +356,7 @@
             pointArr.push(new BMap.Point(item[0] + 0.005363, item[1] - 0.00402))
           })
           self.map.addOverlay(new BMap.Polygon(pointArr, {
-            strokeColor: 'red',
+            strokeColor: '#7f7f7f',
             strokeStyle: 'dashed',
             strokeWeight: 3,
             strokeOpacity: 1,
