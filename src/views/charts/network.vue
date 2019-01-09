@@ -275,13 +275,13 @@
             {
               name:'污水管',
               type:'bar',
-              itemStyle : { normal: { color: '#FFA042', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFA042', label : {show: false, position: 'insideRight'}}},
               data: _this.sewageTube
             },
             {
               name:'雨水管',
               type:'bar',
-              itemStyle : { normal: { color: '#46A3FF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#46A3FF', label : {show: false, position: 'insideRight'}}},
               data:_this.rainTube
             }
           ]
@@ -334,49 +334,49 @@
               name: _this.rainScope[0],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#D2E9FF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#D2E9FF', label : {show: false, position: 'insideRight'}}},
               data: _this.sixRain
             },
             {
               name:_this.rainScope[1],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#C4E1FF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#C4E1FF', label : {show: false, position: 'insideRight'}}},
               data:_this.eightRain
             },
             {
               name: _this.rainScope[2],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#ACD6FF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#ACD6FF', label : {show: false, position: 'insideRight'}}},
               data:_this.tenRain
             },
             {
               name:_this.rainScope[3],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#97CBFF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#97CBFF', label : {show: false, position: 'insideRight'}}},
               data: _this.twelveRain
             },
             {
               name:_this.rainScope[4],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#84C1FF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#84C1FF', label : {show: false, position: 'insideRight'}}},
               data:_this.fourteenRain
             },
             {
               name:_this.rainScope[5],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#66B3FF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#66B3FF', label : {show: false, position: 'insideRight'}}},
               data:_this.sixteenRain
             },
             {
               name:_this.rainScope[6],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#46A3FF', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#46A3FF', label : {show: false, position: 'insideRight'}}},
               data:_this.twentyRain
             }
           ]
@@ -429,49 +429,49 @@
               name: _this.sewageScope[0],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#FFE4CA', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFE4CA', label : {show: false, position: 'insideRight'}}},
               data:_this.fourSewage
             },
             {
               name:_this.sewageScope[1],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#FFDCB9', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFDCB9', label : {show: false, position: 'insideRight'}}},
               data:_this.fiveSewage
             },
             {
               name:_this.sewageScope[2],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#FFD1A4', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFD1A4', label : {show: false, position: 'insideRight'}}},
               data:_this.fiveFiveSewage
             },
             {
               name:_this.sewageScope[3],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#FFC78E', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFC78E', label : {show: false, position: 'insideRight'}}},
               data:_this.sixSewage
             },
             {
               name:_this.sewageScope[4],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#FFBB77', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFBB77', label : {show: false, position: 'insideRight'}}},
               data:_this.eightSewage
             },
             {
               name:_this.sewageScope[5],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#FFAF60', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFAF60', label : {show: false, position: 'insideRight'}}},
               data: _this.tenSewage
             },
             {
               name:_this.sewageScope[6],
               type:'bar',
               stack: '总量',
-              itemStyle : { normal: { color: '#FFA042', label : {show: true, position: 'insideRight'}}},
+              itemStyle : { normal: { color: '#FFA042', label : {show: false, position: 'insideRight'}}},
               data:_this.twentyFourSewage
             }
           ]
