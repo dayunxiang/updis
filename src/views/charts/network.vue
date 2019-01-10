@@ -9,8 +9,6 @@
   </div>
 </template>
 
-
-
 <script>
   import commonApi from '@/api/commonApi'
   import request from '@/utils/request'
@@ -29,6 +27,8 @@
         rainLength: [],   // 雨水管长
         rainScope: ['≤600mm', '800mm','1000mm','1200mm','1400mm', '1600mm', '≥2000mm'],   // 雨水管范围
         sewageScope: [ '400mm', '500mm', '550mm', '600mm', '800mm', '1000mm', '2400mm'],   // 污水管范围
+        rainColorData: [ '#D2E9FF', '#C4E1FF', '#ACD6FF','#97CBFF','#84C1FF','#66B3FF','#46A3FF' ], // 雨水管渐变色
+        sewageColorData: [ '#FFE4CA','#FFDCB9', '#FFD1A4','#FFC78E','#FFBB77', '#FFAF60','#FFA042' ],  // 污水管渐变色
         sixRain: [],   // ≤600mm的雨水管
         eightRain: [], // =800mm的雨水管
         tenRain: [], // =1000mm的雨水管
@@ -43,16 +43,12 @@
         eightSewage: [], // 800mm的污水管
         tenSewage: [], // 1000mm的污水管
         twentyFourSewage: [], // 2400mm的污水管
-        rainTowArray: [],
-        sewageTowArray: [],
-        maxSewage: []
-
-
+        rainTowArray: [],   // 雨水的series
+        sewageTowArray: [], // 污水的series
       }
     },
     mounted() {
       this.init();
-      // this.beforeLoading();
     },
     methods: {
       /*** 获取数据到 spapes ***/
@@ -79,6 +75,12 @@
       },
       /**** 处理数据 ****/
       middleMethod(){
+
+        var other = _.fill([4, 6, 8, 10], '*', 1, 3);
+        debugger
+
+
+
         const _this = this;
         _this.SSPSFQData = [];  // 所属排水分区
         _this.rainTube = [];    // 雨水管数量
@@ -192,11 +194,6 @@
               }
             }
           })
-
-
-          console.log("========", fourS.length);
-          // console.log("========", (eval(fourS.join("+"))).toFixed(2));
-
           _this.rainTube[index] = rain.length;     // 所有雨水管数量
           _this.sewageTube[index] = sewage.length; // 所有污水管数量
 
@@ -218,20 +215,38 @@
           tenS.length        === 0 ? _this.tenSewage[index]        = 0 : _this.tenSewage[index]        = (eval(tenS.join("+"))).toFixed(2)
           twentyFourS.length === 0 ? _this.twentyFourSewage[index] = 0 : _this.twentyFourSewage[index] = (eval(twentyFourS.join("+"))).toFixed(2)
         })
-
-
-
-
-
         _this.beforeLoading();
       },
       /**** 数据展示 ******/
       beforeLoading(){
         const _this = this;
-        console.log("数据", _this.fourSewage)
-        /******* 管网统计分析 *********/
+        /****** 整理雨水数据 *******/
+        _this.rainTowArray = [];
+        var rainData = [_this.sixRain,_this.eightRain,_this.tenRain, _this.twelveRain, _this.fourteenRain,_this.sixteenRain,_this.twentyRain]
+        _.each(rainData,function (item, index) {
+          _this.rainTowArray.push({
+            name:  _this.rainScope[index],
+            type: 'bar',
+            stack: '总量',
+            itemStyle: { normal: { color: _this.rainColorData[index], label : {show: false, position: 'insideRight'}}},
+            data: item
+          })
+        });
+        /****** 整理污水数据 *******/
+        _this.sewageTowArray = [];
+        var sewageData = [_this.fourSewage, _this.fiveSewage, _this.fiveFiveSewage, _this.sixSewage, _this.eightSewage, _this.tenSewage, _this.twentyFourSewage];
+        _.each(sewageData,function (item, index) {
+          _this.sewageTowArray.push({
+            name:  _this.sewageScope[index],
+            type: 'bar',
+            stack: '总量',
+            itemStyle: { normal: { color: _this.sewageColorData[index], label : {show: false, position: 'insideRight'}}},
+            data: item
+          })
+        });
+        /******* 管网统计分析 ******/
         var networkData = _this.$echarts.init(document.getElementById("networkFigure"));  //获取标签ID
-        networkData.setOption({
+        var networkFenxi = {
           /*** 表头显示的数据 ***/
           title : {
             text: '管网统计分析',
@@ -285,10 +300,11 @@
               data:_this.rainTube
             }
           ]
-        });
+        };
+        networkData.setOption(networkFenxi);
         /******* 雨水管 *********/
         var networkLeftData = _this.$echarts.init(document.getElementById("networkLeftFigure"));  //获取标签ID
-        networkLeftData.setOption({
+        var netWorkLeftRain = {
           /*** 表头显示的数据 ***/
           title : {
             text: '雨水管',
@@ -329,61 +345,12 @@
               data :  this.SSPSFQData
             }
           ],
-          series : [
-            {
-              name: _this.rainScope[0],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#D2E9FF', label : {show: false, position: 'insideRight'}}},
-              data: _this.sixRain
-            },
-            {
-              name:_this.rainScope[1],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#C4E1FF', label : {show: false, position: 'insideRight'}}},
-              data:_this.eightRain
-            },
-            {
-              name: _this.rainScope[2],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#ACD6FF', label : {show: false, position: 'insideRight'}}},
-              data:_this.tenRain
-            },
-            {
-              name:_this.rainScope[3],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#97CBFF', label : {show: false, position: 'insideRight'}}},
-              data: _this.twelveRain
-            },
-            {
-              name:_this.rainScope[4],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#84C1FF', label : {show: false, position: 'insideRight'}}},
-              data:_this.fourteenRain
-            },
-            {
-              name:_this.rainScope[5],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#66B3FF', label : {show: false, position: 'insideRight'}}},
-              data:_this.sixteenRain
-            },
-            {
-              name:_this.rainScope[6],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#46A3FF', label : {show: false, position: 'insideRight'}}},
-              data:_this.twentyRain
-            }
-          ]
-        });
+          series: _this.rainTowArray
+        }
+        networkLeftData.setOption(netWorkLeftRain);
         /******* 污水管 *********/
         var networkRightData = _this.$echarts.init(document.getElementById("networkRightFigure"));  //获取标签ID
-        networkRightData.setOption({
+        var netWorkLeftSewage = {
           /*** 表头显示的数据 ***/
           title : {
             text: '污水管',
@@ -424,58 +391,9 @@
               data : _this.SSPSFQData
             }
           ],
-          series : [
-            {
-              name: _this.sewageScope[0],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#FFE4CA', label : {show: false, position: 'insideRight'}}},
-              data:_this.fourSewage
-            },
-            {
-              name:_this.sewageScope[1],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#FFDCB9', label : {show: false, position: 'insideRight'}}},
-              data:_this.fiveSewage
-            },
-            {
-              name:_this.sewageScope[2],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#FFD1A4', label : {show: false, position: 'insideRight'}}},
-              data:_this.fiveFiveSewage
-            },
-            {
-              name:_this.sewageScope[3],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#FFC78E', label : {show: false, position: 'insideRight'}}},
-              data:_this.sixSewage
-            },
-            {
-              name:_this.sewageScope[4],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#FFBB77', label : {show: false, position: 'insideRight'}}},
-              data:_this.eightSewage
-            },
-            {
-              name:_this.sewageScope[5],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#FFAF60', label : {show: false, position: 'insideRight'}}},
-              data: _this.tenSewage
-            },
-            {
-              name:_this.sewageScope[6],
-              type:'bar',
-              stack: '总量',
-              itemStyle : { normal: { color: '#FFA042', label : {show: false, position: 'insideRight'}}},
-              data:_this.twentyFourSewage
-            }
-          ]
-        });
+          series: _this.sewageTowArray
+        }
+        networkRightData.setOption(netWorkLeftSewage);
       }
     }
   }
