@@ -1701,7 +1701,7 @@
        * */
       handleReset() {
         const self = this
-        self.isShowDialog = !self.isShowDialog
+        self.isShowDialog = false
         self.selectSubcatchmentData = []
         self.selectOutfalls = []
         self.selectCompanys = []
@@ -2019,7 +2019,7 @@
       handleSelectShow() {
         const _this = this
         _this.isSelect = !_this.isSelect
-        _this.isShowDialog = !_this.isShowDialog
+        _this.isShowDialog = false
         if (this.infoManager) {
           _this.infoManager = !_this.infoManager
         }
