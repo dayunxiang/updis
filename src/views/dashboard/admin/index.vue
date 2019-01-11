@@ -1313,13 +1313,7 @@
         })
       }
     },
-    create() {
-      function createList(dataIf) {
-        debugger
-        console.log("======", dataIf)
-        debugger
-      }
-    },
+    create() {},
     mounted() {
       this.init()
     },

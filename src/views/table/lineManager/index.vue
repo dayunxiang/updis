@@ -25,52 +25,22 @@
     </el-form>
     <div>
       <el-table :data="tableData" border max-height="500" style="width: 100%;" key="conduitData">
-        <el-table-column
-          fixed
-          prop="id"
-          label="序号"
-          width="50">
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          label="名称"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="leixing"
-          label="类型"
-          width="120"
-          :filters="[{ text: '雨水管', value: '雨水管' }, { text: '污水管', value: '污水管' }]"
-          :filter-method="filterTag"
+        <el-table-column fixed prop="id" label="序号" width="50"></el-table-column>
+        <el-table-column prop="name" label="名称" width="120"></el-table-column>
+        <el-table-column prop="leixing" label="类型" width="120"
+          :filters="[{ text: '雨水管', value: '雨水管' }, { text: '污水管', value: '污水管' }]" :filter-method="filterTag"
           filter-placement="bottom-end">
           <template slot-scope="scope">
-            <el-tag
-              :type="scope.row.leixing === '雨水管' ? 'primary' : 'success'"
-              disable-transitions>{{scope.row.leixing}}</el-tag>
+            <el-tag :type="scope.row.leixing === '雨水管' ? 'primary' : 'success'" disable-transitions>{{scope.row.leixing}}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="guanjing"
-          label="管径(毫米)"
-          width="100">
-        </el-table-column>
-        <el-table-column
-          prop="lastUpdataTime"
-          label="最后更新时间"
-          width="200">
-        </el-table-column>
-        <el-table-column
-          prop=""
-          label="待更新列"
-          width="1000">
-        </el-table-column>
-        <el-table-column
-          fixed="right"
-          label="操作"
-          width="150">
+        <el-table-column prop="guanjing" label="管径(毫米)" width="100"></el-table-column>
+        <el-table-column prop="lastUpdataTime" label="最后更新时间" width="200"></el-table-column>
+        <el-table-column prop="" label="待更新列" width="1000"></el-table-column>
+        <el-table-column fixed="right" label="操作" width="150">
           <template slot-scope="scope">
             <el-button  type="text" @click="viewHadelClick(scope.$index, scope.row)">查看</el-button>
-            <el-button  type="text" @click="dialogFormVisible = true">编辑</el-button>
+            <el-button  type="text" @click="outfallHandleClick(scope.$index, scope.row)">编辑</el-button>
             <el-button @click="handleClick(scope.row)" type="text" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -86,116 +56,31 @@
       </el-pagination>
     </div>
     <!--编辑-->
-    <div>
-      <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
-        <el-form ref="form" :model="tableData" label-width="150px">
-          <el-form-item label="排口编号">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
+    <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="50%">
+      <el-form ref="form" label-width="150px" style="width: 500px; margin: auto; text-align: left;">
+        <template v-for="(item, index) in tableDataEditor">
+          <el-form-item v-if="item.type === 'nothing' " :label="item.name">
+            <el-input style="width:300px" v-model="item.nameObj"></el-input>
           </el-form-item>
-          <el-form-item label="排口坐标">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
+          <el-form-item v-if="item.type === 'select' " :label="item.name">
+            <el-select style="width:300px" v-model="item.nameObj" placeholder="请选择">
+              <el-option v-for="item in typeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
+            </el-select>
           </el-form-item>
-          <el-form-item label="排入河道水质目标">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
+          <el-form-item v-if="item.type === 'time' " :label="item.name">
+            <el-date-picker style="width:300px" v-model="item.nameObj" type="datetime"
+                            placeholder="选择日期时间" align="right" format="yyyy-MM-dd HH:mm:ss"
+                            :picker-options="pickerOptions">
+            </el-date-picker>
           </el-form-item>
-          <el-form-item label="最终排入河道">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属排水分区">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="下游道路名称">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属街道">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属社区">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属流域">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属排水分区">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="管道类型">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="管长">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="管径">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="建设时间">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="竣工单位编号">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="建设单位">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="联系人">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="电话">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="业主单位/联系人/电话">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="运维单位/联系人/电话">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary">更新</el-button>
-            <el-button @click="dialogFormVisible=false">取消</el-button>
-          </el-form-item>
-        </el-form>
-      </el-dialog>
-    </div>
+        </template>
+
+        <el-form-item style="margin-left:150px">
+          <el-button @click="dialogFormVisible = false">取消</el-button>
+          <el-button type="primary" @click="dialogFormVisible = false">确认</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
     <!--添加-->
     <div>
       <el-dialog title="添加管线" :visible.sync="dialogAddVisible" width="25%">
@@ -334,6 +219,16 @@
     name: 'DynamicTable',
     data(){
       return{
+        pickerOptions: {
+          disabledDate(time) {
+            return time.getTime() > Date.now()
+          }
+        },
+        typeSelect: [
+          { value: '0', label: '雨水管' },
+          { value: '1', label: '污水管' },
+        ],
+        tableDataEditor: [],  // 编辑
         projects:[],
         project: {
           creatorId: '',
@@ -347,15 +242,9 @@
           region:''
         },
         dialogTableVisible: false,
-        dialogFormVisible: false,
-
         formLabelWidth: '120px',
         dialogFormVisible: false,
         dialogAddVisible:false,
-
-
-
-
         // 显示顺序
         isPointType:false,
         Types:[],
@@ -370,6 +259,17 @@
       this.getProjectsInfo();
     },
     methods: {
+      /****** 编辑 ********/
+      outfallHandleClick(index, row){
+        const _this = this;
+        _this.dialogFormVisible = true;
+        _this.tableDataEditor = [
+          { name: '名称:', nameObj: row.name, type: 'nothing' },
+          { name: '类型:', nameObj: row.leixing, type: 'select' },
+          { name: '管径(毫米):', nameObj: row.guanjing, type: 'nothing' },
+          { name: '最后更新时间:', nameObj: row.lastUpdataTime, type: 'time' },
+        ]
+      },
       /**** 点击查看跳转页面 ***/
       viewHadelClick(index, data){
         this.$router.push({

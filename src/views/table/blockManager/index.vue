@@ -112,13 +112,10 @@
           sortable
           width="200">
         </el-table-column>
-        <el-table-column
-          fixed="right"
-          label="操作"
-          width="150">
+        <el-table-column fixed="right" label="操作" width="150">
           <template slot-scope="scope">
             <el-button type="text" @click="viewHadelClick(scope.$index, scope.row)">查看</el-button>
-            <el-button  type="text" @click="dialogFormVisible = true">编辑</el-button>
+            <el-button  type="text" @click="outfallHandleClick(scope.$index, scope.row)">编辑</el-button>
             <el-button @click="handleClick(scope.row)" type="text" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -134,116 +131,31 @@
       </el-pagination>
     </div>
     <!--编辑-->
-    <div>
-      <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="25%">
-        <el-form ref="form" :model="tableData" label-width="150px">
-          <el-form-item label="排口编号">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
+    <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="50%">
+      <el-form ref="form" label-width="150px" style="width: 500px; margin: auto; text-align: left;">
+        <template v-for="(item, index) in tableDataEditor">
+          <el-form-item v-if="item.type === 'nothing' " :label="item.name">
+            <el-input style="width:300px" v-model="item.nameObj"></el-input>
           </el-form-item>
-          <el-form-item label="排口坐标">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
+          <el-form-item v-if="item.type === 'select' " :label="item.name">
+            <el-select style="width:300px" v-model="item.nameObj" placeholder="请选择">
+              <el-option v-for="item in typeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
+            </el-select>
           </el-form-item>
-          <el-form-item label="排入河道水质目标">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
+          <el-form-item v-if="item.type === 'time' " :label="item.name">
+            <el-date-picker style="width:300px" v-model="item.nameObj" type="datetime"
+                            placeholder="选择日期时间" align="right" format="yyyy-MM-dd HH:mm:ss"
+                            :picker-options="pickerOptions">
+            </el-date-picker>
           </el-form-item>
-          <el-form-item label="最终排入河道">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属排水分区">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="下游道路名称">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属街道">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属社区">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属流域">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="所属排水分区">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="管道类型">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="管长">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="管径">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="建设时间">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="竣工单位编号">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="建设单位">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="联系人">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="电话">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="业主单位/联系人/电话">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="运维单位/联系人/电话">
-            <el-col :span="19">
-              <el-input v-model="tableData.date"></el-input>
-            </el-col>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary">更新</el-button>
-            <el-button @click="dialogFormVisible=false">取消</el-button>
-          </el-form-item>
-        </el-form>
-      </el-dialog>
-    </div>
+        </template>
+
+        <el-form-item style="margin-left:150px">
+          <el-button @click="dialogFormVisible = false">取消</el-button>
+          <el-button type="primary" @click="dialogFormVisible = false">确认</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
     <!--添加-->
     <div>
       <el-dialog title="添加管线" :visible.sync="dialogAddVisible" width="25%">
@@ -382,6 +294,17 @@
     name: 'DynamicTable',
     data(){
       return{
+        pickerOptions: {
+          disabledDate(time) {
+            return time.getTime() > Date.now()
+          }
+        },
+        typeSelect: [
+          { value: '0', label: '规划' },
+          { value: '1', label: '在建' },
+          { value: '2', label: '现状' },
+        ],
+        tableDataEditor: [],  // 编辑
         projects:[],
         project: {
           creatorId: '',
@@ -396,14 +319,8 @@
         },
         dialogTableVisible: false,
         dialogFormVisible: false,
-
         formLabelWidth: '120px',
-        dialogFormVisible: false,
         dialogAddVisible:false,
-
-
-
-
         // 显示顺序
         isPointType:false,
         Types:[],
@@ -418,6 +335,24 @@
       this.getProjectsInfo();
     },
     methods: {
+      /****** 编辑 ********/
+      outfallHandleClick(index, row){
+        const _this = this;
+        _this.dialogFormVisible = true;
+        _this.tableDataEditor = [
+          { name: '编号:', nameObj: row.name, type: 'nothing' },
+          { name: '用地类型:', nameObj: row.YDLX, type: 'nothing' },
+          { name: '建设状态:', nameObj: row.JSZT, type: 'select' },
+          { name: '项目名称:', nameObj: row.XMMC, type: 'nothing' },
+          { name: '排入河道:', nameObj: row.PRHD, type: 'nothing' },
+          { name: '所属流域:', nameObj: row.SSLY, type: 'nothing' },
+          { name: '所属排水分区:', nameObj: row.SSPSFQ, type: 'nothing' },
+          { name: '是否为正本清源项目:', nameObj: row.ZBQY, type: 'nothing' },
+          { name: '是否为海绵项目:', nameObj: row.HMLX, type: 'nothing' },
+          { name: '海绵类型:', nameObj: row.HMLX, type: 'nothing' },
+          { name: '最后更新时间:', nameObj: row.lastUpdataTime, type: 'time' },
+        ]
+      },
       /**** 点击查看跳转页面 ***/
       viewHadelClick(index, data){
         this.$router.push({

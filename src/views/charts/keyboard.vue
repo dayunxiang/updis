@@ -638,7 +638,6 @@
               RoadTest.JSQK = com.JSZT + "无海绵";
             }
             if( com.JSZT === "在建" && com.HMCS === null ) {
-              debugger
               RoadTest.JSQK = com.JSZT + '';
             }
             if( com.JSZT === "规划" && com.HMCS === "已落实海绵" ) {
