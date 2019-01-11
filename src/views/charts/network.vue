@@ -75,12 +75,6 @@
       },
       /**** 处理数据 ****/
       middleMethod(){
-
-        var other = _.fill([4, 6, 8, 10], '*', 1, 3);
-        debugger
-
-
-
         const _this = this;
         _this.SSPSFQData = [];  // 所属排水分区
         _this.rainTube = [];    // 雨水管数量

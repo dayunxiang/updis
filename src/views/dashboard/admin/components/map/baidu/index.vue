@@ -29,7 +29,7 @@
     props: ['isHideAllSubcatchments', 'isHideDaolu', 'isHideShizheng', 'isHideLvdi', 'isHideJuzhu', 'isHideZhengfu', 'isHideGongye', 'isHideShangye',
       'isHideAllConduits', 'isHideRainConduits', 'isHideSewageConduits',
       'isHideAllOutfalls', 'isHideMergeOutfalls', 'isHideRainOutfalls', 'isHideSewageOutfalls',
-      'isHideCompanys'],
+      'isHideCompanys', 'isShowHandle'],
     data() {
       return {
         isLoading: false,
@@ -46,7 +46,8 @@
           junctions: [],
           subcatchments: [],
           companies: [],
-          range: []
+          range: [],
+          isShow:true,
         }
       }
     },
@@ -333,7 +334,7 @@
           }
           map.addOverlay(polygon)
           // 地块点击事件
-          polygon.addEventListener('click', function() {
+          polygon.addEventListener('click', function(event) {
             self.$store.dispatch('getInfo', subcatchment.properties.properties)
             //  获得地块中心点，创建 marker
             const point = new BMap.Point(subcatchment.properties.properties.center[1] + 0.005363, subcatchment.properties.properties.center[0] - 0.00402)
@@ -344,6 +345,13 @@
             map.addOverlay(marker) // 将标注添加到地图中
             marker.setAnimation(BMAP_ANIMATION_BOUNCE) // 跳动的动画
             self.clearSelectConduits()
+            //右键单击map出现右键菜单事件
+            var menu = new BMap.ContextMenu()
+            menu.addItem(new BMap.MenuItem(`<p>编辑</p>`, function(){
+              self.$emit("isShowHandle",  subcatchment.properties)
+            }))
+            polygon.addContextMenu(menu)
+
           })
         })
       },
@@ -396,6 +404,12 @@
           polyline.addEventListener('click', function() {
             console.log('点击管线：', conduit.properties.properties)
             self.$store.dispatch('getInfo', conduit.properties.properties)
+            //右键单击map出现右键菜单事件
+            var menu = new BMap.ContextMenu()
+            menu.addItem(new BMap.MenuItem(`<p>编辑</p>`, function(){
+              self.$emit("isShowHandle",  conduit.properties)
+            }))
+            polyline.addContextMenu(menu)
           })
         })
       },
@@ -466,7 +480,13 @@
           // 工业企业点击事件
           marker.addEventListener('click', function() {
             self.$store.dispatch('getInfo', company.properties.properties)
-            self.test()
+            self.test();
+            //右键单击map出现右键菜单事件
+            var menu = new BMap.ContextMenu()
+            menu.addItem(new BMap.MenuItem(`<p>编辑</p>`, function(){
+              self.$emit("isShowHandle",  company.properties)
+            }))
+            marker.addContextMenu(menu)
           })
         })
       },

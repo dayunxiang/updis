@@ -24,6 +24,8 @@
         :is-hide-rain-outfalls='isHideRainOutfalls'
         :is-hide-sewage-outfalls="isHideSewageOutfalls"
         :is-hide-companies='isHideCompanys'
+        v-on:isShowHandle="isShowHandles"
+
       />
       <!--左-->
       <div :class="isCollapse?'open':'off'" class="left-content">
@@ -896,6 +898,21 @@
           重新绘制
         </div>
       </div>
+
+      <!--编辑弹框-->
+      <div class="isShowDialog" v-if="isShowDialog">
+        <span style="display:inline-block;width:150px;padding:10px 0px 10px 20px;font-size: 20px;"> 编辑 </span>
+        <div v-for="(item, index) in placeModelData" :key="index" class="isShowBianji">
+          <span class="isShowDialogSpan"> {{item.name}} </span>
+          <el-input placeholder="请输入内容" v-model="item.placeholderModel" clearable :disabled="item.disabledShow"></el-input>
+        </div>
+        <div style="padding:10px 0px;padding-left:125px;">
+          <el-button style="padding:10px 20px;" @click="isShowDialog = false"> 取消 </el-button>
+          <el-button style="padding:10px 20px;" type="primary" @click="isShowDialog = false"> 确认 </el-button>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </template>
@@ -934,6 +951,15 @@
     },
     data() {
       return {
+       // isShowHandle: 'list',
+        isShowDialog: false,
+        placeModelData: [
+          { id:'0', name: '编号:',  placeholderModel: 'DK-02' },
+          { id:'1', name: '用地类型:',  placeholderModel: '地块' },
+          { id:'2', name: '建设状态:',  placeholderModel: '在建' },
+          { id:'3', name: '项目名称:',  placeholderModel: '深圳' },
+          { id:'4', name: '所属流域:',  placeholderModel: '1#排水分区' }
+        ],
         dialogTheader: [], // 初始化表头
         dialogTableData: [], // 弹框表格数据
         tabPaneName: [], // 弹框标签页数据
@@ -1288,12 +1314,69 @@
       }
     },
     create() {
-
+      function createList(dataIf) {
+        debugger
+        console.log("======", dataIf)
+        debugger
+      }
     },
     mounted() {
       this.init()
     },
     methods: {
+      isShowHandles:function(data) {
+        let methObj = data.properties;
+        this.placeModelData = [];
+        this.isShowDialog = true;
+        /**** 地块 *****/
+        if(data.businessType === 'SUBCATCHMENTS'){
+          this.placeModelData = [
+            { id:'0', name: '编号:', placeholderModel: methObj.name, disabledShow: true },
+            { id:'1', name: '面积:', placeholderModel: methObj.area, disabledShow: true },
+            { id:'2', name: '用地类型:', placeholderModel: methObj.YDLX, disabledShow: true },
+            { id:'3', name: '建设状态:', placeholderModel: methObj.JSZT, disabledShow: false },
+            { id:'4', name: '项目名称:', placeholderModel: methObj.XMMC, disabledShow: false },
+            { id:'5', name: '排入河道:', placeholderModel: methObj.PRHD, disabledShow: true },
+            { id:'6', name: '所属流域:', placeholderModel: methObj.SSLY, disabledShow: true },
+            { id:'7', name: '所属排水分区:', placeholderModel: methObj.SSPSFQ, disabledShow: false },
+            { id:'8', name: '是否为正本清源项目:', placeholderModel: methObj.ZBQY, disabledShow: false },
+            { id:'9', name: '是否为海绵项目:', placeholderModel: methObj.HMLX, disabledShow: true },
+            { id:'10', name: '海绵类型:', placeholderModel: methObj.HMLX, disabledShow: true },
+            { id:'11', name: '现状控制率:', placeholderModel: methObj.现状控制率, disabledShow: false },
+            { id:'12', name: '规划控制率:', placeholderModel: methObj.规划控制率, disabledShow: true },
+          ]
+        }
+        /**** 企业 *****/
+        if(data.businessType === 'COMPANY'){
+          this.placeModelData = [
+            { id:'0', name: '企业名称:', placeholderModel: methObj.name, disabledShow: true },
+            { id:'1', name: '街道:', placeholderModel: methObj.JDMC, disabledShow: true },
+            { id:'2', name: '社区:', placeholderModel: methObj.SQMC, disabledShow: true },
+            { id:'3', name: '地址:', placeholderModel: methObj.SCJYDZ, disabledShow: true },
+            { id:'4', name: '法人代表:', placeholderModel: methObj.FDDBR, disabledShow: true },
+            { id:'5', name: '联系方式:', placeholderModel: methObj.LXFS, disabledShow: true },
+            { id:'6', name: '企业人数:', placeholderModel: methObj.QYRS, disabledShow: true },
+            { id:'7', name: '行业类别:', placeholderModel: methObj.HYLB, disabledShow: true },
+            { id:'8', name: '生产用水量:', placeholderModel: methObj.SCYSL, disabledShow: false },
+            { id:'9', name: '排水量:', placeholderModel: methObj.PSL, disabledShow: false },
+            { id:'10', name: '主要生产工艺:', placeholderModel: methObj.ZYSCGY, disabledShow: false },
+            { id:'11', name: '产品:', placeholderModel: methObj.CPZL, disabledShow: false },
+            { id:'12', name: '环评:', placeholderModel: methObj.HPPFWJ, disabledShow: false },
+            { id:'13', name: '环评有效性:', placeholderModel: methObj.HPPFWJYXX, disabledShow: false },
+            { id:'14', name: '排污许可证:', placeholderModel: methObj.PWXKZ, disabledShow: false },
+            { id:'15', name: '废水处理方式:', placeholderModel: methObj.FSCLFS, disabledShow: false },
+            { id:'16', name: '特征污染物:', placeholderModel: methObj.TZWRW, disabledShow: false },
+          ]
+        }
+        /**** 管线 *****/
+        if(data.businessType === 'CONDUITS'){
+          this.placeModelData = [
+            { id:'0', name: '管道编号:', placeholderModel: methObj.name, disabledShow: true },
+            { id:'1', name: '管道类型:', placeholderModel: methObj.leixing, disabledShow: true },
+            { id:'2', name: '管径:', placeholderModel: methObj.guanjing, disabledShow: false },
+          ]
+        }
+      },
       /** ** 表头筛选 *****/
       YDLXHandler(value, row, column) {
         const property = column['property']
@@ -1559,6 +1642,7 @@
       // 信息管理是否显示
       handleInfoShow() {
         this.infoManager = !this.infoManager
+        this.isShowDialog = false
         if (this.isSelect) {
           this.isSelect = !this.isSelect
         }
@@ -1617,6 +1701,7 @@
        * */
       handleReset() {
         const self = this
+        self.isShowDialog = !self.isShowDialog
         self.selectSubcatchmentData = []
         self.selectOutfalls = []
         self.selectCompanys = []
@@ -1934,6 +2019,7 @@
       handleSelectShow() {
         const _this = this
         _this.isSelect = !_this.isSelect
+        _this.isShowDialog = !_this.isShowDialog
         if (this.infoManager) {
           _this.infoManager = !_this.infoManager
         }
@@ -2197,6 +2283,32 @@
     .map-tab {
       width: 100%;
       height: 100%;
+      .isShowDialog{
+        position: absolute;
+        top: 0;
+        left: 700px;
+        background-color: #fff;
+        width: 400px;
+        margin-top: 5px;
+        padding:8px;
+        max-height:710px;
+        overflow: scroll;
+        .isShowBianji{
+          padding-bottom: 5px;
+          .isShowDialogSpan{
+            display:inline-block;
+            width:160px;
+            padding-right:8px;
+            text-align: right;
+          }
+          .el-input{
+            width:200px;
+            input{
+              color:#999
+            }
+          }
+        }
+      }
     }
     .left-content {
       position: absolute;
