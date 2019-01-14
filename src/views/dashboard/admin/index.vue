@@ -628,10 +628,10 @@
         <div class="selectContext" v-show="isSelect">
           <div>
             <el-tabs type="border-card" style="width: 100%" @tab-click="handleClicktabClick">
-              <el-tab-pane label="精确查询">
+              <el-tab-pane label="精确查询" class="tabPaneTabsJQ">
                 <div style="height:50px;">
                   <div style="padding:5px 0px;float:left;width:100%">
-                    <span style="float:left;display:inline-block;line-height: 40px;">选择空间:</span>
+                    <span style="float:left;display:inline-block;line-height: 40px;">按空间范围:</span>
                     <div style="float:left;max-width:570px;">
                       <span style="margin:3px 5px;display:inline-block" v-for="lay in spaceList" :key="lay.id">
                         <el-select v-model="lay.spaceValue" clearable placeholder="请选择" style="width:180px">
@@ -653,7 +653,7 @@
                   <div class="anshuxing">按属性:</div>
                   <div style="float:left;">
                     <div style="padding-bottom:3px" v-for="(list, index) in TypeList" :key="list.id">
-                      <span> 类型: </span>
+                      <span> 按类型: </span>
                       <el-select v-model="list.seletctType" @change="demoListDataModel(list, index)" clearable placeholder="请选择" style="width:120px">
                         <el-option
                           v-for="item in exactQuery"
@@ -662,7 +662,7 @@
                           :value="item">
                         </el-option>
                       </el-select>
-                      <span> 属性: </span>
+                      <span> 按属性: </span>
                       <el-select v-model="list.selectAttribute" @change="demoListDataModelType(list, index)" clearable placeholder="请选择" style="width:160px">
                         <el-option
                           v-for="item in attributeData"
@@ -671,7 +671,7 @@
                           :value="item.value">
                         </el-option>
                       </el-select>
-                      <span> 属性值: </span>
+                      <span> 按属性值: </span>
                       <el-autocomplete
                         class="el-input"
                         style="width:130px"
@@ -738,7 +738,8 @@
             <el-tabs class="tabPaneSpan"  @tab-click="tableListComlde">
               <el-tab-pane :label=" '地块（'+showResult.subcatchments.length+'）'" name="0">
                  <el-table :data="(showResult.subcatchments).slice((currentPageNum1-1)*totalNumber1, currentPageNum1*totalNumber1)"
-                          @selection-change="queryChangeHandle"
+                            @selection-change="queryChangeHandle" @filter-change="queryChangeHandleClick"
+                           :default-sort = "{prop: 'outlay', order: 'descending'}" @sort-change='subcatchmentsChange'
                           style="width: 100%" height="280" border >
                   <el-table-column align="center" default-sort type="selection"></el-table-column>
                   <el-table-column fixed width="50" label="序号" align="center" type="index">
@@ -777,6 +778,7 @@
               </el-tab-pane>
               <el-tab-pane :label=" '企业('+showResult.companies.length+')'" name="1">
                 <el-table :data="(showResult.companies).slice(( currentPageNum2 - 1 ) * totalNumber2 , currentPageNum2 * totalNumber2)"
+                          @sort-change="companiesClick"
                           style="width: 100%" height="280" border>
                   <el-table-column align="center" default-sort type="selection"></el-table-column>
                   <el-table-column fixed label="序号" align="center" type="index" width="50"></el-table-column>
@@ -800,7 +802,7 @@
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange2"
-                               @current-change="handleCurrentChangeHandel1"
+                               @current-change="handleCurrentChangeHandel2"
                                :page-sizes="[5]"
                                :page-size="5"
                                layout="total, sizes, prev, pager, next, jumper"
@@ -809,6 +811,7 @@
               </el-tab-pane>
               <el-tab-pane :label=" '管线('+showResult.conduits.length+')'" name="2">
                 <el-table :data="(showResult.conduits).slice(( currentPageNum3 - 1 ) * totalNumber3 , currentPageNum3 * totalNumber3)"
+                          @sort-change="conduitsClick"
                           style="width: 100%" height="280" borde>
                   <el-table-column align="center" default-sort type="selection"></el-table-column>
                   <el-table-column fixed type="index" width="50" label="序号" align="center">
@@ -822,15 +825,16 @@
                 </el-table>
                 <el-pagination style="text-align:center;"
                                @size-change="handleSizeChange3"
-                               @current-change="handleCurrentChangeHandel1"
+                               @current-change="handleCurrentChangeHandel3"
                                :page-sizes="[5]"
                                :page-size="5"
                                layout="total, sizes, prev, pager, next, jumper"
-                               :total="0">
+                               :total="showResult.conduits.length">
                 </el-pagination>
               </el-tab-pane>
               <el-tab-pane :label=" '排口('+showResult.outfalls.length+')'" name="3">
                 <el-table :data="(showResult.outfalls).slice((currentPageNum4-1)*totalNumber4, currentPageNum4*totalNumber4)"
+                          @sort-change="outfallsClick"
                           style="width: 100%" height="280" @selection-change="queryChangeRowMouth" ref="multipleTable" border="">
                   <el-table-column align="center" default-sort type="selection"></el-table-column>
                   <el-table-column fixed type="index" width="50" label="序号" align="center">
@@ -951,6 +955,10 @@
     },
     data() {
       return {
+        outfallsData: [],  // 排口
+        conduitsData: [],  // 管线
+        companiesData: [],   // 企业
+        subcatchmentsData: [],  // 地块
        // isShowHandle: 'list',
         isShowDialog: false,
         placeModelData: [
@@ -1071,6 +1079,7 @@
         pageSizeValue1: 3,
         pageSizeValue2: 3,
         pageSizeValue3: 3,
+        pageSizeValue4: 3,
         pageSizeNum: [5], // 每页的数据条数
         currentPage4: 4,
         totalNumber: 5,
@@ -1147,8 +1156,6 @@
         selectCompanys: [],
         // end
         subcatchmentData: [],
-        conduitsData: [],
-        outfallsData: [],
         companysData: [],
         isResult: false,
 
@@ -1306,6 +1313,7 @@
           conduits: _.map(self.selectResult.conduits, item => item.properties.properties),
           companies: _.map(self.selectResult.companies, item => item.properties.properties)
         }
+
       },
       rangeData() {
         return _.filter(this.shapes, function(item) {
@@ -1318,6 +1326,103 @@
       this.init()
     },
     methods: {
+      /**** 筛选 *****/
+      queryChangeHandleClick(value){
+        debugger
+        const _this = this
+        let filtersData = [];
+
+        _.each(value.SSPSFQ, function (item) {
+          debugger
+          _.each(_this.selectResult.subcatchments,function(lay){
+            if(item === lay.properties.properties.SSPSFQ){
+              filtersData.push(lay)
+            }
+          })
+        })
+        _.each(value.YDLX,function (item) {
+          _.each(_this.selectResult.subcatchments,function(lay){
+            if(item === lay.properties.properties.YDLX){
+              filtersData.push(lay)
+            }
+          })
+        })
+        _.each(value.JSZT,function (item) {
+          _.each(_this.selectResult.subcatchments,function(lay){
+            if(item === lay.properties.properties.JSZT){
+              filtersData.push(lay)
+            }
+          })
+        })
+
+        _this.selectResult.subcatchments = filtersData
+
+        if(value.YDLX.length == 0 || value.JSZT.length == 0 || value.SSPSFQ.length == 0 ){
+          _this.selectResult.subcatchments = _this.subcatchmentsData
+        }
+      },
+      /**** 地块 *****/
+      subcatchmentsChange(column){
+        const _this = this;
+        if (column.prop === null){
+          _this.selectResult.subcatchments = _this.subcatchmentsData
+          return false
+        }
+        _this.selectResult.subcatchments = _.orderBy(
+          _this.selectResult.subcatchments,
+          function (i) {
+            return i.properties.properties[column.prop]
+          },
+          column.order === 'descending' ? 'desc' : 'asc'
+        )
+      },
+      /*** 企业 ***/
+      companiesClick(column){
+        const _this = this;
+        if (column.prop === null){
+          _this.selectResult.companies = _this.companiesData
+          return false
+        }
+        _this.selectResult.companies = _.orderBy(
+          _this.selectResult.companies,
+          function (i) {
+            return i.properties.properties[column.prop]
+          },
+          column.order === 'descending' ? 'desc' : 'asc'
+        )
+      },
+      /*** 管线 ***/
+      conduitsClick(column){
+        const _this = this;
+        if (column.prop === null){
+          _this.selectResult.conduits = _this.conduitsData
+          return false
+        }
+        _this.selectResult.conduits = _.orderBy(
+          _this.selectResult.conduits,
+          function (i) {
+            return i.properties.properties[column.prop]
+          },
+          column.order === 'descending' ? 'desc' : 'asc'
+        )
+      },
+      /*** 排口 ***/
+      outfallsClick(column){
+        const _this = this;
+        if (column.prop === null){
+          _this.selectResult.outfalls = _this.outfallsData
+          return false
+        }
+        _this.selectResult.outfalls = _.orderBy(
+          _this.selectResult.outfalls,
+          function (i) {
+            return i.properties.properties[column.prop]
+          },
+          column.order === 'descending' ? 'desc' : 'asc'
+        )
+      },
+
+
       isShowHandles:function(data) {
         let methObj = data.properties;
         this.placeModelData = [];
@@ -1816,6 +1921,10 @@
           _this.tabPaneLabel = true
           _this.underPipelineMouth = true // 地块
           _this.underSewageWhere = true // 地块
+          _this.subcatchmentsData = _this.selectResult.subcatchments;  // 地块
+          _this.companiesData = _this.selectResult.companies;  // 企业
+          _this.conduitsData = _this.selectResult.conduits;  // 管线
+          _this.outfallsData = _this.selectResult.outfalls;  // 排口
         }, 200)
       },
       // 处理反向查询的数据
@@ -2213,7 +2322,9 @@
   }
 </script>
 <style rel="stylesheet/scss" scoped>
-
+  .tabPaneTabsJQ .el-select-dropdown__item{
+    text-align: center;
+  }
   button, html [type="button"], [type="reset"], [type="submit"] {
     padding: 2px 5px;
   }

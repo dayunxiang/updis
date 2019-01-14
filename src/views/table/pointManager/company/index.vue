@@ -44,7 +44,7 @@
         <el-table-column
           prop="JDMC"
           label="街道名称"
-          width="300">
+          width="110">
         </el-table-column>
         <el-table-column
           prop="SQMC"
