@@ -1328,38 +1328,127 @@
     methods: {
       /**** 筛选 *****/
       queryChangeHandleClick(value){
-        debugger
         const _this = this
         let filtersData = [];
-
-        _.each(value.SSPSFQ, function (item) {
-          debugger
-          _.each(_this.selectResult.subcatchments,function(lay){
-            if(item === lay.properties.properties.SSPSFQ){
-              filtersData.push(lay)
-            }
+        var a1 = []
+        var a2 = []
+        var a3 = []
+        var aData = _this.subcatchmentsData
+        var num1 = value.YDLX
+        var num2 = value.JSZT
+        var num3 = value.SSPSFQ
+        debugger
+        if(value.JSZT) {
+          _.each(value.JSZT, function (item) {
+            _.each(_this.selectResult.subcatchments, function (lay) {
+              if (item === lay.properties.properties.JSZT) {
+                filtersData.push(lay)
+              }
+            })
           })
-        })
-        _.each(value.YDLX,function (item) {
-          _.each(_this.selectResult.subcatchments,function(lay){
-            if(item === lay.properties.properties.YDLX){
-              filtersData.push(lay)
-            }
-          })
-        })
-        _.each(value.JSZT,function (item) {
-          _.each(_this.selectResult.subcatchments,function(lay){
-            if(item === lay.properties.properties.JSZT){
-              filtersData.push(lay)
-            }
-          })
-        })
-
-        _this.selectResult.subcatchments = filtersData
-
-        if(value.YDLX.length == 0 || value.JSZT.length == 0 || value.SSPSFQ.length == 0 ){
-          _this.selectResult.subcatchments = _this.subcatchmentsData
+          _this.selectResult.subcatchments = filtersData
         }
+        if(value.SSPSFQ){
+          _.each(value.SSPSFQ, function (item) {
+            _.each(_this.selectResult.subcatchments,function(lay){
+              if(item === lay.properties.properties.SSPSFQ){
+                filtersData.push(lay)
+              }
+            })
+          })
+          _this.selectResult.subcatchments = filtersData
+        }
+        if(value.YDLX){
+          _.each(value.YDLX,function (item) {
+            _.each(_this.selectResult.subcatchments,function(lay){
+              if(item === lay.properties.properties.YDLX){
+                a1.push(lay)
+              }
+            })
+          })
+          _this.selectResult.subcatchments = a1
+          if(value.JSZT !== undefined){
+            _.each(value.JSZT,function (item) {
+              _.each(a1,function(lay){
+                if(item === lay.properties.properties.JSZT){
+                  a2.push(lay)
+                }
+              })
+            })
+            _this.selectResult.subcatchments = a2
+            if(value.SSPSFQ !== undefined){
+              _.each(value.SSPSFQ,function (item) {
+                _.each(a2,function(lay){
+                  if(item === lay.properties.properties.JSZT){
+                    a3.push(lay)
+                  }
+                })
+              })
+              _this.selectResult.subcatchments = a3
+            }
+          }
+        }
+        if(value.YDLX.length == 0 && !value.JSZT && !value.SSPSFQ){
+          _this.selectResult.subcatchments = aData
+        }
+        if(!value.YDLX && !value.JSZT.length == 0 && !value.SSPSFQ){
+          _this.selectResult.subcatchments = aData
+        }
+        if(!value.YDLX && !value.JSZT && !value.SSPSFQ.length == 0){
+          _this.selectResult.subcatchments = aData
+        }
+        // else{
+          // if(!value.YDLX){
+          //   _this.selectResult.subcatchments = _this.subcatchmentsData
+          //   debugger
+          // }
+          // if(!value.JSZT){
+          //   debugger
+          //   _this.selectResult.subcatchments = a1
+          // }
+          // if(!value.SSPSFQ){
+          //   debugger
+          //   _this.selectResult.subcatchments = a2
+          // }
+        // }
+
+        // if(!value.JSZT){
+        //   _this.selectResult.subcatchments = a1
+        //   debugger
+        // }
+        // if(!value.YDLX){
+        //   _this.selectResult.subcatchments = a1
+        //   debugger
+        // }
+        // if(!value.SSPSFQ){
+        //   _this.selectResult.subcatchments = a2
+        //   debugger
+        // }
+
+
+        // if(value.JSZT === undefined){
+        //   debugger
+        //   _this.selectResult.subcatchments = a1
+        // }
+        // if(value.SSPSFQ === undefined){
+        //   debugger
+        //   _this.selectResult.subcatchments = a2
+        // }
+
+
+
+        // if(value.YDLX && value.JSZT.length !== 0){
+        //
+        // }
+
+
+
+
+
+
+        // if(value.YDLX.length === 0 || value.JSZT.length === 0 || value.SSPSFQ.length === 0 ){
+        //   _this.selectResult.subcatchments = _this.subcatchmentsData
+        // }
       },
       /**** 地块 *****/
       subcatchmentsChange(column){
