@@ -304,10 +304,10 @@
         _this.tableDataEditor = [
           { name: '项目编号:', nameObj: row.projectName, type: 'nothing' },
           { name: '类型:', nameObj: row.leixing, type: 'select' },
-          { name: '排口编号:', nameObj: row.name , type: 'nothing'},
-          { name: '地理位置坐标:', nameObj: row.lng_lat , type: 'nothing'},
+          { name: '排口编号:', nameObj: row.name, type: 'nothing'},
+          { name: '地理位置坐标:', nameObj: row.lng_lat, type: 'nothing'},
           { name: '最后更新时间:', nameObj: row.lastUpdataTime, type: 'time' },
-          { name: '排向:', nameObj: row.paixiang , type: 'nothing'},
+          { name: '排向:', nameObj: row.paixiang, type: 'nothing'},
           { name: '待扩展:', nameObj: '', type: 'nothing'}
         ]
       },
@@ -317,7 +317,8 @@
           path: '/dashboard',
           query: {
             projectId: data.projectName,
-            name: data.name
+            AttributeValue: data.name,
+            seletctType: 'outfalls'
           }
         })
       },

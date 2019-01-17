@@ -276,7 +276,8 @@
           path: '/dashboard',
           query: {
             projectId: data.projectName,
-            name: data.name
+            AttributeValue: data.name,
+            seletctType: 'conduits'
           }
         })
       },

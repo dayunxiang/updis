@@ -12,21 +12,21 @@ module.exports = {
     proxyTable: {
       '/geoJson':'http://localhost:5000/',
       '/api': {
-        target: 'http://updis.haomo-studio.com/api',
+        target: 'https://updis.haomo-studio.com/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'
         }
       },
       '/demo': {
-        target: 'http://updis.haomo-studio.com/demo',
+        target: 'https://updis.haomo-studio.com/demo',
         changeOrigin: true,
         pathRewrite: {
           '^/demo': '/'
         }
       },
       '/v1':{
-        target: 'http://updis.haomo-studio.com/v1',
+        target: 'https://updis.haomo-studio.com/v1',
         changeOrigin: true,
         pathRewrite: {
           '^/v1': '/'

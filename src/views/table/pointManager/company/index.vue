@@ -366,11 +366,13 @@
       },
       /**** 点击查看跳转页面 ***/
       viewHadelClick(index, data){
+        console.log()
         this.$router.push({
           path: '/dashboard',
           query: {
             projectId: data.projectName,
-            name: data.name
+            AttributeValue: data.name,
+            seletctType: 'companies'
           }
         })
       },

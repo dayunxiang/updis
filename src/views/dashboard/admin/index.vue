@@ -1753,7 +1753,16 @@
         }).then((res) => {
           self.shapes = JSON.parse(JSON.stringify(res.data))
           _.each(self.shapes, function(item) { item.properties = JSON.parse(item.properties) })
+          if (self.$route.query.AttributeValue && self.$route.query.seletctType) {
+            self.TypeList = [{
+              seletctType: { value: self.$route.query.seletctType },
+              selectAttribute: 'name',
+              AttributeValue: self.$route.query.AttributeValue
+            }]
+            self.handelQueryTerm('query')
+          }
           self.getQueryOptions()
+          console.log('this.$route.query🙃', this.$route.query)
         })
       },
       // 折叠展开
@@ -1937,9 +1946,11 @@
         return (item.category === 'RANGE' && item.name === data.name) || (item.category === 'JUNCTIONS' && isJunctionInRange(item, data)) || (item.category === 'OUTFALLS' && isOutfallInRange(item, data)) || (item.category === 'SUBCATCHMENTS' && isSubcatchmentInRange(item, data)) || (item.category === 'COMPANY' && isCompanyInRange(item, data)) || (item.category === 'CONDUITS' && isConduitInRange(item, data))
       },
       /** *********** 查询按钮 ***************/
-      handelQueryTerm() {
+      handelQueryTerm(type) {
         const _this = this
-        _this.isLoading = true
+        if (!type) {
+          _this.isLoading = true
+        }
         let isTypeList = false
         _this.selectResult = {
           subcatchments: [],
@@ -2027,7 +2038,7 @@
         // 处理地块面积
         if (selectResult.subcatchments.length) {
           _.map(selectResult.subcatchments, item => {
-            item.properties.properties.area = (item.properties.properties.area / 10000).toFixed(2)
+            item.properties.properties.area = parseFloat((item.properties.properties.area / 10000).toFixed(2))
           })
         }
       },

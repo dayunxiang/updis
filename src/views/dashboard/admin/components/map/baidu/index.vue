@@ -228,7 +228,9 @@
           })
           self.geojson['features'] = _.map(self.shapes, shape => shape.properties)
           self.cy = geojson2cytoscape(self.geojson)
-          this.getDataInfoSuccess(self.shapes)
+          if (!self.$route.query.AttributeValue && !self.$route.query.seletctType) {
+            this.getDataInfoSuccess(self.shapes)
+          }
         })
       },
       // 处理请求过来的所有数据

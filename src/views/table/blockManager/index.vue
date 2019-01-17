@@ -354,12 +354,14 @@
         ]
       },
       /**** 点击查看跳转页面 ***/
-      viewHadelClick(index, data){
+      viewHadelClick(index, data) {
+        console.log('index, data', index, data)
         this.$router.push({
           path: '/dashboard',
           query: {
             projectId: data.projectName,
-            name: data.name
+            AttributeValue: data.name,
+            seletctType: 'subcatchments'
           }
         })
       },
