@@ -1,13 +1,17 @@
 <template>
-  <el-collapse accordion>
+  <el-collapse accordion
+               v-loading.fullscreen.lock="loading"
+               element-loading-text="转换中......"
+               element-loading-spinner="el-icon-loading"
+               element-loading-background="rgba(0, 0, 0, 0.7)" v-model="value">
     <el-collapse-item title="深圳坐标转换经纬坐标(GPS)" name="1">
-      <el-upload ref="upload"
+      <el-upload ref="upload1"
                  :limit="1"
                  :auto-upload="false"
-                 :http-request="uploadFile"
-                 :on-change="fileOnChange1"
-                 :on-remove="fileOnRemove1"
-                 action="customize"
+                 :http-request="fileOnReq"
+                 :on-change="fileOnChange"
+                 :on-remove="fileOnRemove"
+                 :action="action"
                  drag>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">将文件拖到此处，或
@@ -16,18 +20,18 @@
         <div class="el-upload__tip" slot="tip">目前只支持shape文件的zip压缩包</div>
       </el-upload>
       <div>
-        <el-button @click="submitUpload" >确认上传</el-button>
+        <el-button @click="submitUpload()" >确认上传</el-button>
         <el-input v-model="DowloadURL" placeholder="转换完成后请复制此链接下载"></el-input>
       </div>
     </el-collapse-item>
     <el-collapse-item title="(GPS)经纬坐标转换深圳坐标" name="2">
-      <el-upload ref="upload"
+      <el-upload ref="upload2"
                  :limit="1"
                  :auto-upload="false"
-                 :http-request="uploadFileGPS"
-                 :on-change="fileOnChange2"
-                 :on-remove="fileOnRemove2"
-                 action="customize"
+                 :http-request="fileOnReq"
+                 :on-change="fileOnChange"
+                 :on-remove="fileOnRemove"
+                 :action="action"
                  drag>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">将文件拖到此处，或
@@ -36,7 +40,7 @@
         <div class="el-upload__tip" slot="tip">目前只支持shape文件的zip压缩包</div>
       </el-upload>
       <div>
-        <el-button @click="submitUpload2">确认上传</el-button>
+        <el-button @click="submitUpload()">确认上传</el-button>
         <el-input v-model="DowloadGPSURL" placeholder="转换完成后请复制此链接下载"></el-input>
       </div>
     </el-collapse-item>
@@ -46,97 +50,67 @@
 <script>
   import axios from 'axios'
   import { Loading } from 'element-ui'
+  import request from '@/utils/request'
 export default {
     name: 'coordinate',
     data() {
       return {
-        fileName: '',
-        fileUrlName: '',
-        DowloadURL: '',
-        DowloadGPSURL: ''
+        fileName: '', // 文件名称
+        value: '', // 当前展开的页面
+        fileUrlName: '', // 服务器的文件名称
+        action: '/v1/shp/convert', // 文件上传接口
+        DowloadURL: '', // 深圳坐标转换经纬坐标：下载网址
+        DowloadGPSURL: '', // 经纬坐标转换深圳坐标：下载网址
+        loading: false // 是否显示加载中
       }
     },
     methods: {
-      fileOnChange1(file, fileList) {
-        // console.log(file,fileList);
+      // 文件发生改变
+      fileOnChange(file, fileList) {
         this.fileName = file.name
         this.fileUrlName = file.raw.lastModified
       },
-      fileOnRemove1(file, fileList) {
-        // console.log(file,fileList);
-        this.DowloadURL = ''
+      // 文件删除
+      fileOnRemove(file, fileList) {
+        this.fileName = ''
+        this.fileUrlName = ''
+        if (this.value === '1') {
+          this.DowloadURL = ''
+        } else {
+          this.DowloadGPSURL = ''
+        }
       },
-      /** **********************************************************************************************************************/
+      // 自定义上传
+      fileOnReq(params) {
+        const self = this
+        var formData = new FormData()
+        formData.append('file', params.file)
+        if (this.value === '1') {
+          formData.append('method', 'sz2gps')
+        } else {
+          formData.append('method', 'gps2sz')
+        }
+        axios.post('/v1/shp/convert', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then(res => {
+          if (this.value === '1') {
+            self.DowloadURL = res.data.file
+          } else {
+            self.DowloadGPSURL = res.data.file
+          }
+        })
+      },
       // 确认上传
       submitUpload() {
-        const loading = this.$loading({
-          lock: true,
-          text: '转换中......',
-          spinner: 'el-icon-loading',
-          background: 'rgba(0, 0, 0, 0.7)'
-        })
+        this.loading = true
         setTimeout(() => {
-          loading.close()
-          this.DowloadURL = 'http://updis.haomo-studio.com/data/zip/' + this.fileUrlName + '/' + this.fileName
-        }, 3000)
-        console.log('Test')
-        this.$refs.upload.submit()
-      },
-      // 文件上传
-      uploadFile(params) {
-        const _file = params.file
-        console.log(_file)
-        var formData = new FormData()
-        formData.append('file', _file)
-        formData.append('method', 'sz2gps')
-        axios.post('/v1/shp/convert', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then(this.getShapeSuccess)
-      },
-      getShapeSuccess(res) {
-        var self = this
-        self.DowloadURL = ''
-        self.DowloadURL = res.data.file
-        // console.log('成功了');
-        console.log(res.data.file)
-      },
-
-      fileOnChange2(file, fileList) {
-        // console.log(file,fileList);
-        this.fileName = file.name
-        this.fileUrlName = file.raw.lastModified
-      },
-      fileOnRemove2(file, fileList) {
-        // console.log(file,fileList);
-        this.DowloadGPSURL = ''
-      },
-      submitUpload2() {
-        const loading = this.$loading({
-          lock: true,
-          text: '转换中......',
-          spinner: 'el-icon-loading',
-          background: 'rgba(0, 0, 0, 0.7)'
-        })
-        setTimeout(() => {
-          loading.close()
-          this.DowloadGPSURL = 'http://updis.haomo-studio.com/data/zip/' + this.fileUrlName + '/' + this.fileName
-        }, 3000)
-        console.log('Test')
-        this.$refs.upload.submit()
-      },
-      /** *************************************************************************************************/
-      // 文件上传GPS
-      uploadFileGPS(params) {
-        const _file = params.file
-        console.log(_file)
-        var formData = new FormData()
-        formData.append('file', _file)
-        formData.append('method', 'sz2gps')
-        axios.post('/v1/shp/convert', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then(this.getShapeGPSSuccess)
-      },
-      getShapeGPSSuccess(res) {
-        var self = this
-        self.DowloadGPSURL = ''
-        self.DowloadGPSURL = res.data.file
-      // console.log('成功了');
+          this.loading = false
+        }, 1000)
+          if (this.value === '1') {
+            this.$refs.upload1.submit()
+            this.DowloadURL = 'http://updis.haomo-studio.com/data/zip/' + this.fileUrlName + '/' + this.fileName
+          } else {
+            this.$refs.upload2.submit()
+            this.DowloadGPSURL = 'http://updis.haomo-studio.com/data/zip/' + this.fileUrlName + '/' + this.fileName
+          }
       }
     }
   }
