@@ -7,6 +7,7 @@
     <el-collapse-item title="深圳坐标转换经纬坐标(GPS)" name="1">
       <el-upload ref="upload1"
                  :limit="1"
+                 accept=".zip"
                  :auto-upload="false"
                  :http-request="fileOnReq"
                  :on-change="fileOnChange"
@@ -27,6 +28,7 @@
     <el-collapse-item title="(GPS)经纬坐标转换深圳坐标" name="2">
       <el-upload ref="upload2"
                  :limit="1"
+                 accept=".zip"
                  :auto-upload="false"
                  :http-request="fileOnReq"
                  :on-change="fileOnChange"
