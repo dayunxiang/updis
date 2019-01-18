@@ -20,7 +20,7 @@
         <div class="el-upload__tip" slot="tip">目前只支持shape文件的zip压缩包</div>
       </el-upload>
       <div>
-        <el-button @click="submitUpload()" >确认上传</el-button>
+        <el-button @click="submitUpload" >确认上传</el-button>
         <el-input v-model="DowloadURL" placeholder="转换完成后请复制此链接下载"></el-input>
       </div>
     </el-collapse-item>
@@ -40,7 +40,7 @@
         <div class="el-upload__tip" slot="tip">目前只支持shape文件的zip压缩包</div>
       </el-upload>
       <div>
-        <el-button @click="submitUpload()">确认上传</el-button>
+        <el-button @click="submitUpload">确认上传</el-button>
         <el-input v-model="DowloadGPSURL" placeholder="转换完成后请复制此链接下载"></el-input>
       </div>
     </el-collapse-item>
@@ -50,13 +50,12 @@
 <script>
   import axios from 'axios'
   import { Loading } from 'element-ui'
-  import request from '@/utils/request'
 export default {
     name: 'coordinate',
     data() {
       return {
-        fileName: '', // 文件名称
         value: '', // 当前展开的页面
+        fileName: '', // 文件名称
         fileUrlName: '', // 服务器的文件名称
         action: '/v1/shp/convert', // 文件上传接口
         DowloadURL: '', // 深圳坐标转换经纬坐标：下载网址
