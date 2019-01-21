@@ -355,6 +355,10 @@
             polygon.addContextMenu(menu)
 
           })
+          console.log('查看地块', pointArr)
+          if (pointArr.length && self.$route.query.AttributeValue && self.$route.query.seletctType) {
+            map.centerAndZoom(new BMap.Point(pointArr[0].lng, pointArr[0].lat), 16)
+          }
         })
       },
       // 查询分区
@@ -413,6 +417,10 @@
             }))
             polyline.addContextMenu(menu)
           })
+          console.log('查看管线', pointArr)
+          if (pointArr.length && self.$route.query.AttributeValue && self.$route.query.seletctType) {
+            map.centerAndZoom(new BMap.Point(pointArr[0].lng, pointArr[0].lat), 16)
+          }
         })
       },
       // 渲染检查井
@@ -463,6 +471,10 @@
             this.setFillColor('red')
             this.type = '选中的排口'
           })
+          console.log('查看排口', point)
+          if (point.length && self.$route.query.AttributeValue && self.$route.query.seletctType) {
+            map.centerAndZoom(new BMap.Point(point[0].lng, point[0].lat), 16)
+          }
         })
       },
       // 渲染工业企业
@@ -490,6 +502,10 @@
             }))
             marker.addContextMenu(menu)
           })
+          console.log('查看公司', point)
+          if (point.length && self.$route.query.AttributeValue && self.$route.query.seletctType) {
+            map.centerAndZoom(new BMap.Point(point.lng, point.lat), 16)
+          }
         })
       },
       // 覆盖物分类
