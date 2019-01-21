@@ -96,14 +96,21 @@
     <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="50%">
       <el-form ref="form" label-width="150px" style="width: 500px; margin: auto; text-align: left;">
         <template v-for="(item, index) in tableDataEditor">
+
           <el-form-item v-if="item.type === 'nothing' " :label="item.name">
             <el-input style="width:300px" v-model="item.nameObj"></el-input>
           </el-form-item>
+
+          <el-form-item v-if="item.type === 'disabled' " :label="item.name">
+            <el-input style="width:300px" v-model="item.nameObj" :disabled="true" ></el-input>
+          </el-form-item>
+
           <el-form-item v-if="item.type === 'select' " :label="item.name">
             <el-select style="width:300px" v-model="item.nameObj" placeholder="请选择">
               <el-option v-for="item in typeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
+
           <el-form-item v-if="item.type === 'time' " :label="item.name">
             <el-date-picker style="width:300px" v-model="item.nameObj" type="datetime"
               placeholder="选择日期时间" align="right" format="yyyy-MM-dd HH:mm:ss"
@@ -114,7 +121,7 @@
 
         <el-form-item style="margin-left:150px">
           <el-button @click="dialogFormVisible = false">取消</el-button>
-          <el-button type="primary" @click="dialogFormVisible = false">确认</el-button>
+          <el-button type="primary" @click="confirmEditorClick(tableDataEditor, lineOfObj.name)">确认</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -251,11 +258,24 @@
 
 <script>
   import axios from 'axios'
+  import commonApi from '@/api/commonApi'
   import request from '@/utils/request'
+
   export default {
     name: 'DynamicTable',
     data(){
       return{
+        lineOfObj: {},
+        mapData: {
+          conduits: [],
+          outfalls: [],
+          junctions: [],
+          subcatchments: [],
+          companies: [],
+          range: [],
+          isShow:true,
+        },
+        shapes: [],     // 获取所有项目数据
         pickerOptions: {
           disabledDate(time) {
             return time.getTime() > Date.now()
@@ -294,23 +314,132 @@
         tableData:[]
       }
     },
+    created(){
+      this.getDataInfo()
+    },
     mounted(){
       this.getProjectsInfo();
     },
     methods: {
       outfallHandleClick(index, row){
+        debugger
         const _this = this;
+        _this.lineOfObj = {};
+        _this.tableDataEditor = [];
+        _this.lineOfObj = row;
         _this.dialogFormVisible = true;
         _this.tableDataEditor = [
-          { name: '项目编号:', nameObj: row.projectName, type: 'nothing' },
+          { name: '项目编号:', nameObj: row.projectName, type: 'disabled' },
           { name: '类型:', nameObj: row.leixing, type: 'select' },
-          { name: '排口编号:', nameObj: row.name, type: 'nothing'},
-          { name: '地理位置坐标:', nameObj: row.lng_lat, type: 'nothing'},
+          { name: '排口编号:', nameObj: row.name, type: 'disabled'},
+          { name: '地理位置坐标:', nameObj: row.lng_lat, type: 'disabled'},
           { name: '最后更新时间:', nameObj: row.lastUpdataTime, type: 'time' },
           { name: '排向:', nameObj: row.paixiang, type: 'nothing'},
           { name: '待扩展:', nameObj: '', type: 'nothing'}
         ]
       },
+      /**
+       * 编辑确认按钮
+       */
+      confirmEditorClick(data, value){
+        debugger
+        const _this = this;
+        _this.dialogFormVisible = false
+        let subcatData = {};
+        let subChmenData = _this.mapData.outfalls;
+        debugger
+        _.each(subChmenData, function (item) {
+          if(value == item.properties.properties.name){
+            item.properties.properties.name = data[2].nameObj
+            item.properties.properties.leixing = data[1].nameObj
+            item.properties.properties.paixiang = data[5].nameObj
+            debugger
+            subcatData = item
+          }
+        })
+        let objToStr = JSON.stringify(subcatData.properties)
+        let objId = subcatData.id
+        debugger
+        commonApi.edit('shapes',objId, {
+          'properties': objToStr
+        }).then((respon)=>{
+          _this.$message({
+            message: '编辑成功',
+            type: 'success'
+          });
+          _this.handleSelect();
+        })
+      },
+      /**
+       * 获取所有项目数据
+       */
+      getDataInfo() {
+        const _this = this
+        request('shapes', {
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: '3'
+                }
+              }
+            }
+          }
+        }).then((resp) => {
+          const data = resp.data;
+        _this.shapes = JSON.parse(JSON.stringify(resp.data))
+        _.each(_this.shapes, function(item) {
+          item.properties = JSON.parse(item.properties)
+        })
+        if (!_this.$route.query.AttributeValue && !_this.$route.query.seletctType) {
+          this.getDataInfoSuccess(_this.shapes)
+        }
+      })
+      },
+      getDataInfoSuccess(data){
+        const _this = this
+        _.each(data, item => {
+          const mapData = {
+            id: item.id,
+            category: item.category,
+            properties: item.properties
+          };
+        switch (item.category) {
+          case 'SUBCATCHMENTS':
+            _this.mapData.subcatchments.push(mapData)    // 地块
+            break
+          case 'CONDUITS':
+            _this.mapData.conduits.push(mapData)
+            break
+          case 'JUNCTIONS':
+            _this.mapData.junctions.push(mapData)
+            break
+          case 'OUTFALLS':
+            _this.mapData.outfalls.push(mapData)
+            break
+          case 'COMPANY':
+            _this.mapData.companies.push(mapData)
+            break
+          case 'RANGE':
+            _this.mapData.range.push(mapData)
+            break
+        }
+      })
+        const mapData = _this.mapData
+      },
+
+
+
+
+
+
+
+
+
+
+
       /**** 点击查看跳转页面 ***/
       viewHadelClick(index, data){
         this.$router.push({
@@ -481,6 +610,9 @@
   }
 </script>
 <style>
+  .el-input.is-disabled .el-input__inner{
+    color: #999;
+  }
   .point-manager{
     margin: 20px;
   }

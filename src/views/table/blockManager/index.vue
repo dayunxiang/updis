@@ -123,7 +123,7 @@
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="currentPage4"
+        :current-page="1"
         :page-sizes="[20, 40, 60, 80]"
         :page-size="100"
         layout="total, sizes, prev, pager, next, jumper"
@@ -134,14 +134,21 @@
     <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="50%">
       <el-form ref="form" label-width="150px" style="width: 500px; margin: auto; text-align: left;">
         <template v-for="(item, index) in tableDataEditor">
+
           <el-form-item v-if="item.type === 'nothing' " :label="item.name">
             <el-input style="width:300px" v-model="item.nameObj"></el-input>
           </el-form-item>
+
+          <el-form-item v-if="item.type === 'disabled' " :label="item.name">
+            <el-input style="width:300px" v-model="item.nameObj" :disabled="true" ></el-input>
+          </el-form-item>
+
           <el-form-item v-if="item.type === 'select' " :label="item.name">
             <el-select style="width:300px" v-model="item.nameObj" placeholder="请选择">
               <el-option v-for="item in typeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
+
           <el-form-item v-if="item.type === 'time' " :label="item.name">
             <el-date-picker style="width:300px" v-model="item.nameObj" type="datetime"
                             placeholder="选择日期时间" align="right" format="yyyy-MM-dd HH:mm:ss"
@@ -152,7 +159,7 @@
 
         <el-form-item style="margin-left:150px">
           <el-button @click="dialogFormVisible = false">取消</el-button>
-          <el-button type="primary" @click="dialogFormVisible = false">确认</el-button>
+          <el-button type="primary" @click="confirmEditorClick(tableDataEditor, lineOfObj.name)">确认</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -289,11 +296,24 @@
 
 <script>
   import axios from 'axios'
+  import commonApi from '@/api/commonApi'
   import request from '@/utils/request'
+
   export default {
     name: 'DynamicTable',
     data(){
       return{
+        lineOfObj: {},
+        mapData: {
+          conduits: [],
+          outfalls: [],
+          junctions: [],
+          subcatchments: [],
+          companies: [],
+          range: [],
+          isShow:true,
+        },
+        shapes: [],     // 获取所有项目数据
         pickerOptions: {
           disabledDate(time) {
             return time.getTime() > Date.now()
@@ -331,6 +351,9 @@
         tableData:[]
       }
     },
+    created(){
+      this.getDataInfo()
+    },
     mounted(){
       this.getProjectsInfo();
     },
@@ -338,21 +361,120 @@
       /****** 编辑 ********/
       outfallHandleClick(index, row){
         const _this = this;
+        _this.lineOfObj = {};
+        _this.tableDataEditor = [];
         _this.dialogFormVisible = true;
         _this.tableDataEditor = [
-          { name: '编号:', nameObj: row.name, type: 'nothing' },
-          { name: '用地类型:', nameObj: row.YDLX, type: 'nothing' },
+          { name: '编号:', nameObj: row.name, type: 'disabled' },
+          { name: '用地类型:', nameObj: row.YDLX, type: 'disabled' },
           { name: '建设状态:', nameObj: row.JSZT, type: 'select' },
           { name: '项目名称:', nameObj: row.XMMC, type: 'nothing' },
-          { name: '排入河道:', nameObj: row.PRHD, type: 'nothing' },
-          { name: '所属流域:', nameObj: row.SSLY, type: 'nothing' },
-          { name: '所属排水分区:', nameObj: row.SSPSFQ, type: 'nothing' },
+          { name: '排入河道:', nameObj: row.PRHD, type: 'disabled' },
+          { name: '所属流域:', nameObj: row.SSLY, type: 'disabled' },
+          { name: '所属排水分区:', nameObj: row.SSPSFQ, type: 'disabled' },
           { name: '是否为正本清源项目:', nameObj: row.ZBQY, type: 'nothing' },
-          { name: '是否为海绵项目:', nameObj: row.HMLX, type: 'nothing' },
-          { name: '海绵类型:', nameObj: row.HMLX, type: 'nothing' },
+          { name: '是否为海绵项目:', nameObj: row.HMCS, type: 'nothing' },
+          { name: '海绵类型:', nameObj: row.HMLX, type: 'disabled' },
           { name: '最后更新时间:', nameObj: row.lastUpdataTime, type: 'time' },
-        ]
+        ];
+        _this.lineOfObj = row
       },
+      /**
+       * 编辑确认按钮
+       */
+      confirmEditorClick(data, value){
+        const _this = this;
+        _this.dialogFormVisible = false
+        let subcatData = {};
+        let subChmenData = _this.mapData.subcatchments;
+        _.each(subChmenData, function (item) {
+          if(value === item.properties.properties.name){
+            item.properties.properties.name = data[0].nameObj
+            item.properties.properties.YDLX = data[1].nameObj
+            item.properties.properties.JSZT = data[2].nameObj
+            item.properties.properties.XMMC = data[3].nameObj
+            item.properties.properties.PRHD = data[4].nameObj
+            item.properties.properties.SSLY = data[5].nameObj
+            item.properties.properties.SSPSFQ = data[6].nameObj
+            item.properties.properties.ZBQY = data[7].nameObj
+            item.properties.properties.HMCS = data[8].nameObj
+            item.properties.properties.HMLX = data[9].nameObj
+            subcatData = item
+          }
+        })
+        let objToStr = JSON.stringify(subcatData.properties)
+        let objId = subcatData.id
+        commonApi.edit('shapes',objId, {
+          'properties': objToStr
+        }).then((respon)=>{
+          _this.$message({
+            message: '编辑成功',
+            type: 'success'
+          });
+          _this.handleSelect();
+        })
+
+      },
+      /**
+       * 获取所有项目数据
+       */
+      getDataInfo() {
+        const _this = this
+        request('shapes', {
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: '3'
+                }
+              }
+            }
+          }
+        }).then((resp) => {
+          const data = resp.data;
+        _this.shapes = JSON.parse(JSON.stringify(resp.data))
+          _.each(_this.shapes, function(item) {
+            item.properties = JSON.parse(item.properties)
+          })
+          if (!_this.$route.query.AttributeValue && !_this.$route.query.seletctType) {
+            this.getDataInfoSuccess(_this.shapes)
+          }
+        })
+      },
+      getDataInfoSuccess(data){
+        const _this = this
+        _.each(data, item => {
+          const mapData = {
+            id: item.id,
+            category: item.category,
+            properties: item.properties
+          };
+          switch (item.category) {
+          case 'SUBCATCHMENTS':
+            _this.mapData.subcatchments.push(mapData)    // 地块
+            break
+          case 'CONDUITS':
+            _this.mapData.conduits.push(mapData)
+            break
+          case 'JUNCTIONS':
+            _this.mapData.junctions.push(mapData)
+            break
+          case 'OUTFALLS':
+            _this.mapData.outfalls.push(mapData)
+            break
+          case 'COMPANY':
+            _this.mapData.companies.push(mapData)
+            break
+          case 'RANGE':
+            _this.mapData.range.push(mapData)
+            break
+          }
+        })
+        const mapData = _this.mapData
+      },
+
       /**** 点击查看跳转页面 ***/
       viewHadelClick(index, data) {
         console.log('index, data', index, data)
@@ -572,6 +694,9 @@
   }
 </script>
 <style>
+  .el-input.is-disabled .el-input__inner{
+    color: #999;
+  }
   .point-manager{
     margin: 20px;
   }

@@ -130,7 +130,7 @@
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="currentPage4"
+        :current-page="1"
         :page-sizes="[20, 40, 60, 80]"
         :page-size="100"
         layout="total, sizes, prev, pager, next, jumper"
@@ -141,14 +141,21 @@
     <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="50%">
       <el-form ref="form" label-width="150px" style="width: 500px; margin: auto; text-align: left;">
         <template v-for="(item, index) in tableDataEditor">
+
           <el-form-item v-if="item.type === 'nothing' " :label="item.name">
             <el-input style="width:300px" v-model="item.nameObj"></el-input>
           </el-form-item>
+
+          <el-form-item v-if="item.type === 'disabled' " :label="item.name">
+            <el-input style="width:300px" v-model="item.nameObj" :disabled="true" ></el-input>
+          </el-form-item>
+
           <el-form-item v-if="item.type === 'select' " :label="item.name">
             <el-select style="width:300px" v-model="item.nameObj" placeholder="请选择">
               <el-option v-for="item in typeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
+
           <el-form-item v-if="item.type === 'time' " :label="item.name">
             <el-date-picker style="width:300px" v-model="item.nameObj" type="datetime"
                             placeholder="选择日期时间" align="right" format="yyyy-MM-dd HH:mm:ss"
@@ -159,7 +166,7 @@
 
         <el-form-item style="margin-left:150px">
           <el-button @click="dialogFormVisible = false">取消</el-button>
-          <el-button type="primary" @click="dialogFormVisible = false">确认</el-button>
+          <el-button type="primary" @click="confirmEditorClick(tableDataEditor, lineOfObj.projectName)">确认</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -296,11 +303,24 @@
 
 <script>
   import axios from 'axios'
+  import commonApi from '@/api/commonApi'
   import request from '@/utils/request'
+
   export default {
     name: 'index',
     data(){
       return{
+        lineOfObj: {},
+        mapData: {
+          conduits: [],
+          outfalls: [],
+          junctions: [],
+          subcatchments: [],
+          companies: [],
+          range: [],
+          isShow:true,
+        },
+        shapes: [],     // 获取所有项目数据
         pickerOptions: {
           disabledDate(time) {
             return time.getTime() > Date.now()
@@ -336,6 +356,9 @@
         tableData:[]
       }
     },
+    created(){
+      this.getDataInfo()
+    },
     mounted(){
       this.getProjectsInfo();
     },
@@ -343,13 +366,16 @@
       /**** 编辑按钮 *****/
       outfallHandleClick(index, row){
         const _this = this;
+        _this.lineOfObj = {};
+        _this.tableDataEditor = [];
+        _this.lineOfObj = row;
         _this.dialogFormVisible = true;
         _this.tableDataEditor = [
-          { name: '项目编号:', nameObj: row.projectName, type: 'nothing'},
-          { name: '类型:', nameObj: row.leixing, type: 'nothing'},
-          { name: '街道名称:', nameObj: row.JDMC, type: 'nothing'},
-          { name: '社区名称:', nameObj: row.SQMC, type: 'nothing'},
-          { name: '地址:', nameObj: row.SCJYDZ, type: 'nothing'},
+          { name: '项目编号:', nameObj: row.projectName, type: 'disabled'},
+          { name: '类型:', nameObj: row.category, type: 'disabled'},
+          { name: '街道名称:', nameObj: row.JDMC, type: 'disabled'},
+          { name: '社区名称:', nameObj: row.SQMC, type: 'disabled'},
+          { name: '地址:', nameObj: row.SCJYDZ, type: 'disabled'},
           { name: '法人代表:', nameObj: row.FDDBR, type: 'nothing'},
           { name: '联系方式:', nameObj: row.LXFS, type: 'nothing'},
           { name: '企业人数:', nameObj: row.QYRS, type: 'nothing'},
@@ -364,6 +390,118 @@
           { name: '废水处理方式:', nameObj: row.FSCLFS, type: 'nothing'}
         ]
       },
+      /**
+       * 编辑确认按钮
+       */
+      confirmEditorClick(data, value){
+        const _this = this;
+        _this.dialogFormVisible = false
+        let subcatData = {};
+        let subChmenData = _this.mapData.companies;
+        _.each(subChmenData, function (item) {
+          if(value == item.properties.properties.name){
+            item.properties.properties.FDDBR = data[5].nameObj
+            item.properties.properties.LXFS = data[6].nameObj
+            item.properties.properties.QYRS = data[7].nameObj
+            item.properties.properties.HYLB = data[8].nameObj
+            item.properties.properties.SCYSL = data[9].nameObj
+            item.properties.properties.PSL = data[10].nameObj
+            item.properties.properties.ZYSCGY = data[11].nameObj
+            item.properties.properties.GPZL = data[12].nameObj
+            item.properties.properties.HPPFWJ = data[13].nameObj
+            item.properties.properties.HPPFWJYXX = data[14].nameObj
+            item.properties.properties.PWXKZ = data[15].nameObj
+            item.properties.properties.FSCLFS = data[16].nameObj
+            subcatData = item
+          }
+        })
+        let objToStr = JSON.stringify(subcatData.properties)
+        let objId = subcatData.id
+        commonApi.edit('shapes',objId, {
+          'properties': objToStr
+        }).then((respon)=>{
+          _this.$message({
+            message: '编辑成功',
+            type: 'success'
+          });
+          _this.handleSelect();
+        })
+      },
+      /**
+       * 获取所有项目数据
+       */
+      getDataInfo() {
+        const _this = this
+        request('shapes', {
+          params: {
+            pageNo: 1,
+            pageSize: 100000000,
+            filters: {
+              'shape': {
+                'project_id': {
+                  equalTo: '3'
+                }
+              }
+            }
+          }
+        }).then((resp) => {
+          const data = resp.data;
+        _this.shapes = JSON.parse(JSON.stringify(resp.data))
+        _.each(_this.shapes, function(item) {
+          item.properties = JSON.parse(item.properties)
+        })
+        if (!_this.$route.query.AttributeValue && !_this.$route.query.seletctType) {
+          this.getDataInfoSuccess(_this.shapes)
+        }
+      })
+      },
+      getDataInfoSuccess(data){
+        const _this = this
+        _.each(data, item => {
+          const mapData = {
+            id: item.id,
+            category: item.category,
+            properties: item.properties
+          };
+        switch (item.category) {
+          case 'SUBCATCHMENTS':
+            _this.mapData.subcatchments.push(mapData)    // 地块
+            break
+          case 'CONDUITS':
+            _this.mapData.conduits.push(mapData)
+            break
+          case 'JUNCTIONS':
+            _this.mapData.junctions.push(mapData)
+            break
+          case 'OUTFALLS':
+            _this.mapData.outfalls.push(mapData)
+            break
+          case 'COMPANY':
+            _this.mapData.companies.push(mapData)
+            break
+          case 'RANGE':
+            _this.mapData.range.push(mapData)
+            break
+        }
+      })
+        const mapData = _this.mapData
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       /**** 点击查看跳转页面 ***/
       viewHadelClick(index, data){
         console.log()
