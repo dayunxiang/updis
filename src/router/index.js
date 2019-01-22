@@ -180,10 +180,9 @@ export const asyncRouterMap = [
     {
       path: '/detection',
       component: Layout,
-      redirect: 'coordinate',
-      name: 'detection',
+      redirect: 'precipitation',
       meta: {
-        title: '检测数据',
+        title: '监测数据',
           icon: 'table'
       },
       children: [
@@ -201,7 +200,7 @@ export const asyncRouterMap = [
           component: _import('detection/channelSection'),
           name: 'channelSection',
           meta: {
-            title: '海绵项目进度表',
+            title: '河道断面',
             noCache: true
           }
         },
@@ -210,7 +209,7 @@ export const asyncRouterMap = [
           component: _import('detection/checkWell'),
           name: 'checkWell',
           meta: {
-            title: '海绵项目统计分析图',
+            title: '排口/检查井',
             noCache: true
           }
         },
@@ -219,7 +218,7 @@ export const asyncRouterMap = [
           component: _import('detection/enterprise'),
           name: 'enterprise',
           meta: {
-            title: '海绵项目统计分析图',
+            title: '监控企业',
             noCache: true
           }
         }
