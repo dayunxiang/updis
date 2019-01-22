@@ -175,6 +175,57 @@ export const asyncRouterMap = [
     ]
   },
   /**
+   * 检测数据
+   */
+    {
+      path: '/detection',
+      component: Layout,
+      redirect: 'coordinate',
+      name: 'detection',
+      meta: {
+        title: '检测数据',
+          icon: 'table'
+      },
+      children: [
+        {
+          path: 'precipitation',
+          component: _import('detection/precipitation'),
+          name: 'precipitation',
+          meta: {
+            title: '降水量',
+            noCache: true
+          }
+        },
+        {
+          path: 'channelSection',
+          component: _import('detection/channelSection'),
+          name: 'channelSection',
+          meta: {
+            title: '海绵项目进度表',
+            noCache: true
+          }
+        },
+        {
+          path: 'checkWell',
+          component: _import('detection/checkWell'),
+          name: 'checkWell',
+          meta: {
+            title: '海绵项目统计分析图',
+            noCache: true
+          }
+        },
+        {
+          path: 'enterprise',
+          component: _import('detection/enterprise'),
+          name: 'enterprise',
+          meta: {
+            title: '海绵项目统计分析图',
+            noCache: true
+          }
+        }
+      ]
+  },
+  /**
    * 系统管理
    */
   {
