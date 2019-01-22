@@ -116,14 +116,11 @@
           label="废水处理方式"
           width="120">
         </el-table-column>
-        <el-table-column
-          fixed="right"
-          label="操作"
-          width="150">
+        <el-table-column fixed="right" label="操作" width="180">
           <template slot-scope="scope">
-            <el-button  type="text" @click="viewHadelClick(scope.$index, scope.row)">查看</el-button>
-            <el-button  type="text" @click="outfallHandleClick(scope.$index, scope.row)">编辑</el-button>
-            <el-button @click="handleClick(scope.row)" type="text" size="small">删除</el-button>
+            <el-button type="text" @click="viewHadelClick(scope.$index, scope.row)">查看</el-button>
+            <el-button type="text" @click="outfallHandleClick(scope.$index, scope.row)">编辑</el-button>
+            <el-button type="text" @click="handleClick(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
